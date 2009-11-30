@@ -4,6 +4,8 @@
  * Initialization file for the Validator extension.
  * Extension documentation: http://www.mediawiki.org/wiki/Extension:Validator
  *
+ * You will be validated. Resistance is futile.
+ *
  * @file Validator.php
  * @ingroup Validator
  * 
@@ -22,7 +24,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Validator_VERSION', '0.1 a1');
+define('Validator_VERSION', '0.1 a2');
 
 // Constants indicating the strictness of the parameter validation.
 define('Validator_ERRORS_NONE', 0);
