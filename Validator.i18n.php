@@ -16,7 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'validator_name' => 'Validator',
-	'validator_desc' => 'Validator provides an easy way for other extensions to validate parameters of parser functions and tag extensions, set default values and generate error messages.',
+	'validator-desc' => 'Validator provides an easy way for other extensions to validate parameters of parser functions and tag extensions, set default values and generate error messages.',
 
 	'validator_error_parameters' => 'The following errors have been detected in your syntax',
 
@@ -27,7 +27,7 @@ $messages['en'] = array(
 
 	'validator_error_must_be_number' => 'Parameter $1 can only be a number.',
 	'validator_error_ivalid_range' => 'Parameter $1 must be between $2 and $3.',
-	'maps_error_accepts_only' => 'Parameter $1 only accepts {{PLURAL:$3|this value|these values}}: $2.',	
+	'maps_error_accepts_only' => 'Parameter $1 only accepts {{PLURAL:$3|this value|these values}}: $2.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -241,8 +241,8 @@ $messages['mk'] = array(
  * @author Siebrand
  * @author Jeroen De Dauw
  */
-$messages['nl'] = array( 
-	'validator_desc' => 'Validator geeft andere externsies de mogelijkheid om parameters van parser functions en tag extensions te valideren, in te stellen op hun standaard waarden en fout boodschappen te genereren.',
+$messages['nl'] = array(
+	'validator-desc' => 'Validator geeft andere uitbreidingen de mogelijkheid om parameters van parserfuncties en taguitbreidingen te valideren, in te stellen op hun standaardwaarden en foutberichten te genereren.',
 
 	'validator_error_parameters' => 'In uw syntaxis zijn de volgende fouten gedetecteerd',
 
