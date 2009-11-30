@@ -26,7 +26,7 @@ $messages['en'] = array(
 	'validator_error_required_missing' => 'The required parameter $1 is not provided.',
 
 	'validator_error_must_be_number' => 'Parameter $1 can only be a number.',
-	'validator_error_ivalid_range' => 'Parameter $1 must be between $2 and $3.',
+	'validator_error_invalid_range' => 'Parameter $1 must be between $2 and $3.',
 	'maps_error_accepts_only' => 'Parameter $1 only accepts {{PLURAL:$3|this value|these values}}: $2.',
 );
 
@@ -42,7 +42,7 @@ $messages['be-tarask'] = array(
 	'validator_error_required_missing' => 'Не пададзены абавязковы парамэтар $1.',
 
 	'validator_error_must_be_number' => 'Парамэтар $1 можа быць толькі лікам.',
-	'validator_error_ivalid_range' => 'Парамэтар $1 павінен быць паміж $2 і $3.',
+	'validator_error_invalid_range' => 'Парамэтар $1 павінен быць паміж $2 і $3.',
 );
 
 /** Breton (Brezhoneg)
@@ -58,7 +58,7 @@ $messages['br'] = array(
 	'validator_error_required_missing' => "N'eo ket bet pourchaset an arventenn rekis $1",
 
 	'validator_error_must_be_number' => 'Un niver e rank an arventenn $1 bezañ hepken.',
-	'validator_error_ivalid_range' => 'Rankout a ra an arventenn $1 bezañ etre $2 hag $3.',
+	'validator_error_invalid_range' => 'Rankout a ra an arventenn $1 bezañ etre $2 hag $3.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -72,7 +72,7 @@ $messages['dsb'] = array(
 	'validator_error_required_missing' => 'Trěbny parameter $1 njejo pódany.',
 
 	'validator_error_must_be_number' => 'Parameter $1 móžo jano licba byś.',
-	'validator_error_ivalid_range' => 'Parameter $1 musy mjazy $2 a $3 byś.',
+	'validator_error_invalid_range' => 'Parameter $1 musy mjazy $2 a $3 byś.',
 );
 
 /** Spanish (Español)
@@ -84,7 +84,7 @@ $messages['es'] = array(
 	'validator_error_required_missing' => 'No se ha provisto el parámetro requerido $1.',
 
 	'validator_error_must_be_number' => 'El parámetro $1 sólo puede ser un número.',
-	'validator_error_ivalid_range' => 'El parámetro $1 debe ser entre $2 y $3.',
+	'validator_error_invalid_range' => 'El parámetro $1 debe ser entre $2 y $3.',
 );
 
 /** French (Français)
@@ -102,7 +102,7 @@ $messages['fr'] = array(
 	'validator_error_required_missing' => "Le paramètre requis $1 n'est pas fourni.",
 
 	'validator_error_must_be_number' => 'Le paramètre $1 peut être uniquement un nombre.',
-	'validator_error_ivalid_range' => 'Le paramètre $1 doit être entre $2 et $3.',
+	'validator_error_invalid_range' => 'Le paramètre $1 doit être entre $2 et $3.',
 );
 
 /** Galician (Galego)
@@ -116,7 +116,7 @@ $messages['gl'] = array(
 	'validator_error_required_missing' => 'Non se proporcionou o parámetro $1 necesario.',
 
 	'validator_error_must_be_number' => 'O parámetro $1 só pode ser un número.',
-	'validator_error_ivalid_range' => 'O parámetro $1 debe estar entre $2 e $3.',
+	'validator_error_invalid_range' => 'O parámetro $1 debe estar entre $2 e $3.',
 );
 
 /** Swiss German (Alemannisch)
@@ -130,7 +130,7 @@ $messages['gsw'] = array(
 	'validator_error_required_missing' => 'Dr Paramter $1, wu aagforderet woren isch, wird nit z Verfiegig gstellt.',
 
 	'validator_error_must_be_number' => 'Dr Parameter $1 cha nume ne Zahl syy.',
-	'validator_error_ivalid_range' => 'Dr Parameter $1 muess zwische $2 un $3 syy.',
+	'validator_error_invalid_range' => 'Dr Parameter $1 muess zwische $2 un $3 syy.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -144,7 +144,7 @@ $messages['hsb'] = array(
 	'validator_error_required_missing' => 'Trěbny parameter $1 njeje podaty.',
 
 	'validator_error_must_be_number' => 'Parameter $1 móže jenož ličba być.',
-	'validator_error_ivalid_range' => 'Parameter $1 dyrbi mjez $2 a $3 być.',
+	'validator_error_invalid_range' => 'Parameter $1 dyrbi mjez $2 a $3 być.',
 );
 
 /** Hungarian (Magyar)
@@ -159,7 +159,7 @@ $messages['hu'] = array(
 	'validator_error_required_missing' => 'A(z) $1 kötelező paraméter nem lett megadva.',
 
 	'validator_error_must_be_number' => 'A(z) $1 paraméter csak szám lehet.',
-	'validator_error_ivalid_range' => 'A(z) $1 paraméter értékének $2 és $3 között kell lennie.',
+	'validator_error_invalid_range' => 'A(z) $1 paraméter értékének $2 és $3 között kell lennie.',
 );
 
 /** Interlingua (Interlingua)
@@ -173,7 +173,7 @@ $messages['ia'] = array(
 	'validator_error_required_missing' => 'Le parametro requisite $1 non ha essite fornite.',
 
 	'validator_error_must_be_number' => 'Le parametro $1 pote solmente esser un numero.',
-	'validator_error_ivalid_range' => 'Le parametro $1 debe esser inter $2 e $3.',
+	'validator_error_invalid_range' => 'Le parametro $1 debe esser inter $2 e $3.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -189,7 +189,7 @@ $messages['id'] = array(
 	'validator_error_required_missing' => 'Parameter $1 yang diperlukan tidak diberikan.',
 
 	'validator_error_must_be_number' => 'Parameter $1 hanya dapat berupa angka.',
-	'validator_error_ivalid_range' => 'Parameter $1 harus antara $2 dan $3.',
+	'validator_error_invalid_range' => 'Parameter $1 harus antara $2 dan $3.',
 );
 
 /** Japanese (日本語)
@@ -204,7 +204,7 @@ $messages['ja'] = array(
 	'validator_error_required_missing' => '必須の引数「$1」が入力されていません。',
 
 	'validator_error_must_be_number' => '引数「$1」は数値でなければなりません。',
-	'validator_error_ivalid_range' => '引数「$1」は $2 と $3 の間の値でなければなりません。',
+	'validator_error_invalid_range' => '引数「$1」は $2 と $3 の間の値でなければなりません。',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -218,7 +218,7 @@ $messages['ksh'] = array(
 	'validator_error_required_missing' => 'Dä Parameeter $1 moß aanjejovve sin, un fählt.',
 
 	'validator_error_must_be_number' => 'Dä Parameeter $1 kann blohß en Zahl sin.',
-	'validator_error_ivalid_range' => 'Dä Parameeter $1 moß zwesche $2 un $3 sin.',
+	'validator_error_invalid_range' => 'Dä Parameeter $1 moß zwesche $2 un $3 sin.',
 );
 
 
@@ -234,7 +234,7 @@ $messages['mk'] = array(
 	'validator_error_required_missing' => 'Бараниот параметар $1 не е наведен.',
 
 	'validator_error_must_be_number' => 'Параметарот $1 може да биде само број.',
-	'validator_error_ivalid_range' => 'Параметарот $1 мора да изнесува помеѓу $2 и $3.',
+	'validator_error_invalid_range' => 'Параметарот $1 мора да изнесува помеѓу $2 и $3.',
 );
 
 /** Dutch (Nederlands)
@@ -251,7 +251,7 @@ $messages['nl'] = array(
 	'validator_error_required_missing' => 'De verplichte parameter $1 is niet opgegeven.',
 
 	'validator_error_must_be_number' => 'De parameter $1 mag enkel een getal zijn.',
-	'validator_error_ivalid_range' => 'De parameter $1 moet tussen $2 en $3 liggen.',
+	'validator_error_invalid_range' => 'De parameter $1 moet tussen $2 en $3 liggen.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -267,7 +267,7 @@ $messages['pms'] = array(
 	'validator_error_required_missing' => "Ël paràmetr obligatòri $1 a l'é pa dàit.",
 
 	'validator_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
-	'validator_error_ivalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
+	'validator_error_invalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
 );
 
 /** Portuguese (Português)
@@ -281,7 +281,7 @@ $messages['pt'] = array(
 	'validator_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
 
 	'validator_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
-	'validator_error_ivalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
+	'validator_error_invalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
 );
 
 /** Russian (Русский)
@@ -297,7 +297,7 @@ $messages['ru'] = array(
 	'validator_error_required_missing' => 'Не указан обязательный параметр $1.',
 
 	'validator_error_must_be_number' => 'Значением параметра $1 могут быть только числа.',
-	'validator_error_ivalid_range' => 'Параметр $1 должен быть от $2 до $3.',
+	'validator_error_invalid_range' => 'Параметр $1 должен быть от $2 до $3.',
 );
 
 /** Swedish (Svenska)
@@ -312,7 +312,7 @@ $messages['sv'] = array(
 	'validator_error_required_missing' => 'Den nödvändiga parametern $1 har inte angivits.',
 
 	'validator_error_must_be_number' => 'Parameter $1 måste bestå av ett tal.',
-	'validator_error_ivalid_range' => 'Parameter $1 måste vara i mellan $2 och $3.',
+	'validator_error_invalid_range' => 'Parameter $1 måste vara i mellan $2 och $3.',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -327,5 +327,5 @@ $messages['vi'] = array(
 	'validator_error_required_missing' => 'Không định rõ tham số bắt buộc “$1”.',
 
 	'validator_error_must_be_number' => 'Tham số “$1” phải là con số.',
-	'validator_error_ivalid_range' => 'Tham số “$1” phải nằm giữa $2 và $3.',
+	'validator_error_invalid_range' => 'Tham số “$1” phải nằm giữa $2 và $3.',
 );

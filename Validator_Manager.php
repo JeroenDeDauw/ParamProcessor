@@ -79,7 +79,7 @@ final class ValidatorManager {
 						$errors[] = wfMsgExt( 'validator_error_empty_argument', array( 'parsemag' ), $error['name'] );
 						break;
 					case 'in_range' :
-						$errors[] = wfMsgExt( 'validator_error_ivalid_range', array( 'parsemag' ), $error['name'], $error['error'][1][0], $error['error'][1][1] );
+						$errors[] = wfMsgExt( 'validator_error_invalid_range', array( 'parsemag' ), $error['name'], $error['error'][1][0], $error['error'][1][1] );
 						break;
 					case 'is_numeric' :
 						$errors[] = wfMsgExt( 'validator_error_must_be_number', array( 'parsemag' ), $error['name'] );
