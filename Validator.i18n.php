@@ -32,9 +32,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'validator-desc' => '{{desc}}',
+	'validator_error_parameters' => 'Parameters:
+* $1 is the number of syntax errors, for PLURAL support (optional)',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -42,12 +45,16 @@ $messages['qqq'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'validator_name' => 'Правяраючы',
+	'validator-desc' => 'Правяраючы палягчае іншым пашырэньням працу па праверцы парамэтраў функцыяў парсэру і тэгаў пашырэньняў, устанаўлівае значэньні па змоўчваньні і стварае паведамленьні пра памылкі.',
 	'validator_error_parameters' => 'У сынтаксісе выяўлены наступныя памылкі',
+	'validator_error_unknown_argument' => 'Няслушны парамэтар $1.',
 	'validator_error_invalid_argument' => 'Значэньне $1 не зьяўляецца слушным для парамэтру $2.',
 	'validator_error_empty_argument' => 'Парамэтар $1 ня можа мець пустое значэньне.',
 	'validator_error_required_missing' => 'Не пададзены абавязковы парамэтар $1.',
 	'validator_error_must_be_number' => 'Парамэтар $1 можа быць толькі лікам.',
 	'validator_error_invalid_range' => 'Парамэтар $1 павінен быць паміж $2 і $3.',
+	'maps_error_accepts_only' => 'Парамэтар $1 можа мець толькі {{PLURAL:$3|гэтае значэньне|гэтыя значэньні}}: $2.',
 );
 
 /** Breton (Brezhoneg)
@@ -175,12 +182,16 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'validator_name' => 'Validator',
+	'validator-desc' => 'Validator provide un modo facile a altere extensiones de validar parametros de functiones del analysator syntactic e extensiones de etiquettas, predefinir valores e generar messages de error.',
 	'validator_error_parameters' => 'Le sequente errores ha essite detegite in tu syntaxe',
+	'validator_error_unknown_argument' => '$1 non es un parametro valide.',
 	'validator_error_invalid_argument' => 'Le valor $1 non es valide pro le parametro $2.',
 	'validator_error_empty_argument' => 'Le parametro $1 non pote haber un valor vacue.',
 	'validator_error_required_missing' => 'Le parametro requisite $1 non ha essite fornite.',
 	'validator_error_must_be_number' => 'Le parametro $1 pote solmente esser un numero.',
 	'validator_error_invalid_range' => 'Le parametro $1 debe esser inter $2 e $3.',
+	'maps_error_accepts_only' => 'Le parametro $1 accepta solmente iste {{PLURAL:$3|valor|valores}}: $2.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -218,12 +229,16 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'validator_error_parameters' => 'Heh {{PLURAL:$1|dä|di|keine}} Fähler {{PLURAL:$1|es|sin|keine}} en Dinge Syntax opjevalle:',
+	'validator_name' => 'Prööver',
+	'validator-desc' => '{{int:validator_name}} brängk eine eijfache Wääsch, der Parrammeetere fun Paaser-Fungkßjohne un Zohsatzprojramme ze prööve, Schtandatt-Wääte enzefööje, un Fähler ze mällde.',
+	'validator_error_parameters' => '{{PLURAL:$1|Heh dä|Heh di|Keine}} Fähler {{PLURAL:$1|es|sin|es}} en Dinge Syntax opjevalle:',
+	'validator_error_unknown_argument' => '„$1“ es keine jöltijje Parameeter.',
 	'validator_error_invalid_argument' => 'Däm Parameeter $2 singe Wäät es $1, dat es ävver doför nit jöltesch.',
 	'validator_error_empty_argument' => 'Dä Parameeter $1 kann keine Wäät met nix dren hann.',
 	'validator_error_required_missing' => 'Dä Parameeter $1 moß aanjejovve sin, un fählt.',
 	'validator_error_must_be_number' => 'Dä Parameeter $1 kann blohß en Zahl sin.',
 	'validator_error_invalid_range' => 'Dä Parameeter $1 moß zwesche $2 un $3 sin.',
+	'maps_error_accepts_only' => 'Dä Parameeter $1 kann {{PLURAL:$3|bloß dä eine Wäät|bloß eine vun dä Wääte|keine Wäät}} han: $2',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -231,6 +246,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'validator_name' => 'Validator',
+	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parameter vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Werter festzeleeën a fir Feeler-Messagen ze generéieren.',
 	'validator_error_parameters' => 'Dës Feeler goufen an Ärer Syntax fonnt.',
 	'validator_error_unknown_argument' => '$1 ass kee valbele Parameter.',
 	'validator_error_invalid_argument' => 'De Wert $1 ass net valabel fir de Parameter $2.',
@@ -246,12 +262,16 @@ $messages['lb'] = array(
  * @author McDutchie
  */
 $messages['mk'] = array(
+	'validator_name' => 'Потврдувач',
+	'validator-desc' => 'Потврдувачот овозможува лесен начин другите проширувања да ги потврдат параметрите на парсерските функции и проширувањата со ознаки, да поставаат основно зададени вредности и да создаваат пораки за грешки.',
 	'validator_error_parameters' => 'Откриени се следниве грешки во вашата синтакса',
+	'validator_error_unknown_argument' => '$1 не е важечки параметар.',
 	'validator_error_invalid_argument' => 'Вредноста $1 е неважечка за параметарот $2.',
 	'validator_error_empty_argument' => 'Параметарот $1 не може да има празна вредност.',
 	'validator_error_required_missing' => 'Бараниот параметар $1 не е наведен.',
 	'validator_error_must_be_number' => 'Параметарот $1 може да биде само број.',
 	'validator_error_invalid_range' => 'Параметарот $1 мора да изнесува помеѓу $2 и $3.',
+	'maps_error_accepts_only' => 'Параметарот $1 {{PLURAL:$3|ја прифаќа само оваа вредност|ги прифаќа само овие вредности}}: $2.',
 );
 
 /** Dutch (Nederlands)
@@ -277,12 +297,16 @@ $messages['nl'] = array(
  * @author McDutchie
  */
 $messages['pms'] = array(
+	'validator_name' => 'Validator',
+	'validator-desc' => "Validator a dà na manera bel fé për àutre estension ëd validé ij paràmetr ëd le funsion dël parser e j'estension dij tag, d'amposté ij valor ëd default e generé mëssagi d'eror.",
 	'validator_error_parameters' => "J'eror sì sota a son ëstàit trovà an toa sintassi",
+	'validator_error_unknown_argument' => "$1 a l'é un paràmetr pa bon.",
 	'validator_error_invalid_argument' => "Ël valor $1 a l'é pa bon për ël paràmetr $2.",
 	'validator_error_empty_argument' => 'Ël paràmetr $1 a peul pa avèj un valor veuid.',
 	'validator_error_required_missing' => "Ël paràmetr obligatòri $1 a l'é pa dàit.",
 	'validator_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
 	'validator_error_invalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
+	'maps_error_accepts_only' => 'Ël paràmetr $1 a aceta mach {{PLURAL:$3|sto valor-sì|sti valor-sì}}: $2.',
 );
 
 /** Portuguese (Português)
@@ -307,12 +331,16 @@ $messages['pt'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'validator_name' => 'Валидатор',
+	'validator-desc' => 'Валидатор предоставляет другим расширениям возможности проверки параметров функций парсера и тегов, установки значения по умолчанию и создания сообщения об ошибках.',
 	'validator_error_parameters' => 'Обнаружены следующие ошибки в синтаксисе',
+	'validator_error_unknown_argument' => '$1 не является допустимым параметром.',
 	'validator_error_invalid_argument' => 'Значение $1 не является допустимым параметром $2',
 	'validator_error_empty_argument' => 'Параметр $1 не может принимать пустое значение.',
 	'validator_error_required_missing' => 'Не указан обязательный параметр $1.',
 	'validator_error_must_be_number' => 'Значением параметра $1 могут быть только числа.',
 	'validator_error_invalid_range' => 'Параметр $1 должен быть от $2 до $3.',
+	'maps_error_accepts_only' => 'Параметр $1 может принимать только {{PLURAL:$3|следующее значение|следующие значения}}: $2.',
 );
 
 /** Sinhala (සිංහල)
