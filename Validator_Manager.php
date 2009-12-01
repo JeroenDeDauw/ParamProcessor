@@ -59,8 +59,9 @@ final class ValidatorManager {
 		global $wgLang;
 		global $egValidatorErrorLevel;
 
-		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && count( $this->errors ) > 0 ) {
-			$errorList = '<b>' . wfMsg( 'validator_error_parameters' ) . ':</b><br /><i>';
+		$error_count = count( $this->errors ) ;
+		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && $error_count > 0 ) {
+			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', $error_count ) . ':</b><br /><i>';
 
 			$errors = array();
 
@@ -74,7 +75,7 @@ final class ValidatorManager {
 					case 'missing' :
 						$errors[] = wfMsgExt( 'validator_error_required_missing', array( 'parsemag' ), $error['name'] );
 						break;
-					// Spesific validation faliures
+					// Specific validation faliures
 					case 'not_empty' :
 						$errors[] = wfMsgExt( 'validator_error_empty_argument', array( 'parsemag' ), $error['name'] );
 						break;
