@@ -123,6 +123,8 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'validator_name' => 'Servizo de validación',
+	'validator-desc' => 'O servizo de validación ofrece un medio sinxelo a outras extensións para validar os parámetros de funcións analíticas e etiquetas de extensións, para establecer os valores por defecto e para xerar mensaxes de erro.',
 	'validator_error_parameters' => 'Detectáronse os seguintes erros na sintaxe empregada',
 	'validator_error_unknown_argument' => '"$1" non é un parámetro válido.',
 	'validator_error_invalid_argument' => 'O valor $1 non é válido para o parámetro $2.',
@@ -347,7 +349,16 @@ $messages['ru'] = array(
  * @author Calcey
  */
 $messages['si'] = array(
+	'validator_name' => 'තහවුරු කරන්නා',
+	'validator-desc' => 'තහවුරු කරන්නා ටැග් දිඟුවන් හා parser ශ්‍රිතවල පරාමිතීන් තහවුරු කිරීමට අනෙක් දිඟුවන් සඳහා පහසු ක්‍රමයක් සපයයි,පෙරනිමි අගයන් පිහිටුවීම හා දෝෂ පණිවුඩ ජනනය කිරීම ද සිදු කරයි.',
+	'validator_error_parameters' => 'ඔබේ වාග් රීතිය මඟින් පහත දෝෂයන් අනාවරණය කරනු ලැබ ඇත',
 	'validator_error_unknown_argument' => '$1 වලංගු පරාමිතියක් නොවේ.',
+	'validator_error_invalid_argument' => '$2 පරාමිතිය සඳහා $1 අගය වලංගු නොවේ.',
+	'validator_error_empty_argument' => '$1 පරාමිතියට හිස් අගයක් තිබිය නොහැක.',
+	'validator_error_required_missing' => 'අවශ්‍ය වන $1 පරාමිතිය සපයා නොමැත.',
+	'validator_error_must_be_number' => '$1 පරාමිතිය විය හැක්කේ ඉලක්කමක් පමණි.',
+	'validator_error_invalid_range' => '$1 පරාමිතිය $2 හා $3 අතර විය යුතුය.',
+	'maps_error_accepts_only' => '$1 පරාමිතිය විසින් පිළිගනු ලබන්නේ {{PLURAL:$3|මෙම අගය|මෙම අගයන්}}: $2 පමණි.',
 );
 
 /** Swedish (Svenska)
