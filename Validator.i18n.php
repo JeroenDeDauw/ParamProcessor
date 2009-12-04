@@ -16,7 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'validator_name' => 'Validator',
-	'validator-desc' => 'Validator provides an easy way for other extensions to validate parameters of parser functions and tag extensions, set default values and generate error messages.',
+	'validator-desc' => 'Validator provides an easy way for other extensions to validate parameters of parser functions and tag extensions, set default values and generate error messages',
 
 	'validator_error_parameters' => 'The following errors have been detected in your syntax',
 
