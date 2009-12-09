@@ -190,12 +190,16 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'validator_error_parameters' => 'A következő hibák találhatóak a szintaxisodban',
+	'validator_name' => 'Validator',
+	'validator-desc' => 'A Validator egyszerű módszert nyújt más kiterjesztések számára az elemzőfüggvények és tagek paramétereinek ellenőrzésére, alapértelmezett értékek beállítására, valamint hibaüzenetek generálására.',
+	'validator_error_parameters' => 'A következő {{PLURAL:$1|hiba található|hibák találhatóak}} a szintaxisodban: $1',
+	'validator_error_unknown_argument' => 'A(z) $1 nem érvényes paraméter.',
 	'validator_error_invalid_argument' => 'A(z) $1 érték nem érvényes a(z) $2 paraméterhez.',
 	'validator_error_empty_argument' => 'A(z) $1 paraméter értéke nem lehet üres.',
 	'validator_error_required_missing' => 'A(z) $1 kötelező paraméter nem lett megadva.',
 	'validator_error_must_be_number' => 'A(z) $1 paraméter csak szám lehet.',
 	'validator_error_invalid_range' => 'A(z) $1 paraméter értékének $2 és $3 között kell lennie.',
+	'maps_error_accepts_only' => 'A(z) $1 paraméter csak a következő {{PLURAL:$3|értéket|értékeket}} fogadja el: $2',
 );
 
 /** Interlingua (Interlingua)
@@ -204,7 +208,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator provide un modo facile a altere extensiones de validar parametros de functiones del analysator syntactic e extensiones de etiquettas, predefinir valores e generar messages de error',
-	'validator_error_parameters' => 'Le sequente errores ha essite detegite in tu syntaxe',
+	'validator_error_parameters' => 'Le sequente {{PLURAL:$1|error|errores}} ha essite detegite in tu syntaxe',
 	'validator_error_unknown_argument' => '$1 non es un parametro valide.',
 	'validator_error_invalid_argument' => 'Le valor $1 non es valide pro le parametro $2.',
 	'validator_error_empty_argument' => 'Le parametro $1 non pote haber un valor vacue.',
@@ -272,7 +276,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parameter vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Werter festzeleeën a fir Feeler-Messagen ze generéieren',
-	'validator_error_parameters' => 'Dës Feeler goufen an Ärer Syntax fonnt.',
+	'validator_error_parameters' => '{{PLURAL:$1|Dëser Feeler gouf|Dës Feeler goufen}} an Ärer Syntax fonnt.',
 	'validator_error_unknown_argument' => '$1 ass kee valbele Parameter.',
 	'validator_error_invalid_argument' => 'De Wert $1 ass net valabel fir de Parameter $2.',
 	'validator_error_empty_argument' => 'De Parameter $1 ka keen eidele Wert hunn.',
@@ -374,7 +378,7 @@ $messages['ru'] = array(
 $messages['si'] = array(
 	'validator_name' => 'තහවුරු කරන්නා',
 	'validator-desc' => 'තහවුරු කරන්නා ටැග් දිඟුවන් හා parser ශ්‍රිතවල පරාමිතීන් තහවුරු කිරීමට අනෙක් දිඟුවන් සඳහා පහසු ක්‍රමයක් සපයයි,පෙරනිමි අගයන් පිහිටුවීම හා දෝෂ පණිවුඩ ජනනය කිරීම ද සිදු කරයි',
-	'validator_error_parameters' => 'ඔබේ වාග් රීතිය මඟින් පහත දෝෂයන් අනාවරණය කරනු ලැබ ඇත',
+	'validator_error_parameters' => 'ඔබේ වාග් රීතිය මඟින් පහත {{PLURAL:$1|දෝෂය|දෝෂයන්}} අනාවරණය කරනු ලැබ ඇත',
 	'validator_error_unknown_argument' => '$1 වලංගු පරාමිතියක් නොවේ.',
 	'validator_error_invalid_argument' => '$2 පරාමිතිය සඳහා $1 අගය වලංගු නොවේ.',
 	'validator_error_empty_argument' => '$1 පරාමිතියට හිස් අගයක් තිබිය නොහැක.',
@@ -402,7 +406,9 @@ $messages['sv'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'validator_error_parameters' => 'Cú pháp có các lỗi sau',
+	'validator_name' => 'Bộ phê chuẩn',
+	'validator-desc' => 'Bộ phê chuẩn cho phép các phần mở rộng khác phê chuẩn tham số của hàm cú pháp và thẻ mở rộng, đặt giá trị mặc định, và báo cáo lỗi.',
+	'validator_error_parameters' => 'Cú pháp có {{PLURAL:$1|lỗi|các lỗi}} sau',
 	'validator_error_unknown_argument' => '$1 không phải là tham số hợp lệ.',
 	'validator_error_invalid_argument' => 'Giá trị “$1” không hợp tham số “$2”.',
 	'validator_error_empty_argument' => 'Tham số “$1” không được để trống.',
