@@ -401,6 +401,15 @@ $messages['sv'] = array(
 	'validator_error_invalid_range' => 'Parameter $1 måste vara i mellan $2 och $3.',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'validator_name' => 'Валідатор',
+	'validator-desc' => 'Валідатор забезпечує іншим розширенням можливості перевірки параметрів функцій парсеру і тегів, встановлення значень за замовчуванням та створення повідомлень про помилки',
+	'validator_error_parameters' => 'У вашому синтаксисі {{PLURAL:$1|виявлена наступна помилка|виявлені наступні помилки}}',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
