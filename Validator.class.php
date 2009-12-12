@@ -182,7 +182,7 @@ final class Validator {
 		}				
 		
 		if ( array_key_exists( 'type', $this->parameterInfo[$name] ) ) {
-					// Add type specific criteria.
+			// Add type specific criteria.
 			switch(strtolower($this->parameterInfo[$name]['type'])) {
 				case 'integer':
 					$this->parameterInfo[$name]['criteria']['is_integer'] = array();
@@ -218,10 +218,12 @@ final class Validator {
 		$errors = array();
 		
 		// Split list types into arrays.
-		switch(strtolower($this->parameterInfo[$name]['type'])) {
-			case 'list' : case 'list-string' :
-				$value = explode($this->parameterInfo[$name]['delimiter'], $value);
-				break;
+		if ( array_key_exists( 'type', $this->parameterInfo[$name] ) ) {
+			switch(strtolower($this->parameterInfo[$name]['type'])) {
+				case 'list' : case 'list-string' :
+					$value = explode($this->parameterInfo[$name]['delimiter'], $value);
+					break;
+			}
 		}
 		
 		// Go through all criteria.
