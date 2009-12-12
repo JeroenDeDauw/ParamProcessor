@@ -25,12 +25,12 @@ final class ValidatorManager {
 	private $errors = array();
 
 	/**
-	 * Validates the provided parameters, and corrects them depedning on the error level.
+	 * Validates the provided parameters, and corrects them depending on the error level.
 	 *
-	 * @param array $rawParameters
-	 * @param array $parameterInfo
+	 * @param array $rawParameters The raw parameters, as provided by the user.
+	 * @param array $parameterInfo Array containing the parameter definitions, which are needed for validation and defaulting.
 	 *
-	 * @return boolean Indicates whether the regular output should be shown or not.
+	 * @return array or false The valid parameters or false when the output should not be shown.
 	 */
 	public function manageMapparameters( array $rawParameters, array $parameterInfo ) {
 		global $egValidatorErrorLevel;
@@ -85,6 +85,9 @@ final class ValidatorManager {
 					case 'is_numeric' :
 						$errors[] = wfMsgExt( 'validator_error_must_be_number', array( 'parsemag' ), $error['name'] );
 						break;
+					case 'is_integer' :
+						$errors[] = wfMsgExt( 'validator_error_must_be_integer', array( 'parsemag' ), $error['name'] );
+						break;						
 					case 'in_array' : case 'all_in_array' :  case 'all_str_in_array' :
 						$items = $error['error'][0] == 'all_str_in_array' ? $error['error'][1][1] : $error['error'][1];
 						$itemsText = $wgLang->listToText( $items );

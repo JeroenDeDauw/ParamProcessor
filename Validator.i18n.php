@@ -26,6 +26,7 @@ $messages['en'] = array(
 	'validator_error_required_missing' => 'The required parameter $1 is not provided.',
 
 	'validator_error_must_be_number' => 'Parameter $1 can only be a number.',
+	'validator_error_must_be_integer' => 'Parameter $1 can only be an intger.',
 	'validator_error_invalid_range' => 'Parameter $1 must be between $2 and $3.',
 	'maps_error_accepts_only' => 'Parameter $1 only accepts {{PLURAL:$3|this value|these values}}: $2.',
 );
