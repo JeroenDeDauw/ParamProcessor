@@ -182,13 +182,18 @@ final class Validator {
 		}				
 		
 		if ( array_key_exists( 'type', $this->parameterInfo[$name] ) ) {
-			// Add type specific criteria.
+			// Add type specific criteria and do type spesific manipulations.
 			switch(strtolower($this->parameterInfo[$name]['type'])) {
 				case 'integer':
 					$this->parameterInfo[$name]['criteria']['is_integer'] = array();
 					break;
-				case 'list' : case 'list-string' :
+				case 'list' :
 					if (! array_key_exists('delimiter', $this->parameterInfo[$name])) $this->parameterInfo[$name]['delimiter'] = ',';
+					$value = explode($this->parameterInfo[$name]['delimiter'], $value);
+					break;
+				case 'list-string' :
+					if (! array_key_exists('delimiter', $this->parameterInfo[$name])) $this->parameterInfo[$name]['delimiter'] = ',';
+					break;
 			}			
 			
 			// Remove redundant spaces.
@@ -220,7 +225,7 @@ final class Validator {
 		// Split list types into arrays.
 		if ( array_key_exists( 'type', $this->parameterInfo[$name] ) ) {
 			switch(strtolower($this->parameterInfo[$name]['type'])) {
-				case 'list' : case 'list-string' :
+				case 'list-string' :
 					$value = explode($this->parameterInfo[$name]['delimiter'], $value);
 					break;
 			}

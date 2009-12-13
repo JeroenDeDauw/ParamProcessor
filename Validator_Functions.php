@@ -55,7 +55,7 @@ final class ValidatorFunctions {
 	 * @return boolean
 	 */
 	public static function is_integer( $value ) {
-		return is_numeric($value); // TODO: int check
+		return ctype_digit( (string)$value );
 	}	
 
 	/**
