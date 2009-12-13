@@ -41,6 +41,23 @@ $messages['qqq'] = array(
 * $1 is the number of syntax errors, for PLURAL support (optional)',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'validator_name' => 'Valideerder',
+	'validator-desc' => 'Die valideerder gee ander uitbreidings die vermoë om parameters van ontlederfunksies en etiket-uitbreidings te valideer, op hulle verstekwaardes in te stel en om foutboodskappe te genereer',
+	'validator_error_parameters' => 'Die volgende {{PLURAL:$1|fout|foute}} is in u sintaks waargeneem',
+	'validator_error_unknown_argument' => "$1 is nie 'n geldige parameter nie.",
+	'validator_error_invalid_argument' => 'Die waarde $1 is nie geldig vir parameter $2 nie.',
+	'validator_error_empty_argument' => 'Die parameter $1 mag nie leeg wees nie.',
+	'validator_error_required_missing' => 'Die verpligte parameter $1 is nie verskaf nie.',
+	'validator_error_must_be_number' => "Die parameter $1 mag net 'n getal wees.",
+	'validator_error_must_be_integer' => "Die parameter $1 kan slegs 'n heelgetal wees.",
+	'validator_error_invalid_range' => 'Die parameter $1 moet tussen $2 en $3 lê.',
+	'maps_error_accepts_only' => 'Die parameter $1 kan slegs die volgende {{PLURAL:$3|waarde|waardes}} hê: $2.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -54,6 +71,7 @@ $messages['be-tarask'] = array(
 	'validator_error_empty_argument' => 'Парамэтар $1 ня можа мець пустое значэньне.',
 	'validator_error_required_missing' => 'Не пададзены абавязковы парамэтар $1.',
 	'validator_error_must_be_number' => 'Парамэтар $1 можа быць толькі лікам.',
+	'validator_error_must_be_integer' => 'Парамэтар $1 можа быць толькі цэлым лікам.',
 	'validator_error_invalid_range' => 'Парамэтар $1 павінен быць паміж $2 і $3.',
 	'maps_error_accepts_only' => 'Парамэтар $1 можа мець толькі {{PLURAL:$3|гэтае значэньне|гэтыя значэньні}}: $2.',
 );
@@ -101,6 +119,7 @@ $messages['dsb'] = array(
 	'validator_error_empty_argument' => 'Parameter $1 njamóžo proznu gódnotu měś.',
 	'validator_error_required_missing' => 'Trěbny parameter $1 njejo pódany.',
 	'validator_error_must_be_number' => 'Parameter $1 móžo jano licba byś.',
+	'validator_error_must_be_integer' => 'Parameter $1 móžo jano ceła licba byś.',
 	'validator_error_invalid_range' => 'Parameter $1 musy mjazy $2 a $3 byś.',
 	'maps_error_accepts_only' => 'Parameter $1 akceptěrujo jano {{PLURAL:$3|toś tu gódnotu|toś tej gódnośe|toś te gódnoty|toś te gódnoty}}: $2.',
 );
@@ -134,6 +153,7 @@ $messages['fr'] = array(
 	'validator_error_empty_argument' => 'Le paramètre $1 ne peut pas avoir une valeur vide.',
 	'validator_error_required_missing' => "Le paramètre requis $1 n'est pas fourni.",
 	'validator_error_must_be_number' => 'Le paramètre $1 peut être uniquement un nombre.',
+	'validator_error_must_be_integer' => 'Le paramètre $1 peut seulement être un entier.',
 	'validator_error_invalid_range' => 'Le paramètre $1 doit être entre $2 et $3.',
 	'maps_error_accepts_only' => 'Le paramètre $1 accepte uniquement {{PLURAL:$3|cette valeur|ces valeurs}} : $2.',
 );
@@ -182,6 +202,7 @@ $messages['hsb'] = array(
 	'validator_error_empty_argument' => 'Parameter $1 njemóže prózdnu hódnotu měć.',
 	'validator_error_required_missing' => 'Trěbny parameter $1 njeje podaty.',
 	'validator_error_must_be_number' => 'Parameter $1 móže jenož ličba być.',
+	'validator_error_must_be_integer' => 'Parameter $1 móže jenož cyła ličba być.',
 	'validator_error_invalid_range' => 'Parameter $1 dyrbi mjez $2 a $3 być.',
 	'maps_error_accepts_only' => 'Parameter $1 akceptuje jenož {{PLURAL:$3|tutu hódnotu|tutej hódnoće|tute hódnoty|tute hódnoty}}: $2.',
 );
@@ -191,9 +212,9 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'validator_name' => 'Validator',
-	'validator-desc' => 'A Validator egyszerű módszert nyújt más kiterjesztések számára az elemzőfüggvények és tagek paramétereinek ellenőrzésére, alapértelmezett értékek beállítására, valamint hibaüzenetek generálására.',
-	'validator_error_parameters' => 'A következő {{PLURAL:$1|hiba található|hibák találhatóak}} a szintaxisodban: $1',
+	'validator_name' => 'Érvényesség-ellenőrző',
+	'validator-desc' => 'Az érvényesség-ellenőrző egyszerű lehetőséget nyújt más kiterjesztéseknek az elemzőfüggvények és tagek paramétereinek ellenőrzésére, alapértelmezett értékek beállítására, valamint hibaüzenetek generálására.',
+	'validator_error_parameters' => 'A következő {{PLURAL:$1|hiba található|hibák találhatóak}} a szintaxisban: $1',
 	'validator_error_unknown_argument' => 'A(z) $1 nem érvényes paraméter.',
 	'validator_error_invalid_argument' => 'A(z) $1 érték nem érvényes a(z) $2 paraméterhez.',
 	'validator_error_empty_argument' => 'A(z) $1 paraméter értéke nem lehet üres.',
@@ -215,6 +236,7 @@ $messages['ia'] = array(
 	'validator_error_empty_argument' => 'Le parametro $1 non pote haber un valor vacue.',
 	'validator_error_required_missing' => 'Le parametro requisite $1 non ha essite fornite.',
 	'validator_error_must_be_number' => 'Le parametro $1 pote solmente esser un numero.',
+	'validator_error_must_be_integer' => 'Le parametro $1 pote solmente esser un numero integre.',
 	'validator_error_invalid_range' => 'Le parametro $1 debe esser inter $2 e $3.',
 	'maps_error_accepts_only' => 'Le parametro $1 accepta solmente iste {{PLURAL:$3|valor|valores}}: $2.',
 );
@@ -317,6 +339,7 @@ $messages['nl'] = array(
 	'validator_error_empty_argument' => 'De parameter $1 mag niet leeg zijn.',
 	'validator_error_required_missing' => 'De verplichte parameter $1 is niet opgegeven.',
 	'validator_error_must_be_number' => 'De parameter $1 mag alleen een getal zijn.',
+	'validator_error_must_be_integer' => 'De parameter $1 kan alleen een heel getal zijn.',
 	'validator_error_invalid_range' => 'De parameter $1 moet tussen $2 en $3 liggen.',
 	'maps_error_accepts_only' => 'De parameter $1 kan alleen de volgende {{PLURAL:$3|waarde|waarden}} hebben: $2.',
 );
@@ -369,6 +392,7 @@ $messages['ru'] = array(
 	'validator_error_empty_argument' => 'Параметр $1 не может принимать пустое значение.',
 	'validator_error_required_missing' => 'Не указан обязательный параметр $1.',
 	'validator_error_must_be_number' => 'Значением параметра $1 могут быть только числа.',
+	'validator_error_must_be_integer' => 'Параметр $1 может быть только целым числом.',
 	'validator_error_invalid_range' => 'Параметр $1 должен быть от $2 до $3.',
 	'maps_error_accepts_only' => 'Параметр $1 может принимать только {{PLURAL:$3|следующее значение|следующие значения}}: $2.',
 );
