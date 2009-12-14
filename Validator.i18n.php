@@ -186,6 +186,7 @@ $messages['gsw'] = array(
 	'validator_error_empty_argument' => 'Dr Parameter $1 cha kei lääre Wärt haa.',
 	'validator_error_required_missing' => 'Dr Paramter $1, wu aagforderet woren isch, wird nit z Verfiegig gstellt.',
 	'validator_error_must_be_number' => 'Dr Parameter $1 cha nume ne Zahl syy.',
+	'validator_error_must_be_integer' => 'Parameter $1 cha nume ne giltigi Zahl syy.',
 	'validator_error_invalid_range' => 'Dr Parameter $1 muess zwische $2 un $3 syy.',
 	'maps_error_accepts_only' => 'Dr Parameter $1 cha nume {{PLURAL:$3|dää Wärt|die Wärt}} haa: $2.',
 );
@@ -250,12 +251,13 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator memberikan cara mudah untuk ekstensi lain untuk memvalidasi parameter ParserFunction dan ekstensi tag, mengatur nilai biasa dan membuat pesan kesalahan',
-	'validator_error_parameters' => 'Kesalahan berikut telah dideteksi pada sintaksis Anda',
+	'validator_error_parameters' => '{{PLURAL:$1|Kesalahan|Kesalahan}} berikut telah terdeteksi pada sintaksis Anda',
 	'validator_error_unknown_argument' => '$1 bukan parameter yang benar.',
 	'validator_error_invalid_argument' => 'Nilai $1 tidak valid untuk parameter $2.',
 	'validator_error_empty_argument' => 'Parameter $1 tidak dapat bernilai kosong.',
 	'validator_error_required_missing' => 'Parameter $1 yang diperlukan tidak diberikan.',
 	'validator_error_must_be_number' => 'Parameter $1 hanya dapat berupa angka.',
+	'validator_error_must_be_integer' => 'Parameter $1 hanya dapat berupa integer.',
 	'validator_error_invalid_range' => 'Parameter $1 harus antara $2 dan $3.',
 	'maps_error_accepts_only' => 'Parameter $1 hanya menerima {{PLURAL:$3|nilai ini|nilai ini}}: $2.',
 );
