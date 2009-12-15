@@ -103,6 +103,7 @@ $messages['bs'] = array(
 	'validator_error_empty_argument' => 'Parametar $1 ne može imati praznu vrijednost.',
 	'validator_error_required_missing' => 'Obavezni parametar $1 nije naveden.',
 	'validator_error_must_be_number' => 'Parametar $1 može biti samo broj.',
+	'validator_error_must_be_integer' => 'Parametar $1 može biti samo cijeli broj.',
 	'validator_error_invalid_range' => 'Parametar $1 mora biti između $2 i $3.',
 	'maps_error_accepts_only' => 'Parametar $1 se može koristiti samo sa {{PLURAL:$3|ovom vrijednosti|ovim vrijednostima}}: $2.',
 );
@@ -170,6 +171,7 @@ $messages['gl'] = array(
 	'validator_error_empty_argument' => 'O parámetro $1 non pode ter un valor baleiro.',
 	'validator_error_required_missing' => 'Non se proporcionou o parámetro $1 necesario.',
 	'validator_error_must_be_number' => 'O parámetro $1 só pode ser un número.',
+	'validator_error_must_be_integer' => 'O parámetro $1 só pode ser un número enteiro.',
 	'validator_error_invalid_range' => 'O parámetro $1 debe estar entre $2 e $3.',
 	'maps_error_accepts_only' => 'O parámetro "$1" só acepta {{PLURAL:$3|este valor|estes valores}}: $2.',
 );
@@ -275,6 +277,7 @@ $messages['ja'] = array(
 	'validator_error_empty_argument' => '引数「$1」は空の値をとることができません。',
 	'validator_error_required_missing' => '必須の引数「$1」が入力されていません。',
 	'validator_error_must_be_number' => '引数「$1」は数値でなければなりません。',
+	'validator_error_must_be_integer' => '引数「$1」は整数でなければなりません。',
 	'validator_error_invalid_range' => '引数「$1」は $2 と $3 の間の値でなければなりません。',
 	'maps_error_accepts_only' => '引数 $1 は次の{{PLURAL:$3|値}}以外を取ることはできません: $2',
 );
@@ -324,6 +327,7 @@ $messages['mk'] = array(
 	'validator_error_empty_argument' => 'Параметарот $1 не може да има празна вредност.',
 	'validator_error_required_missing' => 'Бараниот параметар $1 не е наведен.',
 	'validator_error_must_be_number' => 'Параметарот $1 може да биде само број.',
+	'validator_error_must_be_integer' => 'Параметарот $1 може да биде само цел број.',
 	'validator_error_invalid_range' => 'Параметарот $1 мора да изнесува помеѓу $2 и $3.',
 	'maps_error_accepts_only' => 'Параметарот $1 {{PLURAL:$3|ја прифаќа само оваа вредност|ги прифаќа само овие вредности}}: $2.',
 );
@@ -360,6 +364,7 @@ $messages['pms'] = array(
 	'validator_error_empty_argument' => 'Ël paràmetr $1 a peul pa avèj un valor veuid.',
 	'validator_error_required_missing' => "Ël paràmetr obligatòri $1 a l'é pa dàit.",
 	'validator_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
+	'validator_error_must_be_integer' => "Ël paràmetr $1 a peul mach esse n'antregh.",
 	'validator_error_invalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
 	'maps_error_accepts_only' => 'Ël paràmetr $1 a aceta mach {{PLURAL:$3|sto valor-sì|sti valor-sì}}: $2.',
 );
@@ -376,6 +381,7 @@ $messages['pt'] = array(
 	'validator_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
 	'validator_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
 	'validator_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
+	'validator_error_must_be_integer' => 'O parâmetro $1 só pode ser um número inteiro.',
 	'validator_error_invalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
 	'maps_error_accepts_only' => 'O parâmetro $1 só aceita {{PLURAL:$3|este valor|estes valores}}: $2.',
 );
