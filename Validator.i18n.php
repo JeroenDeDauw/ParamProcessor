@@ -294,6 +294,7 @@ $messages['ksh'] = array(
 	'validator_error_empty_argument' => 'Dä Parameeter $1 kann keine Wäät met nix dren hann.',
 	'validator_error_required_missing' => 'Dä Parameeter $1 moß aanjejovve sin, un fählt.',
 	'validator_error_must_be_number' => 'Dä Parameeter $1 kann blohß en Zahl sin.',
+	'validator_error_must_be_integer' => 'Dä Parrameeter $1 kann bloß en jannze Zahl sin.',
 	'validator_error_invalid_range' => 'Dä Parameeter $1 moß zwesche $2 un $3 sin.',
 	'maps_error_accepts_only' => 'Dä Parameeter $1 kann {{PLURAL:$3|bloß dä eine Wäät|bloß eine vun dä Wääte|keine Wäät}} han: $2',
 );
