@@ -4,6 +4,6 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 === Validator 0.1 ===
-(2009-12-xx)
+(2009-12-17)
 
 * Initial release, featuring parameter validation, defaulting and error generation.
