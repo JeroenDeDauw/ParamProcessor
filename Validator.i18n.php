@@ -83,11 +83,13 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'validator_name' => 'Kadarnataer',
-	'validator_error_parameters' => 'Kavet eo bet ar fazioù da-heul en o ereadur',
+	'validator_error_parameters' => "Kavet eo bet ar {{PLURAL:$1|fazi|fazioù}} da-heul en hoc'h ereadur",
+	'validator_error_unknown_argument' => "$1 n'eo ket un arventenn reizh.",
 	'validator_error_invalid_argument' => "N'eo ket reizh an dalvoudenn $1 evit an arventenn $2.",
 	'validator_error_empty_argument' => "N'hall ket an arventenn $1 bezañ goullo he zalvoudenn",
 	'validator_error_required_missing' => "N'eo ket bet pourchaset an arventenn rekis $1",
 	'validator_error_must_be_number' => 'Un niver e rank an arventenn $1 bezañ hepken.',
+	'validator_error_must_be_integer' => 'Rankout a ra an arventenn $1 bezañ un niver anterin.',
 	'validator_error_invalid_range' => 'Rankout a ra an arventenn $1 bezañ etre $2 hag $3.',
 );
 
