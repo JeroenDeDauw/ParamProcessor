@@ -140,6 +140,7 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Cedric31
  * @author Crochet.david
  * @author IAlex
  * @author Jean-Frédéric
@@ -351,6 +352,13 @@ $messages['nl'] = array(
 	'validator_error_must_be_integer' => 'De parameter $1 kan alleen een heel getal zijn.',
 	'validator_error_invalid_range' => 'De parameter $1 moet tussen $2 en $3 liggen.',
 	'maps_error_accepts_only' => 'De parameter $1 kan alleen de volgende {{PLURAL:$3|waarde|waarden}} hebben: $2.',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'validator_name' => 'Validaire',
 );
 
 /** Piedmontese (Piemontèis)
