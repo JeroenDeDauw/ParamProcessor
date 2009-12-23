@@ -147,6 +147,7 @@ final class Validator {
 				if ( $this->validateParameter( $paramName, $paramValue ) ) {
 					// If the validation succeeded, add the parameter to the list of valid ones.
 					$this->valid[$paramName] = $paramValue;
+					$this->setOutputType($this->valid[$paramName], $paramInfo);	
 				}
 				else {
 					// If the validation failed, add the parameter to the list of invalid ones.
@@ -275,27 +276,35 @@ final class Validator {
 			}
 			
 			if (is_array($value)) {
+				// Handling of list parameters
 				$invalidItems = array();
 				$validItems = array();
 				
+				// Loop through all the items in the parameter value, and validate them.
 				foreach($value as $item) {
 					$isValid = $this->doItemValidation($validationFunction, $item, $criteriaArgs);
 					if ($isValid) {
-						$validItems[] = $item;
+						// If per item validation is on, store the valid items, so only these can be returned by Validator.
+						if (self::$perItemValidation) $validItems[] = $item;
 					}
 					else {
+						// If per item validation is on, store the invalid items, so a fitting error message can be created.
 						if (self::$perItemValidation) {
 							$invalidItems[] = $item;
 						}
 						else {
+							// If per item validation is not on, an error to one item means the complete value is invalid.
+							// Therefore it's not required to validate the remaining items.
 							break;
 						}
 					}
 				}
 				
 				if (self::$perItemValidation) {
+					// If per item validation is on, the parameter value is valid as long as there is at least one valid item.
 					$isValid = count($validItems) > 0;
 					
+					// If the value is valid, but there are invalid items, add an error with a list of these items.
 					if ($isValid && count($invalidItems) > 0) {
 						$value = $validItems;
 						$this->errors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'invalid-items' => $invalidItems );
@@ -304,6 +313,7 @@ final class Validator {
 				
 			}
 			else {
+				// Determine if the value is valid for single valued parameters.
 				$isValid = $this->doItemValidation($validationFunction, $value, $criteriaArgs);
 			}
 			
@@ -337,6 +347,17 @@ final class Validator {
 		// Call the validation function and store the result. 
 		return call_user_func_array( $validationFunction, $arguments );		
 	}
+	
+	/**
+	 * Changes the invalid parameters to their default values, and changes their state to valid.
+	 */
+	public function correctInvalidParams() {
+		foreach ( $this->invalid as $paramName => $paramValue ) {
+			unset( $this->invalid[$paramName] );
+			$this->valid[$paramName] = array_key_exists( 'default', $this->parameterInfo[$paramName] ) ? $this->parameterInfo[$paramName]['default'] : '';
+			$this->setOutputType($this->valid[$paramName], $this->parameterInfo[$paramName]);
+		}
+	}	
 	
 	/**
 	 * Ensures the type of the value is correct. 
@@ -381,17 +402,6 @@ final class Validator {
 		}
 		else {
 			
-		}
-	}
-
-	/**
-	 * Changes the invalid parameters to their default values, and changes their state to valid.
-	 */
-	public function correctInvalidParams() {
-		foreach ( $this->invalid as $paramName => $paramValue ) {
-			unset( $this->invalid[$paramName] );
-			$this->valid[$paramName] = array_key_exists( 'default', $this->parameterInfo[$paramName] ) ? $this->parameterInfo[$paramName]['default'] : '';
-			$this->setOutputType($this->valid[$paramName], $this->parameterInfo[$paramName]);
 		}
 	}
 
