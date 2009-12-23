@@ -71,9 +71,10 @@ final class Validator {
 	 * @var array Holder for the formatting functions.
 	 */			
 	private static $outputFormats = array(
-			'array' => array(),
-			'list' => array(),
-			'stringlist' => array( 'ValidatorFormats', 'create_string_list' ),
+			'array' => array( 'ValidatorFormats', '' ),
+			'list' => array( 'ValidatorFormats', '' ),
+			'boolean' => array( 'ValidatorFormats', '' ),
+			'string' => array( 'ValidatorFormats', '' ),
 			);
 
 	private $parameterInfo;
@@ -320,7 +321,7 @@ final class Validator {
 	}
 	
 	/**
-	 * 
+	 * Validates the value of an item, and returns the validation result.
 	 * 
 	 * @param $validationFunction
 	 * @param $value
@@ -344,6 +345,8 @@ final class Validator {
 	 * @param array $info
 	 */
 	private function setOutputType(&$value, array $info) {
+		// TODO: put code into functions linked by $outputFormats
+		
 		if (array_key_exists('output-type', $info)) {
 			if (! is_array($info['output-type'])) $info['output-type'] = array($info['output-type']);
 			
@@ -428,6 +431,30 @@ final class Validator {
 	 * if it's in a class, first the class name, then the method name.
 	 */
 	public static function addValidationFunction( $criteriaName, array $functionName ) {
-		$this->validationFunctions[$criteriaName] = $functionName;
+		self::$validationFunctions[$criteriaName] = $functionName;
 	}
+	
+	/**
+	 * Adds a new list criteria type and the validation function that should validate values of this type.
+	 * You can use this function to override existing criteria type handlers.
+	 *
+	 * @param string $criteriaName The name of the list cirteria.
+	 * @param array $functionName The functions location. If it's a global function, only the name,
+	 * if it's in a class, first the class name, then the method name.
+	 */
+	public static function addListValidationFunction( $criteriaName, array $functionName ) {
+		self::$listValidationFunctions[$criteriaName] = $functionName;
+	}	
+	
+	/**
+	 * Adds a new output format and the formatting function that should validate values of this type.
+	 * You can use this function to override existing criteria type handlers.
+	 *
+	 * @param string $formatName The name of the format.
+	 * @param array $functionName The functions location. If it's a global function, only the name,
+	 * if it's in a class, first the class name, then the method name.
+	 */
+	public static function addOutputFormat( $formatName, array $functionName ) {
+		self::$outputFormats[$criteriaName] = $functionName;
+	}	
 }
