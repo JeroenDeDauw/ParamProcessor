@@ -58,6 +58,23 @@ $messages['af'] = array(
 	'maps_error_accepts_only' => 'Die parameter $1 kan slegs die volgende {{PLURAL:$3|waarde|waardes}} hê: $2.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'validator_name' => 'محقق',
+	'validator-desc' => 'المحقق يوفر طريقة سهلة للامتدادات الأخرى للتحقق من محددات دوال المحلل وامتدادات الوسوم، وضبط القيم الافتراضية وتوليد رسائل الخطأ',
+	'validator_error_parameters' => '{{PLURAL:$1|الخطأ التالي|الاخطاء التالية}} تم كشفها في صياغتك',
+	'validator_error_unknown_argument' => '$1 ليس محددا صحيحا.',
+	'validator_error_invalid_argument' => 'القيمة $1 ليست صحيحة للمحدد $2.',
+	'validator_error_empty_argument' => 'المحدد $1 لا يمكن أن تكون قيمته فارغة.',
+	'validator_error_required_missing' => 'المحدد المطلوب $1 ليس متوفرا.',
+	'validator_error_must_be_number' => 'المحدد $1 يمكن أن يكون فقط عددا.',
+	'validator_error_must_be_integer' => 'المحدد $1 يمكن أن يكون عددا صحيحا فقط.',
+	'validator_error_invalid_range' => 'المحدد $1 يجب أن يكون بين $2 و $3.',
+	'maps_error_accepts_only' => 'المحدد $1 يقبل فقط {{PLURAL:$3|هذه القيمة|هذه القيم}}: $2.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -354,11 +371,37 @@ $messages['nl'] = array(
 	'maps_error_accepts_only' => 'De parameter $1 kan alleen de volgende {{PLURAL:$3|waarde|waarden}} hebben: $2.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'validator_error_parameters' => 'Følgende {{PLURAL:$1|feil|feil}} har blitt oppdaget i syntaksen din',
+	'validator_error_unknown_argument' => '$1 er ikke en gyldig parameter.',
+	'validator_error_invalid_argument' => 'Verdien $1 er ikke en gyldig parameter for $2.',
+	'validator_error_empty_argument' => 'Parameteren $1 kan ikke ha en tom verdi.',
+	'validator_error_required_missing' => 'Den nødvendige parameteren $1 er ikke angitt.',
+	'validator_error_must_be_number' => 'Parameter $1 må være et tall.',
+	'validator_error_must_be_integer' => 'Parameteren $1 må være et heltall.',
+	'validator_error_invalid_range' => 'Parameter $1 må være mellom $2 og $3.',
+	'maps_error_accepts_only' => 'Parameteren $1 kan kun ha {{PLURAL:$3|denne verdien|disse verdiene}}: $2',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Jfblanc
  */
 $messages['oc'] = array(
 	'validator_name' => 'Validaire',
+	'validator-desc' => "Validator porgís a d'autras extensions un biais per validar aisidament los paramètres de foncions d'analisi e las extensions de mercas, definir de valors per manca e crear de messatges d'error",
+	'validator_error_parameters' => '{{PLURAL:$1|Aquela error es estada detectada|Aquelas errors son estadas detectadas}} dins la sintaxi',
+	'validator_error_unknown_argument' => '$1 es pas un paramètre valedor.',
+	'validator_error_invalid_argument' => '$1 es pas valedor pel paramètre $2.',
+	'validator_error_empty_argument' => 'Lo paramètre $1 pòt pas estar voide.',
+	'validator_error_required_missing' => "Manca lo paramètre $1 qu'es obligatòri.",
+	'validator_error_must_be_number' => 'Lo paramètre $1 deu èsser un nombre.',
+	'validator_error_must_be_integer' => 'Lo paramètre $1 deu èsser un nombre entièr.',
+	'validator_error_invalid_range' => 'Lo paramètre $1 deu èsser entre $2 e $3.',
+	'maps_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -438,11 +481,23 @@ $messages['si'] = array(
  */
 $messages['sv'] = array(
 	'validator_error_parameters' => 'Följande fel har upptäckts i din syntax',
+	'validator_error_unknown_argument' => '$1 är inte en giltig paramter.',
 	'validator_error_invalid_argument' => 'Värdet $1 är inte giltigt som parameter $2.',
 	'validator_error_empty_argument' => 'Parametern $1 kan inte lämnas tom.',
 	'validator_error_required_missing' => 'Den nödvändiga parametern $1 har inte angivits.',
 	'validator_error_must_be_number' => 'Parameter $1 måste bestå av ett tal.',
+	'validator_error_must_be_integer' => 'Parametern $1 måste vara ett heltal.',
 	'validator_error_invalid_range' => 'Parameter $1 måste vara i mellan $2 och $3.',
+	'maps_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'validator_name' => 'Doğrulayıcı',
+	'validator_error_unknown_argument' => '$1, geçerli bir parametre değildir.',
+	'validator_error_must_be_integer' => '$1 parametresi sadece bir tamsayı olabilir',
 );
 
 /** Ukrainian (Українська)
