@@ -20,15 +20,28 @@ $messages['en'] = array(
 
 	'validator_error_parameters' => 'The following {{PLURAL:$1|error has|errors have}} been detected in your syntax',
 
+	// General errors
 	'validator_error_unknown_argument' => '$1 is not a valid parameter.',
-	'validator_error_invalid_argument' => 'The value $1 is not valid for parameter $2.',
-	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',
 	'validator_error_required_missing' => 'The required parameter $1 is not provided.',
 
+	// Criteria errors for single values
+	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',
 	'validator_error_must_be_number' => 'Parameter $1 can only be a number.',
 	'validator_error_must_be_integer' => 'Parameter $1 can only be an integer.',
 	'validator_error_invalid_range' => 'Parameter $1 must be between $2 and $3.',
-	'maps_error_accepts_only' => 'Parameter $1 only accepts {{PLURAL:$3|this value|these values}}: $2.',
+	'validator_error_invalid_argument' => 'The value $1 is not valid for parameter $2.',
+
+	// Criteria errors for lists
+	'validator_list_error_empty_argument' => 'Parameter $1 does not accept empty values.',
+	'validator_list_error_must_be_number' => 'Parameter $1 can only contain numbers.',
+	'validator_list_error_must_be_integer' => 'Parameter $1 can only contain integers.',
+	'validator_list_error_invalid_range' => 'All values of parameter $1 must be between $2 and $3.',
+	'validator_list_error_invalid_argument' => 'One or more values for parameter $1 are invalid.',	
+
+	'validator_list_omitted' => 'The {{PLURAL:$2|value|values}} $1 {{PLURAL:$2|has|have}} been omitted.',
+
+	// Crtiteria errors for single values & lists
+	'validator_error_accepts_only' => 'Parameter $1 only accepts {{PLURAL:$3|this value|these values}}: $2.',
 );
 
 /** Message documentation (Message documentation)
@@ -55,7 +68,7 @@ $messages['af'] = array(
 	'validator_error_must_be_number' => "Die parameter $1 mag net 'n getal wees.",
 	'validator_error_must_be_integer' => "Die parameter $1 kan slegs 'n heelgetal wees.",
 	'validator_error_invalid_range' => 'Die parameter $1 moet tussen $2 en $3 lê.',
-	'maps_error_accepts_only' => 'Die parameter $1 kan slegs die volgende {{PLURAL:$3|waarde|waardes}} hê: $2.',
+	'validator_error_accepts_only' => 'Die parameter $1 kan slegs die volgende {{PLURAL:$3|waarde|waardes}} hê: $2.',
 );
 
 /** Arabic (العربية)
@@ -72,7 +85,7 @@ $messages['ar'] = array(
 	'validator_error_must_be_number' => 'المحدد $1 يمكن أن يكون فقط عددا.',
 	'validator_error_must_be_integer' => 'المحدد $1 يمكن أن يكون عددا صحيحا فقط.',
 	'validator_error_invalid_range' => 'المحدد $1 يجب أن يكون بين $2 و $3.',
-	'maps_error_accepts_only' => 'المحدد $1 يقبل فقط {{PLURAL:$3|هذه القيمة|هذه القيم}}: $2.',
+	'validator_error_accepts_only' => 'المحدد $1 يقبل فقط {{PLURAL:$3|هذه القيمة|هذه القيم}}: $2.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -90,7 +103,7 @@ $messages['be-tarask'] = array(
 	'validator_error_must_be_number' => 'Парамэтар $1 можа быць толькі лікам.',
 	'validator_error_must_be_integer' => 'Парамэтар $1 можа быць толькі цэлым лікам.',
 	'validator_error_invalid_range' => 'Парамэтар $1 павінен быць паміж $2 і $3.',
-	'maps_error_accepts_only' => 'Парамэтар $1 можа мець толькі {{PLURAL:$3|гэтае значэньне|гэтыя значэньні}}: $2.',
+	'validator_error_accepts_only' => 'Парамэтар $1 можа мець толькі {{PLURAL:$3|гэтае значэньне|гэтыя значэньні}}: $2.',
 );
 
 /** Breton (Brezhoneg)
@@ -124,7 +137,7 @@ $messages['bs'] = array(
 	'validator_error_must_be_number' => 'Parametar $1 može biti samo broj.',
 	'validator_error_must_be_integer' => 'Parametar $1 može biti samo cijeli broj.',
 	'validator_error_invalid_range' => 'Parametar $1 mora biti između $2 i $3.',
-	'maps_error_accepts_only' => 'Parametar $1 se može koristiti samo sa {{PLURAL:$3|ovom vrijednosti|ovim vrijednostima}}: $2.',
+	'validator_error_accepts_only' => 'Parametar $1 se može koristiti samo sa {{PLURAL:$3|ovom vrijednosti|ovim vrijednostima}}: $2.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -141,7 +154,7 @@ $messages['dsb'] = array(
 	'validator_error_must_be_number' => 'Parameter $1 móžo jano licba byś.',
 	'validator_error_must_be_integer' => 'Parameter $1 móžo jano ceła licba byś.',
 	'validator_error_invalid_range' => 'Parameter $1 musy mjazy $2 a $3 byś.',
-	'maps_error_accepts_only' => 'Parameter $1 akceptěrujo jano {{PLURAL:$3|toś tu gódnotu|toś tej gódnośe|toś te gódnoty|toś te gódnoty}}: $2.',
+	'validator_error_accepts_only' => 'Parameter $1 akceptěrujo jano {{PLURAL:$3|toś tu gódnotu|toś tej gódnośe|toś te gódnoty|toś te gódnoty}}: $2.',
 );
 
 /** Spanish (Español)
@@ -176,7 +189,7 @@ $messages['fr'] = array(
 	'validator_error_must_be_number' => 'Le paramètre $1 peut être uniquement un nombre.',
 	'validator_error_must_be_integer' => 'Le paramètre $1 peut seulement être un entier.',
 	'validator_error_invalid_range' => 'Le paramètre $1 doit être entre $2 et $3.',
-	'maps_error_accepts_only' => 'Le paramètre $1 accepte uniquement {{PLURAL:$3|cette valeur|ces valeurs}} : $2.',
+	'validator_error_accepts_only' => 'Le paramètre $1 accepte uniquement {{PLURAL:$3|cette valeur|ces valeurs}} : $2.',
 );
 
 /** Galician (Galego)
@@ -193,7 +206,7 @@ $messages['gl'] = array(
 	'validator_error_must_be_number' => 'O parámetro $1 só pode ser un número.',
 	'validator_error_must_be_integer' => 'O parámetro $1 só pode ser un número enteiro.',
 	'validator_error_invalid_range' => 'O parámetro $1 debe estar entre $2 e $3.',
-	'maps_error_accepts_only' => 'O parámetro "$1" só acepta {{PLURAL:$3|este valor|estes valores}}: $2.',
+	'validator_error_accepts_only' => 'O parámetro "$1" só acepta {{PLURAL:$3|este valor|estes valores}}: $2.',
 );
 
 /** Swiss German (Alemannisch)
@@ -210,7 +223,7 @@ $messages['gsw'] = array(
 	'validator_error_must_be_number' => 'Dr Parameter $1 cha nume ne Zahl syy.',
 	'validator_error_must_be_integer' => 'Parameter $1 cha nume ne giltigi Zahl syy.',
 	'validator_error_invalid_range' => 'Dr Parameter $1 muess zwische $2 un $3 syy.',
-	'maps_error_accepts_only' => 'Dr Parameter $1 cha nume {{PLURAL:$3|dää Wärt|die Wärt}} haa: $2.',
+	'validator_error_accepts_only' => 'Dr Parameter $1 cha nume {{PLURAL:$3|dää Wärt|die Wärt}} haa: $2.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -227,7 +240,7 @@ $messages['hsb'] = array(
 	'validator_error_must_be_number' => 'Parameter $1 móže jenož ličba być.',
 	'validator_error_must_be_integer' => 'Parameter $1 móže jenož cyła ličba być.',
 	'validator_error_invalid_range' => 'Parameter $1 dyrbi mjez $2 a $3 być.',
-	'maps_error_accepts_only' => 'Parameter $1 akceptuje jenož {{PLURAL:$3|tutu hódnotu|tutej hódnoće|tute hódnoty|tute hódnoty}}: $2.',
+	'validator_error_accepts_only' => 'Parameter $1 akceptuje jenož {{PLURAL:$3|tutu hódnotu|tutej hódnoće|tute hódnoty|tute hódnoty}}: $2.',
 );
 
 /** Hungarian (Magyar)
@@ -244,7 +257,7 @@ $messages['hu'] = array(
 	'validator_error_required_missing' => 'A(z) $1 kötelező paraméter nem lett megadva.',
 	'validator_error_must_be_number' => 'A(z) $1 paraméter csak szám lehet.',
 	'validator_error_invalid_range' => 'A(z) $1 paraméter értékének $2 és $3 között kell lennie.',
-	'maps_error_accepts_only' => 'A(z) $1 paraméter csak a következő {{PLURAL:$3|értéket|értékeket}} fogadja el: $2',
+	'validator_error_accepts_only' => 'A(z) $1 paraméter csak a következő {{PLURAL:$3|értéket|értékeket}} fogadja el: $2',
 );
 
 /** Interlingua (Interlingua)
@@ -261,7 +274,7 @@ $messages['ia'] = array(
 	'validator_error_must_be_number' => 'Le parametro $1 pote solmente esser un numero.',
 	'validator_error_must_be_integer' => 'Le parametro $1 pote solmente esser un numero integre.',
 	'validator_error_invalid_range' => 'Le parametro $1 debe esser inter $2 e $3.',
-	'maps_error_accepts_only' => 'Le parametro $1 accepta solmente iste {{PLURAL:$3|valor|valores}}: $2.',
+	'validator_error_accepts_only' => 'Le parametro $1 accepta solmente iste {{PLURAL:$3|valor|valores}}: $2.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -281,7 +294,7 @@ $messages['id'] = array(
 	'validator_error_must_be_number' => 'Parameter $1 hanya dapat berupa angka.',
 	'validator_error_must_be_integer' => 'Parameter $1 hanya dapat berupa integer.',
 	'validator_error_invalid_range' => 'Parameter $1 harus antara $2 dan $3.',
-	'maps_error_accepts_only' => 'Parameter $1 hanya menerima {{PLURAL:$3|nilai ini|nilai ini}}: $2.',
+	'validator_error_accepts_only' => 'Parameter $1 hanya menerima {{PLURAL:$3|nilai ini|nilai ini}}: $2.',
 );
 
 /** Japanese (日本語)
@@ -299,7 +312,7 @@ $messages['ja'] = array(
 	'validator_error_must_be_number' => '引数「$1」は数値でなければなりません。',
 	'validator_error_must_be_integer' => '引数「$1」は整数でなければなりません。',
 	'validator_error_invalid_range' => '引数「$1」は $2 と $3 の間の値でなければなりません。',
-	'maps_error_accepts_only' => '引数 $1 は次の{{PLURAL:$3|値}}以外を取ることはできません: $2',
+	'validator_error_accepts_only' => '引数 $1 は次の{{PLURAL:$3|値}}以外を取ることはできません: $2',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -316,7 +329,7 @@ $messages['ksh'] = array(
 	'validator_error_must_be_number' => 'Dä Parameeter $1 kann blohß en Zahl sin.',
 	'validator_error_must_be_integer' => 'Dä Parrameeter $1 kann bloß en jannze Zahl sin.',
 	'validator_error_invalid_range' => 'Dä Parameeter $1 moß zwesche $2 un $3 sin.',
-	'maps_error_accepts_only' => 'Dä Parameeter $1 kann {{PLURAL:$3|bloß dä eine Wäät|bloß eine vun dä Wääte|keine Wäät}} han: $2',
+	'validator_error_accepts_only' => 'Dä Parameeter $1 kann {{PLURAL:$3|bloß dä eine Wäät|bloß eine vun dä Wääte|keine Wäät}} han: $2',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -332,7 +345,7 @@ $messages['lb'] = array(
 	'validator_error_required_missing' => 'Den obligatoresche Parameter $1 war net derbäi.',
 	'validator_error_must_be_number' => 'De Parameter $1 ka just eng Zuel sinn',
 	'validator_error_invalid_range' => 'De Parameter $1 muss tëschent $2 an $3 leien.',
-	'maps_error_accepts_only' => 'De Parameter $1 akzeptéiert just {{PLURAL:$3|dëse Wert|dës Werter}}: $2',
+	'validator_error_accepts_only' => 'De Parameter $1 akzeptéiert just {{PLURAL:$3|dëse Wert|dës Werter}}: $2',
 );
 
 /** Macedonian (Македонски)
@@ -350,7 +363,7 @@ $messages['mk'] = array(
 	'validator_error_must_be_number' => 'Параметарот $1 може да биде само број.',
 	'validator_error_must_be_integer' => 'Параметарот $1 може да биде само цел број.',
 	'validator_error_invalid_range' => 'Параметарот $1 мора да изнесува помеѓу $2 и $3.',
-	'maps_error_accepts_only' => 'Параметарот $1 {{PLURAL:$3|ја прифаќа само оваа вредност|ги прифаќа само овие вредности}}: $2.',
+	'validator_error_accepts_only' => 'Параметарот $1 {{PLURAL:$3|ја прифаќа само оваа вредност|ги прифаќа само овие вредности}}: $2.',
 );
 
 /** Dutch (Nederlands)
@@ -368,7 +381,7 @@ $messages['nl'] = array(
 	'validator_error_must_be_number' => 'De parameter $1 mag alleen een getal zijn.',
 	'validator_error_must_be_integer' => 'De parameter $1 kan alleen een heel getal zijn.',
 	'validator_error_invalid_range' => 'De parameter $1 moet tussen $2 en $3 liggen.',
-	'maps_error_accepts_only' => 'De parameter $1 kan alleen de volgende {{PLURAL:$3|waarde|waarden}} hebben: $2.',
+	'validator_error_accepts_only' => 'De parameter $1 kan alleen de volgende {{PLURAL:$3|waarde|waarden}} hebben: $2.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -383,7 +396,7 @@ $messages['no'] = array(
 	'validator_error_must_be_number' => 'Parameter $1 må være et tall.',
 	'validator_error_must_be_integer' => 'Parameteren $1 må være et heltall.',
 	'validator_error_invalid_range' => 'Parameter $1 må være mellom $2 og $3.',
-	'maps_error_accepts_only' => 'Parameteren $1 kan kun ha {{PLURAL:$3|denne verdien|disse verdiene}}: $2',
+	'validator_error_accepts_only' => 'Parameteren $1 kan kun ha {{PLURAL:$3|denne verdien|disse verdiene}}: $2',
 );
 
 /** Occitan (Occitan)
@@ -401,7 +414,7 @@ $messages['oc'] = array(
 	'validator_error_must_be_number' => 'Lo paramètre $1 deu èsser un nombre.',
 	'validator_error_must_be_integer' => 'Lo paramètre $1 deu èsser un nombre entièr.',
 	'validator_error_invalid_range' => 'Lo paramètre $1 deu èsser entre $2 e $3.',
-	'maps_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.',
+	'validator_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -420,7 +433,7 @@ $messages['pms'] = array(
 	'validator_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
 	'validator_error_must_be_integer' => "Ël paràmetr $1 a peul mach esse n'antregh.",
 	'validator_error_invalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
-	'maps_error_accepts_only' => 'Ël paràmetr $1 a aceta mach {{PLURAL:$3|sto valor-sì|sti valor-sì}}: $2.',
+	'validator_error_accepts_only' => 'Ël paràmetr $1 a aceta mach {{PLURAL:$3|sto valor-sì|sti valor-sì}}: $2.',
 );
 
 /** Portuguese (Português)
@@ -437,7 +450,7 @@ $messages['pt'] = array(
 	'validator_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
 	'validator_error_must_be_integer' => 'O parâmetro $1 só pode ser um número inteiro.',
 	'validator_error_invalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
-	'maps_error_accepts_only' => 'O parâmetro $1 só aceita {{PLURAL:$3|este valor|estes valores}}: $2.',
+	'validator_error_accepts_only' => 'O parâmetro $1 só aceita {{PLURAL:$3|este valor|estes valores}}: $2.',
 );
 
 /** Russian (Русский)
@@ -456,7 +469,7 @@ $messages['ru'] = array(
 	'validator_error_must_be_number' => 'Значением параметра $1 могут быть только числа.',
 	'validator_error_must_be_integer' => 'Параметр $1 может быть только целым числом.',
 	'validator_error_invalid_range' => 'Параметр $1 должен быть от $2 до $3.',
-	'maps_error_accepts_only' => 'Параметр $1 может принимать только {{PLURAL:$3|следующее значение|следующие значения}}: $2.',
+	'validator_error_accepts_only' => 'Параметр $1 может принимать только {{PLURAL:$3|следующее значение|следующие значения}}: $2.',
 );
 
 /** Sinhala (සිංහල)
@@ -472,7 +485,7 @@ $messages['si'] = array(
 	'validator_error_required_missing' => 'අවශ්‍ය වන $1 පරාමිතිය සපයා නොමැත.',
 	'validator_error_must_be_number' => '$1 පරාමිතිය විය හැක්කේ ඉලක්කමක් පමණි.',
 	'validator_error_invalid_range' => '$1 පරාමිතිය $2 හා $3 අතර විය යුතුය.',
-	'maps_error_accepts_only' => '$1 පරාමිතිය විසින් පිළිගනු ලබන්නේ {{PLURAL:$3|මෙම අගය|මෙම අගයන්}}: $2 පමණි.',
+	'validator_error_accepts_only' => '$1 පරාමිතිය විසින් පිළිගනු ලබන්නේ {{PLURAL:$3|මෙම අගය|මෙම අගයන්}}: $2 පමණි.',
 );
 
 /** Swedish (Svenska)
@@ -488,7 +501,7 @@ $messages['sv'] = array(
 	'validator_error_must_be_number' => 'Parameter $1 måste bestå av ett tal.',
 	'validator_error_must_be_integer' => 'Parametern $1 måste vara ett heltal.',
 	'validator_error_invalid_range' => 'Parameter $1 måste vara i mellan $2 och $3.',
-	'maps_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
+	'validator_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
 );
 
 /** Turkish (Türkçe)
@@ -523,6 +536,6 @@ $messages['vi'] = array(
 	'validator_error_required_missing' => 'Không định rõ tham số bắt buộc “$1”.',
 	'validator_error_must_be_number' => 'Tham số “$1” phải là con số.',
 	'validator_error_invalid_range' => 'Tham số “$1” phải nằm giữa $2 và $3.',
-	'maps_error_accepts_only' => 'Tham số $1 chỉ nhận được {{PLURAL:$3|giá trị|các giá trị}} này: $2.',
+	'validator_error_accepts_only' => 'Tham số $1 chỉ nhận được {{PLURAL:$3|giá trị|các giá trị}} này: $2.',
 );
 

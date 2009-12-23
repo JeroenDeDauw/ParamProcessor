@@ -57,42 +57,4 @@ final class ValidatorFunctions {
 	public static function is_integer( $value ) {
 		return ctype_digit( (string)$value );
 	}	
-
-	/**
-	 * Returns if all items of the first array are present in the second one.
-	 *
-	 * @param array $needles
-	 * @param array $haystack
-	 *
-	 * @return boolean
-	 */
-	public static function all_in_array( array $needles, array $haystack ) {
-		$true = true;
-		foreach ( $needles as $needle ) {
-			if ( ! in_array( $needle , $haystack ) ) {
-				$true = false;
-				break;
-			}
-		}
-		return $true;
-	}
-
-	/**
-	 * Returns if any items of the first array are present in the second one.
-	 *
-	 * @param array $needles
-	 * @param array $haystack
-	 *
-	 * @return boolean
-	 */
-	public static function any_in_array( array $needles, array $haystack ) {
-		$true = false;
-		foreach ( $needles as $needle ) {
-			if ( in_array( $needle , $haystack ) ) {
-				$true = true;
-				break;
-			}
-		}
-		return $true;
-	}
 }
