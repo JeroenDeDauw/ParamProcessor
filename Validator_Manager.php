@@ -42,7 +42,7 @@ final class ValidatorManager {
 
 		if ( ! $validator->validateParameters() ) {
 			if ( $egValidatorErrorLevel != Validator_ERRORS_STRICT ) $validator->correctInvalidParams();
-			if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW ) $this->errors = $validator->getErrors();
+			if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) $this->errors = $validator->getErrors();
 		}
 
 		$showOutput = ! ( $egValidatorErrorLevel == Validator_ERRORS_STRICT && count( $this->errors ) > 0 );
@@ -131,6 +131,9 @@ final class ValidatorManager {
 			}
 
 			return $errorList . implode( $errors, '<br />' ) . '</i><br />';
+		}
+		elseif ( $egValidatorErrorLevel == Validator_ERRORS_WARN && $error_count > 0 ) {
+			return '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), $error_count ) . '</b>';
 		}
 		else {
 			return '';

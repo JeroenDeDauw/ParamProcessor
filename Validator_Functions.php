@@ -58,19 +58,38 @@ final class ValidatorFunctions {
 		return ctype_digit( (string)$value );
 	}	
 	
-	public static function is_boolean( $value ) {
-		
+	/**
+	 * Returns whether the length of the value is within a certain range. Upper bound not included.
+	 * 
+	 * @param string $value
+	 * @param array $limits
+	 * 
+	 * @return boolean
+	 */
+	public static function has_length( $value, array $limits ) {
+		return self::in_range(strlen($value), $limits);
 	}
 	
-	public static function has_length( $value, $limits ) {
-		
+	/**
+	 * Returns whether the amount of items in the list is within a certain range. Upper bound not included.
+	 * 
+	 * @param array $values
+	 * @param $limits
+	 * 
+	 * @return boolean
+	 */
+	public static function has_item_count( array $values, array $limits ) {
+		return self::in_range(count($value), $limits);
 	}
 	
-	public static function has_item_count( array $values, $limits ) {
-		
-	}
-	
+	/**
+	 * Returns whether the list of values does not have any duplicates.
+	 * 
+	 * @param array $values
+	 * 
+	 * @return boolean
+	 */
 	public static function has_unique_items( array $values ) {
-		
+		return count($values) == count(array_unique($values));
 	}	
 }

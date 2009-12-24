@@ -53,8 +53,7 @@ final class Validator {
 			'in_array' => 'in_array',
 			'in_range' => array( 'ValidatorFunctions', 'in_range' ),
 			'is_numeric' => 'is_numeric',
-			'is_integer' => array( 'ValidatorFunctions', 'is_integer' ),
-			'is_boolean' => array( 'ValidatorFunctions', 'is_boolean' ),	
+			'is_integer' => array( 'ValidatorFunctions', 'is_integer' ),	
 			'not_empty' => array( 'ValidatorFunctions', 'not_empty' ),
 			'has_length' => array( 'ValidatorFunctions', 'has_length' ),
 			);
@@ -74,7 +73,9 @@ final class Validator {
 			'array' => array( 'ValidatorFormats', 'format_array' ),
 			'list' => array( 'ValidatorFormats', 'format_list' ),
 			'boolean' => array( 'ValidatorFormats', 'format_boolean' ),
+			'boolstr' => array( 'ValidatorFormats', 'format_boolean_string' ),
 			'string' => array( 'ValidatorFormats', 'format_string' ),
+			'unique_items' => array( 'ValidatorFormats', 'format_unique_items' ),
 			);
 
 	private $parameterInfo;
@@ -229,11 +230,11 @@ final class Validator {
 					$this->parameterInfo[$name]['criteria']['is_numeric'] = array();
 					break;
 				case 'boolean':
-					$this->parameterInfo[$name]['criteria']['is_boolean'] = array();
+					$this->parameterInfo[$name]['criteria']['in_array'] = array('yes', 'no', 'on', 'off');
 					break;
 				case 'char':
 					$this->parameterInfo[$name]['criteria']['has_length'] = array(1);
-					break;										
+					break;	
 			}
 		}
 		

@@ -21,31 +21,83 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 final class ValidatorFormats {
 	
+	/**
+	 * Ensures the value is an array.
+	 * 
+	 * @param $value
+	 */
 	public static function format_array( &$value ) {
 		if (! is_array($value)) $value = array($value);	
 	}
 	
+	/**
+	 * Changes the value to list notation, by seperating items with a delimiter, 
+	 * and/or adding wrappers before and after the items. Intended for lists, but
+	 * will also work for single values.
+	 * 
+	 * @param $value
+	 * @param $delimiter
+	 * @param $wrapper
+	 */
 	public static function format_list( &$value, $delimiter = ',', $wrapper = '' ) {
-		if (! is_array($value)) $value = array($value);
+		self::format_array($value);
 		$value =  $wrapper . implode($wrapper . $delimiter . $wrapper, $value) . $wrapper;	
 	}
 
+	/**
+	 * Changes every value into a boolean.
+	 * 
+	 * TODO: work with a list of true-values.
+	 * 
+	 * @param $value
+	 */
 	public static function format_boolean( &$value ) {
 		if (is_array($value)) {
 			$boolArray = array();
-			foreach ($value as $item) $boolArray[] = $value == 'yes';
+			foreach ($value as $item) $boolArray[] = in_array($item, array('yes', 'on'));
 			$value = $boolArray;
 		}
 		else {
-			$value == 'yes';
+			$value = in_array($value, array('yes', 'on'));
 		}
 	}
+	
+	/**
+	 * Changes every value into a boolean, represented by a 'false' or 'true' string.
+	 * 
+	 * @param $value
+	 */
+	public static function format_boolean_string( &$value ) {
+		self::format_boolean($value);
+		if (is_array($value)) {
+			$boolArray = array();
+			foreach ($value as $item) $boolArray[] = $item ? 'true' : 'false';
+			$value = $boolArray;
+		}
+		else {
+			$value = $value ? 'true' : 'false';
+		}
+	}	
 
+	/**
+	 * Changes lists into strings, by enumerating the items using $wgLang->listToText.
+	 * 
+	 * @param $value
+	 */
 	public static function format_string( &$value ) {
 		if (is_array($value)) {
 			global $wgLang;
 			$value = $wgLang->listToText($value);
 		}		
-	}	
+	}
+	
+	/**
+	 * Removes duplicate items from lists.
+	 * 
+	 * @param $value
+	 */
+	public static function format_unique_items( &$value ) {
+		if (is_array($value)) $value = array_unique($value);
+	}
 	
 }
