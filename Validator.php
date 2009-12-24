@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Validator_VERSION', '0.2 a3' );
+define( 'Validator_VERSION', '0.2 a4' );
 
 // Constants indicating the strictness of the parameter validation.
 define( 'Validator_ERRORS_NONE', 0 );
@@ -47,6 +47,7 @@ $wgExtensionMessagesFiles['Validator'] = $egValidatorIP . '/Validator.i18n.php';
 // Autoload the general classes
 $wgAutoloadClasses['Validator'] 			= $egValidatorIP . '/Validator.class.php';
 $wgAutoloadClasses['ValidatorFunctions'] 	= $egValidatorIP . '/Validator_Functions.php';
+$wgAutoloadClasses['ValidatorFormats'] 		= $egValidatorIP . '/Validator_Formats.php';
 $wgAutoloadClasses['ValidatorManager'] 		= $egValidatorIP . '/Validator_Manager.php';
 
 /**

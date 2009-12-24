@@ -57,4 +57,20 @@ final class ValidatorFunctions {
 	public static function is_integer( $value ) {
 		return ctype_digit( (string)$value );
 	}	
+	
+	public static function is_boolean( $value ) {
+		
+	}
+	
+	public static function has_length( $value, $limits ) {
+		
+	}
+	
+	public static function has_item_count( array $values, $limits ) {
+		
+	}
+	
+	public static function has_unique_items( array $values ) {
+		
+	}	
 }

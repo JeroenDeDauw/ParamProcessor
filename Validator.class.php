@@ -63,18 +63,18 @@ final class Validator {
 	 * @var array Holder for the list validation functions.
 	 */
 	private static $listValidationFunctions = array(
-			'item_count' => array( 'ValidatorFunctions', 'item_count' ),
-			'unique_items' => array( 'ValidatorFunctions', 'unique_items' ),
+			'item_count' => array( 'ValidatorFunctions', 'has_item_count' ),
+			'unique_items' => array( 'ValidatorFunctions', 'has_unique_items' ),
 			);
 
 	/**
 	 * @var array Holder for the formatting functions.
 	 */			
 	private static $outputFormats = array(
-			'array' => array( 'ValidatorFormats', '' ),
-			'list' => array( 'ValidatorFormats', '' ),
-			'boolean' => array( 'ValidatorFormats', '' ),
-			'string' => array( 'ValidatorFormats', '' ),
+			'array' => array( 'ValidatorFormats', 'format_array' ),
+			'list' => array( 'ValidatorFormats', 'format_list' ),
+			'boolean' => array( 'ValidatorFormats', 'format_boolean' ),
+			'string' => array( 'ValidatorFormats', 'format_string' ),
 			);
 
 	private $parameterInfo;
@@ -147,7 +147,7 @@ final class Validator {
 				if ( $this->validateParameter( $paramName, $paramValue ) ) {
 					// If the validation succeeded, add the parameter to the list of valid ones.
 					$this->valid[$paramName] = $paramValue;
-					$this->setOutputType($this->valid[$paramName], $paramInfo);	
+					$this->setOutputTypes($this->valid[$paramName], $paramInfo);	
 				}
 				else {
 					// If the validation failed, add the parameter to the list of invalid ones.
@@ -162,7 +162,7 @@ final class Validator {
 				else {
 					// Set the default value (or default 'default value' if none is provided), and ensure the type is correct.
 					$this->valid[$paramName] = array_key_exists( 'default', $paramInfo ) ? $paramInfo['default'] : '';	
-					$this->setOutputType($this->valid[$paramName], $paramInfo);	
+					$this->setOutputTypes($this->valid[$paramName], $paramInfo);	
 				}
 			}
 		}
@@ -242,11 +242,6 @@ final class Validator {
 			$delimiter = count($this->parameterInfo[$name]['type']) > 2 ? $this->parameterInfo[$name]['type'][2] : ',';
 			$value = preg_replace('/((\s)*' . $delimiter . '(\s)*)/', $delimiter, $value);
 			$value = explode($delimiter, $value);
-			
-			// Ensure there is a criteria array.
-			if (! array_key_exists('list-criteria', $this->parameterInfo[$name] )) {
-				$this->parameterInfo[$name]['list-criteria'] = array();
-			}	
 		}
 		else {
 			// Trimming of non-list values.
@@ -255,77 +250,120 @@ final class Validator {
 	}
 	
 	/**
-	 * Valides the provided parameter by matching the value against the criteria for the name.
+	 * Valides the provided parameter by matching the value against the list and item criteria for the name.
 	 *
 	 * @param string $name
 	 * @param string $value
 	 *
-	 * @return array The errors that occured during validation.
+	 * @return boolean Indicates whether there the parameter value(s) is/are valid.
 	 */
 	private function validateParameter( $name, &$value ) {
 		$hasNoErrors = true;
+		$checkItemCriteria = true;
 		
-		// Go through all criteria.
+		if (array_key_exists('list-criteria', $this->parameterInfo[$name])) {
+			foreach ( $this->parameterInfo[$name]['list-criteria'] as $criteriaName => $criteriaArgs ) {
+				// Get the validation function. If there is no matching function, throw an exception.
+				if (array_key_exists($criteriaName, self::$listValidationFunctions)) {
+					$validationFunction = self::$listValidationFunctions[$criteriaName];
+					$isValid = $this->doCriteriaValidation($validationFunction, $value, $criteriaArgs);
+					
+					// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
+					if ( ! $isValid ) {
+						$hasNoErrors = false;
+						
+						$this->errors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'value' => $this->rawParameters[$name] );
+						
+						if ( ! self::$accumulateParameterErrors ) {
+							$checkItemCriteria = false;
+							break;
+						}
+					}						
+				}
+				else {
+					$hasNoErrors = false;
+					throw new Exception( 'There is no validation function for list criteria type ' . $criteriaName );
+				}				
+			}
+		}
+
+		if ($checkItemCriteria) $hasNoErrors = $hasNoErrors && $this->doItemValidation($name, $value);
+
+		return $hasNoErrors;
+	}
+	
+	/**
+	 * Valides the provided parameter by matching the value against the item criteria for the name.
+	 * 
+	 * @param $name
+	 * @param $value
+	 * 
+	 * @return boolean Indicates whether there the parameter value(s) is/are valid.
+	 */
+	private function doItemValidation( $name, &$value ) {
+		$hasNoErrors = true;
+		
+		// Go through all item criteria.
 		foreach ( $this->parameterInfo[$name]['criteria'] as $criteriaName => $criteriaArgs ) {
 			// Get the validation function. If there is no matching function, throw an exception.
 			if (array_key_exists($criteriaName, self::$validationFunctions)) {
 				$validationFunction = self::$validationFunctions[$criteriaName];
-			}
-			else {
-				throw new Exception( 'There is no validation function for criteria type ' . $criteriaName );
-			}
-			
-			if (is_array($value)) {
-				// Handling of list parameters
-				$invalidItems = array();
-				$validItems = array();
 				
-				// Loop through all the items in the parameter value, and validate them.
-				foreach($value as $item) {
-					$isValid = $this->doItemValidation($validationFunction, $item, $criteriaArgs);
-					if ($isValid) {
-						// If per item validation is on, store the valid items, so only these can be returned by Validator.
-						if (self::$perItemValidation) $validItems[] = $item;
-					}
-					else {
-						// If per item validation is on, store the invalid items, so a fitting error message can be created.
-						if (self::$perItemValidation) {
-							$invalidItems[] = $item;
+				if (is_array($value)) {
+					// Handling of list parameters
+					$invalidItems = array();
+					$validItems = array();
+					
+					// Loop through all the items in the parameter value, and validate them.
+					foreach($value as $item) {
+						$isValid = $this->doCriteriaValidation($validationFunction, $item, $criteriaArgs);
+						if ($isValid) {
+							// If per item validation is on, store the valid items, so only these can be returned by Validator.
+							if (self::$perItemValidation) $validItems[] = $item;
 						}
 						else {
-							// If per item validation is not on, an error to one item means the complete value is invalid.
-							// Therefore it's not required to validate the remaining items.
-							break;
+							// If per item validation is on, store the invalid items, so a fitting error message can be created.
+							if (self::$perItemValidation) {
+								$invalidItems[] = $item;
+							}
+							else {
+								// If per item validation is not on, an error to one item means the complete value is invalid.
+								// Therefore it's not required to validate the remaining items.
+								break;
+							}
+						}
+					}
+					
+					if (self::$perItemValidation) {
+						// If per item validation is on, the parameter value is valid as long as there is at least one valid item.
+						$isValid = count($validItems) > 0;
+						
+						// If the value is valid, but there are invalid items, add an error with a list of these items.
+						if ($isValid && count($invalidItems) > 0) {
+							$value = $validItems;
+							$this->errors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'invalid-items' => $invalidItems );
 						}
 					}
 				}
-				
-				if (self::$perItemValidation) {
-					// If per item validation is on, the parameter value is valid as long as there is at least one valid item.
-					$isValid = count($validItems) > 0;
-					
-					// If the value is valid, but there are invalid items, add an error with a list of these items.
-					if ($isValid && count($invalidItems) > 0) {
-						$value = $validItems;
-						$this->errors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'invalid-items' => $invalidItems );
-					}
+				else {
+					// Determine if the value is valid for single valued parameters.
+					$isValid = $this->doCriteriaValidation($validationFunction, $value, $criteriaArgs);
 				}
 				
+				// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
+				if ( ! $isValid ) {
+					$isList = is_array($value);
+					if ($isList) $value = $this->rawParameters[$name];
+					$this->errors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => $isList, 'value' => $value );
+					$hasNoErrors = false;
+					if ( ! self::$accumulateParameterErrors ) break;
+				}				
 			}
 			else {
-				// Determine if the value is valid for single valued parameters.
-				$isValid = $this->doItemValidation($validationFunction, $value, $criteriaArgs);
-			}
-			
-			// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
-			if ( ! $isValid ) {
-				$isList = is_array($value);
-				if ($isList) $value = $this->rawParameters[$name];
-				$this->errors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => $isList, 'value' => $value );
 				$hasNoErrors = false;
-				if ( ! self::$accumulateParameterErrors ) break;
+				throw new Exception( 'There is no validation function for criteria type ' . $criteriaName );
 			}
-		}
+		}	
 
 		return $hasNoErrors;
 	}
@@ -339,7 +377,9 @@ final class Validator {
 	 * 
 	 * @return unknown_type
 	 */
-	private function doItemValidation($validationFunction, $value, $criteriaArgs) {
+	private function doCriteriaValidation($validationFunction, $value, $criteriaArgs) {
+		// TODO: argument buildup like output formats
+		
 		// Build up the array of parameters to be passed to call_user_func_array.
 		$arguments = array( $value );
 		if ( count( $criteriaArgs ) > 0 ) $arguments[] = $criteriaArgs;
@@ -355,53 +395,48 @@ final class Validator {
 		foreach ( $this->invalid as $paramName => $paramValue ) {
 			unset( $this->invalid[$paramName] );
 			$this->valid[$paramName] = array_key_exists( 'default', $this->parameterInfo[$paramName] ) ? $this->parameterInfo[$paramName]['default'] : '';
-			$this->setOutputType($this->valid[$paramName], $this->parameterInfo[$paramName]);
+			$this->setOutputTypes($this->valid[$paramName], $this->parameterInfo[$paramName]);
 		}
 	}	
 	
 	/**
-	 * Ensures the type of the value is correct. 
+	 * Ensures the output type values are arrays, and then calls setOutputType.
+	 * 
+	 * @param array $value
+	 * @param $info
+	 * @return unknown_type
+	 */
+	private function setOutputTypes(&$value, array $info) {
+		if (array_key_exists('output-types', $info)) {
+			for($i = 0, $c = count($info['output-types']); $i < $c; $i++) {
+				if (! is_array($info['output-types'][$i])) $info['output-types'][$i] = array($info['output-types'][$i]);
+				$this->setOutputType($value, $info['output-types'][$i]);
+			}
+		}
+		elseif (array_key_exists('output-type', $info)) {
+			if (! is_array($info['output-type'])) $info['output-type'] = array($info['output-type']);
+			$this->setOutputType($value, $info['output-type']);
+		}
+		
+	}
+	
+	/**
+	 * Calls the formatting function for the provided output format with the provided value.
 	 * 
 	 * @param $value
-	 * @param array $info
+	 * @param array $typeInfo
 	 */
-	private function setOutputType(&$value, array $info) {
-		// TODO: put code into functions linked by $outputFormats
+	private function setOutputType(&$value, array $typeInfo) {
+		// The output type is the first value in the type info array.
+		// The remaining ones will be any extra arguments.
+		$outputType = strtolower(array_shift($typeInfo));
 		
-		if (array_key_exists('output-type', $info)) {
-			if (! is_array($info['output-type'])) $info['output-type'] = array($info['output-type']);
-			
-			switch(strtolower($info['output-type'][0])) {
-				case 'list' :
-					if (! is_array($value)) $value = array($value);
-					
-					$delimiter = count($info['output-type']) > 1 ? $info['output-type'][1] : ',';
-					$wrapper = count($info['output-type']) > 2 ? $info['output-type'][2] : '';
-					
-					$value = $wrapper . implode($wrapper . $delimiter . $wrapper, $value) . $wrapper;
-					break;
-				case 'array' :
-					if (! is_array($value)) $value = array($value);	
-					break;
-				case 'boolean' :
-					if (is_array($value)) {
-						$boolArray = array();
-						foreach ($value as $item) $boolArray[] = $value == 'yes';
-						$value = $boolArray;
-					}
-					else {
-						$value = $value == 'yes';
-					}
-					break;
-				case 'string' :
-					if (is_array($value)) {
-						global $wgLang;
-						$value = $wgLang->listToText($value);
-					}
-			}			
+		if (array_key_exists($outputType, self::$outputFormats)) {
+			// Call the formatting function with as first parameter the value, followed by the extra arguments.
+			call_user_func_array( self::$outputFormats[$outputType], array_merge(array(&$value), $typeInfo) );
 		}
 		else {
-			
+			throw new Exception( 'There is no formatting function for output format ' . $outputType );
 		}
 	}
 
@@ -465,6 +500,6 @@ final class Validator {
 	 * if it's in a class, first the class name, then the method name.
 	 */
 	public static function addOutputFormat( $formatName, array $functionName ) {
-		self::$outputFormats[$criteriaName] = $functionName;
+		self::$outputFormats[$formatName] = $functionName;
 	}	
 }
