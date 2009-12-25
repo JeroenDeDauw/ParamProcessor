@@ -110,4 +110,16 @@ final class ValidatorFunctions {
 	public static function has_unique_items( array $values ) {
 		return count($values) == count(array_unique($values));
 	}	
+	
+	/**
+	 * Returns the result of preg_match.
+	 * 
+	 * @param string $value
+	 * @param string $pattern
+	 * 
+	 * @return boolean
+	 */
+	public static function regex( $value, $pattern ) {
+		return preg_match($pattern, $value);
+	}
 }

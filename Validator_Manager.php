@@ -81,7 +81,7 @@ final class ValidatorManager {
 							$msg = wfMsgExt( 'validator_list_error_empty_argument', array( 'parsemag' ), $error['name'] );
 							break;
 						case 'in_range' :
-							$msg = wfMsgExt( 'validator_list_error_invalid_range', array( 'parsemag' ), $error['name'], $error['args'][0], $error['args'][1] );
+							$msg = wfMsgExt( 'validator_list_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0]. '</b>', '<b>' .$error['args'][1]. '</b>' );
 							break;
 						case 'is_numeric' :
 							$msg = wfMsgExt( 'validator_list_error_must_be_number', array( 'parsemag' ), $error['name'] );
@@ -111,7 +111,7 @@ final class ValidatorManager {
 							$errors[] = wfMsgExt( 'validator_error_empty_argument', array( 'parsemag' ), $error['name'] );
 							break;
 						case 'in_range' :
-							$errors[] = wfMsgExt( 'validator_error_invalid_range', array( 'parsemag' ), $error['name'], $error['args'][0], $error['args'][1] );
+							$errors[] = wfMsgExt( 'validator_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0]. '</b>', '<b>' .$error['args'][1]. '</b>' );
 							break;
 						case 'is_numeric' :
 							$errors[] = wfMsgExt( 'validator_error_must_be_number', array( 'parsemag' ), $error['name'] );
@@ -124,7 +124,7 @@ final class ValidatorManager {
 							$errors[] = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $error['name'], $itemsText, count( $error['args'] ) );
 							break;
 						case 'invalid' : default :
-							$errors[] = wfMsgExt( 'validator_error_invalid_argument', array( 'parsemag' ), $error['value'], $error['name'] );
+							$errors[] = wfMsgExt( 'validator_error_invalid_argument', array( 'parsemag' ), '<b>' . $error['value'] . '</b>', $error['name'] );
 							break;
 					}					
 				}

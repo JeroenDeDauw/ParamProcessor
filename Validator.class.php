@@ -56,6 +56,7 @@ final class Validator {
 			'is_integer' => array( 'ValidatorFunctions', 'is_integer' ),	
 			'not_empty' => array( 'ValidatorFunctions', 'not_empty' ),
 			'has_length' => array( 'ValidatorFunctions', 'has_length' ),
+			'regex' => array( 'ValidatorFunctions', 'regex' ),
 			);
 	
 	/**
