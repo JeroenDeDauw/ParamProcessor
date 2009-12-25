@@ -420,7 +420,7 @@ $messages['nl'] = array(
 	'validator_list_error_must_be_integer' => 'Voor de parameter $1 zijn alleen hele getallen toegestaan.',
 	'validator_list_error_invalid_range' => 'Alle waarden voor de parameter $1 moeten tussen $2 en $3 liggen.',
 	'validator_list_error_invalid_argument' => 'Een of meerdere waarden voor de parameter $1 zijn ongeldig.',
-	'validator_list_omitted' => 'De {{PLURAL:$2|waarde|waarden}} $1 {{PLURAL:$2|mist|missen}}.',
+	'validator_list_omitted' => 'De {{PLURAL:$2|waarde|waarden}} $1 {{PLURAL:$2|is|zijn}} weggelaten.',
 	'validator_error_accepts_only' => 'De parameter $1 kan alleen de volgende {{PLURAL:$3|waarde|waarden}} hebben: $2.',
 );
 
