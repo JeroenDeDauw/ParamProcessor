@@ -50,7 +50,7 @@ final class Validator {
 	 * @var array Holder for the validation functions.
 	 */
 	private static $validationFunctions = array(
-			'in_array' => 'in_array',
+			'in_array' => array( 'ValidatorFunctions', 'in_array' ),
 			'in_range' => array( 'ValidatorFunctions', 'in_range' ),
 			'is_numeric' => 'is_numeric',
 			'is_integer' => array( 'ValidatorFunctions', 'is_integer' ),	
@@ -230,6 +230,7 @@ final class Validator {
 					$this->parameterInfo[$name]['criteria']['is_numeric'] = array();
 					break;
 				case 'boolean':
+					// TODO: work with list of true and false values. 
 					$this->parameterInfo[$name]['criteria']['in_array'] = array('yes', 'no', 'on', 'off');
 					break;
 				case 'char':
@@ -378,15 +379,9 @@ final class Validator {
 	 * 
 	 * @return unknown_type
 	 */
-	private function doCriteriaValidation($validationFunction, $value, $criteriaArgs) {
-		// TODO: argument buildup like output formats
-		
-		// Build up the array of parameters to be passed to call_user_func_array.
-		$arguments = array( $value );
-		if ( count( $criteriaArgs ) > 0 ) $arguments[] = $criteriaArgs;
-		
+	private function doCriteriaValidation($validationFunction, $value, $criteriaArgs) {		
 		// Call the validation function and store the result. 
-		return call_user_func_array( $validationFunction, $arguments );		
+		return call_user_func_array( $validationFunction, array_merge(array($value), $criteriaArgs) );		
 	}
 	
 	/**

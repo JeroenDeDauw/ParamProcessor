@@ -26,14 +26,17 @@ final class ValidatorFunctions {
 	 * Returns whether the provided value, which must be a number, is within a certain range. Upper bound not included.
 	 *
 	 * @param $value
-	 * @param array $limits
+	 * @param $lower
+	 * @param $upper
 	 *
 	 * @return boolean
 	 */
-	public static function in_range( $value, array $limits ) {
+	public static function in_range( $value, $lower = false, $upper = false ) {
 		if ( ! is_numeric( $value ) ) return false;
 		$value = (int)$value;
-		return ( $value >= $limits[0] && $value < $limits[1] ) || ( $value < $limits[0] And $value >= $limits[1] );
+		if ($lower !== false && $value < $lower) return false;
+		if ($upper !== false && $value >= $upper) return false;
+		return true;
 	}
 
 	/**
@@ -46,6 +49,19 @@ final class ValidatorFunctions {
 	public static function not_empty( $value ) {
 		return strlen( trim( $value ) ) > 0;
 	}
+	
+	/**
+	 * Returns whether the string value is not empty. Not empty is defined as having at least one character after trimming.
+	 *
+	 * @param $value
+	 *
+	 * @return boolean
+	 */
+	public static function in_array( $value ) {
+		$params = func_get_args();
+		array_shift( $params ); // Ommit the value
+		return in_array($value, $params);
+	}	
 	
 	/**
 	 * Returns whether a variable is an integer or an integer string. Uses the native PHP function.
@@ -62,24 +78,26 @@ final class ValidatorFunctions {
 	 * Returns whether the length of the value is within a certain range. Upper bound not included.
 	 * 
 	 * @param string $value
-	 * @param array $limits
+	 * @param $lower
+	 * @param $upper
 	 * 
 	 * @return boolean
 	 */
-	public static function has_length( $value, array $limits ) {
-		return self::in_range(strlen($value), $limits);
+	public static function has_length( $value, $lower = false, $upper = false ) {
+		return self::in_range(strlen($value), $lower, $upper);
 	}
 	
 	/**
 	 * Returns whether the amount of items in the list is within a certain range. Upper bound not included.
 	 * 
 	 * @param array $values
-	 * @param $limits
+	 * @param $lower
+	 * @param $upper
 	 * 
 	 * @return boolean
 	 */
-	public static function has_item_count( array $values, array $limits ) {
-		return self::in_range(count($value), $limits);
+	public static function has_item_count( array $values, $lower = false, $upper = false ) {
+		return self::in_range(count($values), $lower, $upper);
 	}
 	
 	/**
