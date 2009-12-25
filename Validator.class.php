@@ -235,7 +235,7 @@ final class Validator {
 					$this->parameterInfo[$name]['criteria']['in_array'] = array('yes', 'no', 'on', 'off');
 					break;
 				case 'char':
-					$this->parameterInfo[$name]['criteria']['has_length'] = array(1);
+					$this->parameterInfo[$name]['criteria']['has_length'] = array(1, 1);
 					break;	
 			}
 		}
@@ -245,6 +245,10 @@ final class Validator {
 			$delimiter = count($this->parameterInfo[$name]['type']) > 2 ? $this->parameterInfo[$name]['type'][2] : ',';
 			$value = preg_replace('/((\s)*' . $delimiter . '(\s)*)/', $delimiter, $value);
 			$value = explode($delimiter, $value);
+		}
+		elseif (count($this->parameterInfo[$name]['type']) > 1 && $this->parameterInfo[$name]['type'][1] == 'array' && is_array($value)) {
+			// Trimming of array values.
+			for($i = count($value); $i > 0; $i--) $value[$i] = trim ($value[$i]);
 		}
 		else {
 			// Trimming of non-list values.

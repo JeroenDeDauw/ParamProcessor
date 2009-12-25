@@ -31,7 +31,7 @@ final class ValidatorFormats {
 	}
 	
 	/**
-	 * Changes the value to list notation, by seperating items with a delimiter, 
+	 * Changes the value to list notation, by separating items with a delimiter, 
 	 * and/or adding wrappers before and after the items. Intended for lists, but
 	 * will also work for single values.
 	 * 

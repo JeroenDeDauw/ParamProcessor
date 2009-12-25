@@ -120,6 +120,6 @@ final class ValidatorFunctions {
 	 * @return boolean
 	 */
 	public static function regex( $value, $pattern ) {
-		return preg_match($pattern, $value);
+		return (bool)preg_match($pattern, $value);
 	}
 }
