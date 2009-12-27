@@ -111,7 +111,7 @@ $messages['be-tarask'] = array(
 	'validator_name' => 'Правяраючы',
 	'validator-desc' => 'Правяраючы палягчае іншым пашырэньням працу па праверцы парамэтраў функцыяў парсэру і тэгаў пашырэньняў, устанаўлівае значэньні па змоўчваньні і стварае паведамленьні пра памылкі',
 	'validator_error_parameters' => 'У сынтаксісе {{PLURAL:$1|выяўленая наступная памылка|выяўленыя наступныя памылкі}}',
-	'validator_warning_parameters' => 'У Вашы сынтаксысе {{PLURAL:$1|маецца памылка|маюцца памылкі|маюцца памылкі}}.',
+	'validator_warning_parameters' => 'У Вашы сынтаксісе {{PLURAL:$1|маецца памылка|маюцца памылкі}}.',
 	'validator_error_unknown_argument' => 'Няслушны парамэтар $1.',
 	'validator_error_required_missing' => 'Не пададзены абавязковы парамэтар $1.',
 	'validator_error_empty_argument' => 'Парамэтар $1 ня можа мець пустое значэньне.',
@@ -329,6 +329,14 @@ $messages['gsw'] = array(
 	'validator_list_error_invalid_argument' => 'Ein oder mehreri Wärt fir dr Parameter $1 sin nit giltig.',
 	'validator_list_omitted' => '{{PLURAL:$2|Dr Wärt|D Wärt}} $1 {{PLURAL:$2|isch|sin}} uusgloo wore.',
 	'validator_error_accepts_only' => 'Dr Parameter $1 cha nume {{PLURAL:$3|dää Wärt|die Wärt}} haa: $2.',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'validator_warning_parameters' => 'ישנ{PLURAL:$1|ה שגיאה|ן שגיאות}} בתחביר שלכם.',
+	'validator_error_unknown_argument' => '$1 אינו פרמטר תקני.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
