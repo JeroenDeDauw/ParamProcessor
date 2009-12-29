@@ -58,6 +58,7 @@ final class ValidatorFunctions {
 	 * @return boolean
 	 */
 	public static function in_array( $value ) {
+		// TODO: It's possible the way the allowed values are passed here is quite inneficient...
 		$params = func_get_args();
 		array_shift( $params ); // Ommit the value
 		return in_array($value, $params);

@@ -114,9 +114,6 @@ final class Validator {
 	 * @return boolean Indicates whether there where no errors.
 	 */
 	public function validateParameters() {
-
-		$parameters = array();
-
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
 		foreach ( $this->rawParameters as $paramName => $paramValue ) {
 			// Attempt to get the main parameter name (takes care of aliases).
@@ -225,17 +222,17 @@ final class Validator {
 			// Add type specific criteria.
 			switch(strtolower($this->parameterInfo[$name]['type'][0])) {			
 				case 'integer':
-					$this->parameterInfo[$name]['criteria']['is_integer'] = array();
+					$this->addTypeCriteria($name, 'is_integer');
 					break;
 				case 'number':
-					$this->parameterInfo[$name]['criteria']['is_numeric'] = array();
+					$this->addTypeCriteria($name, 'is_numeric');
 					break;
 				case 'boolean':
 					// TODO: work with list of true and false values. 
-					$this->parameterInfo[$name]['criteria']['in_array'] = array('yes', 'no', 'on', 'off');
+					$this->addTypeCriteria($name, 'in_array', array('yes', 'no', 'on', 'off'));
 					break;
 				case 'char':
-					$this->parameterInfo[$name]['criteria']['has_length'] = array(1, 1);
+					$this->addTypeCriteria($name, 'has_length', array(1, 1));
 					break;	
 			}
 		}
@@ -254,6 +251,10 @@ final class Validator {
 			// Trimming of non-list values.
 			$value = trim ($value);
 		}
+	}
+	
+	private function addTypeCriteria($paramName, $criteriaName, $criteriaArgs = array()) {
+		$this->parameterInfo[$paramName]['criteria'] = array_merge(array($criteriaName => $criteriaArgs), $this->parameterInfo[$paramName]['criteria']);
 	}
 	
 	/**
