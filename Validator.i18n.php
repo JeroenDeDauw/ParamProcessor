@@ -170,10 +170,36 @@ $messages['bs'] = array(
 	'validator_error_accepts_only' => 'Parametar $1 se može koristiti samo sa {{PLURAL:$3|ovom vrijednosti|ovim vrijednostima}}: $2.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'validator_name' => 'Validátor',
+	'validator-desc' => 'Validátor poskytuje ostatním rozšířením snadnější způsob ověřování parametrů funkcí parseru a značek, nastavování výchozích hodnot a vytváření chybových zpráv.',
+	'validator_error_parameters' => 'Ve vaší syntaxi {{PLURAL:$1|byla nalezena následující chyba|byly nalezeny následující chyby}}',
+	'validator_warning_parameters' => 'Ve vaší syntaxi {{PLURAL:$1|je chyba|jsou chyby}}.',
+	'validator_error_unknown_argument' => '$1 není platný parametr.',
+	'validator_error_required_missing' => 'Povinný parameter $1 nebyl specifikován.',
+	'validator_error_empty_argument' => 'Parametr $1 nemůže být prázdný.',
+	'validator_error_must_be_number' => 'Parametr $1 může být pouze číslo.',
+	'validator_error_must_be_integer' => 'Parametr $1 může být pouze celé číslo.',
+	'validator_error_invalid_range' => 'Parametr $1 musí být v rozmezí $2 až $3.',
+	'validator_error_invalid_argument' => '$1 není platná hodnota pro parametr $2.',
+	'validator_list_error_empty_argument' => 'Parametr $1 npeřijímá prázdné hoodnoty.',
+	'validator_list_error_must_be_number' => 'Parametr $1 může obsahovat pouze čísla.',
+	'validator_list_error_must_be_integer' => 'Paramter $1 může obsahovat pouze celá čísla.',
+	'validator_list_error_invalid_range' => 'Všechny hodnoty parametru $1 musí být v rozmezí $2 až $3.',
+	'validator_list_error_invalid_argument' => 'Jedna nebo více hodnot parametru $1 jsou neplatné.',
+	'validator_list_omitted' => '{{PLURAL:$2|Hodnota $1 byla vynechána|Hodnoty $1 byly vynechány}}.',
+	'validator_error_accepts_only' => 'Parametr $1 přijímá pouze {{PLURAL:$3|tuto hodnotu|tyto hodnoty}}: $2.',
+);
+
 /** German (Deutsch)
  * @author Imre
  */
 $messages['de'] = array(
+	'validator_name' => 'Validierer',
 	'validator_error_parameters' => '{{PLURAL:$1|Der folgende Fehler wurde|Die folgenden Fehler wurden}} in deiner Syntax gefunden.',
 	'validator_warning_parameters' => '{{PLURAL:$1|Es ist ein Fehler|Es sind Fehler}} in deiner Syntax.',
 	'validator_error_unknown_argument' => '$1 ist kein gültiger Parameter.',
@@ -234,14 +260,22 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  * @author Translationista
  */
 $messages['es'] = array(
-	'validator_error_empty_argument' => 'El parámetro $1 no puede tener un valor vacío.',
+	'validator_error_unknown_argument' => '$1 no es un parámetro válido.',
 	'validator_error_required_missing' => 'No se ha provisto el parámetro requerido $1.',
-
+	'validator_error_empty_argument' => 'El parámetro $1 no puede tener un valor vacío.',
 	'validator_error_must_be_number' => 'El parámetro $1 sólo puede ser un número.',
 	'validator_error_invalid_range' => 'El parámetro $1 debe ser entre $2 y $3.',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'validator_name' => 'Kehtestaja',
 );
 
 /** Finnish (Suomi)
@@ -337,6 +371,12 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'validator_warning_parameters' => 'ישנ{PLURAL:$1|ה שגיאה|ן שגיאות}} בתחביר שלכם.',
 	'validator_error_unknown_argument' => '$1 אינו פרמטר תקני.',
+	'validator_error_required_missing' => 'הפרמטר הדרוש $1 לא צוין.',
+	'validator_error_empty_argument' => 'הפרמטר $1 לא יכול להיות ערך ריק.',
+	'validator_error_must_be_number' => 'הפרמטר $1 יכול להיות מספר בלבד.',
+	'validator_error_must_be_integer' => 'הפרמטר $1 יכול להיות מספר שלם בלבד.',
+	'validator_error_invalid_range' => 'הפרמטר $1 חייב להיות בין $2 ל־$3.',
+	'validator_error_invalid_argument' => 'הערך $1 אינו תקני עבור הפרמטר $2.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
