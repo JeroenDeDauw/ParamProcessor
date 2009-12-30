@@ -258,6 +258,20 @@ $messages['el'] = array(
 	'validator_error_unknown_argument' => '$1 δεν είναι μια έγκυρη παράμετρος.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'validator_name' => 'Validigilo',
+	'validator_error_unknown_argument' => '$1 ne estas valida parametro.',
+	'validator_error_required_missing' => 'La nepra parametro $1 mankas.',
+	'validator_error_empty_argument' => 'Parametro $1 ne povas esti nula valoro.',
+	'validator_error_must_be_number' => 'Parametro $1 nur povas esti numero.',
+	'validator_error_must_be_integer' => 'Parametro $1 nur povas esti entjero.',
+	'validator_error_invalid_range' => 'Parametro $1 estu inter $2 kaj $3.',
+	'validator_list_error_invalid_argument' => 'Unu aŭ pliaj valoroj por parametro $1 estas malvalida.',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
@@ -632,6 +646,7 @@ $messages['pt'] = array(
 	'validator_name' => 'Serviço de Validação',
 	'validator-desc' => 'O Serviço de Validação permite que, de forma simples, as outras extensões possam validar parâmetros das funções do analisador sintáctico e das extensões dos elementos HTML, definir valores por omissão e gerar mensagens de erro',
 	'validator_error_parameters' => '{{PLURAL:$1|Foi detectado o seguinte erro sintáctico|Foram detectados os seguintes erros sintácticos}}',
+	'validator_warning_parameters' => '{{PLURAL:$1|Existe um erro sintáctico|Existem erros sintácticos}}.',
 	'validator_error_unknown_argument' => '$1 não é um parâmetro válido.',
 	'validator_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
 	'validator_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
@@ -646,6 +661,13 @@ $messages['pt'] = array(
 	'validator_list_error_invalid_argument' => 'Um ou mais valores do parâmetro $1 são inválidos.',
 	'validator_list_omitted' => '{{PLURAL:$2|O valor $1 foi omitido|Os valores $1 foram omitidos}}.',
 	'validator_error_accepts_only' => 'O parâmetro $1 só aceita {{PLURAL:$3|este valor|estes valores}}: $2.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'validator_error_unknown_argument' => '$1 não é um parâmetro válido.',
 );
 
 /** Russian (Русский)
@@ -693,17 +715,25 @@ $messages['si'] = array(
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author Ozp
  * @author Per
  */
 $messages['sv'] = array(
-	'validator_error_parameters' => 'Följande fel har upptäckts i din syntax',
+	'validator_error_parameters' => 'Följande {{PLURAL:$1|fel|fel}} har upptäckts i din syntax',
+	'validator_warning_parameters' => 'Det finns {{PLURAL:$1|ett|flera}} fel i din syntax.',
 	'validator_error_unknown_argument' => '$1 är inte en giltig paramter.',
-	'validator_error_invalid_argument' => 'Värdet $1 är inte giltigt som parameter $2.',
-	'validator_error_empty_argument' => 'Parametern $1 kan inte lämnas tom.',
 	'validator_error_required_missing' => 'Den nödvändiga parametern $1 har inte angivits.',
+	'validator_error_empty_argument' => 'Parametern $1 kan inte lämnas tom.',
 	'validator_error_must_be_number' => 'Parameter $1 måste bestå av ett tal.',
 	'validator_error_must_be_integer' => 'Parametern $1 måste vara ett heltal.',
 	'validator_error_invalid_range' => 'Parameter $1 måste vara i mellan $2 och $3.',
+	'validator_error_invalid_argument' => 'Värdet $1 är inte giltigt som parameter $2.',
+	'validator_list_error_empty_argument' => 'Parameter $1 accepterar inte tomma värden.',
+	'validator_list_error_must_be_number' => 'Parameter $1 får endast innehålla siffror.',
+	'validator_list_error_must_be_integer' => 'Parameter $1 får endast innehålla heltal.',
+	'validator_list_error_invalid_range' => 'Alla värden av parameter $1 måste vara mellan $2 och $3.',
+	'validator_list_error_invalid_argument' => 'Ett eller flera värden av parameter $1 är ogiltiga.',
+	'validator_list_omitted' => '{{PLURAL:$2|Värdet|Värdena}} $1 har blivit {{PLURAL:$2|utelämnat|utelämnade}}.',
 	'validator_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
 );
 
