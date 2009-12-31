@@ -294,11 +294,14 @@ $messages['et'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'validator_name' => 'Tarkastaja',
 	'validator-desc' => 'Tarkastaja tarjoaa helpon tavan muille laajennuksille jäsenninfunktioiden ja tagilaajennusten parametrien tarkastukseen, oletusarvojen asettamiseen ja virheilmoitusten luomiseen.',
+	'validator_error_must_be_number' => 'Parametrin $1 on oltava luku.',
+	'validator_error_must_be_integer' => 'Parametrin $1 on oltava kokonaisluku.',
 );
 
 /** French (Français)
