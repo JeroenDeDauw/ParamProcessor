@@ -278,11 +278,24 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'validator_name' => 'Validador',
+	'validator-desc' => 'FUZZY!!! El validador es una herramienta para que otras funciones validen fácilmente parámetros de funciones de análisis y extensiones de etiquetas, establecer valores predeterminados y generar mensajes de error',
+	'validator_error_parameters' => 'Se ha detectado {{PLURAL:$1|el siguiente error|los siguientes errores}} en tu sintaxis',
+	'validator_warning_parameters' => 'Hay {{PLURAL:$1|un error|errores}} en tu sintaxis.',
 	'validator_error_unknown_argument' => '$1 no es un parámetro válido.',
 	'validator_error_required_missing' => 'No se ha provisto el parámetro requerido $1.',
 	'validator_error_empty_argument' => 'El parámetro $1 no puede tener un valor vacío.',
 	'validator_error_must_be_number' => 'El parámetro $1 sólo puede ser un número.',
+	'validator_error_must_be_integer' => 'El parámetro $1 sólo puede ser un número entero.',
 	'validator_error_invalid_range' => 'El parámetro $1 debe ser entre $2 y $3.',
+	'validator_error_invalid_argument' => 'El valor $1 no es válido para el parámetro $2.',
+	'validator_list_error_empty_argument' => 'El parámetro $1 no acepta valores vacíos.',
+	'validator_list_error_must_be_number' => 'El parámetro $1 sólo puede contener números.',
+	'validator_list_error_must_be_integer' => 'El parámetro $1 sólo puede contener números enteros.',
+	'validator_list_error_invalid_range' => 'Todos los valores del parámetro $1 deben ser entre $2 y $3.',
+	'validator_list_error_invalid_argument' => 'Uno o más valores del parámetros $1 son inválidos.',
+	'validator_list_omitted' => '{{PLURAL:$2|El valor|Los valores}} $1 {{PLURAL:$2|ha sido omitido|han sido omitidos}}.',
+	'validator_error_accepts_only' => 'El parámetro $1 sólo acepta {{PLURAL:$3|este valor|estos valores}}: $2.',
 );
 
 /** Estonian (Eesti)
