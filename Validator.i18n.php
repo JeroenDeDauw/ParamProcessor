@@ -605,9 +605,12 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'validator_name' => 'Validering',
+	'validator-desc' => 'Validering gir en enkel måte for utvidelser å validere parametere av parserfunksjoner og taggutvidelser, sette standardverdier og generere feilbeskjeder.',
 	'validator_error_parameters' => 'Følgende {{PLURAL:$1|feil|feil}} har blitt oppdaget i syntaksen din',
 	'validator_warning_parameters' => 'Det er {{PLURAL:$1|én feil|flere feil}} i syntaksen din.',
 	'validator_error_unknown_argument' => '$1 er ikke en gyldig parameter.',
