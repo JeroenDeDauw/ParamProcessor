@@ -137,6 +137,7 @@ $messages['br'] = array(
 	'validator_name' => 'Kadarnataer',
 	'validator-desc' => 'Kadarnataer a zo un doare simpl evit gwiriañ arventennoù fonksionoù parser an astennoù all hag an astennoù balizennoù, evit termeniñ talvoudennoù dre ziouer ha merañ kemenadennoù fazioù',
 	'validator_error_parameters' => "Kavet eo bet ar {{PLURAL:$1|fazi|fazioù}} da-heul en hoc'h ereadur",
+	'validator_warning_parameters' => "{{PLURAL:$1|Ur fazi|Fazioù}} zo en hoc'h ereadur.",
 	'validator_error_unknown_argument' => "$1 n'eo ket un arventenn reizh.",
 	'validator_error_required_missing' => "N'eo ket bet pourchaset an arventenn rekis $1",
 	'validator_error_empty_argument' => "N'hall ket an arventenn $1 bezañ goullo he zalvoudenn",
