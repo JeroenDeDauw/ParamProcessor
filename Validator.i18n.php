@@ -459,6 +459,7 @@ $messages['ia'] = array(
 	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator provide un modo facile a altere extensiones de validar parametros de functiones del analysator syntactic e extensiones de etiquettas, predefinir valores e generar messages de error',
 	'validator_error_parameters' => 'Le sequente {{PLURAL:$1|error|errores}} ha essite detegite in tu syntaxe',
+	'validator_warning_parameters' => 'Il ha {{PLURAL:$1|un error|errores}} in tu syntaxe.',
 	'validator_error_unknown_argument' => '$1 non es un parametro valide.',
 	'validator_error_required_missing' => 'Le parametro requisite $1 non ha essite fornite.',
 	'validator_error_empty_argument' => 'Le parametro $1 non pote haber un valor vacue.',
@@ -466,6 +467,12 @@ $messages['ia'] = array(
 	'validator_error_must_be_integer' => 'Le parametro $1 pote solmente esser un numero integre.',
 	'validator_error_invalid_range' => 'Le parametro $1 debe esser inter $2 e $3.',
 	'validator_error_invalid_argument' => 'Le valor $1 non es valide pro le parametro $2.',
+	'validator_list_error_empty_argument' => 'Le parametro $1 non accepta valores vacue.',
+	'validator_list_error_must_be_number' => 'Le parametro $1 pote solmente continer numeros.',
+	'validator_list_error_must_be_integer' => 'Le parametro $1 pote solmente continer numeros integre.',
+	'validator_list_error_invalid_range' => 'Tote le valores del parametro $1 debe esser inter $2 e $3.',
+	'validator_list_error_invalid_argument' => 'Un o plus valores pro le parametro $1 es invalide.',
+	'validator_list_omitted' => 'Le {{PLURAL:$2|valor|valores}} $1 ha essite omittite.',
 	'validator_error_accepts_only' => 'Le parametro $1 accepta solmente iste {{PLURAL:$3|valor|valores}}: $2.',
 );
 
