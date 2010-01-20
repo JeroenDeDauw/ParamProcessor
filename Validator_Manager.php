@@ -62,7 +62,7 @@ final class ValidatorManager {
 		$error_count = count( $this->errors ) ;
 		
 		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && $error_count > 0 ) {
-			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', $error_count ) . ':</b><br /><i>';
+			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', $error_count ) . '</b><br /><i>';
 
 			$errors = array();
 
