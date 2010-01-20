@@ -197,11 +197,12 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author DaSch
  * @author Imre
  */
 $messages['de'] = array(
 	'validator_name' => 'Validierer',
-	'validator_error_parameters' => '{{PLURAL:$1|Der folgende Fehler wurde|Die folgenden Fehler wurden}} in deiner Syntax gefunden.',
+	'validator_error_parameters' => '{{PLURAL:$1|Der folgende Fehler wurde|Die folgenden Fehler wurden}} in deiner Syntax gefunden',
 	'validator_warning_parameters' => '{{PLURAL:$1|Es ist ein Fehler|Es sind Fehler}} in deiner Syntax.',
 	'validator_error_unknown_argument' => '$1 ist kein gültiger Parameter.',
 	'validator_error_required_missing' => 'Der notwendige Parameter $1 wurde nicht angegeben.',
@@ -664,6 +665,7 @@ $messages['pms'] = array(
 	'validator_name' => 'Validator',
 	'validator-desc' => "Validator a dà na manera bel fé për àutre estension ëd validé ij paràmetr ëd le funsion dël parser e j'estension dij tag, d'amposté ij valor ëd default e generé mëssagi d'eror",
 	'validator_error_parameters' => "{{PLURAL:$1|L'eror sota a l'é stàit|J'eror sota a son ëstàit}} trovà an toa sintassi",
+	'validator_warning_parameters' => "{{PLURAL:$1|A-i é n'|A-i son dj'}}eror ant soa sintassi.",
 	'validator_error_unknown_argument' => "$1 a l'é un paràmetr pa bon.",
 	'validator_error_required_missing' => "Ël paràmetr obligatòri $1 a l'é pa dàit.",
 	'validator_error_empty_argument' => 'Ël paràmetr $1 a peul pa avèj un valor veuid.',
@@ -671,6 +673,12 @@ $messages['pms'] = array(
 	'validator_error_must_be_integer' => "Ël paràmetr $1 a peul mach esse n'antregh.",
 	'validator_error_invalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
 	'validator_error_invalid_argument' => "Ël valor $1 a l'é pa bon për ël paràmetr $2.",
+	'validator_list_error_empty_argument' => 'Ël paràmetr $1 a aceta pa dij valor veuid.',
+	'validator_list_error_must_be_number' => 'Ël paràmetr $1 a peul mach conten-e dij nùmer.',
+	'validator_list_error_must_be_integer' => "Ël paràmetr $1 a peul mach conten-e dj'antegr.",
+	'validator_list_error_invalid_range' => 'Tùit ij valor dël paràmetr $1 a deuvo esse tra $2 e $3.',
+	'validator_list_error_invalid_argument' => 'Un o pi valor dël paràmetr $1 a son pa bon.',
+	'validator_list_omitted' => "{{PLURAL:$2|Ël valor|Ij valor}} $1 {{PLURAL:$2|a l'é|a son}} pa stàit butà.",
 	'validator_error_accepts_only' => 'Ël paràmetr $1 a aceta mach {{PLURAL:$3|sto valor-sì|sti valor-sì}}: $2.',
 );
 
