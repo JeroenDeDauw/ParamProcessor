@@ -160,7 +160,8 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator pruža jednostavni način za druga proširenja u svrhu validacije parametara parserskih funkcija i proširenja oznaka, postavlja pretpostavljene vrijednosti i generira poruke pogrešaka.',
-	'validator_error_parameters' => 'U Vašoj sintaksi {{PLURAL:$1|je|su}} {{PLURAL:$1|otkivena slijedeća greška|otkrivene slijedeće greške}}',
+	'validator_error_parameters' => 'U Vašoj sintaksi {{PLURAL:$1|je|su}} {{PLURAL:$1|otkivena slijedeća greška|otkrivene slijedeće greške}}:',
+	'validator_warning_parameters' => '{{PLURAL:$1|Postoji greška|Postoje greške}} u Vašoj sintaksi.',
 	'validator_error_unknown_argument' => '$1 nije valjan parametar.',
 	'validator_error_required_missing' => 'Obavezni parametar $1 nije naveden.',
 	'validator_error_empty_argument' => 'Parametar $1 ne može imati praznu vrijednost.',
@@ -168,6 +169,8 @@ $messages['bs'] = array(
 	'validator_error_must_be_integer' => 'Parametar $1 može biti samo cijeli broj.',
 	'validator_error_invalid_range' => 'Parametar $1 mora biti između $2 i $3.',
 	'validator_error_invalid_argument' => 'Vrijednost $1 nije valjana za parametar $2.',
+	'validator_list_error_empty_argument' => 'Parametar $1 ne prima prazne vrijednosti.',
+	'validator_list_error_must_be_number' => 'Parametar $1 može sadržavati samo brojeve.',
 	'validator_error_accepts_only' => 'Parametar $1 se može koristiti samo sa {{PLURAL:$3|ovom vrijednosti|ovim vrijednostima}}: $2.',
 );
 
