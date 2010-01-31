@@ -23,7 +23,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 final class ValidatorFunctions {
 
 	/**
-	 * Returns whether the provided value, which must be a number, is within a certain range. Upper bound not included.
+	 * Returns whether the provided value, which must be a number, is within a certain range. Upper bound included.
 	 *
 	 * @param $value
 	 * @param $lower
@@ -35,7 +35,7 @@ final class ValidatorFunctions {
 		if ( ! is_numeric( $value ) ) return false;
 		$value = (int)$value;
 		if ($lower !== false && $value < $lower) return false;
-		if ($upper !== false && $value >= $upper) return false;
+		if ($upper !== false && $value > $upper) return false;
 		return true;
 	}
 
@@ -76,7 +76,7 @@ final class ValidatorFunctions {
 	}	
 	
 	/**
-	 * Returns whether the length of the value is within a certain range. Upper bound not included.
+	 * Returns whether the length of the value is within a certain range. Upper bound included.
 	 * 
 	 * @param string $value
 	 * @param $lower
@@ -89,7 +89,7 @@ final class ValidatorFunctions {
 	}
 	
 	/**
-	 * Returns whether the amount of items in the list is within a certain range. Upper bound not included.
+	 * Returns whether the amount of items in the list is within a certain range. Upper bound included.
 	 * 
 	 * @param array $values
 	 * @param $lower
