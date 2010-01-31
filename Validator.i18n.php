@@ -503,11 +503,12 @@ $messages['id'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
+ * @author Whym
  */
 $messages['ja'] = array(
 	'validator_name' => '妥当性評価器',
 	'validator-desc' => '妥当性評価器は他の拡張機能にパーサー関数やタグ拡張の引数の妥当性を確認したり、規定値を設定したり、エラーメッセージを生成する手段を提供する',
-	'validator_error_parameters' => 'あなたの入力から以下の{{PLURAL:$1|エラー}}が検出されました',
+	'validator_error_parameters' => 'あなたの入力から以下の{{PLURAL:$1|エラー|エラー}}が検出されました:',
 	'validator_warning_parameters' => 'あなたの入力した構文には{{PLURAL:$1|エラー}}があります。',
 	'validator_error_unknown_argument' => '$1 は有効な引数ではありません。',
 	'validator_error_required_missing' => '必須の引数「$1」が入力されていません。',
