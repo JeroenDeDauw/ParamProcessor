@@ -4,6 +4,13 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 
+==== Validator 0.2.1 ====
+(2010-02-01)
+
+* Changed the inclusion of the upper bound for range validation functions.
+
+* Small language fixes.
+
 ==== Validator 0.2 ====
 (2009-12-25)
 
