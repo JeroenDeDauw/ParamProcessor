@@ -31,6 +31,23 @@ final class ValidatorFormats {
 	}
 	
 	/**
+	 * Ensures the value is an array.
+	 * 
+	 * @param $value
+	 */
+	public static function format_filtered_array( &$value ) {
+		// TODO: It's possible the way the allowed values are passed here is quite inneficient...
+		$params = func_get_args();
+		array_shift( $params ); // Ommit the value
+		
+		self::format_array($value);
+		$filtered = array();
+		foreach($value as $item) if (in_array($item, $params)) $filtered[] = $item;
+		
+		return $filtered;
+	}	
+	
+	/**
 	 * Changes the value to list notation, by separating items with a delimiter, 
 	 * and/or adding wrappers before and after the items. Intended for lists, but
 	 * will also work for single values.

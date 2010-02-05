@@ -69,7 +69,7 @@ final class Validator {
 
 	/**
 	 * @var array Holder for the formatting functions.
-	 */			
+	 */
 	private static $outputFormats = array(
 			'array' => array( 'ValidatorFormats', 'format_array' ),
 			'list' => array( 'ValidatorFormats', 'format_list' ),
@@ -77,6 +77,7 @@ final class Validator {
 			'boolstr' => array( 'ValidatorFormats', 'format_boolean_string' ),
 			'string' => array( 'ValidatorFormats', 'format_string' ),
 			'unique_items' => array( 'ValidatorFormats', 'format_unique_items' ),
+			'filtered_array' => array( 'ValidatorFormats', 'format_filtered_array' ),
 			);
 
 	private $parameterInfo;
