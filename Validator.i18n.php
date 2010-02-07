@@ -128,6 +128,13 @@ $messages['be-tarask'] = array(
 	'validator_error_accepts_only' => 'Парамэтар $1 можа мець толькі {{PLURAL:$3|гэтае значэньне|гэтыя значэньні}}: $2.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'validator_error_empty_argument' => 'Параметърът $ 1 не може да има празна стойност.',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
