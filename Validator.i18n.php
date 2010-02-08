@@ -130,9 +130,10 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Reedy
  */
 $messages['bg'] = array(
-	'validator_error_empty_argument' => 'Параметърът $ 1 не може да има празна стойност.',
+	'validator_error_empty_argument' => 'Параметърът $1 не може да има празна стойност.',
 );
 
 /** Breton (Brezhoneg)
