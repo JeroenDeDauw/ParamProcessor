@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Validator_VERSION', '0.2.2 a1' );
+define( 'Validator_VERSION', '0.2.2 a2' );
 
 // Constants indicating the strictness of the parameter validation.
 define( 'Validator_ERRORS_NONE', 0 );
@@ -33,22 +33,22 @@ define( 'Validator_ERRORS_WARN', 2 );
 define( 'Validator_ERRORS_SHOW', 3 );
 define( 'Validator_ERRORS_STRICT', 4 );
 
-$egValidatorIP = $IP . '/extensions/Validator';
+$egValidatorDir = dirname( __FILE__ ) . '/';
 
 // Include the settings file.
-require_once( $egValidatorIP . '/Validator_Settings.php' );
+require_once( $egValidatorDir . 'Validator_Settings.php' );
 
 // Put the initalization function into the MW extension hook.
 $wgExtensionFunctions[] = 'efValidatorSetup';
 
 // Register the internationalization file.
-$wgExtensionMessagesFiles['Validator'] = $egValidatorIP . '/Validator.i18n.php';
+$wgExtensionMessagesFiles['Validator'] = $egValidatorDir . 'Validator.i18n.php';
 
 // Autoload the general classes
-$wgAutoloadClasses['Validator'] 			= $egValidatorIP . '/Validator.class.php';
-$wgAutoloadClasses['ValidatorFunctions'] 	= $egValidatorIP . '/Validator_Functions.php';
-$wgAutoloadClasses['ValidatorFormats'] 		= $egValidatorIP . '/Validator_Formats.php';
-$wgAutoloadClasses['ValidatorManager'] 		= $egValidatorIP . '/Validator_Manager.php';
+$wgAutoloadClasses['Validator'] 			= $egValidatorDir . 'Validator.class.php';
+$wgAutoloadClasses['ValidatorFunctions'] 	= $egValidatorDir . 'Validator_Functions.php';
+$wgAutoloadClasses['ValidatorFormats'] 		= $egValidatorDir . 'Validator_Formats.php';
+$wgAutoloadClasses['ValidatorManager'] 		= $egValidatorDir . 'Validator_Manager.php';
 
 /**
  * Initialization function for the Validator extension.
