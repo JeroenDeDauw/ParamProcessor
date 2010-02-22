@@ -62,7 +62,7 @@ function efValidatorSetup() {
 		'path' => __FILE__,
 		'name' => wfMsg( 'validator_name' ),
 		'version' => Validator_VERSION,
-		'author' => array( '[http://bn2vs.com Jeroen De Dauw]' ),
+		'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Validator',
 		'description' =>  wfMsg( 'validator-desc' ),
 		'descriptionmsg' => 'validator-desc',
