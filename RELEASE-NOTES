@@ -4,14 +4,21 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 
-==== Validator 0.2.1 ====
+=== Validator 0.2.2 ===
+(2010-03-01)
+
+* Fixed potential xss vectors.
+
+* Minor code improvements.
+
+=== Validator 0.2.1 ===
 (2010-02-01)
 
 * Changed the inclusion of the upper bound for range validation functions.
 
 * Small language fixes.
 
-==== Validator 0.2 ====
+=== Validator 0.2 ===
 (2009-12-25)
 
 * Added handling for lists of a type, instead of having list as a type. This includes per-item-validation and per-item-defaulting.
