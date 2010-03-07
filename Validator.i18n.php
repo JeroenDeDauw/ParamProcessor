@@ -782,9 +782,12 @@ $messages['si'] = array(
  * @author Fluff
  * @author Ozp
  * @author Per
+ * @author Sertion
  */
 $messages['sv'] = array(
-	'validator_error_parameters' => 'Följande {{PLURAL:$1|fel|fel}} har upptäckts i din syntax',
+	'validator_name' => 'Validering',
+	'validator-desc' => 'Valideraren skapar ett smidigt sätt för andra tillägg att validera olika parserfunktioners parametrar och taggar, sätta standardvärden för tilläggen samt att generera felmeddelanden',
+	'validator_error_parameters' => 'Följande {{PLURAL:$1|fel|fel}} har upptäckts i din syntax:',
 	'validator_warning_parameters' => 'Det finns {{PLURAL:$1|ett|flera}} fel i din syntax.',
 	'validator_error_unknown_argument' => '$1 är inte en giltig paramter.',
 	'validator_error_required_missing' => 'Den nödvändiga parametern $1 har inte angivits.',
