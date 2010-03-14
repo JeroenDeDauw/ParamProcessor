@@ -67,21 +67,21 @@ final class ValidatorManager {
 			$errors = array();
 
 			foreach ( $this->errors as $error ) {
-				$error['name'] = '<b>' . Sanitizer::escapeId($error['name']) . '</b>';
+				$error['name'] = '<b>' . Sanitizer::escapeId( $error['name'] ) . '</b>';
 				
-				if ($error['type'] == 'unknown') {
+				if ( $error['type'] == 'unknown' ) {
 					$errors[] = wfMsgExt( 'validator_error_unknown_argument', array( 'parsemag' ), $error['name'] );
 				}
-				elseif ($error['type'] == 'missing') {
+				elseif ( $error['type'] == 'missing' ) {
 					$errors[] = wfMsgExt( 'validator_error_required_missing', array( 'parsemag' ), $error['name'] );
 				}
-				elseif (array_key_exists('list', $error) && $error['list']) {
+				elseif ( array_key_exists( 'list', $error ) && $error['list'] ) {
 					switch( $error['type'] ) {
 						case 'not_empty' :
 							$msg = wfMsgExt( 'validator_list_error_empty_argument', array( 'parsemag' ), $error['name'] );
 							break;
 						case 'in_range' :
-							$msg = wfMsgExt( 'validator_list_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0]. '</b>', '<b>' .$error['args'][1]. '</b>' );
+							$msg = wfMsgExt( 'validator_list_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0] . '</b>', '<b>' . $error['args'][1] . '</b>' );
 							break;
 						case 'is_numeric' :
 							$msg = wfMsgExt( 'validator_list_error_must_be_number', array( 'parsemag' ), $error['name'] );
@@ -89,7 +89,7 @@ final class ValidatorManager {
 						case 'is_integer' :
 							$msg = wfMsgExt( 'validator_list_error_must_be_integer', array( 'parsemag' ), $error['name'] );
 							break;
-						case 'in_array' : 
+						case 'in_array' :
 							$itemsText = $wgLang->listToText( $error['args'] );
 							$msg = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $error['name'], $itemsText, count( $error['args'] ) );
 							break;
@@ -98,11 +98,11 @@ final class ValidatorManager {
 							break;
 					}
 					
-					if (array_key_exists('invalid-items', $error)) {
+					if ( array_key_exists( 'invalid-items', $error ) ) {
 						$omitted = array();
-						foreach($error['invalid-items'] as $item) $omitted[] = Sanitizer::escapeId($item);
-						$msg .= ' ' . wfMsgExt( 'validator_list_omitted', array( 'parsemag' ), 
-							$wgLang->listToText($omitted), count($omitted) );
+						foreach ( $error['invalid-items'] as $item ) $omitted[] = Sanitizer::escapeId( $item );
+						$msg .= ' ' . wfMsgExt( 'validator_list_omitted', array( 'parsemag' ),
+							$wgLang->listToText( $omitted ), count( $omitted ) );
 					}
 					
 					$errors[] = $msg;
@@ -113,7 +113,7 @@ final class ValidatorManager {
 							$errors[] = wfMsgExt( 'validator_error_empty_argument', array( 'parsemag' ), $error['name'] );
 							break;
 						case 'in_range' :
-							$errors[] = wfMsgExt( 'validator_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0]. '</b>', '<b>' .$error['args'][1]. '</b>' );
+							$errors[] = wfMsgExt( 'validator_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0] . '</b>', '<b>' . $error['args'][1] . '</b>' );
 							break;
 						case 'is_numeric' :
 							$errors[] = wfMsgExt( 'validator_error_must_be_number', array( 'parsemag' ), $error['name'] );
@@ -121,14 +121,14 @@ final class ValidatorManager {
 						case 'is_integer' :
 							$errors[] = wfMsgExt( 'validator_error_must_be_integer', array( 'parsemag' ), $error['name'] );
 							break;
-						case 'in_array' : 
+						case 'in_array' :
 							$itemsText = $wgLang->listToText( $error['args'] );
 							$errors[] = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $error['name'], $itemsText, count( $error['args'] ) );
 							break;
 						case 'invalid' : default :
 							$errors[] = wfMsgExt( 'validator_error_invalid_argument', array( 'parsemag' ), '<b>' . Sanitizer::escapeId( $error['value'] ) . '</b>', $error['name'] );
 							break;
-					}					
+					}
 				}
 			}
 

@@ -37,7 +37,7 @@ $messages['en'] = array(
 	'validator_list_error_must_be_number' => 'Parameter $1 can only contain numbers.',
 	'validator_list_error_must_be_integer' => 'Parameter $1 can only contain integers.',
 	'validator_list_error_invalid_range' => 'All values of parameter $1 must be between $2 and $3.',
-	'validator_list_error_invalid_argument' => 'One or more values for parameter $1 are invalid.',	
+	'validator_list_error_invalid_argument' => 'One or more values for parameter $1 are invalid.',
 
 	'validator_list_omitted' => 'The {{PLURAL:$2|value|values}} $1 {{PLURAL:$2|has|have}} been omitted.',
 

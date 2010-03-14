@@ -34,8 +34,8 @@ final class ValidatorFunctions {
 	public static function in_range( $value, $lower = false, $upper = false ) {
 		if ( ! is_numeric( $value ) ) return false;
 		$value = (int)$value;
-		if ($lower !== false && $value < $lower) return false;
-		if ($upper !== false && $value > $upper) return false;
+		if ( $lower !== false && $value < $lower ) return false;
+		if ( $upper !== false && $value > $upper ) return false;
 		return true;
 	}
 
@@ -61,8 +61,8 @@ final class ValidatorFunctions {
 		// TODO: It's possible the way the allowed values are passed here is quite inneficient...
 		$params = func_get_args();
 		array_shift( $params ); // Ommit the value
-		return in_array($value, $params);
-	}	
+		return in_array( $value, $params );
+	}
 	
 	/**
 	 * Returns whether a variable is an integer or an integer string. Uses the native PHP function.
@@ -73,7 +73,7 @@ final class ValidatorFunctions {
 	 */
 	public static function is_integer( $value ) {
 		return ctype_digit( (string)$value );
-	}	
+	}
 	
 	/**
 	 * Returns whether the length of the value is within a certain range. Upper bound included.
@@ -85,7 +85,7 @@ final class ValidatorFunctions {
 	 * @return boolean
 	 */
 	public static function has_length( $value, $lower = false, $upper = false ) {
-		return self::in_range(strlen($value), $lower, $upper);
+		return self::in_range( strlen( $value ), $lower, $upper );
 	}
 	
 	/**
@@ -98,7 +98,7 @@ final class ValidatorFunctions {
 	 * @return boolean
 	 */
 	public static function has_item_count( array $values, $lower = false, $upper = false ) {
-		return self::in_range(count($values), $lower, $upper);
+		return self::in_range( count( $values ), $lower, $upper );
 	}
 	
 	/**
@@ -109,8 +109,8 @@ final class ValidatorFunctions {
 	 * @return boolean
 	 */
 	public static function has_unique_items( array $values ) {
-		return count($values) == count(array_unique($values));
-	}	
+		return count( $values ) == count( array_unique( $values ) );
+	}
 	
 	/**
 	 * Returns the result of preg_match.
@@ -121,6 +121,6 @@ final class ValidatorFunctions {
 	 * @return boolean
 	 */
 	public static function regex( $value, $pattern ) {
-		return (bool)preg_match($pattern, $value);
+		return (bool)preg_match( $pattern, $value );
 	}
 }

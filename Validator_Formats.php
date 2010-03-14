@@ -27,7 +27,7 @@ final class ValidatorFormats {
 	 * @param $value
 	 */
 	public static function format_array( &$value ) {
-		if (! is_array($value)) $value = array($value);	
+		if ( ! is_array( $value ) ) $value = array( $value );
 	}
 	
 	/**
@@ -39,13 +39,13 @@ final class ValidatorFormats {
 		// TODO: It's possible the way the allowed values are passed here is quite inneficient...
 		$params = func_get_args();
 		array_shift( $params ); // Ommit the value
-		
-		self::format_array($value);
+
+		self::format_array( $value );
 		$filtered = array();
-		foreach($value as $item) if (in_array($item, $params)) $filtered[] = $item;
+		foreach ( $value as $item ) if ( in_array( $item, $params ) ) $filtered[] = $item;
 		
 		return $filtered;
-	}	
+	}
 	
 	/**
 	 * Changes the value to list notation, by separating items with a delimiter, 
@@ -57,8 +57,8 @@ final class ValidatorFormats {
 	 * @param $wrapper
 	 */
 	public static function format_list( &$value, $delimiter = ',', $wrapper = '' ) {
-		self::format_array($value);
-		$value =  $wrapper . implode($wrapper . $delimiter . $wrapper, $value) . $wrapper;	
+		self::format_array( $value );
+		$value =  $wrapper . implode( $wrapper . $delimiter . $wrapper, $value ) . $wrapper;
 	}
 
 	/**
@@ -69,13 +69,13 @@ final class ValidatorFormats {
 	 * @param $value
 	 */
 	public static function format_boolean( &$value ) {
-		if (is_array($value)) {
+		if ( is_array( $value ) ) {
 			$boolArray = array();
-			foreach ($value as $item) $boolArray[] = in_array($item, array('yes', 'on'));
+			foreach ( $value as $item ) $boolArray[] = in_array( $item, array( 'yes', 'on' ) );
 			$value = $boolArray;
 		}
 		else {
-			$value = in_array($value, array('yes', 'on'));
+			$value = in_array( $value, array( 'yes', 'on' ) );
 		}
 	}
 	
@@ -85,16 +85,16 @@ final class ValidatorFormats {
 	 * @param $value
 	 */
 	public static function format_boolean_string( &$value ) {
-		self::format_boolean($value);
-		if (is_array($value)) {
+		self::format_boolean( $value );
+		if ( is_array( $value ) ) {
 			$boolArray = array();
-			foreach ($value as $item) $boolArray[] = $item ? 'true' : 'false';
+			foreach ( $value as $item ) $boolArray[] = $item ? 'true' : 'false';
 			$value = $boolArray;
 		}
 		else {
 			$value = $value ? 'true' : 'false';
 		}
-	}	
+	}
 
 	/**
 	 * Changes lists into strings, by enumerating the items using $wgLang->listToText.
@@ -102,10 +102,10 @@ final class ValidatorFormats {
 	 * @param $value
 	 */
 	public static function format_string( &$value ) {
-		if (is_array($value)) {
+		if ( is_array( $value ) ) {
 			global $wgLang;
-			$value = $wgLang->listToText($value);
-		}		
+			$value = $wgLang->listToText( $value );
+		}
 	}
 	
 	/**
@@ -114,7 +114,7 @@ final class ValidatorFormats {
 	 * @param $value
 	 */
 	public static function format_unique_items( &$value ) {
-		if (is_array($value)) $value = array_unique($value);
+		if ( is_array( $value ) ) $value = array_unique( $value );
 	}
 	
 }
