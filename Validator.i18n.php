@@ -274,6 +274,7 @@ $messages['el'] = array(
 	'validator_error_must_be_integer' => 'Η παράμετρος $1 μπορεί να είναι μόνο ακέραιος αριθμός.',
 	'validator_list_error_must_be_number' => 'Η παράμετρος $1 μπορεί να περιέχει μόνο αριθμούς.',
 	'validator_list_error_must_be_integer' => 'Η παράμετρος $1 μπορεί να περιέχει μόνο ακέραιους αριθμούς.',
+	'validator_list_error_invalid_range' => 'Όλες οι τιμές της παραμέτρου $1 πρέπει να είναι μεταξύ $2 και $3.',
 );
 
 /** Esperanto (Esperanto)
