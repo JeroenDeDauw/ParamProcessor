@@ -474,6 +474,7 @@ $messages['hu'] = array(
 	'validator_list_error_must_be_integer' => 'A(z) $1 paraméter csak egész számokat tartalmazhat.',
 	'validator_list_error_invalid_range' => 'A(z) $1 paraméter összes értékének $2 és $3 közöttinek kell lennie.',
 	'validator_list_error_invalid_argument' => 'A(z) $1 paraméter egy vagy több értéke érvénytelen.',
+	'validator_list_omitted' => 'A(z) $1 {{PLURAL:$2|érték mellőzve lett.|értékek mellőzve lettek.}}',
 	'validator_error_accepts_only' => 'A(z) $1 paraméter csak a következő {{PLURAL:$3|értéket|értékeket}} fogadja el: $2',
 );
 
