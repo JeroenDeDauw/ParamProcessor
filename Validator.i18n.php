@@ -344,21 +344,22 @@ $messages['fi'] = array(
  * @author McDutchie
  * @author Peter17
  * @author PieRRoMaN
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'validator_name' => 'Validateur',
-	'validator-desc' => "Le validateur fournit un moyen simple aux autres extensions de valider les paramètres des fonctions parseur et des extensions de balises, de définir des valeurs par défaut et de générer des messages d'erreur",
+	'validator-desc' => 'Le validateur fournit aux autres extensions un moyen simple de valider les paramètres des fonctions parseur et des extensions de balises, de définir des valeurs par défaut et de générer des messages d’erreur',
 	'validator_error_parameters' => '{{PLURAL:$1|L’erreur suivante a été détectée|Les erreurs suivantes ont été détectées}} dans votre syntaxe :',
 	'validator_warning_parameters' => 'Il y a {{PLURAL:$1|une erreur|des erreurs}} dans votre syntaxe.',
 	'validator_error_unknown_argument' => '$1 n’est pas un paramètre valide.',
-	'validator_error_required_missing' => "Le paramètre requis $1 n'est pas fourni.",
+	'validator_error_required_missing' => 'Le paramètre requis $1 n’est pas fourni.',
 	'validator_error_empty_argument' => 'Le paramètre $1 ne peut pas avoir une valeur vide.',
 	'validator_error_must_be_number' => 'Le paramètre $1 peut être uniquement un nombre.',
 	'validator_error_must_be_integer' => 'Le paramètre $1 peut seulement être un entier.',
 	'validator_error_invalid_range' => 'Le paramètre $1 doit être entre $2 et $3.',
-	'validator_error_invalid_argument' => "La valeur $1 n'est pas valide pour le paramètre $2.",
-	'validator_list_error_empty_argument' => "Le paramètre $1 n'accepte pas les valeurs vides.",
+	'validator_error_invalid_argument' => 'La valeur $1 n’est pas valide pour le paramètre $2.',
+	'validator_list_error_empty_argument' => 'Le paramètre $1 n’accepte pas les valeurs vides.',
 	'validator_list_error_must_be_number' => 'Le paramètre $1 ne peut contenir que des nombres.',
 	'validator_list_error_must_be_integer' => 'Le paramètre $1 ne peut contenir que des entiers.',
 	'validator_list_error_invalid_range' => 'Toutes les valeurs du paramètre $1 doivent être comprises entre $2 et $3.',
