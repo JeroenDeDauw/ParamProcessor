@@ -55,13 +55,17 @@ final class ValidatorManager {
 	 *
 	 * @return string
 	 */
-	public function getErrorList() {
+	public function getErrorList( $errorLevel = null ) {
 		global $wgLang;
-		global $egValidatorErrorLevel;
 
 		$error_count = count( $this->errors ) ;
 		
-		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && $error_count > 0 ) {
+		if ( is_null( $errorLevel ) ) {
+			global $egValidatorErrorLevel;
+			$errorLevel = $egValidatorErrorLevel;
+		}
+		
+		if ( $errorLevel >= Validator_ERRORS_SHOW && $error_count > 0 ) {
 			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', $error_count ) . '</b><br /><i>';
 
 			$errors = array();
@@ -134,7 +138,7 @@ final class ValidatorManager {
 
 			return $errorList . implode( $errors, '<br />' ) . '</i><br />';
 		}
-		elseif ( $egValidatorErrorLevel == Validator_ERRORS_WARN && $error_count > 0 ) {
+		elseif ( $errorLevel == Validator_ERRORS_WARN && $error_count > 0 ) {
 			return '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), $error_count ) . '</b>';
 		}
 		else {
