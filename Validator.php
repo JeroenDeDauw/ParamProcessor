@@ -24,11 +24,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Validator_VERSION', '0.2.3 a1' );
+define( 'Validator_VERSION', '0.3 a1' );
 
 // Constants indicating the strictness of the parameter validation.
 define( 'Validator_ERRORS_NONE', 0 );
-define( 'Validator_ERRORS_MINIMAL', 1 );
 define( 'Validator_ERRORS_WARN', 2 );
 define( 'Validator_ERRORS_SHOW', 3 );
 define( 'Validator_ERRORS_STRICT', 4 );

@@ -19,6 +19,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Validator
  *
  * @author Jeroen De Dauw
+ * 
+ * FIXME: missing params should result in a no-go, no matter of the error level, as they can/are not defaulted.
+ * 
+ * TODO: make a distinction between fatal errors and regular errors by using 2 seperate error levels.
  */
 final class ValidatorManager {
 
@@ -29,44 +33,64 @@ final class ValidatorManager {
 	 *
 	 * @param array $rawParameters The raw parameters, as provided by the user.
 	 * @param array $parameterInfo Array containing the parameter definitions, which are needed for validation and defaulting.
-	 *
+	 * @param array $defaultParams
 	 * @return array or false The valid parameters or false when the output should not be shown.
 	 */
-	public function manageMapparameters( array $rawParameters, array $parameterInfo ) {
+	public function manageMapparameters( array $rawParameters, array $parameterInfo, array $defaultParams = array() ) {
 		global $egValidatorErrorLevel;
 
 		$validator = new Validator();
 
 		$validator->setParameterInfo( $parameterInfo );
-		$validator->setParameters( $rawParameters );
+		$validator->parseAndSetParams( $rawParameters, $defaultParams );
 
-		if ( ! $validator->validateParameters() ) {
-			if ( $egValidatorErrorLevel != Validator_ERRORS_STRICT ) $validator->correctInvalidParams();
+		$hasNoErrors = $validator->validateParameters();
+		$hasFatalError = $hasNoErrors ? false : $this->hasFatalError();
+		
+		if ( !$hasNoErrors ) {
+			if ( $egValidatorErrorLevel < Validator_ERRORS_STRICT ) $validator->correctInvalidParams();
 			if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) $this->errors = $validator->getErrors();
 		}
-
-		$showOutput = ! ( $egValidatorErrorLevel == Validator_ERRORS_STRICT && count( $this->errors ) > 0 );
-
-		return $showOutput ? $validator->getValidParams() : false;
+		
+		return !$hasFatalError ? $validator->getValidParams() : false;
 	}
 
+	/**
+	 * Returns wether there are any fatal errors. Fatal errors are either missing or invalid required parameters,
+	 * or simply any sort of error when the validation level is equal to (or bigger then) Validator_ERRORS_STRICT.
+	 * 
+	 * Note: This function assumes it will only get called when there are errors. It will always return true
+	 * when $egValidatorErrorLevel is Validator_ERRORS_STRICT or above.
+	 * 
+	 * @return boolean
+	 */
+	private function hasFatalError() {
+		global $egValidatorErrorLevel;
+		$has = $egValidatorErrorLevel >= Validator_ERRORS_STRICT;
+		
+		if ( !$has ) {
+			foreach ( $this->errors as $error ) {
+				if ( $error['type'] == 'missing' ) {
+					$has = true;
+					break;
+				}
+			}			
+		}
+
+		return $has;
+	}
+	
 	/**
 	 * Returns a string containing an HTML error list, or an empty string when there are no errors.
 	 *
 	 * @return string
 	 */
-	public function getErrorList( $errorLevel = null ) {
-		global $wgLang;
-
-		$error_count = count( $this->errors ) ;
+	public function getErrorList() {
+		global $wgLang, $egValidatorErrorLevel;
+		$errorCount = count( $this->errors ) ;
 		
-		if ( is_null( $errorLevel ) ) {
-			global $egValidatorErrorLevel;
-			$errorLevel = $egValidatorErrorLevel;
-		}
-		
-		if ( $errorLevel >= Validator_ERRORS_SHOW && $error_count > 0 ) {
-			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', $error_count ) . '</b><br /><i>';
+		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && $errorCount > 0 ) {
+			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', $errorCount ) . '</b><br /><i>';
 
 			$errors = array();
 
@@ -138,8 +162,8 @@ final class ValidatorManager {
 
 			return $errorList . implode( $errors, '<br />' ) . '</i><br />';
 		}
-		elseif ( $errorLevel == Validator_ERRORS_WARN && $error_count > 0 ) {
-			return '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), $error_count ) . '</b>';
+		elseif ( $egValidatorErrorLevel == Validator_ERRORS_WARN && $errorCount > 0 ) {
+			return '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), $errorCount ) . '</b>';
 		}
 		else {
 			return '';
