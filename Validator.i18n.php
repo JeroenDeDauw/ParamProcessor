@@ -210,11 +210,12 @@ $messages['cs'] = array(
 /** German (Deutsch)
  * @author DaSch
  * @author Imre
+ * @author Kghbln
  * @author LWChris
  */
 $messages['de'] = array(
 	'validator_name' => 'Validierer',
-	'validator-desc' => 'Validator bietet eine einfache Möglichkeit für andere Erweiterungen, um Parameter von Parser-Funktionen und Tag-Erweiterungen zu validieren, Standardwerte zu definieren und Fehlermeldungen zu generieren',
+	'validator-desc' => 'Validierer stellt anderen Erweiterungen die Funktion bereit, auf einfache Weise Parameter von Parserfunktionen und Tag-Erweiterungen zu verifizieren, Standardwerte festzulegen sowie Fehlermeldungen zu erstellen.',
 	'validator_error_parameters' => '{{PLURAL:$1|Der folgende Fehler wurde|Die folgenden Fehler wurden}} in deiner Syntax gefunden:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Es ist ein Fehler|Es sind Fehler}} in deiner Syntax.',
 	'validator_error_unknown_argument' => '$1 ist kein gültiger Parameter.',
