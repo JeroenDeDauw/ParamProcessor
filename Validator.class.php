@@ -120,11 +120,11 @@ final class Validator {
 	 */
 	public function parseAndSetParams( array $rawParams, array $defaultParams = array() ) {
 		$parameters = array();
-		//var_dump($rawParams); exit;
+
 		foreach( $rawParams as $arg ) {
-			if ( is_array( $arg ) ) {
-				
-			} else {
+			// Only take into account strings. If the value is not a string,
+			// it is not a raw parameter, and can not be parsed correctly in all cases.
+			if ( is_string( $arg ) ) {
 				$parts = explode( '=', $arg );
 				if ( count( $parts ) == 1 ) {
 					if ( count( $defaultParams ) > 0 ) {
