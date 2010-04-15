@@ -19,8 +19,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Validator
  *
  * @author Jeroen De Dauw
- * 
- * TODO: add native suport for default parameters as present in Maps 0.6. 
  */
 final class Validator {
 
@@ -55,6 +53,7 @@ final class Validator {
 			'in_array' => array( 'ValidatorFunctions', 'in_array' ),
 			'in_range' => array( 'ValidatorFunctions', 'in_range' ),
 			'is_numeric' => 'is_numeric',
+			'is_float' => 'is_float',
 			'is_integer' => array( 'ValidatorFunctions', 'is_integer' ),
 			'not_empty' => array( 'ValidatorFunctions', 'not_empty' ),
 			'has_length' => array( 'ValidatorFunctions', 'has_length' ),
@@ -121,17 +120,21 @@ final class Validator {
 	 */
 	public function parseAndSetParams( array $rawParams, array $defaultParams = array() ) {
 		$parameters = array();
-		
+		//var_dump($rawParams); exit;
 		foreach( $rawParams as $arg ) {
-			$parts = explode( '=', $arg );
-			if ( count( $parts ) == 1 ) {
-				if ( count( $defaultParams ) > 0 ) {
-					$defaultParam = array_shift( $defaultParams ); 
-					$parameters[$defaultParam] = trim( $parts[0] );	
-				}
+			if ( is_array( $arg ) ) {
+				
 			} else {
-				$name = strtolower( trim( array_shift( $parts ) ) );
-				$parameters[$name] = trim( implode( $parts ) );
+				$parts = explode( '=', $arg );
+				if ( count( $parts ) == 1 ) {
+					if ( count( $defaultParams ) > 0 ) {
+						$defaultParam = array_shift( $defaultParams ); 
+						$parameters[$defaultParam] = trim( $parts[0] );	
+					}
+				} else {
+					$name = strtolower( trim( array_shift( $parts ) ) );
+					$parameters[$name] = trim( implode( $parts ) );
+				}				
 			}
 		}		
 		
@@ -253,8 +256,7 @@ final class Validator {
 					$this->addTypeCriteria( $name, 'is_integer' );
 					break;
 				case 'float':
-					// FIXME: only accept floats, not the weird crap is_numeric also accepts
-					$this->addTypeCriteria( $name, 'is_numeric' );
+					$this->addTypeCriteria( $name, 'is_float' );
 					break;					
 				case 'number': // Note: This accepts non-decimal notations! 
 					$this->addTypeCriteria( $name, 'is_numeric' );

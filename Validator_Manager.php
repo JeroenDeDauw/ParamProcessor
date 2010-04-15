@@ -36,7 +36,7 @@ final class ValidatorManager {
 	 * @param array $defaultParams
 	 * @return array or false The valid parameters or false when the output should not be shown.
 	 */
-	public function manageMapparameters( array $rawParameters, array $parameterInfo, array $defaultParams = array() ) {
+	public function manageParameters( array $rawParameters, array $parameterInfo, array $defaultParams = array() ) {
 		global $egValidatorErrorLevel;
 
 		$validator = new Validator();
