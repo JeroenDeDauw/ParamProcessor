@@ -133,11 +133,11 @@ final class Validator {
 					}
 				} else {
 					$name = strtolower( trim( array_shift( $parts ) ) );
-					$parameters[$name] = trim( implode( $parts ) );
+					$parameters[$name] = trim( implode( '=', $parts ) );
 				}				
 			}
-		}		
-		
+		}
+
 		$this->setParameters( $parameters );
 	}
 	

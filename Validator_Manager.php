@@ -38,7 +38,7 @@ final class ValidatorManager {
 	 */
 	public function manageParameters( array $rawParameters, array $parameterInfo, array $defaultParams = array() ) {
 		global $egValidatorErrorLevel;
-
+ 
 		$validator = new Validator();
 
 		$validator->setParameterInfo( $parameterInfo );
@@ -51,7 +51,7 @@ final class ValidatorManager {
 			if ( $egValidatorErrorLevel < Validator_ERRORS_STRICT ) $validator->correctInvalidParams();
 			if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) $this->errors = $validator->getErrors();
 		}
-		
+ 
 		return !$hasFatalError ? $validator->getValidParams() : false;
 	}
 
