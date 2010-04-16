@@ -185,11 +185,12 @@ $messages['bs'] = array(
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
+ * @author Reaperman
  */
 $messages['cs'] = array(
 	'validator_name' => 'Validátor',
 	'validator-desc' => 'Validátor poskytuje ostatním rozšířením snadnější způsob ověřování parametrů funkcí parseru a značek, nastavování výchozích hodnot a vytváření chybových zpráv.',
-	'validator_error_parameters' => 'Ve vaší syntaxi {{PLURAL:$1|byla nalezena následující chyba|byly nalezeny následující chyby}}',
+	'validator_error_parameters' => 'Ve vaší syntaxi {{PLURAL:$1|byla nalezena následující chyba|byly nalezeny následující chyby}}:',
 	'validator_warning_parameters' => 'Ve vaší syntaxi {{PLURAL:$1|je chyba|jsou chyby}}.',
 	'validator_error_unknown_argument' => '$1 není platný parametr.',
 	'validator_error_required_missing' => 'Povinný parameter $1 nebyl specifikován.',
