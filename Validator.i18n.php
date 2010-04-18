@@ -271,11 +271,12 @@ $messages['dsb'] = array(
  * @author Dada
  * @author Lou
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'validator_name' => 'Επικυρωτής',
 	'validator_error_unknown_argument' => '$1 δεν είναι μια έγκυρη παράμετρος.',
-	'validator_error_required_missing' => 'Η απαιτούμενη παράμετρος $ 1 δεν παρέχεται.',
+	'validator_error_required_missing' => 'Λείπει η απαιτούμενη παράμετρος $1.',
 	'validator_error_must_be_number' => 'Η παράμετρος $1 μπορεί να είναι μόνο αριθμός.',
 	'validator_error_must_be_integer' => 'Η παράμετρος $1 μπορεί να είναι μόνο ακέραιος αριθμός.',
 	'validator_list_error_must_be_number' => 'Η παράμετρος $1 μπορεί να περιέχει μόνο αριθμούς.',
