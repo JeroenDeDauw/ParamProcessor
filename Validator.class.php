@@ -19,6 +19,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Validator
  *
  * @author Jeroen De Dauw
+ * 
+ * TODO: add a way to use parameter values in the validation/formatting of other parameters.
+ * This will also require new syntax to order the handling of the defined parameters.
  */
 final class Validator {
 
@@ -50,36 +53,36 @@ final class Validator {
 	 * @var array Holder for the validation functions.
 	 */
 	private static $mValidationFunctions = array(
-			'in_array' => array( 'ValidatorFunctions', 'in_array' ),
-			'in_range' => array( 'ValidatorFunctions', 'in_range' ),
-			'is_numeric' => 'is_numeric',
-			'is_float' => 'is_float',
-			'is_integer' => array( 'ValidatorFunctions', 'is_integer' ),
-			'not_empty' => array( 'ValidatorFunctions', 'not_empty' ),
-			'has_length' => array( 'ValidatorFunctions', 'has_length' ),
-			'regex' => array( 'ValidatorFunctions', 'regex' ),
-			);
+		'in_array' => array( 'ValidatorFunctions', 'in_array' ),
+		'in_range' => array( 'ValidatorFunctions', 'in_range' ),
+		'is_numeric' => 'is_numeric',
+		'is_float' => 'is_float',
+		'is_integer' => array( 'ValidatorFunctions', 'is_integer' ),
+		'not_empty' => array( 'ValidatorFunctions', 'not_empty' ),
+		'has_length' => array( 'ValidatorFunctions', 'has_length' ),
+		'regex' => array( 'ValidatorFunctions', 'regex' ),
+	);
 	
 	/**
 	 * @var array Holder for the list validation functions.
 	 */
 	private static $mListValidationFunctions = array(
-			'item_count' => array( 'ValidatorFunctions', 'has_item_count' ),
-			'unique_items' => array( 'ValidatorFunctions', 'has_unique_items' ),
-			);
+		'item_count' => array( 'ValidatorFunctions', 'has_item_count' ),
+		'unique_items' => array( 'ValidatorFunctions', 'has_unique_items' ),
+	);
 
 	/**
 	 * @var array Holder for the formatting functions.
 	 */
 	private static $mOutputFormats = array(
-			'array' => array( 'ValidatorFormats', 'format_array' ),
-			'list' => array( 'ValidatorFormats', 'format_list' ),
-			'boolean' => array( 'ValidatorFormats', 'format_boolean' ),
-			'boolstr' => array( 'ValidatorFormats', 'format_boolean_string' ),
-			'string' => array( 'ValidatorFormats', 'format_string' ),
-			'unique_items' => array( 'ValidatorFormats', 'format_unique_items' ),
-			'filtered_array' => array( 'ValidatorFormats', 'format_filtered_array' ),
-			);
+		'array' => array( 'ValidatorFormats', 'format_array' ),
+		'list' => array( 'ValidatorFormats', 'format_list' ),
+		'boolean' => array( 'ValidatorFormats', 'format_boolean' ),
+		'boolstr' => array( 'ValidatorFormats', 'format_boolean_string' ),
+		'string' => array( 'ValidatorFormats', 'format_string' ),
+		'unique_items' => array( 'ValidatorFormats', 'format_unique_items' ),
+		'filtered_array' => array( 'ValidatorFormats', 'format_filtered_array' ),
+	);
 
 	private $mParameterInfo;
 	
@@ -418,7 +421,7 @@ final class Validator {
 	 * @param $value
 	 * @param $criteriaArgs
 	 * 
-	 * @return unknown_type
+	 * @return boolean
 	 */
 	private function doCriteriaValidation( $validationFunction, $value, $criteriaArgs ) {
 		// Call the validation function and store the result. 
@@ -524,7 +527,7 @@ final class Validator {
 	 * if it's in a class, first the class name, then the method name.
 	 */
 	public static function addListValidationFunction( $criteriaName, array $functionName ) {
-		self::$mListValidationFunctions[$criteriaName] = $functionName;
+		self::$mListValidationFunctions[strtolower( $criteriaName )] = $functionName;
 	}
 	
 	/**
@@ -536,6 +539,6 @@ final class Validator {
 	 * if it's in a class, first the class name, then the method name.
 	 */
 	public static function addOutputFormat( $formatName, array $functionName ) {
-		self::$mOutputFormats[$formatName] = $functionName;
+		self::$mOutputFormats[strtolower( $formatName )] = $functionName;
 	}
 }

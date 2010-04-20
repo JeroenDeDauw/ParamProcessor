@@ -34,6 +34,7 @@ final class ValidatorManager {
 	 * @param array $rawParameters The raw parameters, as provided by the user.
 	 * @param array $parameterInfo Array containing the parameter definitions, which are needed for validation and defaulting.
 	 * @param array $defaultParams
+	 * 
 	 * @return array or false The valid parameters or false when the output should not be shown.
 	 */
 	public function manageParameters( array $rawParameters, array $parameterInfo, array $defaultParams = array() ) {
