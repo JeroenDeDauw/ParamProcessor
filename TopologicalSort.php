@@ -102,11 +102,15 @@ class TopologicalSort {
 	 * 
 	 * @return array of node objects
 	 */
-	function getRootNodes($nodes) {
+	function getRootNodes( array $nodes ) {
 		$output = array ();
-		foreach ( $nodes as $name => $node )
-			if (! count ( $node->parents ))
-				$output [$name] = $node;
+		
+		foreach ( $nodes as $name => $node ) {
+			if ( !count ( $node->parents )) {
+				$output[$name] = $node;
+			}
+		}
+				
 		return $output;
 	}
 	
@@ -121,27 +125,31 @@ class TopologicalSort {
 	 * );
 	 *
 	 * @param array $dlist Array of dependency pairs for use as parameter in tsort method
+	 * 
 	 * @return array
 	 */
-	function parseDependencyList($dlist = array()) {
-		$output = array ();
-		foreach ( $dlist as $name => $dependencies )
-			foreach ( $dependencies as $d )
-				array_push ( $output, array ($d => $name ) );
+	function parseDependencyList( array $dlist = array() ) {
+		$output = array();
+		
+		foreach ( $dlist as $name => $dependencies ) {
+			foreach ( $dependencies as $d ) {
+				array_push ( $output, array ( $d => $name ) );
+			}
+		}
+			
 		return $output;
 	}
 }
 
 /**
  * Node class for Topological Sort Class
- *
  */
 class TSNode {
-	var $name;
-	var $children = array();
-	var $parents = array();
+	public $name;
+	public $children = array();
+	public $parents = array();
 	
-	function TSNode($name = '') {
+	function TSNode( $name = '' ) {
 		$this->name = $name;
 	}
 }
