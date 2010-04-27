@@ -530,6 +530,20 @@ $messages['id'] = array(
 	'validator_error_accepts_only' => 'Parameter $1 hanya menerima {{PLURAL:$3|nilai ini|nilai ini}}: $2.',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'validator-desc' => 'Validator fornisce ad altre estensiono un modo semplice per la convalida dei parametri delle funzioni parser e dei tag introdotti, per impostare i valori di default e per generare messaggi di errore.',
+	'validator_error_parameters' => 'Nella tua sintassi {{PLURAL:$1|è stato individuato il seguente errore|sono stati individuati i seguenti errori}}:',
+	'validator_warning_parameters' => "Nella tua sintassi {{PLURAL:$1|c'è un errore|ci sono errori}}.",
+	'validator_error_unknown_argument' => '$1 non è un parametro valido.',
+	'validator_error_required_missing' => 'Il parametro richiesto $1 non è stato fornito.',
+	'validator_error_empty_argument' => 'Il parametro $1 non può avere un valore vuoto.',
+	'validator_error_must_be_number' => 'Il parametro $1 può essere solo un numero.',
+	'validator_error_must_be_integer' => 'Il parametro $1 può essere solo un intero.',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
