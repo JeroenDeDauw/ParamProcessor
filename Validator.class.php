@@ -329,7 +329,10 @@ final class Validator {
 	}
 	
 	/**
-	 * Valides the provided parameter by matching the value against the list and item criteria for the name.
+	 * Valides the provided parameter. 
+	 * 
+	 * This method itself validates the list criteria, if any. After this the regular criteria
+	 * are validated by calling the doItemValidation method.
 	 *
 	 * @param string $name
 	 *
@@ -348,7 +351,7 @@ final class Validator {
 				// Get the validation function. If there is no matching function, throw an exception.
 				if ( array_key_exists( $criteriaName, self::$mListValidationFunctions ) ) {
 					$validationFunction = self::$mListValidationFunctions[$criteriaName];
-					$isValid = $this->doCriteriaValidation( $validationFunction, $value, array(), $criteriaArgs );
+					$isValid = $this->doCriteriaValidation( $validationFunction, $value, $this->mParameters[$name], $criteriaArgs );
 					
 					// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
 					if ( ! $isValid ) {
@@ -398,7 +401,7 @@ final class Validator {
 					
 					// Loop through all the items in the parameter value, and validate them.
 					foreach ( $value as $item ) {
-						$isValid = $this->doCriteriaValidation( $validationFunction, $item, array(), $criteriaArgs );
+						$isValid = $this->doCriteriaValidation( $validationFunction, $item, $this->mParameters[$name], $criteriaArgs );
 						if ( $isValid ) {
 							// If per item validation is on, store the valid items, so only these can be returned by Validator.
 							if ( self::$perItemValidation ) $validItems[] = $item;
@@ -429,7 +432,7 @@ final class Validator {
 				}
 				else {
 					// Determine if the value is valid for single valued parameters.
-					$isValid = $this->doCriteriaValidation( $validationFunction, $value, array(), $criteriaArgs );
+					$isValid = $this->doCriteriaValidation( $validationFunction, $value, $this->mParameters[$name], $criteriaArgs );
 				}
 				
 				// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
@@ -462,6 +465,7 @@ final class Validator {
 	 */
 	private function doCriteriaValidation( $validationFunction, $value, array $metaData, array $criteriaArgs ) {
 		// Call the validation function and store the result. 
+		//var_dump($metaData);exit;
 		return call_user_func_array( $validationFunction, array_merge( array_merge( array( $value ), $metaData), $criteriaArgs ) );
 	}
 	
