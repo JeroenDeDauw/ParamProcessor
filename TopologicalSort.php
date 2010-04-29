@@ -7,7 +7,7 @@
  *
  * usage:
  * $t = new TopologicalSort($dependency_pairs);
- * $load_order = $t->tsort();
+ * $load_order = $t->doSort();
  *
  * where dependency_pairs is in the form:
  * $name => (depends on) $value
@@ -20,79 +20,92 @@
  * TODO: Use in revised version of Validator class
  */
 class TopologicalSort {
-	var $nodes = array ();
+	
+	private $nodes = array();
+	private $looseNodes = array();
 	
 	/**
 	 * Dependency pairs are a list of arrays in the form
 	 * $name => $val where $key must come before $val in load order.
 	 */
-	function TopologicalSort($dependencies = array(), $parse = false) {
-		if ($parse) {
-			$dependencies = $this->parseDependencyList ( $dependencies );
+	function TopologicalSort( $dependencies = array(), $parse = true ) {
+		$rawDependencies = $dependencies;
+		
+		if ( $parse ) {
+			$dependencies = $this->parseDependencyList( $dependencies );
 		}
-			
+		
+		// Store items that have no dependencies, and therefore no nodes.
+		foreach( $rawDependencies as $item => $dependency ) {
+			if ( !in_array( $item, $dependencies ) && !array_key_exists( $item, $dependencies ) ) {
+				$this->looseNodes[] = $item;
+			}
+		}
+		
 		// turn pairs into double-linked node tree
 		foreach ( $dependencies as $key => $dpair ) {
 			list ( $module, $dependency ) = each ( $dpair );
-			if ( !isset ( $this->nodes [$module] )) $this->nodes [$module] = new TSNode ( $module );
-			if ( !isset ( $this->nodes [$dependency] )) $this->nodes [$dependency] = new TSNode ( $dependency );
-			if ( !in_array ( $dependency, $this->nodes [$module]->children )) $this->nodes [$module]->children [] = $dependency;
-			if ( !in_array ( $module, $this->nodes [$dependency]->parents )) $this->nodes [$dependency]->parents [] = $module;
+			if ( !isset( $this->nodes[$module] ) ) $this->nodes[$module] = new TSNode( $module );
+			if ( !isset( $this->nodes[$dependency] ) ) $this->nodes[$dependency] = new TSNode( $dependency );
+			if ( !in_array( $dependency, $this->nodes[$module]->children ) ) $this->nodes[$module]->children[] = $dependency;
+			if ( !in_array( $module, $this->nodes[$dependency]->parents ) ) $this->nodes[$dependency]->parents[] = $module;
 		}
 	}
 	
 	/**
-	 * Perform Topological Sort
+	 * Perform Topological Sort.
 	 *
 	 * @param array $nodes optional array of node objects may be passed.
 	 * Default is  $this->nodes created in constructor.
 	 * 
 	 * @return sorted array
 	 */
-	function tsort($nodes = array()) {
+	public function doSort( array $nodes = array() ) {
 		// use this->nodes if it is populated and no param passed
-		if (! @count ( $nodes ) && count ( $this->nodes )) {
+		if ( !count( $nodes ) && count( $this->nodes ) ) {
 			$nodes = $this->nodes;
-		}
-			
+		}	
 			
 		// get nodes without parents
-		$root_nodes = array_values ( $this->getRootNodes ( $nodes ) );
+		$root_nodes = array_values( $this->getRootNodes( $nodes ) );
 		
 		// begin algorithm
-		$sorted = array ();
-		while ( count ( $nodes ) > 0 ) {
+		$sorted = array();
+		while ( count( $nodes ) > 0 ) {
 			// check for circular reference
-			if (count ( $root_nodes ) == 0)
-				return false;
+			if ( count( $root_nodes ) == 0 ) return false;
+				
 				
 			// remove this node from root_nodes
 			// and add it to the output
-			$n = array_pop ( $root_nodes );
-			$sorted [] = $n->name;
+			$n = array_pop( $root_nodes );
+			$sorted[] = $n->name;
 			
 			// for each of its  children
 			// queue the new node finally remove the original
-			for($i = (count ( $n->children ) - 1); $i >= 0; $i --) {
-				$childnode = $n->children [$i];
+			for ( $i = count( $n->children ) - 1; $i >= 0; $i -- ) {
+				$childnode = $n->children[$i];
 				// remove the link from this node to its
 				// children ($nodes[$n->name]->children[$i]) AND
 				// remove the link from each child to this
 				// parent ($nodes[$childnode]->parents[?]) THEN
 				// remove this child from this node
-				unset ( $nodes [$n->name]->children [$i] );
-				$parent_position = array_search ( $n->name, $nodes [$childnode]->parents );
-				unset ( $nodes [$childnode]->parents [$parent_position] );
+				unset( $nodes[$n->name]->children[$i] );
+				$parent_position = array_search ( $n->name, $nodes[$childnode]->parents );
+				unset( $nodes[$childnode]->parents[$parent_position] );
 				// check if this child has other parents
 				// if not, add it to the root nodes list
-				if (! count ( $nodes [$childnode]->parents ))
-					array_push ( $root_nodes, $nodes [$childnode] );
+				if ( !count( $nodes[$childnode]->parents ) ) {
+					array_push( $root_nodes, $nodes [$childnode] );
+				}
 			}
 			
 			// nodes.Remove(n);
-			unset ( $nodes [$n->name] );
+			unset( $nodes[$n->name] );
 		}
-		return $sorted;
+		
+		// Return the result with the loose nodes (items with no dependencies) appended.
+		return array_merge( $sorted, $this->looseNodes );
 	}
 	
 	/**
@@ -102,11 +115,11 @@ class TopologicalSort {
 	 * 
 	 * @return array of node objects
 	 */
-	function getRootNodes( array $nodes ) {
+	private function getRootNodes( array $nodes ) {
 		$output = array ();
 		
 		foreach ( $nodes as $name => $node ) {
-			if ( !count ( $node->parents )) {
+			if ( !count ( $node->parents ) ) {
 				$output[$name] = $node;
 			}
 		}
@@ -124,11 +137,11 @@ class TopologicalSort {
 	 *  ...etc
 	 * );
 	 *
-	 * @param array $dlist Array of dependency pairs for use as parameter in tsort method
+	 * @param array $dlist Array of dependency pairs for use as parameter in doSort method
 	 * 
 	 * @return array
 	 */
-	function parseDependencyList( array $dlist = array() ) {
+	private function parseDependencyList( array $dlist = array() ) {
 		$output = array();
 		
 		foreach ( $dlist as $name => $dependencies ) {
@@ -149,7 +162,7 @@ class TSNode {
 	public $children = array();
 	public $parents = array();
 	
-	function TSNode( $name = '' ) {
+	public function TSNode( $name = '' ) {
 		$this->name = $name;
 	}
 }

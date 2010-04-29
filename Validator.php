@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Validator_VERSION', '0.3 a2' );
+define( 'Validator_VERSION', '0.3 a3' );
 
 // Constants indicating the strictness of the parameter validation.
 define( 'Validator_ERRORS_NONE', 0 );
@@ -43,11 +43,12 @@ $wgExtensionFunctions[] = 'efValidatorSetup';
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Validator'] = $egValidatorDir . 'Validator.i18n.php';
 
-// Autoload the general classes
+// Autoload the general classes.
 $wgAutoloadClasses['Validator'] 			= $egValidatorDir . 'Validator.class.php';
 $wgAutoloadClasses['ValidatorFunctions'] 	= $egValidatorDir . 'Validator_Functions.php';
 $wgAutoloadClasses['ValidatorFormats'] 		= $egValidatorDir . 'Validator_Formats.php';
 $wgAutoloadClasses['ValidatorManager'] 		= $egValidatorDir . 'Validator_Manager.php';
+$wgAutoloadClasses['TopologicalSort'] 		= $egValidatorDir . 'TopologicalSort.php';
 
 /**
  * Initialization function for the Validator extension.

@@ -20,7 +20,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  * 
- * FIXME: missing params should result in a no-go, no matter of the error level, as they can/are not defaulted.
+ * FIXME: missing required params should result in a no-go, no matter of the error level, as they can/are not defaulted.
  * 
  * TODO: make a distinction between fatal errors and regular errors by using 2 seperate error levels.
  */
@@ -45,7 +45,7 @@ final class ValidatorManager {
 		$validator->setParameterInfo( $parameterInfo );
 		$validator->parseAndSetParams( $rawParameters, $defaultParams );
 
-		$hasNoErrors = $validator->validateParameters();
+		$hasNoErrors = $validator->validateAndFormatParameters();
 		$hasFatalError = $hasNoErrors ? false : $this->hasFatalError();
 		
 		if ( !$hasNoErrors ) {
@@ -75,7 +75,7 @@ final class ValidatorManager {
 					$has = true;
 					break;
 				}
-			}			
+			}
 		}
 
 		return $has;
