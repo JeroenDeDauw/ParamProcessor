@@ -20,9 +20,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  * 
- * TODO: add dependency system
- * 			* find out how to decompress dependency tree in an efficient way
- * 			* handle params in the determined order and make meta data available for sucessive ones
  * TODO: provide all original and inferred info about a parameter pair to the validation and formatting functions.
  * 			this will allow for the special behaviour of the default parameter of display_points in Maps
  * 			where the actual alias influences the handling
@@ -466,7 +463,7 @@ final class Validator {
 	private function doCriteriaValidation( $validationFunction, $value, array $metaData, array $criteriaArgs ) {
 		// Call the validation function and store the result. 
 		//var_dump($metaData);exit;
-		return call_user_func_array( $validationFunction, array_merge( array_merge( array( $value ), $metaData), $criteriaArgs ) );
+		return call_user_func_array( $validationFunction, array_merge( array_merge( array( $value ), array( $metaData ) ), $criteriaArgs ) );
 	}
 	
 	/**
