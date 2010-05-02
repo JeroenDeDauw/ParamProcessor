@@ -69,8 +69,8 @@ final class Validator {
 	private static $mValidationFunctions = array(
 		'in_array' => array( 'ValidatorFunctions', 'in_array' ),
 		'in_range' => array( 'ValidatorFunctions', 'in_range' ),
-		'is_numeric' => 'is_numeric',
-		'is_float' => 'is_float',
+		'is_numeric' => array( 'ValidatorFunctions', 'is_numeric' ),
+		'is_float' => array( 'ValidatorFunctions', 'is_float' ),
 		'is_integer' => array( 'ValidatorFunctions', 'is_integer' ),
 		'not_empty' => array( 'ValidatorFunctions', 'not_empty' ),
 		'has_length' => array( 'ValidatorFunctions', 'has_length' ),

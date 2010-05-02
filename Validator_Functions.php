@@ -26,8 +26,9 @@ final class ValidatorFunctions {
 	 * Returns whether the provided value, which must be a number, is within a certain range. Upper bound included.
 	 *
 	 * @param $value
-	 * @param $lower
-	 * @param $upper
+	 * @param array $metaData
+	 * @param mixed $lower
+	 * @param mixed $upper
 	 *
 	 * @return boolean
 	 */
@@ -43,6 +44,7 @@ final class ValidatorFunctions {
 	 * Returns whether the string value is not empty. Not empty is defined as having at least one character after trimming.
 	 *
 	 * @param $value
+	 * @param array $metaData
 	 *
 	 * @return boolean
 	 */
@@ -54,6 +56,7 @@ final class ValidatorFunctions {
 	 * Returns whether the string value is not empty. Not empty is defined as having at least one character after trimming.
 	 *
 	 * @param $value
+	 * @param array $metaData
 	 *
 	 * @return boolean
 	 */
@@ -68,6 +71,7 @@ final class ValidatorFunctions {
 	 * Returns whether a variable is an integer or an integer string. Uses the native PHP function.
 	 *
 	 * @param $value
+	 * @param array $metaData
 	 *
 	 * @return boolean
 	 */
@@ -79,8 +83,9 @@ final class ValidatorFunctions {
 	 * Returns whether the length of the value is within a certain range. Upper bound included.
 	 * 
 	 * @param string $value
-	 * @param $lower
-	 * @param $upper
+	 * @param array $metaData
+	 * @param mixed $lower
+	 * @param mixed $upper
 	 * 
 	 * @return boolean
 	 */
@@ -92,8 +97,9 @@ final class ValidatorFunctions {
 	 * Returns whether the amount of items in the list is within a certain range. Upper bound included.
 	 * 
 	 * @param array $values
-	 * @param $lower
-	 * @param $upper
+	 * @param array $metaData
+	 * @param mixed $lower
+	 * @param mixed $upper
 	 * 
 	 * @return boolean
 	 */
@@ -105,6 +111,7 @@ final class ValidatorFunctions {
 	 * Returns whether the list of values does not have any duplicates.
 	 * 
 	 * @param array $values
+	 * @param array $metaData
 	 * 
 	 * @return boolean
 	 */
@@ -116,11 +123,36 @@ final class ValidatorFunctions {
 	 * Returns the result of preg_match.
 	 * 
 	 * @param string $value
+	 * @param array $metaData
 	 * @param string $pattern
 	 * 
 	 * @return boolean
 	 */
 	public static function regex( $value, array $metaData, $pattern ) {
 		return (bool)preg_match( $pattern, $value );
+	}
+	
+	/**
+	 * Wrapper for the native is_numeric function.
+	 * 
+	 * @param $value
+	 * @param array $metaData
+	 * 
+	 * @return boolean
+	 */
+	public static function is_numeric( $value, array $metaData ) {
+		return is_numeric( $value );
+	}
+	
+	/**
+	 * Wrapper for the native is_float function.
+	 * 
+	 * @param $value
+	 * @param array $metaData
+	 * 
+	 * @return boolean
+	 */
+	public static function is_float( $value, array $metaData ) {
+		return is_float( $value );
 	}
 }
