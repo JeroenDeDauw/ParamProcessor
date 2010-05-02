@@ -145,7 +145,8 @@ final class ValidatorFunctions {
 	}
 	
 	/**
-	 * Wrapper for the native is_float function.
+	 * Returns if the value is a floating point number.
+	 * Does NOT check the type of the variable like the native is_float function. 
 	 * 
 	 * @param $value
 	 * @param array $metaData
@@ -153,6 +154,6 @@ final class ValidatorFunctions {
 	 * @return boolean
 	 */
 	public static function is_float( $value, array $metaData ) {
-		return is_float( $value );
+		return preg_match( '/^\d+(\.\d+)?$/', $value );
 	}
 }
