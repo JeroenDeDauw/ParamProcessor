@@ -24,6 +24,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * 			this will allow for the special behaviour of the default parameter of display_points in Maps
  * 			where the actual alias influences the handling
  * TODO: break on fatal errors, such as missing required parameters that are dependencies 
+ * 
+ * FIXME: lists are broken
  */
 final class Validator {
 
@@ -98,15 +100,42 @@ final class Validator {
 		'filtered_array' => array( 'ValidatorFormats', 'format_filtered_array' ),
 	);
 
+	/**
+	 * An array containing the parameter definitions. The keys are main parameter names,
+	 * and the values are associative arrays themselves, consisting out of elements that 
+	 * can be seen as properties of the parameter as they would be in the case of objects.
+	 * 
+	 * @var associative array
+	 */
 	private $mParameterInfo;
 	
-	private $mRawParameters = array();
-
+	/**
+	 * An array initially containing the user provided values. Adittional data about
+	 * the validation and formatting processes gets added later on, and so stays 
+	 * available for validation and formatting of other parameters.
+	 * 
+	 * original-value
+	 * default
+	 * position
+	 * original-name
+	 * 
+	 * 
+	 * @var associative array
+	 */
 	private $mParameters = array();
+	
+	/**
+	 * Arrays for holding the (main) names of valid, invalid and unknown parameters. 
+	 */
 	private $mValidParams = array();
 	private $mInvalidParams = array();
 	private $mUnknownParams = array();
 
+	/**
+	 * Holds all errors and their meta data. 
+	 * 
+	 * @var associative array
+	 */
 	private $mErrors = array();
 
 	/**
@@ -125,8 +154,6 @@ final class Validator {
 	 * 
 	 * @param array $rawParams
 	 * @param array $defaultParams
-	 * 
-	 * TODO: retain info about the changing of defaults
 	 */
 	public function parseAndSetParams( array $rawParams, array $defaultParams = array() ) {
 		$parameters = array();
@@ -143,7 +170,7 @@ final class Validator {
 					if ( count( $defaultParams ) > 0 ) {
 						$defaultParam = array_shift( $defaultParams );
 						$parameters[$defaultParam] = array(
-							'value' => trim( $parts[0] ),
+							'original-value' => trim( $parts[0] ),
 							'default' => $defaultNr,
 							'position' => $nr
 						);
@@ -152,7 +179,7 @@ final class Validator {
 				} else {
 					$name = strtolower( trim( array_shift( $parts ) ) );
 					$parameters[$name] = array(
-						'value' => trim( implode( '=', $parts ) ),
+						'original-value' => trim( implode( '=', $parts ) ),
 						'default' => false,
 						'position' => $nr
 					);
@@ -161,47 +188,67 @@ final class Validator {
 			$nr++;
 		}
 
-		$this->mRawParameters = $parameters;
-	}
-	
-	/**
-	 * @new
-	 * 
-	 * TODO: merge meta data and value arrays
-	 */
-	public function validateAndFormatParameters() {
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
-		foreach ( $this->mRawParameters as $paramName => $paramData ) {
-			$paramValue = $paramData['value'];
+		foreach ( $parameters as $paramName => $paramData ) {
 			// Attempt to get the main parameter name (takes care of aliases).
 			$mainName = self::getMainParamName( $paramName );
+			
 			// If the parameter is found in the list of allowed ones, add it to the $mParameters array.
 			if ( $mainName ) {
 				// Check for parameter overriding. In most cases, this has already largely been taken care off, 
 				// in the form of later parameters overriding earlier ones. This is not true for different aliases though.
 				if ( !array_key_exists( $mainName, $this->mParameters ) || self::$acceptOverriding ) {
-					$this->mParameters[$mainName] = array(
-						'value' => $paramValue,
-						'original-name' => $paramName,
-						'default' => $paramData['default'],
-						'position' => $paramData['position']
-					);
+					$paramData['original-name'] = $paramName;
+					$this->mParameters[$mainName] = $paramData;
 				}
 				else {
 					$this->errors[] = array( 'type' => 'override', 'name' => $mainName );
 				}
 			}
 			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->mErrors array.
-				if ( self::$storeUnknownParameters ) $this->mUnknownParams[$paramName] = $paramValue;
+				if ( self::$storeUnknownParameters ) $this->mUnknownParams[$paramName] = $paramData['original-value'];
 				$this->mErrors[] = array( 'type' => 'unknown', 'name' => $paramName );
 			}
+		}		
+	}
+	
+	/**
+	 * Returns the main parameter name for a given parameter or alias, or false
+	 * when it is not recognized as main parameter or alias.
+	 *
+	 * @param string $paramName
+	 *
+	 * @return string or false
+	 */
+	private function getMainParamName( $paramName ) {
+		$result = false;
+
+		if ( array_key_exists( $paramName, $this->mParameterInfo ) ) {
+			$result = $paramName;
 		}
-		
+		else {
+			foreach ( $this->mParameterInfo as $name => $data ) {
+				if ( array_key_exists( 'aliases', $data ) && in_array( $paramName, $data['aliases'] ) ) {
+					$result = $name;
+					break;
+				}
+			}
+		}
+
+		return $result;
+	}	
+	
+	/**
+	 * @new
+	 * 
+	 * TODO: further impelement new meta data structure from this point on
+	 */
+	public function validateAndFormatParameters() {
 		$dependencyList = array();
 		
 		foreach ( $this->mParameterInfo as $paramName => $paramInfo ) {
-			$dependencyList[$paramName] = array_key_exists( 'dependencies', $paramInfo ) ?
-				(array)$paramInfo['dependencies'] : array();
+			$dependencyList[$paramName] = 
+				array_key_exists( 'dependencies', $paramInfo ) ? (array)$paramInfo['dependencies'] : array();
 		}
 		
 		$sorter = new TopologicalSort( $dependencyList, true );
@@ -213,7 +260,7 @@ final class Validator {
 			// If the user provided a value for this parameter, validate and handle it.
 			if ( array_key_exists( $paramName, $this->mParameters ) ) {
 
-				$paramValue = $this->mParameters[$paramName]['value'];
+				$paramValue = $this->mParameters[$paramName]['original-value'];
 				$this->cleanParameter( $paramName, $paramValue );
 
 				if ( $this->validateParameter( $paramName ) ) {
@@ -238,32 +285,6 @@ final class Validator {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Returns the main parameter name for a given parameter or alias, or false
-	 * when it is not recognized as main parameter or alias.
-	 *
-	 * @param string $paramName
-	 *
-	 * @return string
-	 */
-	private function getMainParamName( $paramName ) {
-		$result = false;
-
-		if ( array_key_exists( $paramName, $this->mParameterInfo ) ) {
-			$result = $paramName;
-		}
-		else {
-			foreach ( $this->mParameterInfo as $name => $data ) {
-				if ( array_key_exists( 'aliases', $data ) && in_array( $paramName, $data['aliases'] ) ) {
-					$result = $name;
-					break;
-				}
-			}
-		}
-
-		return $result;
 	}
 
 	/**
@@ -341,7 +362,7 @@ final class Validator {
 		$hasNoErrors = true;
 		$checkItemCriteria = true;
 		
-		$value = $this->mParameters[$name]['value'];
+		$value = $this->mParameters[$name]['original-value'];
 		
 		if ( array_key_exists( 'list-criteria', $this->mParameterInfo[$name] ) ) {
 			foreach ( $this->mParameterInfo[$name]['list-criteria'] as $criteriaName => $criteriaArgs ) {
@@ -435,7 +456,7 @@ final class Validator {
 				// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
 				if ( !$isValid ) {
 					$isList = is_array( $value );
-					if ( $isList ) $value = $this->mRawParameters[$name];
+					if ( $isList ) $value = $this->mParameters[$name]['original-value'];
 					$this->mErrors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => $isList, 'value' => $value );
 					$hasNoErrors = false;
 					if ( !self::$accumulateParameterErrors ) break;
