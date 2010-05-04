@@ -23,7 +23,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * TODO: provide all original and inferred info about a parameter pair to the validation and formatting functions.
  * 			this will allow for the special behaviour of the default parameter of display_points in Maps
  * 			where the actual alias influences the handling
+ * 
  * TODO: break on fatal errors, such as missing required parameters that are dependencies 
+ * 
+ * TODO: correct invalid parameters in the main loop, as to have correct dependency handling
  * 
  * FIXME: lists are broken
  */
@@ -118,7 +121,7 @@ final class Validator {
 	 * default
 	 * position
 	 * original-name
-	 * 
+	 * formatted-value
 	 * 
 	 * @var associative array
 	 */
@@ -139,23 +142,16 @@ final class Validator {
 	private $mErrors = array();
 
 	/**
-	 * Sets the parameter criteria, used to valiate the parameters.
-	 *
+	 * Determines the names and values of all parameters. Also takes care of
+	 * default parameters and aliases, by determining the main parameter name.
+	 * 
+	 * @param array $rawParams
 	 * @param array $parameterInfo
 	 * @param array $defaultParams
 	 */
-	public function setParameterInfo( array $parameterInfo ) {
+	public function parseAndSetParams( array $rawParams, array $parameterInfo, array $defaultParams = array() ) {
 		$this->mParameterInfo = $parameterInfo;
-	}
-
-	/**
-	 * Determine all parameter names and value, and take care of default (nameless)
-	 * parameters, by turning them into named ones.
-	 * 
-	 * @param array $rawParams
-	 * @param array $defaultParams
-	 */
-	public function parseAndSetParams( array $rawParams, array $defaultParams = array() ) {
+		
 		$parameters = array();
 
 		$nr = 0;
@@ -206,10 +202,10 @@ final class Validator {
 				}
 			}
 			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->mErrors array.
-				if ( self::$storeUnknownParameters ) $this->mUnknownParams[$paramName] = $paramData['original-value'];
+				if ( self::$storeUnknownParameters ) $this->mUnknownParams[] = $paramName;
 				$this->mErrors[] = array( 'type' => 'unknown', 'name' => $paramName );
 			}
-		}		
+		}
 	}
 	
 	/**
@@ -239,9 +235,11 @@ final class Validator {
 	}	
 	
 	/**
-	 * @new
+	 * First determines the order of parameter handling based on the dependency definitons,
+	 * and then goes through the parameters one by one, first validating and then formatting,
+	 * storing any encountered errors along the way.
 	 * 
-	 * TODO: further impelement new meta data structure from this point on
+	 * The 'value' element is set here, either by the cleaned 'original-value' or default.
 	 */
 	public function validateAndFormatParameters() {
 		$dependencyList = array();
@@ -260,40 +258,40 @@ final class Validator {
 			// If the user provided a value for this parameter, validate and handle it.
 			if ( array_key_exists( $paramName, $this->mParameters ) ) {
 
-				$paramValue = $this->mParameters[$paramName]['original-value'];
-				$this->cleanParameter( $paramName, $paramValue );
+				$this->cleanParameter( $paramName );
 
 				if ( $this->validateParameter( $paramName ) ) {
 					// If the validation succeeded, add the parameter to the list of valid ones.
-					$this->mValidParams[$paramName] = $paramValue;
-					$this->setOutputTypes( $this->mValidParams[$paramName], $paramInfo );
+					$this->mValidParams[] = $paramName;
+					$this->setOutputTypes( $paramName );
 				}
 				else {
 					// If the validation failed, add the parameter to the list of invalid ones.
-					$this->mInvalidParams[$paramName] = $paramValue;
+					$this->mInvalidParams[] = $paramName;
 				}
 			}
 			else {
 				// If the parameter is required, add a new error of type 'missing'.
+				// TODO: break when has dependencies
 				if ( array_key_exists( 'required', $paramInfo ) && $paramInfo['required'] ) {
 					$this->errors[] = array( 'type' => 'missing', 'name' => $paramName );
 				}
 				else {
 					// Set the default value (or default 'default value' if none is provided), and ensure the type is correct.
-					$this->mValidParams[$paramName] = array_key_exists( 'default', $paramInfo ) ? $paramInfo['default'] : self::$defaultDefaultValue;
-					$this->setOutputTypes( $this->mValidParams[$paramName], $paramInfo );
+					$this->mParameters[$paramName]['value'] = array_key_exists( 'default', $paramInfo ) ? $paramInfo['default'] : self::$defaultDefaultValue; 
+					$this->mValidParams[] = $paramName; 
+					$this->setOutputTypes( $paramName );
 				}
 			}
 		}
 	}
 
 	/**
-	 * Ensures the parameter info is valid, and splits lists.
+	 * Ensures the parameter info is valid and parses list types.
 	 * 
 	 * @param string $name
-	 * @param $value
 	 */
-	private function cleanParameter( $name, &$value ) {
+	private function cleanParameter( $name ) {
 		// Ensure there is a criteria array.
 		if ( ! array_key_exists( 'criteria', $this->mParameterInfo[$name] ) ) {
 			$this->mParameterInfo[$name]['criteria'] = array();
@@ -330,20 +328,30 @@ final class Validator {
 			}
 		}
 		
-		if ( count( $this->mParameterInfo[$name]['type'] ) > 1 && $this->mParameterInfo[$name]['type'][1] == 'list' ) {
-			// Trimming and splitting of list values.
-			$delimiter = count( $this->mParameterInfo[$name]['type'] ) > 2 ? $this->mParameterInfo[$name]['type'][2] : self::$defaultListDelimeter;
-			$value = preg_replace( '/((\s)*' . $delimiter . '(\s)*)/', $delimiter, $value );
-			$value = explode( $delimiter, $value );
-		}
-		elseif ( count( $this->mParameterInfo[$name]['type'] ) > 1 && $this->mParameterInfo[$name]['type'][1] == 'array' && is_array( $value ) ) {
-			// Trimming of array values.
-			for ( $i = count( $value ); $i > 0; $i-- ) $value[$i] = trim ( $value[$i] );
+		// If the original-value element is set, clean it, and store as value.
+		if ( array_key_exists( 'original-value', $this->mParameters[$name] ) ) {
+			$value = $this->mParameters[$name]['original-value'];
+			
+			if ( count( $this->mParameterInfo[$name]['type'] ) > 1 && $this->mParameterInfo[$name]['type'][1] == 'list' ) {
+				// Trimming and splitting of list values.
+				$delimiter = count( $this->mParameterInfo[$name]['type'] ) > 2 ? $this->mParameterInfo[$name]['type'][2] : self::$defaultListDelimeter;
+				$value = preg_replace( '/((\s)*' . $delimiter . '(\s)*)/', $delimiter, $value );
+				$value = explode( $delimiter, $value );
+			}
+			elseif ( count( $this->mParameterInfo[$name]['type'] ) > 1 && $this->mParameterInfo[$name]['type'][1] == 'array' && is_array( $value ) ) {
+				// Trimming of array values.
+				for ( $i = count( $value ); $i > 0; $i-- ) $value[$i] = trim( $value[$i] );
+			}			
+			
+			$this->mParameters[$name]['value'] = $value;
 		}
 	}
 	
 	private function addTypeCriteria( $paramName, $criteriaName, $criteriaArgs = array() ) {
-		$this->mParameterInfo[$paramName]['criteria'] = array_merge( array( $criteriaName => $criteriaArgs ), $this->mParameterInfo[$paramName]['criteria'] );
+		$this->mParameterInfo[$paramName]['criteria'] = array_merge(
+			array( $criteriaName => $criteriaArgs ),
+			$this->mParameterInfo[$paramName]['criteria']
+		);
 	}
 	
 	/**
@@ -355,21 +363,31 @@ final class Validator {
 	 * @param string $name
 	 *
 	 * @return boolean Indicates whether there the parameter value(s) is/are valid.
-	 * 
-	 * TODO: value was byref arg for some reason - this could break stuff
 	 */
 	private function validateParameter( $name ) {
+		$hasNoErrors = $this->doListValidation( $name );
+		
+		if ( $hasNoErrors || self::$accumulateParameterErrors ) {
+			$hasNoErrors = $hasNoErrors && $this->doItemValidation( $name );
+		}
+		
+		return $hasNoErrors;
+	}
+	
+	/**
+	 * Validates the list criteria for a parameter, if there are any.
+	 * 
+	 * @param string $name
+	 */
+	private function doListValidation( $name ) {
 		$hasNoErrors = true;
-		$checkItemCriteria = true;
-		
-		$value = $this->mParameters[$name]['original-value'];
-		
+
 		if ( array_key_exists( 'list-criteria', $this->mParameterInfo[$name] ) ) {
 			foreach ( $this->mParameterInfo[$name]['list-criteria'] as $criteriaName => $criteriaArgs ) {
 				// Get the validation function. If there is no matching function, throw an exception.
 				if ( array_key_exists( $criteriaName, self::$mListValidationFunctions ) ) {
 					$validationFunction = self::$mListValidationFunctions[$criteriaName];
-					$isValid = $this->doCriteriaValidation( $validationFunction, $value, $this->mParameters[$name], $criteriaArgs );
+					$isValid = $this->doCriteriaValidation( $validationFunction, $this->mParameters['value'], $this->mParameters[$name], $criteriaArgs );
 					
 					// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
 					if ( ! $isValid ) {
@@ -377,8 +395,7 @@ final class Validator {
 						
 						$this->errors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'value' => $this->rawParameters[$name] );
 						
-						if ( ! self::$accumulateParameterErrors ) {
-							$checkItemCriteria = false;
+						if ( !self::$accumulateParameterErrors ) {
 							break;
 						}
 					}
@@ -389,22 +406,21 @@ final class Validator {
 				}
 			}
 		}
-
-		if ( $checkItemCriteria ) $hasNoErrors = $hasNoErrors && $this->doItemValidation( $name, $value );
-
+		
 		return $hasNoErrors;
 	}
 	
 	/**
 	 * Valides the provided parameter by matching the value against the item criteria for the name.
 	 * 
-	 * @param $name
-	 * @param $value
+	 * @param string $name
 	 * 
 	 * @return boolean Indicates whether there the parameter value(s) is/are valid.
 	 */
-	private function doItemValidation( $name, &$value ) {
+	private function doItemValidation( $name ) {
 		$hasNoErrors = true;
+		
+		$value = &$this->mParameters[$name]['value'];
 		
 		// Go through all item criteria.
 		foreach ( $this->mParameterInfo[$name]['criteria'] as $criteriaName => $criteriaArgs ) {
@@ -452,7 +468,7 @@ final class Validator {
 					// Determine if the value is valid for single valued parameters.
 					$isValid = $this->doCriteriaValidation( $validationFunction, $value, $this->mParameters[$name], $criteriaArgs );
 				}
-				
+
 				// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
 				if ( !$isValid ) {
 					$isList = is_array( $value );
@@ -467,7 +483,7 @@ final class Validator {
 				throw new Exception( 'There is no validation function for criteria type ' . $criteriaName );
 			}
 		}
-
+		
 		return $hasNoErrors;
 	}
 	
@@ -483,7 +499,6 @@ final class Validator {
 	 */
 	private function doCriteriaValidation( $validationFunction, $value, array $metaData, array $criteriaArgs ) {
 		// Call the validation function and store the result. 
-		//var_dump($metaData);exit;
 		return call_user_func_array( $validationFunction, array_merge( array_merge( array( $value ), array( $metaData ) ), $criteriaArgs ) );
 	}
 	
@@ -491,29 +506,35 @@ final class Validator {
 	 * Changes the invalid parameters to their default values, and changes their state to valid.
 	 */
 	public function correctInvalidParams() {
-		foreach ( $this->mInvalidParams as $paramName => $paramValue ) {
-			unset( $this->mInvalidParams[$paramName] );
-			$this->mValidParams[$paramName] = array_key_exists( 'default', $this->mParameterInfo[$paramName] ) ? $this->mParameterInfo[$paramName]['default'] : '';
-			$this->setOutputTypes( $this->mValidParams[$paramName], $this->mParameterInfo[$paramName] );
+		while ( $paramName = array_shift( $this->mInvalidParams ) ) {
+			if ( array_key_exists( 'default', $this->mParameterInfo[$paramName] ) ) {
+				$this->mParameters[$paramName]['value'] = $this->mParameterInfo[$paramName]['default'];
+			} 
+			else {
+				$this->mParameters[$paramName]['value'] = self::$defaultDefaultValue;
+			}
+			$this->setOutputTypes( $paramName );
+			$this->mValidParams[] = $paramName;
 		}
 	}
 	
 	/**
 	 * Ensures the output type values are arrays, and then calls setOutputType.
 	 * 
-	 * @param $value
-	 * @param array $info
+	 * @param string $name
 	 */
-	private function setOutputTypes( &$value, array $info ) {
+	private function setOutputTypes( $name ) {
+		$info = $this->mParameterInfo[$name];
+		
 		if ( array_key_exists( 'output-types', $info ) ) {
 			for ( $i = 0, $c = count( $info['output-types'] ); $i < $c; $i++ ) {
 				if ( ! is_array( $info['output-types'][$i] ) ) $info['output-types'][$i] = array( $info['output-types'][$i] );
-				$this->setOutputType( $value, $info['output-types'][$i] );
+				$this->setOutputType( $name, $info['output-types'][$i] );
 			}
 		}
 		elseif ( array_key_exists( 'output-type', $info ) ) {
 			if ( ! is_array( $info['output-type'] ) ) $info['output-type'] = array( $info['output-type'] );
-			$this->setOutputType( $value, $info['output-type'] );
+			$this->setOutputType( $name, $info['output-type'] );
 		}
 		
 	}
@@ -521,17 +542,29 @@ final class Validator {
 	/**
 	 * Calls the formatting function for the provided output format with the provided value.
 	 * 
-	 * @param $value
+	 * @param string $name
 	 * @param array $typeInfo
 	 */
-	private function setOutputType( &$value, array $typeInfo ) {
+	private function setOutputType( $name, array $typeInfo ) {
 		// The output type is the first value in the type info array.
 		// The remaining ones will be any extra arguments.
 		$outputType = strtolower( array_shift( $typeInfo ) );
 		
+		if ( !array_key_exists( 'formatted-value', $this->mParameters[$name] ) ) {
+			$this->mParameters[$name]['formatted-value'] = $this->mParameters[$name]['value'];
+		}
+		
 		if ( array_key_exists( $outputType, self::$mOutputFormats ) ) {
-			// Call the formatting function with as first parameter the value, followed by the extra arguments.
-			call_user_func_array( self::$mOutputFormats[$outputType], array_merge( array( &$value ), $typeInfo ) );
+			/**
+			 * Call the formatting function with these parameters:
+			 * - parameter value: ByRef for easy manipulation.
+			 * - parameter name: For lookups in the param info array.
+			 * - parameter array: All data about the parameters gathered so far (this includes dependencies!).
+			 * - output type info: Type info as provided by the parameter definition. This can be zero or more parameters.
+			 */ 
+			$parameters = array( &$this->mParameters[$name]['formatted-value'], $name, $this->mParameters );
+			$parameters = array_merge( $parameters, $typeInfo );
+			call_user_func_array( self::$mOutputFormats[$outputType], $parameters );
 		}
 		else {
 			throw new Exception( 'There is no formatting function for output format ' . $outputType );
@@ -544,7 +577,14 @@ final class Validator {
 	 * @return array
 	 */
 	public function getValidParams() {
-		return $this->mValidParams;
+		$validParams = array();
+		
+		foreach( $this->mValidParams as $name ) {
+			$key = array_key_exists( 'formatted-value', $this->mParameters[$name] ) ? 'formatted-value' : 'value';
+			$validParams[$name] = $this->mParameters[$name][$key];
+		}
+		
+		return $validParams;
 	}
 
 	/**
@@ -553,7 +593,13 @@ final class Validator {
 	 * @return array
 	 */
 	public static function getUnknownParams() {
-		return $this->mUnknownParams;
+		$unknownParams = array();
+		
+		foreach( $this->mUnknownParams as $name ) {
+			$unknownParams[$name] = $this->mParameters[$name]; // TODO
+		}		
+		
+		return $unknownParams;
 	}
 
 	/**

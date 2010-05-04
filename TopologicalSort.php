@@ -22,24 +22,17 @@
 class TopologicalSort {
 	
 	private $nodes = array();
-	private $looseNodes = array();
+	private $nodeNames = array();
 	
 	/**
 	 * Dependency pairs are a list of arrays in the form
 	 * $name => $val where $key must come before $val in load order.
 	 */
 	function TopologicalSort( $dependencies = array(), $parse = true ) {
-		$rawDependencies = $dependencies;
+		$this->nodeNames = array_keys( $dependencies );
 		
 		if ( $parse ) {
 			$dependencies = $this->parseDependencyList( $dependencies );
-		}
-		
-		// Store items that have no dependencies, and therefore no nodes.
-		foreach( $rawDependencies as $item => $dependency ) {
-			if ( !in_array( $item, $dependencies ) && !array_key_exists( $item, $dependencies ) ) {
-				$this->looseNodes[] = $item;
-			}
 		}
 		
 		// turn pairs into double-linked node tree
@@ -55,16 +48,10 @@ class TopologicalSort {
 	/**
 	 * Perform Topological Sort.
 	 *
-	 * @param array $nodes optional array of node objects may be passed.
-	 * Default is  $this->nodes created in constructor.
-	 * 
 	 * @return sorted array
 	 */
-	public function doSort( array $nodes = array() ) {
-		// use this->nodes if it is populated and no param passed
-		if ( !count( $nodes ) && count( $this->nodes ) ) {
-			$nodes = $this->nodes;
-		}	
+	public function doSort() {
+		$nodes = $this->nodes;
 			
 		// get nodes without parents
 		$root_nodes = array_values( $this->getRootNodes( $nodes ) );
@@ -104,8 +91,16 @@ class TopologicalSort {
 			unset( $nodes[$n->name] );
 		}
 		
+		$looseNodes = array();
+
 		// Return the result with the loose nodes (items with no dependencies) appended.
-		return array_merge( $sorted, $this->looseNodes );
+		foreach( $this->nodeNames as $name ) {
+			if ( !in_array( $name, $sorted ) ) {
+				$looseNodes[] = $name;
+			}
+		}
+		
+		return array_merge( $sorted, $looseNodes );
 	}
 	
 	/**

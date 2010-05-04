@@ -42,17 +42,16 @@ final class ValidatorManager {
  
 		$validator = new Validator();
 
-		$validator->setParameterInfo( $parameterInfo );
-		$validator->parseAndSetParams( $rawParameters, $defaultParams );
-
+		$validator->parseAndSetParams( $rawParameters, $parameterInfo, $defaultParams );
 		$hasNoErrors = $validator->validateAndFormatParameters();
+		
 		$hasFatalError = $hasNoErrors ? false : $this->hasFatalError();
 		
 		if ( !$hasNoErrors ) {
 			if ( $egValidatorErrorLevel < Validator_ERRORS_STRICT ) $validator->correctInvalidParams();
 			if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) $this->errors = $validator->getErrors();
 		}
- 
+
 		return !$hasFatalError ? $validator->getValidParams() : false;
 	}
 
