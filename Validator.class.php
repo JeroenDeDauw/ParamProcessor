@@ -19,11 +19,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Validator
  *
  * @author Jeroen De Dauw
- * 
- * TODO: provide all original and inferred info about a parameter pair to the validation and formatting functions.
- * 			this will allow for the special behaviour of the default parameter of display_points in Maps
- * 			where the actual alias influences the handling
- * 
+ *
  * TODO: break on fatal errors, such as missing required parameters that are dependencies 
  * 
  * TODO: correct invalid parameters in the main loop, as to have correct dependency handling
@@ -385,7 +381,7 @@ final class Validator {
 				// Get the validation function. If there is no matching function, throw an exception.
 				if ( array_key_exists( $criteriaName, self::$mListValidationFunctions ) ) {
 					$validationFunction = self::$mListValidationFunctions[$criteriaName];
-					$isValid = $this->doCriteriaValidation( $validationFunction, $this->mParameters['value'], $this->mParameters[$name], $criteriaArgs );
+					$isValid = $this->doCriteriaValidation( $validationFunction, $this->mParameters['value'], $name, $criteriaArgs );
 					
 					// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
 					if ( ! $isValid ) {
@@ -433,7 +429,7 @@ final class Validator {
 					
 					// Loop through all the items in the parameter value, and validate them.
 					foreach ( $value as $item ) {
-						$isValid = $this->doCriteriaValidation( $validationFunction, $item, $this->mParameters[$name], $criteriaArgs );
+						$isValid = $this->doCriteriaValidation( $validationFunction, $item, $name, $criteriaArgs );
 						if ( $isValid ) {
 							// If per item validation is on, store the valid items, so only these can be returned by Validator.
 							if ( self::$perItemValidation ) $validItems[] = $item;
@@ -464,7 +460,7 @@ final class Validator {
 				}
 				else {
 					// Determine if the value is valid for single valued parameters.
-					$isValid = $this->doCriteriaValidation( $validationFunction, $value, $this->mParameters[$name], $criteriaArgs );
+					$isValid = $this->doCriteriaValidation( $validationFunction, $value, $name, $criteriaArgs );
 				}
 
 				// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
@@ -486,18 +482,25 @@ final class Validator {
 	}
 	
 	/**
-	 * Validates the value of an item, and returns the validation result.
+	 * Calls the validation function for the provided list or single value and returns it's result.
+	 * The call is made with these parameters:
+	 * - value: The value that is the complete list, or a single item.
+	 * - parameter name: For lookups in the param info array.
+	 * - parameter array: All data about the parameters gathered so far (this includes dependencies!).
+	 * - output type info: Type info as provided by the parameter definition. This can be zero or more parameters.
 	 * 
 	 * @param $validationFunction
-	 * @param $value
-	 * @param array $metaData
+	 * @param mixed $value
+	 * @param string $name
 	 * @param array $criteriaArgs
 	 * 
 	 * @return boolean
 	 */
-	private function doCriteriaValidation( $validationFunction, $value, array $metaData, array $criteriaArgs ) {
-		// Call the validation function and store the result. 
-		return call_user_func_array( $validationFunction, array_merge( array_merge( array( $value ), array( $metaData ) ), $criteriaArgs ) );
+	private function doCriteriaValidation( $validationFunction, $value, $name, array $criteriaArgs ) {
+		// Call the validation function and store the result.
+		$parameters = array( $value, $name, $this->mParameters );
+		$parameters = array_merge( $parameters, $criteriaArgs );		
+		return call_user_func_array( $validationFunction, $parameters );
 	}
 	
 	/**
@@ -598,7 +601,7 @@ final class Validator {
 		$unknownParams = array();
 		
 		foreach( $this->mUnknownParams as $name ) {
-			$unknownParams[$name] = $this->mParameters[$name]; // TODO
+			$unknownParams[$name] = $this->mParameters[$name];
 		}		
 		
 		return $unknownParams;

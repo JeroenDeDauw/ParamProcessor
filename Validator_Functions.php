@@ -32,7 +32,7 @@ final class ValidatorFunctions {
 	 *
 	 * @return boolean
 	 */
-	public static function in_range( $value, array $metaData, $lower = false, $upper = false ) {
+	public static function in_range( $value, $name, array $parameters, $lower = false, $upper = false ) {
 		if ( ! is_numeric( $value ) ) return false;
 		$value = (int)$value;
 		if ( $lower !== false && $value < $lower ) return false;
@@ -48,7 +48,7 @@ final class ValidatorFunctions {
 	 *
 	 * @return boolean
 	 */
-	public static function not_empty( $value, array $metaData ) {
+	public static function not_empty( $value, $name, array $parameters ) {
 		return strlen( trim( $value ) ) > 0;
 	}
 	
@@ -60,7 +60,7 @@ final class ValidatorFunctions {
 	 *
 	 * @return boolean
 	 */
-	public static function in_array( $value, array $metaData ) {
+	public static function in_array( $value, $name, array $parameters ) {
 		// TODO: It's possible the way the allowed values are passed here is quite inneficient...
 		$params = func_get_args();
 		array_shift( $params ); // Ommit the value
@@ -75,7 +75,7 @@ final class ValidatorFunctions {
 	 *
 	 * @return boolean
 	 */
-	public static function is_integer( $value, array $metaData ) {
+	public static function is_integer( $value, $name, array $parameters ) {
 		return ctype_digit( (string)$value );
 	}
 	
@@ -89,7 +89,7 @@ final class ValidatorFunctions {
 	 * 
 	 * @return boolean
 	 */
-	public static function has_length( $value, array $metaData, $lower = false, $upper = false ) {
+	public static function has_length( $value, $name, array $parameters, $lower = false, $upper = false ) {
 		return self::in_range( strlen( $value ), $lower, $upper );
 	}
 	
@@ -103,7 +103,7 @@ final class ValidatorFunctions {
 	 * 
 	 * @return boolean
 	 */
-	public static function has_item_count( array $values, array $metaData, $lower = false, $upper = false ) {
+	public static function has_item_count( array $values, $name, array $parameters, $lower = false, $upper = false ) {
 		return self::in_range( count( $values ), $lower, $upper );
 	}
 	
@@ -115,7 +115,7 @@ final class ValidatorFunctions {
 	 * 
 	 * @return boolean
 	 */
-	public static function has_unique_items( array $values, array $metaData ) {
+	public static function has_unique_items( array $values, $name, array $parameters ) {
 		return count( $values ) == count( array_unique( $values ) );
 	}
 	
@@ -128,7 +128,7 @@ final class ValidatorFunctions {
 	 * 
 	 * @return boolean
 	 */
-	public static function regex( $value, array $metaData, $pattern ) {
+	public static function regex( $value, $name, array $parameters, $pattern ) {
 		return (bool)preg_match( $pattern, $value );
 	}
 	
@@ -140,7 +140,7 @@ final class ValidatorFunctions {
 	 * 
 	 * @return boolean
 	 */
-	public static function is_numeric( $value, array $metaData ) {
+	public static function is_numeric( $value, $name, array $parameters ) {
 		return is_numeric( $value );
 	}
 	
@@ -153,7 +153,7 @@ final class ValidatorFunctions {
 	 * 
 	 * @return boolean
 	 */
-	public static function is_float( $value, array $metaData ) {
+	public static function is_float( $value, $name, array $parameters ) {
 		return preg_match( '/^\d+(\.\d+)?$/', $value );
 	}
 }
