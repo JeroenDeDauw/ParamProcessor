@@ -27,8 +27,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * TODO: break on fatal errors, such as missing required parameters that are dependencies 
  * 
  * TODO: correct invalid parameters in the main loop, as to have correct dependency handling
- * 
- * FIXME: lists are broken
  */
 final class Validator {
 
@@ -540,7 +538,11 @@ final class Validator {
 	}
 	
 	/**
-	 * Calls the formatting function for the provided output format with the provided value.
+	 * Calls the formatting function for the provided output format with these parameters:
+	 * - parameter value: ByRef for easy manipulation.
+	 * - parameter name: For lookups in the param info array.
+	 * - parameter array: All data about the parameters gathered so far (this includes dependencies!).
+	 * - output type info: Type info as provided by the parameter definition. This can be zero or more parameters.
 	 * 
 	 * @param string $name
 	 * @param array $typeInfo
@@ -555,13 +557,6 @@ final class Validator {
 		}
 		
 		if ( array_key_exists( $outputType, self::$mOutputFormats ) ) {
-			/**
-			 * Call the formatting function with these parameters:
-			 * - parameter value: ByRef for easy manipulation.
-			 * - parameter name: For lookups in the param info array.
-			 * - parameter array: All data about the parameters gathered so far (this includes dependencies!).
-			 * - output type info: Type info as provided by the parameter definition. This can be zero or more parameters.
-			 */ 
 			$parameters = array( &$this->mParameters[$name]['formatted-value'], $name, $this->mParameters );
 			$parameters = array_merge( $parameters, $typeInfo );
 			call_user_func_array( self::$mOutputFormats[$outputType], $parameters );
@@ -574,17 +569,24 @@ final class Validator {
 	/**
 	 * Returns the valid parameters.
 	 *
+	 * @param boolean $includeMetaData
+	 *
 	 * @return array
 	 */
-	public function getValidParams() {
-		$validParams = array();
-		
-		foreach( $this->mValidParams as $name ) {
-			$key = array_key_exists( 'formatted-value', $this->mParameters[$name] ) ? 'formatted-value' : 'value';
-			$validParams[$name] = $this->mParameters[$name][$key];
+	public function getValidParams( $includeMetaData ) {
+		if ( $includeMetaData ) {
+			return $this->mValidParams;
 		}
-		
-		return $validParams;
+		else {
+			$validParams = array();
+			
+			foreach( $this->mValidParams as $name ) {
+				$key = array_key_exists( 'formatted-value', $this->mParameters[$name] ) ? 'formatted-value' : 'value';
+				$validParams[$name] =  $this->mParameters[$name][$key];
+			}
+			
+			return $validParams;			
+		}
 	}
 
 	/**
@@ -610,6 +612,35 @@ final class Validator {
 	public function getErrors() {
 		return $this->mErrors;
 	}
+	
+	/**
+	 * @return boolean
+	 */
+	public function hasErrors() {
+		return count( $this->mErrors ) > 0;
+	}
+	
+	/**
+	 * Returns wether there are any fatal errors. Fatal errors are either missing or invalid required parameters,
+	 * or simply any sort of error when the validation level is equal to (or bigger then) Validator_ERRORS_STRICT.
+	 * 
+	 * @return boolean
+	 */
+	public function hasFatalError() {
+		global $egValidatorErrorLevel;
+		$has = $this->hasErrors() && $egValidatorErrorLevel >= Validator_ERRORS_STRICT;
+		
+		if ( !$has ) {
+			foreach ( $this->mErrors as $error ) {
+				if ( $error['type'] == 'missing' ) {
+					$has = true;
+					break;
+				}
+			}
+		}
+
+		return $has;
+	}	
 
 	/**
 	 * Adds a new criteria type and the validation function that should validate values of this type.

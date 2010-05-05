@@ -26,8 +26,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 final class ValidatorManager {
 
-	private $errors = array();
-
+	private $validator;
+	
 	/**
 	 * Validates the provided parameters, and corrects them depending on the error level.
 	 *
@@ -40,44 +40,27 @@ final class ValidatorManager {
 	public function manageParameters( array $rawParameters, array $parameterInfo, array $defaultParams = array() ) {
 		global $egValidatorErrorLevel;
  
-		$validator = new Validator();
+		$this->validator = new Validator();
 
-		$validator->parseAndSetParams( $rawParameters, $parameterInfo, $defaultParams );
-		$hasNoErrors = $validator->validateAndFormatParameters();
-		
-		$hasFatalError = $hasNoErrors ? false : $this->hasFatalError();
-		
-		if ( !$hasNoErrors ) {
-			if ( $egValidatorErrorLevel < Validator_ERRORS_STRICT ) $validator->correctInvalidParams();
-			if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) $this->errors = $validator->getErrors();
+		$this->validator->parseAndSetParams( $rawParameters, $parameterInfo, $defaultParams );
+		$this->validator->validateAndFormatParameters();
+
+		if ( $this->validator->hasErrors() && $egValidatorErrorLevel < Validator_ERRORS_STRICT ) {
+			$this->validator->correctInvalidParams();
 		}
-
-		return !$hasFatalError ? $validator->getValidParams() : false;
+		
+		return !$this->validator->hasFatalError();
 	}
 
 	/**
-	 * Returns wether there are any fatal errors. Fatal errors are either missing or invalid required parameters,
-	 * or simply any sort of error when the validation level is equal to (or bigger then) Validator_ERRORS_STRICT.
+	 * Returns an array with the valid parameters.
 	 * 
-	 * Note: This function assumes it will only get called when there are errors. It will always return true
-	 * when $egValidatorErrorLevel is Validator_ERRORS_STRICT or above.
+	 * @param boolean $includeMetaData
 	 * 
-	 * @return boolean
+	 * @return array
 	 */
-	private function hasFatalError() {
-		global $egValidatorErrorLevel;
-		$has = $egValidatorErrorLevel >= Validator_ERRORS_STRICT;
-		
-		if ( !$has ) {
-			foreach ( $this->errors as $error ) {
-				if ( $error['type'] == 'missing' ) {
-					$has = true;
-					break;
-				}
-			}
-		}
-
-		return $has;
+	public function getParameters( $includeMetaData = true ) {
+		return $this->validator->getValidParams( $includeMetaData );
 	}
 	
 	/**
@@ -87,14 +70,15 @@ final class ValidatorManager {
 	 */
 	public function getErrorList() {
 		global $wgLang, $egValidatorErrorLevel;
-		$errorCount = count( $this->errors ) ;
 		
-		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && $errorCount > 0 ) {
-			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', $errorCount ) . '</b><br /><i>';
+		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && $this->validator->hasErrors() ) {
+			$rawErrors = $this->validator->getErrors();
+			
+			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', count( $rawErrors ) ) . '</b><br /><i>';
 
 			$errors = array();
 
-			foreach ( $this->errors as $error ) {
+			foreach ( $rawErrors as $error ) {
 				$error['name'] = '<b>' . Sanitizer::escapeId( $error['name'] ) . '</b>';
 				
 				if ( $error['type'] == 'unknown' ) {
@@ -162,8 +146,8 @@ final class ValidatorManager {
 
 			return $errorList . implode( $errors, '<br />' ) . '</i><br />';
 		}
-		elseif ( $egValidatorErrorLevel == Validator_ERRORS_WARN && $errorCount > 0 ) {
-			return '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), $errorCount ) . '</b>';
+		elseif ( $egValidatorErrorLevel == Validator_ERRORS_WARN && $this->validator->hasErrors() ) {
+			return '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), count( $this->validator->getErrors() ) ) . '</b>';
 		}
 		else {
 			return '';
