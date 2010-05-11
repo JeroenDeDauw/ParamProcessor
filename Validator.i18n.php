@@ -143,7 +143,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'validator_name' => 'Kadarnataer',
-	'validator-desc' => 'Kadarnataer a zo un doare simpl evit gwiriañ arventennoù fonksionoù parser an astennoù all hag an astennoù balizennoù, evit termeniñ talvoudennoù dre ziouer ha merañ kemennadennoù fazioù',
+	'validator-desc' => 'Un doare aes eo kadarnataer evit an astennoù all da gadarnaat arventennoù ar fonksionoù parser hag astennoù ar balizennoù, evit termeniñ talvoudennoù dre ziouer ha sevel kemennoù fazioù',
 	'validator_error_parameters' => "Kavet eo bet ar {{PLURAL:$1|fazi|fazioù}} da-heul en hoc'h ereadur :",
 	'validator_warning_parameters' => "{{PLURAL:$1|Ur fazi|Fazioù}} zo en hoc'h ereadur.",
 	'validator_error_unknown_argument' => "$1 n'eo ket un arventenn reizh.",
@@ -153,13 +153,13 @@ $messages['br'] = array(
 	'validator_error_must_be_integer' => 'Rankout a ra an arventenn $1 bezañ un niver anterin.',
 	'validator_error_invalid_range' => 'Rankout a ra an arventenn $1 bezañ etre $2 hag $3.',
 	'validator_error_invalid_argument' => "N'eo ket reizh an dalvoudenn $1 evit an arventenn $2.",
-	'validator_list_error_empty_argument' => 'Ne tegemer ket an arventenn $1 an talvoudennoù goullo.',
-	'validator_list_error_must_be_number' => "Ne c'hell bezañ nemet niveroù an arventenn $1.",
-	'validator_list_error_must_be_integer' => "Ne c'hell bezañ nemet anterinoù an arventenn $1.",
+	'validator_list_error_empty_argument' => 'Ne zegemer ket an arventenn $1 an talvoudennoù goullo.',
+	'validator_list_error_must_be_number' => "N'hall bezañ nemet niveroù en arventenn $1.",
+	'validator_list_error_must_be_integer' => "N'hall bezañ nemet niveroù anterin en arventenn $1.",
 	'validator_list_error_invalid_range' => 'An holl talvoudennoù eus an arventenn $1 a rank bezañ etre $2 ha $3.',
-	'validator_list_error_invalid_argument' => "N'eo ket mat unan pe meur a dalvoudennoù eus an arventenn $1.",
+	'validator_list_error_invalid_argument' => 'Faziek eo unan pe meur a dalvoudenn eus an arventenn $1.',
 	'validator_list_omitted' => 'Disoñjet eo bet an {{PLURAL:$2|talvoudenn|talvoudennoù}} $1.',
-	'validator_error_accepts_only' => 'An arventenn $1 a zegemer hepken {{PLURAL:$3|an talvoudenn|an talvoudennoù}}-mañ : $2.',
+	'validator_error_accepts_only' => 'An arventenn $1 ne zegemer nemet {{PLURAL:$3|an dalvoudenn|an talvoudennoù}}-mañ : $2.',
 );
 
 /** Bosnian (Bosanski)
@@ -832,6 +832,19 @@ $messages['sv'] = array(
 	'validator_list_error_invalid_argument' => 'Ett eller flera värden av parameter $1 är ogiltiga.',
 	'validator_list_omitted' => '{{PLURAL:$2|Värdet|Värdena}} $1 har blivit {{PLURAL:$2|utelämnat|utelämnade}}.',
 	'validator_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'validator_error_unknown_argument' => '$1 అనేది సరైన పరామితి కాదు.',
+	'validator_error_required_missing' => 'తప్పకుండా కావాల్సిన $1 పరామితిని ఇవ్వలేదు.',
+	'validator_error_empty_argument' => '$1 పరామితి ఖాళీగా ఉండకూడదు',
+	'validator_error_must_be_number' => '$1 పరామితి ఖచ్చితంగా ఓ సంఖ్య అయిఉండాలి',
+	'validator_error_must_be_integer' => '$1 పరామితి ఒక పూర్ణసంఖ్య అయిఉండాలి',
+	'validator_error_invalid_range' => '$1 పరామితి $2,  $3 మద్యలో ఉండాలి.',
+	'validator_error_invalid_argument' => '$2 పరామితి కోసం $1 విలువ సరైంది కాదు',
 );
 
 /** Turkish (Türkçe)
