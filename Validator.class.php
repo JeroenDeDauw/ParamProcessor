@@ -160,7 +160,7 @@ final class Validator {
 					if ( count( $defaultParams ) > 0 ) {
 						$defaultParam = array_shift( $defaultParams );
 						$parameters[$defaultParam] = array(
-							'original-value' => trim( $parts[0] ),
+							'original-value' => trim(  $parts[0] ),
 							'default' => $defaultNr,
 							'position' => $nr
 						);
