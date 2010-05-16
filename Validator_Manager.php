@@ -21,7 +21,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  * 
  * FIXME: missing required params should result in a no-go, no matter of the error level, as they can/are not defaulted.
- * 
  * TODO: make a distinction between fatal errors and regular errors by using 2 seperate error levels.
  */
 final class ValidatorManager {

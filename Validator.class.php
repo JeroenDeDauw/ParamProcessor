@@ -21,7 +21,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  *
  * TODO: break on fatal errors, such as missing required parameters that are dependencies 
- * 
  * TODO: correct invalid parameters in the main loop, as to have correct dependency handling
  */
 final class Validator {

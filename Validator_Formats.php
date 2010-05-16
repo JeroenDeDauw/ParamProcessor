@@ -33,7 +33,7 @@ final class ValidatorFormats {
 	}
 	
 	/**
-	 * Ensures the value is an array.
+	 * Returns an array containing only the specified values.
 	 * 
 	 * @param $value
 	 * @param string name The name of the parameter.

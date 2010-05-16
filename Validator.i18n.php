@@ -16,7 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'validator_name' => 'Validator',
-	'validator-desc' => 'Validator provides an easy way for other extensions to validate parameters of parser functions and tag extensions, set default values and generate error messages',
+	'validator-desc' => 'Validator is a MediaWiki extension that provides generic parameter handling support to other extensions',
 
 	'validator_error_parameters' => 'The following {{PLURAL:$1|error has|errors have}} been detected in your syntax:',
 	'validator_warning_parameters' => 'There {{PLURAL:$1|is an error|are errors}} in your syntax.',
