@@ -154,21 +154,21 @@ final class Validator {
 			// Only take into account strings. If the value is not a string,
 			// it is not a raw parameter, and can not be parsed correctly in all cases.
 			if ( is_string( $arg ) ) {
-				$parts = explode( '=', $arg );
+				$parts = explode( '=', $arg, 2 );
+				
 				if ( count( $parts ) == 1 ) {
 					if ( count( $defaultParams ) > 0 ) {
 						$defaultParam = array_shift( $defaultParams );
 						$parameters[$defaultParam] = array(
-							'original-value' => trim(  $parts[0] ),
+							'original-value' => trim( $parts[0] ),
 							'default' => $defaultNr,
 							'position' => $nr
 						);
 						$defaultNr++;
 					}
 				} else {
-					$name = strtolower( trim( array_shift( $parts ) ) );
-					$parameters[$name] = array(
-						'original-value' => trim( implode( '=', $parts ) ),
+					$parameters[$parts[0]] = array(
+						'original-value' => trim( $parts[1] ),
 						'default' => false,
 						'position' => $nr
 					);
