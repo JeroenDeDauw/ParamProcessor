@@ -56,6 +56,8 @@ $wgAutoloadClasses['TopologicalSort'] 		= $egValidatorDir . 'TopologicalSort.php
 function efValidatorSetup() {
 	global $wgExtensionCredits;
 
+	wfLoadExtensionMessages( 'Validator' );
+
 	$wgExtensionCredits['other'][] = array(
 		'path' => __FILE__,
 		'name' => wfMsg( 'validator_name' ),
