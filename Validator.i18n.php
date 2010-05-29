@@ -15,8 +15,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'validator_name' => 'Validator',
-	'validator-desc' => 'Validator is a MediaWiki extension that provides generic parameter handling support to other extensions',
+	'validator-desc' => 'Provides generic parameter handling support to other extensions',
 
 	'validator_error_parameters' => 'The following {{PLURAL:$1|error has|errors have}} been detected in your syntax:',
 	'validator_warning_parameters' => 'There {{PLURAL:$1|is an error|are errors}} in your syntax.',
@@ -41,7 +40,7 @@ $messages['en'] = array(
 
 	'validator_list_omitted' => 'The {{PLURAL:$2|value|values}} $1 {{PLURAL:$2|has|have}} been omitted.',
 
-	// Crtiteria errors for single values & lists
+	// Criteria errors for single values & lists
 	'validator_error_accepts_only' => 'Parameter $1 only accepts {{PLURAL:$3|this value|these values}}: $2.',
 );
 

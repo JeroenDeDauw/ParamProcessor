@@ -37,33 +37,21 @@ $egValidatorDir = dirname( __FILE__ ) . '/';
 // Include the settings file.
 require_once( $egValidatorDir . 'Validator_Settings.php' );
 
-// Put the initalization function into the MW extension hook.
-$wgExtensionFunctions[] = 'efValidatorSetup';
-
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Validator'] = $egValidatorDir . 'Validator.i18n.php';
 
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'Validator',
+	'version' => Validator_VERSION,
+	'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Validator',
+	'descriptionmsg' => 'validator-desc',
+);
+
 // Autoload the general classes.
-$wgAutoloadClasses['Validator'] 			= $egValidatorDir . 'Validator.class.php';
+$wgAutoloadClasses['Validator'] 		= $egValidatorDir . 'Validator.class.php';
 $wgAutoloadClasses['ValidatorFunctions'] 	= $egValidatorDir . 'Validator_Functions.php';
 $wgAutoloadClasses['ValidatorFormats'] 		= $egValidatorDir . 'Validator_Formats.php';
 $wgAutoloadClasses['ValidatorManager'] 		= $egValidatorDir . 'Validator_Manager.php';
 $wgAutoloadClasses['TopologicalSort'] 		= $egValidatorDir . 'TopologicalSort.php';
-
-/**
- * Initialization function for the Validator extension.
- */
-function efValidatorSetup() {
-	global $wgExtensionCredits;
-
-	wfLoadExtensionMessages( 'Validator' );
-
-	$wgExtensionCredits['other'][] = array(
-		'path' => __FILE__,
-		'name' => wfMsg( 'validator_name' ),
-		'version' => Validator_VERSION,
-		'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Validator',
-		'descriptionmsg' => 'validator-desc',
-	);
-}
