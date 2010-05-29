@@ -871,6 +871,29 @@ $messages['te'] = array(
 	'validator_error_invalid_argument' => '$2 పరామితి కోసం $1 విలువ సరైంది కాదు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'validator-desc' => 'Nagbibigay ng panlahatang magtangkilik na paghawak sa ibang mga dugtong',
+	'validator_error_parameters' => 'Ang sumusunod na {{PLURAL:$1|kamalian|mga kamalian}} ay napansin sa iyong sintaks:',
+	'validator_warning_parameters' => 'May {{PLURAL:$1|mali|mga mali}} sa sintaks mo.',
+	'validator_error_unknown_argument' => 'Ang $1 ay isang hindi tanggap na parametro.',
+	'validator_error_required_missing' => 'Hindi ibinigay ang kailangang parametro na $1.',
+	'validator_error_empty_argument' => 'Hindi dapat na isang halagang walang laman ang parametrong $1.',
+	'validator_error_must_be_number' => 'Dapat na bilang lang ang parametrong $1.',
+	'validator_error_must_be_integer' => 'Dapat na tambilang lang ang parametrong $1.',
+	'validator_error_invalid_range' => 'Dapat na nasa pagitan ng $2 at $3 ang parametrong $1.',
+	'validator_error_invalid_argument' => 'Ang halagang $1 ay hindi tanggap para sa parametrong $2.',
+	'validator_list_error_empty_argument' => 'Hindi tumatanggap ng halagang walang laman ang parametrong $1.',
+	'validator_list_error_must_be_number' => 'Dapat na naglalaman lang ng mga bilang ang parametrong $1.',
+	'validator_list_error_must_be_integer' => 'Dapat na naglalaman lang ng mga tambilang ang parametrong $1.',
+	'validator_list_error_invalid_range' => 'Dapat na nasa pagitan ng $2 at $3 ang lahat ng mga halaga ng parametrong $1.',
+	'validator_list_error_invalid_argument' => 'Hindi tanggap ang isa o higit pang mga halaga para sa parametrong $1.',
+	'validator_list_omitted' => 'Tinanggal {{PLURAL:$2|na ang|na ang mga}} {{PLURAL:$2|halaga|halaga}} ng $1.',
+	'validator_error_accepts_only' => 'Tumatanggap lang ang parametrong $1 ng {{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */
