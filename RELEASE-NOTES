@@ -4,6 +4,19 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 
+== Validator change log ==
+
+=== Validator 0.3 ===
+(2010-05-31)
+
+* Added generic default parameter support.
+
+* Added parameter dependency support.
+
+* Added full meta data support for validation and formatting functions, enabling more advanced handling of parameters.
+
+* Mayor refactoring to conform to MediaWiki convention.
+
 === Validator 0.2.2 ===
 (2010-03-01)
 
@@ -39,3 +52,5 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 (2009-12-17)
 
 * Initial release, featuring parameter validation, defaulting and error generation.
+
+{{Validator see also}}
