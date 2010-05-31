@@ -15,7 +15,7 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 * Added full meta data support for validation and formatting functions, enabling more advanced handling of parameters.
 
-* Mayor refactoring to conform to MediaWiki convention.
+* Major refactoring to conform to MediaWiki convention.
 
 === Validator 0.2.2 ===
 (2010-03-01)
