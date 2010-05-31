@@ -58,7 +58,6 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'validator_name' => 'Valideerder',
 	'validator-desc' => 'Die valideerder gee ander uitbreidings die vermoë om parameters van ontlederfunksies en etiket-uitbreidings te valideer, op hulle verstekwaardes in te stel en om foutboodskappe te genereer',
 	'validator_error_parameters' => 'Die volgende {{PLURAL:$1|fout|foute}} is in u sintaks waargeneem:',
 	'validator_error_unknown_argument' => "$1 is nie 'n geldige parameter nie.",
@@ -75,7 +74,6 @@ $messages['af'] = array(
  * @author Mdupont
  */
 $messages['aln'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator është një zgjerim MediaWiki që ofron parametër përgjithshme trajtimin mbështetje të shtesave të tjera',
 	'validator_error_parameters' => 'Më poshtë {{PLURAL:$1|gabim ka gabime|kanë}} është zbuluar në sintaksën e juaj:',
 	'validator_warning_parameters' => 'Ka {{PLURAL:$1|është|janë gabime gabim}} në sintaksë tuaj.',
@@ -99,7 +97,6 @@ $messages['aln'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'validator_name' => 'محقق',
 	'validator-desc' => 'المحقق يوفر طريقة سهلة للامتدادات الأخرى للتحقق من محددات دوال المحلل وامتدادات الوسوم، وضبط القيم الافتراضية وتوليد رسائل الخطأ',
 	'validator_error_parameters' => '{{PLURAL:$1|الخطأ التالي|الاخطاء التالية}} تم كشفها في صياغتك:',
 	'validator_warning_parameters' => 'هناك {{PLURAL:$1|خطأ|أخطاء}} في صياغتك.',
@@ -119,19 +116,11 @@ $messages['ar'] = array(
 	'validator_error_accepts_only' => 'المحدد $1 يقبل فقط {{PLURAL:$3|هذه القيمة|هذه القيم}}: $2.',
 );
 
-/** Egyptian Spoken Arabic (مصرى)
- * @author Meno25
- */
-$messages['arz'] = array(
-	'validator_name' => 'محقق',
-);
-
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'validator_name' => 'Правяраючы',
 	'validator-desc' => 'Правяраючы палягчае іншым пашырэньням працу па праверцы парамэтраў функцыяў парсэру і тэгаў пашырэньняў, устанаўлівае значэньні па змоўчваньні і стварае паведамленьні пра памылкі',
 	'validator_error_parameters' => 'У сынтаксісе {{PLURAL:$1|выяўленая наступная памылка|выяўленыя наступныя памылкі}}:',
 	'validator_warning_parameters' => 'У Вашы сынтаксісе {{PLURAL:$1|маецца памылка|маюцца памылкі}}.',
@@ -165,7 +154,6 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'validator_name' => 'Kadarnataer',
 	'validator-desc' => 'Un doare aes eo kadarnataer evit an astennoù all da gadarnaat arventennoù ar fonksionoù parser hag astennoù ar balizennoù, evit termeniñ talvoudennoù dre ziouer ha sevel kemennoù fazioù',
 	'validator_error_parameters' => "Kavet eo bet ar {{PLURAL:$1|fazi|fazioù}} da-heul en hoc'h ereadur :",
 	'validator_warning_parameters' => "{{PLURAL:$1|Ur fazi|Fazioù}} zo en hoc'h ereadur.",
@@ -189,7 +177,6 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator pruža jednostavni način za druga proširenja u svrhu validacije parametara parserskih funkcija i proširenja oznaka, postavlja pretpostavljene vrijednosti i generira poruke pogrešaka.',
 	'validator_error_parameters' => 'U Vašoj sintaksi {{PLURAL:$1|je|su}} {{PLURAL:$1|otkivena slijedeća greška|otkrivene slijedeće greške}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Postoji greška|Postoje greške}} u Vašoj sintaksi.',
@@ -211,7 +198,6 @@ $messages['bs'] = array(
  * @author Reaperman
  */
 $messages['cs'] = array(
-	'validator_name' => 'Validátor',
 	'validator-desc' => 'Validátor poskytuje ostatním rozšířením snadnější způsob ověřování parametrů funkcí parseru a značek, nastavování výchozích hodnot a vytváření chybových zpráv.',
 	'validator_error_parameters' => 'Ve vaší syntaxi {{PLURAL:$1|byla nalezena následující chyba|byly nalezeny následující chyby}}:',
 	'validator_warning_parameters' => 'Ve vaší syntaxi {{PLURAL:$1|je chyba|jsou chyby}}.',
@@ -238,7 +224,6 @@ $messages['cs'] = array(
  * @author LWChris
  */
 $messages['de'] = array(
-	'validator_name' => 'Validierer',
 	'validator-desc' => 'Validierer stellt anderen Erweiterungen die Funktion bereit, auf einfache Weise Parameter von Parserfunktionen und Tag-Erweiterungen zu verifizieren, Standardwerte festzulegen sowie Fehlermeldungen zu erstellen.',
 	'validator_error_parameters' => '{{PLURAL:$1|Der folgende Fehler wurde|Die folgenden Fehler wurden}} in deiner Syntax gefunden:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Es ist ein Fehler|Es sind Fehler}} in deiner Syntax.',
@@ -270,7 +255,6 @@ $messages['de-formal'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator stoj lažki nałog za druge rozšyrjenja k dispoziciji, aby se pśekontrolěrowali parametry parserowych funkcijow a toflickich rozšyrjenjow, nastajili standardne gódnoty a napórali zmólkowe powěsći',
 	'validator_error_parameters' => '{{PLURAL:$1|Slědujuca zmólka jo se namakała|Slědujucej zmólce stej se namakałej|Slědujuce zmólki su se namakali|Slědujuce zmólki su se namakali}} w twójej syntaksy:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Jo zmólka|Stej zmólce|Su zmólki|Su zmólki}} w twójej syntaksy.',
@@ -297,7 +281,6 @@ $messages['dsb'] = array(
  * @author Απεργός
  */
 $messages['el'] = array(
-	'validator_name' => 'Επικυρωτής',
 	'validator_error_unknown_argument' => '$1 δεν είναι μια έγκυρη παράμετρος.',
 	'validator_error_required_missing' => 'Λείπει η απαιτούμενη παράμετρος $1.',
 	'validator_error_must_be_number' => 'Η παράμετρος $1 μπορεί να είναι μόνο αριθμός.',
@@ -311,7 +294,6 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'validator_name' => 'Validigilo',
 	'validator_error_unknown_argument' => '$1 ne estas valida parametro.',
 	'validator_error_required_missing' => 'La nepra parametro $1 mankas.',
 	'validator_error_empty_argument' => 'Parametro $1 ne povas esti nula valoro.',
@@ -327,7 +309,6 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'validator_name' => 'Validador',
 	'validator-desc' => 'FUZZY!!! El validador es una herramienta para que otras funciones validen fácilmente parámetros de funciones de análisis y extensiones de etiquetas, establecer valores predeterminados y generar mensajes de error',
 	'validator_error_parameters' => 'Se detectó {{PLURAL:$1|el siguiente error|los siguientes errores}} en la sintaxis empleada:',
 	'validator_warning_parameters' => 'Hay {{PLURAL:$1|un error|errores}} en tu sintaxis.',
@@ -347,20 +328,12 @@ $messages['es'] = array(
 	'validator_error_accepts_only' => 'El parámetro $1 sólo acepta {{PLURAL:$3|este valor|estos valores}}: $2.',
 );
 
-/** Estonian (Eesti)
- * @author Avjoska
- */
-$messages['et'] = array(
-	'validator_name' => 'Kehtestaja',
-);
-
 /** Finnish (Suomi)
  * @author Crt
  * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'validator_name' => 'Tarkastaja',
 	'validator-desc' => 'Tarkastaja tarjoaa helpon tavan muille laajennuksille jäsenninfunktioiden ja tagilaajennusten parametrien tarkastukseen, oletusarvojen asettamiseen ja virheilmoitusten luomiseen.',
 	'validator_error_must_be_number' => 'Parametrin $1 on oltava luku.',
 	'validator_error_must_be_integer' => 'Parametrin $1 on oltava kokonaisluku.',
@@ -378,7 +351,6 @@ $messages['fi'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'validator_name' => 'Validateur',
 	'validator-desc' => 'Le validateur fournit aux autres extensions un moyen simple de valider les paramètres des fonctions parseur et des extensions de balises, de définir des valeurs par défaut et de générer des messages d’erreur',
 	'validator_error_parameters' => '{{PLURAL:$1|L’erreur suivante a été détectée|Les erreurs suivantes ont été détectées}} dans votre syntaxe :',
 	'validator_warning_parameters' => 'Il y a {{PLURAL:$1|une erreur|des erreurs}} dans votre syntaxe.',
@@ -402,7 +374,6 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'validator_name' => 'Servizo de validación',
 	'validator-desc' => 'O servizo de validación ofrece un medio sinxelo a outras extensións para validar os parámetros de funcións analíticas e etiquetas de extensións, para establecer os valores por defecto e para xerar mensaxes de erro',
 	'validator_error_parameters' => '{{PLURAL:$1|Detectouse o seguinte erro|Detectáronse os seguintes erros}} na sintaxe empregada:',
 	'validator_warning_parameters' => 'Hai {{PLURAL:$1|un erro|erros}} na súa sintaxe.',
@@ -426,7 +397,6 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator stellt e eifachi Form z Verfiegig fir anderi Erwyterige go Parameter validiere vu Parser- un Tag-Funktione, go Standardwärt definiere un Fählermäldige generiere',
 	'validator_error_parameters' => '{{PLURAL:$1|Dää Fähler isch|Die Fähler sin}} in Dyyre Syntax gfunde wore:',
 	'validator_warning_parameters' => 'S het {{PLURAL:$1|e Fähler|Fähler}} in dyyre Syntax.',
@@ -464,7 +434,6 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator skići lochke wašnje za druhe rozšěrjenja, zo bychu so parametry parserowych funkcijow a tafličkowych rozšěrjenjow přepruwowali, standardne hódnoty nastajili a zmylkowe powěsće wutworili',
 	'validator_error_parameters' => '{{PLURAL:$1|Slědowacy zmylk bu|Slědowacej zmylkaj buštej|Slědowace zmylki buchu|Slědowace zmylki buchu}} w twojej syntaksy {{PLURAL:$1|wotkryty|wotkrytej|wotkryte|wotkryte}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Je zmylk|Stej zmylkaj|Su zmylki|Su zmylki}} w twojej syntaksy.',
@@ -489,7 +458,6 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'validator_name' => 'Érvényesség-ellenőrző',
 	'validator-desc' => 'Az érvényesség-ellenőrző egyszerű lehetőséget nyújt más kiterjesztéseknek az elemzőfüggvények és tagek paramétereinek ellenőrzésére, alapértelmezett értékek beállítására, valamint hibaüzenetek generálására.',
 	'validator_error_parameters' => 'A következő {{PLURAL:$1|hiba található|hibák találhatóak}} a szintaxisban:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Hiba van|Hibák vannak}} a szintaxisodban.',
@@ -513,7 +481,6 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator provide un modo facile a altere extensiones de validar parametros de functiones del analysator syntactic e extensiones de etiquettas, predefinir valores e generar messages de error',
 	'validator_error_parameters' => 'Le sequente {{PLURAL:$1|error|errores}} ha essite detegite in tu syntaxe:',
 	'validator_warning_parameters' => 'Il ha {{PLURAL:$1|un error|errores}} in tu syntaxe.',
@@ -540,7 +507,6 @@ $messages['ia'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator memberikan cara mudah untuk ekstensi lain untuk memvalidasi parameter ParserFunction dan ekstensi tag, mengatur nilai biasa dan membuat pesan kesalahan',
 	'validator_error_parameters' => '{{PLURAL:$1|Kesalahan|Kesalahan}} berikut telah terdeteksi pada sintaksis Anda',
 	'validator_error_unknown_argument' => '$1 bukan parameter yang benar.',
@@ -573,7 +539,6 @@ $messages['it'] = array(
  * @author Whym
  */
 $messages['ja'] = array(
-	'validator_name' => '妥当性評価器',
 	'validator-desc' => '妥当性評価器は他の拡張機能にパーサー関数やタグ拡張の引数の妥当性を確認したり、規定値を設定したり、エラーメッセージを生成する手段を提供する',
 	'validator_error_parameters' => 'あなたの入力から以下の{{PLURAL:$1|エラー|エラー}}が検出されました:',
 	'validator_warning_parameters' => 'あなたの入力した構文には{{PLURAL:$1|エラー}}があります。',
@@ -597,7 +562,6 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'validator_name' => 'Prööver',
 	'validator-desc' => '{{int:validator_name}} brängk eine eijfache Wääsch, der Parrammeetere fun Paaser-Fungkßjohne un Zohsatzprojramme ze prööve, Schtandatt-Wääte enzefööje, un Fähler ze mällde.',
 	'validator_error_parameters' => '{{PLURAL:$1|Heh dä|Heh di|Keine}} Fähler {{PLURAL:$1|es|sin|es}} en Dinge Syntax opjevalle:',
 	'validator_error_unknown_argument' => '„$1“ es keine jöltijje Parameeter.',
@@ -615,7 +579,6 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parametere vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Wäerter festzeleeën a fir Feeler-Messagen ze generéieren',
 	'validator_error_parameters' => '{{PLURAL:$1|Dëse Feeler gouf|Dës Feeler goufen}} an Ärer Syntax fonnt:',
 	'validator_warning_parameters' => 'Et {{PLURAL:$1|ass ee|si}} Feeler an Ärer Syntax.',
@@ -640,7 +603,6 @@ $messages['lb'] = array(
  * @author McDutchie
  */
 $messages['mk'] = array(
-	'validator_name' => 'Потврдувач',
 	'validator-desc' => 'Потврдувачот овозможува лесен начин другите додатоци да ги потврдат параметрите на парсерските функции и додатоците со ознаки, да поставаат основно зададени вредности и да создаваат пораки за грешки',
 	'validator_error_parameters' => 'Во вашата синтакса {{PLURAL:$1|е откриена следнава грешка|се откриени следниве грешки}}:',
 	'validator_warning_parameters' => 'Имате {{PLURAL:$1|грешка|грешки}} во синтаксата.',
@@ -665,7 +627,6 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => 'Validator geeft andere uitbreidingen de mogelijkheid om parameters van parserfuncties en taguitbreidingen te valideren, in te stellen op hun standaardwaarden en foutberichten te genereren',
 	'validator_error_parameters' => 'In uw syntaxis {{PLURAL:$1|is de volgende fout|zijn de volgende fouten}} gedetecteerd:',
 	'validator_warning_parameters' => 'Er {{PLURAL:$1|zit een fout|zitten $1 fouten}} in uw syntaxis.',
@@ -690,7 +651,6 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'validator_name' => 'Validering',
 	'validator-desc' => 'Validering gir en enkel måte for utvidelser å validere parametere av parserfunksjoner og taggutvidelser, sette standardverdier og generere feilbeskjeder.',
 	'validator_error_parameters' => 'Følgende {{PLURAL:$1|feil|feil}} har blitt oppdaget i syntaksen din:',
 	'validator_warning_parameters' => 'Det er {{PLURAL:$1|én feil|flere feil}} i syntaksen din.',
@@ -715,7 +675,6 @@ $messages['no'] = array(
  * @author Jfblanc
  */
 $messages['oc'] = array(
-	'validator_name' => 'Validaire',
 	'validator-desc' => "Validator porgís a d'autras extensions un biais per validar aisidament los paramètres de foncions d'analisi e las extensions de mercas, definir de valors per manca e crear de messatges d'error",
 	'validator_error_parameters' => '{{PLURAL:$1|Aquela error es estada detectada|Aquelas errors son estadas detectadas}} dins la sintaxi',
 	'validator_error_unknown_argument' => '$1 es pas un paramètre valedor.',
@@ -734,7 +693,6 @@ $messages['oc'] = array(
  * @author McDutchie
  */
 $messages['pms'] = array(
-	'validator_name' => 'Validator',
 	'validator-desc' => "Validator a dà na manera bel fé për àutre estension ëd validé ij paràmetr ëd le funsion dël parser e j'estension dij tag, d'amposté ij valor ëd default e generé mëssagi d'eror",
 	'validator_error_parameters' => "{{PLURAL:$1|L'eror sì-sota a l'é stàit|J'eror sì-sota a son ëstàit}} trovà an soa sintassi:",
 	'validator_warning_parameters' => "{{PLURAL:$1|A-i é n'|A-i son dj'}}eror ant soa sintassi.",
@@ -758,7 +716,6 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'validator_name' => 'Serviço de Validação',
 	'validator-desc' => 'O Serviço de Validação permite que, de forma simples, as outras extensões possam validar parâmetros das funções do analisador sintáctico e das extensões dos elementos HTML, definir valores por omissão e gerar mensagens de erro',
 	'validator_error_parameters' => '{{PLURAL:$1|Foi detectado o seguinte erro sintáctico|Foram detectados os seguintes erros sintácticos}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Existe um erro sintáctico|Existem erros sintácticos}}.',
@@ -795,7 +752,6 @@ $messages['pt-br'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'validator_name' => 'Валидатор',
 	'validator-desc' => 'Валидатор предоставляет другим расширениям возможности проверки параметров функций парсера и тегов, установки значения по умолчанию и создания сообщения об ошибках',
 	'validator_error_parameters' => 'В вашем синтаксисе {{PLURAL:$1|обнаружена следующая ошибка|обнаружены следующие ошибки}}:',
 	'validator_warning_parameters' => 'В вашем синтаксисе {{PLURAL:$1|имеется ошибка|имеются ошибки}}.',
@@ -819,7 +775,6 @@ $messages['ru'] = array(
  * @author Calcey
  */
 $messages['si'] = array(
-	'validator_name' => 'තහවුරු කරන්නා',
 	'validator-desc' => 'තහවුරු කරන්නා ටැග් දිඟුවන් හා parser ශ්‍රිතවල පරාමිතීන් තහවුරු කිරීමට අනෙක් දිඟුවන් සඳහා පහසු ක්‍රමයක් සපයයි,පෙරනිමි අගයන් පිහිටුවීම හා දෝෂ පණිවුඩ ජනනය කිරීම ද සිදු කරයි',
 	'validator_error_parameters' => 'ඔබේ වාග් රීතිය මඟින් පහත {{PLURAL:$1|දෝෂය|දෝෂයන්}} අනාවරණය කරනු ලැබ ඇත',
 	'validator_error_unknown_argument' => '$1 වලංගු පරාමිතියක් නොවේ.',
@@ -838,7 +793,6 @@ $messages['si'] = array(
  * @author Sertion
  */
 $messages['sv'] = array(
-	'validator_name' => 'Validering',
 	'validator-desc' => 'Valideraren skapar ett smidigt sätt för andra tillägg att validera olika parserfunktioners parametrar och taggar, sätta standardvärden för tilläggen samt att generera felmeddelanden',
 	'validator_error_parameters' => 'Följande {{PLURAL:$1|fel|fel}} har upptäckts i din syntax:',
 	'validator_warning_parameters' => 'Det finns {{PLURAL:$1|ett|flera}} fel i din syntax.',
@@ -898,7 +852,6 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'validator_name' => 'Doğrulayıcı',
 	'validator_error_unknown_argument' => '$1, geçerli bir parametre değildir.',
 	'validator_error_empty_argument' => '$1 parametresi boş bir değere sahip olamaz.',
 	'validator_error_must_be_number' => '$1 parametresi sadece sayı olabilir.',
@@ -912,7 +865,6 @@ $messages['tr'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'validator_name' => 'Валідатор',
 	'validator-desc' => 'Валідатор забезпечує іншим розширенням можливості перевірки параметрів функцій парсера і тегів, встановлення значень за умовчанням та створення повідомлень про помилки',
 	'validator_error_parameters' => 'У вашому синтаксисі {{PLURAL:$1|виявлена така помилка|виявлені такі помилки}}:',
 );
@@ -922,7 +874,6 @@ $messages['uk'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'validator_name' => 'Bộ phê chuẩn',
 	'validator-desc' => 'Bộ phê chuẩn cho phép các phần mở rộng khác phê chuẩn tham số của hàm cú pháp và thẻ mở rộng, đặt giá trị mặc định, và báo cáo lỗi.',
 	'validator_error_parameters' => 'Cú pháp có {{PLURAL:$1|lỗi|các lỗi}} sau',
 	'validator_error_unknown_argument' => '$1 không phải là tham số hợp lệ.',
