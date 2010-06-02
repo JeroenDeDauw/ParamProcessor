@@ -21,15 +21,15 @@
  */
 class TopologicalSort {
 	
-	private $nodes = array();
-	private $nodeNames = array();
+	private $mNodes = array();
+	private $mNodeNames = array();
 	
 	/**
 	 * Dependency pairs are a list of arrays in the form
 	 * $name => $val where $key must come before $val in load order.
 	 */
 	function TopologicalSort( $dependencies = array(), $parse = true ) {
-		$this->nodeNames = array_keys( $dependencies );
+		$this->mNodeNames = array_keys( $dependencies );
 		
 		if ( $parse ) {
 			$dependencies = $this->parseDependencyList( $dependencies );
@@ -38,10 +38,10 @@ class TopologicalSort {
 		// turn pairs into double-linked node tree
 		foreach ( $dependencies as $key => $dpair ) {
 			list ( $module, $dependency ) = each ( $dpair );
-			if ( !isset( $this->nodes[$module] ) ) $this->nodes[$module] = new TSNode( $module );
-			if ( !isset( $this->nodes[$dependency] ) ) $this->nodes[$dependency] = new TSNode( $dependency );
-			if ( !in_array( $dependency, $this->nodes[$module]->children ) ) $this->nodes[$module]->children[] = $dependency;
-			if ( !in_array( $module, $this->nodes[$dependency]->parents ) ) $this->nodes[$dependency]->parents[] = $module;
+			if ( !isset( $this->mNodes[$module] ) ) $this->mNodes[$module] = new TSNode( $module );
+			if ( !isset( $this->mNodes[$dependency] ) ) $this->mNodes[$dependency] = new TSNode( $dependency );
+			if ( !in_array( $dependency, $this->mNodes[$module]->children ) ) $this->mNodes[$module]->children[] = $dependency;
+			if ( !in_array( $module, $this->mNodes[$dependency]->parents ) ) $this->mNodes[$dependency]->parents[] = $module;
 		}
 	}
 	
@@ -51,7 +51,7 @@ class TopologicalSort {
 	 * @return sorted array
 	 */
 	public function doSort() {
-		$nodes = $this->nodes;
+		$nodes = $this->mNodes;
 			
 		// get nodes without parents
 		$root_nodes = array_values( $this->getRootNodes( $nodes ) );
@@ -94,7 +94,7 @@ class TopologicalSort {
 		$looseNodes = array();
 
 		// Return the result with the loose nodes (items with no dependencies) appended.
-		foreach( $this->nodeNames as $name ) {
+		foreach( $this->mNodeNames as $name ) {
 			if ( !in_array( $name, $sorted ) ) {
 				$looseNodes[] = $name;
 			}
