@@ -50,6 +50,21 @@ final class ValidatorManager {
 		
 		return !$this->validator->hasFatalError();
 	}
+	
+	public function manageParsedParameters( array $parameters, array $parameterInfo ) {
+		global $egValidatorErrorLevel;
+		
+		$this->validator = new Validator();
+		
+		$this->validator->setParameters( $parameters, $parameterInfo );
+		$this->validator->validateAndFormatParameters();
+		
+		if ( $this->validator->hasErrors() && $egValidatorErrorLevel < Validator_ERRORS_STRICT ) {
+			$this->validator->correctInvalidParams();
+		}
+		
+		return !$this->validator->hasFatalError();		
+	}
 
 	/**
 	 * Returns an array with the valid parameters.

@@ -145,8 +145,6 @@ final class Validator {
 	 * @param array $defaultParams
 	 */
 	public function parseAndSetParams( array $rawParams, array $parameterInfo, array $defaultParams = array() ) {
-		$this->mParameterInfo = $parameterInfo;
-		
 		$parameters = array();
 
 		$nr = 0;
@@ -177,20 +175,36 @@ final class Validator {
 				}
 			}
 			$nr++;
-		}
+		}	
 
+		$this->setParameters( $parameters, $parameterInfo );
+	}
+	
+	public function setParameters( $parameters, $parameterInfo ) {
+		$this->mParameterInfo = $parameterInfo;
+		
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
-		foreach ( $parameters as $paramName => $paramData ) {
+		foreach ( $parameters as $paramName => $paramData ) {		
 			// Attempt to get the main parameter name (takes care of aliases).
 			$mainName = self::getMainParamName( $paramName );
-			
+
 			// If the parameter is found in the list of allowed ones, add it to the $mParameters array.
 			if ( $mainName ) {
 				// Check for parameter overriding. In most cases, this has already largely been taken care off, 
 				// in the form of later parameters overriding earlier ones. This is not true for different aliases though.
 				if ( !array_key_exists( $mainName, $this->mParameters ) || self::$acceptOverriding ) {
-					$paramData['original-name'] = $paramName;
-					$this->mParameters[$mainName] = $paramData;
+					// If the valueis an array, this means it has been procesed in parseAndSetParams already.
+					// If it is not, setParameters was called directly with an array of string parameter values.
+					if ( is_array( $paramData ) ) {
+						$paramData['original-name'] = $paramName;
+						$this->mParameters[$mainName] = $paramData;							
+					}
+					else {
+						$this->mParameters[$mainName] = array(
+							'original-value' => $paramData,
+							'original-name' => $paramName,
+						);						
+					}
 				}
 				else {
 					$this->errors[] = array( 'type' => 'override', 'name' => $mainName );
@@ -199,8 +213,9 @@ final class Validator {
 			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->mErrors array.
 				if ( self::$storeUnknownParameters ) $this->mUnknownParams[] = $paramName;
 				$this->mErrors[] = array( 'type' => 'unknown', 'name' => $paramName );
-			}
+			}		
 		}
+		
 	}
 	
 	/**
