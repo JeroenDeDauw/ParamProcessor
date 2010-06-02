@@ -114,14 +114,14 @@ final class ValidatorManager {
 							$msg = wfMsgExt( 'validator_list_error_invalid_argument', array( 'parsemag' ), $error['name'] );
 							break;
 					}
-					
+
 					if ( array_key_exists( 'invalid-items', $error ) ) {
 						$omitted = array();
 						foreach ( $error['invalid-items'] as $item ) $omitted[] = Sanitizer::escapeId( $item );
 						$msg .= ' ' . wfMsgExt( 'validator_list_omitted', array( 'parsemag' ),
 							$wgLang->listToText( $omitted ), count( $omitted ) );
 					}
-					
+
 					$errors[] = $msg;
 				}
 				else {
