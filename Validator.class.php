@@ -137,13 +137,13 @@ final class Validator {
 	private $mErrors = array();
 
 	/**
-	 * Determines the names and values of all parameters. Also takes care of
-	 * default parameters and aliases, by determining the main parameter name.
+	 * Determines the names and values of all parameters. Also takes care of default parameters. 
+	 * After that the resulting parameter list is passed to Validator::setParameters
 	 * 
 	 * @param array $rawParams
 	 * @param array $parameterInfo
 	 * @param array $defaultParams
-	 * @param boolean $toLower Indicates if the parameter value should be put to lower case. Defaults to true.
+	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
 	 */
 	public function parseAndSetParams( array $rawParams, array $parameterInfo, array $defaultParams = array(), $toLower = true ) {
 		$parameters = array();
@@ -198,7 +198,15 @@ final class Validator {
 		$this->setParameters( $parameters, $parameterInfo, false );
 	}
 	
-	public function setParameters( $parameters, $parameterInfo, $toLower = true ) {
+	/**
+	 * Loops through a list of provided parameters, resolves aliasing and stores errors
+	 * for unknown parameters and optionally for parameter overriding.
+	 * 
+	 * @param array $parameters Parameter name as key, parameter value as value
+	 * @param array $parameterInfo Main parameter name as key, parameter meta data as valu
+	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
+	 */
+	public function setParameters( array $parameters, array $parameterInfo, $toLower = true ) {
 		$this->mParameterInfo = $parameterInfo;
 		
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
@@ -235,7 +243,6 @@ final class Validator {
 				$this->mErrors[] = array( 'type' => 'unknown', 'name' => $paramName );
 			}		
 		}
-		
 	}
 	
 	/**
