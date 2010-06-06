@@ -195,14 +195,16 @@ final class Validator {
 			$nr++;
 		}	
 
-		$this->setParameters( $parameters, $parameterInfo );
+		$this->setParameters( $parameters, $parameterInfo, false );
 	}
 	
-	public function setParameters( $parameters, $parameterInfo ) {
+	public function setParameters( $parameters, $parameterInfo, $toLower = true ) {
 		$this->mParameterInfo = $parameterInfo;
 		
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
-		foreach ( $parameters as $paramName => $paramData ) {		
+		foreach ( $parameters as $paramName => $paramData ) {
+			if ( $toLower ) $paramName = strtolower( $paramName );
+			
 			// Attempt to get the main parameter name (takes care of aliases).
 			$mainName = self::getMainParamName( $paramName );
 
