@@ -143,8 +143,9 @@ final class Validator {
 	 * @param array $rawParams
 	 * @param array $parameterInfo
 	 * @param array $defaultParams
+	 * @param boolean $toLower Indicates if the parameter value should be put to lower case. Defaults to true.
 	 */
-	public function parseAndSetParams( array $rawParams, array $parameterInfo, array $defaultParams = array() ) {
+	public function parseAndSetParams( array $rawParams, array $parameterInfo, array $defaultParams = array(), $toLower = true ) {
 		$parameters = array();
 
 		$nr = 0;
@@ -156,22 +157,39 @@ final class Validator {
 			if ( is_string( $arg ) ) {
 				$parts = explode( '=', $arg, 2 );
 				
+				// If there is only one part, no parameter name is provided, so try default parameter assignment.
 				if ( count( $parts ) == 1 ) {
+					// Default parameter assignment is only possible when there are default parameters!
 					if ( count( $defaultParams ) > 0 ) {
 						$defaultParam = array_shift( $defaultParams );
-						$parameters[$defaultParam] = array(
-							'original-value' => trim( $parts[0] ),
+						$parameters[strtolower( $defaultParam )] = array(
+							'original-value' => trim( $toLower ? strtolower( $parts[0] ) : $parts[0] ),
 							'default' => $defaultNr,
 							'position' => $nr
 						);
 						$defaultNr++;
 					}
+					else {
+						// It might be nice to have some sort of warning or error here, as the value is simply ignored.
+					}
 				} else {
-					$parameters[$parts[0]] = array(
-						'original-value' => trim( $parts[1] ),
+					$paramName = strtolower( $parts[0] );
+					
+					$parameters[$paramName] = array(
+						'original-value' => trim( $toLower ? strtolower( $parts[1] ) : $parts[1] ),
 						'default' => false,
 						'position' => $nr
 					);
+					
+					// Let's not be evil, and remove the used parameter name from the default parameter list.
+					// This code is basically a remove array element by value algorithm.
+					$newDefaults = array();
+					
+					foreach( $defaultParams as $defaultParam ) {
+						if ( $defaultParam != $paramName ) $newDefaults[] = $defaultParam;
+					}
+					
+					$defaultParams = $newDefaults;
 				}
 			}
 			$nr++;
