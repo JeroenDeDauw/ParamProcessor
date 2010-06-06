@@ -211,7 +211,7 @@ final class Validator {
 		
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
 		foreach ( $parameters as $paramName => $paramData ) {
-			if ( $toLower ) $paramName = strtolower( $paramName );
+			$paramName = strtolower( $paramName );
 			
 			// Attempt to get the main parameter name (takes care of aliases).
 			$mainName = self::getMainParamName( $paramName );
@@ -225,11 +225,12 @@ final class Validator {
 					// If it is not, setParameters was called directly with an array of string parameter values.
 					if ( is_array( $paramData ) ) {
 						$paramData['original-name'] = $paramName;
+						if ( $toLower ) $paramData['original-value'] = strtolower( $paramData['original-value'] );
 						$this->mParameters[$mainName] = $paramData;							
 					}
 					else {
 						$this->mParameters[$mainName] = array(
-							'original-value' => $paramData,
+							'original-value' => $toLower ? strtolower( $paramData ) : $paramData,
 							'original-name' => $paramName,
 						);						
 					}
