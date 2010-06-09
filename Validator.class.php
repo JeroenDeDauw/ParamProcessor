@@ -223,14 +223,14 @@ final class Validator {
 				if ( !array_key_exists( $mainName, $this->mParameters ) || self::$acceptOverriding ) {
 					// If the valueis an array, this means it has been procesed in parseAndSetParams already.
 					// If it is not, setParameters was called directly with an array of string parameter values.
-					if ( is_array( $paramData ) ) {
+					if ( is_array( $paramData ) && array_key_exists( 'original-value', $paramData ) ) {
 						$paramData['original-name'] = $paramName;
 						if ( $toLower ) $paramData['original-value'] = strtolower( $paramData['original-value'] );
 						$this->mParameters[$mainName] = $paramData;							
 					}
 					else {
 						$this->mParameters[$mainName] = array(
-							'original-value' => $toLower ? strtolower( $paramData ) : $paramData,
+							'original-value' => $toLower && is_string( $paramData ) ? strtolower( $paramData ) : $paramData,
 							'original-name' => $paramName,
 						);						
 					}
