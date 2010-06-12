@@ -521,6 +521,7 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Civvì
+ * @author HalphaZ
  */
 $messages['it'] = array(
 	'validator-desc' => 'Validator fornisce ad altre estensiono un modo semplice per la convalida dei parametri delle funzioni parser e dei tag introdotti, per impostare i valori di default e per generare messaggi di errore.',
@@ -531,6 +532,15 @@ $messages['it'] = array(
 	'validator_error_empty_argument' => 'Il parametro $1 non può avere un valore vuoto.',
 	'validator_error_must_be_number' => 'Il parametro $1 può essere solo un numero.',
 	'validator_error_must_be_integer' => 'Il parametro $1 può essere solo un intero.',
+	'validator_error_invalid_range' => 'Il parametro $1 deve essere compreso tra $2 e $3.',
+	'validator_error_invalid_argument' => 'Il valore $1 non è valido per il parametro $2.',
+	'validator_list_error_empty_argument' => 'Il parametro $1 non accetta valori vuoti.',
+	'validator_list_error_must_be_number' => 'Il parametro $1 può contenere solo numeri.',
+	'validator_list_error_must_be_integer' => 'Il parametro $1 può contenere solo numeri interi.',
+	'validator_list_error_invalid_range' => 'Tutti i valori del parametro $1 devono essere compresi tra $2 e $3.',
+	'validator_list_error_invalid_argument' => 'Uno o più valori del parametro $1 non sono validi.',
+	'validator_list_omitted' => '{{PLURAL:$2|Il valore|I valori}} $1 {{PLURAL:$2|è stato omesso|sono stati omessi}}.',
+	'validator_error_accepts_only' => 'Il parametro $1 accetta solo {{PLURAL:$3|questo valore|questi valori}}: $2.',
 );
 
 /** Japanese (日本語)
