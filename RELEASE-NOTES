@@ -6,10 +6,15 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 == Validator change log ==
 
+=== Validator 0.3.3 ===
+(2010-06-20)
+
+* Fixed bug that caused notices when using the ValidatorManager::manageParsedParameters method in some cases.
+
 === Validator 0.3.2 ===
 (2010-06-07)
 
-* Added lower casing to parameter names, and optionaly, but defaul on, lowercasing for parameter values.
+* Added lower casing to parameter names, and optionally, but default on, lower-casing for parameter values.
 
 * Added removal of default parameters from the default parameter queue when used as a named parameter.
 
