@@ -173,7 +173,7 @@ final class Validator {
 						// It might be nice to have some sort of warning or error here, as the value is simply ignored.
 					}
 				} else {
-					$paramName = strtolower( $parts[0] );
+					$paramName = trim( strtolower( $parts[0] ) );
 					
 					$parameters[$paramName] = array(
 						'original-value' => trim( $toLower ? strtolower( $parts[1] ) : $parts[1] ),
