@@ -211,7 +211,7 @@ final class Validator {
 		
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
 		foreach ( $parameters as $paramName => $paramData ) {
-			$paramName = strtolower( $paramName );
+			$paramName = trim( strtolower( $paramName ) );
 			
 			// Attempt to get the main parameter name (takes care of aliases).
 			$mainName = self::getMainParamName( $paramName );
@@ -225,18 +225,17 @@ final class Validator {
 					// If it is not, setParameters was called directly with an array of string parameter values.
 					if ( is_array( $paramData ) && array_key_exists( 'original-value', $paramData ) ) {
 						$paramData['original-name'] = $paramName;
-						if ( $toLower ) $paramData['original-value'] = strtolower( $paramData['original-value'] );
 						$this->mParameters[$mainName] = $paramData;							
 					}
 					else {
 						$this->mParameters[$mainName] = array(
-							'original-value' => $toLower && is_string( $paramData ) ? strtolower( $paramData ) : $paramData,
+							'original-value' => trim( $toLower && is_string( $paramData ) ? strtolower( $paramData ) : $paramData ),
 							'original-name' => $paramName,
 						);						
 					}
 				}
 				else {
-					$this->errors[] = array( 'type' => 'override', 'name' => $mainName );
+					$this->mErrors[] = array( 'type' => 'override', 'name' => $mainName );
 				}
 			}
 			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->mErrors array.
@@ -312,7 +311,7 @@ final class Validator {
 				// If the parameter is required, add a new error of type 'missing'.
 				// TODO: break when has dependencies
 				if ( array_key_exists( 'required', $paramInfo ) && $paramInfo['required'] ) {
-					$this->errors[] = array( 'type' => 'missing', 'name' => $paramName );
+					$this->mErrors[] = array( 'type' => 'missing', 'name' => $paramName );
 				}
 				else {
 					// Set the default value (or default 'default value' if none is provided), and ensure the type is correct.
@@ -431,7 +430,7 @@ final class Validator {
 					if ( ! $isValid ) {
 						$hasNoErrors = false;
 						
-						$this->errors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'value' => $this->rawParameters[$name] );
+						$this->mErrors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'value' => $this->mParameters['original-value'] );
 						
 						if ( !self::$accumulateParameterErrors ) {
 							break;
@@ -498,7 +497,7 @@ final class Validator {
 						// If the value is valid, but there are invalid items, add an error with a list of these items.
 						if ( $isValid && count( $invalidItems ) > 0 ) {
 							$value = $validItems;
-							$this->errors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'invalid-items' => $invalidItems );
+							$this->mErrors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'invalid-items' => $invalidItems );
 						}
 					}
 				}
