@@ -97,7 +97,7 @@ final class ValidatorManager {
 			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', count( $rawErrors ) ) . '</b><br /><i>';
 
 			$errors = array();
-
+			
 			foreach ( $rawErrors as $error ) {
 				$error['name'] = '<b>' . Sanitizer::escapeId( $error['name'] ) . '</b>';
 				
@@ -158,7 +158,7 @@ final class ValidatorManager {
 							$errors[] = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $error['name'], $itemsText, count( $error['args'] ) );
 							break;
 						case 'invalid' : default :
-							$errors[] = wfMsgExt( 'validator_error_invalid_argument', array( 'parsemag' ), '<b>' . Sanitizer::escapeId( $error['value'] ) . '</b>', $error['name'] );
+							$errors[] = wfMsgExt( 'validator_error_invalid_argument', array( 'parsemag' ), '<b>' . htmlspecialchars( $error['value'] ) . '</b>', $error['name'] );
 							break;
 					}
 				}

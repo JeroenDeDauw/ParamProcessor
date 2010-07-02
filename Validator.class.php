@@ -208,7 +208,7 @@ final class Validator {
 	 */
 	public function setParameters( array $parameters, array $parameterInfo, $toLower = true ) {
 		$this->mParameterInfo = $parameterInfo;
-		
+
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
 		foreach ( $parameters as $paramName => $paramData ) {
 			$paramName = trim( strtolower( $paramName ) );
