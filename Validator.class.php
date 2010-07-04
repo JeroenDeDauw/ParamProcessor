@@ -541,7 +541,7 @@ final class Validator {
 	 */
 	private function doCriteriaValidation( $validationFunction, $value, $name, array $criteriaArgs ) {
 		// Call the validation function and store the result.
-		$parameters = array( $value, $name, $this->mParameters );
+		$parameters = array( &$value, $name, $this->mParameters );
 		$parameters = array_merge( $parameters, $criteriaArgs );		
 		return call_user_func_array( $validationFunction, $parameters );
 	}
