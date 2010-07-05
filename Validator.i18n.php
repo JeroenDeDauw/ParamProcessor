@@ -698,6 +698,28 @@ $messages['oc'] = array(
 	'validator_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.',
 );
 
+/** Polish (Polski)
+ * @author Fizykaa
+ */
+$messages['pl'] = array(
+	'validator_error_parameters' => 'W Twoim kodzie {{PLURAL:$1|został wykryty następujący błąd|zostały wykryte następujące błędy}}:',
+	'validator_warning_parameters' => 'W Twoim kodzie {{PLURAL:$1|wystąpił błąd|wystąpiły błędy}}.',
+	'validator_error_unknown_argument' => '$1 jest niepoprawnym parametrem.',
+	'validator_error_required_missing' => 'Obowiązkowy parametr $1 nie został zadeklarowany.',
+	'validator_error_empty_argument' => 'Parametr $1 nie może być pusty.',
+	'validator_error_must_be_number' => 'Parametr $1 musi być liczbą.',
+	'validator_error_must_be_integer' => 'Parametr $1 musi być liczbą całkowitą.',
+	'validator_error_invalid_range' => 'Parametr $1 musi zawierać się w przedziale <$2, $3>.',
+	'validator_error_invalid_argument' => 'Wartość $1 jest nieprawidłowa dla parametru $2.',
+	'validator_list_error_empty_argument' => 'Parametr $1 nie może być pusty.',
+	'validator_list_error_must_be_number' => 'Parametr $1 może zawierać tylko liczby.',
+	'validator_list_error_must_be_integer' => 'Parametr $1 może zawierać tylko liczby całkowite.',
+	'validator_list_error_invalid_range' => 'Wartości parametru $1 muszą zawierać się w przedziale <$2, $3>.',
+	'validator_list_error_invalid_argument' => 'Przynajmniej jedna wartość parametru $1 jest nieprawidłowa.',
+	'validator_list_omitted' => '{{PLURAL:$2|Parametr|Parametry}} $1 {PLURAL:$2|został opuszczony|zostały opuszczone}}.',
+	'validator_error_accepts_only' => 'Parametr $1 może przyjmować tylko {{PLURAL:$3|następującą wartość|następujące wartości}}: $2.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
