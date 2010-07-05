@@ -228,8 +228,12 @@ final class Validator {
 						$this->mParameters[$mainName] = $paramData;							
 					}
 					else {
+						if ( is_string( $paramData ) ) {
+							$paramData = trim( $paramData );
+							if ( $toLower ) $paramData = strtolower( $paramData );
+						}
 						$this->mParameters[$mainName] = array(
-							'original-value' => trim( $toLower && is_string( $paramData ) ? strtolower( $paramData ) : $paramData ),
+							'original-value' => $paramData,
 							'original-name' => $paramName,
 						);						
 					}
