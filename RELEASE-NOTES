@@ -6,6 +6,15 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 == Validator change log ==
 
+=== Validator 0.3.4 ===
+(2010-07-07)
+
+* Fixed issue with parameter reference that occured in php 5.3 and later. 
+
+* Fixed escaping issue that caused parameter names in error messages to be shown incorrectly.
+
+* Fixed small issue with parameter value trimming that caused problems when objects where passed.
+
 === Validator 0.3.3 ===
 (2010-06-20)
 
