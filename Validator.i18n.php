@@ -700,24 +700,26 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Fizykaa
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'validator_error_parameters' => 'W Twoim kodzie {{PLURAL:$1|został wykryty następujący błąd|zostały wykryte następujące błędy}}:',
-	'validator_warning_parameters' => 'W Twoim kodzie {{PLURAL:$1|wystąpił błąd|wystąpiły błędy}}.',
+	'validator-desc' => 'Dostarcza innym rozszerzeniom ogólną obsługę parametrów',
+	'validator_error_parameters' => 'W Twoim kodzie {{PLURAL:$1|został wykryty następujący błąd|zostały wykryte następujące błędy}} składni:',
+	'validator_warning_parameters' => 'W Twoim kodzie {{PLURAL:$1|wystąpił błąd|wystąpiły błędy}} składni.',
 	'validator_error_unknown_argument' => '$1 jest niepoprawnym parametrem.',
-	'validator_error_required_missing' => 'Obowiązkowy parametr $1 nie został zadeklarowany.',
+	'validator_error_required_missing' => 'Obowiązkowy parametr $1 nie został przekazany.',
 	'validator_error_empty_argument' => 'Parametr $1 nie może być pusty.',
 	'validator_error_must_be_number' => 'Parametr $1 musi być liczbą.',
 	'validator_error_must_be_integer' => 'Parametr $1 musi być liczbą całkowitą.',
-	'validator_error_invalid_range' => 'Parametr $1 musi zawierać się w przedziale <$2, $3>.',
-	'validator_error_invalid_argument' => 'Wartość $1 jest nieprawidłowa dla parametru $2.',
+	'validator_error_invalid_range' => 'Parametr $1 musi zawierać się w przedziale od $2 do $3.',
+	'validator_error_invalid_argument' => 'Nieprawidłowa wartość $1 parametru $2.',
 	'validator_list_error_empty_argument' => 'Parametr $1 nie może być pusty.',
-	'validator_list_error_must_be_number' => 'Parametr $1 może zawierać tylko liczby.',
-	'validator_list_error_must_be_integer' => 'Parametr $1 może zawierać tylko liczby całkowite.',
-	'validator_list_error_invalid_range' => 'Wartości parametru $1 muszą zawierać się w przedziale <$2, $3>.',
+	'validator_list_error_must_be_number' => 'Parametrem $1 mogą być wyłącznie liczby.',
+	'validator_list_error_must_be_integer' => 'Parametrem $1 mogą być wyłącznie liczby całkowite.',
+	'validator_list_error_invalid_range' => 'Wartości parametru $1 muszą zawierać się w przedziale od $2 do $3.',
 	'validator_list_error_invalid_argument' => 'Przynajmniej jedna wartość parametru $1 jest nieprawidłowa.',
-	'validator_list_omitted' => '{{PLURAL:$2|Parametr|Parametry}} $1 {PLURAL:$2|został opuszczony|zostały opuszczone}}.',
-	'validator_error_accepts_only' => 'Parametr $1 może przyjmować tylko {{PLURAL:$3|następującą wartość|następujące wartości}}: $2.',
+	'validator_list_omitted' => '{{PLURAL:$2|Parametr|Parametry}} $1 {{PLURAL:$2|został opuszczony|zostały opuszczone}}.',
+	'validator_error_accepts_only' => 'Parametr $1 może przyjmować wyłącznie {{PLURAL:$3|wartość|następujące wartości:}} $2.',
 );
 
 /** Piedmontese (Piemontèis)
