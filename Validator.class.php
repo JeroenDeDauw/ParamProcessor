@@ -232,6 +232,7 @@ final class Validator {
 							$paramData = trim( $paramData );
 							if ( $toLower ) $paramData = strtolower( $paramData );
 						}
+						
 						$this->mParameters[$mainName] = array(
 							'original-value' => $paramData,
 							'original-name' => $paramName,
@@ -434,7 +435,13 @@ final class Validator {
 					if ( ! $isValid ) {
 						$hasNoErrors = false;
 						
-						$this->mErrors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'value' => $this->mParameters['original-value'] );
+						$this->mErrors[] = array(
+							'type' => $criteriaName,
+							'args' => $criteriaArgs,
+							'name' => $this->mParameters[$name]['original-name'],
+							'list' => true,
+							'value' => $this->mParameters[$name]['original-value']
+						);
 						
 						if ( !self::$accumulateParameterErrors ) {
 							break;
@@ -501,7 +508,13 @@ final class Validator {
 						// If the value is valid, but there are invalid items, add an error with a list of these items.
 						if ( $isValid && count( $invalidItems ) > 0 ) {
 							$value = $validItems;
-							$this->mErrors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => true, 'invalid-items' => $invalidItems );
+							$this->mErrors[] = array(
+								'type' => $criteriaName,
+								'args' => $criteriaArgs,
+								'name' => $this->mParameters[$name]['original-name'],
+								'list' => true,
+								'invalid-items' => $invalidItems
+							);
 						}
 					}
 				}
@@ -512,9 +525,14 @@ final class Validator {
 
 				// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
 				if ( !$isValid ) {
-					$isList = is_array( $value );
-					if ( $isList ) $value = $this->mParameters[$name]['original-value'];
-					$this->mErrors[] = array( 'type' => $criteriaName, 'args' => $criteriaArgs, 'name' => $name, 'list' => $isList, 'value' => $value );
+					$this->mErrors[] = array(
+						'type' => $criteriaName,
+						'args' => $criteriaArgs,
+						'name' => $this->mParameters[$name]['original-name'],
+						'list' => $isList,
+						'value' => $this->mParameters[$name]['original-value']
+					);
+					
 					$hasNoErrors = false;
 					if ( !self::$accumulateParameterErrors ) break;
 				}
@@ -561,6 +579,7 @@ final class Validator {
 			else {
 				$this->mParameters[$paramName]['value'] = self::$defaultDefaultValue;
 			}
+			
 			$this->setOutputTypes( $paramName );
 			$this->mValidParams[] = $paramName;
 		}

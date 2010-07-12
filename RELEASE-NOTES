@@ -6,6 +6,11 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 == Validator change log ==
 
+=== Validator 0.3.5 ===
+(2010-07-xx)
+
+* Fixed issue with the original parameter name (and in some cases also value) in error messages.
+
 === Validator 0.3.4 ===
 (2010-07-07)
 
