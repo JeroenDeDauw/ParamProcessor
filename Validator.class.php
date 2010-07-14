@@ -529,7 +529,7 @@ final class Validator {
 						'type' => $criteriaName,
 						'args' => $criteriaArgs,
 						'name' => $this->mParameters[$name]['original-name'],
-						'list' => $isList,
+						'list' => is_array( $value ),
 						'value' => $this->mParameters[$name]['original-value']
 					);
 					
