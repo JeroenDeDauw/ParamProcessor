@@ -517,6 +517,12 @@ $messages['id'] = array(
 	'validator_error_must_be_integer' => 'Parameter $1 hanya dapat berupa integer.',
 	'validator_error_invalid_range' => 'Parameter $1 harus antara $2 dan $3.',
 	'validator_error_invalid_argument' => 'Nilai $1 tidak valid untuk parameter $2.',
+	'validator_list_error_empty_argument' => 'Parameter $1 tidak menerima nilai kosong.',
+	'validator_list_error_must_be_number' => 'Parameter $1 hanya dapat berisi angka.',
+	'validator_list_error_must_be_integer' => 'Parameter $1 hanya dapat berisi bilangan bulat.',
+	'validator_list_error_invalid_range' => 'Semua nilai parameter $1 harus antara $2 dan $3.',
+	'validator_list_error_invalid_argument' => 'Satu nilai atau lebih untuk parameter $1 tidak sah.',
+	'validator_list_omitted' => '{{PLURAL:$2|Nilai|Nilai}} $1 {{PLURAL:$2|telah|telah}} dihapus.',
 	'validator_error_accepts_only' => 'Parameter $1 hanya menerima {{PLURAL:$3|nilai ini|nilai ini}}: $2.',
 );
 
