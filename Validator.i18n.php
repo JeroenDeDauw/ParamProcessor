@@ -418,10 +418,11 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'validator_warning_parameters' => 'ישנ{{PLURAL:$1|ה שגיאה|ן שגיאות}} בתחביר שלכם.',
+	'validator_warning_parameters' => '{{PLURAL:$1|ישנה שגיאה|ישנן שגיאות}} בתחביר שלכם.',
 	'validator_error_unknown_argument' => '$1 אינו פרמטר תקני.',
 	'validator_error_required_missing' => 'הפרמטר הדרוש $1 לא צוין.',
 	'validator_error_empty_argument' => 'הפרמטר $1 לא יכול להיות ערך ריק.',
