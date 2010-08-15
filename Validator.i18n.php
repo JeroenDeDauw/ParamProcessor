@@ -15,7 +15,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'validator-desc' => 'Provides generic parameter handling support to other extensions',
+	'validator-desc' => 'Provides generic parameter handling support for other extensions',
 
 	'validator_error_parameters' => 'The following {{PLURAL:$1|error has|errors have}} been detected in your syntax:',
 	'validator_warning_parameters' => 'There {{PLURAL:$1|is an error|are errors}} in your syntax.',
