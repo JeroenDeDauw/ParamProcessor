@@ -370,6 +370,21 @@ $messages['fr'] = array(
 	'validator_error_accepts_only' => 'Le paramètre $1 accepte uniquement {{PLURAL:$3|cette valeur|ces valeurs}} : $2.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'validator_error_parameters' => '{{PLURAL:$1|Ceta èrror at étâ dècelâ|Cetes èrrors ont étâ dècelâs}} dens voutra sintaxa :',
+	'validator_warning_parameters' => 'Y at {{PLURAL:$1|una èrror|des èrrors}} dens voutra sintaxa.',
+	'validator_error_unknown_argument' => '$1 est pas un paramètre valido.',
+	'validator_error_required_missing' => 'Lo paramètre nècèssèro $1 est pas balyê.',
+	'validator_error_empty_argument' => 'Lo paramètre $1 pôt pas avêr una valor voueda.',
+	'validator_error_must_be_number' => 'Lo paramètre $1 pôt étre ren qu’un nombro.',
+	'validator_error_must_be_integer' => 'Lo paramètre $1 pôt étre ren qu’un entiér.',
+	'validator_error_invalid_range' => 'Lo paramètre $1 dêt étre entre-mié $2 et $3.',
+	'validator_error_invalid_argument' => 'La valor $1 est pas valida por lo paramètre $2.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -948,5 +963,23 @@ $messages['vi'] = array(
 	'validator_list_error_invalid_argument' => 'Ít nhất một giá trị của tham số “$1” không hợp lệ.',
 	'validator_list_omitted' => '{{PLURAL:$2|Giá trị|Các giá trị}} “$1” bị bỏ qua.',
 	'validator_error_accepts_only' => 'Tham số $1 chỉ nhận được {{PLURAL:$3|giá trị|các giá trị}} này: $2.',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wilsonmess
+ */
+$messages['zh-hans'] = array(
+	'validator_error_unknown_argument' => '$1 不是合法参数。',
+	'validator_error_required_missing' => '未能提供所需要的参数 $1 。',
+	'validator_error_empty_argument' => '参数 $1 不能为空。',
+	'validator_error_must_be_number' => '参数 $1 只能为数字。',
+	'validator_error_must_be_integer' => '参数 $1 只能为整数。',
+	'validator_error_invalid_range' => '参数 $1 的范围必须介于 $2 与 $3 之间。',
+	'validator_error_invalid_argument' => '值 $1 对于参数 $2 不合法。',
+	'validator_list_error_empty_argument' => '参数 $1 不接受空值。',
+	'validator_list_error_must_be_number' => '参数 $1 只能包含数字。',
+	'validator_list_error_must_be_integer' => '参数 $1 只能包含整数。',
+	'validator_list_error_invalid_range' => '参数 $1 所有合法的值都必须介于 $2 与 $3 之间。',
+	'validator_list_error_invalid_argument' => '参数 $1 的一个或多个值不合法。',
 );
 
