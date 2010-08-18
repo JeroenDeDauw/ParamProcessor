@@ -383,6 +383,13 @@ $messages['frp'] = array(
 	'validator_error_must_be_integer' => 'Lo paramètre $1 pôt étre ren qu’un entiér.',
 	'validator_error_invalid_range' => 'Lo paramètre $1 dêt étre entre-mié $2 et $3.',
 	'validator_error_invalid_argument' => 'La valor $1 est pas valida por lo paramètre $2.',
+	'validator_list_error_empty_argument' => 'Lo paramètre $1 accèpte pas les valors vouedes.',
+	'validator_list_error_must_be_number' => 'Lo paramètre $1 pôt contegnir ren que des nombros.',
+	'validator_list_error_must_be_integer' => 'Lo paramètre $1 pôt contegnir ren que des entiérs.',
+	'validator_list_error_invalid_range' => 'Totes les valors du paramètre $1 dêvont étre entre-mié $2 et $3.',
+	'validator_list_error_invalid_argument' => 'Yona ou ben un mouél de valors du paramètre $1 sont envalides.',
+	'validator_list_omitted' => '{{PLURAL:$2|La valor|Les valors}} $1 {{PLURAL:$2|at étâ oubliâ|ont étâ oubliâs}}.',
+	'validator_error_accepts_only' => 'Lo paramètre $1 accèpte ren que {{PLURAL:$3|ceta valor|cetes valors}} : $2.',
 );
 
 /** Galician (Galego)
