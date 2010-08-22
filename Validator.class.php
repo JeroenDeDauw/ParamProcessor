@@ -161,9 +161,12 @@ final class Validator {
 				if ( count( $parts ) == 1 ) {
 					// Default parameter assignment is only possible when there are default parameters!
 					if ( count( $defaultParams ) > 0 ) {
-						$defaultParam = array_shift( $defaultParams );
-						$parameters[strtolower( $defaultParam )] = array(
-							'original-value' => trim( $toLower ? strtolower( $parts[0] ) : $parts[0] ),
+						$defaultParam = strtolower( array_shift( $defaultParams ) );
+						
+						$this->lowerCaseIfNeeded( $parts[0], $defaultParam, $parameterInfo, $toLower );
+						
+						$parameters[$defaultParam] = array(
+							'original-value' => trim( $parts[0] ),
 							'default' => $defaultNr,
 							'position' => $nr
 						);
@@ -175,8 +178,10 @@ final class Validator {
 				} else {
 					$paramName = trim( strtolower( $parts[0] ) );
 					
+					$this->lowerCaseIfNeeded( $parts[1], $paramName, $parameterInfo, $toLower );
+					
 					$parameters[$paramName] = array(
-						'original-value' => trim( $toLower ? strtolower( $parts[1] ) : $parts[1] ),
+						'original-value' => trim( $parts[1] ),
 						'default' => false,
 						'position' => $nr
 					);
@@ -230,7 +235,7 @@ final class Validator {
 					else {
 						if ( is_string( $paramData ) ) {
 							$paramData = trim( $paramData );
-							if ( $toLower ) $paramData = strtolower( $paramData );
+							$this->lowerCaseIfNeeded( $paramData, $mainName, $this->mParameterInfo, $toLower );
 						}
 						
 						$this->mParameters[$mainName] = array(
@@ -251,6 +256,21 @@ final class Validator {
 	}
 	
 	/**
+	 * Lowercases the provided $paramValue if needed.
+	 * 
+	 * @since 0.3.6
+	 * 
+	 * @param $paramValue String
+	 * @param $paramName String
+	 * @param $parameterInfo Array
+	 * @param $globalDefault Boolean
+	 */
+	protected function lowerCaseIfNeeded( &$paramValue, $paramName, array $parameterInfo, $globalDefault ) {
+		$lowerCase = array_key_exists( 'tolower', $parameterInfo[$paramName] ) ? $parameterInfo[$paramName]['tolower'] : $globalDefault;
+		if ( $lowerCase ) $paramValue = strtolower( $paramValue );
+	}	
+	
+	/**
 	 * Returns the main parameter name for a given parameter or alias, or false
 	 * when it is not recognized as main parameter or alias.
 	 *
@@ -258,7 +278,7 @@ final class Validator {
 	 *
 	 * @return string or false
 	 */
-	private function getMainParamName( $paramName ) {
+	protected function getMainParamName( $paramName ) {
 		$result = false;
 
 		if ( array_key_exists( $paramName, $this->mParameterInfo ) ) {
