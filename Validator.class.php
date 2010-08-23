@@ -266,7 +266,8 @@ final class Validator {
 	 * @param $globalDefault Boolean
 	 */
 	protected function lowerCaseIfNeeded( &$paramValue, $paramName, array $parameterInfo, $globalDefault ) {
-		$lowerCase = array_key_exists( 'tolower', $parameterInfo[$paramName] ) ? $parameterInfo[$paramName]['tolower'] : $globalDefault;
+		$useLocal = array_key_exists( $paramName, $parameterInfo ) && array_key_exists( 'tolower', $parameterInfo[$paramName] );
+		$lowerCase = $useLocal ? $parameterInfo[$paramName]['tolower'] : $globalDefault;
 		if ( $lowerCase ) $paramValue = strtolower( $paramValue );
 	}	
 	
