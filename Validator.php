@@ -33,13 +33,11 @@ define( 'Validator_ERRORS_WARN', 2 );
 define( 'Validator_ERRORS_SHOW', 3 );
 define( 'Validator_ERRORS_STRICT', 4 );
 
-$egValidatorDir = dirname( __FILE__ ) . '/';
-
 // Include the settings file.
-require_once( $egValidatorDir . 'Validator_Settings.php' );
+require_once 'Validator_Settings.php';
 
 // Register the internationalization file.
-$wgExtensionMessagesFiles['Validator'] = $egValidatorDir . 'Validator.i18n.php';
+$wgExtensionMessagesFiles['Validator'] = dirname( __FILE__ ) . '/Validator.i18n.php';
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -51,8 +49,9 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Autoload the general classes.
-$wgAutoloadClasses['Validator'] 			= $egValidatorDir . 'Validator.class.php';
-$wgAutoloadClasses['ValidatorFunctions'] 	= $egValidatorDir . 'Validator_Functions.php';
-$wgAutoloadClasses['ValidatorFormats'] 		= $egValidatorDir . 'Validator_Formats.php';
-$wgAutoloadClasses['ValidatorManager'] 		= $egValidatorDir . 'Validator_Manager.php';
-$wgAutoloadClasses['TopologicalSort'] 		= $egValidatorDir . 'TopologicalSort.php';
+$wgAutoloadClasses['Validator'] 			= dirname( __FILE__ ) . '/Validator.class.php';
+$wgAutoloadClasses['ParserHook'] 			= dirname( __FILE__ ) . '/ParserHook.php';
+$wgAutoloadClasses['ValidatorFunctions'] 	= dirname( __FILE__ ) . '/Validator_Functions.php';
+$wgAutoloadClasses['ValidatorFormats'] 		= dirname( __FILE__ ) . '/Validator_Formats.php';
+$wgAutoloadClasses['ValidatorManager'] 		= dirname( __FILE__ ) . '/Validator_Manager.php';
+$wgAutoloadClasses['TopologicalSort'] 		= dirname( __FILE__ ) . '/TopologicalSort.php';
