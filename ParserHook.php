@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Class for out of the box parser hook functionality inetgrated with the validation
+ * provided by Validator.
+ *
+ * @since 0.4
+ *
+ * @file ParserHook.php
+ * @ingroup Validator
+ *
+ * @author Jeroen De Dauw
+ */
 abstract class ParserHook {
 	
 	/**
@@ -129,6 +140,14 @@ abstract class ParserHook {
 		return $output;
 	}
 	
+	/**
+	 * Handles any errors that occured. Messages that should be added the the regular
+	 * output are returned.
+	 * 
+	 * @param ValidatorManager $manager
+	 * 
+	 * @return string
+	 */
 	protected function handleErrors( ValidatorManager $manager ) {
 		$errorList = $manager->getErrorList();
 
