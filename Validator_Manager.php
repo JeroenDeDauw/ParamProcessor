@@ -41,7 +41,7 @@ final class ValidatorManager {
 	 */
 	public function manageParameters( array $rawParameters, array $parameterInfo, array $defaultParams = array() ) {
 		global $egValidatorErrorLevel;
- 
+
 		$this->validator = new Validator();
 
 		$this->validator->parseAndSetParams( $rawParameters, $parameterInfo, $defaultParams );
