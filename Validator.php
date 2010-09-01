@@ -49,9 +49,11 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Autoload the general classes.
-$wgAutoloadClasses['Validator'] 			= dirname( __FILE__ ) . '/Validator.class.php';
-$wgAutoloadClasses['ParserHook'] 			= dirname( __FILE__ ) . '/ParserHook.php';
-$wgAutoloadClasses['ValidatorFunctions'] 	= dirname( __FILE__ ) . '/Validator_Functions.php';
-$wgAutoloadClasses['ValidatorFormats'] 		= dirname( __FILE__ ) . '/Validator_Formats.php';
-$wgAutoloadClasses['ValidatorManager'] 		= dirname( __FILE__ ) . '/Validator_Manager.php';
-$wgAutoloadClasses['TopologicalSort'] 		= dirname( __FILE__ ) . '/TopologicalSort.php';
+$incDir = dirname( __FILE__ ) . '/includes/';
+$wgAutoloadClasses['Validator'] 			= $incDir . 'Validator.class.php';
+$wgAutoloadClasses['ParserHook'] 			= $incDir . 'ParserHook.php';
+$wgAutoloadClasses['ValidatorFunctions'] 	= $incDir . 'Validator_Functions.php';
+$wgAutoloadClasses['ValidatorFormats'] 		= $incDir . 'Validator_Formats.php';
+$wgAutoloadClasses['ValidatorManager'] 		= $incDir . 'Validator_Manager.php';
+$wgAutoloadClasses['TopologicalSort'] 		= $incDir . 'TopologicalSort.php';
+unset( $incDir );
