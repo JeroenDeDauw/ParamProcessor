@@ -50,7 +50,7 @@ $wgExtensionCredits['other'][] = array(
 
 // Autoload the general classes.
 $incDir = dirname( __FILE__ ) . '/includes/';
-$wgAutoloadClasses['Validator'] 			= $incDir . 'Validator.class.php';
+$wgAutoloadClasses['Validator'] 			= $incDir . 'Validator.php';
 $wgAutoloadClasses['ParserHook'] 			= $incDir . 'ParserHook.php';
 $wgAutoloadClasses['ValidatorFunctions'] 	= $incDir . 'Validator_Functions.php';
 $wgAutoloadClasses['ValidatorFormats'] 		= $incDir . 'Validator_Formats.php';
