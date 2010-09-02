@@ -105,7 +105,7 @@ abstract class ParserHook {
 	/**
 	 * Takes care of validation and rendering, and returns the output.
 	 * 
-	 * @since 04
+	 * @since 0.4
 	 * 
 	 * @param array $arguments
 	 * @param boolean $parsed
@@ -142,6 +142,8 @@ abstract class ParserHook {
 	/**
 	 * Handles any errors that occured. Messages that should be added the the regular
 	 * output are returned.
+	 * 
+	 * @since 0.4
 	 * 
 	 * @param ValidatorManager $manager
 	 * 

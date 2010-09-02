@@ -82,6 +82,8 @@ class ValidatorListErrors extends ParserHook {
 	public function render( array $parameters ) {
 		$output = ''; // TODO
 		
+		
+		
 		return $output;		
 	}
 	

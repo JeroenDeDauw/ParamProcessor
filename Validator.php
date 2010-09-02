@@ -53,6 +53,8 @@ $wgAutoloadClasses['ValidationFunctions'] 	= $incDir . 'ValidationFunctions.php'
 $wgAutoloadClasses['ValidationFormats'] 	= $incDir . 'ValidationFormats.php';
 $wgAutoloadClasses['ValidationManager'] 	= $incDir . 'ValidationManager.php';
 $wgAutoloadClasses['TopologicalSort'] 		= $incDir . 'TopologicalSort.php';
+$wgAutoloadClasses['ValidatorError']		= $incDir . 'Validator_Error.php';
+$wgAutoloadClasses['ValidatorErrorHandler']	= $incDir . 'Validator_ErrorHandler.php';
 $wgAutoloadClasses['ValidatorListErrors'] 	= $incDir . 'parserHooks/Validator_ListErrors.php';
 unset( $incDir );
 
