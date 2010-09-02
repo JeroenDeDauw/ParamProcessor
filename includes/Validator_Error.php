@@ -39,7 +39,7 @@ class ValidatorError {
 	 * 
 	 * @var mixed: string or false
 	 */
-	protected $element;
+	public $element;
 	
 	/**
 	 * @since 0.4

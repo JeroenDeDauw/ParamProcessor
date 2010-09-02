@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Class for parameter validation.
+ * Class for parameter validation of a single parser hook or other parameterized construct.
  *
  * @since 0.1
  *
- * @file Validator.class.php
+ * @file Validator.php
  * @ingroup Validator
  *
  * @author Jeroen De Dauw
@@ -15,7 +15,7 @@
  * TODO: settings of defaults should happen as a default behaviour that can be overiden by the output format,
  * 		 as it is not wished for all output formats in every case, and now a hacky approach is required there.
  */
-final class Validator {
+class Validator {
 
 	/**
 	 * @var boolean Indicates whether parameters not found in the criteria list
@@ -70,7 +70,7 @@ final class Validator {
 	/**
 	 * @var array Holder for the list validation functions.
 	 */
-	private static $mListValidationFunctions = array(
+	protected static $mListValidationFunctions = array(
 		'item_count' => array( 'ValidationFunctions', 'has_item_count' ),
 		'unique_items' => array( 'ValidationFunctions', 'has_unique_items' ),
 	);
@@ -78,7 +78,7 @@ final class Validator {
 	/**
 	 * @var array Holder for the formatting functions.
 	 */
-	private static $mOutputFormats = array(
+	protected static $mOutputFormats = array(
 		'array' => array( 'ValidationFormats', 'format_array' ),
 		'list' => array( 'ValidationFormats', 'format_list' ),
 		'boolean' => array( 'ValidationFormats', 'format_boolean' ),
@@ -95,7 +95,7 @@ final class Validator {
 	 * 
 	 * @var associative array
 	 */
-	private $mParameterInfo;
+	protected $mParameterInfo;
 	
 	/**
 	 * An array initially containing the user provided values. Adittional data about
@@ -110,21 +110,21 @@ final class Validator {
 	 * 
 	 * @var associative array
 	 */
-	private $mParameters = array();
+	protected $mParameters = array();
 	
 	/**
 	 * Arrays for holding the (main) names of valid, invalid and unknown parameters. 
 	 */
-	private $mValidParams = array();
-	private $mInvalidParams = array();
-	private $mUnknownParams = array();
+	protected $mValidParams = array();
+	protected $mInvalidParams = array();
+	protected $mUnknownParams = array();
 
 	/**
 	 * Holds all errors and their meta data. 
 	 * 
 	 * @var associative array
 	 */
-	private $mErrors = array();
+	protected $mErrors = array();
 	
 	/**
 	 * List of ValidatorError.
@@ -135,6 +135,11 @@ final class Validator {
 	 */
 	protected $errors = array();
 
+	/**
+	 * Constructor.
+	 * 
+	 * @since 0.4
+	 */
 	public function __construct() {
 		// TODO
 	}
@@ -147,6 +152,7 @@ final class Validator {
 	 * @return string
 	 */
 	protected function getElement() {
+		return '';
 		// TODO
 	} 
 	
@@ -284,7 +290,14 @@ final class Validator {
 			}
 			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->mErrors array.
 				if ( self::$storeUnknownParameters ) $this->mUnknownParams[] = $paramName;
-				$this->mErrors[] = array( 'type' => 'unknown', 'name' => $paramName );
+				$this->registerError(
+					wfMsgExt(
+						'validator_error_unknown_argument',
+						'parsemag',
+						$paramName
+					),
+					'unknown'		
+				);		
 			}		
 		}
 	}
@@ -371,7 +384,14 @@ final class Validator {
 				// If the parameter is required, add a new error of type 'missing'.
 				// TODO: break when has dependencies
 				if ( array_key_exists( 'required', $paramInfo ) && $paramInfo['required'] ) {
-					$this->mErrors[] = array( 'type' => 'missing', 'name' => $paramName );
+					$this->registerError(
+						wfMsgExt(
+							'validator_error_required_missing',
+							'parsemag',
+							$paramName
+						),
+						'missing'		
+					);						
 				}
 				else {
 					// Set the default value (or default 'default value' if none is provided), and ensure the type is correct.
@@ -490,13 +510,27 @@ final class Validator {
 					if ( ! $isValid ) {
 						$hasNoErrors = false;
 						
+						$this->registerError(
+							'Demo: List error invamid',
+							/* TODO
+							wfMsgExt(
+								'validator_error_required_missing',
+								'parsemag',
+								$paramName
+							),
+							*/
+							$criteriaName		
+						);							
+						
+						/*
 						$this->mErrors[] = array(
-							'type' => $criteriaName,
+							'type' => ,
 							'args' => $criteriaArgs,
 							'name' => $this->mParameters[$name]['original-name'],
 							'list' => true,
 							'value' => $this->mParameters[$name]['original-value']
 						);
+						*/
 						
 						if ( !self::$accumulateParameterErrors ) {
 							break;
@@ -563,6 +597,20 @@ final class Validator {
 						// If the value is valid, but there are invalid items, add an error with a list of these items.
 						if ( $isValid && count( $invalidItems ) > 0 ) {
 							$value = $validItems;
+							
+							$this->registerError(
+								'Demo: Invalid item in list',
+								/* TODO
+								wfMsgExt(
+									'validator_error_required_missing',
+									'parsemag',
+									$paramName
+								),
+								*/
+								$criteriaName		
+							);
+							
+							/*					
 							$this->mErrors[] = array(
 								'type' => $criteriaName,
 								'args' => $criteriaArgs,
@@ -570,6 +618,7 @@ final class Validator {
 								'list' => true,
 								'invalid-items' => $invalidItems
 							);
+							*/
 						}
 					}
 				}
@@ -580,6 +629,19 @@ final class Validator {
 
 				// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
 				if ( !$isValid ) {
+					$this->registerError(
+						'Demo: parameter validation failed',
+						/* TODO
+						wfMsgExt(
+							'validator_error_required_missing',
+							'parsemag',
+							$paramName
+						),
+						*/
+						$criteriaName		
+					);	
+
+					/*
 					$this->mErrors[] = array(
 						'type' => $criteriaName,
 						'args' => $criteriaArgs,
@@ -587,6 +649,7 @@ final class Validator {
 						'list' => is_array( $value ),
 						'value' => $this->mParameters[$name]['original-value']
 					);
+					*/
 					
 					$hasNoErrors = false;
 					if ( !self::$accumulateParameterErrors ) break;
@@ -734,14 +797,14 @@ final class Validator {
 	 * @return array
 	 */
 	public function getErrors() {
-		return $this->mErrors;
+		return $this->errors;
 	}
 	
 	/**
 	 * @return boolean
 	 */
 	public function hasErrors() {
-		return count( $this->mErrors ) > 0;
+		return count( $this->errors ) > 0;
 	}
 	
 	/**
@@ -751,19 +814,8 @@ final class Validator {
 	 * @return boolean
 	 */
 	public function hasFatalError() {
-		global $egValidatorErrorLevel;
-		$has = $this->hasErrors() && $egValidatorErrorLevel >= Validator_ERRORS_STRICT;
-		
-		if ( !$has ) {
-			foreach ( $this->mErrors as $error ) {
-				if ( $error['type'] == 'missing' ) {
-					$has = true;
-					break;
-				}
-			}
-		}
-
-		return $has;
+		// TODO
+		return false;
 	}	
 
 	/**

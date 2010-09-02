@@ -12,6 +12,11 @@
  */
 final class ValidatorErrorHandler {
 	
+	/**
+	 * @since 0.4
+	 * 
+	 * @var array of ValidatorError
+	 */
 	protected static $errors;
 	
 	/**

@@ -11,12 +11,12 @@
  * FIXME: missing required params should result in a no-go, no matter of the error level, as they can/are not defaulted.
  * TODO: make a distinction between fatal errors and regular errors by using 2 seperate error levels.
  */
-final class ValidationManager {
+class ValidationManager {
 
 	/**
 	 * @var Validator
 	 */
-	private $validator;
+	protected $validator;
 	
 	/**
 	 * Parses and validates the provided parameters, and corrects them depending on the error level.
@@ -83,6 +83,7 @@ final class ValidationManager {
 	 *
 	 * @return string
 	 */
+	/*
 	public function getErrorList() {
 		global $wgLang, $egValidatorErrorLevel;
 		
@@ -174,5 +175,6 @@ final class ValidationManager {
 			return '';
 		}
 	}
+	*/
 	
 }
