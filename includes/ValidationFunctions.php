@@ -1,26 +1,15 @@
 <?php
-/**
- * File holding the ValidatorFunctions class.
- *
- * @file ValidatorFunctions.php
- * @ingroup Validator
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
 
 /**
  * Class holding variouse static methods for the validation of parameters that have to comply to cetrain criteria.
  * Functions are called by Validator with the parameters $value, $arguments, where $arguments is optional.
  *
+ * @file ValidationFunctions.php
  * @ingroup Validator
  *
  * @author Jeroen De Dauw
  */
-final class ValidatorFunctions {
+final class ValidationFunctions {
 
 	/**
 	 * Returns whether the provided value, which must be a number, is within a certain range. Upper bound included.

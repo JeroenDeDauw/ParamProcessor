@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Validator_VERSION', '0.4 alpha-1' );
+define( 'Validator_VERSION', '0.4 alpha-2' );
 
 // Constants indicating the strictness of the parameter validation.
 define( 'Validator_ERRORS_NONE', 0 );
@@ -52,8 +52,8 @@ $wgExtensionCredits['other'][] = array(
 $incDir = dirname( __FILE__ ) . '/includes/';
 $wgAutoloadClasses['Validator'] 			= $incDir . 'Validator.php';
 $wgAutoloadClasses['ParserHook'] 			= $incDir . 'ParserHook.php';
-$wgAutoloadClasses['ValidatorFunctions'] 	= $incDir . 'Validator_Functions.php';
-$wgAutoloadClasses['ValidatorFormats'] 		= $incDir . 'Validator_Formats.php';
-$wgAutoloadClasses['ValidatorManager'] 		= $incDir . 'Validator_Manager.php';
+$wgAutoloadClasses['ValidationFunctions'] 	= $incDir . 'ValidationFunctions.php';
+$wgAutoloadClasses['ValidationFormats'] 	= $incDir . 'ValidationFormats.php';
+$wgAutoloadClasses['ValidationManager'] 	= $incDir . 'ValidationManager.php';
 $wgAutoloadClasses['TopologicalSort'] 		= $incDir . 'TopologicalSort.php';
 unset( $incDir );

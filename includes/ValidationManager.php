@@ -1,21 +1,9 @@
 <?php
 
 /**
- * File holding the ValidatorManager class.
- *
- * @file ValidatorManager.php
- * @ingroup Validator
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class for parameter handling.
  *
+ * @file ValidationManager.php
  * @ingroup Validator
  *
  * @author Jeroen De Dauw
@@ -23,7 +11,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * FIXME: missing required params should result in a no-go, no matter of the error level, as they can/are not defaulted.
  * TODO: make a distinction between fatal errors and regular errors by using 2 seperate error levels.
  */
-final class ValidatorManager {
+final class ValidationManager {
 
 	/**
 	 * @var Validator

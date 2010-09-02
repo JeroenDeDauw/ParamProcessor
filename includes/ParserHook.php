@@ -113,14 +113,11 @@ abstract class ParserHook {
 	 * @return string
 	 */
 	public function validateAndRender( array $arguments, $parsed ) {
-		$manager = new ValidatorManager();
+		$manager = new ValidationManager();
 		
 		if ( $parsed ) {
-			$doRender = $manager->manageParsedParameters(
-				$arguments,
-				$this->getParameterInfo(),
-				$this->getDefaultParameters()
-			);			
+			$validator->setParameters( $arguments, $this->getParameterInfo() );
+			$validator->validateAndFormatParameters();			
 		}
 		else {
 			$doRender = $manager->manageParameters(

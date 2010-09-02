@@ -1,21 +1,11 @@
 <?php
 
 /**
- * File holding the Validator class.
- *
- * @file Validator.class.php
- * @ingroup Validator
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class for parameter validation.
  *
+ * @since 0.1
+ *
+ * @file Validator.class.php
  * @ingroup Validator
  *
  * @author Jeroen De Dauw
@@ -67,35 +57,35 @@ final class Validator {
 	 * @var array Holder for the validation functions.
 	 */
 	private static $mValidationFunctions = array(
-		'in_array' => array( 'ValidatorFunctions', 'in_array' ),
-		'in_range' => array( 'ValidatorFunctions', 'in_range' ),
-		'is_numeric' => array( 'ValidatorFunctions', 'is_numeric' ),
-		'is_float' => array( 'ValidatorFunctions', 'is_float' ),
-		'is_integer' => array( 'ValidatorFunctions', 'is_integer' ),
-		'not_empty' => array( 'ValidatorFunctions', 'not_empty' ),
-		'has_length' => array( 'ValidatorFunctions', 'has_length' ),
-		'regex' => array( 'ValidatorFunctions', 'regex' ),
+		'in_array' => array( 'ValidationFunctions', 'in_array' ),
+		'in_range' => array( 'ValidationFunctions', 'in_range' ),
+		'is_numeric' => array( 'ValidationFunctions', 'is_numeric' ),
+		'is_float' => array( 'ValidationFunctions', 'is_float' ),
+		'is_integer' => array( 'ValidationFunctions', 'is_integer' ),
+		'not_empty' => array( 'ValidationFunctions', 'not_empty' ),
+		'has_length' => array( 'ValidationFunctions', 'has_length' ),
+		'regex' => array( 'ValidationFunctions', 'regex' ),
 	);
 	
 	/**
 	 * @var array Holder for the list validation functions.
 	 */
 	private static $mListValidationFunctions = array(
-		'item_count' => array( 'ValidatorFunctions', 'has_item_count' ),
-		'unique_items' => array( 'ValidatorFunctions', 'has_unique_items' ),
+		'item_count' => array( 'ValidationFunctions', 'has_item_count' ),
+		'unique_items' => array( 'ValidationFunctions', 'has_unique_items' ),
 	);
 
 	/**
 	 * @var array Holder for the formatting functions.
 	 */
 	private static $mOutputFormats = array(
-		'array' => array( 'ValidatorFormats', 'format_array' ),
-		'list' => array( 'ValidatorFormats', 'format_list' ),
-		'boolean' => array( 'ValidatorFormats', 'format_boolean' ),
-		'boolstr' => array( 'ValidatorFormats', 'format_boolean_string' ),
-		'string' => array( 'ValidatorFormats', 'format_string' ),
-		'unique_items' => array( 'ValidatorFormats', 'format_unique_items' ),
-		'filtered_array' => array( 'ValidatorFormats', 'format_filtered_array' ),
+		'array' => array( 'ValidationFormats', 'format_array' ),
+		'list' => array( 'ValidationFormats', 'format_list' ),
+		'boolean' => array( 'ValidationFormats', 'format_boolean' ),
+		'boolstr' => array( 'ValidationFormats', 'format_boolean_string' ),
+		'string' => array( 'ValidationFormats', 'format_string' ),
+		'unique_items' => array( 'ValidationFormats', 'format_unique_items' ),
+		'filtered_array' => array( 'ValidationFormats', 'format_filtered_array' ),
 	);
 
 	/**
