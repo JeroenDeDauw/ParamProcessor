@@ -19,6 +19,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 # Registration of the listerrors parser hooks.
 $wgHooks['ParserFirstCallInit'][] = 'ValidatorListErrors::staticInit';
+$wgHooks['LanguageGetMagic'][] = 'ValidatorListErrors::staticMagic';
 
 # Validator_ERRORS_NONE  	: Validator will not show any errors, and make the best of the input it got.
 # Validator_ERRORS_WARN		: Validator will make the best of the input it got, but will show a warning that there are errors.
