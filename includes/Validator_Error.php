@@ -22,6 +22,17 @@ class ValidatorError {
 	public $severity;
 	
 	/**
+	 * List of 'tags' for the error. This is mainly ment for indicating an error
+	 * type, such as 'missing parameter' or 'invalid value', but allows for multiple
+	 * such indications.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array
+	 */
+	public $tags;
+	
+	/**
 	 * Where the error occured.
 	 * 
 	 * @since 0.4
@@ -36,10 +47,11 @@ class ValidatorError {
 	 * @param string $message
 	 * @param integer $severity
 	 */
-	public function __construct( $message, $severity = ValidatorError::SEVERITY_NORMAL, $element = false ) {
+	public function __construct( $message, $severity = ValidatorError::SEVERITY_NORMAL, $element = false, array $tags = array() ) {
 		$this->message = $message;
 		$this->severity = $severity;
 		$this->element = $element;
+		$this->tags = $tags;
 	}
 	
 }

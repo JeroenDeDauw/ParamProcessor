@@ -13,6 +13,22 @@
 class ValidatorListErrors extends ParserHook {
 	
 	/**
+	 * Array to map the possible values for the 'minseverity' parameter
+	 * to their equivalent in the ValidatorError::SEVERITY_ enum.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array
+	 */
+	protected static $severityMap = array(
+		'minor' => ValidatorError::SEVERITY_MINOR,
+		'low' => ValidatorError::SEVERITY_LOW,
+		'normal' => ValidatorError::SEVERITY_NORMAL,
+		'high' => ValidatorError::SEVERITY_HIGH,
+		'critical' => ValidatorError::SEVERITY_CRITICAL,
+	);
+	
+	/**
 	 * No LST in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */
@@ -54,6 +70,12 @@ class ValidatorListErrors extends ParserHook {
 	 */
 	protected function getParameterInfo() {
 		return array(
+			'minseverity' => array(
+				'criteria' => array(
+					'in_array' => array_keys( self::$severityMap )
+				),
+				'default' => 'minor'
+			)
 		);
 	}
 	
@@ -66,7 +88,7 @@ class ValidatorListErrors extends ParserHook {
 	 * @return array
 	 */
 	protected function getDefaultParameters() {
-		return array( );
+		return array( 'minseverity' );
 	}
 	
 	/**
@@ -80,11 +102,15 @@ class ValidatorListErrors extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$output = ''; // TODO
+		$errorList = ValidatorErrorHandler::getErrorList( self::$severityMap[$parameters['minseverity']] );
 		
-		
-		
-		return $output;		
+		if ( $errorList ) {
+			// TODO: render wikitext
+			return $errorList;
+		}
+		else {
+			return '';
+		}
 	}
 	
 }

@@ -51,6 +51,10 @@ final class ValidatorErrorHandler {
 	public static function getErrorList( $minSeverity = ValidatorError::SEVERITY_MINOR ) {
 		$elementHtml = array();
 		
+		if ( count( self::$errors ) == 0 ) {
+			return false;
+		}
+		
 		$elements = array_keys( self::$errors );
 		natcasesort( $elements );
 		
@@ -62,7 +66,8 @@ final class ValidatorErrorHandler {
 			}
 		}
 		
-		return implode( "\n", $elementHtml );
+		// TODO: i18n
+		return "== Errors ==\n\n" . implode( "\n\n", $elementHtml );
 	}
 	
 	/**
@@ -94,7 +99,7 @@ final class ValidatorErrorHandler {
 				$lines[] = "* $error->message";
 			}
 			
-			return "== $element ==\n\n" . implode( "\n", $lines );
+			return "=== $element ===\n\n" . implode( "\n", $lines );
 		}
 		else {
 			return false;

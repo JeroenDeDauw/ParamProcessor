@@ -23,6 +23,7 @@ $messages['en'] = array(
 	// General errors
 	'validator_error_unknown_argument' => '$1 is not a valid parameter.',
 	'validator_error_required_missing' => 'The required parameter $1 is not provided.',
+	'validator-error-override-argument' => 'Tried to override parameter $1 ($2) with $3', 
 
 	// Criteria errors for single values
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',

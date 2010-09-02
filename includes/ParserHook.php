@@ -150,15 +150,7 @@ abstract class ParserHook {
 	 * @return string
 	 */
 	protected function handleErrors( ValidatorManager $manager ) {
-		$errorList = $manager->getErrorList();
-
-		$output = '';
 		
-		if ( $errorList != '' ) {
-			$output .= '<br />' . $errorList;
-		}
-		
-		return $output;
 	}
 	
 	/**

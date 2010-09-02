@@ -125,7 +125,42 @@ final class Validator {
 	 * @var associative array
 	 */
 	private $mErrors = array();
+	
+	/**
+	 * List of ValidatorError.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array
+	 */
+	protected $errors = array();
 
+	public function __construct() {
+		// TODO
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */
+	protected function getElement() {
+		// TODO
+	} 
+	
+	protected function registerError( $message, $tags = array(), $severity = ValidatorError::SEVERITY_NORMAL ) {
+		ValidatorErrorHandler::addError( 
+			new ValidatorError(
+				$message,
+				$severity,
+				$this->getElement(),
+				(array)$tags
+			)
+		);
+	}
+	
 	/**
 	 * Determines the names and values of all parameters. Also takes care of default parameters. 
 	 * After that the resulting parameter list is passed to Validator::setParameters
@@ -235,7 +270,16 @@ final class Validator {
 					}
 				}
 				else {
-					$this->mErrors[] = array( 'type' => 'override', 'name' => $mainName );
+					$this->registerError(
+						wfMsgExt(
+							'validator-error-override-argument',
+							'parsemag',
+							$mainName,
+							$this->mParameters[$mainName]['original-value'],
+							'demo new value' // TODO: get new value
+						),
+						'override'		
+					);
 				}
 			}
 			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->mErrors array.
