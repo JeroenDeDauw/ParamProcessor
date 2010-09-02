@@ -17,6 +17,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+# Registration of the listerrors parser hooks.
+$wgHooks['ParserFirstCallInit'][] = 'ValidatorListErrors::staticInit';
+
 # Integer. The strictness of the parameter validation and resulting error report when using the ValidatorManager class.
 # This value also affects the error messages native to extensions that integrate Validator correctly.
 # Validator_ERRORS_NONE  	: Validator will not show any errors, and make the best of the input it got.

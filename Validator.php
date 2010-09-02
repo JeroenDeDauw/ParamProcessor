@@ -33,9 +33,6 @@ define( 'Validator_ERRORS_WARN', 2 );
 define( 'Validator_ERRORS_SHOW', 3 );
 define( 'Validator_ERRORS_STRICT', 4 );
 
-// Include the settings file.
-require_once 'Validator_Settings.php';
-
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Validator'] = dirname( __FILE__ ) . '/Validator.i18n.php';
 
@@ -56,4 +53,8 @@ $wgAutoloadClasses['ValidationFunctions'] 	= $incDir . 'ValidationFunctions.php'
 $wgAutoloadClasses['ValidationFormats'] 	= $incDir . 'ValidationFormats.php';
 $wgAutoloadClasses['ValidationManager'] 	= $incDir . 'ValidationManager.php';
 $wgAutoloadClasses['TopologicalSort'] 		= $incDir . 'TopologicalSort.php';
+$wgAutoloadClasses['ValidatorListErrors'] 	= $incDir . 'parserHooks/Validator_ListErrors.php';
 unset( $incDir );
+
+// Include the settings file.
+require_once 'Validator_Settings.php';
