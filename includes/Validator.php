@@ -157,14 +157,15 @@ class Validator {
 	} 
 	
 	protected function registerError( $message, $tags = array(), $severity = ValidatorError::SEVERITY_NORMAL ) {
-		ValidatorErrorHandler::addError( 
-			new ValidatorError(
-				$message,
-				$severity,
-				$this->getElement(),
-				(array)$tags
-			)
+		$error = new ValidatorError(
+			$message,
+			$severity,
+			$this->getElement(),
+			(array)$tags
 		);
+		
+		$this->errors[] = $error;
+		ValidatorErrorHandler::addError( $error );
 	}
 	
 	/**
