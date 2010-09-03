@@ -53,12 +53,13 @@ if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 
 // Autoload the general classes.
 $incDir = dirname( __FILE__ ) . '/includes/';
-$wgAutoloadClasses['Validator'] 			= $incDir . 'Validator.php';
+$wgAutoloadClasses['Parameter'] 			= $incDir . 'Parameter.php';
 $wgAutoloadClasses['ParserHook'] 			= $incDir . 'ParserHook.php';
-$wgAutoloadClasses['ValidationFunctions'] 	= $incDir . 'ValidationFunctions.php';
-$wgAutoloadClasses['ValidationFormats'] 	= $incDir . 'ValidationFormats.php';
-$wgAutoloadClasses['ValidationManager'] 	= $incDir . 'ValidationManager.php';
+$wgAutoloadClasses['Validator'] 			= $incDir . 'Validator.php';
 $wgAutoloadClasses['TopologicalSort'] 		= $incDir . 'TopologicalSort.php';
+$wgAutoloadClasses['ValidationFormats'] 	= $incDir . 'ValidationFormats.php';
+$wgAutoloadClasses['ValidationFunctions'] 	= $incDir . 'ValidationFunctions.php';
+$wgAutoloadClasses['ValidationManager'] 	= $incDir . 'ValidationManager.php'; // TODO: remove
 $wgAutoloadClasses['ValidatorError']		= $incDir . 'Validator_Error.php';
 $wgAutoloadClasses['ValidatorErrorHandler']	= $incDir . 'Validator_ErrorHandler.php';
 $wgAutoloadClasses['ValidatorListErrors'] 	= $incDir . 'parserHooks/Validator_ListErrors.php';
