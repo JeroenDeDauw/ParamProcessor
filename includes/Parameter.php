@@ -19,6 +19,51 @@ class Parameter {
 	const TYPE_CHAR = 'char';
 	
 	/**
+	 * The default delimiter for lists, used when the parameter definition does not specify one.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var string 
+	 */
+	public static $defaultListDelimeter = ',';	
+	
+	/**
+	 * Indicates if the parameter value should be lowercased.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var boolean
+	 */
+	public $lowerCaseValue = true;
+	
+	/**
+	 * Dependency list containing parameters that need to be handled before this one. 
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array
+	 */			
+	public $dependencies = array();	
+	
+	/**
+	 * The default value for the parameter, or null when the parameter is required.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var mixed
+	 */
+	public $default;	
+	
+	/**
+	 * List of formatting functions to shape the final form of the parameter value. 
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array
+	 */			
+	public $outputTypes = array();	
+	
+	/**
 	 * The main name of the parameter.
 	 * 
 	 * @since 0.4
@@ -39,15 +84,6 @@ class Parameter {
 	protected $type;
 	
 	/**
-	 * The default value for the parameter, or null when the parameter is required.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @var mixed
-	 */
-	protected $default;
-	
-	/**
 	 * List of aliases for the parameter name.
 	 * 
 	 * @since 0.4
@@ -64,15 +100,6 @@ class Parameter {
 	 * @var array
 	 */		
 	protected $criteria;
-	
-	/**
-	 * List of formatting functions to shape the final form of the parameter value. 
-	 * 
-	 * @since 0.4
-	 * 
-	 * @var array
-	 */			
-	protected $outputTypes;
 	
 	/**
 	 * Returns a new instance of Parameter by converting a Validator 3.x-style parameter array definition.
@@ -133,14 +160,22 @@ class Parameter {
 				$types[$name] = $definition['output-types'][$i];
 			}
 			
-			$parameter->setOutputTypes( $types );
+			$parameter->outputTypes = $types ;
 		}
 		elseif ( array_key_exists( 'output-type', $definition ) ) {
 			if ( ! is_array( $definition['output-type'] ) ) {
 				$definition['output-type'] = array( $definition['output-type'] );
 			}
 			
-			$parameter->setOutputTypes( array( $name => $definition['output-type'] ) );
+			$parameter->outputTypes = array( $name => $definition['output-type'] );
+		}
+		
+		if ( array_key_exists( 'tolower', $definition ) ) {
+			$parameter->lowerCaseValue = (bool)$definition['tolower'];
+		}
+		
+		if ( array_key_exists( 'dependencies', $definition ) ) {
+			$parameter->dependencies = (array)$definition['dependencies'];
 		}		
 		
 		return $parameter;
@@ -166,17 +201,6 @@ class Parameter {
 	}
 	
 	/**
-	 * Sets the output types to the provided value.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @param array $outputTypes
-	 */
-	public function setOutputTypes( array $outputTypes ) {
-		$this->outputTypes = outputTypes;
-	}
-	
-	/**
 	 * Returns the parameters main name.
 	 * 
 	 * @since 0.4
@@ -199,6 +223,33 @@ class Parameter {
 	}
 	
 	/**
+	 * Returns if the parameter is a list or not.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return boolean
+	 */		
+	public function isList() {
+		return is_array( $this->type );
+	}
+	
+	/**
+	 * Returns the list delimeter.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */
+	public function getListDelimeter() {
+		if ( $this->isList ) {
+			return count( $this->type ) > 1 ? $this->type[1] : self::$defaultListDelimeter;
+		}
+		else {
+			return false;
+		}
+	}		
+	
+	/**
 	 * Returns the parameter criteria.
 	 * 
 	 * @since 0.4
@@ -208,6 +259,31 @@ class Parameter {
 	public function getCriteria() {
 		// TODO: type criteria resolving
 		return $this->criteria; 
+		
+		/*
+		if ( array_key_exists( 'type', $this->mParameterInfo[$name] ) ) {
+			// Add type specific criteria.
+			switch( strtolower( $this->mParameterInfo[$name]['type'][0] ) ) {
+				case 'integer':
+					$this->addTypeCriteria( $name, 'is_integer' );
+					break;
+				case 'float':
+					$this->addTypeCriteria( $name, 'is_float' );
+					break;
+				case 'number': // Note: This accepts non-decimal notations! 
+					$this->addTypeCriteria( $name, 'is_numeric' );
+					break;
+				case 'boolean':
+					// TODO: work with list of true and false values. 
+					// TODO: i18n
+					$this->addTypeCriteria( $name, 'in_array', array( 'yes', 'no', 'on', 'off' ) );
+					break;
+				case 'char':
+					$this->addTypeCriteria( $name, 'has_length', array( 1, 1 ) );
+					break;
+			}
+		}
+		*/		
 	}
 	
 	/**
@@ -219,6 +295,19 @@ class Parameter {
 	 */
 	public function getAliases() {
 		return $this->aliases;
+	}
+	
+	/**
+	 * Returns if the parameter has a certain alias.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $alias
+	 * 
+	 * @return boolean
+	 */
+	public function hasAlias( $alias ) {
+		return in_array( $alias, $this->getAliases() );
 	}
 	
 }
