@@ -547,26 +547,15 @@ class Validator {
 						$hasNoErrors = false;
 						
 						$this->registerError(
-							'Demo: List error invamid',
-							/* TODO
-							wfMsgExt(
-								'validator_error_required_missing',
-								'parsemag',
-								$paramName
+							$this->getCriteriaErrorMessage(
+								$criteriaName,
+								$this->mParameters[$name]['original-name'],
+								$this->mParameters[$name]['original-value'],
+								$criteriaArgs,
+								true
 							),
-							*/
 							$criteriaName		
-						);							
-						
-						/*
-						$this->mErrors[] = array(
-							'type' => ,
-							'args' => $criteriaArgs,
-							'name' => $this->mParameters[$name]['original-name'],
-							'list' => true,
-							'value' => $this->mParameters[$name]['original-value']
-						);
-						*/
+						);				
 						
 						if ( !self::$accumulateParameterErrors ) {
 							break;
@@ -635,26 +624,16 @@ class Validator {
 							$value = $validItems;
 							
 							$this->registerError(
-								'Demo: Invalid item in list',
-								/* TODO
-								wfMsgExt(
-									'validator_error_required_missing',
-									'parsemag',
-									$paramName
+								$this->getCriteriaErrorMessage(
+									$criteriaName,
+									$this->mParameters[$name]['original-name'],
+									$this->mParameters[$name]['original-value'],
+									$criteriaArgs,
+									true,
+									$invalidItems
 								),
-								*/
 								$criteriaName		
-							);
-							
-							/*					
-							$this->mErrors[] = array(
-								'type' => $criteriaName,
-								'args' => $criteriaArgs,
-								'name' => $this->mParameters[$name]['original-name'],
-								'list' => true,
-								'invalid-items' => $invalidItems
-							);
-							*/
+							);							
 						}
 					}
 				}
@@ -666,26 +645,15 @@ class Validator {
 				// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
 				if ( !$isValid ) {
 					$this->registerError(
-						'Demo: parameter validation failed',
-						/* TODO
-						wfMsgExt(
-							'validator_error_required_missing',
-							'parsemag',
-							$paramName
+						$this->getCriteriaErrorMessage(
+							$criteriaName,
+							$this->mParameters[$name]['original-name'],
+							$this->mParameters[$name]['original-value'],
+							$criteriaArgs,
+							is_array( $value )
 						),
-						*/
 						$criteriaName		
-					);	
-
-					/*
-					$this->mErrors[] = array(
-						'type' => $criteriaName,
-						'args' => $criteriaArgs,
-						'name' => $this->mParameters[$name]['original-name'],
-						'list' => is_array( $value ),
-						'value' => $this->mParameters[$name]['original-value']
-					);
-					*/
+					);						
 					
 					$hasNoErrors = false;
 					if ( !self::$accumulateParameterErrors ) break;
