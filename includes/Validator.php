@@ -866,7 +866,7 @@ class Validator {
 					break;
 				case 'in_array' :
 					$itemsText = $wgLang->listToText( $args );
-					$message = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $paramName, $itemsText, count( $args ) );
+					$message = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $paramName, $itemsText, count( $args ), $paramValue );
 					break;
 				case 'invalid' : default :
 					$message = wfMsgExt( 'validator_list_error_invalid_argument', array( 'parsemag' ), $paramName );
@@ -903,7 +903,7 @@ class Validator {
 					break;
 				case 'in_array' :
 					$itemsText = $wgLang->listToText( $args );
-					$message = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $paramName, $itemsText, count( $args ) );
+					$message = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $paramName, $itemsText, count( $args ), $paramValue );
 					break;
 				case 'invalid' : default :
 					$message = wfMsgExt( 'validator_error_invalid_argument', array( 'parsemag' ), '<b>' . htmlspecialchars( $paramValue ) . '</b>', $paramName );

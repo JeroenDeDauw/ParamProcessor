@@ -13,8 +13,18 @@
  */
 abstract class ParserHook {
 	
+	/**
+	 * @since 0.4
+	 * 
+	 * @var Validator
+	 */	
 	protected $validator;
 	
+	/**
+	 * @since 0.4
+	 * 
+	 * @var Parser
+	 */
 	protected $parser;
 	
 	/**
@@ -94,9 +104,9 @@ abstract class ParserHook {
 		$this->parser = $parser;
 		
 		$defaultParam = array_shift( $this->getDefaultParameters() );
-		
+
 		// If there is a first default parameter, set the tag contents as it's value.
-		if ( !is_null( $defaultParam ) ) {
+		if ( !is_null( $defaultParam ) && !is_null( $input ) ) {
 			$args[$defaultParam] = $input;
 		}
 		
