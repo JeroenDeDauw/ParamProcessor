@@ -105,8 +105,7 @@ class ValidatorListErrors extends ParserHook {
 		$errorList = ValidatorErrorHandler::getErrorList( self::$severityMap[$parameters['minseverity']] );
 		
 		if ( $errorList ) {
-			// TODO: render wikitext
-			return $errorList;
+			return $this->parser->recursiveTagParse( $errorList );
 		}
 		else {
 			return '';

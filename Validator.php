@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Validator_VERSION', '0.4 alpha-2' );
+define( 'Validator_VERSION', '0.4 alpha-3' );
 
 // Constants indicating the strictness of the parameter validation.
 define( 'Validator_ERRORS_NONE', 0 );
@@ -44,6 +44,12 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Validator',
 	'descriptionmsg' => 'validator-desc',
 );
+
+// This function has been deprecated in 1.16, but needed for earlier versions.
+// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
+if ( function_exists( 'wfLoadExtensionMessages' ) ) {
+	wfLoadExtensionMessages( 'Validator' );
+}
 
 // Autoload the general classes.
 $incDir = dirname( __FILE__ ) . '/includes/';

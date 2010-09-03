@@ -129,25 +129,60 @@ class Validator {
 	protected $errors = array();
 
 	/**
+	 * 
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var string
+	 */
+	protected $element;
+	
+	/**
 	 * Constructor.
+	 * 
+	 * @param srting $element
 	 * 
 	 * @since 0.4
 	 */
-	public function __construct() {
-		// TODO
+	public function __construct( $element = '' ) {
+		$this->element = $element;
 	}
 	
 	/**
-	 * 
-	 * 
-	 * @since 0.4
-	 * 
-	 * @return string
+	 * Adds a new criteria type and the validation function that should validate values of this type.
+	 * You can use this function to override existing criteria type handlers.
+	 *
+	 * @param string $criteriaName The name of the cirteria.
+	 * @param array $functionName The functions location. If it's a global function, only the name,
+	 * if it's in a class, first the class name, then the method name.
 	 */
-	protected function getElement() {
-		return '';
-		// TODO
-	} 
+	public static function addValidationFunction( $criteriaName, array $functionName ) {
+		self::$mValidationFunctions[$criteriaName] = $functionName;
+	}
+	
+	/**
+	 * Adds a new list criteria type and the validation function that should validate values of this type.
+	 * You can use this function to override existing criteria type handlers.
+	 *
+	 * @param string $criteriaName The name of the list cirteria.
+	 * @param array $functionName The functions location. If it's a global function, only the name,
+	 * if it's in a class, first the class name, then the method name.
+	 */
+	public static function addListValidationFunction( $criteriaName, array $functionName ) {
+		self::$mListValidationFunctions[strtolower( $criteriaName )] = $functionName;
+	}
+	
+	/**
+	 * Adds a new output format and the formatting function that should validate values of this type.
+	 * You can use this function to override existing criteria type handlers.
+	 *
+	 * @param string $formatName The name of the format.
+	 * @param array $functionName The functions location. If it's a global function, only the name,
+	 * if it's in a class, first the class name, then the method name.
+	 */
+	public static function addOutputFormat( $formatName, array $functionName ) {
+		self::$mOutputFormats[strtolower( $formatName )] = $functionName;
+	}	
 	
 	/**
 	 * Registers an error.
@@ -160,7 +195,7 @@ class Validator {
 		$error = new ValidatorError(
 			$message,
 			$severity,
-			$this->getElement(),
+			$this->element,
 			(array)$tags
 		);
 		
@@ -392,7 +427,7 @@ class Validator {
 							$paramName
 						),
 						'missing'		
-					);						
+					);
 				}
 				else {
 					// Set the default value (or default 'default value' if none is provided), and ensure the type is correct.
@@ -815,43 +850,117 @@ class Validator {
 	 * @return boolean
 	 */
 	public function hasFatalError() {
-		// TODO
-		return false;
+		$has = false;
+		
+		foreach ( $this->errors as $error ) {
+			if ( $error->severity >= ValidatorError::SEVERITY_CRITICAL ) {
+				$has = true;
+				break;
+			}
+		}
+		
+		return $has;
 	}	
+	
+	/**
+	 * Returns an error message for a criteria validation that failed.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $criteria
+	 * @param string $paramName
+	 * @param string $paramValue
+	 * @param array $args
+	 * @param boolean $isList
+	 * @param array $invalidItems
+	 * 
+	 * @return string
+	 */
+	protected function getCriteriaErrorMessage( $criteria, $paramName, $paramValue, array $args = array(), $isList = false, array $invalidItems = array() ) {
+		global $wgLang, $egValidatorErrorLevel;
+		
+		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && $this->validator->hasErrors() ) {
+			$rawErrors = $this->validator->getErrors();
+			
+			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', count( $rawErrors ) ) . '</b><br /><i>';
 
-	/**
-	 * Adds a new criteria type and the validation function that should validate values of this type.
-	 * You can use this function to override existing criteria type handlers.
-	 *
-	 * @param string $criteriaName The name of the cirteria.
-	 * @param array $functionName The functions location. If it's a global function, only the name,
-	 * if it's in a class, first the class name, then the method name.
-	 */
-	public static function addValidationFunction( $criteriaName, array $functionName ) {
-		self::$mValidationFunctions[$criteriaName] = $functionName;
+			$errors = array();
+			
+			foreach ( $rawErrors as $error ) {
+				$error['name'] = '<b>' . Sanitizer::escapeId( $error['name'] ) . '</b>';
+				
+				if ( $error['type'] == 'unknown' ) {
+					$errors[] = wfMsgExt( 'validator_error_unknown_argument', array( 'parsemag' ), $error['name'] );
+				}
+				elseif ( $error['type'] == 'missing' ) {
+					$errors[] = wfMsgExt( 'validator_error_required_missing', array( 'parsemag' ), $error['name'] );
+				}
+				elseif ( array_key_exists( 'list', $error ) && $error['list'] ) {
+					switch( $error['type'] ) {
+						case 'not_empty' :
+							$msg = wfMsgExt( 'validator_list_error_empty_argument', array( 'parsemag' ), $error['name'] );
+							break;
+						case 'in_range' :
+							$msg = wfMsgExt( 'validator_list_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0] . '</b>', '<b>' . $error['args'][1] . '</b>' );
+							break;
+						case 'is_numeric' :
+							$msg = wfMsgExt( 'validator_list_error_must_be_number', array( 'parsemag' ), $error['name'] );
+							break;
+						case 'is_integer' :
+							$msg = wfMsgExt( 'validator_list_error_must_be_integer', array( 'parsemag' ), $error['name'] );
+							break;
+						case 'in_array' :
+							$itemsText = $wgLang->listToText( $error['args'] );
+							$msg = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $error['name'], $itemsText, count( $error['args'] ) );
+							break;
+						case 'invalid' : default :
+							$msg = wfMsgExt( 'validator_list_error_invalid_argument', array( 'parsemag' ), $error['name'] );
+							break;
+					}
+
+					if ( array_key_exists( 'invalid-items', $error ) ) {
+						$omitted = array();
+						foreach ( $error['invalid-items'] as $item ) $omitted[] = Sanitizer::escapeId( $item );
+						$msg .= ' ' . wfMsgExt( 'validator_list_omitted', array( 'parsemag' ),
+							$wgLang->listToText( $omitted ), count( $omitted ) );
+					}
+
+					$errors[] = $msg;
+				}
+				else {
+					switch( $error['type'] ) {
+						case 'not_empty' :
+							$errors[] = wfMsgExt( 'validator_error_empty_argument', array( 'parsemag' ), $error['name'] );
+							break;
+						case 'in_range' :
+							$errors[] = wfMsgExt( 'validator_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0] . '</b>', '<b>' . $error['args'][1] . '</b>' );
+							break;
+						case 'is_numeric' :
+							$errors[] = wfMsgExt( 'validator_error_must_be_number', array( 'parsemag' ), $error['name'] );
+							break;
+						case 'is_integer' :
+							$errors[] = wfMsgExt( 'validator_error_must_be_integer', array( 'parsemag' ), $error['name'] );
+							break;
+						case 'in_array' :
+							$itemsText = $wgLang->listToText( $error['args'] );
+							$errors[] = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $error['name'], $itemsText, count( $error['args'] ) );
+							break;
+						case 'invalid' : default :
+							$errors[] = wfMsgExt( 'validator_error_invalid_argument', array( 'parsemag' ), '<b>' . htmlspecialchars( $error['value'] ) . '</b>', $error['name'] );
+							break;
+					}
+				}
+			}
+
+			return $errorList . implode( $errors, '<br />' ) . '</i><br />';
+		}
+		elseif ( $egValidatorErrorLevel == Validator_ERRORS_WARN && $this->validator->hasErrors() ) {
+			return '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), count( $this->validator->getErrors() ) ) . '</b>';
+		}
+		else {
+			return '';
+		}
+		
 	}
 	
-	/**
-	 * Adds a new list criteria type and the validation function that should validate values of this type.
-	 * You can use this function to override existing criteria type handlers.
-	 *
-	 * @param string $criteriaName The name of the list cirteria.
-	 * @param array $functionName The functions location. If it's a global function, only the name,
-	 * if it's in a class, first the class name, then the method name.
-	 */
-	public static function addListValidationFunction( $criteriaName, array $functionName ) {
-		self::$mListValidationFunctions[strtolower( $criteriaName )] = $functionName;
-	}
-	
-	/**
-	 * Adds a new output format and the formatting function that should validate values of this type.
-	 * You can use this function to override existing criteria type handlers.
-	 *
-	 * @param string $formatName The name of the format.
-	 * @param array $functionName The functions location. If it's a global function, only the name,
-	 * if it's in a class, first the class name, then the method name.
-	 */
-	public static function addOutputFormat( $formatName, array $functionName ) {
-		self::$mOutputFormats[strtolower( $formatName )] = $functionName;
-	}
 }

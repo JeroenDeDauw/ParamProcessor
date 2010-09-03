@@ -13,6 +13,10 @@
  */
 abstract class ParserHook {
 	
+	protected $validator;
+	
+	protected $parser;
+	
 	/**
 	 * Gets the name of the parser hook.
 	 * 
@@ -32,6 +36,15 @@ abstract class ParserHook {
 	 * @return string
 	 */
 	protected abstract function render( array $parameters );	
+	
+	/**
+	 * Constructor.
+	 * 
+	 * @since 0.4
+	 */
+	public function __construct() {
+		$this->validator = new Validator( $this->getName() );
+	}
 	
 	/**
 	 * Function to hook up the coordinate rendering functions to the parser.
@@ -78,6 +91,8 @@ abstract class ParserHook {
 	 * @return string
 	 */
 	public function renderTag( $input, array $args, Parser $parser, PPFrame $frame ) {
+		$this->parser = $parser;
+		
 		$defaultParam = array_shift( $this->getDefaultParameters() );
 		
 		// If there is a first default parameter, set the tag contents as it's value.
@@ -101,8 +116,7 @@ abstract class ParserHook {
 	public function renderFunction() {
 		$args = func_get_args();
 		
-		// No need for the parser...
-		array_shift( $args );	
+		$this->parser = array_shift( $args );	
 	
 		return array( $this->validateAndRender( $args, false ) );
 	}
@@ -119,28 +133,26 @@ abstract class ParserHook {
 	 */
 	public function validateAndRender( array $arguments, $parsed ) {
 		global $egValidatorErrorLevel;
-
-		$validator = new Validator();		
 		
 		if ( $parsed ) {
-			$validator->setParameters( $arguments, $this->getParameterInfo() );
+			$this->validator->setParameters( $arguments, $this->getParameterInfo() );
 		}
 		else {
-			$validator->parseAndSetParams( $arguments, $this->getParameterInfo(), $this->getDefaultParameters() );
+			$this->validator->parseAndSetParams( $arguments, $this->getParameterInfo(), $this->getDefaultParameters() );
 		}
 		
-		$validator->validateAndFormatParameters();
+		$this->validator->validateAndFormatParameters();
 		
-		if ( $validator->hasErrors() && $egValidatorErrorLevel < Validator_ERRORS_STRICT ) {
-			$validator->correctInvalidParams();
+		if ( $this->validator->hasErrors() && $egValidatorErrorLevel < Validator_ERRORS_STRICT ) {
+			$this->validator->correctInvalidParams();
 		}
 		
-		if ( $validator->hasFatalError() ) {
+		if ( $this->validator->hasFatalError() ) {
 			// TODO
 			$output = 'Demo: fatal error';
 		}
 		else {
-			$output = $this->render( $validator->getValidParams( false ) );
+			$output = $this->render( $this->validator->getValidParams( false ) );
 		}
 		
 		return $output;

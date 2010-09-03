@@ -3,6 +3,8 @@
 /**
  * Class for parameter handling.
  *
+ * @deprecated
+ *
  * @file ValidationManager.php
  * @ingroup Validator
  *
