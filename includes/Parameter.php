@@ -3,6 +3,8 @@
 /**
  * Parameter definition class.
  * 
+ * TODO: create deriving ListParameter class and split list logic off to it
+ * 
  * @since 0.4
  * 
  * @file Parameter.php
@@ -284,6 +286,18 @@ class Parameter {
 			}
 		}
 		*/		
+	}
+	
+	/**
+	 * Returns the criteria that apply to the list as a whole.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */		
+	public function getListCriteria() {
+		// TODO
+		return array();
 	}
 	
 	/**

@@ -491,41 +491,37 @@ class Validator {
 	protected function doListValidation( $name ) {
 		$hasNoErrors = true;
 
-		/* TODO
-		if ( array_key_exists( 'list-criteria', $this->mParameterInfo[$name] ) ) {
-			foreach ( $this->mParameterInfo[$name]['list-criteria'] as $criteriaName => $criteriaArgs ) {
-				// Get the validation function. If there is no matching function, throw an exception.
-				if ( array_key_exists( $criteriaName, self::$mListValidationFunctions ) ) {
-					$validationFunction = self::$mListValidationFunctions[$criteriaName];
-					$isValid = $this->doCriteriaValidation( $validationFunction, $this->mParameters['value'], $name, $criteriaArgs );
+		foreach ( $this->parameterInfo[$name]->getListCriteria() as $criteriaName => $criteriaArgs ) {
+			// Get the validation function. If there is no matching function, throw an exception.
+			if ( array_key_exists( $criteriaName, self::$mListValidationFunctions ) ) {
+				$validationFunction = self::$mListValidationFunctions[$criteriaName];
+				$isValid = $this->doCriteriaValidation( $validationFunction, $this->mParameters['value'], $name, $criteriaArgs );
+				
+				// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
+				if ( ! $isValid ) {
+					$hasNoErrors = false;
 					
-					// Add a new error when the validation failed, and break the loop if errors for one parameter should not be accumulated.
-					if ( ! $isValid ) {
-						$hasNoErrors = false;
-						
-						$this->registerError(
-							$this->getCriteriaErrorMessage(
-								$criteriaName,
-								$this->mParameters[$name]['original-name'],
-								$this->mParameters[$name]['original-value'],
-								$criteriaArgs,
-								true
-							),
-							$criteriaName		
-						);				
-						
-						if ( !self::$accumulateParameterErrors ) {
-							break;
-						}
+					$this->registerError(
+						$this->getCriteriaErrorMessage(
+							$criteriaName,
+							$this->mParameters[$name]['original-name'],
+							$this->mParameters[$name]['original-value'],
+							$criteriaArgs,
+							true
+						),
+						$criteriaName		
+					);				
+					
+					if ( !self::$accumulateParameterErrors ) {
+						break;
 					}
 				}
-				else {
-					$hasNoErrors = false;
-					throw new Exception( 'There is no validation function for list criteria type ' . $criteriaName );
-				}
+			}
+			else {
+				$hasNoErrors = false;
+				throw new Exception( 'There is no validation function for list criteria type ' . $criteriaName );
 			}
 		}
-		*/
 		
 		return $hasNoErrors;
 	}
