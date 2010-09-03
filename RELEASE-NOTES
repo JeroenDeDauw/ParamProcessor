@@ -6,6 +6,20 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 == Validator change log ==
 
+=== Validator 0.4 ===
+(2010-xx-xx)
+
+==== New features ====
+
+* Added ParserHook class that allows for out-of-the-box parser function and tag extension creation
+  with full Validator support.
+  
+* Added listerrors parser hook that allows you to list all validation errors that occured at the point it's rendered.
+
+==== Refactoring ====
+
+* Added Parameter class to replace parameter definitions in array form.
+
 === Validator 0.3.6 ===
 (2010-08-26)
 
