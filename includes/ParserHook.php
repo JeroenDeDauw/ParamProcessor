@@ -74,10 +74,13 @@ abstract class ParserHook {
 	 * @param array $args
 	 * @param Parser $parser
 	 * @param PPFrame $frame
+	 * 
+	 * @return string
 	 */
 	public function renderTag( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$defaultParam = array_shift( $this->getDefaultParameters() );
 		
+		// If there is a first default parameter, set the tag contents as it's value.
 		if ( !is_null( $defaultParam ) ) {
 			$args[$defaultParam] = $input;
 		}
@@ -92,6 +95,8 @@ abstract class ParserHook {
 	 * 
 	 * @param Parser $parser
 	 * ... further arguments ...
+	 * 
+	 * @return array
 	 */
 	public function renderFunction() {
 		$args = func_get_args();
@@ -113,44 +118,32 @@ abstract class ParserHook {
 	 * @return string
 	 */
 	public function validateAndRender( array $arguments, $parsed ) {
-		$manager = new ValidationManager();
+		global $egValidatorErrorLevel;
+
+		$validator = new Validator();		
 		
 		if ( $parsed ) {
-			$doRender = $manager->manageParsedParameters(
-				$arguments,
-				$this->getParameterInfo()
-			);			
+			$validator->setParameters( $arguments, $this->getParameterInfo() );
 		}
 		else {
-			$doRender = $manager->manageParameters(
-				$arguments,
-				$this->getParameterInfo(),
-				$this->getDefaultParameters()
-			);
+			$validator->parseAndSetParams( $arguments, $this->getParameterInfo(), $this->getDefaultParameters() );
 		}
 		
-		if ( $doRender ) {
-			$output = $this->render( $manager->getParameters( false ) );
+		$validator->validateAndFormatParameters();
+		
+		if ( $validator->hasErrors() && $egValidatorErrorLevel < Validator_ERRORS_STRICT ) {
+			$validator->correctInvalidParams();
+		}
+		
+		if ( $validator->hasFatalError() ) {
+			// TODO
+			$output = 'Demo: fatal error';
 		}
 		else {
-			$output = $this->handleErrors( $manager );
+			$output = $this->render( $validator->getValidParams( false ) );
 		}
 		
 		return $output;
-	}
-	
-	/**
-	 * Handles any errors that occured. Messages that should be added the the regular
-	 * output are returned.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @param ValidatorManager $manager
-	 * 
-	 * @return string
-	 */
-	protected function handleErrors( ValidatorManager $manager ) {
-		
 	}
 	
 	/**

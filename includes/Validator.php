@@ -56,7 +56,7 @@ class Validator {
 	/**
 	 * @var array Holder for the validation functions.
 	 */
-	private static $mValidationFunctions = array(
+	protected static $mValidationFunctions = array(
 		'in_array' => array( 'ValidationFunctions', 'in_array' ),
 		'in_range' => array( 'ValidationFunctions', 'in_range' ),
 		'is_numeric' => array( 'ValidationFunctions', 'is_numeric' ),
@@ -118,13 +118,6 @@ class Validator {
 	protected $mValidParams = array();
 	protected $mInvalidParams = array();
 	protected $mUnknownParams = array();
-
-	/**
-	 * Holds all errors and their meta data. 
-	 * 
-	 * @var associative array
-	 */
-	protected $mErrors = array();
 	
 	/**
 	 * List of ValidatorError.
@@ -156,6 +149,13 @@ class Validator {
 		// TODO
 	} 
 	
+	/**
+	 * Registers an error.
+	 * 
+	 * @param string $message
+	 * @param mixed $tags string or array
+	 * @param integer $severity
+	 */
 	protected function registerError( $message, $tags = array(), $severity = ValidatorError::SEVERITY_NORMAL ) {
 		$error = new ValidatorError(
 			$message,
