@@ -865,102 +865,85 @@ class Validator {
 	/**
 	 * Returns an error message for a criteria validation that failed.
 	 * 
+	 * TODO: integrate this further with the hook mechanisms
+	 * TODO: proper escaping
+	 * 
 	 * @since 0.4
 	 * 
-	 * @param string $criteria
-	 * @param string $paramName
-	 * @param string $paramValue
-	 * @param array $args
-	 * @param boolean $isList
-	 * @param array $invalidItems
+	 * @param string $criteria The name of the criteria
+	 * @param string $paramName The name of the parameter, as provided by the user
+	 * @param string $paramValue The value of the parameter, as provided by the user
+	 * @param array $args The criteria arguments
+	 * @param boolean $isList Indicates if the parameter is a list type or not
+	 * @param array $invalidItems Can contain a list of invalid items for list parameters
 	 * 
 	 * @return string
 	 */
 	protected function getCriteriaErrorMessage( $criteria, $paramName, $paramValue, array $args = array(), $isList = false, array $invalidItems = array() ) {
 		global $wgLang, $egValidatorErrorLevel;
 		
-		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && $this->validator->hasErrors() ) {
-			$rawErrors = $this->validator->getErrors();
-			
-			$errorList = '<b>' . wfMsgExt( 'validator_error_parameters', 'parsemag', count( $rawErrors ) ) . '</b><br /><i>';
-
-			$errors = array();
-			
-			foreach ( $rawErrors as $error ) {
-				$error['name'] = '<b>' . Sanitizer::escapeId( $error['name'] ) . '</b>';
-				
-				if ( $error['type'] == 'unknown' ) {
-					$errors[] = wfMsgExt( 'validator_error_unknown_argument', array( 'parsemag' ), $error['name'] );
-				}
-				elseif ( $error['type'] == 'missing' ) {
-					$errors[] = wfMsgExt( 'validator_error_required_missing', array( 'parsemag' ), $error['name'] );
-				}
-				elseif ( array_key_exists( 'list', $error ) && $error['list'] ) {
-					switch( $error['type'] ) {
-						case 'not_empty' :
-							$msg = wfMsgExt( 'validator_list_error_empty_argument', array( 'parsemag' ), $error['name'] );
-							break;
-						case 'in_range' :
-							$msg = wfMsgExt( 'validator_list_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0] . '</b>', '<b>' . $error['args'][1] . '</b>' );
-							break;
-						case 'is_numeric' :
-							$msg = wfMsgExt( 'validator_list_error_must_be_number', array( 'parsemag' ), $error['name'] );
-							break;
-						case 'is_integer' :
-							$msg = wfMsgExt( 'validator_list_error_must_be_integer', array( 'parsemag' ), $error['name'] );
-							break;
-						case 'in_array' :
-							$itemsText = $wgLang->listToText( $error['args'] );
-							$msg = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $error['name'], $itemsText, count( $error['args'] ) );
-							break;
-						case 'invalid' : default :
-							$msg = wfMsgExt( 'validator_list_error_invalid_argument', array( 'parsemag' ), $error['name'] );
-							break;
-					}
-
-					if ( array_key_exists( 'invalid-items', $error ) ) {
-						$omitted = array();
-						foreach ( $error['invalid-items'] as $item ) $omitted[] = Sanitizer::escapeId( $item );
-						$msg .= ' ' . wfMsgExt( 'validator_list_omitted', array( 'parsemag' ),
-							$wgLang->listToText( $omitted ), count( $omitted ) );
-					}
-
-					$errors[] = $msg;
-				}
-				else {
-					switch( $error['type'] ) {
-						case 'not_empty' :
-							$errors[] = wfMsgExt( 'validator_error_empty_argument', array( 'parsemag' ), $error['name'] );
-							break;
-						case 'in_range' :
-							$errors[] = wfMsgExt( 'validator_error_invalid_range', array( 'parsemag' ), $error['name'], '<b>' . $error['args'][0] . '</b>', '<b>' . $error['args'][1] . '</b>' );
-							break;
-						case 'is_numeric' :
-							$errors[] = wfMsgExt( 'validator_error_must_be_number', array( 'parsemag' ), $error['name'] );
-							break;
-						case 'is_integer' :
-							$errors[] = wfMsgExt( 'validator_error_must_be_integer', array( 'parsemag' ), $error['name'] );
-							break;
-						case 'in_array' :
-							$itemsText = $wgLang->listToText( $error['args'] );
-							$errors[] = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $error['name'], $itemsText, count( $error['args'] ) );
-							break;
-						case 'invalid' : default :
-							$errors[] = wfMsgExt( 'validator_error_invalid_argument', array( 'parsemag' ), '<b>' . htmlspecialchars( $error['value'] ) . '</b>', $error['name'] );
-							break;
-					}
-				}
+		if ( $isList ) {
+			switch ( $criteria ) {
+				case 'not_empty' :
+					$message = wfMsgExt( 'validator_list_error_empty_argument', array( 'parsemag' ), $paramName );
+					break;
+				case 'in_range' :
+					$message = wfMsgExt( 'validator_list_error_invalid_range', array( 'parsemag' ),$paramName, '<b>' . $args[0] . '</b>', '<b>' . $args[1] . '</b>' );
+					break;
+				case 'is_numeric' :
+					$message = wfMsgExt( 'validator_list_error_must_be_number', array( 'parsemag' ), $paramName );
+					break;
+				case 'is_integer' :
+					$message = wfMsgExt( 'validator_list_error_must_be_integer', array( 'parsemag' ), $paramName );
+					break;
+				case 'in_array' :
+					$itemsText = $wgLang->listToText( $args );
+					$message = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $paramName, $itemsText, count( $args ) );
+					break;
+				case 'invalid' : default :
+					$message = wfMsgExt( 'validator_list_error_invalid_argument', array( 'parsemag' ), $paramName );
+					break;				
 			}
-
-			return $errorList . implode( $errors, '<br />' ) . '</i><br />';
-		}
-		elseif ( $egValidatorErrorLevel == Validator_ERRORS_WARN && $this->validator->hasErrors() ) {
-			return '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), count( $this->validator->getErrors() ) ) . '</b>';
+			
+			if ( count( $invalidItems ) > 0 ) {
+				foreach ( $invalidItems as &$item ) {
+					$item = Sanitizer::escapeId( $item );
+				}
+				
+				$message .= ' ';
+				$message .= wfMsgExt(
+					'validator_list_omitted',
+					array( 'parsemag' ),
+					$wgLang->listToText( $invalidItems ),
+					count( $invalidItems )
+				);
+			}			
 		}
 		else {
-			return '';
+			switch ( $criteria ) {
+				case 'not_empty' :
+					$message = wfMsgExt( 'validator_error_empty_argument', array( 'parsemag' ), $paramName );
+					break;
+				case 'in_range' :
+					$message = wfMsgExt( 'validator_error_invalid_range', array( 'parsemag' ), $paramName, '<b>' . $args[0] . '</b>', '<b>' . $args[1] . '</b>' );
+					break;
+				case 'is_numeric' :
+					$message = wfMsgExt( 'validator_error_must_be_number', array( 'parsemag' ), $paramName );
+					break;
+				case 'is_integer' :
+					$message = wfMsgExt( 'validator_error_must_be_integer', array( 'parsemag' ), $paramName );
+					break;
+				case 'in_array' :
+					$itemsText = $wgLang->listToText( $args );
+					$message = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $paramName, $itemsText, count( $args ) );
+					break;
+				case 'invalid' : default :
+					$message = wfMsgExt( 'validator_error_invalid_argument', array( 'parsemag' ), '<b>' . htmlspecialchars( $paramValue ) . '</b>', $paramName );
+					break;				
+			}
 		}
 		
+		return $message;	
 	}
 	
 }
