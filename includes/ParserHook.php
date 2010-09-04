@@ -66,9 +66,10 @@ abstract class ParserHook {
 	 * @return true
 	 */
 	public function init( Parser &$wgParser ) {
-		$wgParser->setHook( $this->getName(), array( $this, 'renderTag' ) );
-		$wgParser->setFunctionHook( $this->getName(), array( $this, 'renderFunction' ) );
-		
+		$name = get_class( $this );
+		$wgParser->setHook( $this->getName(), array( new ParserHookCaller( $name, 'renderTag' ), 'runHook' ) );
+		$wgParser->setFunctionHook( $this->getName(), array( new ParserHookCaller( $name, 'renderFunction' ), 'runHook' ) );
+
 		return true;
 	}
 	
@@ -86,7 +87,7 @@ abstract class ParserHook {
 		$magicWords[$this->getName()] = array( 0, $this->getName() );
 		
 		return true;
-	}	
+	}
 	
 	/**
 	 * Handler for rendering the tag hook.
@@ -193,5 +194,30 @@ abstract class ParserHook {
 	protected function getDefaultParameters() {
 		return array();
 	}	
+	
+}
+
+/**
+ * Completely evil class to create a new instance of the handling ParserHook when the actual hook gets called.
+ * 
+ * @evillness >9000 - to be replaced when a better solution (LSB?) is possible.
+ * 
+ * @since 0.4
+ * 
+ * @author Jeroen De Dauw
+ */
+class ParserHookCaller {
+	
+	protected $class;
+	protected $method;
+	
+	function __construct( $class, $method ) {
+		$this->class = $class;
+		$this->method = $method;
+	}
+	 
+	public function runHook() {
+		return call_user_func_array( array( new $this->class(), $this->method ), func_get_args() );
+	}
 	
 }
