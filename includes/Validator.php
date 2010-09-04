@@ -313,7 +313,7 @@ class Validator {
 						$this->mParameters[$mainName] = array(
 							'original-value' => $paramData,
 							'original-name' => $paramName,
-						);						
+						);
 					}
 				}
 				else {
@@ -321,9 +321,9 @@ class Validator {
 						wfMsgExt(
 							'validator-error-override-argument',
 							'parsemag',
-							$mainName,
+							$paramName,
 							$this->mParameters[$mainName]['original-value'],
-							'demo new value' // TODO: get new value
+							is_array( $paramData ) ? $paramData['original-value'] : $paramData
 						),
 						'override'		
 					);

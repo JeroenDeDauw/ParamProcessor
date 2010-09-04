@@ -53,7 +53,7 @@ abstract class ParserHook {
 	 * @since 0.4
 	 */
 	public function __construct() {
-		$this->validator = new Validator( $this->getName() );
+		
 	}
 	
 	/**
@@ -143,6 +143,8 @@ abstract class ParserHook {
 	 */
 	public function validateAndRender( array $arguments, $parsed ) {
 		global $egValidatorErrorLevel;
+		
+		$this->validator = new Validator( $this->getName() );
 		
 		if ( $parsed ) {
 			$this->validator->setParameters( $arguments, $this->getParameterInfo() );
