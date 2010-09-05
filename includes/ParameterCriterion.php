@@ -38,7 +38,39 @@ abstract class ParameterCriterion {
 	 * @return ParameterCriterion
 	 */
 	public static function newFromArray( $name, array $definition ) {
+		$bcMap = array(
+			'in_array' => 'CriterionInArray',
+			'is_numeric' => 'CriterionIsNumeric',
+			'in_range' => 'CriterionInrange',
+			'is_float' => 'CriterionIsFloat',
+			'is_integer' => 'CriterionIsInteger',
+			'not_empty' => 'CriterionNotEmpty',
+			'has_length' => 'CriterionHasLength',
+			'regex' => 'CriterionMatchesRegex',
+			'item_count' => 'CriterionItemCount',
+			'unique_items' => 'CriterionUniqueItems',
+		);
 		
+		$className = $bcMap[$name];
+		
+		switch ( $name ) {
+			case 'in_array':
+				$criterion = new $className( $definition );
+				break;
+			case 'in_range': case 'item_count' : case 'has_length' :
+				if ( count( $definition ) > 1 ) {
+					$criterion = new $className( $definition[0], $definition[1] );
+				}
+				else {
+					$criterion = new $className( $definition[0] );
+				}
+				break;				
+			default:
+				$criterion = new $className();
+				break;
+		}
+		
+		return $criterion;
 	}
 	
 	/**
@@ -47,10 +79,6 @@ abstract class ParameterCriterion {
 	 * @since 0.4
 	 */
 	public function __construct() {
-		
-	}
-	
-	protected function getValidationFunction() {
 		
 	}
 	

@@ -40,28 +40,6 @@ class Validator {
 	 * versus having the whole list be set to it's default.
 	 */
 	public static $perItemValidation = true;
-	
-	/**
-	 * @var array Holder for the validation functions.
-	 */
-	protected static $mValidationFunctions = array(
-		'in_array' => array( 'ValidationFunctions', 'in_array' ),
-		'in_range' => array( 'ValidationFunctions', 'in_range' ),
-		'is_numeric' => array( 'ValidationFunctions', 'is_numeric' ),
-		'is_float' => array( 'ValidationFunctions', 'is_float' ),
-		'is_integer' => array( 'ValidationFunctions', 'is_integer' ),
-		'not_empty' => array( 'ValidationFunctions', 'not_empty' ),
-		'has_length' => array( 'ValidationFunctions', 'has_length' ),
-		'regex' => array( 'ValidationFunctions', 'regex' ),
-	);
-	
-	/**
-	 * @var array Holder for the list validation functions.
-	 */
-	protected static $mListValidationFunctions = array(
-		'item_count' => array( 'ValidationFunctions', 'has_item_count' ),
-		'unique_items' => array( 'ValidationFunctions', 'has_unique_items' ),
-	);
 
 	/**
 	 * @var array Holder for the formatting functions.
@@ -134,30 +112,6 @@ class Validator {
 	 */
 	public function __construct( $element = '' ) {
 		$this->element = $element;
-	}
-	
-	/**
-	 * Adds a new criteria type and the validation function that should validate values of this type.
-	 * You can use this function to override existing criteria type handlers.
-	 *
-	 * @param string $criteriaName The name of the cirteria.
-	 * @param array $functionName The functions location. If it's a global function, only the name,
-	 * if it's in a class, first the class name, then the method name.
-	 */
-	public static function addValidationFunction( $criteriaName, array $functionName ) {
-		self::$mValidationFunctions[$criteriaName] = $functionName;
-	}
-	
-	/**
-	 * Adds a new list criteria type and the validation function that should validate values of this type.
-	 * You can use this function to override existing criteria type handlers.
-	 *
-	 * @param string $criteriaName The name of the list cirteria.
-	 * @param array $functionName The functions location. If it's a global function, only the name,
-	 * if it's in a class, first the class name, then the method name.
-	 */
-	public static function addListValidationFunction( $criteriaName, array $functionName ) {
-		self::$mListValidationFunctions[strtolower( $criteriaName )] = $functionName;
 	}
 	
 	/**
@@ -491,6 +445,7 @@ class Validator {
 	protected function doListValidation( $name ) {
 		$hasNoErrors = true;
 
+		/* TODO
 		foreach ( $this->parameterInfo[$name]->getListCriteria() as $criteriaName => $criteriaArgs ) {
 			// Get the validation function. If there is no matching function, throw an exception.
 			if ( array_key_exists( $criteriaName, self::$mListValidationFunctions ) ) {
@@ -522,6 +477,7 @@ class Validator {
 				throw new Exception( 'There is no validation function for list criteria type ' . $criteriaName );
 			}
 		}
+		*/
 		
 		return $hasNoErrors;
 	}
@@ -538,6 +494,7 @@ class Validator {
 		
 		$value = &$this->mParameters[$name]['value'];
 		
+		/* TODO
 		// Go through all item criteria.
 		foreach ( $this->parameterInfo[$name]->getCriteria() as $criteriaName => $criteriaArgs ) {
 			// Get the validation function. If there is no matching function, throw an exception.
@@ -618,6 +575,7 @@ class Validator {
 				throw new Exception( 'There is no validation function for criteria type ' . $criteriaName );
 			}
 		}
+		*/
 		
 		return $hasNoErrors;
 	}

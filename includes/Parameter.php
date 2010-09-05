@@ -232,7 +232,24 @@ class Parameter {
 		$this->type = $type;
 		$this->default = $default;
 		$this->aliases = $aliases;
+		
+		$this->cleanCriteria( $criteria );
 		$this->criteria = $criteria;
+	}
+	
+	/**
+	 * Ensures all Validator 3.x-style criteria definitions are converted into ParameterCriterion instances.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param array $criteria
+	 */
+	protected function cleanCriteria( array &$criteria ) {
+		foreach ( $criteria as $key => &$criterion ) {
+			if ( !$criterion instanceof ParameterCriterion )  {
+				$criterion = ParameterCriterion::newFromArray( $key, $criterion );
+			}
+		} 
 	}
 	
 	/**
@@ -272,6 +289,13 @@ class Parameter {
 		}
 	}
 	
+	/**
+	 * Validates the provided value against all criteria.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $value
+	 */
 	protected function validateCriteria( $value ) {
 		foreach ( $this->getCriteria() as $criterion ) {
 			if ( !$criterion->validate( $value ) ) {
