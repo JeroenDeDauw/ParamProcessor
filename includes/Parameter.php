@@ -17,6 +17,7 @@ class Parameter {
 	const TYPE_STRING = 'string';
 	const TYPE_NUMBER = 'number';
 	const TYPE_INTEGER = 'integer';
+	const TYPE_FLOAT = 'float';
 	const TYPE_BOOLEAN = 'boolean';
 	const TYPE_CHAR = 'char';
 	
@@ -105,6 +106,7 @@ class Parameter {
 	
 	/**
 	 * Returns a new instance of Parameter by converting a Validator 3.x-style parameter array definition.
+	 * Note: this method is for backward compatibility and should not be used in new code.
 	 * 
 	 * @since 0.4
 	 * 
@@ -243,7 +245,7 @@ class Parameter {
 	 * @return string
 	 */
 	public function getListDelimeter() {
-		if ( $this->isList ) {
+		if ( $this->isList() ) {
 			return count( $this->type ) > 1 ? $this->type[1] : self::$defaultListDelimeter;
 		}
 		else {
@@ -259,33 +261,45 @@ class Parameter {
 	 * @return array
 	 */	
 	public function getCriteria() {
-		// TODO: type criteria resolving
-		return $this->criteria; 
+		return array_merge( $this->getCriteriaForType(), $this->criteria ); 
+	}
+	
+	/**
+	 * Gets the criteria for the type of the parameter.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */
+	protected function getCriteriaForType() {
+		$criteria = array();
 		
-		/*
-		if ( array_key_exists( 'type', $this->mParameterInfo[$name] ) ) {
-			// Add type specific criteria.
-			switch( strtolower( $this->mParameterInfo[$name]['type'][0] ) ) {
-				case 'integer':
-					$this->addTypeCriteria( $name, 'is_integer' );
-					break;
-				case 'float':
-					$this->addTypeCriteria( $name, 'is_float' );
-					break;
-				case 'number': // Note: This accepts non-decimal notations! 
-					$this->addTypeCriteria( $name, 'is_numeric' );
-					break;
-				case 'boolean':
-					// TODO: work with list of true and false values. 
-					// TODO: i18n
-					$this->addTypeCriteria( $name, 'in_array', array( 'yes', 'no', 'on', 'off' ) );
-					break;
-				case 'char':
-					$this->addTypeCriteria( $name, 'has_length', array( 1, 1 ) );
-					break;
-			}
+		/* TODO
+		switch( $this->type ) {
+			case TYPE_INTEGER:
+				$criteria[] = 'is_integer';
+				break;
+			case TYPE_FLOAT:
+				$criteria[] = 'is_float';
+				break;
+			case TYPE_NUMBER: // Note: This accepts non-decimal notations! 
+				$criteria[] = 'is_numeric';
+				break;
+			case TYPE_BOOLEAN:
+				// TODO: work with list of true and false values. 
+				// TODO: i18n
+				$criteria[] =  array( 'in_array' => array( 'yes', 'no', 'on', 'off' ) );
+				break;
+			case TYPE_CHAR:
+				$criteria[] = array( 'has_length' => array( 1, 1 ) );
+				break;
+			case TYPE_STRING: default:
+				// No extra criteria for strings.
+				break;
 		}
-		*/		
+		*/
+
+		return $criteria;
 	}
 	
 	/**
