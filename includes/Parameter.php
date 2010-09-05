@@ -3,8 +3,6 @@
 /**
  * Parameter definition class.
  * 
- * TODO: create deriving ListParameter class and split list logic off to it
- * 
  * @since 0.4
  * 
  * @file Parameter.php
@@ -20,15 +18,6 @@ class Parameter {
 	const TYPE_FLOAT = 'float';
 	const TYPE_BOOLEAN = 'boolean';
 	const TYPE_CHAR = 'char';
-	
-	/**
-	 * The default delimiter for lists, used when the parameter definition does not specify one.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @var string 
-	 */
-	public static $defaultListDelimeter = ',';	
 	
 	/**
 	 * Indicates if the parameter value should be lowercased.
@@ -76,13 +65,11 @@ class Parameter {
 	protected $name;
 	
 	/**
-	 * The type of the parameter. Is either a string of the Parameter::TYPE_ enum,
-	 * or an array with such a string as first element, and optionaly a delimiter
-	 * as second element for list types.
+	 * The type of the parameter, element of the Parameter::TYPE_ enum.
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var mixed
+	 * @var string
 	 */
 	protected $type;
 	
@@ -100,9 +87,39 @@ class Parameter {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var array
+	 * @var array of ParameterCriterion
 	 */		
 	protected $criteria;
+	
+	/**
+	 * The original parameter name as provided by the user. This can be the
+	 * main name or an alias.
+	 * 
+	 * @since 0.4 
+	 * 
+	 * @var string
+	 */
+	protected $originalName;
+	
+	/**
+	 * The original value as provided by the user. This is mainly retained for
+	 * usage in error messages when the parameter turns out to be invalid.
+	 * 
+	 * @since 0.4 
+	 * 
+	 * @var string
+	 */
+	protected $originalValue;
+	
+	/**
+	 * Keeps track of how many times the parameter has been set by the user.
+	 * This is used to detect overrides and for figuring out a parameter is missing. 
+	 * 
+	 * @since 0.4 
+	 * 
+	 * @var integer
+	 */
+	protected $setCount = 0;
 	
 	/**
 	 * Returns a new instance of Parameter by converting a Validator 3.x-style parameter array definition.
@@ -116,14 +133,16 @@ class Parameter {
 	 * @return Parameter
 	 */
 	public static function newFromArray( $name, array $definition ) {
+		$isList = false;
+		$delimiter = false;
+		
 		if ( array_key_exists( 'type', $definition ) ) {
 			if ( is_array( $definition['type'] ) ) {
 				if ( count( $definition['type'] ) > 1 ) {
+					$isList = true;
+					
 					if ( count( $definition['type'] ) > 2 ) {
-						$type = array( $definition['type'][0], $definition['type'][2] );
-					}
-					else {
-						$type = array( $definition['type'][0] );
+						$delimiter = $definition['type'][2];
 					}
 				}
 				else {
@@ -145,13 +164,25 @@ class Parameter {
 			$default = array_key_exists( 'default', $definition ) ? $definition['default'] : '';
 		}
 		
-		$parameter = new Parameter(
-			$name,
-			$type,
-			$default,
-			array_key_exists( 'aliases', $definition ) ? $definition['aliases'] : array(),
-			array_key_exists( 'criteria', $definition ) ? $definition['criteria'] : array()
-		);
+		if ( $isList ) {
+			$parameter = new ListParameter(
+				$name,
+				$delimiter,
+				$type,
+				$default,
+				array_key_exists( 'aliases', $definition ) ? $definition['aliases'] : array(),
+				array_key_exists( 'criteria', $definition ) ? $definition['criteria'] : array()			
+			);
+		}
+		else {
+			$parameter = new Parameter(
+				$name,
+				$type,
+				$default,
+				array_key_exists( 'aliases', $definition ) ? $definition['aliases'] : array(),
+				array_key_exists( 'criteria', $definition ) ? $definition['criteria'] : array()
+			);			
+		}
 		
 		if ( array_key_exists( 'output-types', $definition ) ) {
 			$types = array();
@@ -191,7 +222,7 @@ class Parameter {
 	 * @since 0.4
 	 * 
 	 * @param string $name
-	 * @param mixed $type
+	 * @param string $type
 	 * @param mixed $default Use null for no default (which makes the parameter required)
 	 * @param array $aliases
 	 * @param array $criteria
@@ -202,6 +233,47 @@ class Parameter {
 		$this->default = $default;
 		$this->aliases = $aliases;
 		$this->criteria = $criteria;
+	}
+	
+	/**
+	 * @since 0.4
+	 * 
+	 * @param string $paramName
+	 * @param string $paramValue
+	 */
+	public function setUserValue( $paramName, $paramValue ) {
+		if ( $this->setCount > 0 && true /* TODO: accept overridng? */ ) {
+			// TODO: fatal error
+		}
+		else {
+			$this->originalName = $paramName;
+			$this->paramValue = $paramValue;
+			
+			$this->setCount++;			
+		}
+	}
+	
+	/**
+	 * Validates the parameter value against it's criteria.
+	 * 
+	 * @since 0.4
+	 */
+	public function validate() {
+		if ( $this->setCount == 0 ) {
+			if ( $this->isRequired() ) {
+				// TODO: fatal error
+			}
+			else {
+				$this->validateCriteria( $this->default );
+			}
+		}
+		else {
+			$this->validateCriteria( $this->originalValue );
+		}
+	}
+	
+	protected function validateCriteria( $value ) {
+		
 	}
 	
 	/**
@@ -234,7 +306,7 @@ class Parameter {
 	 * @return boolean
 	 */		
 	public function isList() {
-		return is_array( $this->type );
+		return false;
 	}
 	
 	/**
@@ -251,14 +323,14 @@ class Parameter {
 		else {
 			return false;
 		}
-	}		
+	}
 	
 	/**
 	 * Returns the parameter criteria.
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return array
+	 * @return array of ParameterCriterion
 	 */	
 	public function getCriteria() {
 		return array_merge( $this->getCriteriaForType(), $this->criteria ); 

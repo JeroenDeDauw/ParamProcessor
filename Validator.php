@@ -53,6 +53,7 @@ if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 
 // Autoload the general classes.
 $incDir = dirname( __FILE__ ) . '/includes/';
+$wgAutoloadClasses['ListParameter'] 		= $incDir . 'ListParameter.php';
 $wgAutoloadClasses['Parameter'] 			= $incDir . 'Parameter.php';
 $wgAutoloadClasses['ParserHook'] 			= $incDir . 'ParserHook.php';
 $wgAutoloadClasses['Validator'] 			= $incDir . 'Validator.php';
