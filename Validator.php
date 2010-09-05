@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Validator_VERSION', '0.4 alpha-3' );
+define( 'Validator_VERSION', '0.4 alpha-4' );
 
 // Constants indicating the strictness of the parameter validation.
 define( 'Validator_ERRORS_NONE', 0 );
@@ -54,7 +54,9 @@ if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 // Autoload the classes.
 $incDir = dirname( __FILE__ ) . '/includes/';
 $wgAutoloadClasses['ListParameter'] 		= $incDir . 'ListParameter.php';
+$wgAutoloadClasses['ListParameterCriterion']= $incDir . 'ListParameterCriterion.php';
 $wgAutoloadClasses['Parameter'] 			= $incDir . 'Parameter.php';
+$wgAutoloadClasses['ParameterCriterion'] 	= $incDir . 'ParameterCriterion.php';
 $wgAutoloadClasses['ParserHook'] 			= $incDir . 'ParserHook.php';
 $wgAutoloadClasses['Validator'] 			= $incDir . 'Validator.php';
 $wgAutoloadClasses['TopologicalSort'] 		= $incDir . 'TopologicalSort.php';
@@ -70,8 +72,10 @@ $wgAutoloadClasses['CriterionInRange']		= $incDir . 'criteria/CriterionInRange.p
 $wgAutoloadClasses['CriterionIsFloat']		= $incDir . 'criteria/CriterionIsFloat.php';
 $wgAutoloadClasses['CriterionIsInteger']	= $incDir . 'criteria/CriterionIsInteger.php';
 $wgAutoloadClasses['CriterionIsNumeric']	= $incDir . 'criteria/CriterionIsNumeric.php';
+$wgAutoloadClasses['CriterionItemCount']	= $incDir . 'criteria/CriterionItemCount.php';
 $wgAutoloadClasses['CriterionMatchesRegex']	= $incDir . 'criteria/CriterionMatchesRegex.php';
 $wgAutoloadClasses['CriterionNotEmpty']		= $incDir . 'criteria/CriterionNotEmpty.php';
+$wgAutoloadClasses['CriterionUniqueItems']	= $incDir . 'criteria/CriterionUniqueItems.php';
 
 $wgAutoloadClasses['ValidatorListErrors'] 	= $incDir . 'parserHooks/Validator_ListErrors.php';
 unset( $incDir );

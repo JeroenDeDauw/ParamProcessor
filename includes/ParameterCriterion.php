@@ -7,6 +7,7 @@
  * 
  * @file ParameterCriterion.php
  * @ingroup Validator
+ * @ingroup Criteria
  * 
  * @author Jeroen De Dauw
  */
@@ -17,7 +18,7 @@ abstract class ParameterCriterion {
 	/**
 	 * Validate a value against the criterion.
 	 * 
-	 * @param string $value
+	 * @param mixed $value
 	 * 
 	 * @since 0.4
 	 * 

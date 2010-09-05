@@ -273,7 +273,11 @@ class Parameter {
 	}
 	
 	protected function validateCriteria( $value ) {
-		
+		foreach ( $this->getCriteria() as $criterion ) {
+			if ( !$criterion->validate( $value ) ) {
+				
+			}
+		}
 	}
 	
 	/**
@@ -307,22 +311,6 @@ class Parameter {
 	 */		
 	public function isList() {
 		return false;
-	}
-	
-	/**
-	 * Returns the list delimeter.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @return string
-	 */
-	public function getListDelimeter() {
-		if ( $this->isList() ) {
-			return count( $this->type ) > 1 ? $this->type[1] : self::$defaultListDelimeter;
-		}
-		else {
-			return false;
-		}
 	}
 	
 	/**
