@@ -13,20 +13,31 @@
  */
 class CriterionHasLength extends ParameterCriterion {
 	
+	protected $lowerBound;
+	protected $upperBound;
+	
 	/**
 	 * Constructor.
 	 * 
 	 * @since 0.4
 	 */
-	public function __construct(  ) {
+	public function __construct( $lowerBound, $upperBound = false ) {
 		parent::__construct();
+		
+		$this->lowerBound = $lowerBound;
+		$this->upperBound = $upperBound === false ? $lowerBound : $upperBound;
 	}
 	
 	/**
 	 * @see ParameterCriterion::validate
 	 */	
 	public function validate( $value ) {
+		$strlen = strlen( $value );
 		
+		if ( $strlen > $this->upperBound ) return false;
+		if ( $strlen < $this->lowerBound ) return false;
+		
+		return true;
 	}
 	
 }
