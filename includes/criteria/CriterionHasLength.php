@@ -19,6 +19,9 @@ class CriterionHasLength extends ParameterCriterion {
 	/**
 	 * Constructor.
 	 * 
+	 * @param integer $lowerBound
+	 * @param mixed $upperBound
+	 * 
 	 * @since 0.4
 	 */
 	public function __construct( $lowerBound, $upperBound = false ) {
