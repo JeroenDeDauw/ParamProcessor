@@ -26,7 +26,7 @@ class CriterionIsInteger extends ParameterCriterion {
 	 * @see ParameterCriterion::validate
 	 */	
 	public function validate( $value ) {
-		
+		return ctype_digit( (string)$value );
 	}
 	
 }

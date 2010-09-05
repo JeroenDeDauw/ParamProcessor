@@ -18,7 +18,7 @@ class CriterionNotEmpty extends ParameterCriterion {
 	 * 
 	 * @since 0.4
 	 */
-	public function __construct(  ) {
+	public function __construct() {
 		parent::__construct();
 	}
 	
@@ -26,7 +26,7 @@ class CriterionNotEmpty extends ParameterCriterion {
 	 * @see ParameterCriterion::validate
 	 */	
 	public function validate( $value ) {
-		
+		return strlen( trim( $value ) ) > 0;
 	}
 	
 }

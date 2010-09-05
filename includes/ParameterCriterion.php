@@ -20,6 +20,8 @@ abstract class ParameterCriterion {
 	 * @param string $value
 	 * 
 	 * @since 0.4
+	 * 
+	 * @return boolean
 	 */	
 	public abstract function validate( $value );
 	

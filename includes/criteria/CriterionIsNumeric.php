@@ -26,7 +26,7 @@ class CriterionIsNumeric extends ParameterCriterion {
 	 * @see ParameterCriterion::validate
 	 */	
 	public function validate( $value ) {
-		
+		return is_numeric( $value );
 	}
 	
 }
