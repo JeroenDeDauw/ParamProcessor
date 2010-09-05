@@ -36,11 +36,7 @@ class CriterionHasLength extends ParameterCriterion {
 	 */	
 	public function validate( $value ) {
 		$strlen = strlen( $value );
-		
-		if ( $strlen > $this->upperBound ) return false;
-		if ( $strlen < $this->lowerBound ) return false;
-		
-		return true;
+		return $strlen <= $this->upperBound && $strlen >= $this->lowerBound;
 	}
 	
 }
