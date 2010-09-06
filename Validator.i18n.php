@@ -139,7 +139,7 @@ $messages['be-tarask'] = array(
 	'validator_list_error_invalid_range' => 'Усе значэньні парамэтру $1 павінны знаходзіцца паміж $2 і $3.',
 	'validator_list_error_invalid_argument' => 'Адно ці болей значэньняў парамэтру $1 зьяўляюцца няслушнымі.',
 	'validator_list_omitted' => '{{PLURAL:$2|Значэньне|Значэньні}} $1 {{PLURAL:$2|было прапушчанае|былі прапушчаныя}}.',
-	'validator_error_accepts_only' => 'Парамэтар $1 можа мець толькі {{PLURAL:$3|гэтае значэньне|гэтыя значэньні}}: $2.',
+	'validator_error_accepts_only' => 'Значэньне «$4» зьяўляецца няслушным для парамэтру $1. Ён можа прымаць толькі {{PLURAL:$3|гэтае значэньне|гэтыя значэньні}}: $2.',
 );
 
 /** Bulgarian (Български)
@@ -153,6 +153,7 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -161,6 +162,7 @@ $messages['br'] = array(
 	'validator_warning_parameters' => "{{PLURAL:$1|Ur fazi|Fazioù}} zo en hoc'h ereadur.",
 	'validator_error_unknown_argument' => "$1 n'eo ket un arventenn reizh.",
 	'validator_error_required_missing' => "N'eo ket bet pourchaset an arventenn rekis $1",
+	'validator-error-override-argument' => 'Klasket eo bet divankañ an arventenn $1 (talvoud: $2) gant an talvoud "$3"',
 	'validator_error_empty_argument' => "N'hall ket an arventenn $1 bezañ goullo he zalvoudenn",
 	'validator_error_must_be_number' => 'Un niver e rank an arventenn $1 bezañ hepken.',
 	'validator_error_must_be_integer' => 'Rankout a ra an arventenn $1 bezañ un niver anterin.',
@@ -172,7 +174,7 @@ $messages['br'] = array(
 	'validator_list_error_invalid_range' => 'An holl talvoudennoù eus an arventenn $1 a rank bezañ etre $2 ha $3.',
 	'validator_list_error_invalid_argument' => 'Faziek eo unan pe meur a dalvoudenn eus an arventenn $1.',
 	'validator_list_omitted' => 'Disoñjet eo bet an {{PLURAL:$2|talvoudenn|talvoudennoù}} $1.',
-	'validator_error_accepts_only' => 'An arventenn $1 ne zegemer nemet {{PLURAL:$3|an dalvoudenn|an talvoudennoù}}-mañ : $2.',
+	'validator_error_accepts_only' => 'An arventenn $1 ne zegemer ket an talvoud "$4". Degemeret e vez {{PLURAL:$3|an dalvoudenn|an talvoudennoù}}-mañ : $2.',
 );
 
 /** Bosnian (Bosanski)
@@ -742,6 +744,7 @@ $messages['pl'] = array(
 	'validator_warning_parameters' => 'W Twoim kodzie {{PLURAL:$1|wystąpił błąd|wystąpiły błędy}} składni.',
 	'validator_error_unknown_argument' => '$1 jest niepoprawnym parametrem.',
 	'validator_error_required_missing' => 'Obowiązkowy parametr $1 nie został przekazany.',
+	'validator-error-override-argument' => 'Próba nadpisania parametru $1 o wartości „$2” nową wartością „$3”',
 	'validator_error_empty_argument' => 'Parametr $1 nie może być pusty.',
 	'validator_error_must_be_number' => 'Parametr $1 musi być liczbą.',
 	'validator_error_must_be_integer' => 'Parametr $1 musi być liczbą całkowitą.',
