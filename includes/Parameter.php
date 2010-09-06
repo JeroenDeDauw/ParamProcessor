@@ -134,11 +134,13 @@ class Parameter {
 	/**
 	 * The value of the parameter. 
 	 * 
+	 * TODO: protected
+	 * 
 	 * @since 0.4 
 	 * 
 	 * @var mixed
 	 */	
-	protected $value;
+	public $value;
 	
 	/**
 	 * Keeps track of how many times the parameter has been set by the user.

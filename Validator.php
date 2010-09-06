@@ -73,7 +73,8 @@ $wgAutoloadClasses['CriterionIsInteger']	= $incDir . 'criteria/CriterionIsIntege
 $wgAutoloadClasses['CriterionIsNumeric']	= $incDir . 'criteria/CriterionIsNumeric.php';
 $wgAutoloadClasses['CriterionItemCount']	= $incDir . 'criteria/CriterionItemCount.php';
 $wgAutoloadClasses['CriterionMatchesRegex']	= $incDir . 'criteria/CriterionMatchesRegex.php';
-$wgAutoloadClasses['CriterionNotEmpty']		= $incDir . 'criteria/CriterionNotEmpty.php';
+$wgAutoloadClasses['CriterionNotEmpty']		= $incDir . 'criteria/CriterionNotEmpty.php'; 
+$wgAutoloadClasses['CriterionTrue']			= $incDir . 'criteria/CriterionTrue.php';
 $wgAutoloadClasses['CriterionUniqueItems']	= $incDir . 'criteria/CriterionUniqueItems.php';
 
 $wgAutoloadClasses['ValidatorListErrors'] 	= $incDir . 'parserHooks/Validator_ListErrors.php';

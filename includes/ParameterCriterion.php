@@ -51,7 +51,7 @@ abstract class ParameterCriterion {
 			'unique_items' => 'CriterionUniqueItems',
 		);
 		
-		$className = $bcMap[$name];
+		$className = array_key_exists( $name, $bcMap ) ? $bcMap[$name] : 'CriterionTrue';
 		
 		switch ( $name ) {
 			case 'in_array':

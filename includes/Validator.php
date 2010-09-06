@@ -295,40 +295,16 @@ class Validator {
 	 */
 	public function formatParameters() {
 		foreach ( $this->parameters as $parameter ) {
-			foreach ( $parameter->outputTypes as $outputType ) {
-				$this->setOutputType( $parameter->getName(), $outputType );
+			foreach ( $parameter->outputTypes as $outputType => $arguments ) {
+				if ( array_key_exists( $outputType, self::$mOutputFormats ) ) {
+					$parameters = array( &$parameter->value, $parameter->getName(), $this->parameters );
+					$parameters = array_merge( $parameters, $arguments );
+					call_user_func_array( self::$mOutputFormats[$outputType], $parameters );
+				}
+				else {
+					throw new Exception( 'There is no formatting function for output format ' . $outputType );
+				}				
 			}			
-		}
-	}
-	
-	/**
-	 * @deprecated TODO: remove
-	 * 
-	 * Calls the formatting function for the provided output format with these parameters:
-	 * - parameter value: ByRef for easy manipulation.
-	 * - parameter name: For lookups in the param info array.
-	 * - parameter array: All data about the parameters gathered so far (this includes dependencies!).
-	 * - output type info: Type info as provided by the parameter definition. This can be zero or more parameters.
-	 * 
-	 * @param string $name
-	 * @param array $typeInfo
-	 */
-	protected function setOutputType( $name, array $typeInfo ) {
-		// The output type is the first value in the type info array.
-		// The remaining ones will be any extra arguments.
-		$outputType = strtolower( array_shift( $typeInfo ) );
-		
-		if ( !array_key_exists( 'formatted-value', $this->parameters[$name] ) ) {
-			$this->parameters[$name]['formatted-value'] = $this->parameters[$name]['value'];
-		}
-		
-		if ( array_key_exists( $outputType, self::$mOutputFormats ) ) {
-			$parameters = array( &$this->parameters[$name]['formatted-value'], $name, $this->parameters );
-			$parameters = array_merge( $parameters, $typeInfo );
-			call_user_func_array( self::$mOutputFormats[$outputType], $parameters );
-		}
-		else {
-			throw new Exception( 'There is no formatting function for output format ' . $outputType );
 		}
 	}
 
