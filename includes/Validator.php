@@ -296,10 +296,12 @@ class Validator {
 	public function formatParameters() {
 		foreach ( $this->parameters as $parameter ) {
 			foreach ( $parameter->outputTypes as $outputType ) {
+				$outputType[0] = strtolower( $outputType[0] );
 				if ( array_key_exists( $outputType[0], self::$mOutputFormats ) ) {
 					$parameters = array( &$parameter->value, $parameter->getName(), $this->parameters );
-					$parameters = array_merge( $parameters, $arguments );
-					call_user_func_array( self::$mOutputFormats[$outputType[0]], $parameters );
+					$name = array_shift( $outputType );
+					$parameters = array_merge( $parameters, $outputType );
+					call_user_func_array( self::$mOutputFormats[$name], $parameters );
 				}
 				else {
 					throw new Exception( 'There is no formatting function for output format ' . $outputType[0] );
