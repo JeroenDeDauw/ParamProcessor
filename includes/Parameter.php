@@ -219,21 +219,21 @@ class Parameter {
 			$types = array();
 			
 			for ( $i = 0, $c = count( $definition['output-types'] ); $i < $c; $i++ ) {
-				if ( ! is_array( $definition['output-types'][$i] ) ) {
+				if ( !is_array( $definition['output-types'][$i] ) ) {
 					$definition['output-types'][$i] = array( $definition['output-types'][$i] );
 				}
 				
 				$types[$name] = $definition['output-types'][$i];
 			}
 			
-			$parameter->outputTypes = $types ;
+			$parameter->outputTypes = $types;
 		}
 		elseif ( array_key_exists( 'output-type', $definition ) ) {
 			if ( ! is_array( $definition['output-type'] ) ) {
 				$definition['output-type'] = array( $definition['output-type'] );
 			}
 			
-			$parameter->outputTypes = array( $name => $definition['output-type'] );
+			$parameter->outputTypes = array( $definition['output-type'] );
 		}
 		
 		if ( array_key_exists( 'tolower', $definition ) ) {
