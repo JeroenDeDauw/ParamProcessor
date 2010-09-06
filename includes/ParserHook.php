@@ -151,21 +151,19 @@ abstract class ParserHook {
 			$this->validator->setParameters( $arguments, $this->getParameterInfo() );
 		}
 		else {
-			$this->validator->parseAndSetParams( $arguments, $this->getParameterInfo(), $this->getDefaultParameters() );
+			$this->validator->setFunctionParams( $arguments, $this->getParameterInfo(), $this->getDefaultParameters() );
 		}
 		
-		$this->validator->validateAndFormatParameters();
-		
-		if ( $this->validator->hasErrors() && $egValidatorErrorLevel < Validator_ERRORS_STRICT ) {
-			$this->validator->correctInvalidParams();
-		}
+		$this->validator->validateParameters();
 		
 		if ( $this->validator->hasFatalError() ) {
 			// TODO
 			$output = 'Demo: fatal error';
 		}
 		else {
-			$output = $this->render( $this->validator->getValidParams( false ) );
+			$this->validator->formatParameters();
+			
+			$output = $this->render( $this->validator->getParameterValues() );			
 		}
 		
 		return $output;

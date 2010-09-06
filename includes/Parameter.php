@@ -20,6 +20,26 @@ class Parameter {
 	const TYPE_CHAR = 'char';
 	
 	/**
+	 * Indicates whether parameters that are provided more then once  should be accepted,
+	 * and use the first provided value, or not, and generate an error.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var boolean  
+	 */
+	public static $acceptOverriding = false;	
+	
+	/**
+	 * Indicates whether parameters not found in the criteria list
+	 * should be stored in case they are not accepted. The default is false.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var boolean 
+	 */
+	public static $accumulateParameterErrors = false;	
+	
+	/**
 	 * Indicates if the parameter value should be lowercased.
 	 * 
 	 * @since 0.4
@@ -110,6 +130,15 @@ class Parameter {
 	 * @var string
 	 */
 	protected $originalValue;
+	
+	/**
+	 * The value of the parameter. 
+	 * 
+	 * @since 0.4 
+	 * 
+	 * @var mixed
+	 */	
+	protected $value;
 	
 	/**
 	 * Keeps track of how many times the parameter has been set by the user.
@@ -253,40 +282,83 @@ class Parameter {
 	}
 	
 	/**
+	 * 
+	 * 
 	 * @since 0.4
 	 * 
 	 * @param string $paramName
 	 * @param string $paramValue
+	 * 
+	 * @return boolean
 	 */
 	public function setUserValue( $paramName, $paramValue ) {
-		if ( $this->setCount > 0 && true /* TODO: accept overridng? */ ) {
+		if ( $this->setCount > 0 && !self::$acceptOverriding ) {
 			// TODO: fatal error
+			/*
+					$this->registerError(
+						wfMsgExt(
+							'validator-error-override-argument',
+							'parsemag',
+							$paramName,
+							$this->mParameters[$mainName]['original-value'],
+							is_array( $paramData ) ? $paramData['original-value'] : $paramData
+						),
+						'override'		
+					);
+			 */
+			
+			return false;
 		}
 		else {
 			$this->originalName = $paramName;
-			$this->paramValue = $paramValue;
+			$this->originalValue = $paramValue;
 			
-			$this->setCount++;			
+			$this->cleanValue();
+			
+			$this->setCount++;
+
+			return true;
+		}
+	}
+	
+	/**
+	 * Sets the $value to a cleaned value of $originalValue.
+	 * 
+	 * @since 0.4
+	 */
+	protected function cleanValue() {
+		$this->value = $this->originalValue;
+		
+		if ( $this->lowerCaseValue ) {
+			$this->value = strtolower( $this->value );
 		}
 	}
 	
 	/**
 	 * Validates the parameter value against it's criteria.
+	 * If the parameter is invalid or not provided, it'll be set to it's default,
+	 * or when it's required, a fatal error will be stored.
 	 * 
 	 * @since 0.4
+	 * 
+	 * @return boolean If there where no fatal errors
 	 */
 	public function validate() {
 		if ( $this->setCount == 0 ) {
 			if ( $this->isRequired() ) {
 				// TODO: fatal error
+				$success = false;
 			}
 			else {
-				$this->validateCriteria( $this->default );
+				$success = true;
+				$this->value = $this->default;
 			}
 		}
 		else {
-			$this->validateCriteria( $this->originalValue );
+			$success = $this->validateCriteria( $this->originalValue );
 		}
+		
+		return $success;
 	}
 	
 	/**
@@ -295,13 +367,29 @@ class Parameter {
 	 * @since 0.4
 	 * 
 	 * @param string $value
+	 * 
+	 * @return boolean If there where no fatal errors
 	 */
 	protected function validateCriteria( $value ) {
+		$success = true;
+		$hasError = false;
+		
 		foreach ( $this->getCriteria() as $criterion ) {
 			if ( !$criterion->validate( $value ) ) {
+				$hasError = true;
 				
+				if ( !self::$accumulateParameterErrors ) {
+					break;
+				}
 			}
 		}
+		
+		// TODO: move this to a nicer place
+		if ( $hasError ) {
+			$this->value = $this->default;
+		}
+		
+		return $success;
 	}
 	
 	/**
@@ -314,6 +402,17 @@ class Parameter {
 	public function getName() {
 		return $this->name;
 	}
+	
+	/**
+	 * Returns the parameters value.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */			
+	public function getValue() {
+		return $this->value;
+	}	
 	
 	/**
 	 * Returns if the parameter is a required one or not.

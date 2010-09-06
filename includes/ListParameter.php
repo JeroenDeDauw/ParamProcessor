@@ -13,6 +13,16 @@
 class ListParameter extends Parameter {
 	
 	/**
+	 * Indicates if errors in list items should cause the item to be omitted,
+	 * versus having the whole list be set to it's default.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var boolean 
+	 */
+	public static $perItemValidation = true;	
+	
+	/**
 	 * The default delimiter for lists, used when the parameter definition does not specify one.
 	 * 
 	 * @since 0.4
