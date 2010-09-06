@@ -357,7 +357,11 @@ class Parameter {
 			}
 		}
 		else {
-			$success = $this->validateCriteria( $this->originalValue );
+			list( $success, $hasError ) = $this->validateCriteria( $this->originalValue );
+			
+			if ( $hasError ) {
+				$this->value = $this->default;
+			}			
 		}
 		
 		return $success;
@@ -370,7 +374,7 @@ class Parameter {
 	 * 
 	 * @param string $value
 	 * 
-	 * @return boolean If there where no fatal errors
+	 * @return array Containing a boolean indicating if there where no fatal errors and one if there where any errors
 	 */
 	protected function validateCriteria( $value ) {
 		$success = true;
@@ -386,12 +390,7 @@ class Parameter {
 			}
 		}
 		
-		// TODO: move this to a nicer place
-		if ( $hasError ) {
-			$this->value = $this->default;
-		}
-		
-		return $success;
+		return array( $success, $hasError );
 	}
 	
 	/**
