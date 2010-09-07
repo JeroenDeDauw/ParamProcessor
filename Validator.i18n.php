@@ -162,7 +162,7 @@ $messages['br'] = array(
 	'validator_warning_parameters' => "{{PLURAL:$1|Ur fazi|Fazioù}} zo en hoc'h ereadur.",
 	'validator_error_unknown_argument' => "$1 n'eo ket un arventenn reizh.",
 	'validator_error_required_missing' => "N'eo ket bet pourchaset an arventenn rekis $1",
-	'validator-error-override-argument' => 'Klasket eo bet divankañ an arventenn $1 (talvoud: $2) gant an talvoud "$3"',
+	'validator-error-override-argument' => 'Klasket eo bet divankañ an arventenn $1 (talvoud : $2) gant an talvoud "$3"',
 	'validator_error_empty_argument' => "N'hall ket an arventenn $1 bezañ goullo he zalvoudenn",
 	'validator_error_must_be_number' => 'Un niver e rank an arventenn $1 bezañ hepken.',
 	'validator_error_must_be_integer' => 'Rankout a ra an arventenn $1 bezañ un niver anterin.',
@@ -193,6 +193,7 @@ $messages['bs'] = array(
 	'validator_error_invalid_argument' => 'Vrijednost $1 nije valjana za parametar $2.',
 	'validator_list_error_empty_argument' => 'Parametar $1 ne prima prazne vrijednosti.',
 	'validator_list_error_must_be_number' => 'Parametar $1 može sadržavati samo brojeve.',
+	'validator_list_error_must_be_integer' => 'Parametar $1 može sadržavati samo cijele brojeve.',
 	'validator_list_error_invalid_range' => 'Sve vrijednosti parametra $1 moraju biti između $2 i $3.',
 	'validator_error_accepts_only' => 'Vrijednost "$4" nije valjana za parametar $1. On prihvata samo {{PLURAL:$3|ovu vrijednost|ove vrijednosti}}: $2.',
 );
