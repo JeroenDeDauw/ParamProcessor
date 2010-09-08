@@ -93,6 +93,21 @@ class ListParameter extends Parameter {
 	public function isList() {
 		return true;
 	}
+
+	/**
+	 * Sets the $value to a cleaned value of $originalValue.
+	 * 
+	 * @since 0.4
+	 */
+	protected function cleanValue() {
+		$this->value = explode( $this->delimiter, $this->originalValue );
+		
+		if ( $this->lowerCaseValue ) {
+			foreach ( $this->value as &$item ) {
+				$item = strtolower( $this->value );
+			}
+		}			
+	}	
 	
 	/**
 	 * Validates all items in the list.

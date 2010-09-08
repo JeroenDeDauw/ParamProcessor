@@ -176,9 +176,8 @@ class Parameter {
 						$delimiter = $definition['type'][2];
 					}
 				}
-				else {
-					$type = $definition['type'][0];
-				}
+				
+				$type = $definition['type'][0];
 			}
 			else {
 				$type = $definition['type'];
