@@ -72,10 +72,10 @@ class ListParameter extends Parameter {
 			}
 			else {
 				$itemCriteria[] = $criterion;
-			}		
+			}
 		}
 
-		parent::construct( $name, $type, $default, $aliases, $itemCriteria );
+		parent::__construct( $name, $type, $default, $aliases, $itemCriteria );
 		
 		$this->delimiter = $delimiter;
 		
