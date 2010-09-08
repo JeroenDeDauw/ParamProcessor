@@ -132,6 +132,8 @@ class ListParameter extends Parameter {
 			
 			// TODO
 			
+			$success = true;
+			
 			foreach ( $this->value as $item ) {
 				list( $itemSuccess, $itemHasError ) = $this->validateCriteria( $item );
 				
