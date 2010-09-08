@@ -186,6 +186,7 @@ $messages['bs'] = array(
 	'validator_warning_parameters' => '{{PLURAL:$1|Postoji greška|Postoje greške}} u Vašoj sintaksi.',
 	'validator_error_unknown_argument' => '$1 nije valjan parametar.',
 	'validator_error_required_missing' => 'Obavezni parametar $1 nije naveden.',
+	'validator-error-override-argument' => 'Pokušano da se preskoči parametar $1 (vrijednost: $2) vrijednošću "$3"',
 	'validator_error_empty_argument' => 'Parametar $1 ne može imati praznu vrijednost.',
 	'validator_error_must_be_number' => 'Parametar $1 može biti samo broj.',
 	'validator_error_must_be_integer' => 'Parametar $1 može biti samo cijeli broj.',
@@ -195,6 +196,8 @@ $messages['bs'] = array(
 	'validator_list_error_must_be_number' => 'Parametar $1 može sadržavati samo brojeve.',
 	'validator_list_error_must_be_integer' => 'Parametar $1 može sadržavati samo cijele brojeve.',
 	'validator_list_error_invalid_range' => 'Sve vrijednosti parametra $1 moraju biti između $2 i $3.',
+	'validator_list_error_invalid_argument' => 'Jedna ili više vrijednosti za parametar $1 nisu valjane.',
+	'validator_list_omitted' => '{{PLURAL:$2|Vrijednost|Vrijednosti}} $1 {{PLURAL:$2|je ispuštena|su ispuštene}}.',
 	'validator_error_accepts_only' => 'Vrijednost "$4" nije valjana za parametar $1. On prihvata samo {{PLURAL:$3|ovu vrijednost|ove vrijednosti}}: $2.',
 );
 
