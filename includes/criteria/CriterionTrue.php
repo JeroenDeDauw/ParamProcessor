@@ -33,15 +33,14 @@ class CriterionTrue extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( $value ) {
-		return wfMsgExt( '', 'parsemag', $value );
+		return '';
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getListErrorMessage( array $value ) {
-		global $wgLang;
-		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
+		return '';
 	}	
 	
 }

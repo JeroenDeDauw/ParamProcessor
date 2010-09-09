@@ -33,7 +33,7 @@ class CriterionNotEmpty extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( $value ) {
-		return wfMsgExt( '', 'parsemag', $value );
+		return wfMsgExt( 'validator_list_error_empty_argument', 'parsemag', $value );
 	}
 	
 	/**

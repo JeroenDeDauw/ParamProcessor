@@ -278,12 +278,8 @@ class Validator {
 		foreach ( $orderedParameters as $paramName ) {
 			$parameter = $this->parameters[$paramName];
 			
-			// Do the validation.
-			$success = $parameter->validate();
-			
-			// Break on fatal errors.
-			if ( !$success ) {
-				break;
+			if ( !$parameter->validate() ) {
+				$this->errors = array_merge( $this->errors, $parameter->getErrors() );
 			}
 		}
 	}
@@ -399,23 +395,23 @@ class Validator {
 		if ( $isList ) {
 			switch ( $criteria ) {
 				case 'not_empty' :
-					$message = wfMsgExt( 'validator_list_error_empty_argument', array( 'parsemag' ), $paramName );
+					$message = wfMsgExt( '', array( 'parsemag' ), $paramName );
 					break;
 				case 'in_range' :
-					$message = wfMsgExt( 'validator_list_error_invalid_range', array( 'parsemag' ),$paramName, '<b>' . $args[0] . '</b>', '<b>' . $args[1] . '</b>' );
+					$message = wfMsgExt( '', array( 'parsemag' ),$paramName, '<b>' . $args[0] . '</b>', '<b>' . $args[1] . '</b>' );
 					break;
 				case 'is_numeric' :
-					$message = wfMsgExt( 'validator_list_error_must_be_number', array( 'parsemag' ), $paramName );
+					$message = wfMsgExt( '', array( 'parsemag' ), $paramName );
 					break;
 				case 'is_integer' :
-					$message = wfMsgExt( 'validator_list_error_must_be_integer', array( 'parsemag' ), $paramName );
+					$message = wfMsgExt( '', array( 'parsemag' ), $paramName );
 					break;
 				case 'in_array' :
 					$itemsText = $wgLang->listToText( $args );
-					$message = wfMsgExt( 'validator_error_accepts_only', array( 'parsemag' ), $paramName, $itemsText, count( $args ), $paramValue );
+					$message = wfMsgExt( '', array( 'parsemag' ), $paramName, $itemsText, count( $args ), $paramValue );
 					break;
 				case 'invalid' : default :
-					$message = wfMsgExt( 'validator_list_error_invalid_argument', array( 'parsemag' ), $paramName );
+					$message = wfMsgExt( '', array( 'parsemag' ), $paramName );
 					break;				
 			}
 			

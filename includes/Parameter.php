@@ -387,17 +387,16 @@ class Parameter {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return array Containing a boolean indicating if there where no fatal errors and one if there where any errors
+	 * @return boolean Indicates if there was any validation error.
 	 */
 	protected function validateCriteria() {
 		$success = true;
-		$hasError = false;
-		
+
 		foreach ( $this->getCriteria() as $criterion ) {
 			$validationResult = $criterion->validate( $this->value );
 			
 			if ( !$validationResult->isValid() ) {
-				$hasError = true;
+				$success = false;
 				
 				$this->handleValidationError( $validationResult );
 				
@@ -406,8 +405,8 @@ class Parameter {
 				}
 			}
 		}
-		
-		return array( $success, $hasError );
+
+		return $success;
 	}
 	
 	/**
@@ -441,7 +440,18 @@ class Parameter {
 	 */			
 	public function getValue() {
 		return $this->value;
-	}	
+	}
+	
+	/**
+	 * Returns all validation errors that occured so far.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array of ValidationError
+	 */
+	public function getErrors() {
+		return $this->errors;
+	}
 	
 	/**
 	 * Returns if the parameter is a required one or not.
