@@ -54,7 +54,7 @@ class CriterionInArray extends ItemParameterCriterion {
 	 */	
 	protected function getListErrorMessage( array $value ) {
 		global $wgLang;
-		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
+		return wfMsgExt( 'validator_error_accepts_only', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
 	}	
 	
 }

@@ -33,7 +33,7 @@ class CriterionIsInteger extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( $value ) {
-		return wfMsgExt( 'validator_list_error_must_be_integer', 'parsemag', $value );
+		return wfMsgExt( 'validator_error_must_be_integer', 'parsemag', $value );
 	}
 	
 	/**
@@ -41,7 +41,7 @@ class CriterionIsInteger extends ItemParameterCriterion {
 	 */	
 	protected function getListErrorMessage( array $value ) {
 		global $wgLang;
-		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
+		return wfMsgExt( 'validator_list_error_must_be_integer', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
 	}	
 	
 }
