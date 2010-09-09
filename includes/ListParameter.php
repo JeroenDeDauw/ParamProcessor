@@ -50,6 +50,15 @@ class ListParameter extends Parameter {
 	protected $listCriteria;	
 	
 	/**
+	 * Holder for temporary information needed in the itemIsValid callback.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array
+	 */
+	protected $tempInvalidList;
+	
+	/**
 	 * Constructor.
 	 * 
 	 * @since 0.4
@@ -67,7 +76,7 @@ class ListParameter extends Parameter {
 		$listCriteria = array();
 								 	
 		foreach ( $criteria as $criterion ) {
-			if ( $criterion instanceof ListParameterCriterion ) {
+			if ( $criterion->isForLists() ) {
 				$listCriteria[] = $criterion;
 			}
 			else {
@@ -110,41 +119,15 @@ class ListParameter extends Parameter {
 	}	
 	
 	/**
-	 * Validates all items in the list.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @return boolean
+	 * @see Parameter::validate
 	 */
 	public function validate() {
-		if ( $this->setCount == 0 ) {
-			if ( $this->isRequired() ) {
-				// TODO: fatal error
-				$success = false;
-			}
-			else {
-				$success = true;
-				$this->value = $this->default;
-			}
-		}
-		else {
-			$this->validateListCriteria( $this->value );
-			
-			// TODO
-			
-			$success = true;
-			
-			foreach ( $this->value as $item ) {
-				list( $itemSuccess, $itemHasError ) = $this->validateCriteria( $item );
-				
-				// TODO
-				
-				$success = $success && $itemSuccess;
-			}
-		}
+		$this->validateListCriteria();
 		
-		return $success;
-	}
+		parent::validate();
+		
+		// FIXME: it's possible the list criteria are not satisfied here anymore due to filtering of invalid items.
+	}	
 	
 	/**
 	 * 
@@ -153,9 +136,9 @@ class ListParameter extends Parameter {
 	 * 
 	 * @param array $values
 	 */
-	protected function validateListCriteria( array $values ) {
+	protected function validateListCriteria() {
 		foreach ( $this->getListCriteria() as $listCriterion ) {
-			if ( !$listCriterion->validate( $value ) ) {
+			if ( !$listCriterion->validate( $this->value ) ) {
 				$hasError = true;
 				
 				if ( !self::$accumulateParameterErrors ) {
@@ -176,6 +159,34 @@ class ListParameter extends Parameter {
 	 */	
 	public function getListCriteria() {
 		return $this->listCriteria; 
+	}
+	
+	/**
+	 * Handles any validation errors that occured for a single criterion.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param CriterionValidationResult $validationResult
+	 */
+	protected function handleValidationError( CriterionValidationResult $validationResult ) {
+		parent::handleValidationError();
+		
+		// Filter out the items that have already been found to be invalid.
+		if ( $validationResult->hasInvalidItems() ) {
+			$this->tempInvalidList = $validationResult->getInvalidItems();
+			$this->value = array_filter( $this->value, array( $this, 'itemIsValid' ) );
+		}
+	}
+	
+	/**
+	 * Returns if an item is valid or not. 
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return boolean
+	 */
+	protected function itemIsValid( $item ) {
+		return !in_array( $item, $this->tempInvalidList );
 	}
 	
 }

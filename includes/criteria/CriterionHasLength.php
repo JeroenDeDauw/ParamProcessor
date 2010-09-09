@@ -11,7 +11,7 @@
  * 
  * @author Jeroen De Dauw
  */
-class CriterionHasLength extends ParameterCriterion {
+class CriterionHasLength extends ItemParameterCriterion {
 	
 	protected $lowerBound;
 	protected $upperBound;
@@ -32,11 +32,26 @@ class CriterionHasLength extends ParameterCriterion {
 	}
 	
 	/**
-	 * @see ParameterCriterion::validate
+	 * @see ItemParameterCriterion::validate
 	 */	
-	public function validate( $value ) {
+	protected function doValidation( $value ) {
 		$strlen = strlen( $value );
 		return $strlen <= $this->upperBound && $strlen >= $this->lowerBound;
+	}
+	
+	/**
+	 * @see ItemParameterCriterion::getItemErrorMessage
+	 */	
+	protected function getItemErrorMessage( $value ) {
+		return wfMsgExt( '', 'parsemag', $value );
+	}
+	
+	/**
+	 * @see ItemParameterCriterion::getItemErrorMessage
+	 */	
+	protected function getListErrorMessage( array $value ) {
+		global $wgLang;
+		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
 	}
 	
 }

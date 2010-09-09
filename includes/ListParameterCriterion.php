@@ -23,4 +23,12 @@ abstract class ListParameterCriterion extends ParameterCriterion {
 	public function __construct() {
 		parent::__construct();
 	}
+	
+	/**
+	 * @see ParameterCriterion::isForLists
+	 */
+	public function isForLists() {
+		return true;
+	}	
+	
 }

@@ -53,31 +53,33 @@ if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 
 // Autoload the classes.
 $incDir = dirname( __FILE__ ) . '/includes/';
-$wgAutoloadClasses['ListParameter'] 		= $incDir . 'ListParameter.php';
-$wgAutoloadClasses['ListParameterCriterion']= $incDir . 'ListParameterCriterion.php';
-$wgAutoloadClasses['Parameter'] 			= $incDir . 'Parameter.php';
-$wgAutoloadClasses['ParameterCriterion'] 	= $incDir . 'ParameterCriterion.php';
-$wgAutoloadClasses['ParserHook'] 			= $incDir . 'ParserHook.php';
-$wgAutoloadClasses['Validator'] 			= $incDir . 'Validator.php';
-$wgAutoloadClasses['TopologicalSort'] 		= $incDir . 'TopologicalSort.php';
-$wgAutoloadClasses['ValidationFormats'] 	= $incDir . 'ValidationFormats.php';
-$wgAutoloadClasses['ValidationManager'] 	= $incDir . 'ValidationManager.php'; // TODO: remove
-$wgAutoloadClasses['ValidatorError']		= $incDir . 'Validator_Error.php';
-$wgAutoloadClasses['ValidatorErrorHandler']	= $incDir . 'Validator_ErrorHandler.php';
+$wgAutoloadClasses['CriterionValidationResult']	= $incDir . 'CriterionValidationResult.php'; 
+$wgAutoloadClasses['ItemParameterCriterion']	= $incDir . 'ItemParameterCriterion.php';
+$wgAutoloadClasses['ListParameter'] 			= $incDir . 'ListParameter.php';
+$wgAutoloadClasses['ListParameterCriterion']	= $incDir . 'ListParameterCriterion.php';
+$wgAutoloadClasses['Parameter'] 				= $incDir . 'Parameter.php';
+$wgAutoloadClasses['ParameterCriterion'] 		= $incDir . 'ParameterCriterion.php';
+$wgAutoloadClasses['ParserHook'] 				= $incDir . 'ParserHook.php';
+$wgAutoloadClasses['Validator'] 				= $incDir . 'Validator.php';
+$wgAutoloadClasses['TopologicalSort'] 			= $incDir . 'TopologicalSort.php';
+$wgAutoloadClasses['ValidationFormats'] 		= $incDir . 'ValidationFormats.php';
+$wgAutoloadClasses['ValidationManager'] 		= $incDir . 'ValidationManager.php'; // TODO: remove
+$wgAutoloadClasses['ValidatorError']			= $incDir . 'Validator_Error.php';
+$wgAutoloadClasses['ValidatorErrorHandler']		= $incDir . 'Validator_ErrorHandler.php';
 
-$wgAutoloadClasses['CriterionHasLength']	= $incDir . 'criteria/CriterionHasLength.php';
-$wgAutoloadClasses['CriterionInArray']		= $incDir . 'criteria/CriterionInArray.php';
-$wgAutoloadClasses['CriterionInRange']		= $incDir . 'criteria/CriterionInRange.php';
-$wgAutoloadClasses['CriterionIsFloat']		= $incDir . 'criteria/CriterionIsFloat.php';
-$wgAutoloadClasses['CriterionIsInteger']	= $incDir . 'criteria/CriterionIsInteger.php';
-$wgAutoloadClasses['CriterionIsNumeric']	= $incDir . 'criteria/CriterionIsNumeric.php';
-$wgAutoloadClasses['CriterionItemCount']	= $incDir . 'criteria/CriterionItemCount.php';
-$wgAutoloadClasses['CriterionMatchesRegex']	= $incDir . 'criteria/CriterionMatchesRegex.php';
-$wgAutoloadClasses['CriterionNotEmpty']		= $incDir . 'criteria/CriterionNotEmpty.php'; 
-$wgAutoloadClasses['CriterionTrue']			= $incDir . 'criteria/CriterionTrue.php';
-$wgAutoloadClasses['CriterionUniqueItems']	= $incDir . 'criteria/CriterionUniqueItems.php';
+$wgAutoloadClasses['CriterionHasLength']		= $incDir . 'criteria/CriterionHasLength.php';
+$wgAutoloadClasses['CriterionInArray']			= $incDir . 'criteria/CriterionInArray.php';
+$wgAutoloadClasses['CriterionInRange']			= $incDir . 'criteria/CriterionInRange.php';
+$wgAutoloadClasses['CriterionIsFloat']			= $incDir . 'criteria/CriterionIsFloat.php';
+$wgAutoloadClasses['CriterionIsInteger']		= $incDir . 'criteria/CriterionIsInteger.php';
+$wgAutoloadClasses['CriterionIsNumeric']		= $incDir . 'criteria/CriterionIsNumeric.php';
+$wgAutoloadClasses['CriterionItemCount']		= $incDir . 'criteria/CriterionItemCount.php';
+$wgAutoloadClasses['CriterionMatchesRegex']		= $incDir . 'criteria/CriterionMatchesRegex.php';
+$wgAutoloadClasses['CriterionNotEmpty']			= $incDir . 'criteria/CriterionNotEmpty.php'; 
+$wgAutoloadClasses['CriterionTrue']				= $incDir . 'criteria/CriterionTrue.php';
+$wgAutoloadClasses['CriterionUniqueItems']		= $incDir . 'criteria/CriterionUniqueItems.php';
 
-$wgAutoloadClasses['ValidatorListErrors'] 	= $incDir . 'parserHooks/Validator_ListErrors.php';
+$wgAutoloadClasses['ValidatorListErrors'] 		= $incDir . 'parserHooks/Validator_ListErrors.php';
 unset( $incDir );
 
 // Include the settings file.

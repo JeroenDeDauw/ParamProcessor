@@ -11,7 +11,7 @@
  * 
  * @author Jeroen De Dauw
  */
-class CriterionTrue extends ParameterCriterion {
+class CriterionTrue extends ItemParameterCriterion {
 	
 	/**
 	 * Constructor.
@@ -23,10 +23,25 @@ class CriterionTrue extends ParameterCriterion {
 	}
 	
 	/**
-	 * @see ParameterCriterion::validate
+	 * @see ItemParameterCriterion::validate
 	 */	
-	public function validate( $value ) {
+	protected function doValidation( $value ) {
 		return true;
 	}
+	
+	/**
+	 * @see ItemParameterCriterion::getItemErrorMessage
+	 */	
+	protected function getItemErrorMessage( $value ) {
+		return wfMsgExt( '', 'parsemag', $value );
+	}
+	
+	/**
+	 * @see ItemParameterCriterion::getItemErrorMessage
+	 */	
+	protected function getListErrorMessage( array $value ) {
+		global $wgLang;
+		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
+	}	
 	
 }

@@ -153,6 +153,15 @@ class Parameter {
 	protected $setCount = 0;
 	
 	/**
+	 * List of validation errors for this parameter.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param array of ValidationError
+	 */
+	protected $errors = array();
+	
+	/**
 	 * Returns a new instance of Parameter by converting a Validator 3.x-style parameter array definition.
 	 * Note: this method is for backward compatibility and should not be used in new code.
 	 * 
@@ -256,8 +265,11 @@ class Parameter {
 	 * @param mixed $default Use null for no default (which makes the parameter required)
 	 * @param array $aliases
 	 * @param array $criteria
+	 * @param array $dependencies
 	 */
-	public function __construct( $name, $type = Parameter::TYPE_STRING, $default = null, array $aliases = array(), array $criteria = array() ) {
+	public function __construct( $name, $type = Parameter::TYPE_STRING,
+		$default = null, array $aliases = array(), array $criteria = array(), array $dependencies = array() ) {
+			
 		$this->name = $name;
 		$this->type = $type;
 		$this->default = $default;
@@ -265,6 +277,8 @@ class Parameter {
 		
 		$this->cleanCriteria( $criteria );
 		$this->criteria = $criteria;
+		
+		$this->dependencies = $dependencies;
 	}
 	
 	/**
@@ -356,7 +370,9 @@ class Parameter {
 			}
 		}
 		else {
-			list( $success, $hasError ) = $this->validateCriteria( $this->originalValue );
+			$this->value =  $this->originalValue;
+			
+			list( $success, $hasError ) = $this->validateCriteria();
 			
 			if ( $hasError ) {
 				$this->value = $this->default;
@@ -371,17 +387,19 @@ class Parameter {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @param string $value
-	 * 
 	 * @return array Containing a boolean indicating if there where no fatal errors and one if there where any errors
 	 */
-	protected function validateCriteria( $value ) {
+	protected function validateCriteria() {
 		$success = true;
 		$hasError = false;
 		
 		foreach ( $this->getCriteria() as $criterion ) {
-			if ( !$criterion->validate( $value ) ) {
+			$validationResult = $criterion->validate( $this->value );
+			
+			if ( !$validationResult->isValid() ) {
 				$hasError = true;
+				
+				$this->handleValidationError( $validationResult );
 				
 				if ( !self::$accumulateParameterErrors ) {
 					break;
@@ -390,6 +408,17 @@ class Parameter {
 		}
 		
 		return array( $success, $hasError );
+	}
+	
+	/**
+	 * Handles any validation errors that occured for a single criterion.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param CriterionValidationResult $validationResult
+	 */
+	protected function handleValidationError( CriterionValidationResult $validationResult ) {
+		$this->errors = array_merge( $this->errors, $validationResult->getErrors() );
 	}
 	
 	/**

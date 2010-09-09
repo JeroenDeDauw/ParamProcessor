@@ -13,8 +13,6 @@
  */
 abstract class ParameterCriterion {
 	
-	public static $criteria = array();
-
 	/**
 	 * Validate a value against the criterion.
 	 * 
@@ -22,9 +20,18 @@ abstract class ParameterCriterion {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return boolean
+	 * @return CriterionValidationResult
 	 */	
 	public abstract function validate( $value );
+	
+	/**
+	 * Returns if the criterion applies to lists as a whole.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return boolean
+	 */	
+	public abstract function isForLists();		
 	
 	/**
 	 * Returns a new instance of ParameterCriterion by converting an element of a Validator 3.x-style criteria array definition.
