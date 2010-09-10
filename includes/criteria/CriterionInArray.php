@@ -46,7 +46,16 @@ class CriterionInArray extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( 'validator_error_accepts_only', 'parsemag', $parameter->value );
+		global $wgLang;
+		
+		return wfMsgExt(
+			'validator_error_accepts_only',
+			'parsemag',
+			$parameter->getOriginalName(),
+			$wgLang->listToText( $this->allowedValues ),
+			count( $this->allowedValues ),
+			$parameter->value
+		);
 	}
 	
 	/**

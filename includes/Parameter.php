@@ -452,6 +452,34 @@ class Parameter {
 	}
 	
 	/**
+	 * Returns the original use-provided name.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */
+	public function getOriginalName() {
+		if ( $this->setCount == 0 ) {
+			throw new Exception( 'No user imput set to the parameter yet, so the original name does not exist' );
+		}		
+		return $this->originalName;
+	}
+
+	/**
+	 * Returns the original use-provided value.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */
+	public function getOriginalValue() {
+		if ( $this->setCount == 0 ) {
+			throw new Exception( 'No user imput set to the parameter yet, so the original value does not exist' );
+		}
+		return $this->originalValue;
+	}	
+	
+	/**
 	 * Returns all validation errors that occured so far.
 	 * 
 	 * @since 0.4
