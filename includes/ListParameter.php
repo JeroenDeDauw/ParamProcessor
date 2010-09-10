@@ -124,8 +124,13 @@ class ListParameter extends Parameter {
 	public function validate() {
 		$this->validateListCriteria();
 		
-		parent::validate();
+		$success = parent::doValidation();
 		
+		if ( !$success && count( $this->value ) == 0 ) {
+			$this->value = (array)$this->default;
+		}	
+		
+		return $success;
 		// FIXME: it's possible the list criteria are not satisfied here anymore due to filtering of invalid items.
 	}	
 	

@@ -350,15 +350,30 @@ class Parameter {
 	}
 	
 	/**
-	 * Validates the parameter value against it's criteria.
-	 * If the parameter is invalid or not provided, it'll be set to it's default,
-	 * or when it's required, a fatal error will be stored.
+	 * Validates the parameter value and sets the value to it's default when errors occur.
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return boolean If there where no fatal errors
+	 * @return boolean Indicates if there was any validation error
 	 */
 	public function validate() {
+		$success = $this->doValidation();
+		
+		if ( !$success ) {
+			$this->value = $this->default;
+		}	
+		
+		return $success;
+	}
+	
+	/**
+	 * Validates the parameter value.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return boolean Indicates if there was any validation error
+	 */	
+	protected function doValidation() {
 		if ( $this->setCount == 0 ) {
 			if ( $this->isRequired() ) {
 				// TODO: fatal error
@@ -372,14 +387,8 @@ class Parameter {
 		else {
 			$this->value =  $this->originalValue;
 			
-			list( $success, $hasError ) = $this->validateCriteria();
-			
-			if ( $hasError ) {
-				$this->value = $this->default;
-			}			
-		}
-		
-		return $success;
+			$success = $this->validateCriteria();
+		}		
 	}
 	
 	/**
@@ -387,7 +396,7 @@ class Parameter {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return boolean Indicates if there was any validation error.
+	 * @return boolean Indicates if there was any validation error
 	 */
 	protected function validateCriteria() {
 		$success = true;
