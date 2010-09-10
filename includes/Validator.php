@@ -188,7 +188,7 @@ class Validator {
 			
 			}
 			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->mErrors array.
-				$this->registerError(
+				$this->registerNewError(
 					wfMsgExt(
 						'validator_error_unknown_argument',
 						'parsemag',
@@ -209,16 +209,27 @@ class Validator {
 	 * @param mixed $tags string or array
 	 * @param integer $severity
 	 */
-	protected function registerError( $message, $tags = array(), $severity = ValidatorError::SEVERITY_NORMAL ) {
-		$error = new ValidatorError(
-			$message,
-			$severity,
-			$this->element,
-			(array)$tags
+	protected function registerNewError( $message, $tags = array(), $severity = ValidatorError::SEVERITY_NORMAL ) {
+		$this->registerError(
+			new ValidatorError(
+				$message,
+				$severity,
+				$this->element,
+				(array)$tags
+			)
 		);
-		
+	}
+	
+	/**
+	 * Registers an error.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param ValidationError $error
+	 */
+	protected function registerError( ValidatorError $error ) {
 		$this->errors[] = $error;
-		ValidatorErrorHandler::addError( $error );
+		ValidatorErrorHandler::addError( $error );		
 	}
 	
 	/**
@@ -279,7 +290,9 @@ class Validator {
 			$parameter = $this->parameters[$paramName];
 			
 			if ( !$parameter->validate() ) {
-				$this->errors = array_merge( $this->errors, $parameter->getErrors() );
+				foreach ( $parameter->getErrors() as $error ) {
+					$this->registerError( $error );
+				}
 			}
 		}
 	}
