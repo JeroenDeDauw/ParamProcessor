@@ -10,29 +10,29 @@
  * 
  * @author Jeroen De Dauw
  */
-final class ValidatorErrorHandler {
+final class ValidationErrorHandler {
 	
 	/**
 	 * @since 0.4
 	 * 
-	 * @var array of ValidatorError
+	 * @var array of ValidationError
 	 */
 	protected static $errors;
 	
 	/**
-	 * Adds a single ValidatorError.
+	 * Adds a single ValidationError.
 	 * 
 	 * @since 0.4
 	 * 
 	 * @param string $errorMessage
 	 * @param integer $severity
 	 */
-	public static function addError( ValidatorError $error ) {
+	public static function addError( ValidationError $error ) {
 		self::$errors[$error->element ? $error->element : 'unknown'][] = $error;
 	}
 	
 	/**
-	 * Adds a list of ValidatorError.
+	 * Adds a list of ValidationError.
 	 * 
 	 * @since 0.4
 	 * 
@@ -53,7 +53,7 @@ final class ValidatorErrorHandler {
 	 * 
 	 * @return string
 	 */
-	public static function getErrorList( $minSeverity = ValidatorError::SEVERITY_MINOR ) {
+	public static function getErrorList( $minSeverity = ValidationError::SEVERITY_MINOR ) {
 		$elementHtml = array();
 		
 		if ( count( self::$errors ) == 0 ) {
@@ -85,7 +85,7 @@ final class ValidatorErrorHandler {
 	 * 
 	 * @return string
 	 */	
-	public static function getErrorListForElement( $element, $minSeverity = ValidatorError::SEVERITY_MINOR ) {
+	public static function getErrorListForElement( $element, $minSeverity = ValidationError::SEVERITY_MINOR ) {
 		$errors = array();
 		
 		if ( array_key_exists( $element, self::$errors ) ) {

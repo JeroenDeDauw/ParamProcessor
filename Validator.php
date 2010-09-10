@@ -64,8 +64,8 @@ $wgAutoloadClasses['Validator'] 				= $incDir . 'Validator.php';
 $wgAutoloadClasses['TopologicalSort'] 			= $incDir . 'TopologicalSort.php';
 $wgAutoloadClasses['ValidationFormats'] 		= $incDir . 'ValidationFormats.php';
 $wgAutoloadClasses['ValidationManager'] 		= $incDir . 'ValidationManager.php'; // TODO: remove
-$wgAutoloadClasses['ValidatorError']			= $incDir . 'Validator_Error.php';
-$wgAutoloadClasses['ValidatorErrorHandler']		= $incDir . 'Validator_ErrorHandler.php';
+$wgAutoloadClasses['ValidationError']			= $incDir . 'ValidationError.php';
+$wgAutoloadClasses['ValidationErrorHandler']	= $incDir . 'ValidationErrorHandler.php';
 
 $wgAutoloadClasses['CriterionHasLength']		= $incDir . 'criteria/CriterionHasLength.php';
 $wgAutoloadClasses['CriterionInArray']			= $incDir . 'criteria/CriterionInArray.php';

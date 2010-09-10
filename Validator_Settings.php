@@ -26,9 +26,9 @@ $wgHooks['LanguageGetMagic'][] = 'ValidatorListErrors::staticMagic';
 # Validator_ERRORS_SHOW		: Validator will make the best of the input it got, but will show a list of all errors.
 # Validator_ERRORS_STRICT	: Validator will only show regular output when there are no errors, if there are, a list of them will be shown.
 $egErrorLevel = array(
-	ValidatorError::SEVERITY_MINOR => Validator_ERRORS_LOG,
-	ValidatorError::SEVERITY_LOW => Validator_ERRORS_LOG,
-	ValidatorError::SEVERITY_NORMAL => Validator_ERRORS_WARN,
-	ValidatorError::SEVERITY_HIGH => Validator_ERRORS_SHOW,
-	ValidatorError::SEVERITY_CRITICAL => Validator_ERRORS_STRICT,
+	ValidationError::SEVERITY_MINOR => Validator_ERRORS_LOG,
+	ValidationError::SEVERITY_LOW => Validator_ERRORS_LOG,
+	ValidationError::SEVERITY_NORMAL => Validator_ERRORS_WARN,
+	ValidationError::SEVERITY_HIGH => Validator_ERRORS_SHOW,
+	ValidationError::SEVERITY_CRITICAL => Validator_ERRORS_STRICT,
 );

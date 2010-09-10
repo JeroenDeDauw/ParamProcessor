@@ -10,7 +10,7 @@
  * 
  * @author Jeroen De Dauw
  */
-class ValidatorError {
+class ValidationError {
 	
 	const SEVERITY_MINOR = 0;
 	const SEVERITY_LOW = 1;
@@ -47,7 +47,7 @@ class ValidatorError {
 	 * @param string $message
 	 * @param integer $severity
 	 */
-	public function __construct( $message, $severity = ValidatorError::SEVERITY_NORMAL, $element = false, array $tags = array() ) {
+	public function __construct( $message, $severity = self::SEVERITY_NORMAL, $element = false, array $tags = array() ) {
 		$this->message = $message;
 		$this->severity = $severity;
 		$this->element = $element;

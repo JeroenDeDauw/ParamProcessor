@@ -87,7 +87,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 			
 			if ( $result->hasInvalidItems() ) {
 				$result->addError(
-					new ValidatorError( $this->getListErrorMessage( $result->getInvalidItems() ) )				
+					new ValidationError( $this->getListErrorMessage( $result->getInvalidItems() ) )				
 				);
 			}
 		}
@@ -96,7 +96,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 				$this->getItemErrorMessage( $value );
 				
 				$result->addError(
-					new ValidatorError( $this->getItemErrorMessage( $value ) )
+					new ValidationError( $this->getItemErrorMessage( $value ) )
 				);
 			}
 		}

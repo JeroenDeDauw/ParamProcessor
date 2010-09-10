@@ -14,18 +14,18 @@ class ValidatorListErrors extends ParserHook {
 	
 	/**
 	 * Array to map the possible values for the 'minseverity' parameter
-	 * to their equivalent in the ValidatorError::SEVERITY_ enum.
+	 * to their equivalent in the ValidationError::SEVERITY_ enum.
 	 * 
 	 * @since 0.4
 	 * 
 	 * @var array
 	 */
 	protected static $severityMap = array(
-		'minor' => ValidatorError::SEVERITY_MINOR,
-		'low' => ValidatorError::SEVERITY_LOW,
-		'normal' => ValidatorError::SEVERITY_NORMAL,
-		'high' => ValidatorError::SEVERITY_HIGH,
-		'critical' => ValidatorError::SEVERITY_CRITICAL,
+		'minor' => ValidationError::SEVERITY_MINOR,
+		'low' => ValidationError::SEVERITY_LOW,
+		'normal' => ValidationError::SEVERITY_NORMAL,
+		'high' => ValidationError::SEVERITY_HIGH,
+		'critical' => ValidationError::SEVERITY_CRITICAL,
 	);
 	
 	/**
@@ -102,7 +102,7 @@ class ValidatorListErrors extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$errorList = ValidatorErrorHandler::getErrorList( self::$severityMap[$parameters['minseverity']] );
+		$errorList = ValidationErrorHandler::getErrorList( self::$severityMap[$parameters['minseverity']] );
 		
 		if ( $errorList ) {
 			return $this->parser->recursiveTagParse( $errorList );

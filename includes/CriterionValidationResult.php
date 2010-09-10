@@ -42,7 +42,7 @@ class CriterionValidationResult {
 	 * 
 	 * @param ValidationError $error
 	 */
-	public function addError( ValidatorError $error ) {
+	public function addError( ValidationError $error ) {
 		$this->errors[] = $error; 
 	}
 	

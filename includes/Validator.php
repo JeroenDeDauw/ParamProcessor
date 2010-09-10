@@ -42,7 +42,7 @@ class Validator {
 	protected $parameters;
 	
 	/**
-	 * List of ValidatorError.
+	 * List of ValidationError.
 	 * 
 	 * @since 0.4
 	 * 
@@ -209,9 +209,9 @@ class Validator {
 	 * @param mixed $tags string or array
 	 * @param integer $severity
 	 */
-	protected function registerNewError( $message, $tags = array(), $severity = ValidatorError::SEVERITY_NORMAL ) {
+	protected function registerNewError( $message, $tags = array(), $severity = ValidationError::SEVERITY_NORMAL ) {
 		$this->registerError(
-			new ValidatorError(
+			new ValidationError(
 				$message,
 				$severity,
 				$this->element,
@@ -227,9 +227,9 @@ class Validator {
 	 * 
 	 * @param ValidationError $error
 	 */
-	protected function registerError( ValidatorError $error ) {
+	protected function registerError( ValidationError $error ) {
 		$this->errors[] = $error;
-		ValidatorErrorHandler::addError( $error );		
+		ValidationErrorHandler::addError( $error );		
 	}
 	
 	/**
@@ -351,7 +351,7 @@ class Validator {
 	/**
 	 * Returns the errors.
 	 *
-	 * @return array of ValidatorError
+	 * @return array of ValidationError
 	 */
 	public function getErrors() {
 		return $this->errors;
@@ -376,7 +376,7 @@ class Validator {
 		$has = false;
 		
 		foreach ( $this->errors as $error ) {
-			if ( $error->severity >= ValidatorError::SEVERITY_CRITICAL ) {
+			if ( $error->severity >= ValidationError::SEVERITY_CRITICAL ) {
 				$has = true;
 				break;
 			}
