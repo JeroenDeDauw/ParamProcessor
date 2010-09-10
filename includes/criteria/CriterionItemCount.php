@@ -11,7 +11,7 @@
  * 
  * @author Jeroen De Dauw
  */
-class CriterionHasLength extends ListParameterCriterion {
+class CriterionItemCount extends ListParameterCriterion {
 	
 	protected $lowerBound;
 	protected $upperBound;
@@ -34,8 +34,8 @@ class CriterionHasLength extends ListParameterCriterion {
 	/**
 	 * @see ParameterCriterion::validate
 	 */	
-	public function validate( array $values ) {
-		$count = count( $values );
+	public function validate( ListParameter $parameter ) {
+		$count = count( $parameter->value );
 		return $count <= $this->upperBound && $count >= $this->lowerBound;
 	}
 	

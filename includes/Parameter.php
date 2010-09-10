@@ -402,7 +402,7 @@ class Parameter {
 		$success = true;
 
 		foreach ( $this->getCriteria() as $criterion ) {
-			$validationResult = $criterion->validate( $this->value );
+			$validationResult = $criterion->validate( $this );
 			
 			if ( !$validationResult->isValid() ) {
 				$success = false;

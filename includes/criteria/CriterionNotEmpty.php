@@ -32,16 +32,16 @@ class CriterionNotEmpty extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( $value ) {
-		return wfMsgExt( 'validator_error_empty_argument', 'parsemag', $value );
+	protected function getItemErrorMessage( Parameter $parameter ) {
+		return wfMsgExt( 'validator_error_empty_argument', 'parsemag', $parameter->value );
 	}
 	
 	/**
-	 * @see ItemParameterCriterion::getItemErrorMessage
+	 * @see ItemParameterCriterion::getListErrorMessage
 	 */	
-	protected function getListErrorMessage( array $value ) {
+	protected function getListErrorMessage( Parameter $parameter, array $invalidItems ) {
 		global $wgLang;
-		return wfMsgExt( 'validator_list_error_empty_argument', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
+		return wfMsgExt( 'validator_list_error_empty_argument', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
 	}	
 	
 }

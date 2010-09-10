@@ -11,7 +11,7 @@
  * 
  * @author Jeroen De Dauw
  */
-class CriterionHasLength extends ListParameterCriterion {
+class CriterionUniqueItems extends ListParameterCriterion {
 	
 	/**
 	 * Constructor.
@@ -25,8 +25,8 @@ class CriterionHasLength extends ListParameterCriterion {
 	/**
 	 * @see ParameterCriterion::validate
 	 */	
-	public function validate( array $values ) {
-		return count( $values ) == count( array_unique( $values ) ); 
+	public function validate( ListParameter $parameter ) {
+		return count( $parameter->value ) == count( array_unique( $parameter->value ) ); 
 	}
 	
 }

@@ -174,7 +174,7 @@ class ListParameter extends Parameter {
 	 * @param CriterionValidationResult $validationResult
 	 */
 	protected function handleValidationError( CriterionValidationResult $validationResult ) {
-		parent::handleValidationError();
+		parent::handleValidationError( $validationResult );
 		
 		// Filter out the items that have already been found to be invalid.
 		if ( $validationResult->hasInvalidItems() ) {

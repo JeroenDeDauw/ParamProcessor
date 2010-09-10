@@ -30,25 +30,26 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * Gets an internationalized error message to construct a ValidationError with
 	 * when the criterions validation failed. (for non-list values)
 	 * 
-	 * @param string $value
+	 * @param Parameter $parameter
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return string
 	 */	
-	protected abstract function getItemErrorMessage( $value );
+	protected abstract function getItemErrorMessage( Parameter $parameter );
 	
 	/**
 	 * Gets an internationalized error message to construct a ValidationError with
 	 * when the criterions validation failed. (for list values)
 	 * 
-	 * @param array $value
+	 * @param Parameter $parameter
+	 * @param array $invalidItems
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return string
 	 */	
-	protected abstract function getListErrorMessage( array $value );	
+	protected abstract function getListErrorMessage( Parameter $parameter, array $invalidItems );	
 	
 	/**
 	 * Constructor.
@@ -71,15 +72,15 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @param $value
+	 * @param Parameter $parameter
 	 * 
 	 * @return CriterionValidationResult
 	 */
-	public function validate( $value ) {
+	public function validate( Parameter $parameter ) {
 		$result = new CriterionValidationResult();
 		
-		if ( is_array( $value ) ) {
-			foreach ( $value as $item ) {
+		if ( is_array( $parameter->value ) ) {
+			foreach ( $parameter->value as $item ) {
 				if ( !$this->doValidation( $item ) ) {
 					$result->addInvalidItem( $item );
 				}
@@ -87,16 +88,14 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 			
 			if ( $result->hasInvalidItems() ) {
 				$result->addError(
-					new ValidationError( $this->getListErrorMessage( $result->getInvalidItems() ) )				
+					new ValidationError( $this->getListErrorMessage( $parameter, $result->getInvalidItems() ) )				
 				);
 			}
 		}
 		else {
-			if ( !$this->doValidation( $value ) ) {
-				$this->getItemErrorMessage( $value );
-				
+			if ( !$this->doValidation( $parameter->value ) ) {
 				$result->addError(
-					new ValidationError( $this->getItemErrorMessage( $value ) )
+					new ValidationError( $this->getItemErrorMessage( $parameter ) )
 				);
 			}
 		}

@@ -14,15 +14,15 @@
 abstract class ParameterCriterion {
 	
 	/**
-	 * Validate a value against the criterion.
+	 * Validate a parameter against the criterion.
 	 * 
-	 * @param mixed $value
+	 * @param Parameter $parameter
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return CriterionValidationResult
 	 */	
-	public abstract function validate( $value );
+	public abstract function validate( Parameter $parameter );
 	
 	/**
 	 * Returns if the criterion applies to lists as a whole.
