@@ -33,7 +33,7 @@ class CriterionIsNumeric extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( 'validator_error_must_be_number', 'parsemag', $parameter->value );
+		return wfMsgExt( 'validator_error_must_be_number', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/**

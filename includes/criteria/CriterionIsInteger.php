@@ -33,7 +33,7 @@ class CriterionIsInteger extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( 'validator_error_must_be_integer', 'parsemag', $parameter->value );
+		return wfMsgExt( 'validator_error_must_be_integer', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/**

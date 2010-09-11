@@ -33,7 +33,7 @@ class CriterionIsFloat extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( 'validator_error_invalid_argument', 'parsemag', $parameter->value );
+		return wfMsgExt( 'validator-error-must-be-float', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/**

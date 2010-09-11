@@ -48,7 +48,7 @@ class CriterionInRange extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( 'validator_error_invalid_range', 'parsemag', $parameter->value );
+		return wfMsgExt( 'validator_error_invalid_range', 'parsemag', $parameter->getOriginalName(), $this->lowerBound, $this->upperBound );
 	}
 	
 	/**
