@@ -29,7 +29,10 @@ $messages['en'] = array(
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',
 	'validator_error_must_be_number' => 'Parameter $1 can only be a number.',
 	'validator_error_must_be_integer' => 'Parameter $1 can only be an integer.',
+	'validator-error-must-be-float' => 'Parameter $1 can only be a floating point number.',
 	'validator_error_invalid_range' => 'Parameter $1 must be between $2 and $3.',
+	'validator-error-invalid-length' => 'Parameter $1 must have a length of $2.',
+	'validator-error-invalid-length-range' => 'Parameter $1 must have a length between $2 and $3.',
 	'validator_error_invalid_argument' => 'The value $1 is not valid for parameter $2.',
 
 	// Criteria errors for lists

@@ -362,7 +362,7 @@ class Parameter {
 		if ( !$success ) {
 			$this->value = $this->default;
 		}	
-		
+
 		return $success;
 	}
 	
@@ -388,7 +388,9 @@ class Parameter {
 			$this->value =  $this->originalValue;
 			
 			$success = $this->validateCriteria();
-		}		
+		}
+
+		return $success;
 	}
 	
 	/**
