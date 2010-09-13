@@ -355,6 +355,7 @@ $messages['fi'] = array(
  * @author McDutchie
  * @author Peter17
  * @author PieRRoMaN
+ * @author Sherbrooke
  * @author Urhixidur
  * @author Verdy p
  */
@@ -368,7 +369,10 @@ $messages['fr'] = array(
 	'validator_error_empty_argument' => 'Le paramètre $1 ne peut pas avoir une valeur vide.',
 	'validator_error_must_be_number' => 'Le paramètre $1 peut être uniquement un nombre.',
 	'validator_error_must_be_integer' => 'Le paramètre $1 peut seulement être un entier.',
+	'validator-error-must-be-float' => 'Le paramètre $1 doit être un nombre à virgule flottante.',
 	'validator_error_invalid_range' => 'Le paramètre $1 doit être entre $2 et $3.',
+	'validator-error-invalid-length' => 'Le paramètre $1 doit avoir une longueur de $2.',
+	'validator-error-invalid-length-range' => 'Le paramètre $1 doit avoir une longueur comprise entre $2 et $3.',
 	'validator_error_invalid_argument' => 'La valeur $1 n’est pas valide pour le paramètre $2.',
 	'validator_list_error_empty_argument' => 'Le paramètre $1 n’accepte pas les valeurs vides.',
 	'validator_list_error_must_be_number' => 'Le paramètre $1 ne peut contenir que des nombres.',
@@ -601,6 +605,7 @@ $messages['ja'] = array(
 	'validator_warning_parameters' => 'あなたの入力した構文には{{PLURAL:$1|エラー}}があります。',
 	'validator_error_unknown_argument' => '$1 は有効な引数ではありません。',
 	'validator_error_required_missing' => '必須の引数「$1」が入力されていません。',
+	'validator-error-override-argument' => '値"$3"とともにパラメータ$1 (値: $2)を無視してみてください',
 	'validator_error_empty_argument' => '引数「$1」は空の値をとることができません。',
 	'validator_error_must_be_number' => '引数「$1」は数値でなければなりません。',
 	'validator_error_must_be_integer' => '引数「$1」は整数でなければなりません。',
@@ -615,7 +620,7 @@ $messages['ja'] = array(
 	'validator_list_error_invalid_range' => '引数「$1」の値はすべて $2 と $3 の間のものでなくてはなりません。',
 	'validator_list_error_invalid_argument' => '引数「$1」の値に不正なものが1つ以上あります。',
 	'validator_list_omitted' => '{{PLURAL:$2|値}} $1 は省かれました。',
-	'validator_error_accepts_only' => '引数 $1 は次の{{PLURAL:$3|値}}以外を取ることはできません: $2',
+	'validator_error_accepts_only' => '値"$4"はパラメーター$1にとって有効ではありません。{{PLURAL:$3|この値|これらの値}}のみ受け入れられます。: $2。',
 );
 
 /** Colognian (Ripoarisch)
@@ -828,7 +833,10 @@ $messages['pt'] = array(
 	'validator_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
 	'validator_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
 	'validator_error_must_be_integer' => 'O parâmetro $1 só pode ser um número inteiro.',
+	'validator-error-must-be-float' => 'O parâmetro $1 só pode ser um número de vírgula flutuante.',
 	'validator_error_invalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
+	'validator-error-invalid-length' => 'O parâmetro $1 tem de ter um comprimento de $2.',
+	'validator-error-invalid-length-range' => 'O parâmetro $1 tem de ter um comprimento entre $2 e $3.',
 	'validator_error_invalid_argument' => 'O valor $1 não é válido para o parâmetro $2.',
 	'validator_list_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
 	'validator_list_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
