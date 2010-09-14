@@ -13,14 +13,29 @@
  */
 class CriterionInRange extends ItemParameterCriterion {
 	
+	/**
+	 * Lower bound of the range. Either a number or false, for no lower limit.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var mixed
+	 */
 	protected $lowerBound;
+	
+	/**
+	 * Upper bound of the range. Either a number or false, for no upper limit.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var mixed
+	 */	
 	protected $upperBound;	
 	
 	/**
 	 * Constructor.
 	 * 
-	 * @param integer $lowerBound
-	 * @param integer $upperBound
+	 * @param mixed $lowerBound
+	 * @param mixed $upperBound
 	 * 
 	 * @since 0.4
 	 */
@@ -35,13 +50,14 @@ class CriterionInRange extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::validate
 	 */	
 	protected function doValidation( $value ) {
-		if ( ! is_numeric( $value ) ) {
+		if ( !is_numeric( $value ) ) {
 			return false;
 		}
 		
 		$value = (int)$value;
 		
-		return $value <= $this->upperBound && $value >= $this->lowerBound;		
+		return ( $this->upperBound === false || $value <= $this->upperBound ) 
+			&& ( $this->lowerBound === false || $value >= $this->lowerBound );		
 	}
 	
 	/**
