@@ -48,7 +48,7 @@ abstract class ParameterCriterion {
 		$bcMap = array(
 			'in_array' => 'CriterionInArray',
 			'is_numeric' => 'CriterionIsNumeric',
-			'in_range' => 'CriterionInrange',
+			'in_range' => 'CriterionInRange',
 			'is_float' => 'CriterionIsFloat',
 			'is_integer' => 'CriterionIsInteger',
 			'not_empty' => 'CriterionNotEmpty',
