@@ -74,7 +74,9 @@ class ListParameter extends Parameter {
 								 $default = null, array $aliases = array(), array $criteria = array() ) {
 		$itemCriteria = array();
 		$listCriteria = array();
-								 	
+
+		$this->cleanCriteria( $criteria );
+		
 		foreach ( $criteria as $criterion ) {
 			if ( $criterion->isForLists() ) {
 				$listCriteria[] = $criterion;
@@ -83,13 +85,13 @@ class ListParameter extends Parameter {
 				$itemCriteria[] = $criterion;
 			}
 		}
+		
+		$this->listCriteria = $listCriteria;
 
 		parent::__construct( $name, $type, $default, $aliases, $itemCriteria );
 		
 		$this->delimiter = $delimiter;
 		
-		$this->cleanCriteria( $listCriteria );
-		$this->listCriteria = $listCriteria;
 	}
 	
 	/**
@@ -113,7 +115,7 @@ class ListParameter extends Parameter {
 		
 		if ( $this->lowerCaseValue ) {
 			foreach ( $this->value as &$item ) {
-				$item = strtolower( $this->value );
+				$item = strtolower( $item );
 			}
 		}			
 	}	

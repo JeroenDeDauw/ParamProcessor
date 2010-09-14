@@ -174,7 +174,7 @@ class Parameter {
 	 */
 	public static function newFromArray( $name, array $definition ) {
 		$isList = false;
-		$delimiter = false;
+		$delimiter = ListParameter::DEFAULT_DELIMITER;
 		
 		if ( array_key_exists( 'type', $definition ) ) {
 			if ( is_array( $definition['type'] ) ) {
