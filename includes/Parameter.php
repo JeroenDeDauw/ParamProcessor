@@ -535,30 +535,27 @@ class Parameter {
 	protected function getCriteriaForType() {
 		$criteria = array();
 		
-		/* TODO
 		switch( $this->type ) {
-			case TYPE_INTEGER:
-				$criteria[] = 'is_integer';
+			case self::TYPE_INTEGER:
+				$criteria[] = new CriterionIsInteger();
 				break;
-			case TYPE_FLOAT:
-				$criteria[] = 'is_float';
+			case self::TYPE_FLOAT:
+				$criteria[] = new CriterionIsFloat();
 				break;
-			case TYPE_NUMBER: // Note: This accepts non-decimal notations! 
-				$criteria[] = 'is_numeric';
+			case self::TYPE_FLOAT: // Note: This accepts non-decimal notations! 
+				$criteria[] = new CriterionIsNumeric();
 				break;
-			case TYPE_BOOLEAN:
-				// TODO: work with list of true and false values. 
-				// TODO: i18n
-				$criteria[] =  array( 'in_array' => array( 'yes', 'no', 'on', 'off' ) );
+			case self::TYPE_BOOLEAN:
+				// TODO: work with list of true and false values and i18n. 
+				$criteria[] = new CriterionInArray( 'yes', 'no', 'on', 'off' );
 				break;
-			case TYPE_CHAR:
-				$criteria[] = array( 'has_length' => array( 1, 1 ) );
+			case self::TYPE_CHAR:
+				$criteria[] = new CriterionHasLength( 1, 1 ); 
 				break;
-			case TYPE_STRING: default:
+			case self::TYPE_STRING: default:
 				// No extra criteria for strings.
 				break;
 		}
-		*/
 
 		return $criteria;
 	}
@@ -571,7 +568,6 @@ class Parameter {
 	 * @return array
 	 */		
 	public function getListCriteria() {
-		// TODO
 		return array();
 	}
 	

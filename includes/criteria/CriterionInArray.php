@@ -29,10 +29,20 @@ class CriterionInArray extends ItemParameterCriterion {
 	 * 
 	 * @since 0.4
 	 */
-	public function __construct( $allowedValues ) {
+	public function __construct() {
 		parent::__construct();
 		
-		$this->allowedValues = (array)$allowedValues;
+		$args = func_get_args();
+		
+		if ( count( $args ) > 1 ) {
+			$this->allowedValues = $args; 
+		}
+		elseif ( count( $args ) == 1 )  {
+			$this->allowedValues = (array)$args[0];
+		}
+		else {
+			$this->allowedValues = array();
+		}
 	}
 	
 	/**
