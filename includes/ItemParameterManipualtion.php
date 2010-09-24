@@ -29,6 +29,6 @@ abstract class ItemParameterManipulation extends ParameterManipulation {
 	 */
 	public function isForLists() {
 		return false;
-	}	
+	}
 	
 }

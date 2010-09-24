@@ -20,8 +20,6 @@ abstract class ParameterManipulation {
 	 * @param array $parameters
 	 * 
 	 * @since 0.4
-	 * 
-	 * @return CriterionValidationResult
 	 */	
 	public abstract function manipulate( Parameter &$parameter, array &$parameters );
 	
