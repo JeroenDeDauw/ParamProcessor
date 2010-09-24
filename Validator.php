@@ -55,14 +55,17 @@ if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 $incDir = dirname( __FILE__ ) . '/includes/';
 $wgAutoloadClasses['CriterionValidationResult']	= $incDir . 'CriterionValidationResult.php'; 
 $wgAutoloadClasses['ItemParameterCriterion']	= $incDir . 'ItemParameterCriterion.php';
+$wgAutoloadClasses['ItemParameterManipulation']	= $incDir . 'ItemParameterManipulation.php';
 $wgAutoloadClasses['ListParameter'] 			= $incDir . 'ListParameter.php';
 $wgAutoloadClasses['ListParameterCriterion']	= $incDir . 'ListParameterCriterion.php';
+$wgAutoloadClasses['ListParameterManipulation']	= $incDir . 'ListParameterManipulation.php';
 $wgAutoloadClasses['Parameter'] 				= $incDir . 'Parameter.php';
 $wgAutoloadClasses['ParameterCriterion'] 		= $incDir . 'ParameterCriterion.php';
+$wgAutoloadClasses['ParameterManipulation'] 	= $incDir . 'ParameterManipulation.php';
 $wgAutoloadClasses['ParserHook'] 				= $incDir . 'ParserHook.php';
 $wgAutoloadClasses['Validator'] 				= $incDir . 'Validator.php';
 $wgAutoloadClasses['TopologicalSort'] 			= $incDir . 'TopologicalSort.php';
-$wgAutoloadClasses['ValidationFormats'] 		= $incDir . 'ValidationFormats.php';
+$wgAutoloadClasses['ValidationFormats'] 		= $incDir . 'ValidationFormats.php'; // TODO: remove
 $wgAutoloadClasses['ValidationError']			= $incDir . 'ValidationError.php';
 $wgAutoloadClasses['ValidationErrorHandler']	= $incDir . 'ValidationErrorHandler.php';
 

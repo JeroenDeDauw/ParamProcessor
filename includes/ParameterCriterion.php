@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Parameter criterion definition class.
+ * Parameter criterion base class.
  * 
  * @since 0.4
  * 

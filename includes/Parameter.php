@@ -534,6 +534,8 @@ class Parameter {
 	 */
 	protected function getCriteriaForType() {
 		$criteria = array();
+
+		// TODO: also have similar auto-adding of manipulations
 		
 		switch( $this->type ) {
 			case self::TYPE_INTEGER:
