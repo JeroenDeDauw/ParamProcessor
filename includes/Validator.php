@@ -16,21 +16,6 @@
  * 		 as it is not wished for all output formats in every case, and now a hacky approach is required there.
  */
 class Validator {
-
-	/**
-	 * @deprecated TODO: remove
-	 * 
-	 * @var array Holder for the formatting functions.
-	 */
-	protected static $mOutputFormats = array(
-		'array' => array( 'ValidationFormats', 'format_array' ),
-		'list' => array( 'ValidationFormats', 'format_list' ),
-		'boolean' => array( 'ValidationFormats', 'format_boolean' ),
-		'boolstr' => array( 'ValidationFormats', 'format_boolean_string' ),
-		'string' => array( 'ValidationFormats', 'format_string' ),
-		'unique_items' => array( 'ValidationFormats', 'format_unique_items' ),
-		'filtered_array' => array( 'ValidationFormats', 'format_filtered_array' ),
-	);
 	
 	/**
 	 * Array containing the parameters.
@@ -69,20 +54,6 @@ class Validator {
 	public function __construct( $element = '' ) {
 		$this->element = $element;
 	}
-	
-	/**
-	 * @deprecated TODO: remove
-	 * 
-	 * Adds a new output format and the formatting function that should validate values of this type.
-	 * You can use this function to override existing criteria type handlers.
-	 *
-	 * @param string $formatName The name of the format.
-	 * @param array $functionName The functions location. If it's a global function, only the name,
-	 * if it's in a class, first the class name, then the method name.
-	 */
-	public static function addOutputFormat( $formatName, array $functionName ) {
-		self::$mOutputFormats[strtolower( $formatName )] = $functionName;
-	}	
 	
 	/**
 	 * Determines the names and values of all parameters. Also takes care of default parameters. 
@@ -145,6 +116,7 @@ class Validator {
 					$defaultParams = $newDefaults;
 				}
 			}
+			
 			$nr++;
 		}	
 
@@ -272,7 +244,7 @@ class Validator {
 	}
 	
 	/**
-	 * Validates all the parameters (but aborts when a fatal error occurs).
+	 * Validates and formats all the parameters (but aborts when a fatal error occurs).
 	 * 
 	 * @since 0.4
 	 */
@@ -289,36 +261,18 @@ class Validator {
 		foreach ( $orderedParameters as $paramName ) {
 			$parameter = $this->parameters[$paramName];
 			
-			if ( !$parameter->validate() ) {
+			$validationSucceeded = $parameter->validate();
+			
+			if ( !$validationSucceeded ) {
 				foreach ( $parameter->getErrors() as $error ) {
 					$this->registerError( $error );
 				}
 			}
+			
+			$parameter->format( $this->parameters );
 		}
 	}
 	
-	/**
-	 * Applies the output formats to all parameters.
-	 * 
-	 * @param string $name
-	 */
-	public function formatParameters() {
-		foreach ( $this->parameters as $parameter ) {
-			foreach ( $parameter->outputTypes as $outputType ) {
-				$outputType[0] = strtolower( $outputType[0] );
-				if ( array_key_exists( $outputType[0], self::$mOutputFormats ) ) {
-					$parameters = array( &$parameter->value, $parameter->getName(), $this->parameters );
-					$name = array_shift( $outputType );
-					$parameters = array_merge( $parameters, $outputType );
-					call_user_func_array( self::$mOutputFormats[$name], $parameters );
-				}
-				else {
-					throw new Exception( 'There is no formatting function for output format ' . $outputType[0] );
-				}				
-			}			
-		}
-	}
-
 	/**
 	 * Returns the parameters.
 	 * 

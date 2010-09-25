@@ -67,15 +67,6 @@ class Parameter {
 	public $default;	
 	
 	/**
-	 * List of formatting functions to shape the final form of the parameter value. 
-	 * 
-	 * @since 0.4
-	 * 
-	 * @var array
-	 */			
-	public $outputTypes = array();	
-	
-	/**
 	 * The main name of the parameter.
 	 * 
 	 * @since 0.4
@@ -109,7 +100,16 @@ class Parameter {
 	 * 
 	 * @var array of ParameterCriterion
 	 */		
-	protected $criteria;
+	protected $criteria = array();
+	
+	/**
+	 * List of manipulations the parameter value needs to undergo.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array of ParameterManipulation
+	 */		
+	protected $manipulations = array();	
 	
 	/**
 	 * The original parameter name as provided by the user. This can be the
@@ -297,6 +297,28 @@ class Parameter {
 	}
 	
 	/**
+	 * Adds one or more ParameterCriterion.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param mixed $criteria ParameterCriterion or array of ParameterCriterion
+	 */
+	public function addCriteria( $criteria ) {
+		$this->criteria = array_merge( $this->criteria, (array)$criteria );
+	}
+	
+	/**
+	 * Adds one or more ParameterManipulation.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param mixed $criteria ParameterManipulation or array of ParameterManipulation
+	 */
+	public function addManipulations( $manipulations ) {
+		$this->manipulations = array_merge( $this->manipulations, (array)$manipulations );
+	}	
+	
+	/**
 	 * 
 	 * 
 	 * @since 0.4
@@ -364,6 +386,19 @@ class Parameter {
 		}	
 
 		return $success;
+	}
+	
+	/**
+	 * Applies the parameter manipulations.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param array $parameters
+	 */
+	public function format( array &$parameters ) {
+		foreach ( $this->getManipulations() as $manipulation ) {
+			$manipulation->manipulate( $this, $parameters );
+		}
 	}
 	
 	/**
@@ -526,6 +561,17 @@ class Parameter {
 	}
 	
 	/**
+	 * Returns the parameter manipulations.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array of ParameterManipulation
+	 */	
+	public function getManipulations() {
+		return array_merge( $this->getManipulationsForType(), $this->manipulations ); 
+	}	
+	
+	/**
 	 * Gets the criteria for the type of the parameter.
 	 * 
 	 * @since 0.4
@@ -535,8 +581,6 @@ class Parameter {
 	protected function getCriteriaForType() {
 		$criteria = array();
 
-		// TODO: also have similar auto-adding of manipulations
-		
 		switch( $this->type ) {
 			case self::TYPE_INTEGER:
 				$criteria[] = new CriterionIsInteger();
@@ -544,7 +588,7 @@ class Parameter {
 			case self::TYPE_FLOAT:
 				$criteria[] = new CriterionIsFloat();
 				break;
-			case self::TYPE_FLOAT: // Note: This accepts non-decimal notations! 
+			case self::TYPE_NUMBER: // Note: This accepts non-decimal notations! 
 				$criteria[] = new CriterionIsNumeric();
 				break;
 			case self::TYPE_BOOLEAN:
@@ -561,6 +605,40 @@ class Parameter {
 
 		return $criteria;
 	}
+	
+	/**
+	 * Gets the manipulation for the type of the parameter.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */
+	protected function getManipulationsForType() {
+		$manipulations = array();
+		
+		switch( $this->type ) {
+			case self::TYPE_INTEGER:
+				//$manipulations[] = new ();
+				break;
+			case self::TYPE_FLOAT:
+				//$manipulations[] = new ();
+				break;
+			case self::TYPE_NUMBER: 
+				//$manipulations[] = new ();
+				break;
+			case self::TYPE_BOOLEAN:
+				$manipulations[] = new ParamManipulationBoolean();
+				break;
+			case self::TYPE_CHAR:
+				//$manipulations[] = new ();
+				break;
+			case self::TYPE_STRING: default:
+				// No extra criteria for strings.
+				break;
+		}		
+		
+		return $manipulations;
+	}	
 	
 	/**
 	 * Returns the criteria that apply to the list as a whole.

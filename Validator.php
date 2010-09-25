@@ -65,7 +65,6 @@ $wgAutoloadClasses['ParameterManipulation'] 	= $incDir . 'ParameterManipulation.
 $wgAutoloadClasses['ParserHook'] 				= $incDir . 'ParserHook.php';
 $wgAutoloadClasses['Validator'] 				= $incDir . 'Validator.php';
 $wgAutoloadClasses['TopologicalSort'] 			= $incDir . 'TopologicalSort.php';
-$wgAutoloadClasses['ValidationFormats'] 		= $incDir . 'ValidationFormats.php'; // TODO: remove
 $wgAutoloadClasses['ValidationError']			= $incDir . 'ValidationError.php';
 $wgAutoloadClasses['ValidationErrorHandler']	= $incDir . 'ValidationErrorHandler.php';
 
@@ -80,6 +79,9 @@ $wgAutoloadClasses['CriterionMatchesRegex']		= $incDir . 'criteria/CriterionMatc
 $wgAutoloadClasses['CriterionNotEmpty']			= $incDir . 'criteria/CriterionNotEmpty.php'; 
 $wgAutoloadClasses['CriterionTrue']				= $incDir . 'criteria/CriterionTrue.php';
 $wgAutoloadClasses['CriterionUniqueItems']		= $incDir . 'criteria/CriterionUniqueItems.php';
+
+$wgAutoloadClasses['ParamManipulationBoolean']	= $incDir . 'manipulations/ParamManipulationBoolean.php';
+$wgAutoloadClasses['ParamManipulationBoolstr']	= $incDir . 'manipulations/ParamManipulationBoolstr.php';
 
 $wgAutoloadClasses['ValidatorListErrors'] 		= $incDir . 'parserHooks/Validator_ListErrors.php';
 unset( $incDir );

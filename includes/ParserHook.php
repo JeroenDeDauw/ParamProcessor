@@ -161,8 +161,6 @@ abstract class ParserHook {
 			$output = 'Demo: fatal error';
 		}
 		else {
-			$this->validator->formatParameters();
-			
 			$output = $this->render( $this->validator->getParameterValues() );			
 		}
 		
