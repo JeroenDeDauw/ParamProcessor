@@ -83,6 +83,7 @@ $wgAutoloadClasses['CriterionUniqueItems']		= $incDir . 'criteria/CriterionUniqu
 $wgAutoloadClasses['ParamManipulationBoolean']	= $incDir . 'manipulations/ParamManipulationBoolean.php';
 $wgAutoloadClasses['ParamManipulationBoolstr']	= $incDir . 'manipulations/ParamManipulationBoolstr.php';
 $wgAutoloadClasses['ParamManipulationFloat']	= $incDir . 'manipulations/ParamManipulationFloat.php';
+$wgAutoloadClasses['ParamManipulationImplode']	= $incDir . 'manipulations/ParamManipulationImplode.php';
 $wgAutoloadClasses['ParamManipulationInteger']	= $incDir . 'manipulations/ParamManipulationInteger.php';
 
 $wgAutoloadClasses['ValidatorListErrors'] 		= $incDir . 'parserHooks/Validator_ListErrors.php';
