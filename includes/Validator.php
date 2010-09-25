@@ -11,9 +11,6 @@
  * @author Jeroen De Dauw
  *
  * TODO: break on fatal errors, such as missing required parameters that are dependencies 
- * TODO: correct invalid parameters in the main loop, as to have correct dependency handling
- * TODO: settings of defaults should happen as a default behaviour that can be overiden by the output format,
- * 		 as it is not wished for all output formats in every case, and now a hacky approach is required there.
  */
 class Validator {
 	
