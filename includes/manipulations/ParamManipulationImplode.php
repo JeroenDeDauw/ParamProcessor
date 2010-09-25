@@ -48,7 +48,7 @@ class ParamManipulationImplode extends ListParameterManipulation {
 	 * 
 	 * @since 0.4
 	 */	
-	public function manipulate( Parameter &$parameter ) {
+	public function manipulate( Parameter &$parameter, array &$parameters ) {
 		$parameter->value = $this->wrapper . implode( $this->wrapper . $this->delimiter . $this->wrapper, $parameter->value ) . $this->wrapper; 
 	}
 	
