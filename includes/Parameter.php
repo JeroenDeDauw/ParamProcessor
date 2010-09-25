@@ -91,7 +91,7 @@ class Parameter {
 	 * 
 	 * @var array
 	 */	
-	protected $aliases;
+	protected $aliases = array();
 	
 	/**
 	 * List of criteria the parameter value needs to hold against.
@@ -233,15 +233,11 @@ class Parameter {
 				
 				$types[$name] = $definition['output-types'][$i];
 			}
-			
-			$parameter->outputTypes = $types;
 		}
 		elseif ( array_key_exists( 'output-type', $definition ) ) {
 			if ( ! is_array( $definition['output-type'] ) ) {
 				$definition['output-type'] = array( $definition['output-type'] );
 			}
-			
-			$parameter->outputTypes = array( $definition['output-type'] );
 		}
 		
 		if ( array_key_exists( 'tolower', $definition ) ) {
@@ -297,14 +293,27 @@ class Parameter {
 	}
 	
 	/**
+	 * Adds one or more aliases for the parameter name.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param mixed $aliases string or array of string
+	 */
+	public function addAliases() {
+		$args = func_get_args();
+		$this->aliases = array_merge( $this->aliases, is_array( $args[0] ) ? $args[0] : $args );
+	}	
+	
+	/**
 	 * Adds one or more ParameterCriterion.
 	 * 
 	 * @since 0.4
 	 * 
 	 * @param mixed $criteria ParameterCriterion or array of ParameterCriterion
 	 */
-	public function addCriteria( $criteria ) {
-		$this->criteria = array_merge( $this->criteria, (array)$criteria );
+	public function addCriteria() {
+		$args = func_get_args();
+		$this->criteria = array_merge( $this->criteria, is_array( $args[0] ) ? $args[0] : $args );		
 	}
 	
 	/**
@@ -312,10 +321,11 @@ class Parameter {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @param mixed $criteria ParameterManipulation or array of ParameterManipulation
+	 * @param mixed $manipulations ParameterManipulation or array of ParameterManipulation
 	 */
 	public function addManipulations( $manipulations ) {
-		$this->manipulations = array_merge( $this->manipulations, (array)$manipulations );
+		$args = func_get_args();
+		$this->manipulations = array_merge( $this->manipulations, is_array( $args[0] ) ? $args[0] : $args );		
 	}	
 	
 	/**
