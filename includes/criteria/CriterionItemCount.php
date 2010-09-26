@@ -34,7 +34,7 @@ class CriterionItemCount extends ListParameterCriterion {
 	/**
 	 * @see ParameterCriterion::validate
 	 */	
-	public function validate( ListParameter $parameter ) {
+	public function validate( Parameter $parameter ) {
 		$count = count( $parameter->value );
 		return $count <= $this->upperBound && $count >= $this->lowerBound;
 	}

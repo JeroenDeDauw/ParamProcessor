@@ -97,11 +97,11 @@ abstract class ParserHook {
 	 * @param minxed $input string or null
 	 * @param array $args
 	 * @param Parser $parser
-	 * @param PPFrame $frame
+	 * @param PPFrame $frame Available from 1.16 - commented for bc for now
 	 * 
 	 * @return string
 	 */
-	public function renderTag( $input, array $args, Parser $parser, PPFrame $frame ) {
+	public function renderTag( $input, array $args, Parser $parser /*, PPFrame $frame*/  ) {
 		$this->parser = $parser;
 		
 		$defaultParam = array_shift( $this->getDefaultParameters() );
