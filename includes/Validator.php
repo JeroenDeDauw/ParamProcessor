@@ -24,6 +24,17 @@ class Validator {
 	protected $parameters;
 	
 	/**
+	 * Asscoaitive array containing parameter names (keys) and their user-provided data (values).
+	 * This list is needed because adittional parameter definitions can be added to the $parameters
+	 * feild during validation, so we can't determine in advance if a parameter is unknown.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array
+	 */
+	protected $rawParameters = array();
+	
+	/**
 	 * List of ValidationError.
 	 * 
 	 * @since 0.4
@@ -64,8 +75,6 @@ class Validator {
 	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
 	 */
 	public function setFunctionParams( array $rawParams, array $parameterInfo, array $defaultParams = array(), $toLower = true ) {
-		$this->cleanParameterInfo( $parameterInfo );
-		
 		$parameters = array();
 
 		$nr = 0;
@@ -136,36 +145,9 @@ class Validator {
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
 		foreach ( $parameters as $paramName => $paramData ) {
 			$paramName = trim( strtolower( $paramName ) );
+			$paramValue = is_array( $paramData ) ? $paramData['original-value'] : trim( $paramData );
 			
-			// Attempt to get the main parameter name (takes care of aliases).
-			$mainName = self::getMainParamName( $paramName );
-
-			// If the parameter is found in the list of allowed ones, add it to the $mParameters array.
-			if ( $mainName ) {
-				// If the valueis an array, this means it has been procesed in parseAndSetParams already.
-				// If it is not, setParameters was called directly with an array of string parameter values.
-				if ( is_array( $paramData ) ) {
-					$this->parameters[$mainName]->setUserValue( $paramName, $paramData['original-value'] ); 
-				}
-				else {
-					if ( is_string( $paramData ) ) {
-						$paramData = trim( $paramData );
-					}
-					
-					$this->parameters[$mainName]->setUserValue( $paramName, $paramData ); 
-				}
-			
-			}
-			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->mErrors array.
-				$this->registerNewError(
-					wfMsgExt(
-						'validator_error_unknown_argument',
-						'parsemag',
-						$paramName
-					),
-					'unknown'		
-				);		
-			}		
+			$this->rawParameters[$paramName] = $paramValue;
 		}
 	}
 	
@@ -202,43 +184,27 @@ class Validator {
 	}
 	
 	/**
-	 * Ensures all elements of the array are Parameter objects.
+	 * Ensures all elements of the array are Parameter objects,
+	 * and that the array keys match the main parameter name.
 	 * 
 	 * @since 0.4
 	 * 
 	 * @param array $paramInfo
 	 */
 	protected function cleanParameterInfo( array &$paramInfo ) {
-		foreach ( $paramInfo as $key => &$parameter ) {
-			$parameter = $parameter instanceof Parameter ? $parameter : Parameter::newFromArray( $key, $parameter );
-		}
-	}	
-	
-	/**
-	 * Returns the main parameter name for a given parameter or alias, or false
-	 * when it is not recognized as main parameter or alias.
-	 *
-	 * @param string $paramName
-	 *
-	 * @return string or false
-	 */
-	protected function getMainParamName( $paramName ) {
-		$result = false;
-
-		if ( array_key_exists( $paramName, $this->parameters ) ) {
-			$result = $paramName;
-		}
-		else {
-			foreach ( $this->parameters as $name => $parameter ) {
-				if ( $parameter->hasAlias( $paramName ) ) {
-					$result = $name;
-					break;
-				}
+		$cleanedList = array();
+		
+		foreach ( $paramInfo as $key => $parameter ) {
+			if ( $parameter instanceof Parameter ) {
+				$cleanedList[$parameter->getName()] = $parameter;
+			}
+			else {
+				$cleanedList[$key] = Parameter::newFromArray( $key, $parameter );
 			}
 		}
-
-		return $result;
-	}
+		
+		$paramInfo = $cleanedList;
+	}	
 	
 	/**
 	 * Validates and formats all the parameters (but aborts when a fatal error occurs).
@@ -246,28 +212,120 @@ class Validator {
 	 * @since 0.4
 	 */
 	public function validateParameters() {
-		$dependencyList = array();
+		// Start processing at the first parameter.
+		$keys = array_keys( $this->parameters );
+		$this->doParamProcessing( $keys[0] );
 		
-		foreach ( $this->parameters as $paramName => $parameter ) {
-			$dependencyList[$paramName] = $parameter->dependencies;
+		// Loop over the remaining raw parameters.
+		// These are unrecognized parameters, as they where not used by any parameter definition.
+		foreach ( $this->rawParameters as $paramName => $paramValue ) {
+			// TODO: error: unknown param
 		}
-		
-		$sorter = new TopologicalSort( $dependencyList, true );
-		$orderedParameters = $sorter->doSort();
+	}
+	
+	/**
+	 * Does the actual parameter processing. 
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $firstParamName
+	 * @param boolean $incFirst
+	 */
+	protected function doParamProcessing( $firstParamName, $incFirst = true ) {
+		$orderedParameters = $this->getParamsToProcess( $firstParamName, $incFirst );
 
 		foreach ( $orderedParameters as $paramName ) {
 			$parameter = $this->parameters[$paramName];
 			
-			$validationSucceeded = $parameter->validate();
+			$setUservalue = $this->attemptToSetUserValue( $parameter );
 			
-			if ( !$validationSucceeded ) {
-				foreach ( $parameter->getErrors() as $error ) {
-					$this->registerError( $error );
+			if ( !$setUservalue && $parameter->isRequired() ) {
+				// TODO: FATAL
+			}
+			else {
+				$validationSucceeded = $parameter->validate();
+				
+				if ( !$validationSucceeded ) {
+					foreach ( $parameter->getErrors() as $error ) {
+						$this->registerError( $error );
+					}
+				}
+				
+				$paramCount = count( $this->parameters );
+				
+				$parameter->format( $this->parameters );	
+
+				// This means additional parameters where added while formatting the param value.
+				// To correctly handle dependencies, this function is called again for the remaining
+				// parameters, and after execution, the current loop will be aborted.
+				if ( $paramCount !== count( $this->parameters ) ) {
+					$this->doParamProcessing( $parameter->getName(), false );
+					break;
 				}
 			}
+		}		
+	}
+	
+	/**
+	 * Gets an ordered list of parameters to process.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $firstParamName
+	 * @param boolean $incFirst
+	 * 
+	 * @return array
+	 */
+	protected function getParamsToProcess( $firstParamName, $incFirst ) {
+		$dependencyList = array();
+		
+		$reachedStart = false;
+		
+		foreach ( $this->parameters as $paramName => $parameter ) {
+			$reachedStart = $reachedStart || $paramName == $firstParamName;
 			
-			$parameter->format( $this->parameters );
+			if ( $reachedStart ) {
+				// If $incFirst is false, the first parameter should be ignored.
+				if ( $incFirst ) {
+					$dependencyList[$paramName] = $parameter->getDependencies();
+				}
+				else {
+					$incFirst = true;
+				}
+			}
 		}
+		
+		$sorter = new TopologicalSort( $dependencyList, true );
+		
+		return $sorter->doSort();		
+	}
+	
+	/**
+	 * Tries to find a matching user provided value and, when found, assingns it
+	 * to the parameter, and removes it from the raw values. Returns a boolean
+	 * indicating if there was any user value set or not.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return boolean
+	 */
+	protected function attemptToSetUserValue( Parameter $parameter ) {
+		if ( array_key_exists( $parameter->getName(), $this->rawParameters ) ) {
+			$parameter->setUserValue( $parameter->getName(), $this->rawParameters[$parameter->getName()] );
+			unset( $this->rawParameters[$parameter->getName()] );
+			return true;
+		}
+		else {
+			foreach ( $parameter->getAliases() as $alias ) {
+				if ( array_key_exists( $alias, $this->rawParameters ) ) {
+					$parameter->setUserValue( $alias, $this->rawParameters[$alias] );
+					unset( $this->rawParameters[$alias] );
+					return true;
+				}
+			}
+		}
+		
+		return false;
 	}
 	
 	/**

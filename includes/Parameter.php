@@ -499,6 +499,18 @@ class Parameter {
 	}
 	
 	/**
+	 * Returns a list of dependencies the parameter has, in the form of 
+	 * other parameter names.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */		
+	public function getDependencies() {
+		return $this->dependencies;
+	}
+	
+	/**
 	 * Returns the original use-provided name.
 	 * 
 	 * @since 0.4
@@ -677,6 +689,18 @@ class Parameter {
 	 */
 	public function hasAlias( $alias ) {
 		return in_array( $alias, $this->getAliases() );
+	}
+	
+	/**
+	 * Sets the default parameter value. Null indicates no default,
+	 * and therefore makes the parameter required.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param mixed $default
+	 */
+	public function setDefault( $default ) {
+		$this->default = $default;
 	}
 	
 }
