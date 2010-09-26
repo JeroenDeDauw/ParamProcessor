@@ -430,8 +430,6 @@ class Parameter {
 			}
 		}
 		else {
-			$this->value =  $this->originalValue;
-			
 			$success = $this->validateCriteria();
 		}
 

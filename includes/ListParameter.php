@@ -112,12 +112,12 @@ class ListParameter extends Parameter {
 	 */
 	protected function cleanValue() {
 		$this->value = explode( $this->delimiter, $this->originalValue );
-		
+
 		if ( $this->lowerCaseValue ) {
 			foreach ( $this->value as &$item ) {
 				$item = strtolower( $item );
 			}
-		}			
+		}
 	}	
 	
 	/**
@@ -129,7 +129,7 @@ class ListParameter extends Parameter {
 		$success = parent::doValidation();
 		
 		if ( !$success && count( $this->value ) == 0 ) {
-			$this->value = (array)$this->default;
+			$this->value = is_array( $this->default ) ? $this->default : array( $this->default );
 		}	
 		
 		return $success;
@@ -195,5 +195,14 @@ class ListParameter extends Parameter {
 	protected function itemIsValid( $item ) {
 		return !in_array( $item, $this->tempInvalidList );
 	}
+	
+	/**
+	 * @see Parameter::setDefault
+	 * 
+	 * @since 0.4
+	 */
+	public function setDefault( $default ) {
+		$this->default = is_array( $default ) ? $default : array( $default );
+	}	
 	
 }
