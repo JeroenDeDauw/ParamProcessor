@@ -961,6 +961,7 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Ravichandra
+ * @author Veeven
  */
 $messages['te'] = array(
 	'validator_error_unknown_argument' => '$1 అనేది సరైన పరామితి కాదు.',
@@ -970,6 +971,8 @@ $messages['te'] = array(
 	'validator_error_must_be_integer' => '$1 పరామితి ఒక పూర్ణసంఖ్య అయిఉండాలి',
 	'validator_error_invalid_range' => '$1 పరామితి $2,  $3 మద్యలో ఉండాలి.',
 	'validator_error_invalid_argument' => '$2 పరామితి కోసం $1 విలువ సరైంది కాదు',
+	'validator_list_error_must_be_number' => '$1 పరామితి ఖచ్చితంగా సంఖ్యలను మాత్రమే కలిగివుండాలి.',
+	'validator_list_error_must_be_integer' => '$1 పరామితి పూర్ణసంఖ్యలను మాత్రమే కలిగివుండాలి.',
 );
 
 /** Tagalog (Tagalog)
