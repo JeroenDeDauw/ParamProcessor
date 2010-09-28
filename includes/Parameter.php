@@ -157,9 +157,18 @@ class Parameter {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @param array of ValidationError
+	 * @var array of ValidationError
 	 */
 	protected $errors = array();
+	
+	/**
+	 * Indicates if the parameter manipualations should be applied to the default value.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var boolean
+	 */
+	protected $applyManipulationsToDefault = false;
 	
 	/**
 	 * Returns a new instance of Parameter by converting a Validator 3.x-style parameter array definition.
@@ -699,6 +708,17 @@ class Parameter {
 	 */
 	public function setDefault( $default ) {
 		$this->default = $default;
+	}
+	
+	/**
+	 * Set if the parameter manipualations should be applied to the default value.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param boolean $doOrDoNot
+	 */
+	public function setDoManipulationOfDefault( $doOrDoNot ) {
+		$this->applyManipulationsToDefault = $doOrDoNot;
 	}
 	
 }
