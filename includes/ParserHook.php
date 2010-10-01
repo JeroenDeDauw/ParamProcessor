@@ -203,7 +203,7 @@ abstract class ParserHook {
 	 * @return string
 	 */
 	protected function renderFatalError( ValidationError $error ) {
-		return wfMsgExt( 'validator-error', 'parsemag', $error->getMessage() );
+		return wfMsgExt( 'validator-fatal-error', 'parsemag', $error->getMessage() );
 	}
 	
 	/**
