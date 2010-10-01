@@ -17,9 +17,9 @@ $messages = array();
 $messages['en'] = array(
 	'validator-desc' => 'Provides generic parameter handling support for other extensions',
 
-	'validator-warning' => '<b>Warning</b>: $1',
-	'validator-error' => '<b>Error</b>: $1',
-	'validator-fatal-error' => '<b>Fatal error</b>: $1',
+	'validator-warning' => "'''Warning:''' $1",
+	'validator-error' => "'''Error:''' $1",
+	'validator-fatal-error' => "'''Fatal error:''' $1",
 	'validator_error_parameters' => 'The following {{PLURAL:$1|error has|errors have}} been detected in your syntax:',
 	'validator_warning_parameters' => 'There {{PLURAL:$1|is an error|are errors}} in your syntax.',
 	'validator-warning-adittional-errors' => '... and {{PLURAL:$1|one more issue|multiple more issues}}.',
