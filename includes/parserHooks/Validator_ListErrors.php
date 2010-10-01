@@ -25,7 +25,7 @@ class ValidatorListErrors extends ParserHook {
 		'low' => ValidationError::SEVERITY_LOW,
 		'normal' => ValidationError::SEVERITY_NORMAL,
 		'high' => ValidationError::SEVERITY_HIGH,
-		'critical' => ValidationError::SEVERITY_CRITICAL,
+		'fatal' => ValidationError::SEVERITY_FATAL
 	);
 	
 	/**

@@ -21,14 +21,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgHooks['ParserFirstCallInit'][] = 'ValidatorListErrors::staticInit';
 $wgHooks['LanguageGetMagic'][] = 'ValidatorListErrors::staticMagic';
 
-# Validator_ERRORS_NONE  	: Validator will not show any errors, and make the best of the input it got.
-# Validator_ERRORS_WARN		: Validator will make the best of the input it got, but will show a warning that there are errors.
-# Validator_ERRORS_SHOW		: Validator will make the best of the input it got, but will show a list of all errors.
-# Validator_ERRORS_STRICT	: Validator will only show regular output when there are no errors, if there are, a list of them will be shown.
-$egErrorLevel = array(
-	ValidationError::SEVERITY_MINOR => Validator_ERRORS_LOG,
-	ValidationError::SEVERITY_LOW => Validator_ERRORS_LOG,
-	ValidationError::SEVERITY_NORMAL => Validator_ERRORS_WARN,
-	ValidationError::SEVERITY_HIGH => Validator_ERRORS_SHOW,
-	ValidationError::SEVERITY_CRITICAL => Validator_ERRORS_STRICT,
+// TODO: document
+$egErrorActions = array(
+	ValidationError::SEVERITY_MINOR => ValidationError::ACTION_LOG,
+	ValidationError::SEVERITY_LOW => ValidationError::ACTION_WARN,
+	ValidationError::SEVERITY_NORMAL => ValidationError::ACTION_SHOW,
+	ValidationError::SEVERITY_HIGH => ValidationError::ACTION_DEMAND,
 );

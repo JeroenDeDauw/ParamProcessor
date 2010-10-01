@@ -388,8 +388,10 @@ class Validator {
 	 * @return mixed false or ValidationError
 	 */
 	public function hasFatalError() {
+		global $egErrorLevel;
+		
 		foreach ( $this->errors as $error ) {
-			if ( $error->severity >= ValidationError::SEVERITY_CRITICAL ) {
+			if ( $error->isFatal() ) {
 				return $error;
 			}
 		}

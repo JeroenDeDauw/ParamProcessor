@@ -26,13 +26,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 define( 'Validator_VERSION', '0.4 alpha-6' );
 
-// Constants indicating the strictness of the parameter validation.
-define( 'Validator_ERRORS_NONE', 0 );
-define( 'Validator_ERRORS_LOG', 1 );
-define( 'Validator_ERRORS_WARN', 2 );
-define( 'Validator_ERRORS_SHOW', 3 );
-define( 'Validator_ERRORS_STRICT', 4 );
-
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Validator'] = dirname( __FILE__ ) . '/Validator.i18n.php';
 

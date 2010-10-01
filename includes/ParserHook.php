@@ -97,7 +97,7 @@ abstract class ParserHook {
 	 * @param minxed $input string or null
 	 * @param array $args
 	 * @param Parser $parser
-	 * @param PPFrame $frame Available from 1.16 - commented for bc for now
+	 * @param PPFrame $frame Available from 1.16 - commented out for bc for now
 	 * 
 	 * @return string
 	 */
@@ -160,12 +160,37 @@ abstract class ParserHook {
 		
 		if ( $fatalError === false ) {
 			$output = $this->render( $this->validator->getParameterValues() );
+			$output = $this->renderErrors( $output );
 		}
 		else {
-			$output = $this->renderError( $fatalError );		
+			$output = $this->renderFatalError( $fatalError );		
 		}
 		
 		return $output;
+	}
+	
+	/**
+	 * Returns the ValidationError objects for the errors and warnings that should be displayed.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array of array of ValidationError
+	 */
+	protected function getErrorsToDisplay() {
+		$errors = array();
+		$warnings = array();
+		
+		foreach ( $this->validator->getErrors() as $error ) {
+			// Check if the severity of the error is high enough to display it.
+			if ( $error->shouldShow() ) {
+				$errors[] = $error;
+			}
+			else if ( $error->shouldWarn() ) {
+				$warnings[] = $error;
+			}
+		}
+		
+		return array( 'errors' => $errors, 'warnings' => $warnings );
 	}
 	
 	/**
@@ -173,10 +198,44 @@ abstract class ParserHook {
 	 * 
 	 * @since 0.4
 	 * 
+	 * @param ValidationError $error
+	 * 
 	 * @return string
 	 */
-	protected function renderError( ValidationError $error ) {
+	protected function renderFatalError( ValidationError $error ) {
 		return wfMsgExt( 'validator-error', 'parsemag', $error->getMessage() );
+	}
+	
+	/**
+	 * @since 0.4
+	 * 
+	 * @param string $output
+	 * 
+	 * @return string
+	 */
+	protected function renderErrors( $output ) {
+		$displayStuff = $this->getErrorsToDisplay();
+		
+		if ( count( $displayStuff['errors'] ) > 0 ) {
+			$output .= wfMsgExt( 'validator_error_parameters', 'parsemag', count( $displayStuff['errors'] ) );
+			
+			foreach( $displayStuff['errors'] as $error ) {
+				$output .= '<br />* ' . $error->getMessage();
+			}
+			
+			if ( count( $displayStuff['warnings'] ) > 0 ) {
+				$output .= '<br />* ' . wfMsgExt( 'validator-warning-adittional-errors', 'parsemag', count( $displayStuff['warnings'] ) );
+			}
+		}
+		else if ( count( $displayStuff['warnings'] ) > 0 ) {
+			$output .= wfMsgExt(
+				'validator-warning',
+				'parsemag',
+				wfMsgExt( 'validator_warning_parameters', 'parsemag', count( $displayStuff['warnings'] ) )
+			);
+		}
+		
+		return $output;
 	}
 	
 	/**

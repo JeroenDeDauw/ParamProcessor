@@ -17,11 +17,14 @@ $messages = array();
 $messages['en'] = array(
 	'validator-desc' => 'Provides generic parameter handling support for other extensions',
 
+	'validator-warning' => '<b>Warning</b>: $1',
+	'validator-error' => '<b>Error</b>: $1',
+	'validator-fatal-error' => '<b>Fatal error</b>: $1',
 	'validator_error_parameters' => 'The following {{PLURAL:$1|error has|errors have}} been detected in your syntax:',
 	'validator_warning_parameters' => 'There {{PLURAL:$1|is an error|are errors}} in your syntax.',
+	'validator-warning-adittional-errors' => '... and {{PLURAL:$1|one more issue|multiple more issues}}.',
 
 	// General errors
-	'validator-error' => '<b>Error</b>: $1',
 	'validator_error_unknown_argument' => '$1 is not a valid parameter.',
 	'validator_error_required_missing' => 'The required parameter "$1" is not provided.',
 	'validator-error-override-argument' => 'Tried to override parameter $1 (value: $2) with value "$3"', 
