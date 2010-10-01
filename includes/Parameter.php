@@ -433,10 +433,9 @@ class Parameter {
 	
 	/**
 	 * Validates the parameter value.
+	 * Also sets the value to the default when it's not set or invalid, assuming there is a default.
 	 * 
 	 * @since 0.4
-	 * 
-	 * @return boolean Indicates if there was any validation error
 	 */	
 	protected function doValidation() {
 		if ( $this->setCount == 0 ) {
@@ -445,42 +444,35 @@ class Parameter {
 				throw new Exception( 'Attempted to validate a required parameter without first setting a value.' );
 			}
 			else {
-				$success = true;
 				$this->setToDefault();
 			}
 		}
 		else {
-			$success = $this->validateCriteria();
+			$this->validateCriteria();
+			
+			if ( count( $this->errors ) > 0 && !$this->hasFatalError() ) {
+				$this->setToDefault();
+			}
 		}
-
-		return $success;
 	}
 	
 	/**
 	 * Validates the provided value against all criteria.
 	 * 
 	 * @since 0.4
-	 * 
-	 * @return boolean Indicates if there was any validation error
 	 */
 	protected function validateCriteria() {
-		$success = true;
-
 		foreach ( $this->getCriteria() as $criterion ) {
 			$validationResult = $criterion->validate( $this );
 			
 			if ( !$validationResult->isValid() ) {
-				$success = false;
-				
 				$this->handleValidationError( $validationResult );
 				
-				if ( !self::$accumulateParameterErrors ) {
-					break;
+				if ( !self::$accumulateParameterErrors || $this->hasFatalError() ) {
+					break; 
 				}
 			}
 		}
-
-		return $success;
 	}
 	
 	/**
@@ -752,5 +744,20 @@ class Parameter {
 	public function setDoManipulationOfDefault( $doOrDoNot ) {
 		$this->applyManipulationsToDefault = $doOrDoNot;
 	}
+	
+	/**
+	 * Returns false when there are no fatal errors or an ValidationError when one is found.
+	 * 
+	 * @return mixed false or ValidationError
+	 */
+	public function hasFatalError() {
+		foreach ( $this->errors as $error ) {
+			if ( $error->isFatal() ) {
+				return true;
+			}
+		}
+		
+		return false;
+	}		
 	
 }

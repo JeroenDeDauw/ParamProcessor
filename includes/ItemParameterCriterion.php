@@ -87,15 +87,32 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 			}
 			
 			if ( $result->hasInvalidItems() ) {
+				$allInvalid = count( $result->getInvalidItems() ) == count( $parameter->value );
+				
+				// If the parameter is required and all items are invalid, it's fatal.
+				// Else it's high for required, and normal for non-required parameters.
+				if ( $parameter->isRequired() ) {
+					$severity = $allInvalid ? ValidationError::SEVERITY_FATAL : ValidationError::SEVERITY_HIGH;
+				}
+				else {
+					$severity = $allInvalid ? ValidationError::SEVERITY_NORMAL : ValidationError::SEVERITY_LOW;
+				}
+					
 				$result->addError(
-					new ValidationError( $this->getListErrorMessage( $parameter, $result->getInvalidItems() ) )				
+					new ValidationError(
+						$this->getListErrorMessage( $parameter, $result->getInvalidItems() ),
+						$severity
+					)
 				);
 			}
 		}
 		else {
 			if ( !$this->doValidation( $parameter->value ) ) {
 				$result->addError(
-					new ValidationError( $this->getItemErrorMessage( $parameter ) )
+					new ValidationError(
+						$this->getItemErrorMessage( $parameter ),
+						$parameter->isRequired() ? ValidationError::SEVERITY_FATAL : ValidationError::SEVERITY_NORMAL
+					)
 				);
 			}
 		}

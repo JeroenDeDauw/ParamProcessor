@@ -250,17 +250,20 @@ class Validator {
 				$this->registerNewError(
 					wfMsgExt( 'validator_error_required_missing', 'parsemag', $paramName ),
 					array(),
-					ValidationError::SEVERITY_CRITICAL
+					ValidationError::SEVERITY_FATAL
 				);
 				break;
 			}
 			else {
-				$validationSucceeded = $parameter->validate();
+				$parameter->validate();			
 				
-				if ( !$validationSucceeded ) {
-					foreach ( $parameter->getErrors() as $error ) {
-						$this->registerError( $error );
-					}
+				foreach ( $parameter->getErrors() as $error ) {
+					$this->registerError( $error );
+				}				
+				
+				if ( $parameter->hasFatalError() ) {
+					// If there was a fatal error, and the parameter is required, stop processing. 
+					break;
 				}
 				
 				$initialSet = $this->parameters;
@@ -293,7 +296,7 @@ class Validator {
 				if ( !array_key_exists( $paramName, $initialParamSet ) ) {
 					$this->paramsTohandle[] = $paramName;
 				}
-			}			
+			}	
 		}
 		
 		$dependencies = array();
@@ -390,8 +393,6 @@ class Validator {
 	 * @return mixed false or ValidationError
 	 */
 	public function hasFatalError() {
-		global $egErrorLevel;
-		
 		foreach ( $this->errors as $error ) {
 			if ( $error->isFatal() ) {
 				return $error;
