@@ -54,4 +54,15 @@ class ValidationError {
 		$this->tags = $tags;
 	}
 	
+	/**
+	 * Returns the error message describing the error.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */
+	public function getMessage() {
+		return $this->message;
+	}
+	
 }

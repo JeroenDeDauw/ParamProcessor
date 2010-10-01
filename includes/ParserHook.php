@@ -156,15 +156,27 @@ abstract class ParserHook {
 		
 		$this->validator->validateParameters();
 		
-		if ( $this->validator->hasFatalError() ) {
-			// TODO
-			$output = 'Demo: fatal error';
+		$fatalError = $this->validator->hasFatalError();
+		
+		if ( $fatalError === false ) {
+			$output = $this->render( $this->validator->getParameterValues() );
 		}
 		else {
-			$output = $this->render( $this->validator->getParameterValues() );			
+			$output = $this->renderError( $fatalError );		
 		}
 		
 		return $output;
+	}
+	
+	/**
+	 * Creates and returns the output when a fatal error prevent regular rendering.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */
+	protected function renderError( ValidationError $error ) {
+		return wfMsgExt( 'validator-error', 'parsemag', $error->getMessage() );
 	}
 	
 	/**

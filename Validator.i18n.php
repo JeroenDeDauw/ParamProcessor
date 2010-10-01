@@ -21,8 +21,9 @@ $messages['en'] = array(
 	'validator_warning_parameters' => 'There {{PLURAL:$1|is an error|are errors}} in your syntax.',
 
 	// General errors
+	'validator-error' => '<b>Error</b>: $1',
 	'validator_error_unknown_argument' => '$1 is not a valid parameter.',
-	'validator_error_required_missing' => 'The required parameter $1 is not provided.',
+	'validator_error_required_missing' => 'The required parameter "$1" is not provided.',
 	'validator-error-override-argument' => 'Tried to override parameter $1 (value: $2) with value "$3"', 
 
 	// Criteria errors for single values

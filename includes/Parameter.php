@@ -441,8 +441,8 @@ class Parameter {
 	protected function doValidation() {
 		if ( $this->setCount == 0 ) {
 			if ( $this->isRequired() ) {
-				// TODO: fatal error
-				$success = false;
+				// This should not occur, so thorw an exception.
+				throw new Exception( 'Attempted to validate a required parameter without first setting a value.' );
 			}
 			else {
 				$success = true;

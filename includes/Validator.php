@@ -243,8 +243,14 @@ class Validator {
 			
 			$setUservalue = $this->attemptToSetUserValue( $parameter );
 			
+			// If the parameter is required but not provided, register a fatal error and stop processing. 
 			if ( !$setUservalue && $parameter->isRequired() ) {
-				// TODO: FATAL
+				$this->registerNewError(
+					wfMsgExt( 'validator_error_required_missing', 'parsemag', $paramName ),
+					array(),
+					ValidationError::SEVERITY_CRITICAL
+				);
+				break;
 			}
 			else {
 				$validationSucceeded = $parameter->validate();
@@ -375,22 +381,20 @@ class Validator {
 	}
 	
 	/**
-	 * Returns wether there are any fatal errors. Fatal errors are either missing or invalid required parameters,
-	 * or simply any sort of error when the validation level is equal to (or bigger then) Validator_ERRORS_STRICT.
+	 * Returns false when there are no fatal errors or an ValidationError when one is found.
+	 * Fatal errors are either missing or invalid required parameters, or simply any sort of
+	 * error when the validation level is equal to (or bigger then) Validator_ERRORS_STRICT.
 	 * 
-	 * @return boolean
+	 * @return mixed false or ValidationError
 	 */
 	public function hasFatalError() {
-		$has = false;
-		
 		foreach ( $this->errors as $error ) {
 			if ( $error->severity >= ValidationError::SEVERITY_CRITICAL ) {
-				$has = true;
-				break;
+				return $error;
 			}
 		}
 		
-		return $has;
+		return false;
 	}	
 	
 }
