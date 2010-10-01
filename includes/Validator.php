@@ -226,7 +226,9 @@ class Validator {
 		// Loop over the remaining raw parameters.
 		// These are unrecognized parameters, as they where not used by any parameter definition.
 		foreach ( $this->rawParameters as $paramName => $paramValue ) {
-			// TODO: error: unknown param
+			$this->registerNewError(
+				wfMsgExt( 'validator_error_unknown_argument', 'parsemag', $paramName )
+			);
 		}
 	}
 	
