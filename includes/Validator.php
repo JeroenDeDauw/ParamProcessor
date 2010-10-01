@@ -30,9 +30,18 @@ class Validator {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var array
+	 * @var array of string
 	 */
 	protected $rawParameters = array();
+	
+	/**
+	 * Array containing the names of the parameters to handle, ordered by priority.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array
+	 */
+	protected $paramsToHandle = array();
 	
 	/**
 	 * List of ValidationError.
@@ -212,9 +221,7 @@ class Validator {
 	 * @since 0.4
 	 */
 	public function validateParameters() {
-		// Start processing at the first parameter.
-		$keys = array_keys( $this->parameters );
-		$this->doParamProcessing( $keys[0] );
+		$this->doParamProcessing();
 		
 		// Loop over the remaining raw parameters.
 		// These are unrecognized parameters, as they where not used by any parameter definition.
@@ -227,14 +234,11 @@ class Validator {
 	 * Does the actual parameter processing. 
 	 * 
 	 * @since 0.4
-	 * 
-	 * @param string $firstParamName
-	 * @param boolean $incFirst
 	 */
-	protected function doParamProcessing( $firstParamName, $incFirst = true ) {
-		$orderedParameters = $this->getParamsToProcess( $firstParamName, $incFirst );
+	protected function doParamProcessing() {
+		$this->getParamsToProcess( array(), $this->parameters );
 
-		foreach ( $orderedParameters as $paramName ) {
+		while ( $paramName = array_shift( $this->paramsTohandle ) ) {
 			$parameter = $this->parameters[$paramName];
 			
 			$setUservalue = $this->attemptToSetUserValue( $parameter );
@@ -251,19 +255,13 @@ class Validator {
 					}
 				}
 				
-				$paramCount = count( $this->parameters );
+				$initialSet = $this->parameters;
 				
 				$parameter->format( $this->parameters );	
 
-				// This means additional parameters where added while formatting the param value.
-				// To correctly handle dependencies, this function is called again for the remaining
-				// parameters, and after execution, the current loop will be aborted.
-				if ( $paramCount !== count( $this->parameters ) ) {
-					$this->doParamProcessing( $parameter->getName(), false );
-					break;
-				}
+				$this->getParamsToProcess( $initialSet, $this->parameters );
 			}
-		}		
+		}
 	}
 	
 	/**
@@ -271,33 +269,34 @@ class Validator {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @param string $firstParamName
-	 * @param boolean $incFirst
-	 * 
-	 * @return array
+	 * @param array $initialParamSet
+	 * @param array $resultingParamSet
 	 */
-	protected function getParamsToProcess( $firstParamName, $incFirst ) {
-		$dependencyList = array();
-		
-		$reachedStart = false;
-		
-		foreach ( $this->parameters as $paramName => $parameter ) {
-			$reachedStart = $reachedStart || $paramName == $firstParamName;
+	protected function getParamsToProcess( array $initialParamSet, array $resultingParamSet ) {
+		if ( count( $initialParamSet ) == 0 ) {
+			$this->paramsTohandle = array_keys( $resultingParamSet );
+		}
+		else {
+			if ( !is_array( $this->paramsTohandle ) ) {
+				$this->paramsTohandle = array();
+			}			
 			
-			if ( $reachedStart ) {
-				// If $incFirst is false, the first parameter should be ignored.
-				if ( $incFirst ) {
-					$dependencyList[$paramName] = $parameter->getDependencies();
+			foreach ( $resultingParamSet as $paramName => $parameter ) {
+				if ( !array_key_exists( $paramName, $initialParamSet ) ) {
+					$this->paramsTohandle[] = $paramName;
 				}
-				else {
-					$incFirst = true;
-				}
-			}
+			}			
 		}
 		
-		$sorter = new TopologicalSort( $dependencyList, true );
+		$dependencies = array();
+
+		foreach ( $this->paramsTohandle as $paramName ) {
+			$dependencies[$paramName] = array();//$this->parameters[$paramName]->getDependencies();
+		}
 		
-		return $sorter->doSort();		
+		$sorter = new TopologicalSort( $dependencies, true );
+		
+		$this->paramsTohandle = $sorter->doSort();
 	}
 	
 	/**

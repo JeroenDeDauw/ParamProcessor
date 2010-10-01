@@ -168,7 +168,16 @@ class Parameter {
 	 * 
 	 * @var boolean
 	 */
-	protected $applyManipulationsToDefault = false;
+	protected $applyManipulationsToDefault = true;
+	
+	/**
+	 * Indicates if the parameter was set to it's default.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var boolean
+	 */
+	protected $defaulted = false;
 	
 	/**
 	 * Returns a new instance of Parameter by converting a Validator 3.x-style parameter array definition.
@@ -415,8 +424,10 @@ class Parameter {
 	 * @param array $parameters
 	 */
 	public function format( array &$parameters ) {
-		foreach ( $this->getManipulations() as $manipulation ) {
-			$manipulation->manipulate( $this, $parameters );
+		if ( $this->applyManipulationsToDefault || !$this->wasSetToDefault() ) {
+			foreach ( $this->getManipulations() as $manipulation ) {
+				$manipulation->manipulate( $this, $parameters );
+			}			
 		}
 	}
 	
@@ -435,7 +446,7 @@ class Parameter {
 			}
 			else {
 				$success = true;
-				$this->value = $this->default;
+				$this->setToDefault();
 			}
 		}
 		else {
@@ -661,7 +672,28 @@ class Parameter {
 		}		
 		
 		return $manipulations;
-	}	
+	}
+	
+	/**
+	 * Sets the parameter value to the default.
+	 * 
+	 * @since 0.4
+	 */
+	protected function setToDefault() {
+		$this->defaulted = true;
+		$this->value = $this->default;
+	}
+	
+	/**
+	 * Gets if the parameter was set to it's default.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return boolean
+	 */
+	public function wasSetToDefault() {
+		return $this->defaulted;
+	}
 	
 	/**
 	 * Returns the criteria that apply to the list as a whole.

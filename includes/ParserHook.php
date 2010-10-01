@@ -129,7 +129,7 @@ abstract class ParserHook {
 		
 		$this->parser = array_shift( $args );	
 	
-		return array( $this->validateAndRender( $args, false ) );
+		return array( $this->validateAndRender( $args, false ), 'noparse' => true, 'isHTML' => true );
 	}
 	
 	/**
