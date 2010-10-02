@@ -124,16 +124,35 @@ class ListParameter extends Parameter {
 	 * @see Parameter::validate
 	 */
 	public function validate() {
-		$this->validateListCriteria();
+		$listSuccess = $this->validateListCriteria();
 		
-		$success = parent::doValidation();
-		
-		if ( !$success && count( $this->value ) == 0 ) {
-			$this->value = is_array( $this->default ) ? $this->default : array( $this->default );
-		}	
-		
-		return $success;
+		if ( $listSuccess ) {
+			$this->doValidation();
+		}
+		// TODO
+
 		// FIXME: it's possible the list criteria are not satisfied here anymore due to filtering of invalid items.
+	}	
+	
+	/**
+	 * @see Parameter::setToDefaultIfNeeded
+	 * 
+	 * @since 0.4
+	 */	
+	protected function setToDefaultIfNeeded() {
+		if ( count( $this->errors ) > 0 && count( $this->value ) == 0 && !$this->hasFatalError() ) {
+			$this->setToDefault();
+		}		
+	}
+	
+	/**
+	 * @see Parameter::setToDefault
+	 * 
+	 * @since 0.4
+	 */
+	protected function setToDefault() {
+		$this->defaulted = true;
+		$this->value = is_array( $this->default ) ? $this->default : array( $this->default );
 	}	
 	
 	/**
@@ -155,6 +174,7 @@ class ListParameter extends Parameter {
 		}
 		
 		// TODO
+		return true;
 	}
 	
 	/**

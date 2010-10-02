@@ -371,7 +371,6 @@ class Parameter {
 						'override'		
 					);
 			 */
-			
 			return false;
 		}
 		else {
@@ -403,17 +402,9 @@ class Parameter {
 	 * Validates the parameter value and sets the value to it's default when errors occur.
 	 * 
 	 * @since 0.4
-	 * 
-	 * @return boolean Indicates if there was any validation error
 	 */
 	public function validate() {
-		$success = $this->doValidation();
-		
-		if ( !$success ) {
-			$this->value = $this->default;
-		}	
-
-		return $success;
+		$this->doValidation();
 	}
 	
 	/**
@@ -449,11 +440,19 @@ class Parameter {
 		}
 		else {
 			$this->validateCriteria();
-			
-			if ( count( $this->errors ) > 0 && !$this->hasFatalError() ) {
-				$this->setToDefault();
-			}
+			$this->setToDefaultIfNeeded();
 		}
+	}
+	
+	/**
+	 * Sets the parameter value to the default if needed.
+	 * 
+	 * @since 0.4
+	 */
+	protected function setToDefaultIfNeeded() {
+		if ( count( $this->errors ) > 0 && !$this->hasFatalError() ) {
+			$this->setToDefault();
+		}		
 	}
 	
 	/**

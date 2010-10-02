@@ -387,8 +387,6 @@ class Validator {
 	
 	/**
 	 * Returns false when there are no fatal errors or an ValidationError when one is found.
-	 * Fatal errors are either missing or invalid required parameters, or simply any sort of
-	 * error when the validation level is equal to (or bigger then) Validator_ERRORS_STRICT.
 	 * 
 	 * @return mixed false or ValidationError
 	 */
