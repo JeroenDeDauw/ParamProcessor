@@ -51,13 +51,14 @@ abstract class ItemParameterManipulation extends ParameterManipulation {
 	 * @since 0.4
 	 */	
 	public function manipulate( Parameter &$parameter, array &$parameters ) {
-		if ( is_array( $parameter->value ) ) {
-			foreach ( $parameter->value as &$item ) {
+		if ( is_array( $parameter->getValue() ) ) {
+			$value = &$parameter->getValue();
+			foreach ( $value as &$item ) {
 				$this->doManipulation( $item, $parameters );
 			}
 		}
 		else {
-			$this->doManipulation( $parameter->value, $parameters );
+			$this->doManipulation( $parameter->getValue(), $parameters );
 		}	
 	}	
 	

@@ -55,7 +55,7 @@ class Parameter {
 	 * 
 	 * @var array
 	 */			
-	public $dependencies = array();	
+	protected $dependencies = array();	
 	
 	/**
 	 * The default value for the parameter, or null when the parameter is required.
@@ -64,7 +64,7 @@ class Parameter {
 	 * 
 	 * @var mixed
 	 */
-	public $default;	
+	protected $default;	
 	
 	/**
 	 * The main name of the parameter.
@@ -134,13 +134,11 @@ class Parameter {
 	/**
 	 * The value of the parameter. 
 	 * 
-	 * TODO: protected
-	 * 
 	 * @since 0.4 
 	 * 
 	 * @var mixed
 	 */	
-	public $value;
+	protected $value;
 	
 	/**
 	 * Keeps track of how many times the parameter has been set by the user.
@@ -263,7 +261,7 @@ class Parameter {
 		}
 		
 		if ( array_key_exists( 'dependencies', $definition ) ) {
-			$parameter->dependencies = (array)$definition['dependencies'];
+			$parameter->addDependencies( $definition['dependencies'] );
 		}		
 		
 		return $parameter;
@@ -335,6 +333,19 @@ class Parameter {
 	}
 	
 	/**
+	 * Adds one or more dependencies. There are the names of parameters
+	 * that need to be validated and formatted before this one.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */		
+	public function addDependencies() {
+		$args = func_get_args();
+		$this->dependencies = array_merge( $this->dependencies, is_array( $args[0] ) ? $args[0] : $args );
+	}	
+	
+	/**
 	 * Adds one or more ParameterManipulation.
 	 * 
 	 * @since 0.4
@@ -383,6 +394,17 @@ class Parameter {
 
 			return true;
 		}
+	}
+	
+	/**
+	 * Sets the value.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param mixed $value
+	 */
+	public function setValue( $value ) {
+		$this->value = $value;
 	}
 	
 	/**
@@ -517,7 +539,7 @@ class Parameter {
 	 */		
 	public function getDependencies() {
 		return $this->dependencies;
-	}
+	}	
 	
 	/**
 	 * Returns the original use-provided name.

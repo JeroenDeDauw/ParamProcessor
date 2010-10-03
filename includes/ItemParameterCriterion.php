@@ -79,15 +79,15 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	public function validate( Parameter $parameter ) {
 		$result = new CriterionValidationResult();
 		
-		if ( is_array( $parameter->value ) ) {
-			foreach ( $parameter->value as $item ) {
+		if ( is_array( $parameter->getValue() ) ) {
+			foreach ( $parameter->getValue() as $item ) {
 				if ( !$this->doValidation( $item ) ) {
 					$result->addInvalidItem( $item );
 				}
 			}
 			
 			if ( $result->hasInvalidItems() ) {
-				$allInvalid = count( $result->getInvalidItems() ) == count( $parameter->value );
+				$allInvalid = count( $result->getInvalidItems() ) == count( $parameter->getValue() );
 				
 				// If the parameter is required and all items are invalid, it's fatal.
 				// Else it's high for required, and normal for non-required parameters.
@@ -107,7 +107,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 			}
 		}
 		else {
-			if ( !$this->doValidation( $parameter->value ) ) {
+			if ( !$this->doValidation( $parameter->getValue() ) ) {
 				$result->addError(
 					new ValidationError(
 						$this->getItemErrorMessage( $parameter ),
