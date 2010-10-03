@@ -172,7 +172,7 @@ $messages['br'] = array(
 	'validator_warning_parameters' => "{{PLURAL:$1|Ur fazi|Fazioù}} zo en hoc'h ereadur.",
 	'validator_error_unknown_argument' => "$1 n'eo ket un arventenn reizh.",
 	'validator_error_required_missing' => "N'eo ket bet pourchaset an arventenn rekis $1",
-	'validator-error-override-argument' => 'Klasket eo bet divankañ an arventenn $1 (talvoud : $2) gant an talvoud "$3"',
+	'validator-error-override-argument' => 'Klasket en deus ar meziant erlec\'hiañ an arventenn $1 (talvoud : $2) gant an talvoud "$3"',
 	'validator_error_empty_argument' => "N'hall ket an arventenn $1 bezañ goullo he zalvoudenn",
 	'validator_error_must_be_number' => 'Un niver e rank an arventenn $1 bezañ hepken.',
 	'validator_error_must_be_integer' => 'Rankout a ra an arventenn $1 bezañ un niver anterin.',
@@ -184,7 +184,7 @@ $messages['br'] = array(
 	'validator_list_error_invalid_range' => 'An holl talvoudennoù eus an arventenn $1 a rank bezañ etre $2 ha $3.',
 	'validator_list_error_invalid_argument' => 'Faziek eo unan pe meur a dalvoudenn eus an arventenn $1.',
 	'validator_list_omitted' => 'Disoñjet eo bet an {{PLURAL:$2|talvoudenn|talvoudennoù}} $1.',
-	'validator_error_accepts_only' => 'An arventenn $1 ne zegemer ket an talvoud "$4". Degemeret e vez {{PLURAL:$3|an dalvoudenn|an talvoudennoù}}-mañ : $2.',
+	'validator_error_accepts_only' => 'Ne zegemer ket an arventenn $1 an talvoud "$4". Ne zegemer nemet {{PLURAL:$3|an talvoud|an talvoudoù}}-mañ : $2.',
 );
 
 /** Bosnian (Bosanski)
@@ -660,7 +660,7 @@ $messages['ksh'] = array(
 	'validator_error_must_be_integer' => 'Dä Parrameeter $1 kann bloß en jannze Zahl sin.',
 	'validator_error_invalid_range' => 'Dä Parameeter $1 moß zwesche $2 un $3 sin.',
 	'validator_error_invalid_argument' => 'Däm Parameeter $2 singe Wäät es $1, dat es ävver doför nit jöltesch.',
-	'validator_error_accepts_only' => 'Dä Parameeter $1 kann {{PLURAL:$3|bloß dä eine Wäät|bloß eine vun dä Wääte|keine Wäät}} han: $2',
+	'validator_error_accepts_only' => '„$4“ es nit ze Bruche, weil dä Parameeter $1 {{PLURAL:$3|bloß eine Wäät|bloß eine vun heh dä Wääte|keine Wäät}} han kann: $2',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -760,17 +760,24 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'validator-desc' => 'Validering gir en enkel måte for utvidelser å validere parametere av parserfunksjoner og taggutvidelser, sette standardverdier og generere feilbeskjeder.',
+	'validator-desc' => 'Gir generisk støtte for parameterhåndtering for andre utvidelser',
+	'validator-warning' => "'''Advarsel:''' $1",
+	'validator-error' => "'''Feil:''' $1",
+	'validator-fatal-error' => 'Kritisk feil: $1',
 	'validator_error_parameters' => 'Følgende {{PLURAL:$1|feil|feil}} har blitt oppdaget i syntaksen din:',
 	'validator_warning_parameters' => 'Det er {{PLURAL:$1|én feil|flere feil}} i syntaksen din.',
+	'validator-warning-adittional-errors' => '... og {{PLURAL:$1|ett problem til|flere problem}}.',
 	'validator_error_unknown_argument' => '$1 er ikke en gyldig parameter.',
-	'validator_error_required_missing' => 'Den nødvendige parameteren $1 er ikke angitt.',
+	'validator_error_required_missing' => 'Den nødvendige parameteren «$1» er ikke angitt.',
 	'validator-error-override-argument' => 'Prøvde å overkjøre parameter $1 (verdi: $2) med verdien «$3»',
 	'validator_error_empty_argument' => 'Parameteren $1 kan ikke ha en tom verdi.',
 	'validator_error_must_be_number' => 'Parameter $1 må være et tall.',
 	'validator_error_must_be_integer' => 'Parameteren $1 må være et heltall.',
+	'validator-error-must-be-float' => 'Parameter $1 må være et flyttall.',
 	'validator_error_invalid_range' => 'Parameter $1 må være mellom $2 og $3.',
-	'validator_error_invalid_argument' => 'Verdien $1 er ikke en gyldig parameter for $2.',
+	'validator-error-invalid-length' => 'Parameter $1 må ha en lengde på $2.',
+	'validator-error-invalid-length-range' => 'Parameter $1 må ha en lengde mellom $2 og $3.',
+	'validator_error_invalid_argument' => 'Verdien $1 er ikke gyldig for parameter $2.',
 	'validator_list_error_empty_argument' => 'Parameteren $1 godtar ikke tomme verdier.',
 	'validator_list_error_must_be_number' => 'Parameteren $1 kan bare inneholde tall.',
 	'validator_list_error_must_be_integer' => 'Parameteren $1 kan bare inneholder heltall.',
@@ -860,8 +867,12 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'validator-desc' => 'O Serviço de Validação permite que, de forma simples, as outras extensões possam validar parâmetros das funções do analisador sintáctico e das extensões dos elementos HTML, definir valores por omissão e gerar mensagens de erro',
+	'validator-warning' => "'''Aviso:''' $1",
+	'validator-error' => "'''Erro:''' $1",
+	'validator-fatal-error' => 'Erro fatal: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Foi detectado o seguinte erro sintáctico|Foram detectados os seguintes erros sintácticos}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Existe um erro sintáctico|Existem erros sintácticos}}.',
+	'validator-warning-adittional-errors' => '... e {{PLURAL:$1|mais um problema|vários outros problemas}}.',
 	'validator_error_unknown_argument' => '$1 não é um parâmetro válido.',
 	'validator_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
 	'validator-error-override-argument' => 'Tentativa de sobrepor o parâmetro $1 (valor: $2) com o valor "$3"',
@@ -893,6 +904,7 @@ $messages['pt-br'] = array(
 	'validator-fatal-error' => 'Erro crítico: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Foi detectado o seguinte erro sintáctico|Foram detectados os seguintes erros sintácticos}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Existe um erro|Existem erros}} em sua sintaxe.',
+	'validator-warning-adittional-errors' => '... e {{PLURAL:$1|mais um problema|vários outros problemas}}.',
 	'validator_error_unknown_argument' => '$1 não é um parâmetro válido.',
 	'validator_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
 	'validator-error-override-argument' => 'Tentativa de sobrepor o parâmetro $1 (valor: $2) com o valor "$3"',
@@ -1010,8 +1022,12 @@ $messages['te'] = array(
  */
 $messages['tl'] = array(
 	'validator-desc' => 'Nagbibigay ng panlahatang magtangkilik na paghawak sa ibang mga dugtong',
+	'validator-warning' => "'''Babala:''' $1",
+	'validator-error' => "'''Kamalian:''' $1",
+	'validator-fatal-error' => 'Masidhing kamalian: $1',
 	'validator_error_parameters' => 'Ang sumusunod na {{PLURAL:$1|kamalian|mga kamalian}} ay napansin sa iyong sintaks:',
 	'validator_warning_parameters' => 'May {{PLURAL:$1|mali|mga mali}} sa sintaks mo.',
+	'validator-warning-adittional-errors' => '... at {{PLURAL:$1|isa pang paksa|maramihan pang mga paksa}}.',
 	'validator_error_unknown_argument' => 'Ang $1 ay isang hindi tanggap na parametro.',
 	'validator_error_required_missing' => 'Hindi ibinigay ang kailangang parametro na $1.',
 	'validator-error-override-argument' => 'Sinubukang pangingibabawan ang parametrong $1 (halaga: $2) ng halagang "$3"',
