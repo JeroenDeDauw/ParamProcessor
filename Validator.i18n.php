@@ -53,11 +53,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'validator-desc' => '{{desc}}',
+	'validator-warning' => '{{Identical|Warning}}',
+	'validator-error' => '{{Identical|Error}}',
 	'validator_error_parameters' => 'Parameters:
 * $1 is the number of syntax errors, for PLURAL support (optional)',
 );
@@ -130,8 +133,12 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'validator-desc' => 'Правяраючы палягчае іншым пашырэньням працу па праверцы парамэтраў функцыяў парсэру і тэгаў пашырэньняў, устанаўлівае значэньні па змоўчваньні і стварае паведамленьні пра памылкі',
+	'validator-warning' => "'''Папярэджаньне:''' $1",
+	'validator-error' => "'''Памылка:''' $1",
+	'validator-fatal-error' => 'Крытычная памылка: $1',
 	'validator_error_parameters' => 'У сынтаксісе {{PLURAL:$1|выяўленая наступная памылка|выяўленыя наступныя памылкі}}:',
 	'validator_warning_parameters' => 'У Вашы сынтаксісе {{PLURAL:$1|маецца памылка|маюцца памылкі}}.',
+	'validator-warning-adittional-errors' => '... і {{PLURAL:$1|яшчэ адна праблема|яшчэ некалькі праблемаў}}.',
 	'validator_error_unknown_argument' => 'Няслушны парамэтар $1.',
 	'validator_error_required_missing' => 'Не пададзены абавязковы парамэтар $1.',
 	'validator-error-override-argument' => 'Спрабаваў памяняць значэньне парамэтру $1 з «$2» на «$3»',
@@ -192,8 +199,12 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'validator-desc' => 'Validator pruža jednostavni način za druga proširenja u svrhu validacije parametara parserskih funkcija i proširenja oznaka, postavlja pretpostavljene vrijednosti i generira poruke pogrešaka.',
+	'validator-warning' => "'''Upozorenje:''' $1",
+	'validator-error' => "'''Greška:''' $1",
+	'validator-fatal-error' => 'Fatalna greška: $1',
 	'validator_error_parameters' => 'U Vašoj sintaksi {{PLURAL:$1|je|su}} {{PLURAL:$1|otkivena slijedeća greška|otkrivene slijedeće greške}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Postoji greška|Postoje greške}} u Vašoj sintaksi.',
+	'validator-warning-adittional-errors' => '... i {{PLURAL:$1|još jedan problem|još nekoliko problema}}.',
 	'validator_error_unknown_argument' => '$1 nije valjan parametar.',
 	'validator_error_required_missing' => 'Obavezni parametar $1 nije naveden.',
 	'validator-error-override-argument' => 'Pokušano da se preskoči parametar $1 (vrijednost: $2) vrijednošću "$3"',
@@ -247,8 +258,12 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'validator-desc' => 'Ermöglicht es anderen Softwareerweiterungen Parameter verarbeiten zu können',
+	'validator-warning' => "'''Warnung:''' $1",
+	'validator-error' => "'''Fehler:''' $1",
+	'validator-fatal-error' => "'''Nicht behebbarer Fehler:''' $1",
 	'validator_error_parameters' => '{{PLURAL:$1|Der folgende Fehler wurde|Die folgenden Fehler wurden}} in der Syntax gefunden:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Es ist ein Fehler|Es sind Fehler}} in der Syntax.',
+	'validator-warning-adittional-errors' => '… und {{PLURAL:$1|ein weiteres Problem|weitere Probleme}}.',
 	'validator_error_unknown_argument' => '$1 ist kein gültiger Parameter.',
 	'validator_error_required_missing' => 'Der notwendige Parameter $1 wurde nicht angegeben.',
 	'validator-error-override-argument' => 'Es wurde versucht Parameter $1 ($2) mit dem Wert „$3“ zu überschreiben.',
@@ -451,8 +466,12 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'validator-desc' => 'Validator stellt e eifachi Form z Verfiegig fir anderi Erwyterige go Parameter validiere vu Parser- un Tag-Funktione, go Standardwärt definiere un Fählermäldige generiere',
+	'validator-warning' => "'''Warnig:''' $1",
+	'validator-error' => "'''Fähler:''' $1",
+	'validator-fatal-error' => 'Fähler, wu nit cha behobe wäre: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Dää Fähler isch|Die Fähler sin}} in Dyyre Syntax gfunde wore:',
 	'validator_warning_parameters' => 'S het {{PLURAL:$1|e Fähler|Fähler}} in dyyre Syntax.',
+	'validator-warning-adittional-errors' => '... un {{PLURAL:$1|e ander Probläm|$1 anderi Probläm}}.',
 	'validator_error_unknown_argument' => '$1 isch kei giltige Parameter.',
 	'validator_error_required_missing' => 'Dr Paramter $1, wu aagforderet woren isch, wird nit z Verfiegig gstellt.',
 	'validator-error-override-argument' => 'S isch versuecht wore, dr Parameter $1 (Wärt: $2) mit em Wärt „$3“ z iberschryybe',
