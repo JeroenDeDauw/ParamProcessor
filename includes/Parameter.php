@@ -525,7 +525,7 @@ class Parameter {
 	 * 
 	 * @return string
 	 */			
-	public function getValue() {
+	public function &getValue() {
 		return $this->value;
 	}
 	
