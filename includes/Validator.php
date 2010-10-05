@@ -299,13 +299,23 @@ class Validator {
 			}	
 		}
 		
-		$dependencies = array();
+		$dependencyList = array();
 
+		// Loop over the parameters to handle to create a dependency list.
 		foreach ( $this->paramsTohandle as $paramName ) {
-			$dependencies[$paramName] = array(); //$this->parameters[$paramName]->getDependencies();
+			$dependencies = array();
+			
+			// Only include dependencies that are in the list of parameters to handle.
+			foreach ( $this->parameters[$paramName]->getDependencies() as $dependency ) {
+				if ( in_array( $dependency, $this->paramsTohandle ) ) {
+					$dependencies[] = $dependency;
+				}
+			}
+			
+			$dependencyList[$paramName] = array();
 		}
 		
-		$sorter = new TopologicalSort( $dependencies, true );
+		$sorter = new TopologicalSort( $dependencyList, true );
 		
 		$this->paramsTohandle = $sorter->doSort();
 	}
