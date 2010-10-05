@@ -302,7 +302,7 @@ class Validator {
 		$dependencies = array();
 
 		foreach ( $this->paramsTohandle as $paramName ) {
-			$dependencies[$paramName] = array();//$this->parameters[$paramName]->getDependencies();
+			$dependencies[$paramName] = array(); //$this->parameters[$paramName]->getDependencies();
 		}
 		
 		$sorter = new TopologicalSort( $dependencies, true );

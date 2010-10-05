@@ -27,7 +27,7 @@ class ParamManipulationBoolstr extends ItemParameterManipulation {
 	 * 
 	 * @since 0.4
 	 */	
-	public function doManipulation( &$value, array &$parameters ) {
+	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		$value = $value ? 'true' : 'false';
 	}
 	

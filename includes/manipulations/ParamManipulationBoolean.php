@@ -27,7 +27,7 @@ class ParamManipulationBoolean extends ItemParameterManipulation {
 	 * 
 	 * @since 0.4
 	 */	
-	public function doManipulation( &$value, array &$parameters ) {
+	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		$value = in_array( $value, array( 'yes', 'on' ) );
 	}
 	

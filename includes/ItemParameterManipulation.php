@@ -19,13 +19,14 @@ abstract class ItemParameterManipulation extends ParameterManipulation {
 	 * Manipulate an actual value.
 	 * 
 	 * @param string $value
+	 * @param Parameter $parameter
 	 * @param array $parameters
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return mixed
 	 */	
-	protected abstract function doManipulation( &$value, array &$parameters );	
+	protected abstract function doManipulation( &$value, Parameter $parameter, array &$parameters );	
 	
 	/**
 	 * Constructor.
@@ -42,6 +43,7 @@ abstract class ItemParameterManipulation extends ParameterManipulation {
 	public function isForLists() {
 		return false;
 	}
+	
 	/**
 	 * Validate a parameter against the criterion.
 	 * 
@@ -54,12 +56,12 @@ abstract class ItemParameterManipulation extends ParameterManipulation {
 		if ( is_array( $parameter->getValue() ) ) {
 			$value = &$parameter->getValue();
 			foreach ( $value as &$item ) {
-				$this->doManipulation( $item, $parameters );
+				$this->doManipulation( $item, $parameter, $parameters );
 			}
 		}
 		else {
-			$this->doManipulation( $parameter->getValue(), $parameters );
+			$this->doManipulation( $parameter->getValue(), $parameter, $parameters );
 		}	
-	}	
+	}
 	
 }
