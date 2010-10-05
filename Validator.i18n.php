@@ -858,8 +858,12 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'validator-desc' => "Validator a dà na manera bel fé për àutre estension ëd validé ij paràmetr ëd le funsion dël parser e j'estension dij tag, d'amposté ij valor ëd default e generé mëssagi d'eror",
+	'validator-warning' => "'''Avis:''' $1",
+	'validator-error' => "'''Eror:''' $1",
+	'validator-fatal-error' => 'Eror Fatal: $1',
 	'validator_error_parameters' => "{{PLURAL:$1|L'eror sì-sota a l'é stàit|J'eror sì-sota a son ëstàit}} trovà an soa sintassi:",
 	'validator_warning_parameters' => "{{PLURAL:$1|A-i é n'|A-i son dj'}}eror ant soa sintassi.",
+	'validator-warning-adittional-errors' => "... e {{PLURAL:$1|anco' un problem|anco' vàire problem}}.",
 	'validator_error_unknown_argument' => "$1 a l'é un paràmetr pa bon.",
 	'validator_error_required_missing' => "Ël paràmetr obligatòri $1 a l'é pa dàit.",
 	'validator-error-override-argument' => 'Provà a coaté ël paràmetr $1 (valor: $2) con ël valor "$3"',
