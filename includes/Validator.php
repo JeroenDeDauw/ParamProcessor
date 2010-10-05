@@ -242,7 +242,7 @@ class Validator {
 
 		while ( $paramName = array_shift( $this->paramsTohandle ) ) {
 			$parameter = $this->parameters[$paramName];
-			
+
 			$setUservalue = $this->attemptToSetUserValue( $parameter );
 			
 			// If the parameter is required but not provided, register a fatal error and stop processing. 
@@ -312,12 +312,14 @@ class Validator {
 				}
 			}
 			
-			$dependencyList[$paramName] = array();
+			$dependencyList[$paramName] = $dependencies;
 		}
-		
+//static $foobar = 0;
+//$foobar++;
 		$sorter = new TopologicalSort( $dependencyList, true );
-		
+		//if ($foobar>16){var_dump($this->paramsTohandle);}
 		$this->paramsTohandle = $sorter->doSort();
+		//if ($foobar>16){var_dump($this->paramsTohandle);exit;}
 	}
 	
 	/**
