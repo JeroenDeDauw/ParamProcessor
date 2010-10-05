@@ -314,12 +314,10 @@ class Validator {
 			
 			$dependencyList[$paramName] = $dependencies;
 		}
-//static $foobar = 0;
-//$foobar++;
+
 		$sorter = new TopologicalSort( $dependencyList, true );
-		//if ($foobar>16){var_dump($this->paramsTohandle);}
+
 		$this->paramsTohandle = $sorter->doSort();
-		//if ($foobar>16){var_dump($this->paramsTohandle);exit;}
 	}
 	
 	/**
@@ -359,6 +357,19 @@ class Validator {
 	 */
 	public function getParameters() {
 		return $this->parameters;
+	}
+	
+	/**
+	 * Returns a single parameter.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $parameterName The name of the parameter to return
+	 * 
+	 * @return Parameter
+	 */
+	public function getParameter( $parameterName ) {
+		return $this->parameters[$parameterName];
 	}
 	
 	/**
