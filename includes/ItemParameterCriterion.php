@@ -19,12 +19,14 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * Validate a value against the criterion.
 	 * 
 	 * @param string $value
+	 * @param Parameter $parameter
+	 * @param array $parameters
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return boolean
 	 */	
-	protected abstract function doValidation( $value );
+	protected abstract function doValidation( $value, Parameter $parameter, array &$parameters );
 	
 	/**
 	 * Gets an internationalized error message to construct a ValidationError with
@@ -73,15 +75,16 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * @since 0.4
 	 * 
 	 * @param Parameter $parameter
+	 * @param array $parameters
 	 * 
 	 * @return CriterionValidationResult
 	 */
-	public function validate( Parameter $parameter ) {
+	public function validate( Parameter $parameter, array &$parameters ) {
 		$result = new CriterionValidationResult();
 		
 		if ( is_array( $parameter->getValue() ) ) {
 			foreach ( $parameter->getValue() as $item ) {
-				if ( !$this->doValidation( $item ) ) {
+				if ( !$this->doValidation( $item, $parameter, $parameters ) ) {
 					$result->addInvalidItem( $item );
 				}
 			}
@@ -107,7 +110,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 			}
 		}
 		else {
-			if ( !$this->doValidation( $parameter->getValue() ) ) {
+			if ( !$this->doValidation( $parameter->getValue(), $parameter, $parameters ) ) {
 				$result->addError(
 					new ValidationError(
 						$this->getItemErrorMessage( $parameter ),

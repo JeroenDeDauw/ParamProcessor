@@ -49,7 +49,7 @@ class CriterionInRange extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value ) {
+	protected function doValidation( $value, Parameter $parameter, array &$parameters ) {
 		if ( !is_numeric( $value ) ) {
 			return false;
 		}
