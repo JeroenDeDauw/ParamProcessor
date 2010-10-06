@@ -39,7 +39,7 @@ class CriterionTrue extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems ) {
+	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
 		return '';
 	}	
 	

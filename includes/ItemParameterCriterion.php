@@ -46,12 +46,13 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * 
 	 * @param Parameter $parameter
 	 * @param array $invalidItems
+	 * @param boolean $allInvalid
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return string
 	 */	
-	protected abstract function getListErrorMessage( Parameter $parameter, array $invalidItems );	
+	protected abstract function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid );	
 	
 	/**
 	 * Constructor.
@@ -103,7 +104,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 					
 				$result->addError(
 					new ValidationError(
-						$this->getListErrorMessage( $parameter, $result->getInvalidItems() ),
+						$this->getListErrorMessage( $parameter, $result->getInvalidItems(), $allInvalid ),
 						$severity
 					)
 				);

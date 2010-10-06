@@ -70,7 +70,7 @@ class CriterionInRange extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems ) {
+	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
 		global $wgLang;
 		return wfMsgExt( 'validator_list_error_invalid_range', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
 	}	

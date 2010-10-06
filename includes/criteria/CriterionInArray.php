@@ -71,7 +71,7 @@ class CriterionInArray extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems ) {
+	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
 		global $wgLang;
 		return wfMsgExt( 'validator_error_accepts_only', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
 	}	
