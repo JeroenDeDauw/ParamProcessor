@@ -32,7 +32,7 @@ abstract class ParserHook {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return string
+	 * @return string or array of string
 	 */
 	protected abstract function getName();
 	
@@ -66,11 +66,57 @@ abstract class ParserHook {
 	 * @return true
 	 */
 	public function init( Parser &$wgParser ) {
-		$name = get_class( $this );
-		$wgParser->setHook( $this->getName(), array( new ParserHookCaller( $name, 'renderTag' ), 'runHook' ) );
-		$wgParser->setFunctionHook( $this->getName(), array( new ParserHookCaller( $name, 'renderFunction' ), 'runHook' ) );
+		$className = get_class( $this );
+		
+		foreach ( $this->getNames() as $name ) {
+			$wgParser->setHook( $this->getTagName( $name ), array( new ParserHookCaller( $className, 'renderTag' ), 'runHook' ) );
+			$wgParser->setFunctionHook( $name, array( new ParserHookCaller( $className, 'renderFunction' ), 'runHook' ) );			
+		}
 
 		return true;
+	}
+	
+	/**
+	 * returns an array with the names for the parser hook.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */
+	protected function getNames() {
+		$names = $this->getName();
+		
+		if ( !is_array( $names ) ) {
+			$names = array( $names );
+		}
+
+		return $names;
+	}
+
+	/**
+	 * Returns the tag extension version of the name.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $rawName
+	 * 
+	 * @return string
+	 */
+	protected function getTagName( $rawName ) {
+		return str_replace( '_', ' ', $rawName );
+	}
+	
+	/**
+	 * Returns the parser function version of the name.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $rawName
+	 * 
+	 * @return string
+	 */	
+	protected function getFunctionName( $rawName ) {
+		return str_replace( ' ', '_', $rawName );
 	}
 	
 	/**
@@ -84,7 +130,10 @@ abstract class ParserHook {
 	 * @return true
 	 */
 	public function magic( array &$magicWords, $langCode ) {
-		$magicWords[$this->getName()] = array( 0, $this->getName() );
+		foreach ( $this->getNames() as $name ) {
+			$name = $this->getFunctionName( $name );
+			$magicWords[$name] = array( 0, $name );
+		}
 		
 		return true;
 	}
@@ -110,7 +159,7 @@ abstract class ParserHook {
 		if ( !is_null( $defaultParam ) && !is_null( $input ) ) {
 			$args[$defaultParam] = $input;
 		}
-		
+
 		return $this->validateAndRender( $args, true );
 	}
 	
