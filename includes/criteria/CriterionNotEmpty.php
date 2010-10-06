@@ -25,7 +25,7 @@ class CriterionNotEmpty extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Parameter $parameter, array &$parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		return trim( $value ) != '';
 	}
 	

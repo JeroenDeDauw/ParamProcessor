@@ -26,7 +26,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * 
 	 * @return boolean
 	 */	
-	protected abstract function doValidation( $value, Parameter $parameter, array &$parameters );
+	protected abstract function doValidation( $value, Parameter $parameter, array $parameters );
 	
 	/**
 	 * Gets an internationalized error message to construct a ValidationError with
@@ -79,7 +79,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * 
 	 * @return CriterionValidationResult
 	 */
-	public function validate( Parameter $parameter, array &$parameters ) {
+	public function validate( Parameter $parameter, array $parameters ) {
 		$result = new CriterionValidationResult();
 		
 		if ( is_array( $parameter->getValue() ) ) {

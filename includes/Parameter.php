@@ -424,9 +424,11 @@ class Parameter {
 	 * Validates the parameter value and sets the value to it's default when errors occur.
 	 * 
 	 * @since 0.4
+	 * 
+	 * @param array $parameters
 	 */
-	public function validate() {
-		$this->doValidation();
+	public function validate( array $parameters ) {
+		$this->doValidation( $parameters );
 	}
 	
 	/**
@@ -449,8 +451,10 @@ class Parameter {
 	 * Also sets the value to the default when it's not set or invalid, assuming there is a default.
 	 * 
 	 * @since 0.4
+	 * 
+	 * @param array $parameters
 	 */	
-	protected function doValidation() {
+	protected function doValidation( array $parameters ) {
 		if ( $this->setCount == 0 ) {
 			if ( $this->isRequired() ) {
 				// This should not occur, so thorw an exception.
@@ -461,7 +465,7 @@ class Parameter {
 			}
 		}
 		else {
-			$this->validateCriteria();
+			$this->validateCriteria( $parameters );
 			$this->setToDefaultIfNeeded();
 		}
 	}
@@ -481,10 +485,12 @@ class Parameter {
 	 * Validates the provided value against all criteria.
 	 * 
 	 * @since 0.4
+	 * 
+	 * @param array $parameters
 	 */
-	protected function validateCriteria() {
+	protected function validateCriteria( array $parameters ) {
 		foreach ( $this->getCriteria() as $criterion ) {
-			$validationResult = $criterion->validate( $this );
+			$validationResult = $criterion->validate( $this, $parameters );
 			
 			if ( !$validationResult->isValid() ) {
 				$this->handleValidationError( $validationResult );
@@ -741,6 +747,19 @@ class Parameter {
 	 */
 	public function hasAlias( $alias ) {
 		return in_array( $alias, $this->getAliases() );
+	}
+	
+	/**
+	 * Returns if the parameter has a certain dependency.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $dependency
+	 * 
+	 * @return boolean
+	 */
+	public function hasDependency( $dependency ) {
+		return in_array( $dependency, $this->getDependencies() );
 	}
 	
 	/**

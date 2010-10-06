@@ -34,7 +34,7 @@ class CriterionHasLength extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Parameter $parameter, array &$parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		$strlen = strlen( $value );
 		return $strlen <= $this->upperBound && $strlen >= $this->lowerBound;
 	}

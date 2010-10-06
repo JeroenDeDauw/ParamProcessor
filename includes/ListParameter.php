@@ -123,11 +123,11 @@ class ListParameter extends Parameter {
 	/**
 	 * @see Parameter::validate
 	 */
-	public function validate() {
-		$listSuccess = $this->validateListCriteria();
+	public function validate( array $parameters ) {
+		$listSuccess = $this->validateListCriteria( $parameters );
 		
 		if ( $listSuccess ) {
-			$this->doValidation();
+			$this->doValidation( $parameters );
 		}
 		// TODO
 
@@ -160,11 +160,11 @@ class ListParameter extends Parameter {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @param array $values
+	 * @param array $parameters
 	 */
-	protected function validateListCriteria() {
+	protected function validateListCriteria( array $parameters ) {
 		foreach ( $this->getListCriteria() as $listCriterion ) {
-			if ( !$listCriterion->validate( $this->value ) ) {
+			if ( !$listCriterion->validate( $this, $parameters ) ) {
 				$hasError = true;
 				
 				if ( !self::$accumulateParameterErrors ) {

@@ -25,7 +25,7 @@ class CriterionIsNumeric extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Parameter $parameter, array &$parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		return is_numeric( $value );
 	}
 	

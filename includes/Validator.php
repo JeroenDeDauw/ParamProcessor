@@ -255,7 +255,7 @@ class Validator {
 				break;
 			}
 			else {
-				$parameter->validate();			
+				$parameter->validate( $this->parameters );			
 				
 				foreach ( $parameter->getErrors() as $error ) {
 					$this->registerError( $error );
