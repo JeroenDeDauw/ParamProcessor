@@ -371,7 +371,8 @@ class ParserHookCaller {
 	}
 	 
 	public function runHook() {
-		return call_user_func_array( array( new $this->class(), $this->method ), func_get_args() );
+		$args = func_get_args();
+		return call_user_func_array( array( new $this->class(), $this->method ), $args );
 	}
 	
 }
