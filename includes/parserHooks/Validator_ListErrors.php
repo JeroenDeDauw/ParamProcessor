@@ -68,7 +68,7 @@ class ValidatorListErrors extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
+	protected function getParameterInfo( $type ) {
 		return array(
 			'minseverity' => array(
 				'criteria' => array(
@@ -87,7 +87,7 @@ class ValidatorListErrors extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getDefaultParameters() {
+	protected function getDefaultParameters( $type ) {
 		return array( 'minseverity' );
 	}
 	

@@ -13,6 +13,9 @@
  */
 abstract class ParserHook {
 	
+	const TYPE_TAG = 0;
+	const TYPE_FUNCTION = 1;
+	
 	/**
 	 * @since 0.4
 	 * 
@@ -26,6 +29,20 @@ abstract class ParserHook {
 	 * @var Parser
 	 */
 	protected $parser;
+	
+	/**
+	 * @since 0.4
+	 * 
+	 * @var boolean
+	 */
+	protected $forTagExtensions; 
+	
+	/**
+	 * @since 0.4
+	 * 
+	 * @var boolean
+	 */	
+	protected $forParserFunctions; 
 	
 	/**
 	 * Gets the name of the parser hook.
@@ -51,9 +68,13 @@ abstract class ParserHook {
 	 * Constructor.
 	 * 
 	 * @since 0.4
+	 * 
+	 * @param boolean $forTagExtensions
+	 * @param boolean $forParserFunctions
 	 */
-	public function __construct() {
-		
+	public function __construct( $forTagExtensions = true, $forParserFunctions = true ) {
+		$this->forTagExtensions = $forTagExtensions;
+		$this->forParserFunctions = $forParserFunctions;
 	}
 	
 	/**
@@ -69,8 +90,19 @@ abstract class ParserHook {
 		$className = get_class( $this );
 		
 		foreach ( $this->getNames() as $name ) {
-			$wgParser->setHook( $this->getTagName( $name ), array( new ParserHookCaller( $className, 'renderTag' ), 'runHook' ) );
-			$wgParser->setFunctionHook( $name, array( new ParserHookCaller( $className, 'renderFunction' ), 'runHook' ) );			
+			if ( $this->forTagExtensions ) {
+				$wgParser->setHook(
+					$this->getTagName( $name ),
+					array( new ParserHookCaller( $className, 'renderTag' ), 'runHook' )
+				);
+			}
+			
+			if ( $this->forParserFunctions ) {
+				$wgParser->setFunctionHook(
+					$this->getFunctionName( $name ),
+					array( new ParserHookCaller( $className, 'renderFunction' ), 'runHook' )
+				);
+			}
 		}
 
 		return true;
@@ -153,14 +185,14 @@ abstract class ParserHook {
 	public function renderTag( $input, array $args, Parser $parser /*, PPFrame $frame*/  ) {
 		$this->parser = $parser;
 		
-		$defaultParam = array_shift( $this->getDefaultParameters() );
+		$defaultParam = array_shift( $this->getDefaultParameters( self::TYPE_TAG ) );
 
 		// If there is a first default parameter, set the tag contents as it's value.
 		if ( !is_null( $defaultParam ) && !is_null( $input ) ) {
 			$args[$defaultParam] = $input;
 		}
 
-		return $this->validateAndRender( $args, true );
+		return $this->validateAndRender( $args, self::TYPE_TAG );
 	}
 	
 	/**
@@ -178,7 +210,7 @@ abstract class ParserHook {
 		
 		$this->parser = array_shift( $args );	
 	
-		return array( $this->validateAndRender( $args, false ), 'noparse' => true, 'isHTML' => true );
+		return array( $this->validateAndRender( $args, self::TYPE_FUNCTION ), 'noparse' => true, 'isHTML' => true );
 	}
 	
 	/**
@@ -187,20 +219,20 @@ abstract class ParserHook {
 	 * @since 0.4
 	 * 
 	 * @param array $arguments
-	 * @param boolean $parsed
+	 * @param integer $type Item of the ParserHook::TYPE_ enum
 	 * 
 	 * @return string
 	 */
-	public function validateAndRender( array $arguments, $parsed ) {
+	public function validateAndRender( array $arguments, $type ) {
 		global $egValidatorErrorLevel;
 		
 		$this->validator = new Validator( $this->getName() );
 		
-		if ( $parsed ) {
-			$this->validator->setParameters( $arguments, $this->getParameterInfo() );
+		if ( $type === self::TYPE_FUNCTION ) {
+			$this->validator->setFunctionParams( $arguments, $this->getParameterInfo( $type ), $this->getDefaultParameters( $type ) );
 		}
 		else {
-			$this->validator->setFunctionParams( $arguments, $this->getParameterInfo(), $this->getDefaultParameters() );
+			$this->validator->setParameters( $arguments, $this->getParameterInfo( $type ) );
 		}
 		
 		$this->validator->validateParameters();
@@ -295,9 +327,11 @@ abstract class ParserHook {
 	 * 
 	 * @since 0.4
 	 * 
+	 * @param integer $type Item of the ParserHook::TYPE_ enum
+	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
+	protected function getParameterInfo( $type ) {
 		return array();
 	}
 	
@@ -307,9 +341,11 @@ abstract class ParserHook {
 	 * 
 	 * @since 0.4
 	 * 
+	 * @param integer $type Item of the ParserHook::TYPE_ enum
+	 * 
 	 * @return array
 	 */
-	protected function getDefaultParameters() {
+	protected function getDefaultParameters( $type ) {
 		return array();
 	}	
 	
