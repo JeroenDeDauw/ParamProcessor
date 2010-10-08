@@ -26,7 +26,7 @@ class CriterionUniqueItems extends ListParameterCriterion {
 	 * @see ParameterCriterion::validate
 	 */	
 	public function validate( Parameter $parameter ) {
-		return count( $parameter->value ) == count( array_unique( $parameter->value ) ); 
+		return count( $parameter->getValue() ) == count( array_unique( $parameter->getValue() ) ); 
 	}
 	
 }

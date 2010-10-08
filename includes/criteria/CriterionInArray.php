@@ -58,14 +58,30 @@ class CriterionInArray extends ItemParameterCriterion {
 	protected function getItemErrorMessage( Parameter $parameter ) {
 		global $wgLang;
 		
-		return wfMsgExt(
-			'validator_error_accepts_only',
-			'parsemag',
-			$parameter->getOriginalName(),
-			$wgLang->listToText( $this->allowedValues ),
-			count( $this->allowedValues ),
-			$parameter->value
-		);
+		$values = $parameter->getValue();
+		$originalCount = count( $this->allowedValues );
+		
+		if ( $originalCount > 15 ) {
+			$allowedValues = array_slice( $this->allowedValues, 0, 13 );
+			return wfMsgExt(
+				'validator-error-accepts-only-omitted',
+				'parsemag',
+				$parameter->getOriginalName(),
+				$parameter->getValue(),
+				$wgLang->listToText( $allowedValues ),
+				$originalCount - count( $allowedValues )
+			);			
+		}
+		else {
+			return wfMsgExt(
+				'validator_error_accepts_only',
+				'parsemag',
+				$parameter->getOriginalName(),
+				$wgLang->listToText( $this->allowedValues ),
+				count( $this->allowedValues ),
+				$parameter->getValue()
+			);			
+		}
 	}
 	
 	/**
