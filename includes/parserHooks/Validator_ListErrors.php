@@ -109,7 +109,7 @@ class ValidatorListErrors extends ParserHook {
 			self::$severityMap[$parameters['minseverity']]
 		);
 		
-		return $this->parser->recursiveTagParse( $errorList );
+		return $errorList;
 	}
 	
 	/**
@@ -140,8 +140,15 @@ class ValidatorListErrors extends ParserHook {
 			}
 		}
 
-		return count( $elementHtml ) > 0 ?
-			'== ' . wfMsg( 'validator-listerrors-errors' ) . " ==\n\n" . implode( "\n\n", $elementHtml ) : '';
+		if ( count( $elementHtml ) == 0 ) {
+			return '';
+		}
+		
+		return Html::element(
+			'h2',
+			array(),
+			wfMsg( 'validator-listerrors-errors' )
+		) . implode( "\n\n", $elementHtml );
 	}
 	
 	/**
@@ -177,7 +184,7 @@ class ValidatorListErrors extends ParserHook {
 				);
 			}
 			
-			return "=== $element ===\n\n" . implode( "\n", $lines );
+			return '<h3>' . htmlspecialchars( $element ) . "</h3>\n\n" . implode( "\n", $lines );
 		}
 		else {
 			return false;
