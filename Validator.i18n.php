@@ -60,7 +60,7 @@ $messages['en'] = array(
 
 	// Criteria errors for single values & lists
 	'validator_error_accepts_only' => 'The value "$4" is not valid for parameter $1. It only accepts {{PLURAL:$3|this value|these values}}: $2.',
-	'validator-error-accepts-only-omitted' => 'The value "$2" is not valid for parameter $1. It only accepts these values: $3 (and $4 omitted values).' 
+	'validator-error-accepts-only-omitted' => 'The value "$2" is not valid for parameter $1. It only accepts {{PLURAL:$5|this value|these values}}: $3 (and $4 omitted {{PLURAL:$6|value|values}}).' 
 );
 
 /** Message documentation (Message documentation)
