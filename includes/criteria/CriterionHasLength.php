@@ -43,11 +43,19 @@ class CriterionHasLength extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
+		global $wgLang;
+		
 		if ( $this->lowerBound == $this->upperBound ) {
-			return wfMsgExt( 'validator-error-invalid-length', 'parsemag', $parameter->getOriginalName(), $this->lowerBound );
+			return wfMsgExt( 'validator-error-invalid-length', 'parsemag', $parameter->getOriginalName(), $wgLang->formatNum( $this->lowerBound ) );
 		}
 		else {
-			return wfMsgExt( 'validator-error-invalid-length-range', 'parsemag', $parameter->getOriginalName(), $this->lowerBound, $this->upperBound );
+			return wfMsgExt(
+				'validator-error-invalid-length-range',
+				'parsemag',
+				$parameter->getOriginalName(),
+				$wgLang->formatNum( $this->lowerBound ),
+				$wgLang->formatNum( $this->upperBound )
+			);
 		}
 	}
 	
