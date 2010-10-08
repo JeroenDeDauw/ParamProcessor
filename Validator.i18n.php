@@ -17,6 +17,7 @@ $messages = array();
 $messages['en'] = array(
 	'validator-desc' => 'Provides generic parameter handling support for other extensions',
 
+	// General
 	'validator-warning' => "'''Warning:''' $1",
 	'validator-error' => "'''Error:''' $1",
 	'validator-fatal-error' => "Fatal error: $1",
@@ -28,6 +29,15 @@ $messages['en'] = array(
 	'validator_error_unknown_argument' => '$1 is not a valid parameter.',
 	'validator_error_required_missing' => 'The required parameter "$1" is not provided.',
 	'validator-error-override-argument' => 'Tried to override parameter $1 (value: $2) with value "$3"', 
+
+	// Listerrors
+	'validator-listerrors-errors' => 'Errors',
+	'validator-listerrors-severity-message' => '($1) $2', // $1 = severity; $2 = message
+	'validator-listerrors-minor' => 'Minor',
+	'validator-listerrors-low' => 'Low',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'High',
+	'validator-listerrors-fatal' => 'Fatal',
 
 	// Criteria errors for single values
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',

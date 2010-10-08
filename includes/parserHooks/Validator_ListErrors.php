@@ -69,12 +69,14 @@ class ValidatorListErrors extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
+		global $egValidatorErrListMin;
+		
 		return array(
 			'minseverity' => array(
 				'criteria' => array(
 					'in_array' => array_keys( self::$severityMap )
 				),
-				'default' => 'minor'
+				'default' => $egValidatorErrListMin
 			)
 		);
 	}
@@ -102,14 +104,103 @@ class ValidatorListErrors extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$errorList = ValidationErrorHandler::getErrorList( self::$severityMap[$parameters['minseverity']] );
+		$errorList = $this->getErrorList(
+			ValidationErrorHandler::getErrors(), 
+			self::$severityMap[$parameters['minseverity']]
+		);
 		
-		if ( $errorList ) {
-			return $this->parser->recursiveTagParse( $errorList );
-		}
-		else {
+		return $this->parser->recursiveTagParse( $errorList );
+	}
+	
+	/**
+	 * Returns a list of errors in wikitext.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param array $errors
+	 * @param integer $minSeverity
+	 * 
+	 * @return string
+	 */
+	public function getErrorList( array $errors, $minSeverity = ValidationError::SEVERITY_MINOR ) {
+		$elementHtml = array();
+		
+		if ( count( $errors ) == 0 ) {
 			return '';
 		}
+		
+		$elements = array_keys( $errors );
+		natcasesort( $elements );
+		
+		foreach ( $elements as $element ) {
+			$elementErrors = $this->getErrorListForElement( $errors[$element], $element, $minSeverity ); 
+			
+			if ( $elementErrors ) {
+				$elementHtml[] = $elementErrors;
+			}
+		}
+
+		return count( $elementHtml ) > 0 ?
+			'== ' . wfMsg( 'validator-listerrors-errors' ) . " ==\n\n" . implode( "\n\n", $elementHtml ) : '';
 	}
+	
+	/**
+	 * Returns wikitext listing the errors for a single element. 
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param array $allErrors
+	 * @param string $element
+	 * @param integer $minSeverity
+	 * 
+	 * @return mixed String or false
+	 */	
+	public function getErrorListForElement( array $allErrors, $element, $minSeverity = ValidationError::SEVERITY_MINOR ) {
+		$errors = array();
+
+		foreach ( $allErrors as $error ) {
+			if ( $error->hasSeverity( $minSeverity ) ) {
+				$errors[] = $error;
+			}
+		}			
+
+		if ( count( $errors ) > 0 ) {
+			$lines = array();
+			
+			foreach ( $errors as $error ) {
+				// TODO: switch on severity
+				$lines[] = '* ' . wfMsgExt(
+					'validator-listerrors-severity-message',
+					'parsemag',
+					$this->getSeverityMessage( $error->getSeverity() ),
+					$error->message
+				);
+			}
+			
+			return "=== $element ===\n\n" . implode( "\n", $lines );
+		}
+		else {
+			return false;
+		}
+	}	
+	
+	/**
+	 * Returns a message for a severity.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param integer $severity
+	 * 
+	 * @return string
+	 */
+	protected function getSeverityMessage( $severity ) {
+		static $reverseMap = false;
+		
+		if ( $reverseMap === false ) {
+			$reverseMap = array_flip( self::$severityMap );
+		}
+		
+		return wfMsg( 'validator-listerrors-' . $reverseMap[$severity] );
+	}		
 	
 }

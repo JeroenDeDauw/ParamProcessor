@@ -284,9 +284,9 @@ abstract class ParserHook {
 	 * @return string
 	 */
 	protected function renderFatalError( ValidationError $error ) {
-		return '<span class="errorbox">' .
+		return '<div><span class="errorbox">' .
 			htmlspecialchars( wfMsgExt( 'validator-fatal-error', 'parsemag', $error->getMessage() ) ) . 
-			'</span>';
+			'</span></div><br /><br />';
 	}
 	
 	/**
