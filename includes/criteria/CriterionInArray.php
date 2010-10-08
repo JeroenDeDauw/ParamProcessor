@@ -73,7 +73,6 @@ class CriterionInArray extends ItemParameterCriterion {
 				$wgLang->listToText( $allowedValues ),
 				$wgLang->formatNum( $omitCount ),
 				count( $allowedValues ),
-				$omitCount
 			);			
 		}
 		else {
