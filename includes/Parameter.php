@@ -358,7 +358,7 @@ class Parameter {
 	}	
 	
 	/**
-	 * 
+	 * Sets and cleans the original value and name.
 	 * 
 	 * @since 0.4
 	 * 

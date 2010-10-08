@@ -226,7 +226,8 @@ abstract class ParserHook {
 	public function validateAndRender( array $arguments, $type ) {
 		global $egValidatorErrorLevel;
 		
-		$this->validator = new Validator( $this->getName() );
+		$names = $this->getNames();
+		$this->validator = new Validator( $names[0] );
 		
 		if ( $type === self::TYPE_FUNCTION ) {
 			$this->validator->setFunctionParams( $arguments, $this->getParameterInfo( $type ), $this->getDefaultParameters( $type ) );

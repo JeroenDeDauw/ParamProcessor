@@ -28,7 +28,7 @@ final class ValidationErrorHandler {
 	 * @param integer $severity
 	 */
 	public static function addError( ValidationError $error ) {
-		self::$errors[$error->element ? $error->element : 'unknown'][] = $error;
+		self::$errors[$error->getElement()][] = $error;
 	}
 	
 	/**

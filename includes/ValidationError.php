@@ -72,6 +72,17 @@ class ValidationError {
 	}
 	
 	/**
+	 * Returns the element this error occured at, or 'unknown' when i's unknown.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */
+	public function getElement() {
+		return $this->element === false ? 'unknown' : $this->element;
+	}
+	
+	/**
 	 * Returns the severity of the error.
 	 * 
 	 * @since 0.4

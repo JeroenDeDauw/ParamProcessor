@@ -128,7 +128,7 @@ class ValidatorListErrors extends ParserHook {
 		if ( count( $errors ) == 0 ) {
 			return '';
 		}
-		
+
 		$elements = array_keys( $errors );
 		natcasesort( $elements );
 		

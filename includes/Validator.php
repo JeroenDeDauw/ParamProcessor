@@ -188,6 +188,7 @@ class Validator {
 	 * @param ValidationError $error
 	 */
 	protected function registerError( ValidationError $error ) {
+		$error->element = $this->element;
 		$this->errors[] = $error;
 		ValidationErrorHandler::addError( $error );		
 	}
