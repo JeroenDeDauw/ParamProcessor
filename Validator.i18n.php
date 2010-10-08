@@ -24,6 +24,8 @@ $messages['en'] = array(
 	'validator_error_parameters' => 'The following {{PLURAL:$1|error has|errors have}} been detected in your syntax:',
 	'validator_warning_parameters' => 'There {{PLURAL:$1|is an error|are errors}} in your syntax.',
 	'validator-warning-adittional-errors' => '... and {{PLURAL:$1|one more issue|multiple more issues}}.',
+	'validator-error-omitted' => 'The {{PLURAL:$2|value|values}} "$1" {{PLURAL:$2|has|have}} been omitted.',
+	'validator-error-problem' => 'There was a problem with parameter $1.',
 
 	// General errors
 	'validator_error_unknown_argument' => '$1 is not a valid parameter.',
@@ -45,6 +47,7 @@ $messages['en'] = array(
 	'validator_error_must_be_integer' => 'Parameter $1 can only be an integer.',
 	'validator-error-must-be-float' => 'Parameter $1 can only be a floating point number.',
 	'validator_error_invalid_range' => 'Parameter $1 must be between $2 and $3.',
+	'validator-error-invalid-regex' => 'Parameter $1 must match this regex: $2.',
 	'validator-error-invalid-length' => 'Parameter $1 must have a length of $2.',
 	'validator-error-invalid-length-range' => 'Parameter $1 must have a length between $2 and $3.',
 	'validator_error_invalid_argument' => 'The value $1 is not valid for parameter $2.',
@@ -53,16 +56,22 @@ $messages['en'] = array(
 	'validator_list_error_empty_argument' => 'Parameter $1 does not accept empty values.',
 	'validator_list_error_must_be_number' => 'Parameter $1 can only contain numbers.',
 	'validator_list_error_must_be_integer' => 'Parameter $1 can only contain integers.',
+	'validator-list-error-must-be-float' => 'Parameter $1 can only contain floats.',
 	'validator_list_error_invalid_range' => 'All values of parameter $1 must be between $2 and $3.',
+	'validator-list-error-invalid-regex' => 'All values of parameter $1 must match this regex: $2.',
 	'validator_list_error_invalid_argument' => 'One or more values for parameter $1 are invalid.',
-
-	'validator_list_omitted' => 'The {{PLURAL:$2|value|values}} $1 {{PLURAL:$2|has|have}} been omitted.',
+	'validator-list-error-accepts-only' => 'One or more values for parameter $1 are invalid.
+It only accepts {{PLURAL:$3|this value|these values}}: $2.',
+	'validator-list-error-accepts-only-omitted' => 'One or more values for parameter $1 are invalid.
+It only accepts {{PLURAL:$3|this value|these values}}: $2. (and $4 omitted {{PLURAL:$4|value|values}}).',
 
 	// Criteria errors for single values & lists
 	'validator_error_accepts_only' => 'The value "$4" is not valid for parameter $1.
 It only accepts {{PLURAL:$3|this value|these values}}: $2.',
 	'validator-error-accepts-only-omitted' => 'The value "$2" is not valid for parameter $1.
-It only accepts {{PLURAL:$5|this value|these values}}: $3 (and $4 omitted {{PLURAL:$4|value|values}}).' 
+It only accepts {{PLURAL:$5|this value|these values}}: $3 (and $4 omitted {{PLURAL:$4|value|values}}).',
+
+	'validator_list_omitted' => 'The {{PLURAL:$2|value|values}} $1 {{PLURAL:$2|has|have}} been omitted.',
 );
 
 /** Message documentation (Message documentation)

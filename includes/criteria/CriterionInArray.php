@@ -71,8 +71,7 @@ class CriterionInArray extends ItemParameterCriterion {
 				$parameter->getOriginalName(),
 				$parameter->getValue(),
 				$wgLang->listToText( $allowedValues ),
-				$wgLang->formatNum( $omitCount ),
-				count( $allowedValues ),
+				$wgLang->formatNum( $omitCount )
 			);			
 		}
 		else {
@@ -88,11 +87,37 @@ class CriterionInArray extends ItemParameterCriterion {
 	}
 	
 	/**
-	 * @see ItemParameterCriterion::getListErrorMessage
+	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
+	protected function getFullListErrorMessage( Parameter $parameter ) {
 		global $wgLang;
-		return wfMsgExt( 'validator_error_accepts_only', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
+		
+		$values = $parameter->getValue();
+		$originalCount = count( $this->allowedValues );
+		
+		if ( $originalCount > 15 ) {
+			$allowedValues = array_slice( $this->allowedValues, 0, 13 );
+			$omitCount = $originalCount - count( $allowedValues );
+			
+			return wfMsgExt(
+				'validator-list-error-accepts-only-omitted',
+				'parsemag',
+				$parameter->getOriginalName(),
+				$parameter->getValue(),
+				$wgLang->listToText( $allowedValues ),
+				$wgLang->formatNum( $omitCount )
+			);			
+		}
+		else {
+			return wfMsgExt(
+				'validator-list-error-accepts-only',
+				'parsemag',
+				$parameter->getOriginalName(),
+				$wgLang->listToText( $this->allowedValues ),
+				count( $this->allowedValues ),
+				$parameter->getValue()
+			);			
+		}
 	}	
 	
 }

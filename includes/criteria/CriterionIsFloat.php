@@ -37,11 +37,10 @@ class CriterionIsFloat extends ItemParameterCriterion {
 	}
 	
 	/**
-	 * @see ItemParameterCriterion::getListErrorMessage
+	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
-		global $wgLang;
-		return wfMsgExt( 'validator_list_error_invalid_argument', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
+	protected function getFullListErrorMessage( Parameter $parameter ) {
+		return wfMsgExt( 'validator-list-error-must-be-float', 'parsemag', $parameter->getOriginalName() );
 	}	
 	
 }

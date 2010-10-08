@@ -41,20 +41,6 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	protected abstract function getItemErrorMessage( Parameter $parameter );
 	
 	/**
-	 * Gets an internationalized error message to construct a ValidationError with
-	 * when the criterions validation failed. (for list values)
-	 * 
-	 * @param Parameter $parameter
-	 * @param array $invalidItems
-	 * @param boolean $allInvalid
-	 * 
-	 * @since 0.4
-	 * 
-	 * @return string
-	 */	
-	protected abstract function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid );	
-	
-	/**
 	 * Constructor.
 	 * 
 	 * @since 0.4
@@ -122,6 +108,64 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 		}
 		
 		return $result;
+	}
+	
+	/**
+	 * Gets an internationalized error message to construct a ValidationError with
+	 * when the criterions validation failed. (for list values)
+	 * 
+	 * @param Parameter $parameter
+	 * @param array $invalidItems
+	 * @param boolean $allInvalid
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */		
+	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
+		if ( $allInvalid ) {
+			return $this->getFullListErrorMessage( $parameter );
+		}
+		else {
+			return $this->getPartialListErrorMessage( $parameter, $invalidItems, $allInvalid );
+		}		
+	}
+	
+	/**
+	 * Gets an internationalized error message to construct a ValidationError with
+	 * when the criterions validation failed. (for list values when all values are invalid)
+	 * 
+	 * @param Parameter $parameter
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */			
+	protected function getFullListErrorMessage( Parameter $parameter ) {
+		return wfMsgExt( 'validator-error-problem', 'parsemag', $parameter->getOriginalName() );
+	}
+	
+	/**
+	 * Gets an internationalized error message to construct a ValidationError with
+	 * when the criterions validation failed. (for list values when only some values are invalid)
+	 * 
+	 * @param Parameter $parameter
+	 * @param array $invalidItems
+	 * @param boolean $allInvalid
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return string
+	 */			
+	protected function getPartialListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
+		global $wgLang;
+		return $this->getFullListErrorMessage( $parameter ) . 
+			wfMsgExt(
+				'validator-error-omitted',
+				'parsemag',
+				$wgLang->listToText( $invalidItems ),
+				count( $invalidItems )
+			);		
 	}	
 	
 }

@@ -46,15 +46,14 @@ class CriterionMatchesRegex extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( 'validator_error_invalid_argument', 'parsemag', $parameter->getValue(), $parameter->getOriginalName() );
+		return wfMsgExt( 'validator-error-invalid-regex', 'parsemag', $parameter->getOriginalName(), $this->pattern );
 	}
 	
 	/**
-	 * @see ItemParameterCriterion::getListErrorMessage
+	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
-		global $wgLang;
-		return wfMsgExt( 'validator_list_error_invalid_argument', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
+	protected function getFullListErrorMessage( Parameter $parameter ) {
+		return wfMsgExt( 'validator-list-error-invalid-regex', 'parsemag', $parameter->getOriginalName(), $this->pattern );
 	}	
 	
 }
