@@ -78,6 +78,7 @@ It only accepts {{PLURAL:$5|this value|these values}}: $3 (and $4 omitted {{PLUR
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'validator-desc' => '{{desc}}',
@@ -85,6 +86,9 @@ $messages['qqq'] = array(
 	'validator-error' => '{{Identical|Error}}',
 	'validator_error_parameters' => 'Parameters:
 * $1 is the number of syntax errors, for PLURAL support (optional)',
+	'validator-listerrors-severity-message' => '{{Optional}}
+* $1 = severit
+* $2 = message',
 );
 
 /** Afrikaans (Afrikaans)
@@ -282,28 +286,46 @@ $messages['de'] = array(
 	'validator-desc' => 'Ermöglicht es anderen Softwareerweiterungen Parameter verarbeiten zu können',
 	'validator-warning' => "'''Warnung:''' $1",
 	'validator-error' => "'''Fehler:''' $1",
-	'validator-fatal-error' => "'''Nicht behebbarer Fehler:''' $1",
+	'validator-fatal-error' => "'''Schwerwiegender Fehler:''' $1",
 	'validator_error_parameters' => '{{PLURAL:$1|Der folgende Fehler wurde|Die folgenden Fehler wurden}} in der Syntax gefunden:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Es ist ein Fehler|Es sind Fehler}} in der Syntax.',
 	'validator-warning-adittional-errors' => '… und {{PLURAL:$1|ein weiteres Problem|weitere Probleme}}.',
+	'validator-error-omitted' => '{{PLURAL:$2|Der Wert|Die Werte}} „$1“ {{PLURAL:$2|wurde|wurden}} ausgelassen.',
+	'validator-error-problem' => 'Es gab ein Problem mit Parameter $1.',
 	'validator_error_unknown_argument' => '$1 ist kein gültiger Parameter.',
 	'validator_error_required_missing' => 'Der notwendige Parameter $1 wurde nicht angegeben.',
 	'validator-error-override-argument' => 'Es wurde versucht Parameter $1 ($2) mit dem Wert „$3“ zu überschreiben.',
+	'validator-listerrors-errors' => 'Fehler',
+	'validator-listerrors-minor' => 'Marginal',
+	'validator-listerrors-low' => 'Klein',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'Groß',
+	'validator-listerrors-fatal' => 'Schwerwiegend',
 	'validator_error_empty_argument' => 'Parameter $1 kann keinen leeren Wert haben.',
 	'validator_error_must_be_number' => 'Parameter $1 kann nur eine Nummer sein.',
 	'validator_error_must_be_integer' => 'Parameter $1 kann nur eine ganze Zahl sein.',
 	'validator-error-must-be-float' => 'Parameter $1 kann nur eine Gleitkommazahl sein.',
 	'validator_error_invalid_range' => 'Parameter $1 muss zwischen $2 und $3 liegen.',
+	'validator-error-invalid-regex' => 'Parameter $1 muss diesem regulären Ausdruck entsprechen: $2.',
 	'validator-error-invalid-length' => 'Parameter $1 muss eine Länge von $2 haben.',
 	'validator-error-invalid-length-range' => 'Parameter $1 muss eine Länge zwischen $2 und $3 haben.',
 	'validator_error_invalid_argument' => 'Der Wert „$1“ ist nicht gültig für Parameter $2.',
 	'validator_list_error_empty_argument' => 'Parameter $1 akzeptiert keine leeren Werte.',
-	'validator_list_error_must_be_number' => 'Parameter $1 kann nur Nummern enthalten.',
+	'validator_list_error_must_be_number' => 'Parameter $1 kann nur Ziffern enthalten.',
 	'validator_list_error_must_be_integer' => 'Parameter $1 kann nur ganze Zahlen enthalten.',
+	'validator-list-error-must-be-float' => 'Parameter $1 kann nur Gleitkommazahlen enthalten.',
 	'validator_list_error_invalid_range' => 'Alle Werte des Parameters $1 müssen zwischen „$2“ und „$3“ liegen.',
+	'validator-list-error-invalid-regex' => 'Alle Werte des Parameters $1 müssen diesem regulären Ausdruck entsprechen: $2.',
 	'validator_list_error_invalid_argument' => 'Einer oder mehrere Werte für Parameter $1 sind ungültig.',
+	'validator-list-error-accepts-only' => 'Einer oder mehrere Werte für Parameter $1 sind ungültig.
+Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2.',
+	'validator-list-error-accepts-only-omitted' => 'Einer oder mehrere Werte für Parameter $1 sind ungültig.
+Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2 (sowie $4 ausgelassene {{PLURAL:$4|Wert|Werte}}).',
+	'validator_error_accepts_only' => 'Der Wert „$4“ ist nicht gültig für Parameter $1.
+Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2.',
+	'validator-error-accepts-only-omitted' => 'Der Wert „$2“ ist nicht gültig für Parameter $1.
+Nur {{PLURAL:$5|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $3 (sowie $4 ausgelassene {{PLURAL:$4|Wert|Werte}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Der Wert|Die Werte}} $1 {{PLURAL:$2|wurde|wurden}} ausgelassen.',
-	'validator_error_accepts_only' => 'Der Wert „$4“ ist nicht gültig für Parameter $1. Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: „$2“.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -417,6 +439,12 @@ $messages['fr'] = array(
 	'validator_error_unknown_argument' => '$1 n’est pas un paramètre valide.',
 	'validator_error_required_missing' => 'Le paramètre requis $1 n’est pas fourni.',
 	'validator-error-override-argument' => 'Le logiciel a essayé de remplacer le paramètre $1 (valeur : $2) avec la valeur « $3 »',
+	'validator-listerrors-errors' => 'Erreurs',
+	'validator-listerrors-minor' => 'Mineur',
+	'validator-listerrors-low' => 'Faible',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'Élevé',
+	'validator-listerrors-fatal' => 'Fatal',
 	'validator_error_empty_argument' => 'Le paramètre $1 ne peut pas avoir une valeur vide.',
 	'validator_error_must_be_number' => 'Le paramètre $1 peut être uniquement un nombre.',
 	'validator_error_must_be_integer' => 'Le paramètre $1 peut seulement être un entier.',
@@ -430,8 +458,10 @@ $messages['fr'] = array(
 	'validator_list_error_must_be_integer' => 'Le paramètre $1 ne peut contenir que des entiers.',
 	'validator_list_error_invalid_range' => 'Toutes les valeurs du paramètre $1 doivent être comprises entre $2 et $3.',
 	'validator_list_error_invalid_argument' => 'Une ou plusieurs valeurs du paramètre $1 sont invalides.',
-	'validator_list_omitted' => '{{PLURAL:$2|La valeur|Les valeurs}} $1 {{PLURAL:$2|a été oubliée|ont été oubliées}}.',
 	'validator_error_accepts_only' => "La valeur « $4 » n'est pas valable pour le paramètre $1. Il accepte uniquement {{PLURAL:$3|cette valeur|ces valeurs}} : $2.",
+	'validator-error-accepts-only-omitted' => 'La valeur « $2 » n’est pas valable pour le paramètre $1.
+Celui-ci n’accepte que {{PLURAL:$5|cette valeur|ces valeurs}} : $3 (et $4 {{PLURAL:$4|valeur omise|valeurs omises}}).',
+	'validator_list_omitted' => '{{PLURAL:$2|La valeur|Les valeurs}} $1 {{PLURAL:$2|a été oubliée|ont été oubliées}}.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -592,24 +622,41 @@ $messages['ia'] = array(
 	'validator_error_parameters' => 'Le sequente {{PLURAL:$1|error|errores}} ha essite detegite in tu syntaxe:',
 	'validator_warning_parameters' => 'Il ha {{PLURAL:$1|un error|errores}} in tu syntaxe.',
 	'validator-warning-adittional-errors' => '... e {{PLURAL:$1|un altere problema|plure altere problemas}}.',
+	'validator-error-omitted' => 'Le {{PLURAL:$2|valor|valores}} "$1" ha essite omittite.',
+	'validator-error-problem' => 'Il habeva un problema con le parametro $1.',
 	'validator_error_unknown_argument' => '$1 non es un parametro valide.',
 	'validator_error_required_missing' => 'Le parametro requisite $1 non ha essite fornite.',
 	'validator-error-override-argument' => 'Tentava supplantar le parametro $1 (valor: $2) con le valor "$3"',
+	'validator-listerrors-errors' => 'Errores',
+	'validator-listerrors-minor' => 'Minor',
+	'validator-listerrors-low' => 'Basse',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'Alte',
+	'validator-listerrors-fatal' => 'Fatal',
 	'validator_error_empty_argument' => 'Le parametro $1 non pote haber un valor vacue.',
 	'validator_error_must_be_number' => 'Le parametro $1 pote solmente esser un numero.',
 	'validator_error_must_be_integer' => 'Le parametro $1 pote solmente esser un numero integre.',
 	'validator-error-must-be-float' => 'Le parametro $1 pote solmente esser un numero con fraction decimal.',
 	'validator_error_invalid_range' => 'Le parametro $1 debe esser inter $2 e $3.',
+	'validator-error-invalid-regex' => 'Le parametro $1 debe corresponder a iste expression regular: $2.',
 	'validator-error-invalid-length' => 'Le parametro $1 debe haber un longitude de $2.',
 	'validator-error-invalid-length-range' => 'Le parametro $1 debe haber un longitude inter $2 e $3.',
 	'validator_error_invalid_argument' => 'Le valor $1 non es valide pro le parametro $2.',
 	'validator_list_error_empty_argument' => 'Le parametro $1 non accepta valores vacue.',
 	'validator_list_error_must_be_number' => 'Le parametro $1 pote solmente continer numeros.',
 	'validator_list_error_must_be_integer' => 'Le parametro $1 pote solmente continer numeros integre.',
+	'validator-list-error-must-be-float' => 'Le parametro $1 pote solmente continer numeros a comma flottante.',
 	'validator_list_error_invalid_range' => 'Tote le valores del parametro $1 debe esser inter $2 e $3.',
+	'validator-list-error-invalid-regex' => 'Tote le valores del parametro $1 debe corresponder a iste expression regular: $2.',
 	'validator_list_error_invalid_argument' => 'Un o plus valores pro le parametro $1 es invalide.',
-	'validator_list_omitted' => 'Le {{PLURAL:$2|valor|valores}} $1 ha essite omittite.',
+	'validator-list-error-accepts-only' => 'Un o plus valores del parametro $1 es invalide.
+Illo accepta solmente iste {{PLURAL:$3|valor|valores}}: $2.',
+	'validator-list-error-accepts-only-omitted' => 'Un o plus valores del parametro $1 es invalide.
+Illo accepta solmente iste {{PLURAL:$3|valor|valores}}: $2. (e $4 {{PLURAL:$4|valor|valores}} omittite).',
 	'validator_error_accepts_only' => 'Le valor "$4" non es valide pro le parametro $1. Illo accepta solmente iste {{PLURAL:$3|valor|valores}}: $2.',
+	'validator-error-accepts-only-omitted' => 'Le valor "$2" non es valide pro le parametro $1.
+Illo accepta solmente iste {{PLURAL:$5|valor|valores}}: $3 (e $4 {{PLURAL:$4|valor|valores}} omittite).',
+	'validator_list_omitted' => 'Le {{PLURAL:$2|valor|valores}} $1 ha essite omittite.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -714,11 +761,20 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parametere vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Wäerter festzeleeën a fir Feeler-Messagen ze generéieren',
+	'validator-warning' => "'''Opgepasst:''' $1",
+	'validator-error' => "'''Feeler:''' $1",
+	'validator-fatal-error' => 'Fatale Feeler: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Dëse Feeler gouf|Dës Feeler goufen}} an Ärer Syntax fonnt:',
 	'validator_warning_parameters' => 'Et {{PLURAL:$1|ass ee|si}} Feeler an Ärer Syntax.',
 	'validator_error_unknown_argument' => '$1 ass kee valbele Parameter.',
 	'validator_error_required_missing' => 'Den obligatoresche Parameter $1 war net derbäi.',
 	'validator-error-override-argument' => 'huet versicht de Parameter $1 (Wäert: $2) mam Wäert "$3" z\'iwwerschreiwen',
+	'validator-listerrors-errors' => 'Feeler',
+	'validator-listerrors-minor' => 'Marginal',
+	'validator-listerrors-low' => 'Niddreg',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'Héich',
+	'validator-listerrors-fatal' => 'Fatal',
 	'validator_error_empty_argument' => 'De Parameter $1 ka keen eidele Wert hunn.',
 	'validator_error_must_be_number' => 'De Parameter $1 ka just eng Zuel sinn',
 	'validator_error_must_be_integer' => 'De Parameter $1 ka just eng ganz Zuel sinn.',
@@ -732,8 +788,8 @@ $messages['lb'] = array(
 	'validator_list_error_must_be_integer' => 'Am Parameter $1 kënnen nëmme ganz Zuele sinn.',
 	'validator_list_error_invalid_range' => 'All Wäerter vum Parameter $1 mussen tëschent $2 an $3 leien.',
 	'validator_list_error_invalid_argument' => 'Een oder méi Wäerter fir de Parameter $1 sinn net valabel.',
-	'validator_list_omitted' => "{{PLURAL:$2|De Wäert|D'Wäerter}} $1 {{PLURAL:$2|gouf|goufe}} vergiess.",
 	'validator_error_accepts_only' => 'De Wäert $4 ass net valabel fir de Parameter $1. En akzeptéiert just {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2',
+	'validator_list_omitted' => "{{PLURAL:$2|De Wäert|D'Wäerter}} $1 {{PLURAL:$2|gouf|goufe}} vergiess.",
 );
 
 /** Macedonian (Македонски)
@@ -751,6 +807,12 @@ $messages['mk'] = array(
 	'validator_error_unknown_argument' => '$1 не е важечки параметар.',
 	'validator_error_required_missing' => 'Бараниот параметар $1 не е наведен.',
 	'validator-error-override-argument' => 'Се обидовте да презапишете врз параметарот $1 (вредност: $2) со вредност „$3“',
+	'validator-listerrors-errors' => 'Грешки',
+	'validator-listerrors-minor' => 'Ситни',
+	'validator-listerrors-low' => 'Малку',
+	'validator-listerrors-normal' => 'Нормално',
+	'validator-listerrors-high' => 'Многу',
+	'validator-listerrors-fatal' => 'Фатални',
 	'validator_error_empty_argument' => 'Параметарот $1 не може да има празна вредност.',
 	'validator_error_must_be_number' => 'Параметарот $1 може да биде само број.',
 	'validator_error_must_be_integer' => 'Параметарот $1 може да биде само цел број.',
@@ -764,8 +826,9 @@ $messages['mk'] = array(
 	'validator_list_error_must_be_integer' => 'Параметарот $1 може да содржи само цели броеви.',
 	'validator_list_error_invalid_range' => 'Сите вредности на параметарот $1 мора да бидат помеѓу $2 и $3.',
 	'validator_list_error_invalid_argument' => 'Една или повеќе вредности на параметарот $1 се неважечки.',
-	'validator_list_omitted' => '{{PLURAL:$2|Вредноста|Вредностите}} $1 {{PLURAL:$2|беше испуштена|беа испуштени}}.',
 	'validator_error_accepts_only' => 'Вредноста „$4“ е неважечка за параметарот $1. Се {{PLURAL:$3|прифаќа само следнава вредност|прифаќаат само следниве вредности}}: $2.',
+	'validator-error-accepts-only-omitted' => 'Вредноста „$2“ не е важечка за параметарот $1. Се прифаќаат само следниве вредности: $3 (и $4 изоставени вредности).',
+	'validator_list_omitted' => '{{PLURAL:$2|Вредноста|Вредностите}} $1 {{PLURAL:$2|беше испуштена|беа испуштени}}.',
 );
 
 /** Dutch (Nederlands)
@@ -780,24 +843,43 @@ $messages['nl'] = array(
 	'validator_error_parameters' => 'In uw syntaxis {{PLURAL:$1|is de volgende fout|zijn de volgende fouten}} gedetecteerd:',
 	'validator_warning_parameters' => 'Er {{PLURAL:$1|zit een fout|zitten $1 fouten}} in uw syntaxis.',
 	'validator-warning-adittional-errors' => '... en nog {{PLURAL:$1|een ander probleem|$1 andere problemen}}.',
+	'validator-error-omitted' => 'De {{PLURAL:$2|waarde "$1" mist|waarden "$1" missen}}.',
+	'validator-error-problem' => 'Er was een probleem met de parameter $1.',
 	'validator_error_unknown_argument' => '$1 is geen geldige parameter.',
 	'validator_error_required_missing' => 'De verplichte parameter $1 is niet opgegeven.',
 	'validator-error-override-argument' => 'Geprobeerd de parameter $1 (waarde: $2) te overschrijven met waarde "$3".',
+	'validator-listerrors-errors' => 'Fouten',
+	'validator-listerrors-minor' => 'Overkomelijk',
+	'validator-listerrors-low' => 'Laag',
+	'validator-listerrors-normal' => 'Gemiddeld',
+	'validator-listerrors-high' => 'Groot',
+	'validator-listerrors-fatal' => 'Fataal',
 	'validator_error_empty_argument' => 'De parameter $1 mag niet leeg zijn.',
 	'validator_error_must_be_number' => 'De parameter $1 mag alleen een getal zijn.',
 	'validator_error_must_be_integer' => 'De parameter $1 kan alleen een heel getal zijn.',
 	'validator-error-must-be-float' => 'Parameter $1 kan alleen een getal met decimalen zijn.',
 	'validator_error_invalid_range' => 'De parameter $1 moet tussen $2 en $3 liggen.',
+	'validator-error-invalid-regex' => 'De parameter $1 moet voldoen aan deze reguliere expressie: $2.',
 	'validator-error-invalid-length' => 'Parameter $1 moet een lengte hebben van $2.',
 	'validator-error-invalid-length-range' => 'Parameter $1 moet een lengte hebben tussen $2 en $3.',
 	'validator_error_invalid_argument' => 'De waarde $1 is niet geldig voor de parameter $2.',
 	'validator_list_error_empty_argument' => 'Voor de parameter $1 zijn lege waarden niet toegestaan.',
 	'validator_list_error_must_be_number' => 'Voor de parameter $1 zijn alleen getallen toegestaan.',
 	'validator_list_error_must_be_integer' => 'Voor de parameter $1 zijn alleen hele getallen toegestaan.',
+	'validator-list-error-must-be-float' => 'Voor de parameter $1 zijn alleen getallen met drijvende komma toegestaan.',
 	'validator_list_error_invalid_range' => 'Alle waarden voor de parameter $1 moeten tussen $2 en $3 liggen.',
+	'validator-list-error-invalid-regex' => 'Alle waarden voor de parameter $1 moeten voldoen aan deze reguliere expressie: $2.',
 	'validator_list_error_invalid_argument' => 'Een of meerdere waarden voor de parameter $1 zijn ongeldig.',
-	'validator_list_omitted' => 'De {{PLURAL:$2|waarde|waarden}} $1 {{PLURAL:$2|mist|missen}}.',
+	'validator-list-error-accepts-only' => 'Een of meer waarden voor de parameter $1 zijn ongeldig. 
+Alleen deze {{PLURAL:$3|waarde is|waarden zijn}} toegestaan: $2.',
+	'validator-list-error-accepts-only-omitted' => 'Een of meer waarden voor de parameter $1 zijn ongeldig.
+Alleen deze {{PLURAL:$3|waarde is|waarden zijn}} toegestaan: $2.
+Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
 	'validator_error_accepts_only' => 'De waarde "$4" is ongeldig voor parameter $1. Deze kan alleen de volgende {{PLURAL:$3|waarde|waarden}} hebben: $2.',
+	'validator-error-accepts-only-omitted' => 'De waarde "$2" is niet geldig voor de parameter $1.
+Alleen deze {{PLURAL:$5|waarde is|waarden zijn}} toegestaan: $3.
+Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
+	'validator_list_omitted' => 'De {{PLURAL:$2|waarde|waarden}} $1 {{PLURAL:$2|mist|missen}}.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -893,6 +975,12 @@ $messages['pms'] = array(
 	'validator_error_unknown_argument' => "$1 a l'é un paràmetr pa bon.",
 	'validator_error_required_missing' => "Ël paràmetr obligatòri $1 a l'é pa dàit.",
 	'validator-error-override-argument' => 'Provà a coaté ël paràmetr $1 (valor: $2) con ël valor "$3"',
+	'validator-listerrors-errors' => 'Eror',
+	'validator-listerrors-minor' => 'Pi cit',
+	'validator-listerrors-low' => 'Bass',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'Àut',
+	'validator-listerrors-fatal' => 'Fatal',
 	'validator_error_empty_argument' => 'Ël paràmetr $1 a peul pa avèj un valor veuid.',
 	'validator_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
 	'validator_error_must_be_integer' => "Ël paràmetr $1 a peul mach esse n'antregh.",
@@ -906,8 +994,9 @@ $messages['pms'] = array(
 	'validator_list_error_must_be_integer' => "Ël paràmetr $1 a peul mach conten-e dj'antegr.",
 	'validator_list_error_invalid_range' => 'Tùit ij valor dël paràmetr $1 a deuvo esse tra $2 e $3.',
 	'validator_list_error_invalid_argument' => 'Un o pi valor dël paràmetr $1 a son pa bon.',
-	'validator_list_omitted' => "{{PLURAL:$2|Ël valor|Ij valor}} $1 {{PLURAL:$2|a l'é|a son}} pa stàit butà.",
 	'validator_error_accepts_only' => 'Ël valor "$4" a l\'é pa bon për ël paràmetr $1. A aceta mach {{PLURAL:$3|sto valor-sì|sti valor-sì}}: $2.',
+	'validator-error-accepts-only-omitted' => 'Ël valor "$2" a l\'é pa bon për ël paràmetr $1. A aceta mach sti valor: $3 (e ij valor pa butà $4).',
+	'validator_list_omitted' => "{{PLURAL:$2|Ël valor|Ij valor}} $1 {{PLURAL:$2|a l'é|a son}} pa stàit butà.",
 );
 
 /** Portuguese (Português)
@@ -992,6 +1081,12 @@ $messages['ru'] = array(
 	'validator_error_unknown_argument' => '$1 не является допустимым параметром.',
 	'validator_error_required_missing' => 'Не указан обязательный параметр $1.',
 	'validator-error-override-argument' => 'Попытка переопределения параметра $1 (значение: $2) значением «$3»',
+	'validator-listerrors-errors' => 'Ошибки',
+	'validator-listerrors-minor' => 'Незначительная',
+	'validator-listerrors-low' => 'Низкая',
+	'validator-listerrors-normal' => 'Обычная',
+	'validator-listerrors-high' => 'Высокая',
+	'validator-listerrors-fatal' => 'Фатальная',
 	'validator_error_empty_argument' => 'Параметр $1 не может принимать пустое значение.',
 	'validator_error_must_be_number' => 'Значением параметра $1 могут быть только числа.',
 	'validator_error_must_be_integer' => 'Параметр $1 может быть только целым числом.',
@@ -1005,8 +1100,10 @@ $messages['ru'] = array(
 	'validator_list_error_must_be_integer' => 'Параметр $1 может содержать только целые числа.',
 	'validator_list_error_invalid_range' => 'Все значения параметра $1 должна находиться в диапазоне от $2 до $3.',
 	'validator_list_error_invalid_argument' => 'Одно или несколько значений параметра $1 ошибочны.',
-	'validator_list_omitted' => '{{PLURAL:$2|Значение $1 было пропущено|Значения $1 были пропущены}}.',
 	'validator_error_accepts_only' => 'Значение «$4» не подходит для параметра $1. Оно может принимать только {{PLURAL:$3|следующее значение|следующие значения}}: $2.',
+	'validator-error-accepts-only-omitted' => 'Значение «$2» не подходит для параметра $1. 
+{{PLURAL:$5|Допускается только значение|Допускаются только значения}}: $3 (и $4 {{PLURAL:$4|пропущенное значение|пропущенных значения|пропущенных значений}}).',
+	'validator_list_omitted' => '{{PLURAL:$2|Значение $1 было пропущено|Значения $1 были пропущены}}.',
 );
 
 /** Sinhala (සිංහල)
