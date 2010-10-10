@@ -159,8 +159,8 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'validator-desc' => 'Правяраючы палягчае іншым пашырэньням працу па праверцы парамэтраў функцыяў парсэру і тэгаў пашырэньняў, устанаўлівае значэньні па змоўчваньні і стварае паведамленьні пра памылкі',
-	'validator-warning' => "'''Папярэджаньне:''' $1",
-	'validator-error' => "'''Памылка:''' $1",
+	'validator-warning' => 'Папярэджаньне: $1',
+	'validator-error' => 'Памылка: $1',
 	'validator-fatal-error' => 'Крытычная памылка: $1',
 	'validator_error_parameters' => 'У сынтаксісе {{PLURAL:$1|выяўленая наступная памылка|выяўленыя наступныя памылкі}}:',
 	'validator_warning_parameters' => 'У Вашы сынтаксісе {{PLURAL:$1|маецца памылка|маюцца памылкі}}.',
@@ -181,8 +181,8 @@ $messages['be-tarask'] = array(
 	'validator_list_error_must_be_integer' => 'Парамэтар $1 можа ўтрымліваць толькі цэлыя лікі.',
 	'validator_list_error_invalid_range' => 'Усе значэньні парамэтру $1 павінны знаходзіцца паміж $2 і $3.',
 	'validator_list_error_invalid_argument' => 'Адно ці болей значэньняў парамэтру $1 зьяўляюцца няслушнымі.',
-	'validator_list_omitted' => '{{PLURAL:$2|Значэньне|Значэньні}} $1 {{PLURAL:$2|было прапушчанае|былі прапушчаныя}}.',
 	'validator_error_accepts_only' => 'Значэньне «$4» зьяўляецца няслушным для парамэтру $1. Ён можа прымаць толькі {{PLURAL:$3|гэтае значэньне|гэтыя значэньні}}: $2.',
+	'validator_list_omitted' => '{{PLURAL:$2|Значэньне|Значэньні}} $1 {{PLURAL:$2|было прапушчанае|былі прапушчаныя}}.',
 );
 
 /** Bulgarian (Български)
@@ -225,8 +225,8 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'validator-desc' => 'Validator pruža jednostavni način za druga proširenja u svrhu validacije parametara parserskih funkcija i proširenja oznaka, postavlja pretpostavljene vrijednosti i generira poruke pogrešaka.',
-	'validator-warning' => "'''Upozorenje:''' $1",
-	'validator-error' => "'''Greška:''' $1",
+	'validator-warning' => 'Upozorenje: $1',
+	'validator-error' => 'Greška: $1',
 	'validator-fatal-error' => 'Fatalna greška: $1',
 	'validator_error_parameters' => 'U Vašoj sintaksi {{PLURAL:$1|je|su}} {{PLURAL:$1|otkivena slijedeća greška|otkrivene slijedeće greške}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Postoji greška|Postoje greške}} u Vašoj sintaksi.',
@@ -247,8 +247,8 @@ $messages['bs'] = array(
 	'validator_list_error_must_be_integer' => 'Parametar $1 može sadržavati samo cijele brojeve.',
 	'validator_list_error_invalid_range' => 'Sve vrijednosti parametra $1 moraju biti između $2 i $3.',
 	'validator_list_error_invalid_argument' => 'Jedna ili više vrijednosti za parametar $1 nisu valjane.',
-	'validator_list_omitted' => '{{PLURAL:$2|Vrijednost|Vrijednosti}} $1 {{PLURAL:$2|je ispuštena|su ispuštene}}.',
 	'validator_error_accepts_only' => 'Vrijednost "$4" nije valjana za parametar $1. On prihvata samo {{PLURAL:$3|ovu vrijednost|ove vrijednosti}}: $2.',
+	'validator_list_omitted' => '{{PLURAL:$2|Vrijednost|Vrijednosti}} $1 {{PLURAL:$2|je ispuštena|su ispuštene}}.',
 );
 
 /** Czech (Česky)
@@ -284,8 +284,8 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'validator-desc' => 'Ermöglicht es anderen Softwareerweiterungen Parameter verarbeiten zu können',
-	'validator-warning' => "'''Warnung:''' $1",
-	'validator-error' => "'''Fehler:''' $1",
+	'validator-warning' => 'Warnung: $1',
+	'validator-error' => 'Fehler: $1',
 	'validator-fatal-error' => "'''Schwerwiegender Fehler:''' $1",
 	'validator_error_parameters' => '{{PLURAL:$1|Der folgende Fehler wurde|Die folgenden Fehler wurden}} in der Syntax gefunden:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Es ist ein Fehler|Es sind Fehler}} in der Syntax.',
@@ -430,8 +430,8 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'validator-desc' => 'Le validateur fournit aux autres extensions un moyen simple de valider les paramètres des fonctions parseur et des extensions de balises, de définir des valeurs par défaut et de générer des messages d’erreur',
-	'validator-warning' => "'''Attention :''' $1",
-	'validator-error' => "'''Erreur :''' $1",
+	'validator-warning' => 'Attention : $1',
+	'validator-error' => 'Erreur : $1',
 	'validator-fatal-error' => 'Erreur fatale : $1',
 	'validator_error_parameters' => '{{PLURAL:$1|L’erreur suivante a été détectée|Les erreurs suivantes ont été détectées}} dans votre syntaxe :',
 	'validator_warning_parameters' => 'Il y a {{PLURAL:$1|une erreur|des erreurs}} dans votre syntaxe.',
@@ -500,8 +500,8 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'validator-desc' => 'O servizo de validación ofrece un medio sinxelo a outras extensións para validar os parámetros de funcións analíticas e etiquetas de extensións, para establecer os valores por defecto e para xerar mensaxes de erro',
-	'validator-warning' => "'''Atención:''' $1",
-	'validator-error' => "'''Erro:''' $1",
+	'validator-warning' => 'Atención: $1',
+	'validator-error' => 'Erro: $1',
 	'validator-fatal-error' => 'Erro fatal: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Detectouse o seguinte erro|Detectáronse os seguintes erros}} na sintaxe empregada:',
 	'validator_warning_parameters' => 'Hai {{PLURAL:$1|un erro|erros}} na súa sintaxe.',
@@ -522,8 +522,8 @@ $messages['gl'] = array(
 	'validator_list_error_must_be_integer' => 'O parámetro $1 só pode conter números enteiros.',
 	'validator_list_error_invalid_range' => 'Todos os valores do parámetro $1 deben estar comprendidos entre $2 e $3.',
 	'validator_list_error_invalid_argument' => 'Un ou varios valores do parámetro $1 non son válidos.',
-	'validator_list_omitted' => '{{PLURAL:$2|O valor|Os valores}} $1 {{PLURAL:$2|foi omitido|foron omitidos}}.',
 	'validator_error_accepts_only' => 'O valor "$4" non é válido para o parámetro "$1". Só acepta {{PLURAL:$3|este valor|estes valores}}: $2.',
+	'validator_list_omitted' => '{{PLURAL:$2|O valor|Os valores}} $1 {{PLURAL:$2|foi omitido|foron omitidos}}.',
 );
 
 /** Swiss German (Alemannisch)
@@ -531,8 +531,8 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'validator-desc' => 'Validator stellt e eifachi Form z Verfiegig fir anderi Erwyterige go Parameter validiere vu Parser- un Tag-Funktione, go Standardwärt definiere un Fählermäldige generiere',
-	'validator-warning' => "'''Warnig:''' $1",
-	'validator-error' => "'''Fähler:''' $1",
+	'validator-warning' => 'Warnig: $1',
+	'validator-error' => 'Fähler: $1',
 	'validator-fatal-error' => 'Fähler, wu nit cha behobe wäre: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Dää Fähler isch|Die Fähler sin}} in Dyyre Syntax gfunde wore:',
 	'validator_warning_parameters' => 'S het {{PLURAL:$1|e Fähler|Fähler}} in dyyre Syntax.',
@@ -553,8 +553,8 @@ $messages['gsw'] = array(
 	'validator_list_error_must_be_integer' => 'Fir dr Parameter $1 sin nume ganzi Zahle zuegloo.',
 	'validator_list_error_invalid_range' => 'Alli Wärt fir dr Parameter $1 mien zwische $2 un $3 lige.',
 	'validator_list_error_invalid_argument' => 'Ein oder mehreri Wärt fir dr Parameter $1 sin nit giltig.',
-	'validator_list_omitted' => '{{PLURAL:$2|Dr Wärt|D Wärt}} $1 {{PLURAL:$2|isch|sin}} uusgloo wore.',
 	'validator_error_accepts_only' => 'Dr Wärt „$4“ isch nit giltig fir dr Parameter $1. Nume {{PLURAL:$3|dää Wärt wird|die Wärt wäre}} akzeptiert: „$2“.',
+	'validator_list_omitted' => '{{PLURAL:$2|Dr Wärt|D Wärt}} $1 {{PLURAL:$2|isch|sin}} uusgloo wore.',
 );
 
 /** Hebrew (עברית)
@@ -625,8 +625,8 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'validator-desc' => 'Validator provide un modo facile a altere extensiones de validar parametros de functiones del analysator syntactic e extensiones de etiquettas, predefinir valores e generar messages de error',
-	'validator-warning' => "'''Aviso:''' $1",
-	'validator-error' => "'''Error:''' $1",
+	'validator-warning' => 'Aviso: $1',
+	'validator-error' => 'Error: $1',
 	'validator-fatal-error' => 'Error fatal: $1',
 	'validator_error_parameters' => 'Le sequente {{PLURAL:$1|error|errores}} ha essite detegite in tu syntaxe:',
 	'validator_warning_parameters' => 'Il ha {{PLURAL:$1|un error|errores}} in tu syntaxe.',
@@ -770,8 +770,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parametere vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Wäerter festzeleeën a fir Feeler-Messagen ze generéieren',
-	'validator-warning' => "'''Opgepasst:''' $1",
-	'validator-error' => "'''Feeler:''' $1",
+	'validator-warning' => 'Opgepasst: $1',
+	'validator-error' => 'Feeler: $1',
 	'validator-fatal-error' => 'Fatale Feeler: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Dëse Feeler gouf|Dës Feeler goufen}} an Ärer Syntax fonnt:',
 	'validator_warning_parameters' => 'Et {{PLURAL:$1|ass ee|si}} Feeler an Ärer Syntax.',
@@ -797,6 +797,8 @@ $messages['lb'] = array(
 	'validator_list_error_must_be_integer' => 'Am Parameter $1 kënnen nëmme ganz Zuele sinn.',
 	'validator_list_error_invalid_range' => 'All Wäerter vum Parameter $1 mussen tëschent $2 an $3 leien.',
 	'validator_list_error_invalid_argument' => 'Een oder méi Wäerter fir de Parameter $1 sinn net valabel.',
+	'validator-list-error-accepts-only' => 'Een oder méi Wäerter vum Parameter $1 sinn net valabel.
+En akzeptéiert nëmmen {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2.',
 	'validator_error_accepts_only' => 'De Wäert $4 ass net valabel fir de Parameter $1. En akzeptéiert just {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2',
 	'validator_list_omitted' => "{{PLURAL:$2|De Wäert|D'Wäerter}} $1 {{PLURAL:$2|gouf|goufe}} vergiess.",
 );
@@ -807,8 +809,8 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'validator-desc' => 'Потврдувачот овозможува лесен начин другите додатоци да ги потврдат параметрите на парсерските функции и додатоците со ознаки, да поставаат основно зададени вредности и да создаваат пораки за грешки',
-	'validator-warning' => "'''Предупредување:''' $1",
-	'validator-error' => "'''Грешка:''' $1",
+	'validator-warning' => 'Предупредување: $1',
+	'validator-error' => 'Грешка: $1',
 	'validator-fatal-error' => 'Фатална грешка: $1',
 	'validator_error_parameters' => 'Во вашата синтакса {{PLURAL:$1|е откриена следнава грешка|се откриени следниве грешки}}:',
 	'validator_warning_parameters' => 'Имате {{PLURAL:$1|грешка|грешки}} во синтаксата.',
@@ -855,8 +857,8 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'validator-desc' => 'Validator geeft andere uitbreidingen de mogelijkheid om parameters van parserfuncties en taguitbreidingen te valideren, in te stellen op hun standaardwaarden en foutberichten te genereren',
-	'validator-warning' => "'''Waarschuwing:''' $1",
-	'validator-error' => "'''Fout:''' $1",
+	'validator-warning' => 'Waarschuwing: $1',
+	'validator-error' => 'Fout: $1',
 	'validator-fatal-error' => 'Onherstelbare fout: $1',
 	'validator_error_parameters' => 'In uw syntaxis {{PLURAL:$1|is de volgende fout|zijn de volgende fouten}} gedetecteerd:',
 	'validator_warning_parameters' => 'Er {{PLURAL:$1|zit een fout|zitten $1 fouten}} in uw syntaxis.',
@@ -906,8 +908,8 @@ Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
  */
 $messages['no'] = array(
 	'validator-desc' => 'Gir generisk støtte for parameterhåndtering for andre utvidelser',
-	'validator-warning' => "'''Advarsel:''' $1",
-	'validator-error' => "'''Feil:''' $1",
+	'validator-warning' => 'Advarsel: $1',
+	'validator-error' => 'Feil: $1',
 	'validator-fatal-error' => 'Kritisk feil: $1',
 	'validator_error_parameters' => 'Følgende {{PLURAL:$1|feil|feil}} har blitt oppdaget i syntaksen din:',
 	'validator_warning_parameters' => 'Det er {{PLURAL:$1|én feil|flere feil}} i syntaksen din.',
@@ -928,8 +930,8 @@ $messages['no'] = array(
 	'validator_list_error_must_be_integer' => 'Parameteren $1 kan bare inneholder heltall.',
 	'validator_list_error_invalid_range' => 'Alle verdier av parameteren $1 må være mellom $2 og $3.',
 	'validator_list_error_invalid_argument' => 'Parameteren $1 har en eller flere ugyldige verdier.',
-	'validator_list_omitted' => '{{PLURAL:$2|Verdien|Verdiene}} $1 har blitt utelatt.',
 	'validator_error_accepts_only' => 'Verdien «$4» er ikke gyldig for parameteren $1. Den aksepterer kun {{PLURAL:$3|denne verdien|disse verdiene}}: $2.',
+	'validator_list_omitted' => '{{PLURAL:$2|Verdien|Verdiene}} $1 har blitt utelatt.',
 );
 
 /** Occitan (Occitan)
@@ -984,8 +986,8 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'validator-desc' => "Validator a dà na manera bel fé për àutre estension ëd validé ij paràmetr ëd le funsion dël parser e j'estension dij tag, d'amposté ij valor ëd default e generé mëssagi d'eror",
-	'validator-warning' => "'''Avis:''' $1",
-	'validator-error' => "'''Eror:''' $1",
+	'validator-warning' => 'Avis: $1',
+	'validator-error' => 'Eror: $1',
 	'validator-fatal-error' => 'Eror Fatal: $1',
 	'validator_error_parameters' => "{{PLURAL:$1|L'eror sì-sota a l'é stàit|J'eror sì-sota a son ëstàit}} trovà an soa sintassi:",
 	'validator_warning_parameters' => "{{PLURAL:$1|A-i é n'|A-i son dj'}}eror ant soa sintassi.",
@@ -1024,8 +1026,8 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'validator-desc' => 'O Serviço de Validação permite que, de forma simples, as outras extensões possam validar parâmetros das funções do analisador sintáctico e das extensões dos elementos HTML, definir valores por omissão e gerar mensagens de erro',
-	'validator-warning' => "'''Aviso:''' $1",
-	'validator-error' => "'''Erro:''' $1",
+	'validator-warning' => 'Aviso: $1',
+	'validator-error' => 'Erro: $1',
 	'validator-fatal-error' => 'Erro fatal: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Foi detectado o seguinte erro sintáctico|Foram detectados os seguintes erros sintácticos}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Existe um erro sintáctico|Existem erros sintácticos}}.',
@@ -1073,8 +1075,8 @@ Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PL
  */
 $messages['pt-br'] = array(
 	'validator-desc' => 'Fornece suporte a manipulação de parâmetros genéricos para outras extensões',
-	'validator-warning' => "'''Atenção:''' $1",
-	'validator-error' => "'''Erro:''' $1",
+	'validator-warning' => 'Atenção: $1',
+	'validator-error' => 'Erro: $1',
 	'validator-fatal-error' => 'Erro crítico: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Foi detectado o seguinte erro sintáctico|Foram detectados os seguintes erros sintácticos}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Existe um erro|Existem erros}} em sua sintaxe.',
@@ -1095,8 +1097,8 @@ $messages['pt-br'] = array(
 	'validator_list_error_must_be_integer' => 'O parâmetro $1 só pode ser um número inteiro.',
 	'validator_list_error_invalid_range' => 'Todos os valores do parâmetro $1 têm de ser entre $2 e $3.',
 	'validator_list_error_invalid_argument' => 'Um ou mais valores do parâmetro $1 são inválidos.',
-	'validator_list_omitted' => '{{PLURAL:$2|O valor $1 foi omitido|Os valores $1 foram omitidos}}.',
 	'validator_error_accepts_only' => 'O valor $4 não é válido para o parâmetro $1. Esse parâmetro só aceita {{PLURAL:$3|este valor|estes valores}}: $2.',
+	'validator_list_omitted' => '{{PLURAL:$2|O valor $1 foi omitido|Os valores $1 foram omitidos}}.',
 );
 
 /** Russian (Русский)
@@ -1108,8 +1110,8 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'validator-desc' => 'Валидатор предоставляет другим расширениям возможности проверки параметров функций парсера и тегов, установки значения по умолчанию и создания сообщения об ошибках',
-	'validator-warning' => "'''Внимание:''' $1",
-	'validator-error' => "'''Ошибка:''' $1",
+	'validator-warning' => 'Внимание: $1',
+	'validator-error' => 'Ошибка: $1',
 	'validator-fatal-error' => 'Критическая ошибка: $1',
 	'validator_error_parameters' => 'В вашем синтаксисе {{PLURAL:$1|обнаружена следующая ошибка|обнаружены следующие ошибки}}:',
 	'validator_warning_parameters' => 'В вашем синтаксисе {{PLURAL:$1|имеется ошибка|имеются ошибки}}.',
@@ -1204,8 +1206,8 @@ $messages['te'] = array(
  */
 $messages['tl'] = array(
 	'validator-desc' => 'Nagbibigay ng panlahatang magtangkilik na paghawak sa ibang mga dugtong',
-	'validator-warning' => "'''Babala:''' $1",
-	'validator-error' => "'''Kamalian:''' $1",
+	'validator-warning' => 'Babala: $1',
+	'validator-error' => 'Kamalian: $1',
 	'validator-fatal-error' => 'Masidhing kamalian: $1',
 	'validator_error_parameters' => 'Ang sumusunod na {{PLURAL:$1|kamalian|mga kamalian}} ay napansin sa iyong sintaks:',
 	'validator_warning_parameters' => 'May {{PLURAL:$1|mali|mga mali}} sa sintaks mo.',
@@ -1226,9 +1228,9 @@ $messages['tl'] = array(
 	'validator_list_error_must_be_integer' => 'Dapat na naglalaman lang ng mga tambilang ang parametrong $1.',
 	'validator_list_error_invalid_range' => 'Dapat na nasa pagitan ng $2 at $3 ang lahat ng mga halaga ng parametrong $1.',
 	'validator_list_error_invalid_argument' => 'Hindi tanggap ang isa o higit pang mga halaga para sa parametrong $1.',
-	'validator_list_omitted' => 'Tinanggal {{PLURAL:$2|na ang|na ang mga}} {{PLURAL:$2|halaga|halaga}} ng $1.',
 	'validator_error_accepts_only' => 'Ang halagang "$4" ay hindi tanggap para sa parametrong $1.  Tumatanggap lamang ito ng 
 {{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2.',
+	'validator_list_omitted' => 'Tinanggal {{PLURAL:$2|na ang|na ang mga}} {{PLURAL:$2|halaga|halaga}} ng $1.',
 );
 
 /** Turkish (Türkçe)
