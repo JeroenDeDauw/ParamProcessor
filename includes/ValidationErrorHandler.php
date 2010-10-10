@@ -17,7 +17,7 @@ final class ValidationErrorHandler {
 	 * 
 	 * @var array of ValidationError
 	 */
-	protected static $errors;
+	protected static $errors = array();
 	
 	/**
 	 * Adds a single ValidationError.

@@ -49,6 +49,15 @@ class Parameter {
 	public $lowerCaseValue = true;
 	
 	/**
+	 * Indicates if the parameter value should trimmed.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var boolean
+	 */
+	public $trimValue = true;	
+	
+	/**
 	 * Dependency list containing parameters that need to be handled before this one. 
 	 * 
 	 * @since 0.4
@@ -414,6 +423,10 @@ class Parameter {
 	 */
 	protected function cleanValue() {
 		$this->value = $this->originalValue;
+		
+		if ( $this->trimValue ) {
+			$this->value = trim( $this->value );
+		}
 		
 		if ( $this->lowerCaseValue ) {
 			$this->value = strtolower( $this->value );

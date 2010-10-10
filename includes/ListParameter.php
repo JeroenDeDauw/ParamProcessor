@@ -113,6 +113,12 @@ class ListParameter extends Parameter {
 	protected function cleanValue() {
 		$this->value = explode( $this->delimiter, $this->originalValue );
 
+		if ( $this->trimValue ) {
+			foreach ( $this->value as &$item ) {
+				$item = trim( $item );
+			}
+		}		
+		
 		if ( $this->lowerCaseValue ) {
 			foreach ( $this->value as &$item ) {
 				$item = strtolower( $item );
