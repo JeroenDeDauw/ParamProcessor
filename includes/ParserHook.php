@@ -224,10 +224,7 @@ abstract class ParserHook {
 	 * @return array
 	 */
 	protected function getFunctionOptions() {
-		return array(
-			'noparse' => true,
-			'isHTML' => true
-		);
+		return array();
 	}
 	
 	/**
