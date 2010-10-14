@@ -210,7 +210,24 @@ abstract class ParserHook {
 		
 		$this->parser = array_shift( $args );	
 	
-		return array( $this->validateAndRender( $args, self::TYPE_FUNCTION ), 'noparse' => true, 'isHTML' => true );
+		return array_merge( 
+			array( $this->validateAndRender( $args, self::TYPE_FUNCTION ) ),
+			$this->getFunctionOptions()
+		);
+	}
+	
+	/**
+	 * Returns the parser function otpions.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */
+	protected function getFunctionOptions() {
+		return array(
+			'noparse' => true,
+			'isHTML' => true
+		);
 	}
 	
 	/**
