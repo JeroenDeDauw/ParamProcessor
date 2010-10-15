@@ -562,7 +562,13 @@ $messages['gl'] = array(
 	'validator_list_error_invalid_range' => 'Todos os valores do parámetro $1 deben estar comprendidos entre $2 e $3.',
 	'validator-list-error-invalid-regex' => 'Todos os valores do parámetro $1 deben coincidir con esta expresión regular: $2.',
 	'validator_list_error_invalid_argument' => 'Un ou varios valores do parámetro $1 non son válidos.',
+	'validator-list-error-accepts-only' => 'Un ou varios valores do parámetro $1 non son válidos.
+Só acepta {{PLURAL:$3|este valor|estes valores}}: $2.',
+	'validator-list-error-accepts-only-omitted' => 'Un ou varios valores do parámetro $1 non son válidos.
+Só acepta {{PLURAL:$3|este valor|estes valores}}: $2 (e $4 {{PLURAL:$4|valor omitido|valores omitidos}}).',
 	'validator_error_accepts_only' => 'O valor "$4" non é válido para o parámetro "$1". Só acepta {{PLURAL:$3|este valor|estes valores}}: $2.',
+	'validator-error-accepts-only-omitted' => 'O valor "$2" non é válido para o parámetro $1.
+Só acepta {{PLURAL:$5|este valor|estes valores}}: $3 (e $4 {{PLURAL:$4|valor omitido|valores omitidos}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|O valor|Os valores}} $1 {{PLURAL:$2|foi omitido|foron omitidos}}.',
 );
 
@@ -881,6 +887,8 @@ $messages['lb'] = array(
 	'validator-list-error-accepts-only' => 'Een oder méi Wäerter vum Parameter $1 sinn net valabel.
 En akzeptéiert nëmmen {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2.',
 	'validator_error_accepts_only' => 'De Wäert $4 ass net valabel fir de Parameter $1. En akzeptéiert just {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2',
+	'validator-error-accepts-only-omitted' => 'De Wäert "$2" ass net valabel fir de Parameter $1.
+En akzeptéiert nëmmen {{PLURAL:$5|dëse Wäert|dës Wäerter}}: $3 (an {{PLURAL:$4|een ausgeloossene Wäert|$4 ausgeloosse Wäerter}}).',
 	'validator_list_omitted' => "{{PLURAL:$2|De Wäert|D'Wäerter}} $1 {{PLURAL:$2|gouf|goufe}} vergiess.",
 );
 
@@ -1212,6 +1220,7 @@ Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PL
  * @author Aleksandrit
  * @author Eleferen
  * @author Lockal
+ * @author MaxSem
  * @author McDutchie
  * @author Александр Сигачёв
  */
@@ -1223,6 +1232,8 @@ $messages['ru'] = array(
 	'validator_error_parameters' => 'В вашем синтаксисе {{PLURAL:$1|обнаружена следующая ошибка|обнаружены следующие ошибки}}:',
 	'validator_warning_parameters' => 'В вашем синтаксисе {{PLURAL:$1|имеется ошибка|имеются ошибки}}.',
 	'validator-warning-adittional-errors' => '… и {{PLURAL:$1|ещё одна проблема|ещё несколько проблем}}.',
+	'validator-error-omitted' => '{{PLURAL:$2|Значение «$1» пропущено|Значения «$1» пропущены}}.',
+	'validator-error-problem' => 'Обнаружена проблема с параметром «$1».',
 	'validator_error_unknown_argument' => '$1 не является допустимым параметром.',
 	'validator_error_required_missing' => 'Не указан обязательный параметр $1.',
 	'validator-error-override-argument' => 'Попытка переопределения параметра $1 (значение: $2) значением «$3»',
@@ -1237,13 +1248,16 @@ $messages['ru'] = array(
 	'validator_error_must_be_integer' => 'Параметр $1 может быть только целым числом.',
 	'validator-error-must-be-float' => 'Параметр $1 может быть числом с плавающей точкой.',
 	'validator_error_invalid_range' => 'Параметр $1 должен быть от $2 до $3.',
+	'validator-error-invalid-regex' => 'Параметр «$1» должен соответствовать регулярному выражению «$2».',
 	'validator-error-invalid-length' => 'Параметр $1 должен иметь длину $2.',
 	'validator-error-invalid-length-range' => 'Параметр $1 должен иметь длину от $2 до $3.',
 	'validator_error_invalid_argument' => 'Значение $1 не является допустимым параметром $2',
 	'validator_list_error_empty_argument' => 'Параметр $1 не может принимать пустые значения.',
 	'validator_list_error_must_be_number' => 'Параметр $1 может содержать только цифры.',
 	'validator_list_error_must_be_integer' => 'Параметр $1 может содержать только целые числа.',
+	'validator-list-error-must-be-float' => 'Параметр «$1» может содержать только числа с плавающей точкой.',
 	'validator_list_error_invalid_range' => 'Все значения параметра $1 должна находиться в диапазоне от $2 до $3.',
+	'validator-list-error-invalid-regex' => 'Все значения параметра «$1» должны соответствовать регулярноve выражению «$2».',
 	'validator_list_error_invalid_argument' => 'Одно или несколько значений параметра $1 ошибочны.',
 	'validator_error_accepts_only' => 'Значение «$4» не подходит для параметра $1. Оно может принимать только {{PLURAL:$3|следующее значение|следующие значения}}: $2.',
 	'validator-error-accepts-only-omitted' => 'Значение «$2» не подходит для параметра $1. 
