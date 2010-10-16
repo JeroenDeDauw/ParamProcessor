@@ -229,11 +229,20 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'validator-desc' => 'Un doare aes eo kadarnataer evit an astennoù all da gadarnaat arventennoù ar fonksionoù parser hag astennoù ar balizennoù, evit termeniñ talvoudennoù dre ziouer ha sevel kemennoù fazioù',
+	'validator-warning' => 'Diwallit : $1',
+	'validator-error' => 'Fazi : $1',
+	'validator-fatal-error' => 'Fazi diremed: $1',
 	'validator_error_parameters' => "Kavet eo bet ar {{PLURAL:$1|fazi|fazioù}} da-heul en hoc'h ereadur :",
 	'validator_warning_parameters' => "{{PLURAL:$1|Ur fazi|Fazioù}} zo en hoc'h ereadur.",
 	'validator_error_unknown_argument' => "$1 n'eo ket un arventenn reizh.",
 	'validator_error_required_missing' => "N'eo ket bet pourchaset an arventenn rekis $1",
 	'validator-error-override-argument' => 'Klasket en deus ar meziant erlec\'hiañ an arventenn $1 (talvoud : $2) gant an talvoud "$3"',
+	'validator-listerrors-errors' => 'Fazioù',
+	'validator-listerrors-minor' => 'Minor',
+	'validator-listerrors-low' => 'Gwan',
+	'validator-listerrors-normal' => 'Reizh',
+	'validator-listerrors-high' => 'Uhel',
+	'validator-listerrors-fatal' => 'Diremed',
 	'validator_error_empty_argument' => "N'hall ket an arventenn $1 bezañ goullo he zalvoudenn",
 	'validator_error_must_be_number' => 'Un niver e rank an arventenn $1 bezañ hepken.',
 	'validator_error_must_be_integer' => 'Rankout a ra an arventenn $1 bezañ un niver anterin.',
@@ -244,8 +253,8 @@ $messages['br'] = array(
 	'validator_list_error_must_be_integer' => "N'hall bezañ nemet niveroù anterin en arventenn $1.",
 	'validator_list_error_invalid_range' => 'An holl talvoudennoù eus an arventenn $1 a rank bezañ etre $2 ha $3.',
 	'validator_list_error_invalid_argument' => 'Faziek eo unan pe meur a dalvoudenn eus an arventenn $1.',
-	'validator_list_omitted' => 'Disoñjet eo bet an {{PLURAL:$2|talvoudenn|talvoudennoù}} $1.',
 	'validator_error_accepts_only' => 'Ne zegemer ket an arventenn $1 an talvoud "$4". Ne zegemer nemet {{PLURAL:$3|an talvoud|an talvoudoù}}-mañ : $2.',
+	'validator_list_omitted' => 'Disoñjet eo bet an {{PLURAL:$2|talvoudenn|talvoudennoù}} $1.',
 );
 
 /** Bosnian (Bosanski)
