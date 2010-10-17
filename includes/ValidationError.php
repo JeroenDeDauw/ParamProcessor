@@ -36,7 +36,7 @@ class ValidationError {
 	 * 
 	 * @var array
 	 */
-	public $tags;
+	protected $tags;
 	
 	/**
 	 * Where the error occured.
@@ -58,6 +58,18 @@ class ValidationError {
 		$this->severity = $severity;
 		$this->element = $element;
 		$this->tags = $tags;
+	}
+	
+	/**
+	 * Adds one or more tags.
+	 * 
+	 * @since 0.4.1
+	 * 
+	 * @param mixed $criteria string or array of string
+	 */
+	public function addTags() {
+		$args = func_get_args();
+		$this->tags += is_array( $args[0] ) ? $args[0] : $args;		
 	}
 	
 	/**
@@ -98,10 +110,36 @@ class ValidationError {
 	 * 
 	 * @since 0.4
 	 * 
+	 * @param integer $severity
+	 * 
 	 * @return boolean
 	 */
 	public function hasSeverity( $severity ) {
 		return $this->severity >= $severity;
+	}
+	
+	/**
+	 * Returns if the error has a certain tag.
+	 * 
+	 * @since 0.4.1
+	 * 
+	 * @param string $tag
+	 * 
+	 * @return boolean
+	 */
+	public function hasTag( $tag ) {
+		return in_array( $tag, $this->tags );
+	}
+	
+	/**
+	 * Returns the tags.
+	 * 
+	 * @since 0.4.1
+	 * 
+	 * @return array
+	 */	
+	public function getTags() {
+		return $this->tags;
 	}
 	
 	/**

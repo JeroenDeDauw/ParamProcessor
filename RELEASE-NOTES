@@ -12,15 +12,15 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 ==== New features ====
 
 * Added ParserHook class that allows for out-of-the-box parser function and tag extension creation
-  with full Validator support.
+: with full Validator support.
   
-* Added listerrors parser hook that allows you to list all validation errors that occured at the point it's rendered.
+* Added listerrors parser hook that allows you to list all validation errors that occurred at the point it's rendered.
 
 * Added support for conditional parameter adding.
 
 ==== Refactoring ====
 
-Bascially everything got rewritten...
+Basically everything got rewritten...
 
 * Added Parameter and ListParameter classes to replace parameter definitions in array form.
 

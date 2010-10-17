@@ -22,7 +22,7 @@ class CriterionValidationResult {
 	/**
 	 * @since 0.4
 	 * 
-	 * @var unknown_type
+	 * @var array of string
 	 */
 	protected $invalidItems = array();
 	
@@ -32,7 +32,7 @@ class CriterionValidationResult {
 	 * @since 0.4
 	 */
 	public function __construct() {
-		
+
 	}
 	
 	/**
