@@ -234,6 +234,9 @@ $messages['br'] = array(
 	'validator-fatal-error' => 'Fazi diremed: $1',
 	'validator_error_parameters' => "Kavet eo bet ar {{PLURAL:$1|fazi|fazioù}} da-heul en hoc'h ereadur :",
 	'validator_warning_parameters' => "{{PLURAL:$1|Ur fazi|Fazioù}} zo en hoc'h ereadur.",
+	'validator-warning-adittional-errors' => '... {{PLURAL:$1|hag ur gudenn bennak all|ha meur a gudenn all}}.',
+	'validator-error-omitted' => 'N\'eo ket bet merket ar {{PLURAL:$2|roadenn "$1"|roadennoù "$1"}}.',
+	'validator-error-problem' => 'Ur gudenn zo bet gant an arventenn $1.',
 	'validator_error_unknown_argument' => "$1 n'eo ket un arventenn reizh.",
 	'validator_error_required_missing' => "N'eo ket bet pourchaset an arventenn rekis $1",
 	'validator-error-override-argument' => 'Klasket en deus ar meziant erlec\'hiañ an arventenn $1 (talvoud : $2) gant an talvoud "$3"',
@@ -247,13 +250,22 @@ $messages['br'] = array(
 	'validator_error_must_be_number' => 'Un niver e rank an arventenn $1 bezañ hepken.',
 	'validator_error_must_be_integer' => 'Rankout a ra an arventenn $1 bezañ un niver anterin.',
 	'validator_error_invalid_range' => 'Rankout a ra an arventenn $1 bezañ etre $2 hag $3.',
+	'validator-error-invalid-length' => "Ret eo d'an arventenn $1 bezañ par he hed da $2.",
+	'validator-error-invalid-length-range' => 'Rankout a ra an arventenn $1 bezañ he hed etre $2 hag $3.',
 	'validator_error_invalid_argument' => "N'eo ket reizh an dalvoudenn $1 evit an arventenn $2.",
 	'validator_list_error_empty_argument' => 'Ne zegemer ket an arventenn $1 an talvoudennoù goullo.',
 	'validator_list_error_must_be_number' => "N'hall bezañ nemet niveroù en arventenn $1.",
 	'validator_list_error_must_be_integer' => "N'hall bezañ nemet niveroù anterin en arventenn $1.",
+	'validator-list-error-must-be-float' => "N'hall bezañ nemet niveroù gant skej en arventenn $1.",
 	'validator_list_error_invalid_range' => 'An holl talvoudennoù eus an arventenn $1 a rank bezañ etre $2 ha $3.',
 	'validator_list_error_invalid_argument' => 'Faziek eo unan pe meur a dalvoudenn eus an arventenn $1.',
+	'validator-list-error-accepts-only' => 'Direizh eo unan pe meur a hini eus an talvoudoù evit an arventenn $1.
+Ne zegemer nemet an {{PLURAL:$3|talvoud|talvoudoù}}-mañ : $2.',
+	'validator-list-error-accepts-only-omitted' => 'Direizh eo unan pe meur a hini eus an talvoudoù evit an arventenn $1.
+Ne zegemer nemet an {{PLURAL:$3|talvoud|talvoudoù}}-mañ : $2 (ha $4 {{PLURAL:$4|talvoud anroet|talvoud anroet}}).',
 	'validator_error_accepts_only' => 'Ne zegemer ket an arventenn $1 an talvoud "$4". Ne zegemer nemet {{PLURAL:$3|an talvoud|an talvoudoù}}-mañ : $2.',
+	'validator-error-accepts-only-omitted' => 'Direizh eo an talvoud "$2" evit an arventenn $1.
+Ne zegemer nemet an {{PLURAL:$5|talvoud|talvoudoù}}-mañ : $3 (ha $4 {{PLURAL:$4|talvoud anroet|talvoud anroet}}).',
 	'validator_list_omitted' => 'Disoñjet eo bet an {{PLURAL:$2|talvoudenn|talvoudennoù}} $1.',
 );
 
@@ -869,6 +881,7 @@ $messages['lb'] = array(
 	'validator-fatal-error' => 'Fatale Feeler: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Dëse Feeler gouf|Dës Feeler goufen}} an Ärer Syntax fonnt:',
 	'validator_warning_parameters' => 'Et {{PLURAL:$1|ass ee|si}} Feeler an Ärer Syntax.',
+	'validator-error-omitted' => '{{PLURAL:$2|De Wäert|D\'Wäerter}} "$1" {{PLURAL:$2|gouf|goufe}} vergiess.',
 	'validator-error-problem' => 'Et gouf e Problem mam Parameter $1.',
 	'validator_error_unknown_argument' => '$1 ass kee valbele Parameter.',
 	'validator_error_required_missing' => 'Den obligatoresche Parameter $1 war net derbäi.',
@@ -1012,23 +1025,40 @@ $messages['no'] = array(
 	'validator_error_parameters' => 'Følgende {{PLURAL:$1|feil|feil}} har blitt oppdaget i syntaksen din:',
 	'validator_warning_parameters' => 'Det er {{PLURAL:$1|én feil|flere feil}} i syntaksen din.',
 	'validator-warning-adittional-errors' => '... og {{PLURAL:$1|ett problem til|flere problem}}.',
+	'validator-error-omitted' => '{{PLURAL:$2|Verdien|Verdiene}} «$1» har blitt utelatt.',
+	'validator-error-problem' => 'Det var et problem med parameteren $1.',
 	'validator_error_unknown_argument' => '$1 er ikke en gyldig parameter.',
 	'validator_error_required_missing' => 'Den nødvendige parameteren «$1» er ikke angitt.',
 	'validator-error-override-argument' => 'Prøvde å overkjøre parameter $1 (verdi: $2) med verdien «$3»',
+	'validator-listerrors-errors' => 'Feil',
+	'validator-listerrors-minor' => 'Mindre',
+	'validator-listerrors-low' => 'Lav',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'Høy',
+	'validator-listerrors-fatal' => 'Kritisk',
 	'validator_error_empty_argument' => 'Parameteren $1 kan ikke ha en tom verdi.',
-	'validator_error_must_be_number' => 'Parameter $1 må være et tall.',
+	'validator_error_must_be_number' => 'Parameteren $1 må være et tall.',
 	'validator_error_must_be_integer' => 'Parameteren $1 må være et heltall.',
 	'validator-error-must-be-float' => 'Parameter $1 må være et flyttall.',
 	'validator_error_invalid_range' => 'Parameter $1 må være mellom $2 og $3.',
+	'validator-error-invalid-regex' => 'Parameteren $1 må samsvare med dette regulære uttrykket: $2.',
 	'validator-error-invalid-length' => 'Parameter $1 må ha en lengde på $2.',
 	'validator-error-invalid-length-range' => 'Parameter $1 må ha en lengde mellom $2 og $3.',
 	'validator_error_invalid_argument' => 'Verdien $1 er ikke gyldig for parameter $2.',
 	'validator_list_error_empty_argument' => 'Parameteren $1 godtar ikke tomme verdier.',
 	'validator_list_error_must_be_number' => 'Parameteren $1 kan bare inneholde tall.',
-	'validator_list_error_must_be_integer' => 'Parameteren $1 kan bare inneholder heltall.',
+	'validator_list_error_must_be_integer' => 'Parameteren $1 kan bare inneholde heltall.',
+	'validator-list-error-must-be-float' => 'Parameteren $1 kan bare innholde flyttall.',
 	'validator_list_error_invalid_range' => 'Alle verdier av parameteren $1 må være mellom $2 og $3.',
+	'validator-list-error-invalid-regex' => 'Alle verdier av parameteren $1 må samsvare med dette regulære uttrykket: $2.',
 	'validator_list_error_invalid_argument' => 'Parameteren $1 har en eller flere ugyldige verdier.',
+	'validator-list-error-accepts-only' => 'En eller flere verdier for parameteren $1 er ugyldige.
+Den godtar bare {{PLURAL:$3|denne verdien|disse verdiene}}: $2.',
+	'validator-list-error-accepts-only-omitted' => 'En eller flere verdier for parameteren $1 er ugyldige.
+Den godtar bare {{PLURAL:$3|denne verdien|disse verdiene}}: $2 (og $4 {{PLURAL:$4|utelatt verdi|utelatte verdier}}).',
 	'validator_error_accepts_only' => 'Verdien «$4» er ikke gyldig for parameteren $1. Den aksepterer kun {{PLURAL:$3|denne verdien|disse verdiene}}: $2.',
+	'validator-error-accepts-only-omitted' => 'Verdien «$2» er ikke gyldig for parameteren $1.
+Den godtar bare {{PLURAL:$5|denne verdien|disse verdiene}}: $3 (og $4 {{PLURAL:$4|utelatt verdi|utelatte verdier}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Verdien|Verdiene}} $1 har blitt utelatt.',
 );
 
@@ -1223,6 +1253,20 @@ Só {{PLURAL:$3|é aceite este valor|são aceites estes valores}}: $2 (e $4 {{PL
 	'validator-error-accepts-only-omitted' => 'O valor $2 não é válido para o parâmetro $1.
 Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PLURAL:$4|valor omitido|valores omitidos}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|O valor $1 foi omitido|Os valores $1 foram omitidos}}.',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'validator-warning' => 'Avertisment: $1',
+	'validator-fatal-error' => 'Eroare fatală: $1',
+	'validator_error_unknown_argument' => '$1 nu este un parametru valid.',
+	'validator_error_required_missing' => 'Parametrul solicitat „$1” nu este furnizat.',
+	'validator-listerrors-errors' => 'Erori',
+	'validator_error_empty_argument' => 'Parametrul $1 nu poate avea o valoare goală.',
+	'validator_error_must_be_number' => 'Parametrul $1 poate fi doar un număr.',
+	'validator_error_must_be_integer' => 'Parametrul $1 poate fi doar un număr întreg.',
 );
 
 /** Russian (Русский)
