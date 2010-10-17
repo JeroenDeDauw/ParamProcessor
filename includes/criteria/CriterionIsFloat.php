@@ -26,7 +26,7 @@ class CriterionIsFloat extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::validate
 	 */	
 	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
-		return preg_match( '/^\d+(\.\d+)?$/', $value );
+		return preg_match( '/^(-)?\d+((\.|,)\d+)?$/', $value );
 	}
 	
 	/**
