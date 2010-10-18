@@ -69,7 +69,7 @@ class ValidationError {
 	 */
 	public function addTags() {
 		$args = func_get_args();
-		$this->tags += is_array( $args[0] ) ? $args[0] : $args;		
+		$this->tags = array_merge( $this->tags, is_array( $args[0] ) ? $args[0] : $args );		
 	}
 	
 	/**

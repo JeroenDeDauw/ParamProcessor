@@ -326,7 +326,7 @@ class Parameter {
 	 */
 	public function addAliases() {
 		$args = func_get_args();
-		$this->aliases += is_array( $args[0] ) ? $args[0] : $args;
+		$this->aliases = array_merge( $this->aliases, is_array( $args[0] ) ? $args[0] : $args );
 	}	
 	
 	/**
@@ -338,7 +338,7 @@ class Parameter {
 	 */
 	public function addCriteria() {
 		$args = func_get_args();
-		$this->criteria += is_array( $args[0] ) ? $args[0] : $args;		
+		$this->criteria = array_merge( $this->criteria, is_array( $args[0] ) ? $args[0] : $args );		
 	}
 	
 	/**
@@ -351,7 +351,7 @@ class Parameter {
 	 */		
 	public function addDependencies() {
 		$args = func_get_args();
-		$this->dependencies += is_array( $args[0] ) ? $args[0] : $args;
+		$this->dependencies = array_merge( $this->dependencies, is_array( $args[0] ) ? $args[0] : $args );
 	}	
 	
 	/**
@@ -363,7 +363,7 @@ class Parameter {
 	 */
 	public function addManipulations( $manipulations ) {
 		$args = func_get_args();
-		$this->manipulations += is_array( $args[0] ) ? $args[0] : $args;		
+		$this->manipulations = array_merge( $this->manipulations, is_array( $args[0] ) ? $args[0] : $args );		
 	}	
 	
 	/**
