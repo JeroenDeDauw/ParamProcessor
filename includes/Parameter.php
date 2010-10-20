@@ -40,15 +40,6 @@ class Parameter {
 	public static $accumulateParameterErrors = false;	
 	
 	/**
-	 * Indicates if the parameter value should be lowercased.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @var boolean
-	 */
-	public $lowerCaseValue = true;
-	
-	/**
 	 * Indicates if the parameter value should trimmed.
 	 * 
 	 * @since 0.4
@@ -185,96 +176,6 @@ class Parameter {
 	 * @var boolean
 	 */
 	protected $defaulted = false;
-	
-	/**
-	 * Returns a new instance of Parameter by converting a Validator 3.x-style parameter array definition.
-	 * Note: this method is for backward compatibility and should not be used in new code.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @param string $name
-	 * @param array $definition
-	 * 
-	 * @return Parameter
-	 */
-	public static function newFromArray( $name, array $definition ) {
-		$isList = false;
-		$delimiter = ListParameter::DEFAULT_DELIMITER;
-		
-		if ( array_key_exists( 'type', $definition ) ) {
-			if ( is_array( $definition['type'] ) ) {
-				if ( count( $definition['type'] ) > 1 ) {
-					$isList = true;
-					
-					if ( count( $definition['type'] ) > 2 ) {
-						$delimiter = $definition['type'][2];
-					}
-				}
-				
-				$type = $definition['type'][0];
-			}
-			else {
-				$type = $definition['type'];
-			}
-		}
-		else {
-			$type = 'string';
-		}
-		
-		if ( array_key_exists( 'required', $definition ) && $definition['required'] ) {
-			$default = null;
-		}
-		else {
-			$default = array_key_exists( 'default', $definition ) ? $definition['default'] : '';
-		}
-		
-		if ( $isList ) {
-			$parameter = new ListParameter(
-				$name,
-				$delimiter,
-				$type,
-				$default,
-				array_key_exists( 'aliases', $definition ) ? $definition['aliases'] : array(),
-				array_key_exists( 'criteria', $definition ) ? $definition['criteria'] : array()			
-			);
-		}
-		else {
-			$parameter = new Parameter(
-				$name,
-				$type,
-				$default,
-				array_key_exists( 'aliases', $definition ) ? $definition['aliases'] : array(),
-				array_key_exists( 'criteria', $definition ) ? $definition['criteria'] : array()
-			);			
-		}
-		
-		if ( array_key_exists( 'output-types', $definition ) ) {
-			$types = array();
-			
-			for ( $i = 0, $c = count( $definition['output-types'] ); $i < $c; $i++ ) {
-				if ( !is_array( $definition['output-types'][$i] ) ) {
-					$definition['output-types'][$i] = array( $definition['output-types'][$i] );
-				}
-				
-				$types[$name] = $definition['output-types'][$i];
-			}
-		}
-		elseif ( array_key_exists( 'output-type', $definition ) ) {
-			if ( ! is_array( $definition['output-type'] ) ) {
-				$definition['output-type'] = array( $definition['output-type'] );
-			}
-		}
-		
-		if ( array_key_exists( 'tolower', $definition ) ) {
-			$parameter->lowerCaseValue = (bool)$definition['tolower'];
-		}
-		
-		if ( array_key_exists( 'dependencies', $definition ) ) {
-			$parameter->addDependencies( $definition['dependencies'] );
-		}		
-		
-		return $parameter;
-	}
 	
 	/**
 	 * Constructor.
@@ -426,10 +327,6 @@ class Parameter {
 		
 		if ( $this->trimValue ) {
 			$this->value = trim( $this->value );
-		}
-		
-		if ( $this->lowerCaseValue ) {
-			$this->value = strtolower( $this->value );
 		}
 	}
 	

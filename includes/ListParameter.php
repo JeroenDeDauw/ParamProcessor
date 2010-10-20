@@ -118,12 +118,6 @@ class ListParameter extends Parameter {
 				$item = trim( $item );
 			}
 		}		
-		
-		if ( $this->lowerCaseValue ) {
-			foreach ( $this->value as &$item ) {
-				$item = strtolower( $item );
-			}
-		}
 	}	
 	
 	/**

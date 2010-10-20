@@ -23,9 +23,21 @@ class CriterionInArray extends ItemParameterCriterion {
 	protected $allowedValues;
 	
 	/**
+	 * If the values should match case.
+	 * 
+	 * @since 0.4.2
+	 * 
+	 * @var boolean
+	 */
+	protected $careAboutCapitalization = false;
+	
+	/**
 	 * Constructor.
 	 * 
-	 * @param mixed $allowedValues
+	 * You can specify the allowed values either by passing an array,
+	 * or by passing each value as an argument. You can also specify
+	 * if the criterion should care about capitalization or not by
+	 * adding a boolean as last argument. This value default to false.
 	 * 
 	 * @since 0.4
 	 */
@@ -34,6 +46,17 @@ class CriterionInArray extends ItemParameterCriterion {
 		
 		$args = func_get_args();
 		
+		$lastElement = array_pop( $args );
+		
+		if ( is_bool( $lastElement ) ) {
+			// The element is a boolean, so it's the capitalization parameter.
+			$this->careAboutCapitalization = $lastElement;
+		}
+		else {
+			// Add the element back to the array.
+			$args[] = $lastElement;
+		}
+		
 		if ( count( $args ) > 1 ) {
 			$this->allowedValues = $args; 
 		}
@@ -41,7 +64,13 @@ class CriterionInArray extends ItemParameterCriterion {
 			$this->allowedValues = (array)$args[0];
 		}
 		else {
+			// Not a lot that will pass validation in this case :D
 			$this->allowedValues = array();
+		}
+		
+		if ( !$this->careAboutCapitalization ) {
+			// If case doesn't matter, lowercase everything and later on compare a lowercased value.
+			$this->allowedValues = array_map( 'strtolower', $this->allowedValues );
 		}
 	}
 	
@@ -49,7 +78,10 @@ class CriterionInArray extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::validate
 	 */	
 	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
-		return in_array( $value, $this->allowedValues );
+		return in_array(
+			$this->careAboutCapitalization ? $value : strtolower( $value ),
+			$this->allowedValues
+		);
 	}
 	
 	/**

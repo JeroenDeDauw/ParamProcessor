@@ -6,6 +6,11 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 == Validator change log ==
 
+=== Validator 0.4.2 ===
+(2010-1x-xx)
+
+* Removed the lowerCaseValue field in the Parameter class and replaced it's functionality with a ParameterManipulation.
+
 === Validator 0.4.1 ===
 (2010-10-20)
 
