@@ -213,7 +213,7 @@ class Parameter {
 	protected function cleanCriteria( array &$criteria ) {
 		foreach ( $criteria as $key => &$criterion ) {
 			if ( !$criterion instanceof ParameterCriterion )  {
-				$criterion = ParameterCriterion::newFromArray( $key, $criterion );
+				throw new Exception( "$key is not a valid ParameterCriterion." );
 			}
 		} 
 	}
