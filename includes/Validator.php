@@ -209,7 +209,7 @@ class Validator {
 				$cleanedList[$parameter->getName()] = $parameter;
 			}
 			else {
-				$cleanedList[$key] = Parameter::newFromArray( $key, $parameter );
+				throw new Exception( "$key is not a valid Parameter." );
 			}
 		}
 		

@@ -66,19 +66,18 @@ class ValidatorListErrors extends ParserHook {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return array
+	 * @return array of Parameter
 	 */
 	protected function getParameterInfo( $type ) {
 		global $egValidatorErrListMin;
 		
-		return array(
-			'minseverity' => array(
-				'criteria' => array(
-					'in_array' => array_keys( self::$severityMap )
-				),
-				'default' => $egValidatorErrListMin
-			)
-		);
+		$params = array();
+
+		$params['minseverity'] = new Parameter( 'minseverity' );
+		$params['minseverity']->setDefault( $egValidatorErrListMin );
+		$params['minseverity']->addCriteria( new CriterionInArray( array_keys( self::$severityMap ) ) );
+
+ 		return $params;
 	}
 	
 	/**
