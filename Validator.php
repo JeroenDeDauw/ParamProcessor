@@ -52,7 +52,8 @@ $wgAutoloadClasses['ParameterManipulation'] 	= $incDir . 'ParameterManipulation.
 $wgAutoloadClasses['ParserHook'] 				= $incDir . 'ParserHook.php';
 $wgAutoloadClasses['Validator'] 				= $incDir . 'Validator.php';
 $wgAutoloadClasses['TopologicalSort'] 			= $incDir . 'TopologicalSort.php';
-$wgAutoloadClasses['ValidationError']			= $incDir . 'ValidationError.php';
+// No need to autoload this one, since it's directly included below.
+//$wgAutoloadClasses['ValidationError']			= $incDir . 'ValidationError.php';
 $wgAutoloadClasses['ValidationErrorHandler']	= $incDir . 'ValidationErrorHandler.php';
 
 $wgAutoloadClasses['CriterionHasLength']		= $incDir . 'criteria/CriterionHasLength.php';
@@ -94,5 +95,8 @@ function efValidatorSetup() {
 	return true;
 }
 
+// This file needs to be included directly, since Validator_Settings.php
+// uses it, in some rare cases before autoloading is defined.
+require_once 'includes/ValidationError.php' ;
 // Include the settings file.
 require_once 'Validator_Settings.php';
