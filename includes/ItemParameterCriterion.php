@@ -77,6 +77,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 			}
 			
 			if ( $result->hasInvalidItems() ) {
+				var_dump($parameter);exit;
 				$allInvalid = count( $result->getInvalidItems() ) == count( $parameter->getValue() );
 				
 				// If the parameter is required and all items are invalid, it's fatal.
@@ -159,6 +160,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 */			
 	protected function getPartialListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
 		global $wgLang;
+
 		return $this->getFullListErrorMessage( $parameter ) . 
 			wfMsgExt(
 				'validator-error-omitted',
