@@ -77,7 +77,6 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 			}
 			
 			if ( $result->hasInvalidItems() ) {
-				var_dump($parameter);exit;
 				$allInvalid = count( $result->getInvalidItems() ) == count( $parameter->getValue() );
 				
 				// If the parameter is required and all items are invalid, it's fatal.
