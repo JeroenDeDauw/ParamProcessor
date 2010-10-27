@@ -60,16 +60,12 @@ $messages['en'] = array(
 	'validator_list_error_invalid_range' => 'All values of parameter $1 must be between $2 and $3.',
 	'validator-list-error-invalid-regex' => 'All values of parameter $1 must match this regular expression: $2.',
 	'validator_list_error_invalid_argument' => 'One or more values for parameter $1 are invalid.',
-	'validator-list-error-accepts-only' => 'One or more values for parameter $1 are invalid.
-It only accepts {{PLURAL:$3|this value|these values}}: $2.',
-	'validator-list-error-accepts-only-omitted' => 'One or more values for parameter $1 are invalid.
-It only accepts {{PLURAL:$3|this value|these values}}: $2 (and $4 omitted {{PLURAL:$4|value|values}}).',
+	'validator-list-error-accepts-only' => 'One or more values for parameter $1 are invalid. It only accepts {{PLURAL:$3|this value|these values}}: $2.',
+	'validator-list-error-accepts-only-omitted' => 'One or more values for parameter $1 are invalid. It only accepts {{PLURAL:$3|this value|these values}}: $2 (and $4 omitted {{PLURAL:$4|value|values}}).',
 
 	// Criteria errors for single values & lists
-	'validator_error_accepts_only' => 'The value "$4" is not valid for parameter $1.
-It only accepts {{PLURAL:$3|this value|these values}}: $2.',
-	'validator-error-accepts-only-omitted' => 'The value "$2" is not valid for parameter $1.
-It only accepts {{PLURAL:$5|this value|these values}}: $3 (and $4 omitted {{PLURAL:$4|value|values}}).',
+	'validator_error_accepts_only' => 'The value "$4" is not valid for parameter $1. It only accepts {{PLURAL:$3|this value|these values}}: $2.',
+	'validator-error-accepts-only-omitted' => 'The value "$2" is not valid for parameter $1. It only accepts {{PLURAL:$5|this value|these values}}: $3 (and $4 omitted {{PLURAL:$4|value|values}}).',
 
 	'validator_list_omitted' => 'The {{PLURAL:$2|value|values}} $1 {{PLURAL:$2|has|have}} been omitted.',
 );
