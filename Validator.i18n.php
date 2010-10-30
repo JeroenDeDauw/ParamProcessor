@@ -942,6 +942,7 @@ $messages['lb'] = array(
 	'validator_list_error_must_be_integer' => 'Am Parameter $1 kënnen nëmme ganz Zuele sinn.',
 	'validator-list-error-must-be-float' => 'Am Parameter $1 kënnen nëmme Kommazuelen dra sinn.',
 	'validator_list_error_invalid_range' => 'All Wäerter vum Parameter $1 mussen tëschent $2 an $3 leien.',
+	'validator-list-error-invalid-regex' => 'All Wäerter vum Parameter $1 mussen dësem regulären Ausdrock entspriechen: $2',
 	'validator_list_error_invalid_argument' => 'Een oder méi Wäerter fir de Parameter $1 sinn net valabel.',
 	'validator-list-error-accepts-only' => 'Een oder méi Wäerter vum Parameter $1 sinn net valabel.
 En akzeptéiert nëmmen {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2.',
