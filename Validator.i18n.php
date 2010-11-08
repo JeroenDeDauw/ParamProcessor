@@ -685,10 +685,22 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'validator-desc' => 'Validator skići lochke wašnje za druhe rozšěrjenja, zo bychu so parametry parserowych funkcijow a tafličkowych rozšěrjenjow přepruwowali, standardne hódnoty nastajili a zmylkowe powěsće wutworili',
+	'validator-warning' => 'Warnowanje: $1',
+	'validator-error' => 'Zmylk: $1',
+	'validator-fatal-error' => 'Chutny zmylk: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Slědowacy zmylk bu|Slědowacej zmylkaj buštej|Slědowace zmylki buchu|Slědowace zmylki buchu}} w twojej syntaksy {{PLURAL:$1|wotkryty|wotkrytej|wotkryte|wotkryte}}:',
 	'validator_warning_parameters' => '{{PLURAL:$1|Je zmylk|Stej zmylkaj|Su zmylki|Su zmylki}} w twojej syntaksy.',
+	'validator-warning-adittional-errors' => '... a {{PLURAL:$1|dalši problem|dalšej problemaj|dalše problemy|dalše problemy}}.',
+	'validator-error-omitted' => '{{PLURAL:$2|Hódnota "$1" je so wuwostajena|Hódnoće "$1" stej so wuwostajenej|Hódnoty "$1" su so wuwostajene|Hódnoty "$1" su so wuwostajene}}.',
+	'validator-error-problem' => 'Bě problem z parametrom $1.',
 	'validator_error_unknown_argument' => '$1 płaćiwy parameter njeje.',
 	'validator_error_required_missing' => 'Trěbny parameter $1 njeje podaty.',
+	'validator-listerrors-errors' => 'Zmylki',
+	'validator-listerrors-minor' => 'Snadny',
+	'validator-listerrors-low' => 'Niski',
+	'validator-listerrors-normal' => 'Normalny',
+	'validator-listerrors-high' => 'Wysoki',
+	'validator-listerrors-fatal' => 'Chutny',
 	'validator_error_empty_argument' => 'Parameter $1 njemóže prózdnu hódnotu měć.',
 	'validator_error_must_be_number' => 'Parameter $1 móže jenož ličba być.',
 	'validator_error_must_be_integer' => 'Parameter $1 móže jenož cyła ličba być.',
@@ -699,7 +711,7 @@ $messages['hsb'] = array(
 	'validator_list_error_must_be_integer' => 'Parameter $1 móže jenož cyłe ličby wobsahować.',
 	'validator_list_error_invalid_range' => 'Wšě hódnoty parametra $1 dyrbja mjez $2 a $3 być.',
 	'validator_list_error_invalid_argument' => 'Jedna hódnota abo wjace hódnotow za parameter $1 su njepłaćiwe.',
-	'validator_error_accepts_only' => 'Parameter $1 akceptuje jenož {{PLURAL:$3|tutu hódnotu|tutej hódnoće|tute hódnoty|tute hódnoty}}: $2.',
+	'validator_error_accepts_only' => 'Hódnota "$4" za parameter $1 płaćiwa njeje. Akceptuje jenož {{PLURAL:$3|tutu hódnotu|tutej hódnoće|tute hódnoty|tute hódnoty}}: $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|Hódnota|Hódnoće|Hódnoty|Hódnoty}} $1 {{PLURAL:$2|je so wuwostajiła|stej so wuwostajiłoj|su so wuwostajili|su so wuwostajili}}.',
 );
 
