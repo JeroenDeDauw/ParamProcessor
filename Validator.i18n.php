@@ -393,7 +393,7 @@ $messages['dsb'] = array(
 	'validator_list_error_must_be_integer' => 'Parameter $1 móžo jano cełe licby wopśimjeś.',
 	'validator_list_error_invalid_range' => 'Wšykne gódnoty parametra $1 muse mjazy $2 a $3 byś.',
 	'validator_list_error_invalid_argument' => 'Jadna gódnota abo wěcej gódnotow za parameter $1 su njepłaśiwe.',
-	'validator_error_accepts_only' => 'Parameter $1 akceptěrujo jano {{PLURAL:$3|toś tu gódnotu|toś tej gódnośe|toś te gódnoty|toś te gódnoty}}: $2.',
+	'validator_error_accepts_only' => 'Gódnota "$4" njejo płaśiwa za parameter $1. Akcepteptěrujo se jano {{PLURAL:$3|toś ta gódnota|toś tej gódnośe|toś te gódnoty|toś te gódnoty}}: $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|Gódnota|Gódnośe|Gódnoty|Gódnoty}} $1 {{PLURAL:$2|jo se wuwóstajiła|stej se wuwóstajiłej|su se wuwóstajili|su se wuwostajili}}.',
 );
 
