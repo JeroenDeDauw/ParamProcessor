@@ -1544,10 +1544,16 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'validator-desc' => 'Bộ phê chuẩn cho phép các phần mở rộng khác phê chuẩn tham số của hàm cú pháp và thẻ mở rộng, đặt giá trị mặc định, và báo cáo lỗi.',
+	'validator-warning' => 'Cảnh báo: $1',
+	'validator-error' => 'Lỗi: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Lỗi|Các lỗi}} cú pháp sau được nhận ra trong mã của bạn:',
 	'validator_warning_parameters' => 'Có {{PLURAL:$1|lỗi|lỗi}} cú pháp trong mã của bạn.',
 	'validator_error_unknown_argument' => '$1 không phải là tham số hợp lệ.',
 	'validator_error_required_missing' => 'Không định rõ tham số bắt buộc “$1”.',
+	'validator-listerrors-errors' => 'Lỗi',
+	'validator-listerrors-low' => 'Thấp',
+	'validator-listerrors-normal' => 'Thường',
+	'validator-listerrors-high' => 'Cao',
 	'validator_error_empty_argument' => 'Tham số “$1” không được để trống.',
 	'validator_error_must_be_number' => 'Tham số “$1” phải là con số.',
 	'validator_error_must_be_integer' => 'Tham số “$1” phải là số nguyên.',
@@ -1558,7 +1564,7 @@ $messages['vi'] = array(
 	'validator_list_error_must_be_integer' => 'Tham số “$1” chỉ được phép bao gồm số nguyên.',
 	'validator_list_error_invalid_range' => 'Tất cả các giá trị của tham số “$1” phải nằm giữa $2 và $3.',
 	'validator_list_error_invalid_argument' => 'Ít nhất một giá trị của tham số “$1” không hợp lệ.',
-	'validator_error_accepts_only' => 'Tham số $1 chỉ nhận được {{PLURAL:$3|giá trị|các giá trị}} này: $2.',
+	'validator_error_accepts_only' => 'Tham số $1 có giá trị không hợp lệ “$4”. Tham số chỉ nhận được {{PLURAL:$3|giá trị|các giá trị}} này: $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|Giá trị|Các giá trị}} “$1” bị bỏ qua.',
 );
 
