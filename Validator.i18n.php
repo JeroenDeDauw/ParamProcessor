@@ -245,7 +245,9 @@ $messages['br'] = array(
 	'validator_error_empty_argument' => "N'hall ket an arventenn $1 bezañ goullo he zalvoudenn",
 	'validator_error_must_be_number' => 'Un niver e rank an arventenn $1 bezañ hepken.',
 	'validator_error_must_be_integer' => 'Rankout a ra an arventenn $1 bezañ un niver anterin.',
+	'validator-error-must-be-float' => 'Rankout a ra an arventenn $1 bezañ un niver skej war-neuñv.',
 	'validator_error_invalid_range' => 'Rankout a ra an arventenn $1 bezañ etre $2 hag $3.',
+	'validator-error-invalid-regex' => 'Rankout a ra an arventenn $1 klotañ gant ar jedad poellek-mañ : $2.',
 	'validator-error-invalid-length' => "Ret eo d'an arventenn $1 bezañ par he hed da $2.",
 	'validator-error-invalid-length-range' => 'Rankout a ra an arventenn $1 bezañ he hed etre $2 hag $3.',
 	'validator_error_invalid_argument' => "N'eo ket reizh an dalvoudenn $1 evit an arventenn $2.",
@@ -254,6 +256,7 @@ $messages['br'] = array(
 	'validator_list_error_must_be_integer' => "N'hall bezañ nemet niveroù anterin en arventenn $1.",
 	'validator-list-error-must-be-float' => "N'hall bezañ nemet niveroù gant skej en arventenn $1.",
 	'validator_list_error_invalid_range' => 'An holl talvoudennoù eus an arventenn $1 a rank bezañ etre $2 ha $3.',
+	'validator-list-error-invalid-regex' => 'Rankout a ra holl dalvoudoù an arventenn $1 klotañ gant ar jedad poellek-mañ : $2.',
 	'validator_list_error_invalid_argument' => 'Faziek eo unan pe meur a dalvoudenn eus an arventenn $1.',
 	'validator-list-error-accepts-only' => 'Direizh eo unan pe meur a hini eus an talvoudoù evit an arventenn $1.
 Ne zegemer nemet an {{PLURAL:$3|talvoud|talvoudoù}}-mañ : $2.',
