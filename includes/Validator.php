@@ -61,6 +61,16 @@ class Validator {
 	 */
 	protected $element;
 	
+	/** 
+	 * Indicates if unknown parameters should be seen as invalid.
+	 * If this value is false, they will simply be ignored.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @var boolean
+	 */
+	protected $unknownInvalid;
+	
 	/**
 	 * Constructor.
 	 * 
@@ -68,8 +78,9 @@ class Validator {
 	 * 
 	 * @since 0.4
 	 */
-	public function __construct( $element = '' ) {
+	public function __construct( $element = '', $unknownInvalid = true ) {
 		$this->element = $element;
+		$this->unknownInvalid = $unknownInvalid;
 	}
 	
 	/**
@@ -224,7 +235,7 @@ class Validator {
 	public function validateParameters() {
 		$this->doParamProcessing();
 		
-		if ( !$this->hasfatalError() ) {
+		if ( !$this->hasFatalError() && $this->unknownInvalid ) {
 			// Loop over the remaining raw parameters.
 			// These are unrecognized parameters, as they where not used by any parameter definition.
 			foreach ( $this->rawParameters as $paramName => $paramValue ) {
