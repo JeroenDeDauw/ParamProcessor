@@ -981,6 +981,7 @@ $messages['lb'] = array(
 	'validator_error_must_be_integer' => 'De Parameter $1 ka just eng ganz Zuel sinn.',
 	'validator-error-must-be-float' => 'Parameter $1 kann nëmmen eng Féisskommazuel sinn.',
 	'validator_error_invalid_range' => 'De Parameter $1 muss tëschent $2 an $3 leien.',
+	'validator-error-invalid-regex' => 'De Parameter $1 muss esou ausgesinn: $2',
 	'validator-error-invalid-length' => 'Parameter $1 muss eng Längt vu(n) $2 hunn.',
 	'validator-error-invalid-length-range' => 'De Parameter $1 muss eng Längt tëschent $2 an $3 hunn.',
 	'validator_error_invalid_argument' => 'De Wäert $1 ass net valabel fir de Parameter $2.',
