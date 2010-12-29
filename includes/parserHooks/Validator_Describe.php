@@ -91,6 +91,7 @@ class ValidatorDescribe extends ParserHook {
 	public function render( array $parameters ) {
 		$parts = array();
 		
+		// Loop over the hooks for which the docs should be added.
 		foreach ( $parameters['hooks'] as $hookName ) {
 			$parserHook = $this->getParserHookInstance( $hookName );
 			
@@ -102,6 +103,7 @@ class ValidatorDescribe extends ParserHook {
 			}
 		}
 		
+		// Parse the wikitext to HTML.
 		$output = $this->parser->parse(
 			implode( "\n\n", $parts ),
 			$this->parser->mTitle,
@@ -114,6 +116,17 @@ class ValidatorDescribe extends ParserHook {
 		return str_replace( 'pre!&gt;', 'pre&gt;', $output->getText() );
 	}
 	
+	/**
+	 * Returns the wikitext description for a single parser hook.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @param string $hookName
+	 * @param array $parameters
+	 * @param ParserHook $parserHook
+	 * 
+	 * @return string
+	 */
 	protected function getParserHookDescription( $hookName, array $parameters, ParserHook $parserHook ) {
 		$descriptionData = $parserHook->getDescriptionData( ParserHook::TYPE_TAG ); // TODO
 
@@ -133,6 +146,15 @@ class ValidatorDescribe extends ParserHook {
 		return $description;
 	}
 	
+	/**
+	 * Returns the wikitext for a table listing the provided parameters.
+	 *  
+	 * @since 0.4.3
+	 *  
+	 * @param array $parameters
+	 * 
+	 * @return string
+	 */
 	protected function getParameterTable( array $parameters ) {
 		$tableRows = array();
 		
@@ -159,6 +181,15 @@ EOT;
 		return $table; // TODO
 	}
 	
+	/**
+	 * Returns the wikitext for a table row describing a single parameter.
+	 * 
+	 * @since 0.4.3
+	 *  
+	 * @param Parameter $parameter
+	 * 
+	 * @return string
+	 */
 	protected function getDescriptionRow( Parameter $parameter ) {
 		$aliases = $parameter->getAliases();
 		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
