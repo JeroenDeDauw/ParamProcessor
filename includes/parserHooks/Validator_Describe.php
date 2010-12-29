@@ -59,6 +59,9 @@ class ValidatorDescribe extends ParserHook {
 
 		$params['hooks'] = new ListParameter( 'hooks' );
 		
+		$params['pre'] = new Parameter( 'pre', Parameter::TYPE_BOOLEAN );
+		$params['pre']->setDefault( 'off' );
+		
  		return $params;
 	}	
 	
@@ -94,19 +97,39 @@ class ValidatorDescribe extends ParserHook {
 				$parts[] = wfMsgExt( 'validator-describe-notfound', 'parsemag', $hookName );
 			}
 			else {
-				$parts[] = $this->getParserHookDescription( $parserHook );
+				$parts[] = $this->getParserHookDescription( $hookName, $parameters, $parserHook );
 			}
 		}
 		
-		return implode( "\n\n", $parts );
+		$output = $this->parser->parse(
+			implode( "\n\n", $parts ),
+			$this->parser->mTitle,
+			$this->parser->mOptions,
+			true,
+			false
+		);
+		
+		return $output->getText();
 	}
 	
-	protected function getParserHookDescription( ParserHook $parserHook ) {
+	protected function getParserHookDescription( $hookName, array $parameters, ParserHook $parserHook ) {
 		$descriptionData = $parserHook->getDescriptionData( ParserHook::TYPE_TAG ); // TODO
+
+		$description = "<h2> {$hookName} </h2>\n\n";
 		
+		$description .= $this->getParameterTable( $descriptionData['parameters'] );
+		
+		if ( $parameters['pre'] ) {
+			$description = '<pre>' . $description . '</pre>';
+		}
+		
+		return $description;
+	}
+	
+	protected function getParameterTable( array $parameters ) {
 		$tableRows = array();
 		
-		foreach ( $descriptionData['parameters'] as $parameter ) {
+		foreach ( $parameters as $parameter ) {
 			$tableRows[] = $this->getDescriptionRow( $parameter );
 		}
 		
@@ -119,14 +142,13 @@ class ValidatorDescribe extends ParserHook {
 		$table = implode( "\n|-\n", $tableRows );
 		
 		$table = <<<EOT
-{| class="wikitable sortable"'
+{| class="wikitable sortable"
 {$table}
 |}
 EOT;
 		}
 		
-		//return $table; // TODO
-		return '<pre>' . $table . '</pre>';
+		return $table; // TODO
 	}
 	
 	protected function getDescriptionRow( Parameter $parameter ) {
