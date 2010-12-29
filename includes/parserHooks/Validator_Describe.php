@@ -110,13 +110,19 @@ class ValidatorDescribe extends ParserHook {
 			false
 		);
 		
-		return $output->getText();
+		// This str_replace is a hack to allow for placing <pre>s into <pre>s, without breaking the outer ones.
+		return str_replace( 'pre!&gt;', 'pre&gt;', $output->getText() );
 	}
 	
 	protected function getParserHookDescription( $hookName, array $parameters, ParserHook $parserHook ) {
 		$descriptionData = $parserHook->getDescriptionData( ParserHook::TYPE_TAG ); // TODO
 
 		$description = "<h2> {$hookName} </h2>\n\n";
+		
+		if ( $descriptionData['description'] !== false ) {
+			$description .= wfMsgExt( 'validator-describe-descriptionmsg', 'parsemag', $descriptionData['description'] );
+			$description .= "\n\n";
+		}		
 		
 		$description .= $this->getParameterTable( $descriptionData['parameters'] );
 		
@@ -146,6 +152,7 @@ class ValidatorDescribe extends ParserHook {
 {| class="wikitable sortable"
 {$table}
 |}
+<pre!>..</pre!>
 EOT;
 		}
 		
@@ -183,6 +190,13 @@ EOT;
 	protected function getParserHookInstance( $parserHookName ) {
 		$className = ParserHook::getHookClassName( $parserHookName );
 		return $className !== false && class_exists( $className ) ? new $className() : false;
+	}
+	
+	/**
+	 * @see ParserHook::getDescription()
+	 */
+	public function getDescription() {
+		return wfMsg( 'validator-describe-description' );
 	}
 	
 }

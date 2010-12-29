@@ -42,7 +42,9 @@ $messages['en'] = array(
 	'validator-listerrors-fatal' => 'Fatal',
 
 	// Describe
+	'validator-describe-description' => 'Generates documentation for one or more parser hooks defined via Validator.',
 	'validator-describe-notfound' => 'There is no parser hook that handles "$1".',
+	'validator-describe-descriptionmsg' => "'''Description''': $1", // Because it's 1360 < 3
 
 	// Criteria errors for single values
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',

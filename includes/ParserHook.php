@@ -401,6 +401,9 @@ abstract class ParserHook {
 	
 	/**
 	 * Returns the data needed to describe the parser hook.
+	 * This is mainly needed because some of the individual get methods
+	 * that return the needed data are protected, and cannot be made
+	 * public without breaking b/c in a rather bad way.
 	 * 
 	 * @since 0.4.3
 	 * 
@@ -410,9 +413,22 @@ abstract class ParserHook {
 	 */
 	public function getDescriptionData( $type ) {
 		return array(
+			'description' => $this->getDescription(),
 			'parameters' => $this->getParameterInfo( $type ),
 			'defaults' => $this->getDefaultParameters( $type ),
 		);
+	}
+	
+	/**
+	 * Returns a description message for the parser hook, or false when there is none.
+	 * Override in deriving classes to add a message.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @return mixed string or false
+	 */
+	public function getDescription() {
+		return false;
 	}
 	
 }
