@@ -58,6 +58,7 @@ class ValidatorDescribe extends ParserHook {
 		$params = array();
 
 		$params['hooks'] = new ListParameter( 'hooks' );
+		$params['hooks']->setDefault( array_keys( ParserHook::getRegisteredParserHooks() ) );
 		
 		$params['pre'] = new Parameter( 'pre', Parameter::TYPE_BOOLEAN );
 		$params['pre']->setDefault( 'off' );
@@ -155,8 +156,9 @@ EOT;
 		$aliases = $parameter->getAliases();
 		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
 		
-		$default = $parameter->isRequired() ? "''required''" : $parameter->getDefault(); 
-		if ( $default == '' ) $default = "''empty''"; 
+		$default = $parameter->isRequired() ? "''required''" : $parameter->getDefault();
+		if ( is_array( $default ) ) $default = implode( ', ', $default );  
+		if ( $default === '' ) $default = "''empty''";
 		
 		// TODO
 		
