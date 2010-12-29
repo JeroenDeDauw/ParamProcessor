@@ -59,9 +59,11 @@ class ValidatorDescribe extends ParserHook {
 
 		$params['hooks'] = new ListParameter( 'hooks' );
 		$params['hooks']->setDefault( array_keys( ParserHook::getRegisteredParserHooks() ) );
+		$params['hooks']->setDescription( wfMsg( 'validator-describe-par-hooks' ) );
 		
 		$params['pre'] = new Parameter( 'pre', Parameter::TYPE_BOOLEAN );
 		$params['pre']->setDefault( 'off' );
+		$params['pre']->setDescription( wfMsg( 'validator-describe-par-pre' ) );
 		
  		return $params;
 	}	
@@ -162,11 +164,12 @@ class ValidatorDescribe extends ParserHook {
 			$tableRows[] = $this->getDescriptionRow( $parameter );
 		}
 		
-		if ( count( $tableRows ) > 0 ) {
+		if ( count( $tableRows ) > 0 ) { // i18n
 			$tableRows = array_merge( array( '! Parameter
 ! Aliases
+! Type
 ! Default
-! Usage' ), $tableRows );
+! Description' ), $tableRows );
 			
 		$table = implode( "\n|-\n", $tableRows );
 		
@@ -174,11 +177,10 @@ class ValidatorDescribe extends ParserHook {
 {| class="wikitable sortable"
 {$table}
 |}
-<pre!>..</pre!>
 EOT;
 		}
 		
-		return $table; // TODO
+		return $table;
 	}
 	
 	/**
@@ -198,13 +200,19 @@ EOT;
 		if ( is_array( $default ) ) $default = implode( ', ', $default );  
 		if ( $default === '' ) $default = "''empty''";
 		
-		// TODO
+		$description = $parameter->getDescription();
+		if ( $description === false ) $description = '-'; 
+		
+		// TODO: some mapping to make the type names more user-friendly
+		$type = $parameter->getType();
+		if ( $parameter->isList() ) $type = wfMsgExt( 'validator-describe-listtype', 'parsemag', $type );
 		
 		return <<<EOT
 | {$parameter->getName()}
 | {$aliases}
+| {$type}
 | {$default}
-| Description be here.
+| {$description}
 EOT;
 	}
 	

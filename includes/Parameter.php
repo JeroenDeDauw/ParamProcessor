@@ -178,6 +178,16 @@ class Parameter {
 	protected $defaulted = false;
 	
 	/**
+	 * A description for the parameter or false when there is none.
+	 * Can be obtained via getDescription and set via setDescription.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @var mixed string or false
+	 */
+	protected $description = false;
+	
+	/**
 	 * Constructor.
 	 * 
 	 * @since 0.4
@@ -446,6 +456,17 @@ class Parameter {
 	 */			
 	public function &getValue() {
 		return $this->value;
+	}
+	
+	/**
+	 * Returns the type of the parameter.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @return string element of the Parameter::TYPE_ enum 
+	 */
+	public function getType() {
+		return $this->type;
 	}
 	
 	/**
@@ -722,6 +743,29 @@ class Parameter {
 		}
 		
 		return false;
-	}		
+	}
+
+	/**
+	 * Returns a description message for the parameter, or false when there is none.
+	 * Override in deriving classes to add a message.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @return mixed string or false
+	 */
+	public function getDescription() {
+		return $this->description;
+	}
+	
+	/**
+	 * Sets a description message for the parameter.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @param string $descriptionMessage
+	 */
+	public function setDescription( $descriptionMessage ) {
+		$this->description = $descriptionMessage;
+	}	
 	
 }

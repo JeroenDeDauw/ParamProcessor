@@ -45,6 +45,9 @@ $messages['en'] = array(
 	'validator-describe-description' => 'Generates documentation for one or more parser hooks defined via Validator.',
 	'validator-describe-notfound' => 'There is no parser hook that handles "$1".',
 	'validator-describe-descriptionmsg' => "'''Description''': $1", // Because it's 1360 < 3
+	'validator-describe-par-hooks' => 'The parser hooks for which to display documentation.',
+	'validator-describe-par-pre' => 'Allows you to get the actual wikitext for the documentation, without it being rendered on the page.',
+	'validator-describe-listtype' => 'List of $1 items',
 
 	// Criteria errors for single values
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',
