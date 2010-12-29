@@ -68,14 +68,14 @@ abstract class ParserHook {
 	 * 
 	 * @var boolean
 	 */
-	protected $forTagExtensions; 
+	public $forTagExtensions; 
 	
 	/**
 	 * @since 0.4
 	 * 
 	 * @var boolean
 	 */	
-	protected $forParserFunctions; 
+	public $forParserFunctions; 
 	
 	/**
 	 * Gets the name of the parser hook.
@@ -121,9 +121,13 @@ abstract class ParserHook {
 	 */
 	public function init( Parser &$wgParser ) {
 		$className = get_class( $this );
+		$first = true;
 		
 		foreach ( $this->getNames() as $name ) {
-			self::$registeredHooks[$name] = $className;
+			if ( $first ) {
+				self::$registeredHooks[$name] = $className;
+				$first = false;
+			}
 			
 			if ( $this->forTagExtensions ) {
 				$wgParser->setHook(
@@ -413,6 +417,7 @@ abstract class ParserHook {
 	 */
 	public function getDescriptionData( $type ) {
 		return array(
+			'names' => $this->getNames(),
 			'description' => $this->getDescription(),
 			'parameters' => $this->getParameterInfo( $type ),
 			'defaults' => $this->getDefaultParameters( $type ),

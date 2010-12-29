@@ -130,6 +130,8 @@ class ValidatorDescribe extends ParserHook {
 	 * @return string
 	 */
 	protected function getParserHookDescription( $hookName, array $parameters, ParserHook $parserHook ) {
+		global $wgLang;
+		
 		$descriptionData = $parserHook->getDescriptionData( ParserHook::TYPE_TAG ); // TODO
 
 		$description = "<h2> {$hookName} </h2>\n\n";
@@ -137,7 +139,34 @@ class ValidatorDescribe extends ParserHook {
 		if ( $descriptionData['description'] !== false ) {
 			$description .= wfMsgExt( 'validator-describe-descriptionmsg', 'parsemag', $descriptionData['description'] );
 			$description .= "\n\n";
-		}		
+		}
+		
+		if ( count( $descriptionData['names'] ) > 1 ) {
+			$aliases = array();
+			
+			foreach ( $descriptionData['names'] as $name ) {
+				if ( $name != $hookName ) {
+					$aliases[] = $name;
+				}
+			}
+			
+			$description .= wfMsgExt( 'validator-describe-aliases', 'parsemag', $wgLang->listToText( $aliases ) );
+			$description .= "\n\n";
+		}
+		
+		if ( $parserHook->forTagExtensions || $parserHook->forParserFunctions ) {
+			if ( $parserHook->forTagExtensions && $parserHook->forParserFunctions ) {
+				$description .= wfMsg( 'validator-describe-bothhooks' );
+			}
+			else if ( $parserHook->forTagExtensions ) {
+				$description .= wfMsg( 'validator-describe-tagextension' );
+			}
+			else { // if $parserHook->forParserFunctions
+				$description .= wfMsg( 'validator-describe-parserfunction' );
+			}
+			
+			$description .= "\n\n";
+		}
 		
 		$description .= $this->getParameterTable( $descriptionData['parameters'] );
 		
