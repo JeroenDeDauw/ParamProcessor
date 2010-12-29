@@ -17,6 +17,39 @@ abstract class ParserHook {
 	const TYPE_FUNCTION = 1;
 	
 	/**
+	 * @since 0.4.3
+	 * 
+	 * @var array
+	 */
+	protected static $registeredHooks = array();
+	
+	/**
+	 * Returns an array of registered parser hooks (keys) and their handling
+	 * ParserHook deriving class names (values).
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @return array
+	 */
+	public static function getRegisteredParserHooks() {
+		return self::$registeredHooks;
+	}
+	
+	/**
+	 * Returns the name of the ParserHook deriving class that defines a certain parser hook,
+	 * or false if there is none.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @param string $hookName
+	 * 
+	 * @return mixed string or false
+	 */
+	public static function getHookClassName( $hookName ) {
+		return array_key_exists( $hookName, self::$registeredHooks ) ? self::$registeredHooks[$hookName] : false;
+	}
+	
+	/**
 	 * @since 0.4
 	 * 
 	 * @var Validator
@@ -90,6 +123,8 @@ abstract class ParserHook {
 		$className = get_class( $this );
 		
 		foreach ( $this->getNames() as $name ) {
+			self::$registeredHooks[$name] = $className;
+			
 			if ( $this->forTagExtensions ) {
 				$wgParser->setHook(
 					$this->getTagName( $name ),
@@ -362,7 +397,23 @@ abstract class ParserHook {
 	 */
 	protected function getDefaultParameters( $type ) {
 		return array();
-	}	
+	}
+	
+	/**
+	 * Returns the data needed to describe the parser hook.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @param integer $type Item of the ParserHook::TYPE_ enum
+	 * 
+	 * @return array
+	 */
+	public function getDescriptionData( $type ) {
+		return array(
+			'parameters' => $this->getParameterInfo( $type ),
+			'defaults' => $this->getDefaultParameters( $type ),
+		);
+	}
 	
 }
 

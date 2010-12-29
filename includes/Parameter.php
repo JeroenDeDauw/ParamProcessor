@@ -688,6 +688,17 @@ class Parameter {
 	}
 	
 	/**
+	 * Returns the default value.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @return mixed
+	 */
+	public function getDefault() {
+		return $this->default; 
+	}
+	
+	/**
 	 * Set if the parameter manipualations should be applied to the default value.
 	 * 
 	 * @since 0.4

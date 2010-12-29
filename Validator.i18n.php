@@ -41,6 +41,9 @@ $messages['en'] = array(
 	'validator-listerrors-high' => 'High',
 	'validator-listerrors-fatal' => 'Fatal',
 
+	// Describe
+	'validator-describe-notfound' => 'There is no parser hook that handles "$1".',
+
 	// Criteria errors for single values
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',
 	'validator_error_must_be_number' => 'Parameter $1 can only be a number.',
