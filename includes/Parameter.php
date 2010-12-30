@@ -470,6 +470,20 @@ class Parameter {
 	}
 	
 	/**
+	 * Returns an internationalized message indicating the parameter type suited for display to users. 
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @return string
+	 */
+	public function getTypeMessage() {
+		$message = wfMsg( 'validator-type-' . $this->type );
+		return $this->isList() ?
+			wfMsgExt( 'validator-describe-listtype', 'parsemag', $message )
+			: Language::ucfirst( $message );  
+	}
+	
+	/**
 	 * Returns a list of dependencies the parameter has, in the form of 
 	 * other parameter names.
 	 * 

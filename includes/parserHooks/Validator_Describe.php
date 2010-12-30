@@ -196,23 +196,73 @@ class ValidatorDescribe extends ParserHook {
 		$result = '<h3>' . wfMsg( 'validator-describe-syntax' ) . "</h3>\n\n";
 		
 		$params = array();
+		$requiredParams = array();
 		
 		foreach ( $parameters as $parameter ) {
-			$params[$parameter->getName()] = '{' . $parameter->getType() . '}';
+			$params[$parameter->getName()] = '{' . $parameter->getTypeMessage() . '}';
+			
+			if ( $parameter->isRequired() ) {
+				$requiredParams[$parameter->getName()] = '{' . $parameter->getTypeMessage() . '}';
+			}
 		}
 		
 		if ( $parserHook->forTagExtensions ) {
+			$result .= "'''" . wfMsg( 'validator-describe-tagmin' ) . "'''\n\n";
+			
+			$result .= "<pre!><nowiki>\n" . Xml::element(
+				$hookName,
+				$requiredParams
+			) . "</nowiki></pre!>";
+			
+			$result .= "'''" . wfMsg( 'validator-describe-tagmax' ) . "'''\n\n";
+			
 			$result .= "<pre!><nowiki>\n" . Xml::element(
 				$hookName,
 				$params
-			) . "\n</nowiki></pre!>";
+			) . "</nowiki></pre!>";
+			
+			// TODO: example using the default if relevant
 		}
 		
 		if ( $parserHook->forParserFunctions ) {
-			// TODO
+			$result .= "'''" . wfMsg( 'validator-describe-pfmin' ) . "'''\n\n";
+			
+			$result .= "<pre!><nowiki>\n" . 
+				$this->buildParserFunctionSyntax( $hookName, $requiredParams )
+				. "</nowiki></pre!>";			
+			
+			$result .= "'''" . wfMsg( 'validator-describe-pfmax' ) . "'''\n\n";
+			
+			$result .= "<pre!><nowiki>\n" . 
+				$this->buildParserFunctionSyntax( $hookName, $params )
+				. "</nowiki></pre!>";			
 		}
 		
 		return $result;
+	}
+	
+	/**
+	 * Builds the wikitext syntax for a parser function.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @param string $functionName
+	 * @param array $parameters Parameters (keys) and their type (values)
+	 * 
+	 * @return string
+	 */
+	protected function buildParserFunctionSyntax( $functionName, array $parameters ) {
+		$arguments = array();
+		
+		foreach ( $parameters as $name => $type ) {
+			$arguments[] = "$name=$type";
+		}
+		
+		$singleLine = count( $arguments ) <= 3;
+		$delimiter = $singleLine ? '|' : "\n| "; 
+		$wrapper = $singleLine ? '' : "\n";
+		
+		return "{{#$functionName:$wrapper" . implode( $delimiter, $arguments ) . $wrapper . '}}';
 	}
 	
 	/**
@@ -274,9 +324,7 @@ class ValidatorDescribe extends ParserHook {
 		$description = $parameter->getDescription();
 		if ( $description === false ) $description = '-'; 
 		
-		// TODO: some mapping to make the type names more user-friendly
-		$type = $parameter->getType();
-		if ( $parameter->isList() ) $type = wfMsgExt( 'validator-describe-listtype', 'parsemag', $type );
+		$type = $parameter->getTypeMessage();
 		
 		$number = 0;
 		$isDefault = false;

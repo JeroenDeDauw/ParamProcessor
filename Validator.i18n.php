@@ -41,6 +41,14 @@ $messages['en'] = array(
 	'validator-listerrors-high' => 'High',
 	'validator-listerrors-fatal' => 'Fatal',
 
+	// Parameter types
+	'validator-type-string' => 'text',
+	'validator-type-number' => 'number',
+	'validator-type-integer' => 'whole number',
+	'validator-type-float' => 'number',
+	'validator-type-boolean' => 'yes/no',
+	'validator-type-char' => 'character',
+
 	// Describe
 	'validator-describe-description' => 'Generates documentation for one or more parser hooks defined via Validator.',
 	'validator-describe-notfound' => 'There is no parser hook that handles "$1".',
@@ -61,6 +69,10 @@ $messages['en'] = array(
 	'validator-describe-header-description' => 'Description',
 	'validator-describe-parameters' => 'Parameters',
 	'validator-describe-syntax' => 'Syntax',
+	'validator-describe-tagmin' => 'Tag extension with only the required parameters.',
+	'validator-describe-tagmax' => 'Tag extension with all parameters.',
+	'validator-describe-pfmin' => 'Parser function with only the required parameters.',
+	'validator-describe-pfmax' => 'Parser function with all parameters.',
 
 	// Criteria errors for single values
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',
