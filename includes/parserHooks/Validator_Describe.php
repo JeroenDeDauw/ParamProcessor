@@ -232,14 +232,14 @@ class ValidatorDescribe extends ParserHook {
 			$tableRows[] = $this->getDescriptionRow( $parameter, $defaults );
 		}
 		
-		if ( count( $tableRows ) > 0 ) { // i18n
+		if ( count( $tableRows ) > 0 ) {
 			$tableRows = array_merge( array( 
 			"! #\n" .
-			'!' . wfMsg( 'validator-describe-parameter' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-aliases' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-type' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-default' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-description' )
+			'!' . wfMsg( 'validator-describe-header-parameter' ) ."\n" .
+			'!' . wfMsg( 'validator-describe-header-aliases' ) ."\n" .
+			'!' . wfMsg( 'validator-describe-header-type' ) ."\n" .
+			'!' . wfMsg( 'validator-describe-header-default' ) ."\n" .
+			'!' . wfMsg( 'validator-describe-header-description' )
 			), $tableRows );
 			
 		$table = implode( "\n|-\n", $tableRows );
