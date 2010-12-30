@@ -52,6 +52,15 @@ $messages['en'] = array(
 	'validator-describe-par-hooks' => 'The parser hooks for which to display documentation.',
 	'validator-describe-par-pre' => 'Allows you to get the actual wikitext for the documentation, without it being rendered on the page.',
 	'validator-describe-listtype' => 'List of $1 items',
+	'validator-describe-empty' => 'empty',
+	'validator-describe-required' => 'required',
+	'validator-describe-parameter' => 'Parameter',
+	'validator-describe-aliases' => 'Aliases',
+	'validator-describe-type' => 'Type',
+	'validator-describe-default' => 'Default',
+	'validator-describe-description' => 'Description',
+	'validator-describe-parameters' => 'Parameters',
+	'validator-describe-syntax' => 'Syntax',
 
 	// Criteria errors for single values
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',

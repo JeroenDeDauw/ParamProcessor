@@ -193,7 +193,7 @@ class ValidatorDescribe extends ParserHook {
 	 * @return string
 	 */	
 	protected function getSyntaxExamples( $hookName, array $parameters, ParserHook $parserHook ) {
-		$result = "<h3>Syntax</h3>\n\n"; // TODO: i18n
+		$result = '<h3>' . wfMsg( 'validator-describe-syntax' ) . "</h3>\n\n";
 		
 		$params = array();
 		
@@ -233,22 +233,21 @@ class ValidatorDescribe extends ParserHook {
 		}
 		
 		if ( count( $tableRows ) > 0 ) { // i18n
-			$tableRows = array_merge( array( '! #
-! Parameter
-! Aliases
-! Type
-! Default
-! Description' ), $tableRows );
+			$tableRows = array_merge( array( 
+			"! #\n" .
+			'!' . wfMsg( 'validator-describe-parameter' ) ."\n" .
+			'!' . wfMsg( 'validator-describe-aliases' ) ."\n" .
+			'!' . wfMsg( 'validator-describe-type' ) ."\n" .
+			'!' . wfMsg( 'validator-describe-default' ) ."\n" .
+			'!' . wfMsg( 'validator-describe-description' )
+			), $tableRows );
 			
 		$table = implode( "\n|-\n", $tableRows );
 		
-		$table = <<<EOT
-<h3>Parameters</h3>
-
-{| class="wikitable sortable"
-{$table}
-|}
-EOT;
+		$table = '<h3>' . wfMsg( 'validator-describe-parameters' ) . '</h3>' . "\n" .
+				'{| class="wikitable sortable"' . "\n" .
+				$table .
+				"\n|}";
 		}
 		
 		return $table;
@@ -268,9 +267,9 @@ EOT;
 		$aliases = $parameter->getAliases();
 		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
 		
-		$default = $parameter->isRequired() ? "''required''" : $parameter->getDefault();
+		$default = $parameter->isRequired() ? "''" . wfMsg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
 		if ( is_array( $default ) ) $default = implode( ', ', $default );  
-		if ( $default === '' ) $default = "''empty''";
+		if ( $default === '' ) $default = "''" . wfMsg( 'validator-describe-empty' ) . "''";
 		
 		$description = $parameter->getDescription();
 		if ( $description === false ) $description = '-'; 
