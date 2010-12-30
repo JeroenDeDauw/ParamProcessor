@@ -150,7 +150,7 @@ class ValidatorDescribe extends ParserHook {
 				}
 			}
 			
-			$description .= wfMsgExt( 'validator-describe-aliases', 'parsemag', $wgLang->listToText( $aliases ) );
+			$description .= wfMsgExt( 'validator-describe-aliases', 'parsemag', $wgLang->listToText( $aliases ), count( $aliases ) );
 			$description .= "\n\n";
 		}
 		
