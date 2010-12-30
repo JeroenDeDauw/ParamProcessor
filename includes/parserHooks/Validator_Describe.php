@@ -168,7 +168,11 @@ class ValidatorDescribe extends ParserHook {
 			$description .= "\n\n";
 		}
 		
-		$description .= $this->getParameterTable( $descriptionData['parameters'] );
+		$description .= $this->getParameterTable( $descriptionData['parameters'], $descriptionData['defaults'] );
+		
+		if ( $parserHook->forTagExtensions || $parserHook->forParserFunctions ) {
+			$description .= $this->getSyntaxExamples( $hookName, $descriptionData['parameters'], $parserHook );
+		}
 		
 		if ( $parameters['pre'] ) {
 			$description = '<pre>' . $description . '</pre>';
@@ -178,23 +182,59 @@ class ValidatorDescribe extends ParserHook {
 	}
 	
 	/**
+	 * Returns the wikitext for some syntax examples.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @param string $hookName
+	 * @param array $parameters
+	 * @param ParserHook $parserHook
+	 * 
+	 * @return string
+	 */	
+	protected function getSyntaxExamples( $hookName, array $parameters, ParserHook $parserHook ) {
+		$result = "<h3>Syntax</h3>\n\n"; // TODO: i18n
+		
+		$params = array();
+		
+		foreach ( $parameters as $parameter ) {
+			$params[$parameter->getName()] = '{' . $parameter->getType() . '}';
+		}
+		
+		if ( $parserHook->forTagExtensions ) {
+			$result .= "<pre!><nowiki>\n" . Xml::element(
+				$hookName,
+				$params
+			) . "\n</nowiki></pre!>";
+		}
+		
+		if ( $parserHook->forParserFunctions ) {
+			// TODO
+		}
+		
+		return $result;
+	}
+	
+	/**
 	 * Returns the wikitext for a table listing the provided parameters.
 	 *  
 	 * @since 0.4.3
 	 *  
 	 * @param array $parameters
+	 * @param array $defaults
 	 * 
 	 * @return string
 	 */
-	protected function getParameterTable( array $parameters ) {
+	protected function getParameterTable( array $parameters, array $defaults ) {
 		$tableRows = array();
 		
 		foreach ( $parameters as $parameter ) {
-			$tableRows[] = $this->getDescriptionRow( $parameter );
+			$tableRows[] = $this->getDescriptionRow( $parameter, $defaults );
 		}
 		
 		if ( count( $tableRows ) > 0 ) { // i18n
-			$tableRows = array_merge( array( '! Parameter
+			$tableRows = array_merge( array( '! #
+! Parameter
 ! Aliases
 ! Type
 ! Default
@@ -203,6 +243,8 @@ class ValidatorDescribe extends ParserHook {
 		$table = implode( "\n|-\n", $tableRows );
 		
 		$table = <<<EOT
+<h3>Parameters</h3>
+
 {| class="wikitable sortable"
 {$table}
 |}
@@ -218,10 +260,11 @@ EOT;
 	 * @since 0.4.3
 	 *  
 	 * @param Parameter $parameter
+	 * @param array $defaults
 	 * 
 	 * @return string
 	 */
-	protected function getDescriptionRow( Parameter $parameter ) {
+	protected function getDescriptionRow( Parameter $parameter, array $defaults ) {
 		$aliases = $parameter->getAliases();
 		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
 		
@@ -236,7 +279,24 @@ EOT;
 		$type = $parameter->getType();
 		if ( $parameter->isList() ) $type = wfMsgExt( 'validator-describe-listtype', 'parsemag', $type );
 		
+		$number = 0;
+		$isDefault = false;
+		
+		foreach ( $defaults as $default ) {
+			$number++;
+			
+			if ( $default == $parameter->getName() ) {
+				$isDefault = true;
+				break;
+			}
+		}
+		
+		if ( !$isDefault ) {
+			$number = '-';
+		}
+		
 		return <<<EOT
+| {$number}
 | {$parameter->getName()}
 | {$aliases}
 | {$type}
