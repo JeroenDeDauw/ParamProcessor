@@ -133,7 +133,8 @@ class ValidatorDescribe extends ParserHook {
 		global $wgLang;
 		
 		$descriptionData = $parserHook->getDescriptionData( ParserHook::TYPE_TAG ); // TODO
-
+		$this->sortParameters( $descriptionData['parameters'], $descriptionData['defaults'] );
+		
 		$description = "<h2> {$hookName} </h2>\n\n";
 		
 		if ( $descriptionData['description'] !== false ) {
@@ -171,7 +172,7 @@ class ValidatorDescribe extends ParserHook {
 		$description .= $this->getParameterTable( $descriptionData['parameters'], $descriptionData['defaults'] );
 		
 		if ( $parserHook->forTagExtensions || $parserHook->forParserFunctions ) {
-			$description .= $this->getSyntaxExamples( $hookName, $descriptionData['parameters'], $parserHook );
+			$description .= $this->getSyntaxExamples( $hookName, $descriptionData['parameters'], $parserHook, $descriptionData['defaults'] );
 		}
 		
 		if ( $parameters['pre'] ) {
@@ -182,6 +183,34 @@ class ValidatorDescribe extends ParserHook {
 	}
 	
 	/**
+	 * Sorts the provided parameters array to match the default parameter order.
+	 * 
+	 * @since 0.4.3
+	 * 
+	 * @param array of Parameter $parameters
+	 * @param array of string $defaults
+	 */
+	protected function sortParameters( array &$parameters, array $defaults ) {
+		$sort = array();
+		$count = 0;
+		
+		foreach ( $parameters as $parameter ) {
+			$position = array_search( $parameter->getName(), $defaults );
+			
+			if ( $position === false ) {
+				$count++;
+				$sort[$count] = $parameter;
+			}
+			else {
+				$sort[$position] = $parameter;
+			}
+		}
+		
+		ksort( $sort );
+		$parameters = array_values( $sort );
+	}
+	
+	/**
 	 * Returns the wikitext for some syntax examples.
 	 * 
 	 * @since 0.4.3
@@ -189,10 +218,11 @@ class ValidatorDescribe extends ParserHook {
 	 * @param string $hookName
 	 * @param array $parameters
 	 * @param ParserHook $parserHook
+	 * @param array $defaults
 	 * 
 	 * @return string
 	 */	
-	protected function getSyntaxExamples( $hookName, array $parameters, ParserHook $parserHook ) {
+	protected function getSyntaxExamples( $hookName, array $parameters, ParserHook $parserHook, array $defaults ) {
 		$result = '<h3>' . wfMsg( 'validator-describe-syntax' ) . "</h3>\n\n";
 		
 		$params = array();
@@ -235,7 +265,7 @@ class ValidatorDescribe extends ParserHook {
 			
 			$result .= "<pre!><nowiki>\n" . 
 				$this->buildParserFunctionSyntax( $hookName, $params )
-				. "</nowiki></pre!>";			
+				. "</nowiki></pre!>";	
 		}
 		
 		return $result;
