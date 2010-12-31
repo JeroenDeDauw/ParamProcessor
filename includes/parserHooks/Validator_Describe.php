@@ -227,9 +227,11 @@ class ValidatorDescribe extends ParserHook {
 		
 		$params = array();
 		$requiredParams = array();
+		$plainParams = array();
 		
 		foreach ( $parameters as $parameter ) {
 			$params[$parameter->getName()] = '{' . $parameter->getTypeMessage() . '}';
+			$plainParams[$parameter->getName()] = $parameter->getTypeMessage();
 			
 			if ( $parameter->isRequired() ) {
 				$requiredParams[$parameter->getName()] = '{' . $parameter->getTypeMessage() . '}';
@@ -251,7 +253,20 @@ class ValidatorDescribe extends ParserHook {
 				$params
 			) . "</nowiki></pre!>";
 			
-			// TODO: example using the default if relevant
+			if ( count( $defaults ) > 0 ) {
+				$result .= "'''" . wfMsg( 'validator-describe-tagdefault' ) . "'''\n\n";
+				
+				foreach ( $plainParams as $name => $type ) {
+					$contents = '{' . $name . ', ' . $type . '}';
+					break;
+				}
+				
+				$result .= "<pre!><nowiki>\n" . Xml::element(
+					$hookName,
+					array_slice( $params, 1 ),
+					$contents
+				) . "</nowiki></pre!>";				
+			}
 		}
 		
 		if ( $parserHook->forParserFunctions ) {
@@ -265,7 +280,15 @@ class ValidatorDescribe extends ParserHook {
 			
 			$result .= "<pre!><nowiki>\n" . 
 				$this->buildParserFunctionSyntax( $hookName, $params )
-				. "</nowiki></pre!>";	
+				. "</nowiki></pre!>";
+
+			if ( count( $defaults ) > 0 ) {
+				$result .= "'''" . wfMsg( 'validator-describe-pfdefault' ) . "'''\n\n";
+				
+				$result .= "<pre!><nowiki>\n" . 
+					$this->buildParserFunctionSyntax( $hookName, $plainParams, $defaults )
+					. "</nowiki></pre!>";				
+			}				
 		}
 		
 		return $result;
@@ -278,14 +301,20 @@ class ValidatorDescribe extends ParserHook {
 	 * 
 	 * @param string $functionName
 	 * @param array $parameters Parameters (keys) and their type (values)
+	 * @param array $defaults
 	 * 
 	 * @return string
 	 */
-	protected function buildParserFunctionSyntax( $functionName, array $parameters ) {
+	protected function buildParserFunctionSyntax( $functionName, array $parameters, array $defaults = array() ) {
 		$arguments = array();
 		
 		foreach ( $parameters as $name => $type ) {
-			$arguments[] = "$name=$type";
+			if ( in_array( $name, $defaults ) ) {
+				$arguments[] = '{' . $name . ', ' . $type . '}';
+			}
+			else {
+				$arguments[] = "$name=$type";
+			}
 		}
 		
 		$singleLine = count( $arguments ) <= 3;

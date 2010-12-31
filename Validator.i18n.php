@@ -71,8 +71,10 @@ $messages['en'] = array(
 	'validator-describe-syntax' => 'Syntax',
 	'validator-describe-tagmin' => 'Tag extension with only the required parameters.',
 	'validator-describe-tagmax' => 'Tag extension with all parameters.',
+	'validator-describe-tagdefault' => 'Tag extension with all parameters using the default parameter notation.',
 	'validator-describe-pfmin' => 'Parser function with only the required parameters.',
 	'validator-describe-pfmax' => 'Parser function with all parameters.',
+	'validator-describe-pfdefault' => 'Parser function with all parameters using the default parameter notation.',
 
 	// Criteria errors for single values
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',
