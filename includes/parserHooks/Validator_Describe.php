@@ -138,8 +138,13 @@ class ValidatorDescribe extends ParserHook {
 		$description = 
 			( $parameters['pre'] ? '== ' : '<h2>' ) . 
 			$hookName .
-			( $parameters['pre'] ? ' ==' : '</h2>' ) . "\n\n";		 
-			
+			( $parameters['pre'] ? ' ==' : '</h2>' );		 
+		
+		if ( $parameters['pre'] ) {
+			$description .= "\n<!-- " . wfMsg( 'validator-describe-autogen' ) . ' -->';
+		}
+		
+		$description .= "\n\n";
 		
 		if ( $descriptionData['description'] !== false ) {
 			$description .= wfMsgExt( 'validator-describe-descriptionmsg', 'parsemag', $descriptionData['description'] );
@@ -257,6 +262,7 @@ class ValidatorDescribe extends ParserHook {
 			
 			$result .= "'''" . wfMsg( 'validator-describe-tagmax' ) . "'''\n\n";
 			
+			// TODO: multiline when long
 			$result .= "<pre!><nowiki>\n" . Xml::element(
 				$hookName,
 				$params
