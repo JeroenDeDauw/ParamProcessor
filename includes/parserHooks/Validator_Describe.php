@@ -135,7 +135,11 @@ class ValidatorDescribe extends ParserHook {
 		$descriptionData = $parserHook->getDescriptionData( ParserHook::TYPE_TAG ); // TODO
 		$this->sortParameters( $descriptionData['parameters'], $descriptionData['defaults'] );
 		
-		$description = "<h2> {$hookName} </h2>\n\n";
+		$description = 
+			( $parameters['pre'] ? '== ' : '<h2>' ) . 
+			$hookName .
+			( $parameters['pre'] ? ' ==' : '</h2>' ) . "\n\n";		 
+			
 		
 		if ( $descriptionData['description'] !== false ) {
 			$description .= wfMsgExt( 'validator-describe-descriptionmsg', 'parsemag', $descriptionData['description'] );
@@ -169,10 +173,10 @@ class ValidatorDescribe extends ParserHook {
 			$description .= "\n\n";
 		}
 		
-		$description .= $this->getParameterTable( $descriptionData['parameters'], $descriptionData['defaults'] );
+		$description .= $this->getParameterTable( $descriptionData['parameters'], $descriptionData['defaults'], $parameters['pre'] );
 		
 		if ( $parserHook->forTagExtensions || $parserHook->forParserFunctions ) {
-			$description .= $this->getSyntaxExamples( $hookName, $descriptionData['parameters'], $parserHook, $descriptionData['defaults'] );
+			$description .= $this->getSyntaxExamples( $hookName, $descriptionData['parameters'], $parserHook, $descriptionData['defaults'], $parameters['pre'] );
 		}
 		
 		if ( $parameters['pre'] ) {
@@ -219,11 +223,16 @@ class ValidatorDescribe extends ParserHook {
 	 * @param array $parameters
 	 * @param ParserHook $parserHook
 	 * @param array $defaults
+	 * @param boolean $pre
 	 * 
 	 * @return string
 	 */	
-	protected function getSyntaxExamples( $hookName, array $parameters, ParserHook $parserHook, array $defaults ) {
-		$result = '<h3>' . wfMsg( 'validator-describe-syntax' ) . "</h3>\n\n";
+	protected function getSyntaxExamples( $hookName, array $parameters, ParserHook $parserHook, array $defaults, $pre ) {
+		$result = "\n\n" .
+			( $pre ? '=== ' : '<h3>' ) . 
+			wfMsg( 'validator-describe-syntax' ) .
+			( $pre ? ' ===' : '</h3>' );
+		$result .= "\n\n";
 		
 		$params = array();
 		$requiredParams = array();
@@ -331,10 +340,11 @@ class ValidatorDescribe extends ParserHook {
 	 *  
 	 * @param array $parameters
 	 * @param array $defaults
+	 * @param boolean $pre
 	 * 
 	 * @return string
 	 */
-	protected function getParameterTable( array $parameters, array $defaults ) {
+	protected function getParameterTable( array $parameters, array $defaults, $pre ) {
 		$tableRows = array();
 		
 		foreach ( $parameters as $parameter ) {
@@ -353,7 +363,12 @@ class ValidatorDescribe extends ParserHook {
 			
 		$table = implode( "\n|-\n", $tableRows );
 		
-		$table = '<h3>' . wfMsg( 'validator-describe-parameters' ) . '</h3>' . "\n" .
+		$h3 = 
+			( $pre ? '=== ' : '<h3>' ) . 
+			wfMsg( 'validator-describe-parameters' ) .
+			( $pre ? ' ===' : '</h3>' );
+		
+		$table = "$h3\n\n" .
 				'{| class="wikitable sortable"' . "\n" .
 				$table .
 				"\n|}";
