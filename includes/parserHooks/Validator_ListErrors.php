@@ -76,7 +76,8 @@ class ValidatorListErrors extends ParserHook {
 		$params['minseverity'] = new Parameter( 'minseverity' );
 		$params['minseverity']->setDefault( $egValidatorErrListMin );
 		$params['minseverity']->addCriteria( new CriterionInArray( array_keys( self::$severityMap ) ) );
-
+		$params['minseverity']->setDescription( wfMsg( 'validator-listerrors-par-minseverity' ) );
+		
  		return $params;
 	}
 	
@@ -208,5 +209,12 @@ class ValidatorListErrors extends ParserHook {
 		
 		return wfMsg( 'validator-listerrors-' . $reverseMap[$severity] );
 	}		
+
+	/**
+	 * @see ParserHook::getDescription()
+	 */
+	public function getDescription() {
+		return wfMsg( 'validator-listerrors-description' );
+	}	
 	
 }

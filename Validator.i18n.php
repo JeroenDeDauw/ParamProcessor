@@ -32,6 +32,14 @@ $messages['en'] = array(
 	'validator_error_required_missing' => 'The required parameter "$1" is not provided.',
 	'validator-error-override-argument' => 'Tried to override parameter $1 (value: $2) with value "$3"', 
 
+	// Parameter types
+	'validator-type-string' => 'text',
+	'validator-type-number' => 'number',
+	'validator-type-integer' => 'whole number',
+	'validator-type-float' => 'number',
+	'validator-type-boolean' => 'yes/no',
+	'validator-type-char' => 'character',
+
 	// Listerrors
 	'validator-listerrors-errors' => 'Errors',
 	'validator-listerrors-severity-message' => '($1) $2', // $1 = severity; $2 = message
@@ -40,14 +48,10 @@ $messages['en'] = array(
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'High',
 	'validator-listerrors-fatal' => 'Fatal',
-
-	// Parameter types
-	'validator-type-string' => 'text',
-	'validator-type-number' => 'number',
-	'validator-type-integer' => 'whole number',
-	'validator-type-float' => 'number',
-	'validator-type-boolean' => 'yes/no',
-	'validator-type-char' => 'character',
+	'validator-listerrors-description' => 'Lists errors (and warnings) that occured in parser hooks added via Validator.
+Only lists for parser hooks added above where listerrors is inserted;
+place listerrors at or near the bottom of the page to get all errors.',
+	'validator-listerrors-par-minseverity' => 'The minimum severity of an issue for it to be listed.',
 
 	// Describe
 	'validator-describe-description' => 'Generates documentation for one or more parser hooks defined via Validator.',

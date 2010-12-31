@@ -397,10 +397,6 @@ class ValidatorDescribe extends ParserHook {
 		$aliases = $parameter->getAliases();
 		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
 		
-		$default = $parameter->isRequired() ? "''" . wfMsg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
-		if ( is_array( $default ) ) $default = implode( ', ', $default );  
-		if ( $default === '' ) $default = "''" . wfMsg( 'validator-describe-empty' ) . "''";
-		
 		$description = $parameter->getDescription();
 		if ( $description === false ) $description = '-'; 
 		
@@ -417,6 +413,10 @@ class ValidatorDescribe extends ParserHook {
 				break;
 			}
 		}
+		
+		$default = $parameter->isRequired() ? "''" . wfMsg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
+		if ( is_array( $default ) ) $default = implode( ', ', $default );  
+		if ( $default === '' ) $default = "''" . wfMsg( 'validator-describe-empty' ) . "''";		
 		
 		if ( !$isDefault ) {
 			$number = '-';
