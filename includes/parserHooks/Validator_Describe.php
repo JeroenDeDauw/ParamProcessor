@@ -192,7 +192,7 @@ class ValidatorDescribe extends ParserHook {
 	 */
 	protected function sortParameters( array &$parameters, array $defaults ) {
 		$sort = array();
-		$count = 0;
+		$count = 9000;
 		
 		foreach ( $parameters as $parameter ) {
 			$position = array_search( $parameter->getName(), $defaults );
