@@ -5,7 +5,7 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 
 === Validator 0.4.3 ===
-(201x-xx-xx)
+(2011-01-xx)
 
 * Added describe parser hook that enables automatic documentation generation of parser hooks defined via Validator.
 

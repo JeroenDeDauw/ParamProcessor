@@ -60,6 +60,7 @@ class ValidatorDescribe extends ParserHook {
 		$params['hooks'] = new ListParameter( 'hooks' );
 		$params['hooks']->setDefault( array_keys( ParserHook::getRegisteredParserHooks() ) );
 		$params['hooks']->setDescription( wfMsg( 'validator-describe-par-hooks' ) );
+		$params['hooks']->addAliases( 'hook' );
 		
 		$params['pre'] = new Parameter( 'pre', Parameter::TYPE_BOOLEAN );
 		$params['pre']->setDefault( 'off' );
