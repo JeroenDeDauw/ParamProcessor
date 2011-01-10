@@ -1248,6 +1248,7 @@ $messages['lb'] = array(
 	'validator-listerrors-fatal' => 'Fatal',
 	'validator-describe-descriptionmsg' => "'''Beschreiwung''': $1",
 	'validator-describe-empty' => 'eidel',
+	'validator-describe-required' => 'obligatoresch',
 	'validator-describe-header-parameter' => 'Parameter',
 	'validator-describe-header-type' => 'Typ',
 	'validator-describe-header-default' => 'Standard',
