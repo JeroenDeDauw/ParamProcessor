@@ -5,9 +5,11 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 
 === Validator 0.4.3 ===
-(2011-01-xx)
+(2011-01-11)
 
 * Added describe parser hook that enables automatic documentation generation of parser hooks defined via Validator.
+
+* Modified the ParserHook and Parameter classes to allow specifying a description message.
 
 === Validator 0.4.2 ===
 (2010-10-28)
@@ -19,7 +21,7 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 === Validator 0.4.1 ===
 (2010-10-20)
 
-* Various small fixes and improvements
+* Made several small fixes and improvements.
 
 === Validator 0.4 ===
 (2010-10-15)
