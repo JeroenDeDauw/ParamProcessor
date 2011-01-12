@@ -477,10 +477,12 @@ class Parameter {
 	 * @return string
 	 */
 	public function getTypeMessage() {
+		global $wgLang;
+
 		$message = wfMsg( 'validator-type-' . $this->type );
 		return $this->isList() ?
 			wfMsgExt( 'validator-describe-listtype', 'parsemag', $message )
-			: Language::ucfirst( $message );  
+			: $wgLang->ucfirst( $message );
 	}
 	
 	/**
