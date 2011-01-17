@@ -127,6 +127,7 @@ $messages['qqq'] = array(
 * $1 = severit
 * $2 = message',
 	'validator-listerrors-normal' => '{{Identical|Normal}}',
+	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -200,9 +201,10 @@ $messages['ar'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|القيمة|القيم}} $1 {{PLURAL:$2|تم|تم}} مسحها.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'validator-desc' => 'Правяраючы палягчае іншым пашырэньням працу па праверцы парамэтраў функцыяў парсэру і тэгаў пашырэньняў, устанаўлівае значэньні па змоўчваньні і стварае паведамленьні пра памылкі',
@@ -217,12 +219,25 @@ $messages['be-tarask'] = array(
 	'validator_error_unknown_argument' => 'Няслушны парамэтар $1.',
 	'validator_error_required_missing' => 'Не пададзены абавязковы парамэтар $1.',
 	'validator-error-override-argument' => 'Спрабаваў памяняць значэньне парамэтру $1 з «$2» на «$3»',
+	'validator-type-string' => 'тэкст',
+	'validator-type-number' => 'лік',
+	'validator-type-integer' => 'цэлы лік',
+	'validator-type-float' => 'лік',
+	'validator-type-boolean' => 'так/не',
+	'validator-type-char' => 'сымбаль',
 	'validator-listerrors-errors' => 'Памылкі',
 	'validator-listerrors-minor' => 'Дробная',
 	'validator-listerrors-low' => 'Малая',
 	'validator-listerrors-normal' => 'Звычайная',
 	'validator-listerrors-high' => 'Значная',
 	'validator-listerrors-fatal' => 'Фатальная',
+	'validator-listerrors-description' => 'Пералічвае памылкі (і папярэджаньні), якія адбыліся ў працэдурах-перахопніках парсэра, дададзеных праз Validator.
+Паказваюцца толькі працэдуры-перахопнікі парсэра, якія знаходзяцца Вышэй listerrors.
+Зьмясьціце listerrors у самы канец старонкі, каб атрымаць сьпіс усіх памылак.',
+	'validator-listerrors-par-minseverity' => 'Мінімальная сур’ёзнасьць праблемы, для таго каб яна была ўключаная ў сьпіс.',
+	'validator-describe-description' => 'Стварае дакумэнтацыю для аднаго ці болей працэдур-перахопнікаў парсэра, атрымаўшым вызначэньне праз Validator.',
+	'validator-describe-notfound' => 'Не існуе працэдур-перахопніка парсэра для «$1».',
+	'validator-describe-descriptionmsg' => "'''Апісаньне''': $1",
 	'validator_error_empty_argument' => 'Парамэтар $1 ня можа мець пустое значэньне.',
 	'validator_error_must_be_number' => 'Парамэтар $1 можа быць толькі лікам.',
 	'validator_error_must_be_integer' => 'Парамэтар $1 можа быць толькі цэлым лікам.',
