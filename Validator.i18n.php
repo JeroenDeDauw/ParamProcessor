@@ -128,6 +128,8 @@ $messages['qqq'] = array(
 * $2 = message',
 	'validator-listerrors-normal' => '{{Identical|Normal}}',
 	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
+	'validator-describe-empty' => '{{Identical|Empty}}',
+	'validator-describe-required' => '{{Identical|Required}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -238,6 +240,16 @@ $messages['be-tarask'] = array(
 	'validator-describe-description' => 'Стварае дакумэнтацыю для аднаго ці болей працэдур-перахопнікаў парсэра, атрымаўшым вызначэньне праз Validator.',
 	'validator-describe-notfound' => 'Не існуе працэдур-перахопніка парсэра для «$1».',
 	'validator-describe-descriptionmsg' => "'''Апісаньне''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Псэўданім|Псэўданімы}}''': $1",
+	'validator-describe-parserfunction' => 'Рэалізаваная толькі функцыя парсэру.',
+	'validator-describe-tagextension' => 'Рэалізаваная толькі як пашырэньне тэгу.',
+	'validator-describe-bothhooks' => 'Рэалізаваная як функцыя парсэру і як пашырэньне тэгу.',
+	'validator-describe-par-hooks' => 'Працэдура-перахопнік парсэра, для якой паказваць дакумэнтацыю.',
+	'validator-describe-par-pre' => 'Дазваляе Вам атрымліваць актуальны вікі-тэкст для дакумэнтацыі, без паказу на старонцы.',
+	'validator-describe-listtype' => 'Сьпіс элемэнтаў $1',
+	'validator-describe-empty' => 'пуста',
+	'validator-describe-required' => 'абавязкова',
+	'validator-describe-header-parameter' => 'Парамэтар',
 	'validator_error_empty_argument' => 'Парамэтар $1 ня можа мець пустое значэньне.',
 	'validator_error_must_be_number' => 'Парамэтар $1 можа быць толькі лікам.',
 	'validator_error_must_be_integer' => 'Парамэтар $1 можа быць толькі цэлым лікам.',
@@ -1697,6 +1709,7 @@ A aceta mach {{PLURAL:$3|sto valor|sti valor}}: $2 (e $4 {{PLURAL:$4|valor|valor
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
+ * @author Lijealso
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -1712,12 +1725,25 @@ $messages['pt'] = array(
 	'validator_error_unknown_argument' => '$1 não é um parâmetro válido.',
 	'validator_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
 	'validator-error-override-argument' => 'Tentativa de sobrepor o parâmetro $1 (valor: $2) com o valor "$3"',
+	'validator-type-string' => 'texto',
+	'validator-type-number' => 'número',
+	'validator-type-integer' => 'número inteiro',
+	'validator-type-float' => 'número',
+	'validator-type-boolean' => 'sim/não',
 	'validator-listerrors-errors' => 'Erros',
 	'validator-listerrors-minor' => 'Menor',
 	'validator-listerrors-low' => 'Baixo',
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Alto',
 	'validator-listerrors-fatal' => 'Fatal',
+	'validator-describe-descriptionmsg' => "'''Descrição''': $1",
+	'validator-describe-listtype' => 'Lista de $1 elementos',
+	'validator-describe-empty' => 'vazio',
+	'validator-describe-required' => 'necessário',
+	'validator-describe-header-type' => 'Tipo',
+	'validator-describe-header-default' => 'Por omissão',
+	'validator-describe-parameters' => 'Parâmetros',
+	'validator-describe-syntax' => 'Sintaxe',
 	'validator_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
 	'validator_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
 	'validator_error_must_be_integer' => 'O parâmetro $1 só pode ser um número inteiro.',
