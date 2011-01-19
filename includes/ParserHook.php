@@ -131,14 +131,14 @@ abstract class ParserHook {
 			
 			if ( $this->forTagExtensions ) {
 				$wgParser->setHook(
-					$this->getTagName( $name ),
+					$name,
 					array( new ParserHookCaller( $className, 'renderTag' ), 'runHook' )
 				);
 			}
 			
 			if ( $this->forParserFunctions ) {
 				$wgParser->setFunctionHook(
-					$this->getFunctionName( $name ),
+					$name,
 					array( new ParserHookCaller( $className, 'renderFunction' ), 'runHook' )
 				);
 			}
@@ -163,32 +163,6 @@ abstract class ParserHook {
 
 		return $names;
 	}
-
-	/**
-	 * Returns the tag extension version of the name.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @param string $rawName
-	 * 
-	 * @return string
-	 */
-	protected function getTagName( $rawName ) {
-		return str_replace( '_', ' ', $rawName );
-	}
-	
-	/**
-	 * Returns the parser function version of the name.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @param string $rawName
-	 * 
-	 * @return string
-	 */	
-	protected function getFunctionName( $rawName ) {
-		return str_replace( ' ', '_', $rawName );
-	}
 	
 	/**
 	 * Function to add the magic word in pre MW 1.16.
@@ -202,7 +176,6 @@ abstract class ParserHook {
 	 */
 	public function magic( array &$magicWords, $langCode ) {
 		foreach ( $this->getNames() as $name ) {
-			$name = $this->getFunctionName( $name );
 			$magicWords[$name] = array( 0, $name );
 		}
 		
