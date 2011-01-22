@@ -2152,3 +2152,12 @@ $messages['zh-hans'] = array(
 	'validator_list_error_invalid_argument' => '参数 $1 的一个或多个值不合法。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'validator-warning' => '警告：$1',
+	'validator-error' => '錯誤：$1',
+	'validator-fatal-error' => '致命錯誤：$1',
+);
+
