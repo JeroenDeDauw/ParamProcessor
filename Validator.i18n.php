@@ -1391,6 +1391,7 @@ $messages['lb'] = array(
 	'validator-listerrors-high' => 'Héich',
 	'validator-listerrors-fatal' => 'Fatal',
 	'validator-describe-descriptionmsg' => "'''Beschreiwung''': $1",
+	'validator-describe-listtype' => 'Lëscht mat {{PLURAL:$1|engem Element|$1 Elementer}}',
 	'validator-describe-empty' => 'eidel',
 	'validator-describe-required' => 'obligatoresch',
 	'validator-describe-header-parameter' => 'Parameter',
