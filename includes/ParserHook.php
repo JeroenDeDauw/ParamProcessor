@@ -64,6 +64,20 @@ abstract class ParserHook {
 	protected $parser;
 	
 	/**
+	 * @since 0.4.4
+	 * 
+	 * @var PPFrame
+	 */
+	protected $frame;
+	
+	/**
+	 * @since 0.4.4
+	 * 
+	 * @var ParserHook::TYPE_ enum item
+	 */	
+	protected $currentType;
+	
+	/**
 	 * @since 0.4
 	 * 
 	 * @var boolean
@@ -190,12 +204,13 @@ abstract class ParserHook {
 	 * @param minxed $input string or null
 	 * @param array $args
 	 * @param Parser $parser
-	 * @param PPFrame $frame Available from 1.16 - commented out for bc for now
+	 * @param PPFrame $frame Available from 1.16
 	 * 
 	 * @return string
 	 */
-	public function renderTag( $input, array $args, Parser $parser /*, PPFrame $frame*/  ) {
+	public function renderTag( $input, array $args, Parser $parser, PPFrame $frame = null  ) {
 		$this->parser = $parser;
+		$this->frame = $frame;
 		
 		$defaultParam = array_shift( $this->getDefaultParameters( self::TYPE_TAG ) );
 
@@ -408,6 +423,57 @@ abstract class ParserHook {
 	public function getDescription() {
 		return false;
 	}
+	
+	/**
+	 * Returns if the current render request is comming from a tag extension.
+	 * 
+	 * @since 0.4.4
+	 * 
+	 * @return boolean
+	 */
+	protected function isTag() {
+		return $this->currentType == self::TYPE_TAG;
+	}
+	
+	/**
+	 * Returns if the current render request is comming from a parser function.
+	 * 
+	 * @since 0.4.4
+	 * 
+	 * @return boolean
+	 */
+	protected function isFunction() {
+		return $this->currentType == self::TYPE_FUNCTION;
+	}
+	
+	/**
+	 * Utility function to parse wikitext without having to care
+	 * about handling a tag extension or parser function. 
+	 * 
+	 * @since 0.4.4
+	 * 
+	 * @param string $text The wikitext to be parsed
+	 * 
+	 * @return string the parsed output
+	 */
+	protected function parseWikitext( $text ) {
+		// Parse the wikitext to HTML.
+		if ( $this->isFunction() ) {
+			return $this->parser->parse(
+				text,
+				$this->parser->mTitle,
+				$this->parser->mOptions,
+				true,
+				false
+			)->getText();
+		}
+		else {
+			return $this->parser->recursiveTagParse(
+				$text,
+				$this->frame
+			);				
+		}		
+	}	
 	
 }
 

@@ -106,17 +106,8 @@ class ValidatorDescribe extends ParserHook {
 			}
 		}
 		
-		// Parse the wikitext to HTML.
-		$output = $this->parser->parse(
-			implode( "\n\n", $parts ),
-			$this->parser->mTitle,
-			$this->parser->mOptions,
-			true,
-			false
-		);
-		
 		// This str_replace is a hack to allow for placing <pre>s into <pre>s, without breaking the outer ones.
-		return str_replace( 'pre!&gt;', 'pre&gt;', $output->getText() );
+		return str_replace( 'pre!&gt;', 'pre&gt;', $this->parseWikitext( implode( "\n\n", $parts ) ) );
 	}
 	
 	/**
