@@ -1379,6 +1379,15 @@ $messages['ksh'] = array(
 	'validator_error_accepts_only' => '„$4“ es nit ze Bruche, weil dä Parameeter $1 {{PLURAL:$3|bloß eine Wäät|bloß eine vun heh dä Wääte|keine Wäät}} han kann: $2',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'validator-type-boolean' => 'erê/na',
+	'validator-listerrors-high' => 'bilind',
+	'validator-describe-header-type' => 'Cure',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
