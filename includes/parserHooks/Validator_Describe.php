@@ -15,7 +15,7 @@
 class ValidatorDescribe extends ParserHook {
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */
 	public static function staticMagic( array &$magicWords, $langCode ) {
@@ -25,7 +25,7 @@ class ValidatorDescribe extends ParserHook {
 	}
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */	
 	public static function staticInit( Parser &$wgParser ) {
@@ -106,8 +106,7 @@ class ValidatorDescribe extends ParserHook {
 			}
 		}
 		
-		// This str_replace is a hack to allow for placing <pre>s into <pre>s, without breaking the outer ones.
-		return str_replace( 'pre!&gt;', 'pre&gt;', $this->parseWikitext( implode( "\n\n", $parts ) ) );
+		return $this->parseWikitext( implode( "\n\n", $parts ) );
 	}
 	
 	/**
@@ -229,7 +228,6 @@ class ValidatorDescribe extends ParserHook {
 			( $pre ? '=== ' : '<h3>' ) . 
 			wfMsg( 'validator-describe-syntax' ) .
 			( $pre ? ' ===' : '</h3>' );
-		$result .= "\n\n";
 		
 		$params = array();
 		$requiredParams = array();
@@ -245,56 +243,56 @@ class ValidatorDescribe extends ParserHook {
 		}
 		
 		if ( $parserHook->forTagExtensions ) {
-			$result .= "'''" . wfMsg( 'validator-describe-tagmin' ) . "'''\n\n";
+			$result .= "\n\n'''" . wfMsg( 'validator-describe-tagmin' ) . "'''\n\n";
 			
-			$result .= "<pre!><nowiki>\n" . Xml::element(
+			$result .= "&lt;pre&gt;<nowiki>\n" . Xml::element(
 				$hookName,
 				$requiredParams
-			) . "</nowiki></pre!>";
+			) . "\n</nowiki>&lt;/pre&gt;";
 			
-			$result .= "'''" . wfMsg( 'validator-describe-tagmax' ) . "'''\n\n";
+			$result .= "\n\n'''" . wfMsg( 'validator-describe-tagmax' ) . "'''\n\n";
 			
 			// TODO: multiline when long
-			$result .= "<pre!><nowiki>\n" . Xml::element(
+			$result .= "&lt;pre&gt;<nowiki>\n" . Xml::element(
 				$hookName,
 				$params
-			) . "</nowiki></pre!>";
+			) . "\n</nowiki>&lt;/pre&gt;";
 			
 			if ( count( $defaults ) > 0 ) {
-				$result .= "'''" . wfMsg( 'validator-describe-tagdefault' ) . "'''\n\n";
+				$result .= "\n\n'''" . wfMsg( 'validator-describe-tagdefault' ) . "'''\n\n";
 				
 				foreach ( $plainParams as $name => $type ) {
 					$contents = '{' . $name . ', ' . $type . '}';
 					break;
 				}
 				
-				$result .= "<pre!><nowiki>\n" . Xml::element(
+				$result .= "&lt;pre&gt;<nowiki>\n" . Xml::element(
 					$hookName,
 					array_slice( $params, 1 ),
 					$contents
-				) . "</nowiki></pre!>";				
+				) . "\n</nowiki>&lt;/pre&gt;";				
 			}
 		}
 		
 		if ( $parserHook->forParserFunctions ) {
-			$result .= "'''" . wfMsg( 'validator-describe-pfmin' ) . "'''\n\n";
+			$result .= "\n\n'''" . wfMsg( 'validator-describe-pfmin' ) . "'''\n\n";
 			
-			$result .= "<pre!><nowiki>\n" . 
+			$result .= "&lt;pre&gt;<nowiki>\n" . 
 				$this->buildParserFunctionSyntax( $hookName, $requiredParams )
-				. "</nowiki></pre!>";			
+				. "\n</nowiki>&lt;/pre&gt;";			
 			
-			$result .= "'''" . wfMsg( 'validator-describe-pfmax' ) . "'''\n\n";
+			$result .= "\n\n'''" . wfMsg( 'validator-describe-pfmax' ) . "'''\n\n";
 			
-			$result .= "<pre!><nowiki>\n" . 
+			$result .= "&lt;pre&gt;<nowiki>\n" . 
 				$this->buildParserFunctionSyntax( $hookName, $params )
-				. "</nowiki></pre!>";
+				. "\n</nowiki>&lt;/pre&gt;";
 
 			if ( count( $defaults ) > 0 ) {
-				$result .= "'''" . wfMsg( 'validator-describe-pfdefault' ) . "'''\n\n";
+				$result .= "\n\n'''" . wfMsg( 'validator-describe-pfdefault' ) . "'''\n\n";
 				
-				$result .= "<pre!><nowiki>\n" . 
+				$result .= "&lt;pre&gt;<nowiki>\n" . 
 					$this->buildParserFunctionSyntax( $hookName, $plainParams, $defaults )
-					. "</nowiki></pre!>";				
+					. "\n</nowiki>&lt;/pre&gt;";				
 			}				
 		}
 		

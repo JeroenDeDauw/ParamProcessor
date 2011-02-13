@@ -236,7 +236,7 @@ abstract class ParserHook {
 		$args = func_get_args();
 		
 		$this->parser = array_shift( $args );	
-	
+
 		return array_merge( 
 			array( $this->validateAndRender( $args, self::TYPE_FUNCTION ) ),
 			$this->getFunctionOptions()
