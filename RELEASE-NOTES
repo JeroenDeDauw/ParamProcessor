@@ -5,10 +5,11 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 
 === Validator 0.4.4 ===
+(2011-02-16)
 
-(2011-0x-xx)
+* Tweaks to parser usage in the ParserHook class.
 
-* 
+* Fixed incorrect output of nested pre-tags in the describe parser hook.
 
 === Validator 0.4.3.1 ===
 (2011-01-20)
