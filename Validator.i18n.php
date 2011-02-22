@@ -321,6 +321,7 @@ $messages['br'] = array(
 	'validator-error-override-argument' => 'Klasket en deus ar meziant erlec\'hiañ an arventenn $1 (talvoud : $2) gant an talvoud "$3"',
 	'validator-type-string' => 'testenn',
 	'validator-type-number' => 'niver',
+	'validator-type-integer' => 'Niver klok',
 	'validator-type-float' => 'niver',
 	'validator-type-boolean' => 'ya/nann',
 	'validator-type-char' => 'arouezenn',
