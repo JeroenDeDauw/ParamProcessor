@@ -8,9 +8,9 @@
  * @file Validator.php
  * @ingroup Validator
  *
- * @author Jeroen De Dauw
- *
- * TODO: break on fatal errors, such as missing required parameters that are dependencies 
+ * @licence GNU GPL v3 or later
+ * 
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class Validator {
 	

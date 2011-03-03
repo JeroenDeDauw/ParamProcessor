@@ -242,21 +242,24 @@ class ValidatorDescribe extends ParserHook {
 			}
 		}
 		
+		$preOpen = $pre ? '&lt;pre&gt;' : '<pre>';
+		$preClose = $pre ? '&lt;/pre&gt;' : '</pre>';
+		
 		if ( $parserHook->forTagExtensions ) {
 			$result .= "\n\n'''" . wfMsg( 'validator-describe-tagmin' ) . "'''\n\n";
 			
-			$result .= "&lt;pre&gt;<nowiki>\n" . Xml::element(
+			$result .= "$preOpen<nowiki>\n" . Xml::element(
 				$hookName,
 				$requiredParams
-			) . "\n</nowiki>&lt;/pre&gt;";
+			) . "\n</nowiki>$preClose";
 			
 			$result .= "\n\n'''" . wfMsg( 'validator-describe-tagmax' ) . "'''\n\n";
 			
 			// TODO: multiline when long
-			$result .= "&lt;pre&gt;<nowiki>\n" . Xml::element(
+			$result .= "$preOpen<nowiki>\n" . Xml::element(
 				$hookName,
 				$params
-			) . "\n</nowiki>&lt;/pre&gt;";
+			) . "\n</nowiki>$preClose";
 			
 			if ( count( $defaults ) > 0 ) {
 				$result .= "\n\n'''" . wfMsg( 'validator-describe-tagdefault' ) . "'''\n\n";
@@ -266,33 +269,33 @@ class ValidatorDescribe extends ParserHook {
 					break;
 				}
 				
-				$result .= "&lt;pre&gt;<nowiki>\n" . Xml::element(
+				$result .= "$preOpen<nowiki>\n" . Xml::element(
 					$hookName,
 					array_slice( $params, 1 ),
 					$contents
-				) . "\n</nowiki>&lt;/pre&gt;";				
+				) . "\n</nowiki>$preClose";				
 			}
 		}
 		
 		if ( $parserHook->forParserFunctions ) {
 			$result .= "\n\n'''" . wfMsg( 'validator-describe-pfmin' ) . "'''\n\n";
 			
-			$result .= "&lt;pre&gt;<nowiki>\n" . 
+			$result .= "$preOpen<nowiki>\n" . 
 				$this->buildParserFunctionSyntax( $hookName, $requiredParams )
-				. "\n</nowiki>&lt;/pre&gt;";			
+				. "\n</nowiki>$preClose";			
 			
 			$result .= "\n\n'''" . wfMsg( 'validator-describe-pfmax' ) . "'''\n\n";
 			
-			$result .= "&lt;pre&gt;<nowiki>\n" . 
+			$result .= "$preOpen<nowiki>\n" . 
 				$this->buildParserFunctionSyntax( $hookName, $params )
-				. "\n</nowiki>&lt;/pre&gt;";
+				. "\n</nowiki>$preClose";
 
 			if ( count( $defaults ) > 0 ) {
 				$result .= "\n\n'''" . wfMsg( 'validator-describe-pfdefault' ) . "'''\n\n";
 				
-				$result .= "&lt;pre&gt;<nowiki>\n" . 
+				$result .= "$preOpen<nowiki>\n" . 
 					$this->buildParserFunctionSyntax( $hookName, $plainParams, $defaults )
-					. "\n</nowiki>&lt;/pre&gt;";				
+					. "\n</nowiki>$preClose";				
 			}				
 		}
 		
