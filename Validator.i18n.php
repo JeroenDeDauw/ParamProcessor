@@ -300,6 +300,14 @@ $messages['bg'] = array(
 	'validator_error_empty_argument' => 'Параметърът $1 не може да има празна стойност.',
 );
 
+/** Bengali (বাংলা)
+ * @author Ehsanulhb
+ */
+$messages['bn'] = array(
+	'validator-describe-descriptionmsg' => "'''বিবরণ''': $1",
+	'validator-describe-header-description' => 'বিবরণ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -1436,6 +1444,7 @@ $messages['lb'] = array(
 	'validator-describe-empty' => 'eidel',
 	'validator-describe-required' => 'obligatoresch',
 	'validator-describe-header-parameter' => 'Parameter',
+	'validator-describe-header-aliases' => 'Aliasen',
 	'validator-describe-header-type' => 'Typ',
 	'validator-describe-header-default' => 'Standard',
 	'validator-describe-header-description' => 'Beschreiwung',
