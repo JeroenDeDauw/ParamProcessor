@@ -75,6 +75,7 @@ class Validator {
 	 * Constructor.
 	 * 
 	 * @param srting $element
+	 * @param boolean $unknownInvalid Should unknown parameter be regarded as invalid (or, if not, just be ignored)
 	 * 
 	 * @since 0.4
 	 */
