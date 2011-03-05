@@ -636,7 +636,7 @@ class Parameter {
 				$manipulations[] = new ParamManipulationBoolean();
 				break;
 			case self::TYPE_CHAR: case self::TYPE_STRING: default:
-				// No extra manipulations for these types
+				$manipulations[] = new ParamManipulationString();
 				break;
 		}		
 		

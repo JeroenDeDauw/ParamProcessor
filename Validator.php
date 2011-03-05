@@ -76,6 +76,7 @@ $wgAutoloadClasses['ParamManipulationFloat']	= $incDir . 'manipulations/ParamMan
 $wgAutoloadClasses['ParamManipulationFunctions']= $incDir . 'manipulations/ParamManipulationFunctions.php';
 $wgAutoloadClasses['ParamManipulationImplode']	= $incDir . 'manipulations/ParamManipulationImplode.php';
 $wgAutoloadClasses['ParamManipulationInteger']	= $incDir . 'manipulations/ParamManipulationInteger.php';
+$wgAutoloadClasses['ParamManipulationString']	= $incDir . 'manipulations/ParamManipulationString.php';
 
 $wgAutoloadClasses['ValidatorDescribe'] 		= $incDir . 'parserHooks/Validator_Describe.php';
 $wgAutoloadClasses['ValidatorListErrors'] 		= $incDir . 'parserHooks/Validator_ListErrors.php';
