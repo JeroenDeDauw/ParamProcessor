@@ -4,6 +4,13 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 
+=== Validator 0.4.5 ===
+(2011-03-05)
+
+* Escaping fix in the describe parser hook.
+
+* Added string manipulation, applied by default on strings and chars.
+
 === Validator 0.4.4 ===
 (2011-02-16)
 
