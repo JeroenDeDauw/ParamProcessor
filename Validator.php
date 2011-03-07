@@ -26,7 +26,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Validator_VERSION', '0.4.5' );
+define( 'Validator_VERSION', '0.4.6 alpha' );
 
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Validator'] = dirname( __FILE__ ) . '/Validator.i18n.php';
@@ -71,7 +71,6 @@ $wgAutoloadClasses['CriterionTrue']				= $incDir . 'criteria/CriterionTrue.php';
 $wgAutoloadClasses['CriterionUniqueItems']		= $incDir . 'criteria/CriterionUniqueItems.php';
 
 $wgAutoloadClasses['ParamManipulationBoolean']	= $incDir . 'manipulations/ParamManipulationBoolean.php';
-$wgAutoloadClasses['ParamManipulationBoolstr']	= $incDir . 'manipulations/ParamManipulationBoolstr.php';
 $wgAutoloadClasses['ParamManipulationFloat']	= $incDir . 'manipulations/ParamManipulationFloat.php';
 $wgAutoloadClasses['ParamManipulationFunctions']= $incDir . 'manipulations/ParamManipulationFunctions.php';
 $wgAutoloadClasses['ParamManipulationImplode']	= $incDir . 'manipulations/ParamManipulationImplode.php';
