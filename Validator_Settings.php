@@ -17,14 +17,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-# Registration of the listerrors parser hooks.
-$wgHooks['ParserFirstCallInit'][] = 'ValidatorListErrors::staticInit';
-$wgHooks['LanguageGetMagic'][] = 'ValidatorListErrors::staticMagic';
-
-# Registration of the describe parser hooks.
-$wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
-$wgHooks['LanguageGetMagic'][] = 'ValidatorDescribe::staticMagic';
-
 # Maps actions to error severity.
 # ACTION_LOG will cause the error to be logged
 # ACTION_WARN will cause a notice that there is an error to be shown inline

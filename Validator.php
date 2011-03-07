@@ -81,6 +81,14 @@ $wgAutoloadClasses['ValidatorDescribe'] 		= $incDir . 'parserHooks/Validator_Des
 $wgAutoloadClasses['ValidatorListErrors'] 		= $incDir . 'parserHooks/Validator_ListErrors.php';
 unset( $incDir );
 
+# Registration of the listerrors parser hooks.
+$wgHooks['ParserFirstCallInit'][] = 'ValidatorListErrors::staticInit';
+$wgHooks['LanguageGetMagic'][] = 'ValidatorListErrors::staticMagic';
+
+# Registration of the describe parser hooks.
+$wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
+$wgHooks['LanguageGetMagic'][] = 'ValidatorDescribe::staticMagic';
+
 $wgExtensionFunctions[] = 'efValidatorSetup';
 
 /**
