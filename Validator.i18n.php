@@ -2202,11 +2202,20 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
 	'validator_error_unknown_argument' => '$1 不是合法参数。',
 	'validator_error_required_missing' => '未能提供所需要的参数 $1 。',
+	'validator-type-number' => '号码',
+	'validator-type-boolean' => '是/非',
+	'validator-listerrors-minor' => '小时',
+	'validator-listerrors-low' => '小',
+	'validator-listerrors-normal' => '中',
+	'validator-listerrors-high' => '大',
+	'validator-describe-empty' => '空白',
+	'validator-describe-header-type' => '类型',
 	'validator_error_empty_argument' => '参数 $1 不能为空。',
 	'validator_error_must_be_number' => '参数 $1 只能为数字。',
 	'validator_error_must_be_integer' => '参数 $1 只能为整数。',
