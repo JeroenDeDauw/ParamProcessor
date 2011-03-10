@@ -719,9 +719,11 @@ class Parameter {
 	 * @since 0.4
 	 * 
 	 * @param mixed $default
+	 * @param boolean $manipulate Should the default be manipulated or not? Since 0.4.6.
 	 */
-	public function setDefault( $default ) {
+	public function setDefault( $default, $manipulate = true ) {
 		$this->default = $default;
+		$this->setDoManipulationOfDefault( $manipulate );
 	}
 	
 	/**
