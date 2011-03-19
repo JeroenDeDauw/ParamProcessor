@@ -227,7 +227,7 @@ class ListParameter extends Parameter {
 	 * 
 	 * @since 0.4
 	 */
-	public function setDefault( $default ) {
+	public function setDefault( $default, $manipulate = true ) {
 		$this->default = is_array( $default ) ? $default : array( $default );
 	}	
 	
