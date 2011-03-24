@@ -89,24 +89,6 @@ $wgHooks['LanguageGetMagic'][] = 'ValidatorListErrors::staticMagic';
 $wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
 $wgHooks['LanguageGetMagic'][] = 'ValidatorDescribe::staticMagic';
 
-$wgExtensionFunctions[] = 'efValidatorSetup';
-
-/**
- * Function for backwards compatibility with MW 1.15.x.
- * 
- * @since 0.4.2
- */
-function efValidatorSetup() {
-	// This function has been deprecated in 1.16, but needed for earlier versions.
-	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
-	global $wgVersion;
-	if ( version_compare( $wgVersion, '1.15', '<=' ) ) {
-		wfLoadExtensionMessages( 'Validator' );
-	}
-	
-	return true;
-}
-
 // This file needs to be included directly, since Validator_Settings.php
 // uses it, in some rare cases before autoloading is defined.
 require_once 'includes/ValidationError.php' ;
