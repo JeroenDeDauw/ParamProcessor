@@ -806,6 +806,7 @@ $messages['gl'] = array(
 	'validator-listerrors-high' => 'Alto',
 	'validator-listerrors-fatal' => 'Fatal',
 	'validator-describe-descriptionmsg' => "'''Descrición:''' $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Alcume|Alcumes}}:''' $1",
 	'validator-describe-listtype' => 'Lista de $1 elementos',
 	'validator-describe-empty' => 'baleiro',
 	'validator-describe-required' => 'obrigatorio',
