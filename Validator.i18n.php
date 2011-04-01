@@ -1451,6 +1451,7 @@ $messages['lb'] = array(
 	'validator-describe-header-description' => 'Beschreiwung',
 	'validator-describe-parameters' => 'Parameteren',
 	'validator-describe-syntax' => 'Syntax',
+	'validator-describe-pfmax' => 'Parserfonctioun mat alle Parameter.',
 	'validator_error_empty_argument' => 'De Parameter $1 ka keen eidele Wäert hunn.',
 	'validator_error_must_be_number' => 'De Parameter $1 ka just eng Zuel sinn',
 	'validator_error_must_be_integer' => 'De Parameter $1 ka just eng ganz Zuel sinn.',
