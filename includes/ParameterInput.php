@@ -49,7 +49,7 @@ class ParameterInput {
 	protected $inputName;
 	
 	/**
-	 * COnstructor.
+	 * Constructor.
 	 * 
 	 * @since 0.4.6
 	 * 
@@ -63,6 +63,17 @@ class ParameterInput {
 	}
 	
 	/**
+	 * Sets the current value.
+	 * 
+	 * @since 0.4.6
+	 * 
+	 * @param mixed $currentValue
+	 */	
+	public function setCurrentValue( $currentValue ) {
+		$this->currentValue = $currentValue;
+	}
+	
+	/**
 	 * Sets the name for the input; defaults to the name of the parameter.
 	 * 
 	 * @since 0.6.4
@@ -70,7 +81,7 @@ class ParameterInput {
 	 * @param string $name
 	 */
 	public function setInputName( $name ) {
-		$this->inputName = name;
+		$this->inputName = $name;
 	}
 	
 	/**
@@ -96,7 +107,7 @@ class ParameterInput {
         }
         else {
 			switch ( $this->param->getType() ) {
-				case Paramater::TYPE_CHAR:
+				case Parameter::TYPE_CHAR:
 				case Parameter::TYPE_FLOAT:
 				case Parameter::TYPE_INTEGER:
 				case Parameter::TYPE_NUMBER:
@@ -104,9 +115,9 @@ class ParameterInput {
 					break;
 				case Parameter::TYPE_BOOLEAN:
 					$html = $this->getBooleanInput();
-				case Paramater::TYPE_STRING:
+				case Parameter::TYPE_STRING:
 				default:
-					$html = $this->getIntInput();
+					$html = $this->getStrInput();
 					break;					
 			}
         }
