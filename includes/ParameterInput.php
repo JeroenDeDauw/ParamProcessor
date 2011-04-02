@@ -102,7 +102,7 @@ class ParameterInput {
         }
 
         if ( count( $valueList ) > 0 ) {
-        	$valueList = call_user_func_array( 'array_intersect', $valueList );
+        	$valueList = count( $valueList ) > 1 ? call_user_func_array( 'array_intersect', $valueList ) : $valueList[0];
         	$html = $this->param->isList() ? $this->getChckboxListInput( $valueList ) : $this->getSelectInput( $valueList );
         }
         else {
@@ -146,7 +146,7 @@ class ParameterInput {
 	protected function getNumberInput() {
 		return Html::input(
 			$this->inputName,
-			$this->currentValue,
+			$this->getValueToUse(),
 			'text',
 			array(
 				'size' => 6
@@ -164,7 +164,7 @@ class ParameterInput {
 	protected function getStrInput() {
 		return Html::input(
 			$this->inputName,
-			$this->currentValue,
+			$this->getValueToUse(),
 			'text',
 			array(
 				'size' => 32
@@ -182,7 +182,7 @@ class ParameterInput {
 	protected function getBooleanInput() {
 		return Xml::check(
 			$this->inputName,
-			$this->currentValue
+			$this->getValueToUse()
 		);
 	}	
 	
@@ -199,14 +199,17 @@ class ParameterInput {
 		$options = array();
 		$options[] = '<option value=""></option>';
 		
+		$currentValues = $this->getValueToUse();
+		if ( is_null( $currentValues ) ) $currentValues = array(); 
+		
 		foreach ( $valueList as $value ) {
 			$options[] =
 				'<option value="' . htmlspecialchars( $value ) . '"' .
-					( in_array( $value, $this->currentValue ) ? ' selected' : '' ) . '>' . htmlspecialchars( $value ) .
-				'</option>'; // TODO
+					( in_array( $value, $currentValues ) ? ' selected' : '' ) . '>' . htmlspecialchars( $value ) .
+				'</option>';
 		}
 
-		return Html::element(
+		return Html::rawElement(
 			'select',
 			array(
 				'name' => $this->inputName
@@ -227,6 +230,9 @@ class ParameterInput {
 	protected function getCheckboxListInput( array $valueList ) {
 		$boxes = array();
 
+		$currentValues = $this->getValueToUse();
+		if ( is_null( $currentValues ) ) $currentValues = array(); 		
+		
 		foreach ( $valueList as $value ) {
 			$boxes[] = Html::rawElement(
 				'span',
@@ -235,7 +241,7 @@ class ParameterInput {
 				),
 				Xml::check(
 					$this->inputName . '[' . htmlspecialchars( $value ). ']',
-					in_array( $value, $this->currentValue )
+					in_array( $value, $currentValues )
 				) .
 				Html::element( 'tt', $value )
 			);
