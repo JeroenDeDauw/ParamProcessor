@@ -50,6 +50,7 @@ $wgAutoloadClasses['ListParameterCriterion']	= $incDir . 'ListParameterCriterion
 $wgAutoloadClasses['ListParameterManipulation']	= $incDir . 'ListParameterManipulation.php';
 $wgAutoloadClasses['Parameter'] 				= $incDir . 'Parameter.php';
 $wgAutoloadClasses['ParameterCriterion'] 		= $incDir . 'ParameterCriterion.php';
+$wgAutoloadClasses['ParameterInput']			= $incDir . 'ParameterInput.php';
 $wgAutoloadClasses['ParameterManipulation'] 	= $incDir . 'ParameterManipulation.php';
 $wgAutoloadClasses['ParserHook'] 				= $incDir . 'ParserHook.php';
 $wgAutoloadClasses['Validator'] 				= $incDir . 'Validator.php';
