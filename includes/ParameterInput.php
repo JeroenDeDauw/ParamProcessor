@@ -103,7 +103,7 @@ class ParameterInput {
 
         if ( count( $valueList ) > 0 ) {
         	$valueList = count( $valueList ) > 1 ? call_user_func_array( 'array_intersect', $valueList ) : $valueList[0];
-        	$html = $this->param->isList() ? $this->getChckboxListInput( $valueList ) : $this->getSelectInput( $valueList );
+        	$html = $this->param->isList() ? $this->getCheckboxListInput( $valueList ) : $this->getSelectInput( $valueList );
         }
         else {
 			switch ( $this->param->getType() ) {
@@ -199,7 +199,7 @@ class ParameterInput {
 		$options = array();
 		$options[] = '<option value=""></option>';
 		
-		$currentValues = $this->getValueToUse();
+		$currentValues = (array)$this->getValueToUse();
 		if ( is_null( $currentValues ) ) $currentValues = array(); 
 		
 		foreach ( $valueList as $value ) {
@@ -230,7 +230,7 @@ class ParameterInput {
 	protected function getCheckboxListInput( array $valueList ) {
 		$boxes = array();
 
-		$currentValues = $this->getValueToUse();
+		$currentValues = (array)$this->getValueToUse();
 		if ( is_null( $currentValues ) ) $currentValues = array(); 		
 		
 		foreach ( $valueList as $value ) {
@@ -243,7 +243,7 @@ class ParameterInput {
 					$this->inputName . '[' . htmlspecialchars( $value ). ']',
 					in_array( $value, $currentValues )
 				) .
-				Html::element( 'tt', $value )
+				Html::element( 'tt', array(), $value )
 			);
 		}
 		
