@@ -236,10 +236,16 @@ abstract class ParserHook {
 		$args = func_get_args();
 		
 		$this->parser = array_shift( $args );	
-
+		$output = $this->validateAndRender( $args, self::TYPE_FUNCTION );
+		$options = $this->getFunctionOptions();
+		
+		if ( array_key_exists( 'isHTML', $options ) && $options['isHTML'] ) {
+			return $this->parser->insertStripItem( $output, $this->parser->mStripState );
+		}
+		
 		return array_merge( 
-			array( $this->validateAndRender( $args, self::TYPE_FUNCTION ) ),
-			$this->getFunctionOptions()
+			array( $output ),
+			$options
 		);
 	}
 	
