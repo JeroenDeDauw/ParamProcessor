@@ -1560,6 +1560,13 @@ $messages['mk'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|Вредноста|Вредностите}} $1 {{PLURAL:$2|беше испуштена|беа испуштени}}.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'validator-describe-header-default' => 'Tersedia',
+);
+
 /** Dutch (Nederlands)
  * @author Jeroen De Dauw
  * @author Siebrand
