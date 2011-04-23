@@ -1224,8 +1224,8 @@ $messages['id'] = array(
 	'validator-warning' => 'Peringatan: $1',
 	'validator-error' => 'Kesalahan: $1',
 	'validator-fatal-error' => 'Kesalahan fatal: $1',
-	'validator_error_parameters' => '{{PLURAL:$1|Kesalahan|Kesalahan}} berikut telah terdeteksi pada sintaksis Anda:',
-	'validator_warning_parameters' => '{{PLURAL:$1|kesalahan|kesalahan}} ini  pada sintaks anda.',
+	'validator_error_parameters' => '{{PLURAL:$1|Kesalahan|Kesalahan}} berikut telah terdeteksi pada sintaks Anda:',
+	'validator_warning_parameters' => 'Terdapat {{PLURAL:$1|kesalahan|kesalahan}} pada sintaks Anda.',
 	'validator-warning-adittional-errors' => '... dan {{PLURAL:$1|satu|banyak}} masalah lain.',
 	'validator-error-omitted' => 'Nilai {{PLURAL:$2|"$1"|"$1"}} telah diabaikan.',
 	'validator-error-problem' => 'Ada masalah dengan parameter $1.',
@@ -1824,6 +1824,20 @@ A aceta mach {{PLURAL:$3|sto valor|sti valor}}: $2 (e $4 {{PLURAL:$4|valor|valor
 	'validator_list_omitted' => "{{PLURAL:$2|Ël valor|Ij valor}} $1 {{PLURAL:$2|a l'é|a son}} pa stàit butà.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'validator-type-string' => 'متن',
+	'validator-type-number' => 'شمېره',
+	'validator-type-float' => 'شمېره',
+	'validator-type-boolean' => 'هو/نه',
+	'validator-type-char' => 'لوښه',
+	'validator-listerrors-normal' => 'نورمال',
+	'validator-describe-empty' => 'تش',
+	'validator-describe-header-default' => 'تلواليز',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
@@ -2157,8 +2171,11 @@ $messages['tl'] = array(
 	'validator-listerrors-par-minseverity' => 'Ang pinakamaliit na kalubhaan ng isang paksa para ito maitala.',
 	'validator-describe-notfound' => 'Walang kawit ng pambanghay na humahawak sa "$1".',
 	'validator-describe-descriptionmsg' => "'''Paglalarawan''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Taguri|Mga taguri}}''': $1",
 	'validator-describe-parserfunction' => 'Ipinatupad lamang bilang tungkuling pambanghay.',
 	'validator-describe-tagextension' => 'Ipinatupad lamang bilang dugtong ng tatak.',
+	'validator-describe-bothhooks' => 'Ipinatupad bilang kapwa tungkulin ng pambanghay at bilang dugtong ng tatak.',
+	'validator-describe-par-hooks' => 'Ang mga kalawit ng pambanghay para kung saan ipapakita ang dokumentasyon.',
 	'validator-describe-listtype' => 'Tala ng $1 mga bagay',
 	'validator-describe-empty' => 'walang laman',
 	'validator-describe-required' => 'kailangan',
@@ -2173,6 +2190,8 @@ $messages['tl'] = array(
 	'validator-describe-tagmax' => 'Dugtong ng tatak na mayroon ng lahat ng mga parametro.',
 	'validator-describe-tagdefault' => 'Dugtong ng tatak na mayroon ng lahat ng mga parametro na ginagamit ang likas na nakatakdang talihalat ng parametro.',
 	'validator-describe-pfmin' => 'Tungkuling pambanghay na mayroon lamang ng kinakailangang mga parametro.',
+	'validator-describe-pfmax' => 'Tungkulin ng pambanghay na mayroon ng lahat ng mga parametro.',
+	'validator-describe-pfdefault' => 'Tungkulin ng pambanghay na mayroon ng lahat ng mga parametro na ginagamit ang likas na nakatakdang katalaan ng parametro.',
 	'validator_error_empty_argument' => 'Hindi dapat na isang halagang walang laman ang parametrong $1.',
 	'validator_error_must_be_number' => 'Dapat na bilang lang ang parametrong $1.',
 	'validator_error_must_be_integer' => 'Dapat na tambilang lang ang parametrong $1.',
