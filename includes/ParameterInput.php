@@ -187,7 +187,7 @@ class ParameterInput {
 	}	
 	
 	/**
-	 * Gets a select menue for the provided values.
+	 * Gets a select menu for the provided values.
 	 * 
 	 * @since 0.4.6
 	 * 

@@ -195,7 +195,7 @@ class ListParameter extends Parameter {
 	}
 	
 	/**
-	 * Handles any validation errors that occured for a single criterion.
+	 * Handles any validation errors that occurred for a single criterion.
 	 * 
 	 * @since 0.4
 	 * 

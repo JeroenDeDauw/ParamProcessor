@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class for out of the box parser hook functionality inetgrated with the validation
+ * Class for out of the box parser hook functionality integrated with the validation
  * provided by Validator.
  *
  * @since 0.4
@@ -431,7 +431,7 @@ abstract class ParserHook {
 	}
 	
 	/**
-	 * Returns if the current render request is comming from a tag extension.
+	 * Returns if the current render request is coming from a tag extension.
 	 * 
 	 * @since 0.4.4
 	 * 
@@ -442,7 +442,7 @@ abstract class ParserHook {
 	}
 	
 	/**
-	 * Returns if the current render request is comming from a parser function.
+	 * Returns if the current render request is coming from a parser function.
 	 * 
 	 * @since 0.4.4
 	 * 

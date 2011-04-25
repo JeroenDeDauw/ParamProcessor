@@ -24,9 +24,9 @@ class Validator {
 	protected $parameters;
 	
 	/**
-	 * Asscoaitive array containing parameter names (keys) and their user-provided data (values).
-	 * This list is needed because adittional parameter definitions can be added to the $parameters
-	 * feild during validation, so we can't determine in advance if a parameter is unknown.
+	 * Associative array containing parameter names (keys) and their user-provided data (values).
+	 * This list is needed because additional parameter definitions can be added to the $parameters
+	 * field during validation, so we can't determine in advance if a parameter is unknown.
 	 * 
 	 * @since 0.4
 	 * 
@@ -74,7 +74,7 @@ class Validator {
 	/**
 	 * Constructor.
 	 * 
-	 * @param srting $element
+	 * @param string $element
 	 * @param boolean $unknownInvalid Should unknown parameter be regarded as invalid (or, if not, just be ignored)
 	 * 
 	 * @since 0.4
@@ -155,7 +155,7 @@ class Validator {
 	 * for unknown parameters and optionally for parameter overriding.
 	 * 
 	 * @param array $parameters Parameter name as key, parameter value as value
-	 * @param array $parameterInfo Main parameter name as key, parameter meta data as valu
+	 * @param array $parameterInfo Main parameter name as key, parameter meta data as value
 	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
 	 */
 	public function setParameters( array $parameters, array $parameterInfo, $toLower = true ) {
@@ -163,7 +163,7 @@ class Validator {
 		
 		$this->parameters = $parameterInfo;
 		
-		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
+		// Loop through all the user provided parameters, and distinguish between those that are allowed and those that are not.
 		foreach ( $parameters as $paramName => $paramData ) {
 			$paramName = trim( strtolower( $paramName ) );
 			$paramValue = is_array( $paramData ) ? $paramData['original-value'] : trim( $paramData );
@@ -337,7 +337,7 @@ class Validator {
 	}
 	
 	/**
-	 * Tries to find a matching user provided value and, when found, assingns it
+	 * Tries to find a matching user provided value and, when found, assigns it
 	 * to the parameter, and removes it from the raw values. Returns a boolean
 	 * indicating if there was any user value set or not.
 	 * 
@@ -390,7 +390,7 @@ class Validator {
 	
 	/**
 	 * Returns an associative array with the parameter names as key and their
-	 * correspinding values as value.
+	 * corresponding values as value.
 	 * 
 	 * @since 0.4
 	 * 

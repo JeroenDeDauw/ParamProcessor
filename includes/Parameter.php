@@ -160,7 +160,7 @@ class Parameter {
 	protected $errors = array();
 	
 	/**
-	 * Indicates if the parameter manipualations should be applied to the default value.
+	 * Indicates if the parameter manipulations should be applied to the default value.
 	 * 
 	 * @since 0.4
 	 * 
@@ -423,7 +423,7 @@ class Parameter {
 	}
 	
 	/**
-	 * Handles any validation errors that occured for a single criterion.
+	 * Handles any validation errors that occurred for a single criterion.
 	 * 
 	 * @since 0.4
 	 * 
@@ -526,7 +526,7 @@ class Parameter {
 	}	
 	
 	/**
-	 * Returns all validation errors that occured so far.
+	 * Returns all validation errors that occurred so far.
 	 * 
 	 * @since 0.4
 	 * 
@@ -738,7 +738,7 @@ class Parameter {
 	}
 	
 	/**
-	 * Set if the parameter manipualations should be applied to the default value.
+	 * Set if the parameter manipulations should be applied to the default value.
 	 * 
 	 * @since 0.4
 	 * 

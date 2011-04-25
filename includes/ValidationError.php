@@ -12,9 +12,9 @@
  */
 class ValidationError {
 	
-	const SEVERITY_MINOR = 0;	// Minor error. ie a decapriation notice
+	const SEVERITY_MINOR = 0;	// Minor error. ie a deprecation notice
 	const SEVERITY_LOW = 1;		// Lower-then-normal severity. ie an unknown parameter
-	const SEVERITY_NORMAL = 2;	// Normal severiry. ie an invalid value provided
+	const SEVERITY_NORMAL = 2;	// Normal severity. ie an invalid value provided
 	const SEVERITY_HIGH = 3;	// Higher-then-normal severity. ie an invalid value for a significant parameter
 	const SEVERITY_FATAL = 4;	// Fatal error. Either a missing or an invalid required parameter
 
@@ -28,7 +28,7 @@ class ValidationError {
 	public $severity;
 	
 	/**
-	 * List of 'tags' for the error. This is mainly ment for indicating an error
+	 * List of 'tags' for the error. This is mainly meant for indicating an error
 	 * type, such as 'missing parameter' or 'invalid value', but allows for multiple
 	 * such indications.
 	 * 
@@ -39,7 +39,7 @@ class ValidationError {
 	protected $tags;
 	
 	/**
-	 * Where the error occured.
+	 * Where the error occurred.
 	 * 
 	 * @since 0.4
 	 * 
@@ -84,7 +84,7 @@ class ValidationError {
 	}
 	
 	/**
-	 * Returns the element this error occured at, or 'unknown' when i's unknown.
+	 * Returns the element this error occurred at, or 'unknown' when i's unknown.
 	 * 
 	 * @since 0.4
 	 * 
