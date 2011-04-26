@@ -2305,10 +2305,16 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'validator-warning' => '警告：$1',
 	'validator-error' => '錯誤：$1',
 	'validator-fatal-error' => '致命錯誤：$1',
+	'validator-describe-header-parameter' => '參數',
+	'validator_list_error_empty_argument' => '參數 $1 不接受空值。',
+	'validator_list_error_must_be_number' => '參數 $1 只能包含數字。',
+	'validator_list_error_must_be_integer' => '參數 $1 只能包含整數。',
+	'validator-list-error-must-be-float' => '參數 $1 只能包含浮點數。',
 );
 
