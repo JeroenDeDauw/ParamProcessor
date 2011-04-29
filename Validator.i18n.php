@@ -1382,8 +1382,13 @@ $messages['ksh'] = array(
 	'validator-error' => 'Fähler: $1',
 	'validator-fatal-error' => "'''Dä!''' $1",
 	'validator_error_parameters' => '{{PLURAL:$1|Heh dä|Heh di|Keine}} Fähler {{PLURAL:$1|es|sin|es}} en Dinge Syntax opjevalle:',
+	'validator_warning_parameters' => 'Et {{PLURAL:$1|es ene|sin|es keine}} Fähler en Dinge Süntax.',
+	'validator-warning-adittional-errors' => '…&nbsp;un {{PLURAL:$1|noch e Probleem|söns Probleeme|söns kei Probleem}}.',
+	'validator-error-omitted' => '{{PLURAL:$2|Dä Wert „$1“ fählt|De Wääte „$1“ fähle|Nix fählt}}.',
+	'validator-error-problem' => 'Et johv e Probleem mem Parrameeter $1.',
 	'validator_error_unknown_argument' => '„$1“ es keine jöltijje Parameeter.',
 	'validator_error_required_missing' => 'Dä Parameeter $1 moß aanjejovve sin, un fählt.',
+	'validator-error-override-argument' => 'Versooht, dä Parrameeter $1 (mem Wäät: $2) met „$3“ ze övverschriive.',
 	'validator-type-string' => 'Täx',
 	'validator-type-number' => 'Zahl',
 	'validator-type-integer' => 'janze Zahl (ohne Komma!)',
@@ -1394,12 +1399,33 @@ $messages['ksh'] = array(
 	'validator-listerrors-minor' => 'Bahl ejaal',
 	'validator-listerrors-low' => 'Kleineshkeit',
 	'validator-listerrors-normal' => 'Nomaal',
+	'validator-listerrors-high' => 'Huh',
+	'validator-listerrors-fatal' => 'Schlemm',
+	'validator-listerrors-par-minseverity' => 'Wi schlemm ene Fähler winnishßdens sin moß, domet_e aanjezeish weed.',
+	'validator-describe-notfound' => 'Et jidd_er keine Paaserhooke, dä „$1“ afhandele deiht.',
+	'validator-describe-parserfunction' => 'Bloß als ene Paaserfunxjuhn enjeresht.',
+	'validator-describe-listtype' => 'Leß met {{PLURAL:$1|einem Endraach|$1 Endrääsh|keinem Endraach}}',
+	'validator-describe-empty' => 'nix dren',
+	'validator-describe-required' => 'nüüdesch',
+	'validator-describe-header-parameter' => 'Parrameeter',
+	'validator-describe-header-type' => 'Zoot',
+	'validator-describe-header-default' => 'Shtandatt',
+	'validator-describe-parameters' => 'Parrameetere',
+	'validator-describe-syntax' => 'Süntax',
 	'validator_error_empty_argument' => 'Dä Parameeter $1 kann keine Wäät met nix dren hann.',
 	'validator_error_must_be_number' => 'Dä Parameeter $1 kann blohß en Zahl sin.',
 	'validator_error_must_be_integer' => 'Dä Parrameeter $1 kann bloß en jannze Zahl sin.',
+	'validator-error-must-be-float' => 'Dä Parameeter $1 kann blohß en Zahl met Komma sin.',
 	'validator_error_invalid_range' => 'Dä Parameeter $1 moß zwesche $2 un $3 sin.',
+	'validator-error-invalid-length' => 'Dä Parameeter $1 moß $2 Zeijshe lang sin.',
+	'validator-error-invalid-length-range' => 'Dä Parameeter $1 moß zwesche $2 un $3 Zeijshe lang sin.',
 	'validator_error_invalid_argument' => 'Däm Parameeter $2 singe Wäät es $1, dat es ävver doför nit jöltesch.',
+	'validator_list_error_empty_argument' => 'Dä Parameeter $1 kann nit läddesh sin.',
+	'validator_list_error_must_be_number' => 'Dä Parameeter $1 kann blohß Zeffere enthallde.',
+	'validator_list_error_must_be_integer' => 'Dä Parameeter $1 kann blohß janze Zahle enthallde.',
+	'validator_list_error_invalid_range' => 'All de Wääte vum Parameeter $1 möße zwesche $2 un $3 lijje.',
 	'validator_error_accepts_only' => '„$4“ es nit ze Bruche, weil dä Parameeter $1 {{PLURAL:$3|bloß eine Wäät|bloß eine vun heh dä Wääte|keine Wäät}} han kann: $2',
+	'validator_list_omitted' => '{{PLURAL:$2|Dä Wäät|De Wääte|Keine Wäät}} $1 {{PLURAL:$2|es|sen|se}} fottjelohße woode.',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
@@ -1474,6 +1500,15 @@ En akzeptéiert nëmmen {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2.',
 	'validator-error-accepts-only-omitted' => 'De Wäert "$2" ass net valabel fir de Parameter $1.
 En akzeptéiert nëmmen {{PLURAL:$5|dëse Wäert|dës Wäerter}}: $3 (an {{PLURAL:$4|een ausgeloossene Wäert|$4 ausgeloosse Wäerter}}).',
 	'validator_list_omitted' => "{{PLURAL:$2|De Wäert|D'Wäerter}} $1 {{PLURAL:$2|gouf|goufe}} vergiess.",
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'validator-listerrors-errors' => 'Kļūdas',
+	'validator-listerrors-minor' => 'Maznozīmīgas',
+	'validator-listerrors-fatal' => 'Fatālas',
 );
 
 /** Macedonian (Македонски)
