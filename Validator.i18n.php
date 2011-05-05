@@ -130,9 +130,11 @@ $messages['qqq'] = array(
 	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
 	'validator-describe-empty' => '{{Identical|Empty}}',
 	'validator-describe-required' => '{{Identical|Required}}',
+	'validator-describe-header-parameter' => '{{Identical|Parameter}}',
 	'validator-describe-header-type' => '{{Identical|Type}}',
 	'validator-describe-header-default' => '{{Identical|Default}}',
 	'validator-describe-header-description' => '{{Identical|Description}}',
+	'validator-describe-parameters' => '{{Identical|Parameter}}',
 );
 
 /** Afrikaans (Afrikaans)
