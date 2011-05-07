@@ -15,7 +15,7 @@
  * @ingroup Validator
  * 
  * @licence GNU GPL v3 or later
- * @author Jeroen De Dauw
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class ParameterInput {
 	

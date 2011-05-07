@@ -9,7 +9,8 @@
  * @file ParserHook.php
  * @ingroup Validator
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3 or later
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 abstract class ParserHook {
 	

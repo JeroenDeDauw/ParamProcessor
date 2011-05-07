@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class for parameter validation of a single parser hook or other parameterized construct.
+ * Class for parameter validation of a single parser hook or other parametrized construct.
  *
  * @since 0.1
  *
@@ -9,7 +9,6 @@
  * @ingroup Validator
  *
  * @licence GNU GPL v3 or later
- * 
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class Validator {
@@ -409,10 +408,27 @@ class Validator {
 	/**
 	 * Returns the errors.
 	 *
+	 * @since 0.4
+	 *
 	 * @return array of ValidationError
 	 */
 	public function getErrors() {
 		return $this->errors;
+	}
+	
+	/**
+	 * @since 0.4.6
+	 * 
+	 * @return array of string
+	 */
+	public function getErrorMessages() {
+		$errors = array();
+		
+		foreach ( $this->errors as $error ) {
+			$errors[] = $error->getMessage();
+		}
+		
+		return $errors;
 	}
 	
 	/**

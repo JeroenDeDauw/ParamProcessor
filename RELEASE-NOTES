@@ -4,6 +4,18 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 
+=== Validator 0.4.6 ===
+(2011-05-xx)
+
+* Added ParameterInput class to generate HTML inputs for parameters, based on code from SMWs Special:Ask.
+
+* Removed ParamManipulationBoolstr
+
+* Added "$manipulate = true" as second parameter for Parameter::setDefault,
+  which gets passed to Parameter::setDoManipulationOfDefault.
+
+* Boolean manipulation now ignores values that are already a boolean.
+
 === Validator 0.4.5 ===
 (2011-03-05)
 
