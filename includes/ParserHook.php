@@ -213,7 +213,8 @@ abstract class ParserHook {
 		$this->parser = $parser;
 		$this->frame = $frame;
 		
-		$defaultParam = array_shift( $this->getDefaultParameters( self::TYPE_TAG ) );
+		$defaultParameters = $this->getDefaultParameters( self::TYPE_TAG )
+		$defaultParam = array_shift( $defaultParameters );
 
 		// If there is a first default parameter, set the tag contents as it's value.
 		if ( !is_null( $defaultParam ) && !is_null( $input ) ) {
