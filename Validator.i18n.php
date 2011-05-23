@@ -808,6 +808,9 @@ $messages['gl'] = array(
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Alto',
 	'validator-listerrors-fatal' => 'Fatal',
+	'validator-listerrors-description' => 'Lista os erros (e avisos) que ocorreron no asociador do analizador engadidos a través do Validator.
+Só aparecerán nas listas para os asociadores do analizador que estean colocados enriba de listerrors;
+coloque listerrors na parte inferior da páxina para obter todos os erros.',
 	'validator-listerrors-par-minseverity' => 'A severidade mínima dun problema para que apareza na lista.',
 	'validator-describe-description' => 'Xera a documentación para un ou máis asociadores do analizador definidos a través do Validator.',
 	'validator-describe-notfound' => 'Non hai ningún asociador do analizador que manexe "$1".',
