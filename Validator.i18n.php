@@ -2419,17 +2419,32 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author Richarddong
  * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
-	'validator_error_unknown_argument' => '$1 不是合法参数。',
-	'validator_error_required_missing' => '未能提供所需要的参数 $1 。',
+	'validator-warning' => '警告：$1',
+	'validator-error' => '错误：$1',
+	'validator-fatal-error' => '致命错误：$1',
+	'validator_error_parameters' => '从您的语法中检测到以下错误：',
+	'validator_warning_parameters' => '您的语法中存在错误。',
+	'validator-warning-adittional-errors' => '⋯⋯以及更多的问题。',
+	'validator-error-omitted' => '"$1"等值被忽略。',
+	'validator-error-problem' => '参数 $1 存在一个问题。',
+	'validator_error_unknown_argument' => '$1 不是一个有效的参数。',
+	'validator_error_required_missing' => '未能提供必要的参数 $1 。',
+	'validator-error-override-argument' => '试图用 "$3" 覆盖参数 $1 的值（$2）',
+	'validator-type-string' => '文本',
 	'validator-type-number' => '号码',
-	'validator-type-boolean' => '是/非',
-	'validator-listerrors-minor' => '小时',
+	'validator-type-float' => '浮点数',
+	'validator-type-boolean' => '布尔值',
+	'validator-type-char' => '字符',
+	'validator-listerrors-errors' => '错误',
+	'validator-listerrors-minor' => '很小',
 	'validator-listerrors-low' => '小',
 	'validator-listerrors-normal' => '中',
 	'validator-listerrors-high' => '大',
+	'validator-listerrors-fatal' => '致命',
 	'validator-describe-empty' => '空白',
 	'validator-describe-header-type' => '类型',
 	'validator_error_empty_argument' => '参数 $1 不能为空。',
