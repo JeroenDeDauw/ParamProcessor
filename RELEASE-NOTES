@@ -5,7 +5,7 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 
 === Validator 0.4.6 ===
-(2011-05-xx)
+(2011-05-15)
 
 * Added ParameterInput class to generate HTML inputs for parameters, based on code from SMWs Special:Ask.
 
