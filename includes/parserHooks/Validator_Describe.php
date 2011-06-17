@@ -349,6 +349,8 @@ class ValidatorDescribe extends ParserHook {
 		foreach ( $parameters as $parameter ) {
 			$tableRows[] = $this->getDescriptionRow( $parameter, $defaults );
 		}
+
+		$table = '';
 		
 		if ( count( $tableRows ) > 0 ) {
 			$tableRows = array_merge( array( 
@@ -360,17 +362,17 @@ class ValidatorDescribe extends ParserHook {
 			'!' . wfMsg( 'validator-describe-header-description' )
 			), $tableRows );
 			
-		$table = implode( "\n|-\n", $tableRows );
-		
-		$h3 = 
-			( $pre ? '=== ' : '<h3>' ) . 
-			wfMsg( 'validator-describe-parameters' ) .
-			( $pre ? ' ===' : '</h3>' );
-		
-		$table = "$h3\n\n" .
-				'{| class="wikitable sortable"' . "\n" .
-				$table .
-				"\n|}";
+			$table = implode( "\n|-\n", $tableRows );
+
+			$h3 =
+				( $pre ? '=== ' : '<h3>' ) .
+				wfMsg( 'validator-describe-parameters' ) .
+				( $pre ? ' ===' : '</h3>' );
+
+			$table = "$h3\n\n" .
+					'{| class="wikitable sortable"' . "\n" .
+					$table .
+					"\n|}";
 		}
 		
 		return $table;

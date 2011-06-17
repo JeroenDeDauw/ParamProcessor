@@ -273,8 +273,6 @@ abstract class ParserHook {
 	 * @return string
 	 */
 	public function validateAndRender( array $arguments, $type ) {
-		global $egValidatorErrorLevel;
-		
 		$names = $this->getNames();
 		$this->validator = new Validator( $names[0] );
 		
@@ -468,7 +466,7 @@ abstract class ParserHook {
 		// Parse the wikitext to HTML.
 		if ( $this->isFunction() ) {
 			return $this->parser->parse(
-				text,
+				$text,
 				$this->parser->mTitle,
 				$this->parser->mOptions,
 				true,
