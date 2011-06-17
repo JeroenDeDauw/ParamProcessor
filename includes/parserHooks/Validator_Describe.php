@@ -263,7 +263,7 @@ class ValidatorDescribe extends ParserHook {
 			
 			if ( count( $defaults ) > 0 ) {
 				$result .= "\n\n'''" . wfMsg( 'validator-describe-tagdefault' ) . "'''\n\n";
-				
+				$contents = '';
 				foreach ( $plainParams as $name => $type ) {
 					$contents = '{' . $name . ', ' . $type . '}';
 					break;
