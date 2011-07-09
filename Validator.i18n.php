@@ -2422,6 +2422,7 @@ $messages['vi'] = array(
  * @author Hydra
  * @author Richarddong
  * @author Wilsonmess
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'validator-warning' => '警告：$1',
@@ -2446,8 +2447,10 @@ $messages['zh-hans'] = array(
 	'validator-listerrors-normal' => '中',
 	'validator-listerrors-high' => '大',
 	'validator-listerrors-fatal' => '致命',
+	'validator-describe-descriptionmsg' => "'''说明'''：$1",
 	'validator-describe-empty' => '空白',
 	'validator-describe-header-type' => '类型',
+	'validator-describe-header-description' => '说明',
 	'validator_error_empty_argument' => '参数 $1 不能为空。',
 	'validator_error_must_be_number' => '参数 $1 只能为数字。',
 	'validator_error_must_be_integer' => '参数 $1 只能为整数。',
