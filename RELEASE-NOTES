@@ -4,6 +4,11 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 
+=== Validator 0.4.8 ===
+(2011-xx-xx)
+
+* Added unit tests.
+
 === Validator 0.4.7 ===
 (2011-05-15)
 
