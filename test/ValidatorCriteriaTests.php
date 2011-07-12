@@ -11,6 +11,21 @@
  */
 class ValidatorCriteriaTests extends MediaWikiTestCase {
 	
-	// TODO
+	/**
+	 * Tests CriterionHasLength.
+	 */
+	public function testCriterionHasLength() {
+		$tests = array(
+			array( true, 0, 5, 'foo' ),
+			array( false, 0, 5, 'foobar' ),
+		);
+		
+		foreach ( $tests as $test ) {
+			$c = new CriterionHasLength( $test[1], $test[2] );
+			$p = new Parameter( 'test' );
+			$p->setUserValue( 'test', $test[3] );
+			$this->assertEquals( $test[0], $c->validate( $p, array() )->isValid() );
+		}
+	}
 
 }

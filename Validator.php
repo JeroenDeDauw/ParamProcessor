@@ -40,8 +40,10 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Autoload the classes.
+$wgAutoloadClasses['ValidatorHooks']			= dirname( __FILE__ ) . '/Validator.hooks.php';
+
 $incDir = dirname( __FILE__ ) . '/includes/';
-$wgAutoloadClasses['CriterionValidationResult']	= $incDir . 'CriterionValidationResult.php'; 
+$wgAutoloadClasses['CriterionValidationResult']	= $incDir . 'CriterionValidationResult.php';
 $wgAutoloadClasses['ItemParameterCriterion']	= $incDir . 'ItemParameterCriterion.php';
 $wgAutoloadClasses['ItemParameterManipulation']	= $incDir . 'ItemParameterManipulation.php';
 $wgAutoloadClasses['ListParameter'] 			= $incDir . 'ListParameter.php';
@@ -90,7 +92,7 @@ $wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
 $wgHooks['LanguageGetMagic'][] = 'ValidatorDescribe::staticMagic';
 
 // Since 0.4.8
-$wgHooks['UnitTestsList'][] = 'MapsHooks::registerUnitTests';
+$wgHooks['UnitTestsList'][] = 'ValidatorHooks::registerUnitTests';
 
 // This file needs to be included directly, since Validator_Settings.php
 // uses it, in some rare cases before autoloading is defined.
