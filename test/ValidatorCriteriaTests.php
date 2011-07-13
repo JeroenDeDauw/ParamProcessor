@@ -38,5 +38,30 @@ class ValidatorCriteriaTests extends MediaWikiTestCase {
 			);
 		}
 	}
+	
+	/**
+	 * Tests CriterionInArray.
+	 */
+	public function testCriterionInArray() {
+		$tests = array(
+			array( true, 'foo', false, array( 'foo', 'bar', 'baz' ) ),
+			array( true, 'FoO', false, array( 'fOo', 'bar', 'baz' ) ),
+			array( false, 'FoO', true, array( 'fOo', 'bar', 'baz' ) ),
+			array( false, 'foobar', false, array( 'foo', 'bar', 'baz' ) ),
+			array( false, '', false, array( 'foo', 'bar', 'baz' ) ),
+			array( false, '', false, array( 'foo', 'bar', 'baz', 0 ) ),
+		);
+		
+		foreach ( $tests as $test ) {
+			$c = new CriterionInArray( $test[3], $test[2] );
+			$p = new Parameter( 'test' );
+			$p->setUserValue( 'test', $test[1] );
+			$this->assertEquals(
+				$test[0],
+				$c->validate( $p, array() )->isValid(),
+				'Value "'. $test[1] . '" should ' . ( $test[0] ? '' : 'not ' ) . "be in list '" . $GLOBALS['wgLang']->listToText( $test[3] ) . "'."
+			);
+		}
+	}
 
 }
