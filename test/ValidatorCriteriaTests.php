@@ -18,13 +18,13 @@ class ValidatorCriteriaTests extends MediaWikiTestCase {
 		$tests = array(
 			array( true, 0, 5, 'foo' ),
 			array( false, 0, 5, 'foobar' ),
-			array( false, 3, null, 'a' ),
-			array( true, 3, null, 'aw<dfxdfwdxgtdfgdfhfdgsfdxgtffds' ),
-			array( true, null, null, 'aw<dfxdfwdxgtdfgdfhfdgsfdxgtffds' ),
-			array( true, null, null, '' ),
+			array( false, 3, false, 'a' ),
+			array( true, 3, false, 'aw<dfxdfwdxgtdfgdfhfdgsfdxgtffds' ),
+			array( true, false, false, 'aw<dfxdfwdxgtdfgdfhfdgsfdxgtffds' ),
+			array( true, false, false, '' ),
 			array( false, 2, 3, '' ),
-			array( true, 3, false, 'foo' ),
-			array( false, 3, false, 'foobar' ),
+			array( true, 3, null, 'foo' ),
+			array( false, 3, null, 'foobar' ),
 		);
 		
 		foreach ( $tests as $test ) {
@@ -181,6 +181,36 @@ class ValidatorCriteriaTests extends MediaWikiTestCase {
 				$test[0],
 				$c->validate( $p, array() ),
 				'Value "'. $test[1] . '" should ' . ( $test[0] ? '' : 'not ' ) . " have unique items."
+			);
+		}
+	}
+	
+	/**
+	 * Tests CriterionItemCount.
+	 */
+	public function testCriterionItemCount() {
+		$tests = array(
+			array( true, array( 'foo', 'bar', 'baz' ), 0, 5 ),
+			array( false, array( 'foo', 'bar', 'baz' ), 0, 2 ),
+			array( true, array( 'foo', 'bar', 'baz' ), 0, false ),
+			array( true, array( 'foo', 'bar', 'baz' ), false, 99 ),
+			array( true, array( 'foo', 'bar', 'baz' ), 3, 3 ),
+			array( false, array(), 1, 1 ),
+			array( true, array( 'foo', 'bar', 'baz' ), false, false ),
+			array( true, array( 'foo', 'bar', 'baz' ), 3, null ),
+			array( false, array( 'foo', 'bar', 'baz' ), 2, null ),
+		);
+		
+		foreach ( $tests as $test ) {
+			$c = new CriterionItemCount( $test[2], $test[3] );
+			$p = new ListParameter( 'test' );
+			$p->setUserValue( 'test', '' );
+			$p->setValue( $test[1] );
+			
+			$this->assertEquals(
+				$test[0],
+				$c->validate( $p, array() ),
+				'List "'. $GLOBALS['wgLang']->listToText( $test[1] ) . '" should ' . ( $test[0] ? '' : 'not ' ) . " have between and $test[2], $test[3] items."
 			);
 		}
 	}
