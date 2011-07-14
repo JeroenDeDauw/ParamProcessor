@@ -215,4 +215,31 @@ class ValidatorCriteriaTests extends MediaWikiTestCase {
 		}
 	}
 	
+	/**
+	 * Tests CriterionNotEmpty.
+	 */
+	public function testCriterionNotEmpty() {
+		$tests = array(
+			array( true, 'a' ),
+			array( true, ' a ' ),
+			array( false, '' ),
+			array( false, '  ' ),
+			array( false, "\n" ),
+			array( false, " \n " ),
+			array( true, " \n ." ),
+		);
+		
+		foreach ( $tests as $test ) {
+			$c = new CriterionNotEmpty();
+			$p = new Parameter( 'test' );
+			$p->setUserValue( 'test', $test[1] );
+			
+			$this->assertEquals(
+				$test[0],
+				$c->validate( $p, array() )->isValid(),
+				'Value "'. $test[1]. '" should ' . ( !$test[0] ? '' : 'not ' ) . " be empty."
+			);
+		}
+	}
+	
 }
