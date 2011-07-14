@@ -157,4 +157,32 @@ class ValidatorCriteriaTests extends MediaWikiTestCase {
 		}
 	}
 	
+	/**
+	 * Tests CriterionUniqueItems.
+	 */
+	public function testCriterionUniqueItems() {
+		$tests = array(
+			array( true, array( 'foo', 'bar', 'baz' ), false ),
+			array( true, array( 'foo', 'bar', 'baz' ), true ),
+			array( false, array( 'foo', 'bar', 'baz', 'foo' ), false ),
+			array( false, array( 'foo', 'bar', 'baz', 'foo' ), true ),
+			array( false, array( 'foo', 'bar', 'baz', 'FOO' ), false ),
+			array( true, array( 'foo', 'bar', 'baz', 'FOO' ), true ),
+			array( true, array(), false ),
+		);
+		
+		foreach ( $tests as $test ) {
+			$c = new CriterionUniqueItems( $test[2] );
+			$p = new ListParameter( 'test' );
+			$p->setUserValue( 'test', '' );
+			$p->setValue( $test[1] );
+			
+			$this->assertEquals(
+				$test[0],
+				$c->validate( $p, array() ),
+				'Value "'. $test[1] . '" should ' . ( $test[0] ? '' : 'not ' ) . " have unique items."
+			);
+		}
+	}
+	
 }
