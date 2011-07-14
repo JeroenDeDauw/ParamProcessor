@@ -54,7 +54,7 @@ class CriterionInRange extends ItemParameterCriterion {
 			return false;
 		}
 		
-		$value = (int)$value;
+		$value = (float)$value;
 		
 		return ( $this->upperBound === false || $value <= $this->upperBound ) 
 			&& ( $this->lowerBound === false || $value >= $this->lowerBound );		

@@ -63,5 +63,35 @@ class ValidatorCriteriaTests extends MediaWikiTestCase {
 			);
 		}
 	}
+	
+	/**
+	 * Tests CriterionInRange.
+	 */
+	public function testCriterionInRange() {
+		$tests = array(
+			array( true, '42', Parameter::TYPE_INTEGER, 0, 99 ),
+			array( false, '42', Parameter::TYPE_INTEGER, 0, 9 ),
+			array( true, '42', Parameter::TYPE_INTEGER, 0, false ),
+			array( true, '42', Parameter::TYPE_INTEGER, false, false ),
+			array( false, '42', Parameter::TYPE_INTEGER, false, 9 ),
+			array( false, '42', Parameter::TYPE_INTEGER, 99, false ),
+			array( false, '42', Parameter::TYPE_INTEGER, 99, 100 ),
+			array( true, '42', Parameter::TYPE_INTEGER, 42, 42 ),
+			array( false, '4.2', Parameter::TYPE_FLOAT, 42, 42 ),
+			array( true, '4.2', Parameter::TYPE_FLOAT, 4.2, 4.2 ),
+			array( true, '4.2', Parameter::TYPE_FLOAT, 0, 9 ),
+		);
+		
+		foreach ( $tests as $test ) {
+			$c = new CriterionInRange( $test[3], $test[4] );
+			$p = new Parameter( 'test' );
+			$p->setUserValue( 'test', $test[1] );
+			$this->assertEquals(
+				$test[0],
+				$c->validate( $p, array() )->isValid(),
+				'Value "'. $test[1] . '" should ' . ( $test[0] ? '' : 'not ' ) . "be between '$test[3]' and '$test[4]'."
+			);
+		}
+	}
 
 }
