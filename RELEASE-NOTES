@@ -9,6 +9,10 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 * Added unit tests.
 
+* Fixed issue with handling floats in CriterionInRange.
+
+* Added support for open limits in CriterionHasLength.
+
 === Validator 0.4.7 ===
 (2011-05-15)
 
