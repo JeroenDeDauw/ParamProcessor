@@ -80,11 +80,13 @@ class ValidatorCriteriaTests extends MediaWikiTestCase {
 			array( false, '4.2', Parameter::TYPE_FLOAT, 42, 42 ),
 			array( true, '4.2', Parameter::TYPE_FLOAT, 4.2, 4.2 ),
 			array( true, '4.2', Parameter::TYPE_FLOAT, 0, 9 ),
+			array( true, '42', Parameter::TYPE_FLOAT, 0, 99 ),
+			array( false, '42', Parameter::TYPE_FLOAT, 0, 9 ),
 		);
 		
 		foreach ( $tests as $test ) {
 			$c = new CriterionInRange( $test[3], $test[4] );
-			$p = new Parameter( 'test' );
+			$p = new Parameter( 'test', $test[2] );
 			$p->setUserValue( 'test', $test[1] );
 			$this->assertEquals(
 				$test[0],
@@ -93,5 +95,5 @@ class ValidatorCriteriaTests extends MediaWikiTestCase {
 			);
 		}
 	}
-
+	
 }
