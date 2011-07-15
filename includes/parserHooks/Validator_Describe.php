@@ -410,7 +410,14 @@ class ValidatorDescribe extends ParserHook {
 		}
 
 		$default = $parameter->isRequired() ? "''" . wfMsg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
-		if ( is_array( $default ) ) $default = implode( ', ', $default );
+		
+		if ( is_array( $default ) ) {
+			$default = implode( ', ', $default );
+		}
+		else if ( is_bool( $default ) ) {
+			$default = $default ? 'yes' : 'no';
+		}
+		
 		if ( $default === '' ) $default = "''" . wfMsg( 'validator-describe-empty' ) . "''";
 
 		if ( !$isDefault ) {
