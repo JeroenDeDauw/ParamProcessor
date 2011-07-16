@@ -1667,6 +1667,7 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'validator-describe-descriptionmsg' => "'''Keterangan''': $1",
 	'validator-describe-required' => 'wajib',
 	'validator-describe-header-default' => 'Tersedia',
 );
