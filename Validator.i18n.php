@@ -1668,6 +1668,7 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'validator-describe-descriptionmsg' => "'''Keterangan''': $1",
+	'validator-describe-empty' => 'kosong',
 	'validator-describe-required' => 'wajib',
 	'validator-describe-header-default' => 'Tersedia',
 );
