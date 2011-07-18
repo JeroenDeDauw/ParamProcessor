@@ -1485,6 +1485,7 @@ $messages['ksh'] = array(
 	'validator_error_must_be_integer' => 'Dä Parrameeter $1 kann bloß en jannze Zahl sin.',
 	'validator-error-must-be-float' => 'Dä Parameeter $1 kann blohß en Zahl met Komma sin.',
 	'validator_error_invalid_range' => 'Dä Parameeter $1 moß zwesche $2 un $3 sin.',
+	'validator-error-invalid-regex' => 'Dä Parrameeter $1 moß op di <i lang="en">regular expression</i> „<code>$2</code>“ paße.',
 	'validator-error-invalid-length' => 'Dä Parameeter $1 moß $2 Zeijshe lang sin.',
 	'validator-error-invalid-length-range' => 'Dä Parameeter $1 moß zwesche $2 un $3 Zeijshe lang sin.',
 	'validator_error_invalid_argument' => 'Däm Parameeter $2 singe Wäät es $1, dat es ävver doför nit jöltesch.',
