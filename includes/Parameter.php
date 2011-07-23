@@ -805,7 +805,7 @@ class Parameter {
 	 * 
 	 * @return mixed string or false
 	 */
-	public function getDescription() {
+	public function getMessage() {
 		return $this->message;
 	}
 	
@@ -816,7 +816,7 @@ class Parameter {
 	 * 
 	 * @param string $message
 	 */
-	public function setDescription( $message ) {
+	public function setMessage( $message ) {
 		$this->message = $message;
 	}
 	
