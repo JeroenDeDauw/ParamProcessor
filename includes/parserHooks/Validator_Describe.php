@@ -153,11 +153,11 @@ class ValidatorDescribe extends ParserHook {
 		$description .= "\n\n";
 		
 		if ( $descriptionData['message'] !== false ) {
-			$description .= $this->msg( 'validator-describe-descriptionmsg', 'parsemag', $this->msg( $descriptionData['message'] ) );
+			$description .= $this->msg( 'validator-describe-descriptionmsg', $this->msg( $descriptionData['message'] ) );
 			$description .= "\n\n";
 		}
 		else if ( $descriptionData['description'] !== false ) {
-			$description .= wfMsgExt( 'validator-describe-descriptionmsg', 'parsemag', $descriptionData['description'] );
+			$description .= wfMsgExt( 'validator-describe-descriptionmsg', $descriptionData['description'] );
 			$description .= "\n\n";
 		}
 
@@ -476,10 +476,10 @@ EOT;
 	}
 
 	/**
-	 * @see ParserHook::getDescription()
+	 * @see ParserHook::getMessage()
 	 */
-	public function getDescription() {
-		return wfMsg( 'validator-describe-description' );
+	public function getMessage() {
+		return 'validator-describe-description';
 	}
 	
 	/**
