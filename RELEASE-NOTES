@@ -4,6 +4,13 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 
+=== Validator 0.4.10 ===
+(2011-08-xx)
+
+* Added language parameter to describe that allows setting the lang for the generated docs.
+
+* Added getMessage method to ParserHook class for better i18n.
+
 === Validator 0.4.9 ===
 (2011-07-30)
 

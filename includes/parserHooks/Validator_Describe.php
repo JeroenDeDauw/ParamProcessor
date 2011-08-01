@@ -15,6 +15,15 @@
 class ValidatorDescribe extends ParserHook {
 
 	/**
+	 * Field to store the value of the language parameter.
+	 * 
+	 * @since 0.4.10
+	 * 
+	 * @var string
+	 */
+	protected $language;
+	
+	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */
@@ -59,12 +68,16 @@ class ValidatorDescribe extends ParserHook {
 
 		$params['hooks'] = new ListParameter( 'hooks' );
 		$params['hooks']->setDefault( array_keys( ParserHook::getRegisteredParserHooks() ) );
-		$params['hooks']->setDescription( wfMsg( 'validator-describe-par-hooks' ) );
+		$params['hooks']->setMessage( 'validator-describe-par-hooks' );
 		$params['hooks']->addAliases( 'hook' );
 
 		$params['pre'] = new Parameter( 'pre', Parameter::TYPE_BOOLEAN );
 		$params['pre']->setDefault( 'off' );
-		$params['pre']->setDescription( wfMsg( 'validator-describe-par-pre' ) );
+		$params['pre']->setMessage( 'validator-describe-par-pre' );
+		
+		$params['language'] = new Parameter( 'language' );
+		$params['language']->setDefault( $GLOBALS['wgLanguageCode'] );
+		$params['language']->setMessage( 'validator-describe-par-language' );
 
  		return $params;
 	}
@@ -92,6 +105,8 @@ class ValidatorDescribe extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
+		$this->language = $parameters['language'];
+		
 		$parts = array();
 
 		// Loop over the hooks for which the docs should be added.
@@ -132,12 +147,16 @@ class ValidatorDescribe extends ParserHook {
 			( $parameters['pre'] ? ' ==' : '</h2>' );
 
 		if ( $parameters['pre'] ) {
-			$description .= "\n<!-- " . wfMsg( 'validator-describe-autogen' ) . ' -->';
+			$description .= "\n<!-- " . $this->msg( 'validator-describe-autogen' ) . ' -->';
 		}
 
 		$description .= "\n\n";
-
-		if ( $descriptionData['description'] !== false ) {
+		
+		if ( $descriptionData['message'] !== false ) {
+			$description .= $this->msg( 'validator-describe-descriptionmsg', 'parsemag', $this->msg( $descriptionData['message'] ) );
+			$description .= "\n\n";
+		}
+		else if ( $descriptionData['description'] !== false ) {
 			$description .= wfMsgExt( 'validator-describe-descriptionmsg', 'parsemag', $descriptionData['description'] );
 			$description .= "\n\n";
 		}
@@ -151,19 +170,19 @@ class ValidatorDescribe extends ParserHook {
 				}
 			}
 
-			$description .= wfMsgExt( 'validator-describe-aliases', 'parsemag', $wgLang->listToText( $aliases ), count( $aliases ) );
+			$description .= $this->msg( 'validator-describe-aliases', 'parsemag', $wgLang->listToText( $aliases ), count( $aliases ) );
 			$description .= "\n\n";
 		}
 
 		if ( $parserHook->forTagExtensions || $parserHook->forParserFunctions ) {
 			if ( $parserHook->forTagExtensions && $parserHook->forParserFunctions ) {
-				$description .= wfMsg( 'validator-describe-bothhooks' );
+				$description .= $this->msg( 'validator-describe-bothhooks' );
 			}
 			elseif ( $parserHook->forTagExtensions ) {
-				$description .= wfMsg( 'validator-describe-tagextension' );
+				$description .= $this->msg( 'validator-describe-tagextension' );
 			}
 			else { // if $parserHook->forParserFunctions
-				$description .= wfMsg( 'validator-describe-parserfunction' );
+				$description .= $this->msg( 'validator-describe-parserfunction' );
 			}
 
 			$description .= "\n\n";
@@ -246,14 +265,14 @@ class ValidatorDescribe extends ParserHook {
 		$preClose = $pre ? '&lt;/pre&gt;' : '</pre>';
 
 		if ( $parserHook->forTagExtensions ) {
-			$result .= "\n\n'''" . wfMsg( 'validator-describe-tagmin' ) . "'''\n\n";
+			$result .= "\n\n'''" . $this->msg( 'validator-describe-tagmin' ) . "'''\n\n";
 
 			$result .= "$preOpen<nowiki>\n" . Xml::element(
 				$hookName,
 				$requiredParams
 			) . "\n</nowiki>$preClose";
 
-			$result .= "\n\n'''" . wfMsg( 'validator-describe-tagmax' ) . "'''\n\n";
+			$result .= "\n\n'''" . $this->msg( 'validator-describe-tagmax' ) . "'''\n\n";
 
 			// TODO: multiline when long
 			$result .= "$preOpen<nowiki>\n" . Xml::element(
@@ -262,7 +281,7 @@ class ValidatorDescribe extends ParserHook {
 			) . "\n</nowiki>$preClose";
 
 			if ( count( $defaults ) > 0 ) {
-				$result .= "\n\n'''" . wfMsg( 'validator-describe-tagdefault' ) . "'''\n\n";
+				$result .= "\n\n'''" . $this->msg( 'validator-describe-tagdefault' ) . "'''\n\n";
 				$contents = '';
 				foreach ( $plainParams as $name => $type ) {
 					$contents = '{' . $name . ', ' . $type . '}';
@@ -278,20 +297,20 @@ class ValidatorDescribe extends ParserHook {
 		}
 
 		if ( $parserHook->forParserFunctions ) {
-			$result .= "\n\n'''" . wfMsg( 'validator-describe-pfmin' ) . "'''\n\n";
+			$result .= "\n\n'''" . $this->msg( 'validator-describe-pfmin' ) . "'''\n\n";
 
 			$result .= "$preOpen<nowiki>\n" .
 				$this->buildParserFunctionSyntax( $hookName, $requiredParams )
 				. "\n</nowiki>$preClose";
 
-			$result .= "\n\n'''" . wfMsg( 'validator-describe-pfmax' ) . "'''\n\n";
+			$result .= "\n\n'''" . $this->msg( 'validator-describe-pfmax' ) . "'''\n\n";
 
 			$result .= "$preOpen<nowiki>\n" .
 				$this->buildParserFunctionSyntax( $hookName, $params )
 				. "\n</nowiki>$preClose";
 
 			if ( count( $defaults ) > 0 ) {
-				$result .= "\n\n'''" . wfMsg( 'validator-describe-pfdefault' ) . "'''\n\n";
+				$result .= "\n\n'''" . $this->msg( 'validator-describe-pfdefault' ) . "'''\n\n";
 
 				$result .= "$preOpen<nowiki>\n" .
 					$this->buildParserFunctionSyntax( $hookName, $plainParams, $defaults )
@@ -355,18 +374,18 @@ class ValidatorDescribe extends ParserHook {
 		if ( count( $tableRows ) > 0 ) {
 			$tableRows = array_merge( array(
 			"! #\n" .
-			'!' . wfMsg( 'validator-describe-header-parameter' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-header-aliases' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-header-type' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-header-default' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-header-description' )
+			'!' . $this->msg( 'validator-describe-header-parameter' ) ."\n" .
+			'!' . $this->msg( 'validator-describe-header-aliases' ) ."\n" .
+			'!' . $this->msg( 'validator-describe-header-type' ) ."\n" .
+			'!' . $this->msg( 'validator-describe-header-default' ) ."\n" .
+			'!' . $this->msg( 'validator-describe-header-description' )
 			), $tableRows );
 
 			$table = implode( "\n|-\n", $tableRows );
 
 			$h3 =
 				( $pre ? '=== ' : '<h3>' ) .
-				wfMsg( 'validator-describe-parameters' ) .
+				$this->msg( 'validator-describe-parameters' ) .
 				( $pre ? ' ===' : '</h3>' );
 
 			$table = "$h3\n\n" .
@@ -392,8 +411,15 @@ class ValidatorDescribe extends ParserHook {
 		$aliases = $parameter->getAliases();
 		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
 
-		$description = $parameter->getDescription();
-		if ( $description === false ) $description = '-';
+		$description = $parameter->getMessage();
+		
+		if ( $description === false ) {
+			$description = $parameter->getDescription();
+			if ( $description === false ) $description = '-';
+		}
+		else {
+			$description = $this->msg( $description );
+		}
 
 		$type = $parameter->getTypeMessage();
 
@@ -409,7 +435,7 @@ class ValidatorDescribe extends ParserHook {
 			}
 		}
 
-		$default = $parameter->isRequired() ? "''" . wfMsg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
+		$default = $parameter->isRequired() ? "''" . $this->msg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
 		
 		if ( is_array( $default ) ) {
 			$default = implode( ', ', $default );
@@ -418,7 +444,7 @@ class ValidatorDescribe extends ParserHook {
 			$default = $default ? 'yes' : 'no';
 		}
 		
-		if ( $default === '' ) $default = "''" . wfMsg( 'validator-describe-empty' ) . "''";
+		if ( $default === '' ) $default = "''" . $this->msg( 'validator-describe-empty' ) . "''";
 
 		if ( !$isDefault ) {
 			$number = '-';
@@ -454,6 +480,22 @@ EOT;
 	 */
 	public function getDescription() {
 		return wfMsg( 'validator-describe-description' );
+	}
+	
+	/**
+	 * Message function that takes into account the language parameter.
+	 * 
+	 * @since 0.4.10
+	 * 
+	 * @param string $key
+	 * @param array $args 
+	 * 
+	 * @return string
+	 */
+	protected function msg() {
+		$args = func_get_args();
+		$key = array_shift( $args );
+		return wfMsgReal( $key, $args, true, $this->language );
 	}
 
 }
