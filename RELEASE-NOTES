@@ -5,7 +5,7 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 
 === Validator 0.4.10 ===
-(2011-08-xx)
+(2011-08-04)
 
 * Added language parameter to describe that allows setting the lang for the generated docs.
 
