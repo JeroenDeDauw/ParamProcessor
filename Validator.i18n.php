@@ -1240,6 +1240,7 @@ mitte "listerrors" al fin del pagina, o proxime al fin, pro obtener tote le erro
 	'validator-describe-bothhooks' => 'Implementate como function del analysator syntactic e como extension de etiquetta.',
 	'validator-describe-par-hooks' => 'Le uncinos del analysator syntactic pro le quales presentar documentation.',
 	'validator-describe-par-pre' => 'Permitte obtener le ver wikitexto pro le documentation, sin render lo in le pagina.',
+	'validator-describe-par-language' => 'Le lingua in que presentar le descriptiones',
 	'validator-describe-listtype' => 'Lista de $1 elementos',
 	'validator-describe-empty' => 'vacue',
 	'validator-describe-required' => 'requirite',
