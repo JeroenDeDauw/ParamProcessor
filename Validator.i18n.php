@@ -253,6 +253,7 @@ $messages['be-tarask'] = array(
 	'validator-describe-bothhooks' => 'Рэалізаваная як функцыя парсэру і як пашырэньне тэгу.',
 	'validator-describe-par-hooks' => 'Працэдура-перахопнік парсэра, для якой паказваць дакумэнтацыю.',
 	'validator-describe-par-pre' => 'Дазваляе Вам атрымліваць актуальны вікі-тэкст для дакумэнтацыі, без паказу на старонцы.',
+	'validator-describe-par-language' => 'Мова, на якой паказваць апісаньні',
 	'validator-describe-listtype' => 'Сьпіс элемэнтаў $1',
 	'validator-describe-empty' => 'пуста',
 	'validator-describe-required' => 'абавязкова',
@@ -1504,6 +1505,7 @@ $messages['ksh'] = array(
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'validator-error' => 'Çewtî:$1',
 	'validator-type-boolean' => 'erê/na',
 	'validator-listerrors-high' => 'bilind',
 	'validator-describe-header-type' => 'Cure',
