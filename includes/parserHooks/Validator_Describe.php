@@ -412,7 +412,6 @@ class ValidatorDescribe extends ParserHook {
 		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
 
 		$description = $parameter->getMessage();
-		
 		if ( $description === false ) {
 			$description = $parameter->getDescription();
 			if ( $description === false ) $description = '-';

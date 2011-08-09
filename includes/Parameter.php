@@ -463,7 +463,7 @@ class Parameter {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return string
+	 * @return mixed
 	 */			
 	public function &getValue() {
 		return $this->value;
