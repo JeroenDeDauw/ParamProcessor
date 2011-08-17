@@ -1025,6 +1025,7 @@ $messages['he'] = array(
 	'validator-describe-bothhooks' => 'מיושם הן בתור פונקציית מפענח והן בתור הרחבת תג.',
 	'validator-describe-par-hooks' => 'מילות הפעלה של מפענח שעבורן יש להציג תיעוד.',
 	'validator-describe-par-pre' => 'מאפשר לייצר את קוד הוויקי עבור התיעוד מבלי להציג אותו על הדף.',
+	'validator-describe-par-language' => 'באיזו שפה להציג את התיאורים',
 	'validator-describe-listtype' => 'רשימה של פריטים מסוג "$1"',
 	'validator-describe-empty' => 'ריק',
 	'validator-describe-required' => 'נדרש',
@@ -1683,6 +1684,7 @@ $messages['ms'] = array(
 
 /** Dutch (Nederlands)
  * @author Jeroen De Dauw
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -1723,6 +1725,7 @@ plaats fouten onderaan of bijna onderaan pagina's om alle fouten weer te geven."
 	'validator-describe-bothhooks' => 'Als parserfunctie en labeluitbreiding geïmplementeerd.',
 	'validator-describe-par-hooks' => 'Parserhooks waarvoor documentatie weergegeven moet worden.',
 	'validator-describe-par-pre' => 'Maakt het mogelijk de wikitekst voor de documentatie weer te geven zonder dat deze wordt verwerkt.',
+	'validator-describe-par-language' => 'De taal om de beschrijvingen in weer te geven',
 	'validator-describe-listtype' => 'Lijst met $1 items',
 	'validator-describe-empty' => 'leeg',
 	'validator-describe-required' => 'verplicht',
@@ -1837,6 +1840,7 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Fizykaa
  * @author Sp5uhe
+ * @author Woytecr
  */
 $messages['pl'] = array(
 	'validator-desc' => 'Dostarcza innym rozszerzeniom ogólną obsługę parametrów',
@@ -1863,6 +1867,15 @@ $messages['pl'] = array(
 	'validator-listerrors-normal' => 'Typowy',
 	'validator-listerrors-high' => 'Istotny',
 	'validator-listerrors-fatal' => 'Krytyczny',
+	'validator-describe-empty' => 'puste',
+	'validator-describe-required' => 'wymagane',
+	'validator-describe-header-parameter' => 'Parametr',
+	'validator-describe-header-aliases' => 'Aliasy',
+	'validator-describe-header-type' => 'Typ',
+	'validator-describe-header-default' => 'Domyślnie',
+	'validator-describe-header-description' => 'Opis',
+	'validator-describe-parameters' => 'Parametry',
+	'validator-describe-syntax' => 'Składnia',
 	'validator_error_empty_argument' => 'Parametr $1 nie może być pusty.',
 	'validator_error_must_be_number' => 'Parametr $1 musi być liczbą.',
 	'validator_error_must_be_integer' => 'Parametr $1 musi być liczbą całkowitą.',
