@@ -1922,9 +1922,9 @@ $messages['pms'] = array(
 	'validator-error-override-argument' => 'Provà a coaté ël paràmetr $1 (valor: $2) con ël valor "$3"',
 	'validator-type-string' => 'test',
 	'validator-type-number' => 'nùmer',
-	'validator-type-integer' => 'nùmer anter',
+	'validator-type-integer' => 'nùmer antregh',
 	'validator-type-float' => 'nùmer',
-	'validator-type-boolean' => 'é!/nò',
+	'validator-type-boolean' => 'bò/nò',
 	'validator-type-char' => 'caràter',
 	'validator-listerrors-errors' => 'Eror',
 	'validator-listerrors-minor' => 'Pi cit',
@@ -1932,9 +1932,9 @@ $messages['pms'] = array(
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Àut',
 	'validator-listerrors-fatal' => 'Fatal',
-	'validator-listerrors-description' => "A lista eror (e avis) che a son capità ant ij gancio dël parser giontà via Validator.
-A lista mach ij gancio ëd parser giontà dzora andoa listerrors a l'é anserì;
-piassa listerrors dzora o davzin la sima dla pagina për pijé tùit j'eror.",
+	'validator-listerrors-description' => "A lista j'eror (e j'avis) che a son capità ant ij gancio ëd l'analisator sintàtich via Validator.
+Mach le liste dij gancio ëd l'analisator sintàtich giontà anté ch'a-i é listerrors a son anserìe;
+piassé listerrors dzora o davzin ël fond ëd la pàgina për ciapé tùit j'eror.",
 	'validator-listerrors-par-minseverity' => "La minima severità d'un eror përchè a sia listà.",
 	'validator-describe-description' => 'A genera documentassion për un o pi gancio ëd parser definì via Validator.',
 	'validator-describe-notfound' => 'A-i é pa gnun gancio ëd parser ch\'a gestissa "$1".',
