@@ -671,6 +671,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Cedric31
  * @author Crochet.david
+ * @author Gomoko
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
@@ -718,6 +719,7 @@ placer <code>listerrors</code> au plus bas de la page pour obtenir toutes les er
 	'validator-describe-bothhooks' => "Mis en oeuvre comme fonction de l'analyseur syntaxique et comme balise d'extension.",
 	'validator-describe-par-hooks' => "Les ''hooks'' de l'analyseur syntaxique dont il faut afficher la documentation.",
 	'validator-describe-par-pre' => "Permet d'obtenir le wikitexte de la documentation, sans qu'il soit rendu sur la page.",
+	'validator-describe-par-language' => 'La langue dans laquelle afficher les descriptions',
 	'validator-describe-listtype' => 'Liste de $1 éléments',
 	'validator-describe-empty' => 'vide',
 	'validator-describe-required' => 'requis',
@@ -1958,11 +1960,11 @@ piassé listerrors dzora o davzin ël fond ëd la pàgina për ciapé tùit j'er
 	'validator-describe-syntax' => 'Sintassi',
 	'validator-describe-tagmin' => 'Estension ëd tichëtta con mach ij paràmetr obligatòri.',
 	'validator-describe-tagmax' => 'Estension ëd tichëtta con tùit ij paràmetr.',
-	'validator-describe-tagdefault' => 'Estension ëd tag con tùit ij paràmetr an dovrand la notassion ëd default dij paràmetr.',
-	'validator-describe-pfmin' => 'Funsion dël parser con mach ij paràmetr ciamà.',
-	'validator-describe-pfmax' => 'Funsion dël parser con tùit ij paràmetr.',
-	'validator-describe-pfdefault' => 'Funsion dël parser con tùit ij paràmetr an dovrand la notassion ëd default dij paràmetr.',
-	'validator-describe-autogen' => 'Ël contnù dë sta session a l\'era auto-generà dal gancio dël parser "descriv" ëd l\'estension ëd Validator.',
+	'validator-describe-tagdefault' => 'Estension ëd tichëtta con tùit ij paràmetr an dovrand la notassion dë stàndard dij paràmetr.',
+	'validator-describe-pfmin' => "Funsion ëd l'analisator sintàtich con mach ij paràmetr obligatòri.",
+	'validator-describe-pfmax' => "Funsion ëd l'analisator sintàtich con tùit ij paràmetr.",
+	'validator-describe-pfdefault' => "Funsion ëd l'analisator sintàtich con tùit ij paràmetr an dovrand la notassion dë stàndard dij paràmetr.",
+	'validator-describe-autogen' => "Ël contnù dë sta session a l'é stàit generà an automàtich dal gancio \"descrive\" ëd l'analisator sintàtich ëd l'estension ëd Validator.",
 	'validator_error_empty_argument' => 'Ël paràmetr $1 a peul pa avèj un valor veuid.',
 	'validator_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
 	'validator_error_must_be_integer' => "Ël paràmetr $1 a peul mach esse n'antregh.",
