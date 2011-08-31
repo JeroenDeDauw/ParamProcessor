@@ -196,8 +196,8 @@ class Parameter {
 	 * 
 	 * @var mixed string or false
 	 */
-	protected $message = false;
 	
+	protected $message = false;
 	/**
 	 * Constructor.
 	 * 
@@ -783,7 +783,12 @@ class Parameter {
 	 * @return mixed string or false
 	 */
 	public function getDescription() {
-		return $this->description;
+		if ( $this->description === false and $this->message !== false ) {
+			return wfMsg( $this->message );
+		}
+		else {
+			return $this->description;
+		}
 	}
 	
 	/**

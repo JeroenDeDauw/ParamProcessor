@@ -159,12 +159,10 @@ class Validator {
 	 * for unknown parameters and optionally for parameter overriding.
 	 * 
 	 * @param array $parameters Parameter name as key, parameter value as value
-	 * @param array $parameterInfo Main parameter name as key, parameter meta data as value
+	 * @param array $parameterInfo List of Parameter objects
 	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
 	 */
 	public function setParameters( array $parameters, array $parameterInfo, $toLower = true ) {
-		$this->cleanParameterInfo( $parameterInfo );
-		
 		$this->parameters = $parameterInfo;
 		
 		// Loop through all the user provided parameters, and distinguish between those that are allowed and those that are not.
@@ -208,29 +206,6 @@ class Validator {
 		$this->errors[] = $error;
 		ValidationErrorHandler::addError( $error );		
 	}
-	
-	/**
-	 * Ensures all elements of the array are Parameter objects,
-	 * and that the array keys match the main parameter name.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @param array $paramInfo
-	 */
-	protected function cleanParameterInfo( array &$paramInfo ) {
-		$cleanedList = array();
-		
-		foreach ( $paramInfo as $key => $parameter ) {
-			if ( $parameter instanceof Parameter ) {
-				$cleanedList[$parameter->getName()] = $parameter;
-			}
-			else {
-				throw new Exception( "$key is not a valid Parameter." );
-			}
-		}
-		
-		$paramInfo = $cleanedList;
-	}	
 	
 	/**
 	 * Validates and formats all the parameters (but aborts when a fatal error occurs).
