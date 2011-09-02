@@ -2205,6 +2205,7 @@ $messages['ru'] = array(
 	'validator-describe-bothhooks' => 'Реализовано и функция парсера, и дополнительный тег.',
 	'validator-describe-par-hooks' => 'Обработчик парсера, для которого отображать документацию.',
 	'validator-describe-par-pre' => 'Позволяет получить фактический викитекст для документации, без показа на странице.',
+	'validator-describe-par-language' => 'Язык для отображения описания',
 	'validator-describe-listtype' => 'Перечень пунктов $1',
 	'validator-describe-empty' => 'пусто',
 	'validator-describe-required' => 'требуется',
