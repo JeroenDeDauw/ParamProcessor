@@ -1948,6 +1948,7 @@ piassé listerrors dzora o davzin ël fond ëd la pàgina për ciapé tùit j'er
 	'validator-describe-bothhooks' => "Realisà sia com funsion ëd l'analisator sintàtich che com estension ëd tichëtta.",
 	'validator-describe-par-hooks' => "Ij gancio ëd l'analisator sintàtich dont ësmon-e la documentassion.",
 	'validator-describe-par-pre' => "A-j përmët d'avèj ël wikitest atual për la documentassion, sensa ch'a sia smonù an sla pàgina.",
+	'validator-describe-par-language' => 'La lenga për mosté la descrission an',
 	'validator-describe-listtype' => 'Lista ëd $1 element',
 	'validator-describe-empty' => 'veuid',
 	'validator-describe-required' => 'ciamà',
