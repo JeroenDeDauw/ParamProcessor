@@ -508,7 +508,7 @@ Zeigt sie lediglich bezüglich der Parserhooks an, die über dem Element „list
 	'validator-error-invalid-regex' => 'Parameter $1 muss diesem regulären Ausdruck entsprechen: $2.',
 	'validator-error-invalid-length' => 'Parameter $1 muss eine Länge von $2 haben.',
 	'validator-error-invalid-length-range' => 'Parameter $1 muss eine Länge zwischen $2 und $3 haben.',
-	'validator_error_invalid_argument' => 'Der Wert „$1“ ist nicht gültig für Parameter $2.',
+	'validator_error_invalid_argument' => 'Der Wert „$1“ ist nicht gültig für den Parameter $2.',
 	'validator_list_error_empty_argument' => 'Parameter $1 akzeptiert keine leeren Werte.',
 	'validator_list_error_must_be_number' => 'Parameter $1 kann nur Ziffern enthalten.',
 	'validator_list_error_must_be_integer' => 'Parameter $1 kann nur ganze Zahlen enthalten.',
@@ -520,10 +520,8 @@ Zeigt sie lediglich bezüglich der Parserhooks an, die über dem Element „list
 Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2.',
 	'validator-list-error-accepts-only-omitted' => 'Einer oder mehrere Werte für Parameter $1 sind ungültig.
 Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2 (sowie $4 ausgelassene {{PLURAL:$4|Wert|Werte}}).',
-	'validator_error_accepts_only' => 'Der Wert „$4“ ist nicht gültig für Parameter $1.
-Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2.',
-	'validator-error-accepts-only-omitted' => 'Der Wert „$2“ ist nicht gültig für Parameter $1.
-Nur {{PLURAL:$5|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $3 (sowie $4 ausgelassene {{PLURAL:$4|Wert|Werte}}).',
+	'validator_error_accepts_only' => 'Der Wert „$4“ ist nicht gültig für den Parameter $1. Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2.',
+	'validator-error-accepts-only-omitted' => 'Der Wert „$2“ ist nicht gültig für den Parameter $1. Nur {{PLURAL:$5|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $3 (sowie $4 nicht angezeigte {{PLURAL:$4|Wert|Werte}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Der Wert „$1“ wurde|Die Werte „$1“ wurden}} ausgelassen.',
 );
 
@@ -1948,7 +1946,7 @@ piassé listerrors dzora o davzin ël fond ëd la pàgina për ciapé tùit j'er
 	'validator-describe-bothhooks' => "Realisà sia com funsion ëd l'analisator sintàtich che com estension ëd tichëtta.",
 	'validator-describe-par-hooks' => "Ij gancio ëd l'analisator sintàtich dont ësmon-e la documentassion.",
 	'validator-describe-par-pre' => "A-j përmët d'avèj ël wikitest atual për la documentassion, sensa ch'a sia smonù an sla pàgina.",
-	'validator-describe-par-language' => 'La lenga për mosté la descrission an',
+	'validator-describe-par-language' => 'La lenga ant la qual smon-e le descrission',
 	'validator-describe-listtype' => 'Lista ëd $1 element',
 	'validator-describe-empty' => 'veuid',
 	'validator-describe-required' => 'ciamà',
