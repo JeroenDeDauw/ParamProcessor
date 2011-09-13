@@ -5,7 +5,7 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 
 === Validator 0.4.11 ===
-(2011-09-xx)
+(2011-09-14)
 
 * Fixed compatibility fallback in Parameter::getDescription.
 * Fixed handling of list parameters in ParameterInput.
