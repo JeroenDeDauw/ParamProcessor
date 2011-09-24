@@ -250,11 +250,12 @@ class Validator {
 				break;
 			}
 			else {
+				
 				$parameter->validate( $this->parameters );			
 				
 				foreach ( $parameter->getErrors() as $error ) {
 					$this->registerError( $error );
-				}				
+				}
 				
 				if ( $parameter->hasFatalError() ) {
 					// If there was a fatal error, and the parameter is required, stop processing. 
@@ -299,7 +300,7 @@ class Validator {
 		// Loop over the parameters to handle to create a dependency list.
 		foreach ( $this->paramsTohandle as $paramName ) {
 			$dependencies = array();
-			
+
 			// Only include dependencies that are in the list of parameters to handle.
 			foreach ( $this->parameters[$paramName]->getDependencies() as $dependency ) {
 				if ( in_array( $dependency, $this->paramsTohandle ) ) {
