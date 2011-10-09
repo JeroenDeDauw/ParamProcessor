@@ -2263,6 +2263,13 @@ $messages['si'] = array(
 	'validator_error_accepts_only' => '$1 පරාමිතිය විසින් පිළිගනු ලබන්නේ {{PLURAL:$3|මෙම අගය|මෙම අගයන්}}: $2 පමණි.',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'validator-listerrors-severity-message' => '($1) $2',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Ozp
