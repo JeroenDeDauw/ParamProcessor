@@ -900,6 +900,7 @@ Só acepta {{PLURAL:$5|este valor|estes valores}}: $3 (e $4 {{PLURAL:$4|valor om
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -940,6 +941,7 @@ Zeigt nume d Parserhook aa, wu iber em Elemänt „listerrors“ yygfiegt wore s
 	'validator-describe-bothhooks' => 'As Parserfunktion un au as Elementerwyterig implementiert.',
 	'validator-describe-par-hooks' => 'D Parserhook, wu d Dokumentation derfir soll aazeigt wäre.',
 	'validator-describe-par-pre' => 'Macht d Uusgab vu dr Dokumentation in Wikitext megli ohni ass dää bi dr Darstellig vu dr Syte gnutzt wird.',
+	'validator-describe-par-language' => 'D Sprooch, wo d Beschrybe drin aazeigt worde sölle',
 	'validator-describe-listtype' => 'Lischt vu $1 {{PLURAL:$1|Element|Element}}',
 	'validator-describe-empty' => 'läär',
 	'validator-describe-required' => 'erforderlig',
