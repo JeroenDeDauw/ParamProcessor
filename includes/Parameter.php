@@ -792,7 +792,10 @@ class Parameter {
 	}
 	
 	/**
-	 * Sets a description message for the parameter.
+	 * Sets a description for the parameter.
+	 * This is a string describing the parameter, if you have a message
+	 * key, ie something that can be passed to wfMsg, then use the
+	 * setMessage method instead.
 	 * 
 	 * @since 0.4.3
 	 * 
@@ -816,6 +819,9 @@ class Parameter {
 	
 	/**
 	 * Sets a message for the parameter that will act as description.
+	 * This should be a message key, ie something that can be passed
+	 * to wfMsg. Not an actual text. If you do not have a message key,
+	 * but only a text, use setDescription instead.
 	 * 
 	 * @since 0.4.9
 	 * 
