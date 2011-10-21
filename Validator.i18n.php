@@ -680,7 +680,7 @@ $messages['fi'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'validator-desc' => 'Le validateur fournit aux autres extensions un moyen simple de valider les paramètres des fonctions parseur et des extensions de balises, de définir des valeurs par défaut et de générer des messages d’erreur',
+	'validator-desc' => 'Le validateur fournit aux autres extensions un moyen simple de valider les paramètres des fonctions de l’analyseur syntaxique et des extensions de balises, de définir des valeurs par défaut et de générer des messages d’erreur',
 	'validator-warning' => 'Attention : $1',
 	'validator-error' => 'Erreur : $1',
 	'validator-fatal-error' => 'Erreur fatale : $1',
