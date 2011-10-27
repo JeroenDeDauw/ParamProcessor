@@ -1110,6 +1110,7 @@ staj "listerrors" deleka na stronje abo blisko kónca strony, zo by wšě zmylki
 	'validator-describe-bothhooks' => 'Jako parserowa funkcija kaž tež jako elementowe rozšěrjenje implementowany.',
 	'validator-describe-par-hooks' => 'Parserowe hóčki, za kotrež ma so dokumentacija zwobraznić.',
 	'validator-describe-par-pre' => 'Zmóžnja woprawdźity wikitekst za dokumentaciju wobstarać, bjez toho zo so na stronje rysował.',
+	'validator-describe-par-language' => 'Rěč, w kotrejž wopisanje ma so zwobraznić',
 	'validator-describe-listtype' => 'Lisćina $1 {{PLURAL:$1|elementa|elementow|elementow|elementow}}',
 	'validator-describe-empty' => 'prózdny',
 	'validator-describe-required' => 'trěbny',
@@ -2206,6 +2207,7 @@ $messages['ro'] = array(
  * @author Lockal
  * @author MaxSem
  * @author McDutchie
+ * @author Van de Bugger
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -2264,8 +2266,8 @@ $messages['ru'] = array(
 	'validator-describe-pfmax' => 'Парсерная функция со всеми параметрами.',
 	'validator-describe-pfdefault' => 'Парсерная функция со всеми параметрами, использованием параметров по умолчанию.',
 	'validator-describe-autogen' => 'Содержимое этого раздела было автоматически создано парсерным обработчиком «describe» расширения Validator.',
-	'validator_error_empty_argument' => 'Параметр $1 не может принимать пустое значение.',
-	'validator_error_must_be_number' => 'Значением параметра $1 могут быть только числа.',
+	'validator_error_empty_argument' => 'Параметр «$1» не может принимать пустое значение.',
+	'validator_error_must_be_number' => 'Значением параметра «$1» могут быть только числа.',
 	'validator_error_must_be_integer' => 'Параметр $1 может быть только целым числом.',
 	'validator-error-must-be-float' => 'Параметр $1 может быть числом с плавающей точкой.',
 	'validator_error_invalid_range' => 'Параметр $1 должен быть от $2 до $3.',
