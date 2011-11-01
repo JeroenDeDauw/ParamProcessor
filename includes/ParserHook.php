@@ -11,6 +11,10 @@
  *
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * @author Daniel Werner
+ * 
+ * @ToDo: Add possiblity to use 'functionTagHooks'. See Parser::setFunctionTagHook() for
+ *        details. There is not much information on this kind of parser funktion hook though.
  */
 abstract class ParserHook {
 
@@ -130,11 +134,11 @@ abstract class ParserHook {
 	 *
 	 * @since 0.4
 	 *
-	 * @param Parser $wgParser
+	 * @param Parser $parser
 	 *
 	 * @return true
 	 */
-	public function init( Parser &$wgParser ) {
+	public function init( Parser &$parser ) {
 		$className = get_class( $this );
 		$first = true;
 
@@ -143,18 +147,30 @@ abstract class ParserHook {
 				self::$registeredHooks[$name] = $className;
 				$first = false;
 			}
-
+			
 			if ( $this->forTagExtensions ) {
-				$wgParser->setHook(
+				$parser->setHook(
 					$name,
-					array( new ParserHookCaller( $className, 'renderTag' ), 'runHook' )
+					array( new ParserHookCaller( $className, 'renderTag' ), 'runTagHook' )
 				);
 			}
 
 			if ( $this->forParserFunctions ) {
-				$wgParser->setFunctionHook(
+				$flags = 0;
+				$function = 'renderFunction';
+				$callerFunction = 'runFunctionHook';
+				
+				// use object arguments if available:
+				if ( defined( 'SFH_OBJECT_ARGS' ) ) {
+					$flags = $flags | SFH_OBJECT_ARGS;
+					$function .= 'Obj';
+					$callerFunction .= 'Obj';
+				}
+					
+				$parser->setFunctionHook(
 					$name,
-					array( new ParserHookCaller( $className, 'renderFunction' ), 'runHook' )
+					array( new ParserHookCaller( $className, $function ), $callerFunction ),
+					$flags
 				);
 			}
 		}
@@ -198,11 +214,11 @@ abstract class ParserHook {
 	}
 
 	/**
-	 * Handler for rendering the tag hook.
+	 * Handler for rendering the tag hook registered by Parser::setHook()
 	 *
 	 * @since 0.4
 	 *
-	 * @param minxed $input string or null
+	 * @param mixed $input string or null
 	 * @param array $args
 	 * @param Parser $parser
 	 * @param PPFrame $frame Available from 1.16
@@ -216,7 +232,7 @@ abstract class ParserHook {
 		$defaultParameters = $this->getDefaultParameters( self::TYPE_TAG );
 		$defaultParam = array_shift( $defaultParameters );
 
-		// If there is a first default parameter, set the tag contents as it's value.
+		// If there is a first default parameter, set the tag contents as its value.
 		if ( !is_null( $defaultParam ) && !is_null( $input ) ) {
 			$args[$defaultParam] = $input;
 		}
@@ -225,23 +241,28 @@ abstract class ParserHook {
 	}
 
 	/**
-	 * Handler for rendering the function hook.
+	 * Handler for rendering the function hook registered by Parser::setFunctionHook()
 	 *
 	 * @since 0.4
 	 *
-	 * @param Parser $parser
+	 * @param Parser &$parser
 	 * ... further arguments ...
 	 *
 	 * @return array
 	 */
-	public function renderFunction() {
+	public function renderFunction( Parser &$parser /*, n args */ ) {
 		$args = func_get_args();
-
+		
 		$this->parser = array_shift( $args );
+								
 		$output = $this->validateAndRender( $args, self::TYPE_FUNCTION );
 		$options = $this->getFunctionOptions();
 
 		if ( array_key_exists( 'isHTML', $options ) && $options['isHTML'] ) {
+			/** @ToDo: FIXME: Is this really necessary? The same thing is propably going to
+			 *                happen in Parser::braceSubstitution() if 'isHTML' is set!
+			 *  @ToDo: other options besides 'isHTML' like 'noparse' are ignored here!
+			 */
 			return $this->parser->insertStripItem( $output, $this->parser->mStripState );
 		}
 
@@ -249,6 +270,34 @@ abstract class ParserHook {
 			array( $output ),
 			$options
 		);
+	}
+	
+	/**
+	 * Handler for rendering the function hook registered by Parser::setFunctionHook() together
+	 * with object style arguments (SFH_OBJECT_ARGS flag).
+	 *
+	 * @since 0.4.13
+	 * 
+	 * @param Parser &$parser
+	 * @param PPFrame $frame
+	 * @param type $args
+	 * @return array 
+	 */
+	public function renderFunctionObj( Parser &$parser, PPFrame $frame, $args ) {		
+		$this->frame = $frame;
+		
+		// create non-object args for old style 'renderFunction()'
+		$oldStyleArgs = array( &$parser );
+		
+		foreach( $args as $arg ) {
+			$oldStyleArgs[] = trim( $frame->expand( $arg ) );
+		}
+		
+		/*
+		 * since we can't validate un-expandet arguments, we just go on with old-style function
+		 * handling from here. Only advantage is that we have $this->frame set properly.
+		 */
+		return call_user_func_array( array( $this, 'renderFunction' ), $oldStyleArgs );
 	}
 
 	/**
@@ -331,9 +380,9 @@ abstract class ParserHook {
 	 *
 	 * @return string
 	 */
-	protected function renderFatalError( ValidationError $error ) {
+	protected function renderFatalError( ValidationError $error ) {		
 		return '<div><span class="errorbox">' .
-			htmlspecialchars( wfMsgExt( 'validator-fatal-error', 'parsemag', $error->getMessage() ) ) .
+			htmlspecialchars( wfMsgExt( 'validator-fatal-error', array( 'parsemag', 'content' ), $error->getMessage() ) ) .
 			'</span></div><br /><br />';
 	}
 
@@ -348,21 +397,21 @@ abstract class ParserHook {
 		$displayStuff = $this->getErrorsToDisplay();
 
 		if ( count( $displayStuff['errors'] ) > 0 ) {
-			$output .= wfMsgExt( 'validator_error_parameters', 'parsemag', count( $displayStuff['errors'] ) );
+			$output .= wfMsgExt( 'validator_error_parameters', array( 'parsemag', 'content' ), count( $displayStuff['errors'] ) );
 
 			foreach( $displayStuff['errors'] as $error ) {
 				$output .= '<br />* ' . $error->getMessage();
 			}
 
 			if ( count( $displayStuff['warnings'] ) > 0 ) {
-				$output .= '<br />* ' . wfMsgExt( 'validator-warning-adittional-errors', 'parsemag', count( $displayStuff['warnings'] ) );
+				$output .= '<br />* ' . wfMsgExt( 'validator-warning-adittional-errors', array( 'parsemag', 'content' ), count( $displayStuff['warnings'] ) );
 			}
 		}
 		elseif ( count( $displayStuff['warnings'] ) > 0 ) {
 			$output .= wfMsgExt(
 				'validator-warning',
-				'parsemag',
-				wfMsgExt( 'validator_warning_parameters', 'parsemag', count( $displayStuff['warnings'] ) )
+				array( 'parsemag', 'content' ),
+				wfMsgExt( 'validator_warning_parameters', array( 'parsemag', 'content' ), count( $displayStuff['warnings'] ) )
 			);
 		}
 
@@ -505,20 +554,40 @@ abstract class ParserHook {
  * @since 0.4
  *
  * @author Jeroen De Dauw
+ * @author Daniel Werner
  */
 class ParserHookCaller {
-
+	
 	protected $class;
 	protected $method;
-
+	
 	function __construct( $class, $method ) {
 		$this->class = $class;
 		$this->method = $method;
 	}
-
-	public function runHook() {
+	
+	/*
+	 * See Parser::braceSubstitution() and Parser::extensionSubstitution() for details about
+	 * how the Parser object and other parameters are being passed. Therefore for function
+	 * hooks &$parser fullfills the same purpos as $parser for the tag hook.
+	 * functionTagHook (!) calls (if implemented at a later time) are more like function hooks,
+	 * meaning, they would require &$parser as well.
+	 */
+	
+	public function runTagHook( $input, array $args, Parser $parser, PPFrame $frame = null  ) {
+		$obj = new $this->class();		
+		return $obj->{$this->method}( $input, $args, $parser, $frame );
+	}
+	
+	public function runFunctionHook( Parser &$parser /*, n args */ ) {
 		$args = func_get_args();
+		$args[0] = &$parser; // with '&' becaus call_user_func_array is being used
 		return call_user_func_array( array( new $this->class(), $this->method ), $args );
+	}
+	
+	public function runFunctionHookObj( Parser &$parser, PPFrame $frame, array $args ) {
+		$obj = new $this->class();		
+		return $obj->{$this->method}( $parser, $frame, $args );
 	}
 
 }

@@ -4,6 +4,18 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 
+=== Validator 0.4.13 alpha ===
+( trunk )
+
+* ParserHook::$parser now is a reference to the original parser object, as one would suspect.
+  Before this has only been the case for tag extension but not for parser function calls.
+
+* if SFH_OBJECT_ARGS and therefore object parser function arguments are available in the MW
+  version used with Validator, ParserHook::$frame will not be null anymore. Therefore a new
+  function ParserHook::renderFunctionObj() is introduced, handling these SFH_OBJECT_ARGS hooks.
+
+* ParserHook Validation messages will now output text in global content language instead of users interface language.
+
 === Validator 0.4.12 ===
 (2011-10-15)
 
