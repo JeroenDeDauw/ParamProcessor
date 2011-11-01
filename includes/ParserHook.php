@@ -97,6 +97,16 @@ abstract class ParserHook {
 	public $forParserFunctions;
 
 	/**
+	 * Bitfifeld of Options influencing the characteristics of the registered
+	 * tag/parser function.
+	 * 
+	 * @since 0.4.13
+	 * 
+	 * @var int 
+	 */
+	protected $parserHookOptions;
+	
+	/**
 	 * Gets the name of the parser hook.
 	 *
 	 * @since 0.4
@@ -117,16 +127,37 @@ abstract class ParserHook {
 	protected abstract function render( array $parameters );
 
 	/**
+	 * Flag for constructor, whether the function hook should be one callable without
+	 * leading hash, i.e. {{plural:...}} instead of {{#if:...}}
+	 * 
+	 * @since 0.4.13
+	 */
+	const FH_NO_HASH = 1;
+	
+	/* *
+	 * @ToDo: implementation of this functionality
+	 * 
+	 * Flag for constructor, whether the tag hook should be handled as function tag hook
+	 * and not as a normal tag hook. See Parser::setFunctionTagHook() for details.
+	 */
+	#const TH_AS_FUNCTION_TAG = 2;
+	
+	/**
 	 * Constructor.
 	 *
 	 * @since 0.4
 	 *
 	 * @param boolean $forTagExtensions
 	 * @param boolean $forParserFunctions
+	 * @param integer $flag combination of option flags to manipulare the parser hooks
+	 *        characteristics. The following are available:
+	 *        - ParserHook::FH_NO_HASH makes the function callable without leading hash.
 	 */
-	public function __construct( $forTagExtensions = true, $forParserFunctions = true ) {
+	public function __construct( $forTagExtensions = true, $forParserFunctions = true, $flags = 0 ) {
 		$this->forTagExtensions = $forTagExtensions;
 		$this->forParserFunctions = $forParserFunctions;
+		// store flags:
+		$this->parserHookOptions = $flags;
 	}
 
 	/**
@@ -148,6 +179,7 @@ abstract class ParserHook {
 				$first = false;
 			}
 			
+			// Parser Tag hooking:
 			if ( $this->forTagExtensions ) {
 				$parser->setHook(
 					$name,
@@ -155,6 +187,7 @@ abstract class ParserHook {
 				);
 			}
 
+			// Parser Function hooking:
 			if ( $this->forParserFunctions ) {
 				$flags = 0;
 				$function = 'renderFunction';
@@ -166,7 +199,11 @@ abstract class ParserHook {
 					$function .= 'Obj';
 					$callerFunction .= 'Obj';
 				}
-					
+				// no leading Hash required?
+				if ( $this->parserHookOptions & self::FH_NO_HASH ) {
+					$flags = $flags | SFH_NO_HASH;
+				}
+				
 				$parser->setFunctionHook(
 					$name,
 					array( new ParserHookCaller( $className, $function ), $callerFunction ),
