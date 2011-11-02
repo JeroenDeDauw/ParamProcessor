@@ -470,7 +470,16 @@ abstract class ParserHook {
 	}
 
 	/**
-	 * Returns the list of default parameters.
+	 * Returns the list of default parameters. These parameters can be used as
+	 * unnamed parameters where it is not necessary to use the name and the '=' as
+	 * long as there is no '=' within the value.
+	 * It is possible to define that a parameter should not have a named fallback.
+	 * Therefore the information has to be returnd as sub-array with the parameter
+	 * name as first and Validator::PARAM_UNNAMED as second value. Parameter using
+	 * this option must be set first, before any unnamed parameter in the same order
+	 * as set here. All parameters defined before the last parameter making use of
+	 * Validator::PARAM_UNNAMED will automatically be populated with this option.
+	 * 
 	 * Override in deriving classes to add default parameters.
 	 *
 	 * @since 0.4

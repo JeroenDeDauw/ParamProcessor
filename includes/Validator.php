@@ -10,8 +10,16 @@
  *
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * @author Daniel Werner
  */
 class Validator {
+	
+	/**
+	 * Flag for default parameters used in Validator::setFunctionParams().
+	 * 
+	 * @since 0.4.13
+	 */
+	const PARAM_UNNAMED = 1;
 	
 	/**
 	 * Array containing the parameters.
@@ -96,26 +104,52 @@ class Validator {
 	 * 
 	 * @param array $rawParams
 	 * @param array $parameterInfo
-	 * @param array $defaultParams
+	 * @param array $defaultParams array of strings or array of arrays to define which parameters can be used unnamed.
+	 *        The second value in array-form is reserved for flags. Currently, Validator::PARAM_UNNAMED determines that
+	 *        the parameter has no name which can be used to set it. Therefore all these parameters must be set before
+	 *        any named parameter. The effecdt is, that '=' within the string won't confuse the parameter anymore like
+	 *        it would happen with default parameters that still have a name as well.
 	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
+	 * 
+	 * @todo: $toLower takes no effect yet.
 	 */
 	public function setFunctionParams( array $rawParams, array $parameterInfo, array $defaultParams = array(), $toLower = true ) {
 		$parameters = array();
 
 		$nr = 0;
 		$defaultNr = 0;
+		$lastUnnamedDefaultNr = -1;
+		
+		/*
+		 * Find last parameter with self::PARAM_UNNAMED set. Tread all parameters in front as
+		 * the flag were set for them as well to ensure that there can't be any unnamed params
+		 * after the first named param. Wouldn't be possible to determine which unnamed value
+		 * belongs to which parameter otherwise.
+		 */		
+		for( $i = count( $defaultParams ) - 1; $i >= 0 ; $i-- ) {
+			$dflt = $defaultParams[$i];
+			if( is_array( $dflt ) && !empty( $dflt[1] ) && ( $dflt[1] | self::PARAM_UNNAMED ) ) {
+				$lastUnnamedDefaultNr = $i;
+				break;
+			}
+		}
 		
 		foreach ( $rawParams as $arg ) {
 			// Only take into account strings. If the value is not a string,
 			// it is not a raw parameter, and can not be parsed correctly in all cases.
-			if ( is_string( $arg ) ) {
-				$parts = explode( '=', $arg, 2 );
+			if ( is_string( $arg ) ) {				
+				$parts = explode( '=', $arg, ( $nr <= $lastUnnamedDefaultNr ? 1 : 2 ) );
 				
 				// If there is only one part, no parameter name is provided, so try default parameter assignment.
+				// Default parameters having self::PARAM_UNNAMED set for having no name alias go here in any case.
 				if ( count( $parts ) == 1 ) {
 					// Default parameter assignment is only possible when there are default parameters!
 					if ( count( $defaultParams ) > 0 ) {
-						$defaultParam = strtolower( array_shift( $defaultParams ) );
+						$defaultParam = array_shift( $defaultParams );
+						if( is_array( $defaultParam ) ) {
+							$defaultParam = $defaultParam[0];
+						}
+						$defaultParam = strtolower( $defaultParam );
 						
 						$parameters[$defaultParam] = array(
 							'original-value' => trim( $parts[0] ),
@@ -161,6 +195,8 @@ class Validator {
 	 * @param array $parameters Parameter name as key, parameter value as value
 	 * @param array $parameterInfo List of Parameter objects
 	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
+	 * 
+	 * @todo: $toLower takes no effect yet.
 	 */
 	public function setParameters( array $parameters, array $parameterInfo, $toLower = true ) {
 		$this->parameters = $parameterInfo;

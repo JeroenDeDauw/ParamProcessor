@@ -18,6 +18,10 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
   registered Hooks. First option can be set via ParserHook::FH_NO_HASH to define that the function
   hook should be callable without leading hash ("{{plural:...}}"-like style).
 
+* Option for unnamed parameter handling to work without named fallback. This allows to ignore '='
+  within parameter values entirely, these parameters bust be set before any named parameter then.
+  See Validator::setFunctionParams() and ParserHook::getParameterInfo() for details.
+
 * ParserHook Validation messages will now output text in global content language instead of users interface language.
 
 === Validator 0.4.12 ===
