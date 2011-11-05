@@ -189,13 +189,29 @@ $messages['aln'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author روخو
  */
 $messages['ar'] = array(
 	'validator-desc' => 'المحقق يوفر طريقة سهلة للامتدادات الأخرى للتحقق من محددات دوال المحلل وامتدادات الوسوم، وضبط القيم الافتراضية وتوليد رسائل الخطأ',
+	'validator-warning' => 'تحذير: $1',
+	'validator-error' => 'خطأ: $1',
+	'validator-fatal-error' => 'خطأ قاتل: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|الخطأ التالي|الاخطاء التالية}} تم كشفها في صياغتك:',
 	'validator_warning_parameters' => 'هناك {{PLURAL:$1|خطأ|أخطاء}} في صياغتك.',
 	'validator_error_unknown_argument' => '$1 ليس محددا صحيحا.',
 	'validator_error_required_missing' => 'المحدد المطلوب $1 ليس متوفرا.',
+	'validator-type-string' => 'نص',
+	'validator-type-float' => 'رقم',
+	'validator-type-boolean' => 'نعم/لا',
+	'validator-listerrors-errors' => 'أخطاء',
+	'validator-listerrors-minor' => 'ثانوي',
+	'validator-listerrors-low' => 'منخفض',
+	'validator-listerrors-normal' => 'طبيعي',
+	'validator-listerrors-fatal' => 'قاتل',
+	'validator-describe-descriptionmsg' => "'''وصف''': $1",
+	'validator-describe-empty' => 'فارغ',
+	'validator-describe-header-type' => 'نوع',
+	'validator-describe-syntax' => 'صياغة',
 	'validator_error_empty_argument' => 'المحدد $1 لا يمكن أن تكون قيمته فارغة.',
 	'validator_error_must_be_number' => 'المحدد $1 يمكن أن يكون فقط عددا.',
 	'validator_error_must_be_integer' => 'المحدد $1 يمكن أن يكون عددا صحيحا فقط.',
