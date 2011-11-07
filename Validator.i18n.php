@@ -1897,6 +1897,13 @@ $messages['oc'] = array(
 	'validator_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.',
 );
 
+/** Ossetic (Ирон)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'validator-describe-empty' => 'афтид',
+);
+
 /** Polish (Polski)
  * @author Fizykaa
  * @author Sp5uhe
