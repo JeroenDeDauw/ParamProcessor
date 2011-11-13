@@ -15,7 +15,8 @@
 class Validator {
 	
 	/**
-	 * Flag for default parameters used in Validator::setFunctionParams().
+	 * Flag for unnamed default parameters used in Validator::setFunctionParams() to determine that
+	 * a parameter should not have a named fallback.
 	 * 
 	 * @since 0.4.13
 	 */
