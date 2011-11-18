@@ -613,7 +613,7 @@ class Parameter {
 				break;
 			case self::TYPE_BOOLEAN:
 				// TODO: work with list of true and false values and i18n. 
-				$criteria[] = new CriterionInArray( 'yes', 'no', 'on', 'off' );
+				$criteria[] = new CriterionInArray( 'yes', 'no', 'on', 'off', '1', '0' );
 				break;
 			case self::TYPE_CHAR:
 				$criteria[] = new CriterionHasLength( 1, 1 ); 
