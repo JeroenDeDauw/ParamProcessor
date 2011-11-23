@@ -1522,7 +1522,7 @@ $messages['ksh'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|Dä Wäät|De Wääte|Keine Wäät}} $1 {{PLURAL:$2|es|sen|se}} fottjelohße woode.',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
