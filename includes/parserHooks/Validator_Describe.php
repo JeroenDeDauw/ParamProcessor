@@ -16,13 +16,13 @@ class ValidatorDescribe extends ParserHook {
 
 	/**
 	 * Field to store the value of the language parameter.
-	 * 
+	 *
 	 * @since 0.4.10
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $language;
-	
+
 	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
@@ -74,7 +74,7 @@ class ValidatorDescribe extends ParserHook {
 		$params['pre'] = new Parameter( 'pre', Parameter::TYPE_BOOLEAN );
 		$params['pre']->setDefault( 'off' );
 		$params['pre']->setMessage( 'validator-describe-par-pre' );
-		
+
 		$params['language'] = new Parameter( 'language' );
 		$params['language']->setDefault( $GLOBALS['wgLanguageCode'] );
 		$params['language']->setMessage( 'validator-describe-par-language' );
@@ -106,7 +106,7 @@ class ValidatorDescribe extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		$this->language = $parameters['language'];
-		
+
 		$parts = array();
 
 		// Loop over the hooks for which the docs should be added.
@@ -151,12 +151,12 @@ class ValidatorDescribe extends ParserHook {
 		}
 
 		$description .= "\n\n";
-		
+
 		if ( $descriptionData['message'] !== false ) {
 			$description .= $this->msg( 'validator-describe-descriptionmsg', $this->msg( $descriptionData['message'] ) );
 			$description .= "\n\n";
 		}
-		else if ( $descriptionData['description'] !== false ) {
+		elseif ( $descriptionData['description'] !== false ) {
 			$description .= wfMsgExt( 'validator-describe-descriptionmsg', $descriptionData['description'] );
 			$description .= "\n\n";
 		}
@@ -435,14 +435,14 @@ class ValidatorDescribe extends ParserHook {
 		}
 
 		$default = $parameter->isRequired() ? "''" . $this->msg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
-		
+
 		if ( is_array( $default ) ) {
 			$default = implode( ', ', $default );
 		}
-		else if ( is_bool( $default ) ) {
+		elseif ( is_bool( $default ) ) {
 			$default = $default ? 'yes' : 'no';
 		}
-		
+
 		if ( $default === '' ) $default = "''" . $this->msg( 'validator-describe-empty' ) . "''";
 
 		if ( !$isDefault ) {
@@ -480,15 +480,15 @@ EOT;
 	public function getMessage() {
 		return 'validator-describe-description';
 	}
-	
+
 	/**
 	 * Message function that takes into account the language parameter.
-	 * 
+	 *
 	 * @since 0.4.10
-	 * 
+	 *
 	 * @param string $key
-	 * @param array $args 
-	 * 
+	 * @param array $args
+	 *
 	 * @return string
 	 */
 	protected function msg() {
