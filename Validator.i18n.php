@@ -1543,6 +1543,7 @@ $messages['lb'] = array(
 	'validator-fatal-error' => 'Fatale Feeler: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Dëse Feeler gouf|Dës Feeler goufen}} an Ärer Syntax fonnt:',
 	'validator_warning_parameters' => 'Et {{PLURAL:$1|ass ee|si}} Feeler an Ärer Syntax.',
+	'validator-warning-adittional-errors' => '… an {{PLURAL:$1|e weidere Sujet|weider Sujeten}}.',
 	'validator-error-omitted' => '{{PLURAL:$2|De Wäert|D\'Wäerter}} "$1" {{PLURAL:$2|gouf|goufe}} vergiess.',
 	'validator-error-problem' => 'Et gouf e Problem mam Parameter $1.',
 	'validator_error_unknown_argument' => '$1 ass kee valbele Parameter.',
