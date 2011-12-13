@@ -43,7 +43,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Validator',
 	'version' => Validator_VERSION,
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Validator',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Validator',
 	'descriptionmsg' => 'validator-desc',
 );
 
