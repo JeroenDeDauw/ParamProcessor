@@ -25,7 +25,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Validator_VERSION', '0.4.13' );
+if ( version_compare( $wgVersion, '1.16c', '<' ) ) {
+	die( '<b>Error:</b> This version of Validator requires MediaWiki 1.16 or above.' );
+}
+
+if ( defined( 'Validator_VERSION' ) ) {
+	die( '<b>Error:</b> Tried to include Validator a second time. Please make sure you are including it before any extensions that make use of it.' );
+}
+
+define( 'Validator_VERSION', '0.4.14 alpha' );
 
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Validator'] = dirname( __FILE__ ) . '/Validator.i18n.php';
