@@ -2338,6 +2338,11 @@ $messages['sr-ec'] = array(
 	'validator-listerrors-severity-message' => '($1) $2',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'validator-listerrors-severity-message' => '($1) $2',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Ozp
@@ -2551,6 +2556,7 @@ $messages['zh-hans'] = array(
 	'validator-listerrors-fatal' => '致命',
 	'validator-describe-descriptionmsg' => "'''说明'''：$1",
 	'validator-describe-empty' => '空白',
+	'validator-describe-header-parameter' => '参数',
 	'validator-describe-header-type' => '类型',
 	'validator-describe-header-description' => '说明',
 	'validator_error_empty_argument' => '参数 $1 不能为空。',
@@ -2561,6 +2567,7 @@ $messages['zh-hans'] = array(
 	'validator_list_error_empty_argument' => '参数 $1 不接受空值。',
 	'validator_list_error_must_be_number' => '参数 $1 只能包含数字。',
 	'validator_list_error_must_be_integer' => '参数 $1 只能包含整数。',
+	'validator-list-error-must-be-float' => '参数 $1 只能包含浮点数。',
 	'validator_list_error_invalid_range' => '参数 $1 所有合法的值都必须介于 $2 与 $3 之间。',
 	'validator_list_error_invalid_argument' => '参数 $1 的一个或多个值不合法。',
 );
@@ -2573,10 +2580,36 @@ $messages['zh-hant'] = array(
 	'validator-warning' => '警告：$1',
 	'validator-error' => '錯誤：$1',
 	'validator-fatal-error' => '致命錯誤：$1',
+	'validator-error-problem' => '參數 $1 存在一個問題。',
+	'validator_error_unknown_argument' => '$1 不是一個有效的參數。',
+	'validator_error_required_missing' => '未能提供必要的參數 $1 。',
+	'validator-error-override-argument' => '試圖用 "$3" 覆蓋參數 $1 的值（$2）',
+	'validator-type-string' => '文本',
+	'validator-type-number' => '號碼',
+	'validator-type-float' => '浮點數',
+	'validator-type-boolean' => '布爾值',
+	'validator-type-char' => '字符',
+	'validator-listerrors-errors' => '錯誤',
+	'validator-listerrors-minor' => '很小',
+	'validator-listerrors-low' => '小',
+	'validator-listerrors-normal' => '中',
+	'validator-listerrors-high' => '大',
+	'validator-listerrors-fatal' => '致命',
+	'validator-describe-descriptionmsg' => "'''說明'''：$1",
+	'validator-describe-empty' => '空白',
 	'validator-describe-header-parameter' => '參數',
+	'validator-describe-header-type' => '類型',
+	'validator-describe-header-description' => '說明',
+	'validator_error_empty_argument' => '參數 $1 不能為空。',
+	'validator_error_must_be_number' => '參數 $1 只能為數字。',
+	'validator_error_must_be_integer' => '參數 $1 只能為整數。',
+	'validator_error_invalid_range' => '參數 $1 的範圍必須介於 $2 與 $3 之間。',
+	'validator_error_invalid_argument' => '值 $1 對於參數 $2 不合法。',
 	'validator_list_error_empty_argument' => '參數 $1 不接受空值。',
 	'validator_list_error_must_be_number' => '參數 $1 只能包含數字。',
 	'validator_list_error_must_be_integer' => '參數 $1 只能包含整數。',
 	'validator-list-error-must-be-float' => '參數 $1 只能包含浮點數。',
+	'validator_list_error_invalid_range' => '參數 $1 所有合法的值都必須介於 $2 與 $3 之間。',
+	'validator_list_error_invalid_argument' => '參數 $1 的一個或多個值不合法。',
 );
 
