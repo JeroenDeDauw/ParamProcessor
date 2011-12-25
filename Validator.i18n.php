@@ -1799,7 +1799,7 @@ Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'validator-desc' => 'Gir generisk støtte for parameterhåndtering fra andre utvidelser',
 	'validator-warning' => 'Advarsel: $1',
 	'validator-error' => 'Feil: $1',
