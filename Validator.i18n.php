@@ -740,7 +740,7 @@ placer <code>listerrors</code> au plus bas de la page pour obtenir toutes les er
 	'validator-describe-header-parameter' => 'Paramètre',
 	'validator-describe-header-aliases' => 'Alias',
 	'validator-describe-header-type' => 'Type',
-	'validator-describe-header-default' => 'Défaut',
+	'validator-describe-header-default' => 'Par défaut',
 	'validator-describe-header-description' => 'Description',
 	'validator-describe-parameters' => 'Paramètres',
 	'validator-describe-syntax' => 'Syntaxe',
