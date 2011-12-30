@@ -1466,6 +1466,13 @@ $messages['ja'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|値}} $1 は省かれました。',
 );
 
+/** Georgian (ქართული)
+ * @author ITshnik
+ */
+$messages['ka'] = array(
+	'validator-describe-empty' => 'ცარიელი',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
