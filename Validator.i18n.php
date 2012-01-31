@@ -1913,6 +1913,7 @@ $messages['os'] = array(
 );
 
 /** Polish (Polski)
+ * @author BeginaFelicysym
  * @author Fizykaa
  * @author Sp5uhe
  * @author Woytecr
@@ -1942,6 +1943,12 @@ $messages['pl'] = array(
 	'validator-listerrors-normal' => 'Typowy',
 	'validator-listerrors-high' => 'Istotny',
 	'validator-listerrors-fatal' => 'Krytyczny',
+	'validator-describe-descriptionmsg' => "'''Opis''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Alias|Aliasy}}''': $1",
+	'validator-describe-parserfunction' => 'Zaimplementowano wyłącznie jako funkcję parsera.',
+	'validator-describe-tagextension' => 'Zaimplementowano wyłącznie jako rozszerzenie znacznika.',
+	'validator-describe-par-language' => 'Język wyświetlania opisów',
+	'validator-describe-listtype' => 'Lista  $1  elementów',
 	'validator-describe-empty' => 'puste',
 	'validator-describe-required' => 'wymagane',
 	'validator-describe-header-parameter' => 'Parametr',
@@ -1951,6 +1958,10 @@ $messages['pl'] = array(
 	'validator-describe-header-description' => 'Opis',
 	'validator-describe-parameters' => 'Parametry',
 	'validator-describe-syntax' => 'Składnia',
+	'validator-describe-tagmin' => 'Rozszerzenie znacznika wyłącznie z wymaganymi parametrami.',
+	'validator-describe-tagmax' => 'Rozszerzenie znacznika ze wszystkimi parametrami.',
+	'validator-describe-pfmin' => 'Funkcja parsera wyłącznie z wymaganymi parametrami.',
+	'validator-describe-pfmax' => 'Funkcja parsera ze wszystkimi parametrami.',
 	'validator_error_empty_argument' => 'Parametr $1 nie może być pusty.',
 	'validator_error_must_be_number' => 'Parametr $1 musi być liczbą.',
 	'validator_error_must_be_integer' => 'Parametr $1 musi być liczbą całkowitą.',
