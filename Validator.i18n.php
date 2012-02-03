@@ -462,7 +462,7 @@ $messages['cs'] = array(
  * @author LWChris
  */
 $messages['de'] = array(
-	'validator-desc' => 'Ermöglicht es anderen Softwareerweiterungen Parameter verarbeiten zu können',
+	'validator-desc' => 'Ermöglicht anderen Softwareerweiterungen die Verarbeitung von Parametern',
 	'validator-warning' => 'Warnung: $1',
 	'validator-error' => 'Fehler: $1',
 	'validator-fatal-error' => "'''Schwerwiegender Fehler:''' $1",
