@@ -14,6 +14,7 @@ $messages = array();
 
 /** English
  * @author Jeroen De Dauw
+ * @author Daniel Werner
  */
 $messages['en'] = array(
 	'validator-desc' => 'Provides generic parameter handling support for other extensions',
@@ -87,6 +88,8 @@ place listerrors at or near the bottom of the page to get all errors.',
 	'validator_error_empty_argument' => 'Parameter $1 can not have an empty value.',
 	'validator_error_must_be_number' => 'Parameter $1 can only be a number.',
 	'validator_error_must_be_integer' => 'Parameter $1 can only be an integer.',
+	'validator_error_must_be_title' => 'Parameter $1 can only be a valid wiki page name.',
+	'validator_error_must_be_existing_title' => 'Parameter $1 can only be an existing wiki page name.',
 	'validator-error-must-be-float' => 'Parameter $1 can only be a floating point number.',
 	'validator_error_invalid_range' => 'Parameter $1 must be between $2 and $3.',
 	'validator-error-invalid-regex' => 'Parameter $1 must match this regular expression: $2.',
@@ -98,6 +101,8 @@ place listerrors at or near the bottom of the page to get all errors.',
 	'validator_list_error_empty_argument' => 'Parameter $1 does not accept empty values.',
 	'validator_list_error_must_be_number' => 'Parameter $1 can only contain numbers.',
 	'validator_list_error_must_be_integer' => 'Parameter $1 can only contain integers.',
+	'validator_list_error_must_be_title' => 'Parameter $1 can only contain valid wiki page names.',
+	'validator_list_error_must_be_existing_title' => 'Parameter $1 can only contain existing wiki page names.',
 	'validator-list-error-must-be-float' => 'Parameter $1 can only contain floats.',
 	'validator_list_error_invalid_range' => 'All values of parameter $1 must be between $2 and $3.',
 	'validator-list-error-invalid-regex' => 'All values of parameter $1 must match this regular expression: $2.',

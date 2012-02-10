@@ -19,6 +19,7 @@ class Parameter {
 	const TYPE_FLOAT = 'float';
 	const TYPE_BOOLEAN = 'boolean';
 	const TYPE_CHAR = 'char';
+	const TYPE_TITLE = 'Title'; // since 0.4.14
 	
 	/**
 	 * Indicates whether parameters that are provided more then once  should be accepted,
@@ -618,6 +619,9 @@ class Parameter {
 			case self::TYPE_CHAR:
 				$criteria[] = new CriterionHasLength( 1, 1 ); 
 				break;
+			case self::TYPE_TITLE:
+				$criteria[] = new CriterionIsTitle();
+				break;
 			case self::TYPE_STRING: default:
 				// No extra criteria for strings.
 				break;
@@ -646,9 +650,11 @@ class Parameter {
 			case self::TYPE_BOOLEAN:
 				$manipulations[] = new ParamManipulationBoolean();
 				break;
+			case self::TYPE_TITLE:
+				$manipulations[] = new ParamManipulationTitle();
+				break;
 			case self::TYPE_CHAR: case self::TYPE_STRING: default:
 				$manipulations[] = new ParamManipulationString();
-				break;
 		}		
 		
 		return $manipulations;
