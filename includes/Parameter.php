@@ -19,7 +19,7 @@ class Parameter {
 	const TYPE_FLOAT = 'float';
 	const TYPE_BOOLEAN = 'boolean';
 	const TYPE_CHAR = 'char';
-	const TYPE_TITLE = 'Title'; // since 0.4.14
+	const TYPE_TITLE = 'title'; // since 0.4.14
 	
 	/**
 	 * Indicates whether parameters that are provided more then once  should be accepted,
