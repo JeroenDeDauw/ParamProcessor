@@ -1,77 +1,0 @@
-10
-
-dir
-0
-svn+ssh://jeroendedauw@svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/Validator/includes/definitions
-svn+ssh://jeroendedauw@svn.wikimedia.org/svnroot/mediawiki
-add
-
-
-
-
-
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-dd0e9695-b195-4be7-bd10-2dea1a65a6b6
-
-BoolParam.php
-file
-
-
-
-add
-
-CharParam.php
-file
-
-
-
-add
-
-FloatParam.php
-file
-
-
-
-add
-
-IntParam.php
-file
-
-
-
-add
-
-ParamDefiniton.php
-file
-
-
-
-add
-
-StringParam.php
-file
-
-
-
-add
-
-TitleParam.php
-file
-
-
-
-add
-

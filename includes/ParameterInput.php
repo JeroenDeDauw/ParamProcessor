@@ -109,6 +109,7 @@ class ParameterInput {
 				case Parameter::TYPE_CHAR:
 				case Parameter::TYPE_FLOAT:
 				case Parameter::TYPE_INTEGER:
+				case Parameter::TYPE_NUMBER:
 					$html = $this->getNumberInput();
 					break;
 				case Parameter::TYPE_BOOLEAN:
