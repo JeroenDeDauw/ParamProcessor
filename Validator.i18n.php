@@ -635,6 +635,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Armando-Martin
  * @author Crazymadlover
  * @author Imre
  * @author Translationista
@@ -652,12 +653,21 @@ $messages['es'] = array(
 	'validator_error_unknown_argument' => '$1 no es un parámetro válido.',
 	'validator_error_required_missing' => 'No se ha provisto el parámetro requerido $1.',
 	'validator-error-override-argument' => 'Se ha intentado sobreescribir el parámetro $1 (valor: $2) con el valor "$3"',
+	'validator-type-string' => 'texto',
+	'validator-type-number' => 'número',
+	'validator-type-integer' => 'número entero',
+	'validator-type-float' => 'número',
+	'validator-type-boolean' => 'sí/no',
+	'validator-type-char' => 'carácter',
 	'validator-listerrors-errors' => 'Errores',
 	'validator-listerrors-minor' => 'Menor',
 	'validator-listerrors-low' => 'Bajo',
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Alto',
 	'validator-listerrors-fatal' => 'Fatal',
+	'validator-listerrors-description' => 'Lista los errores (y advertencias) que se produjeron en las asociaciones (hook) del analizador (parser) añadidas a través de validador.
+Sólo se muestran en las listas las asociaciones del analizador agregados antes de la inserción de listerrors;
+ coloque listerrors alfinal o cerca de la parte inferior de la página para obtener todos los errores.',
 	'validator_error_empty_argument' => 'El parámetro $1 no puede tener un valor vacío.',
 	'validator_error_must_be_number' => 'El parámetro $1 sólo puede ser un número.',
 	'validator_error_must_be_integer' => 'El parámetro $1 sólo puede ser un número entero.',
