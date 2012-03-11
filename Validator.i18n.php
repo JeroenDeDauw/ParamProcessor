@@ -668,9 +668,39 @@ $messages['es'] = array(
 	'validator-listerrors-description' => 'Lista los errores (y advertencias) que se produjeron en las asociaciones (hook) del analizador (parser) añadidas a través de validador.
 Sólo se muestran en las listas las asociaciones del analizador agregados antes de la inserción de listerrors;
  coloque listerrors alfinal o cerca de la parte inferior de la página para obtener todos los errores.',
+	'validator-listerrors-par-minseverity' => 'La gravedad mínima de una cuestión para que  aparezca en la lista.',
+	'validator-describe-description' => 'Genera documentación para una o más asociaciones del analizador (parser hooks) definidas a través de Validator.',
+	'validator-describe-notfound' => 'No hay ninguna asociación del analizador (parser hook) que controle "$1".',
+	'validator-describe-descriptionmsg' => "'''Descripción''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Alias|Alias}}''': $1",
+	'validator-describe-parserfunction' => 'Implementado sólo como función del analizador (parser).',
+	'validator-describe-tagextension' => 'Implementado sólo como etiqueta de extensión.',
+	'validator-describe-bothhooks' => 'Implementado como función del analizador y como etiqueta de extensión.',
+	'validator-describe-par-hooks' => 'Asociación del analizador (parser hook) para que la que desea mostrar la documentación.',
+	'validator-describe-par-pre' => 'Le permite obtener el texto wiki real para la documentación, sin que se procese (render) como imagen en la página.',
+	'validator-describe-par-language' => 'El idioma en el que mostrar las descripciones',
+	'validator-describe-listtype' => 'Lista de $1 elementos',
+	'validator-describe-empty' => 'vacío',
+	'validator-describe-required' => 'obligatorio',
+	'validator-describe-header-parameter' => 'Parámetro',
+	'validator-describe-header-aliases' => 'Alias',
+	'validator-describe-header-type' => 'Tipo',
+	'validator-describe-header-default' => 'Por defecto',
+	'validator-describe-header-description' => 'Descripción',
+	'validator-describe-parameters' => 'Parámetros',
+	'validator-describe-syntax' => 'Sintaxis',
+	'validator-describe-tagmin' => 'Etiqueta de extensión sólo con los parámetros obligatorios.',
+	'validator-describe-tagmax' => 'Etiqueta de extensión con todos los parámetros.',
+	'validator-describe-tagdefault' => 'Etiqueta de extensión con todos los parámetros, empleando la notación de los parámetros por defecto.',
+	'validator-describe-pfmin' => 'Función del analizador (parser) sólo con los parámetros obligatorios.',
+	'validator-describe-pfmax' => 'Función del analizador (parser) con todos los parámetros.',
+	'validator-describe-pfdefault' => 'Función del analizador (parser) con todos los parámetros, empleando la notación predeterminada de los parámetros.',
+	'validator-describe-autogen' => 'El contenido de esta sección fue generado automáticamente por la asociación del analizador (parser hook) "describe" de la extensión Validator.',
 	'validator_error_empty_argument' => 'El parámetro $1 no puede tener un valor vacío.',
 	'validator_error_must_be_number' => 'El parámetro $1 sólo puede ser un número.',
 	'validator_error_must_be_integer' => 'El parámetro $1 sólo puede ser un número entero.',
+	'validator_error_must_be_title' => 'El parámetro $1 sólo puede ser un nombre de página wiki válido.',
+	'validator_error_must_be_existing_title' => 'El parámetro $1 sólo puede ser un nombre de página wiki existente.',
 	'validator-error-must-be-float' => 'El parámetro $1 tiene que ser un número de punto flotante.',
 	'validator_error_invalid_range' => 'El parámetro $1 debe ser entre $2 y $3.',
 	'validator-error-invalid-regex' => 'El parámetro $1 tiene que coincidir con esta expresión racional : $2.',
@@ -680,6 +710,8 @@ Sólo se muestran en las listas las asociaciones del analizador agregados antes 
 	'validator_list_error_empty_argument' => 'El parámetro $1 no acepta valores vacíos.',
 	'validator_list_error_must_be_number' => 'El parámetro $1 sólo puede contener números.',
 	'validator_list_error_must_be_integer' => 'El parámetro $1 sólo puede contener números enteros.',
+	'validator_list_error_must_be_title' => 'El parámetro $1 sólo puede contener nombres válidos de página wiki.',
+	'validator_list_error_must_be_existing_title' => 'El parámetro $1 sólo puede contener nombres de páginas wiki existentes.',
 	'validator-list-error-must-be-float' => 'El parámetro $1 sólo puede contener floats.',
 	'validator_list_error_invalid_range' => 'Todos los valores del parámetro $1 deben ser entre $2 y $3.',
 	'validator-list-error-invalid-regex' => 'El parámetro $1 tiene que coincidir con esta expresión regular: $2.',
@@ -1506,10 +1538,19 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author David1010
  * @author ITshnik
  */
 $messages['ka'] = array(
+	'validator-describe-descriptionmsg' => "'''აღწერა''': $1",
 	'validator-describe-empty' => 'ცარიელი',
+	'validator-describe-header-parameter' => 'პარამეტრი',
+	'validator-describe-header-aliases' => 'ფსევდონიმები',
+	'validator-describe-header-type' => 'ტიპი',
+	'validator-describe-header-default' => 'სტანდარტული',
+	'validator-describe-header-description' => 'აღწერა',
+	'validator-describe-parameters' => 'პარამეტრები',
+	'validator-describe-syntax' => 'სინტაქსი',
 );
 
 /** Colognian (Ripoarisch)
