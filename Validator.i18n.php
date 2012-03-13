@@ -120,6 +120,7 @@ place listerrors at or near the bottom of the page to get all errors.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Kghbln
  * @author Purodha
  * @author Raymond
  */
@@ -135,6 +136,7 @@ $messages['qqq'] = array(
 * $2 = message',
 	'validator-listerrors-normal' => '{{Identical|Normal}}',
 	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
+	'validator-describe-listtype' => 'This is a patchwork message. $1 stands for one of these messages: {{msg-mw|Validator-type-string}}, {{msg-mw|Validator-type-number}}, {{msg-mw|Validator-type-integer}}, {{msg-mw|Validator-type-float}}, {{msg-mw|Validator-type-boolean}}, {{msg-mw|Validator-type-char}}',
 	'validator-describe-empty' => '{{Identical|Empty}}',
 	'validator-describe-required' => '{{Identical|Required}}',
 	'validator-describe-header-parameter' => '{{Identical|Parameter}}',
@@ -486,7 +488,7 @@ $messages['de'] = array(
 	'validator-type-string' => 'Text',
 	'validator-type-number' => 'Zahl',
 	'validator-type-integer' => 'Ganzzahl',
-	'validator-type-float' => 'Zahl',
+	'validator-type-float' => 'Gleitkommazahl',
 	'validator-type-boolean' => 'Ja/Nein',
 	'validator-type-char' => 'Zeichen',
 	'validator-listerrors-errors' => 'Fehler',
@@ -508,7 +510,7 @@ Zeigt sie lediglich bezüglich der Parserhooks an, die über dem Element „list
 	'validator-describe-par-hooks' => 'Die Parserhooks für welche die Dokumentation angezeigt werden soll.',
 	'validator-describe-par-pre' => 'Ermöglicht die Ausgabe der Dokumentation in Wikitext ohne dass dieser bei der Darstellung der Seite genutzt wird.',
 	'validator-describe-par-language' => 'Die Sprache in der die Beschreibungen angezeigt werden sollen',
-	'validator-describe-listtype' => 'Liste von $1 {{PLURAL:$1|Elemente|Elementen}}',
+	'validator-describe-listtype' => 'Liste von Elementen: $1',
 	'validator-describe-empty' => 'leer',
 	'validator-describe-required' => 'erforderlich',
 	'validator-describe-header-parameter' => 'Parameter',
