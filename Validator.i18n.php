@@ -50,7 +50,7 @@ $messages['en'] = array(
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'High',
 	'validator-listerrors-fatal' => 'Fatal',
-	'validator-listerrors-description' => 'Lists errors (and warnings) that occured in parser hooks added via Validator.
+	'validator-listerrors-description' => 'Lists errors (and warnings) that occurred in parser hooks added via Validator.
 Only lists for parser hooks added above where listerrors is inserted;
 place listerrors at or near the bottom of the page to get all errors.',
 	'validator-listerrors-par-minseverity' => 'The minimum severity of an issue for it to be listed.',
