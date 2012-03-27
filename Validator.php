@@ -52,6 +52,7 @@ $incDir = dirname( __FILE__ ) . '/includes/';
 
 // Autoload the classes.
 $wgAutoloadClasses['ValidatorHooks']             = $incDir . '../Validator.hooks.php';
+$wgAutoloadClasses['ValidatorSettings']          = $incDir . '../Validator.settings.php';
 
 $wgAutoloadClasses['CriterionValidationResult']  = $incDir . 'CriterionValidationResult.php';
 $wgAutoloadClasses['ItemParameterCriterion']     = $incDir . 'ItemParameterCriterion.php';
