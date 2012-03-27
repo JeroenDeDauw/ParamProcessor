@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Parameter definition.
+ * Specifies what kind of values are accepted, how they should be validated,
+ * how they should be formatted, what their dependencies are and how they should be described.
+ *
+ * @since 0.5
+ *
+ * @file ParamDefinition.php
+ * @ingroup Validator
+ *
+ * @licence GNU GPL v2+
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ */
 class ParamDefinition {
 
 	/**
@@ -442,6 +455,37 @@ class ParamDefinition {
 		$def->addDependencies( $parameter->getDependencies() );
 
 		return $def;
+	}
+
+	public static function newFromArray( array $param, $getMad = true ) {
+		foreach ( array( 'type', 'name', 'message' ) as $requiredElement ) {
+			if ( !array_key_exists( $requiredElement, $param ) ) {
+				if ( $getMad ) {
+					throw new MWException( 'Could not construct a ParamDefinition from an array without ' . $requiredElement . ' element' );
+				}
+
+				return false;
+			}
+		}
+
+		$class = self::$typeMap[$param['type']];
+
+		$parameter = new $class(
+			$param['name'],
+			array_key_exists( 'default', $param ) ? $param['default'] : null,
+			$param['message'],
+			array_key_exists( 'islist', $param ) ? $param['islist'] : false
+		);
+
+		if ( array_key_exists( 'aliases', $param ) ) {
+			$parameter->addAliases( $param['aliases'] );
+		}
+
+		if ( array_key_exists( 'dependencies', $param ) ) {
+			$parameter->addAliases( $param['dependencies'] );
+		}
+
+		return $parameter;
 	}
 
 	protected static $typeMap = array(

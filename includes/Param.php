@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * Parameter class, representing the "instance" of a parameter.
+ * Holds a ParamDefinition, user provided input (name & value) and processing state.
+ *
+ * @since 0.5
+ *
+ * @file Param.php
+ * @ingroup Validator
+ *
+ * @licence GNU GPL v2+
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ */
 class Param {
 
 	/**
