@@ -2,7 +2,8 @@
 
 /**
  * Parameter criterion base class.
- * 
+ *
+ * @deprecated since 0.5, removal in 0.7
  * @since 0.4
  * 
  * @file ParameterCriterion.php

@@ -4,7 +4,8 @@
  * Item parameter criterion definition class. This is for criteria
  * that apply to individual values, which can either be the whole value
  * of a non-list parameter, or a single item of a list parameter.
- * 
+ *
+ * @deprecated since 0.5, removal in 0.7
  * @since 0.4
  * 
  * @file ItemParameterCriterion.php

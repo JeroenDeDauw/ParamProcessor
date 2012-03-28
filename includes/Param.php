@@ -81,15 +81,16 @@ class Param {
 	protected $defaulted = false;
 
 	/**
-	 *
+	 * The definition of the parameter.
 	 *
 	 * @since 0.5
+	 *
 	 * @var ParamDefinition
 	 */
 	protected $definition;
 
 	public function __construct( ParamDefinition $definition ) {
-		$this->defaulted = $definition;
+		$this->definition = $definition;
 	}
 
 	/**
@@ -148,10 +149,10 @@ class Param {
 	 *
 	 * @since 0.5
 	 *
-	 * @param array $parameters
+	 * @param array $paramDefinitions
 	 */
-	public function validate( array $parameters ) {
-		$this->doValidation( $parameters );
+	public function validate( array /* of ParamDefinition */ $paramDefinitions ) {
+		$this->doValidation( $paramDefinitions );
 	}
 
 	/**
@@ -159,14 +160,14 @@ class Param {
 	 *
 	 * @since 0.5
 	 *
-	 * @param array $parameters
+	 * @param array $paramDefinitions
 	 */
-	public function format( array &$parameters ) {
+	public function format( array &$paramDefinitions ) {
 		if ( $this->applyManipulationsToDefault || !$this->wasSetToDefault() ) {
-			$this->definition->format( $this, $parameters );
+			$this->definition->format( $this, $paramDefinitions );
 
-			foreach ( $this->getManipulations() as $manipulation ) {
-				$manipulation->manipulate( $this, $parameters );
+			foreach ( $this->definition->getManipulations() as $manipulation ) {
+				$manipulation->manipulate( $this, $paramDefinitions );
 			}
 		}
 	}
@@ -177,9 +178,9 @@ class Param {
 	 *
 	 * @since 0.5
 	 *
-	 * @param array $parameters
+	 * @param array $paramDefinitions
 	 */
-	protected function doValidation( array $parameters ) {
+	protected function doValidation( array  /* of ParamDefinition */ $paramDefinitions ) {
 		if ( $this->setCount == 0 ) {
 			if ( $this->definition->isRequired() ) {
 				// This should not occur, so throw an exception.
@@ -190,7 +191,7 @@ class Param {
 			}
 		}
 		else {
-			$validationResult = $this->definition->validate( $this, $parameters );
+			$validationResult = $this->definition->validate( $this, $paramDefinitions );
 
 			if ( is_array( $validationResult ) ) {
 				foreach ( $validationResult as /* ValidationError */ $error ) {
@@ -199,7 +200,7 @@ class Param {
 				}
 			}
 
-			$this->validateCriteria( $parameters );
+			$this->validateCriteria( $paramDefinitions );
 			$this->setToDefaultIfNeeded();
 		}
 	}

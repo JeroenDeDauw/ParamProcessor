@@ -58,7 +58,7 @@ class Validator {
 	 *
 	 * @var array
 	 */
-	protected $parameterDefinitions = array();
+	protected $paramDefinitions = array();
 	
 	/**
 	 * List of ValidationError.
@@ -213,7 +213,7 @@ class Validator {
 				$paramDefinition = ParamDefinition::newFromParameter( $paramDefinition );
 			}
 
-			$this->parameterDefinitions[$paramDefinition->getName()] = $paramDefinition;
+			$this->paramDefinitions[$paramDefinition->getName()] = $paramDefinition;
 		}
 
 		// Loop through all the user provided parameters, and distinguish between those that are allowed and those that are not.
@@ -284,10 +284,10 @@ class Validator {
 	 * @since 0.4
 	 */
 	protected function doParamProcessing() {
-		$this->getParamsToProcess( array(), $this->parameterDefinitions );
+		$this->getParamsToProcess( array(), $this->paramDefinitions );
 
 		while ( $paramName = array_shift( $this->paramsToHandle ) ) {
-			$param = new Param( $this->parameterDefinitions[$paramName] );
+			$param = new Param( $this->paramDefinitions[$paramName] );
 
 			$setUserValue = $this->attemptToSetUserValue( $param );
 			
@@ -301,7 +301,7 @@ class Validator {
 				break;
 			}
 			else {
-				$param->validate( $this->params );
+				$param->validate( $this->paramDefinitions );
 				
 				foreach ( $param->getErrors() as $error ) {
 					$this->registerError( $error );
@@ -352,7 +352,7 @@ class Validator {
 			$dependencies = array();
 
 			// Only include dependencies that are in the list of parameters to handle.
-			foreach ( $this->params[$paramName]->getDependencies() as $dependency ) {
+			foreach ( $this->paramDefinitions[$paramName]->getDependencies() as $dependency ) {
 				if ( in_array( $dependency, $this->paramsToHandle ) ) {
 					$dependencies[] = $dependency;
 				}

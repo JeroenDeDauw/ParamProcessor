@@ -4,7 +4,8 @@
  * List parameter manipulation base class. This is for manipulations
  * that apply to list parameters as a whole instead of to their
  * individual items.
- * 
+ *
+ * @deprecated since 0.5, removal in 0.7
  * @since 0.4
  * 
  * @file ListParameterManipulation.php

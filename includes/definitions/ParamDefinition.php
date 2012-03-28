@@ -19,7 +19,7 @@ class ParamDefinition {
 	 * Indicates whether parameters that are provided more then once  should be accepted,
 	 * and use the first provided value, or not, and generate an error.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var boolean
 	 */
@@ -29,7 +29,7 @@ class ParamDefinition {
 	 * Indicates whether parameters not found in the criteria list
 	 * should be stored in case they are not accepted. The default is false.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var boolean
 	 */
@@ -38,7 +38,7 @@ class ParamDefinition {
 	/**
 	 * Indicates if the parameter value should trimmed.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var boolean
 	 */
@@ -47,7 +47,7 @@ class ParamDefinition {
 	/**
 	 * Dependency list containing parameters that need to be handled before this one.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var array
 	 */
@@ -56,7 +56,7 @@ class ParamDefinition {
 	/**
 	 * The default value for the parameter, or null when the parameter is required.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var mixed
 	 */
@@ -65,7 +65,7 @@ class ParamDefinition {
 	/**
 	 * The main name of the parameter.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var string
 	 */
@@ -80,7 +80,7 @@ class ParamDefinition {
 	/**
 	 * List of aliases for the parameter name.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var array
 	 */
@@ -89,7 +89,7 @@ class ParamDefinition {
 	/**
 	 * List of criteria the parameter value needs to hold against.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var array of ParameterCriterion
 	 */
@@ -98,7 +98,7 @@ class ParamDefinition {
 	/**
 	 * List of manipulations the parameter value needs to undergo.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var array of ParameterManipulation
 	 */
@@ -108,7 +108,7 @@ class ParamDefinition {
 	 * A message that acts as description for the parameter or false when there is none.
 	 * Can be obtained via getMessage and set via setMessage.
 	 *
-	 * @since 0.4.9
+	 * @since 0.5.9
 	 *
 	 * @var mixed string or false
 	 */
@@ -118,7 +118,7 @@ class ParamDefinition {
 	/**
 	 * Returns the criteria that apply to the list as a whole.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return array
 	 */
@@ -129,7 +129,7 @@ class ParamDefinition {
 	/**
 	 * Returns the parameter name aliases.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return array
 	 */
@@ -140,7 +140,7 @@ class ParamDefinition {
 	/**
 	 * Returns if the parameter has a certain alias.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param string $alias
 	 *
@@ -153,7 +153,7 @@ class ParamDefinition {
 	/**
 	 * Returns if the parameter has a certain dependency.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param string $dependency
 	 *
@@ -167,7 +167,7 @@ class ParamDefinition {
 	 * Sets the default parameter value. Null indicates no default,
 	 * and therefore makes the parameter required.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param mixed $default
 	 * @param boolean $manipulate Should the default be manipulated or not? Since 0.4.6.
@@ -180,7 +180,7 @@ class ParamDefinition {
 	/**
 	 * Returns the default value.
 	 *
-	 * @since 0.4.3
+	 * @since 0.5
 	 *
 	 * @return mixed
 	 */
@@ -207,7 +207,7 @@ class ParamDefinition {
 	 * key, ie something that can be passed to wfMsg, then use the
 	 * setMessage method instead.
 	 *
-	 * @since 0.4.3
+	 * @since 0.5
 	 *
 	 * @param string $descriptionMessage
 	 */
@@ -219,7 +219,7 @@ class ParamDefinition {
 	 * Returns a message that will act as a description message for the parameter, or false when there is none.
 	 * Override in deriving classes to add a message.
 	 *
-	 * @since 0.4.9
+	 * @since 0.5.9
 	 *
 	 * @return mixed string or false
 	 */
@@ -233,7 +233,7 @@ class ParamDefinition {
 	 * to wfMsg. Not an actual text. If you do not have a message key,
 	 * but only a text, use setDescription instead.
 	 *
-	 * @since 0.4.9
+	 * @since 0.5.9
 	 *
 	 * @param string $message
 	 */
@@ -244,7 +244,7 @@ class ParamDefinition {
 	/**
 	 * Adds one or more aliases for the parameter name.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param mixed $aliases string or array of string
 	 */
@@ -256,7 +256,7 @@ class ParamDefinition {
 	/**
 	 * Adds one or more ParameterCriterion.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param mixed $criteria ParameterCriterion or array of ParameterCriterion
 	 */
@@ -269,7 +269,7 @@ class ParamDefinition {
 	 * Adds one or more dependencies. There are the names of parameters
 	 * that need to be validated and formatted before this one.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param mixed $dependencies string or array of string
 	 */
@@ -281,7 +281,7 @@ class ParamDefinition {
 	/**
 	 * Adds one or more ParameterManipulation.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param mixed $manipulations ParameterManipulation or array of ParameterManipulation
 	 */
@@ -293,7 +293,7 @@ class ParamDefinition {
 	/**
 	 * Returns the parameters main name.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return string
 	 */
@@ -304,7 +304,7 @@ class ParamDefinition {
 	/**
 	 * Returns the type of the parameter.
 	 *
-	 * @since 0.4.3
+	 * @since 0.5
 	 *
 	 * @return string element of the Parameter::TYPE_ enum
 	 */
@@ -315,7 +315,7 @@ class ParamDefinition {
 	/**
 	 * Returns an internationalized message indicating the parameter type suited for display to users.
 	 *
-	 * @since 0.4.3
+	 * @since 0.5
 	 *
 	 * @return string
 	 */
@@ -332,7 +332,7 @@ class ParamDefinition {
 	 * Returns a list of dependencies the parameter has, in the form of
 	 * other parameter names.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return array
 	 */
@@ -343,7 +343,7 @@ class ParamDefinition {
 	/**
 	 * Returns if the parameter is a required one or not.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return boolean
 	 */
@@ -354,7 +354,7 @@ class ParamDefinition {
 	/**
 	 * Returns if the parameter is a list or not.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return boolean
 	 */
@@ -365,7 +365,8 @@ class ParamDefinition {
 	/**
 	 * Returns the parameter criteria.
 	 *
-	 * @since 0.4
+	 * @deprecated since 0.5, removal in 0.7
+	 * @since 0.5
 	 *
 	 * @return array of ParameterCriterion
 	 */
@@ -376,7 +377,8 @@ class ParamDefinition {
 	/**
 	 * Returns the parameter manipulations.
 	 *
-	 * @since 0.4
+	 * @deprecated since 0.5, removal in 0.7
+	 * @since 0.5
 	 *
 	 * @return array of ParameterManipulation
 	 */
@@ -387,7 +389,8 @@ class ParamDefinition {
 	/**
 	 * Gets the criteria for the type of the parameter.
 	 *
-	 * @since 0.4
+	 * @deprecated since 0.5, removal in 0.7
+	 * @since 0.5
 	 *
 	 * @return array
 	 */
@@ -501,15 +504,15 @@ class ParamDefinition {
 	 *
 	 *
 	 * @param Param $param
-	 * @param array $params
+	 * @param array $paramDefinitions
 	 *
 	 * @return array|true
 	 */
-	public function validate( Param $param, array /* of Param */ $params ) {
+	public function validate( Param $param, array /* of ParamDefinition */ $paramDefinitions ) {
 		return true;
 	}
 
-	public function format( Param $param, array /* of Param */ $params ) {
+	public function format( Param $param, array /* of ParamDefinition */ $paramDefinitions ) {
 
 	}
 
