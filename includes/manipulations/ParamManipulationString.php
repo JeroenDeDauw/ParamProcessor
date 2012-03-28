@@ -28,7 +28,7 @@ class ParamManipulationString extends ItemParameterManipulation {
 	 * 
 	 * @since 0.4.5
 	 */	
-	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
+	public function doManipulation( &$value, Param $parameter, array &$parameters ) {
 		$value = (string)$value;
 	}
 	

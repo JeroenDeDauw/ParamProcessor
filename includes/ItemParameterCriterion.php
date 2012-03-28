@@ -21,26 +21,26 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * Validate a value against the criterion.
 	 * 
 	 * @param string $value
-	 * @param Parameter $parameter
+	 * @param Param $parameter
 	 * @param array $parameters
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return boolean
 	 */	
-	protected abstract function doValidation( $value, Parameter $parameter, array $parameters );
+	protected abstract function doValidation( $value, Param $parameter, array $parameters );
 	
 	/**
 	 * Gets an internationalized error message to construct a ValidationError with
 	 * when the criteria validation failed. (for non-list values)
 	 * 
-	 * @param Parameter $parameter
+	 * @param Param $parameter
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return string
 	 */	
-	protected abstract function getItemErrorMessage( Parameter $parameter );
+	protected abstract function getItemErrorMessage( Param $parameter );
 	
 	/**
 	 * Constructor.
@@ -63,12 +63,12 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @param Parameter $parameter
+	 * @param Param $parameter
 	 * @param array $parameters
 	 * 
 	 * @return CriterionValidationResult
 	 */
-	public function validate( Parameter $parameter, array $parameters ) {
+	public function validate( Param $parameter, array $parameters ) {
 		$result = new CriterionValidationResult();
 		
 		if ( is_array( $parameter->getValue() ) ) {
@@ -116,7 +116,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * Gets an internationalized error message to construct a ValidationError with
 	 * when the criteria validation failed. (for list values)
 	 * 
-	 * @param Parameter $parameter
+	 * @param Param $parameter
 	 * @param array $invalidItems
 	 * @param boolean $allInvalid
 	 * 
@@ -124,7 +124,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * 
 	 * @return string
 	 */		
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
+	protected function getListErrorMessage( Param $parameter, array $invalidItems, $allInvalid ) {
 		if ( $allInvalid ) {
 			return $this->getFullListErrorMessage( $parameter );
 		}
@@ -137,13 +137,13 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * Gets an internationalized error message to construct a ValidationError with
 	 * when the criteria validation failed. (for list values when all values are invalid)
 	 * 
-	 * @param Parameter $parameter
+	 * @param Param $parameter
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return string
 	 */			
-	protected function getFullListErrorMessage( Parameter $parameter ) {
+	protected function getFullListErrorMessage( Param $parameter ) {
 		return wfMsgExt( 'validator-error-problem', 'parsemag', $parameter->getOriginalName() );
 	}
 	
@@ -151,7 +151,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * Gets an internationalized error message to construct a ValidationError with
 	 * when the criteria validation failed. (for list values when only some values are invalid)
 	 * 
-	 * @param Parameter $parameter
+	 * @param Param $parameter
 	 * @param array $invalidItems
 	 * @param boolean $allInvalid
 	 * 
@@ -159,7 +159,7 @@ abstract class ItemParameterCriterion extends ParameterCriterion {
 	 * 
 	 * @return string
 	 */			
-	protected function getPartialListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
+	protected function getPartialListErrorMessage( Param $parameter, array $invalidItems, $allInvalid ) {
 		global $wgLang;
 
 		return $this->getFullListErrorMessage( $parameter ) . 

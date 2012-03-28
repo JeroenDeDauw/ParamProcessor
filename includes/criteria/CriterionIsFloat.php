@@ -26,21 +26,21 @@ class CriterionIsFloat extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
+	protected function doValidation( $value, Param $parameter, array $parameters ) {
 		return preg_match( '/^(-)?\d+((\.|,)\d+)?$/', $value );
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( Parameter $parameter ) {
+	protected function getItemErrorMessage( Param $parameter ) {
 		return wfMsgExt( 'validator-error-must-be-float', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getFullListErrorMessage( Parameter $parameter ) {
+	protected function getFullListErrorMessage( Param $parameter ) {
 		return wfMsgExt( 'validator-list-error-must-be-float', 'parsemag', $parameter->getOriginalName() );
 	}	
 	

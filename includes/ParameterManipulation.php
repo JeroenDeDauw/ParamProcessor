@@ -18,12 +18,12 @@ abstract class ParameterManipulation {
 	/**
 	 * Validate a parameter against the criterion.
 	 * 
-	 * @param Parameter $parameter
+	 * @param Param $parameter
 	 * @param array $parameters
 	 * 
 	 * @since 0.4
 	 */	
-	public abstract function manipulate( Parameter &$parameter, array &$parameters );
+	public abstract function manipulate( Param &$parameter, array &$parameters );
 	
 	/**
 	 * Returns if the manipulation applies to lists as a whole.

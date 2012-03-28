@@ -391,14 +391,14 @@ class ValidatorDescribe extends ParserHook {
 	 *
 	 * @since 0.4.3
 	 *
-	 * @param Parameter $parameter
+	 * @param Param $parameter
 	 * @param array $defaults
 	 *
 	 * @return string
 	 */
-	protected function getDescriptionRow( Parameter $parameter, array $defaults ) {
+	protected function getDescriptionRow( Param $parameter, array $defaults ) {
 		$aliases = $parameter->getAliases();
-		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
+		$aliases = empty( $aliases ) ?  '-' : implode( ', ', $aliases );
 
 		$description = $parameter->getMessage();
 		if ( $description === false ) {

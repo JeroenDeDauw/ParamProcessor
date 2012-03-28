@@ -39,21 +39,21 @@ class CriterionMatchesRegex extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
+	protected function doValidation( $value, Param $parameter, array $parameters ) {
 		return (bool)preg_match( $this->pattern, $value );
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( Parameter $parameter ) {
+	protected function getItemErrorMessage( Param $parameter ) {
 		return wfMsgExt( 'validator-error-invalid-regex', 'parsemag', $parameter->getOriginalName(), $this->pattern );
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getFullListErrorMessage( Parameter $parameter ) {
+	protected function getFullListErrorMessage( Param $parameter ) {
 		return wfMsgExt( 'validator-list-error-invalid-regex', 'parsemag', $parameter->getOriginalName(), $this->pattern );
 	}	
 	

@@ -371,7 +371,7 @@ class ParamDefinition {
 	 * @return array of ParameterCriterion
 	 */
 	public function getCriteria() {
-		return array_merge( $this->getCriteriaForType(), $this->criteria );
+		return $this->criteria;
 	}
 
 	/**
@@ -383,7 +383,7 @@ class ParamDefinition {
 	 * @return array of ParameterManipulation
 	 */
 	public function getManipulations() {
-		return array_merge( $this->getManipulationsForType(), $this->manipulations );
+		return $this->manipulations;
 	}
 
 	/**
@@ -442,10 +442,42 @@ class ParamDefinition {
 		$this->isList = $isList;
 	}
 
-	public static function newFromParameter( Parameter $parameter ) {
-		$class = self::$typeMap[$parameter->getType()];
+	protected static $typeMap = array(
+		Parameter::TYPE_BOOLEAN => 'BoolParam',
+		Parameter::TYPE_CHAR => 'CharParam',
+		Parameter::TYPE_FLOAT => 'FloatParam',
+		Parameter::TYPE_INTEGER => 'IntParam',
+		Parameter::TYPE_STRING => 'StringParam',
+		Parameter::TYPE_TITLE => 'TitleParam',
+	);
 
-		$def = new $class(
+	/**
+	 * Creates a new instance of a ParamDefinition based on the provided type.
+	 *
+	 * @since 0.5
+	 *
+	 * @param string $type
+	 * @param string $name
+	 * @param mixed $default
+	 * @param string $message
+	 * @param boolean $isList
+	 *
+	 * @return ParamDefinition
+	 */
+	public static function newFromType( $type, $name, $default, $message, $isList = false ) {
+		$class = self::$typeMap[$type];
+
+		return new $class(
+			$name,
+			$default,
+			$message,
+			$isList
+		);
+	}
+
+	public static function newFromParameter( Parameter $parameter ) {
+		$def = self::newFromType(
+			$parameter->getType(),
 			$parameter->getName(),
 			$parameter->getDefault(),
 			$parameter->getMessage(),
@@ -456,6 +488,8 @@ class ParamDefinition {
 		$def->addCriteria( $parameter->getCriteria() );
 		$def->addManipulations( $parameter->getManipulations() );
 		$def->addDependencies( $parameter->getDependencies() );
+
+		$def->trimValue = $parameter->trimValue;
 
 		return $def;
 	}
@@ -471,9 +505,8 @@ class ParamDefinition {
 			}
 		}
 
-		$class = self::$typeMap[$param['type']];
-
-		$parameter = new $class(
+		$parameter = self::newFromType(
+			$param['type'],
 			$param['name'],
 			array_key_exists( 'default', $param ) ? $param['default'] : null,
 			$param['message'],
@@ -488,17 +521,12 @@ class ParamDefinition {
 			$parameter->addAliases( $param['dependencies'] );
 		}
 
+		if ( array_key_exists( 'trim', $param ) ) {
+			$parameter->trimValue = $param['trim'];
+		}
+
 		return $parameter;
 	}
-
-	protected static $typeMap = array(
-		Parameter::TYPE_BOOLEAN => 'BoolParam',
-		Parameter::TYPE_CHAR => 'CharParam',
-		Parameter::TYPE_FLOAT => 'FloatParam',
-		Parameter::TYPE_INTEGER => 'IntParam',
-		Parameter::TYPE_STRING => 'StringParam',
-		Parameter::TYPE_TITLE => 'TitleParam',
-	);
 
 	/**
 	 *

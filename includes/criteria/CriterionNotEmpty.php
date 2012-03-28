@@ -26,21 +26,21 @@ class CriterionNotEmpty extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
+	protected function doValidation( $value, Param $parameter, array $parameters ) {
 		return trim( $value ) != '';
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( Parameter $parameter ) {
+	protected function getItemErrorMessage( Param $parameter ) {
 		return wfMsgExt( 'validator_error_empty_argument', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getFullListErrorMessage( Parameter $parameter ) {
+	protected function getFullListErrorMessage( Param $parameter ) {
 		return wfMsgExt( 'validator_list_error_empty_argument', 'parsemag', $parameter->getOriginalName() );
 	}	
 	

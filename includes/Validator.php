@@ -301,6 +301,8 @@ class Validator {
 				break;
 			}
 			else {
+				$this->params[] = $param;
+
 				$param->validate( $this->paramDefinitions );
 				
 				foreach ( $param->getErrors() as $error ) {
@@ -312,11 +314,11 @@ class Validator {
 					break;
 				}
 				
-				$initialSet = $this->params;
+				$initialSet = $this->paramDefinitions;
 
-				$param->format( $this->params );
+				$param->format( $this->paramDefinitions );
 
-				$this->getParamsToProcess( $initialSet, $this->params );
+				$this->getParamsToProcess( $initialSet, $this->paramDefinitions );
 			}
 		}
 	}

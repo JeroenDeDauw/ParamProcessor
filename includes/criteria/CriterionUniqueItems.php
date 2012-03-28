@@ -37,7 +37,7 @@ class CriterionUniqueItems extends ListParameterCriterion {
 	/**
 	 * @see ParameterCriterion::validate
 	 */	
-	public function validate( Parameter $parameter, array $parameters ) {
+	public function validate( Param $parameter, array $parameters ) {
 		return count( $parameter->getValue() ) 
 			== count( array_unique( 
 				$this->careAboutCapitalization ? $parameter->getValue() : array_map( 'strtolower', $parameter->getValue() )

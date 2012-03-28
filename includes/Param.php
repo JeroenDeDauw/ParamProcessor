@@ -139,7 +139,7 @@ class Param {
 	protected function cleanValue() {
 		$this->value = $this->originalValue;
 
-		if ( $this->trimValue ) {
+		if ( $this->definition->trimValue ) {
 			$this->value = trim( $this->value );
 		}
 	}
@@ -297,7 +297,7 @@ class Param {
 	 */
 	protected function setToDefault() {
 		$this->defaulted = true;
-		$this->value = $this->default;
+		$this->value = $this->definition->getDefault();
 	}
 
 	/**

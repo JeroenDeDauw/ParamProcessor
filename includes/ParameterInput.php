@@ -53,10 +53,10 @@ class ParameterInput {
 	 * 
 	 * @since 0.4.6
 	 * 
-	 * @param Parameter $param
+	 * @param Param $param
 	 * @param mixed $currentValue
 	 */
-	public function __construct( Parameter $param, $currentValue = false ) {
+	public function __construct( Param $param, $currentValue = false ) {
 		$this->param = $param;
 		$this->currentValue = $currentValue;
 		$this->inputName = $param->getName();
