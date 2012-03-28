@@ -12,17 +12,17 @@ class ParamList implements Iterator {
 	 */
 	protected $current;
 
-	protected $userValues;
+	protected $rawValues;
 
 	protected $definitions;
 
 	/**
-	 * @param array $userValues
+	 * @param array $rawValues
 	 * @param array $definitions
 	 */
-	public function __construct( array $userValues, array $definitions ) {
+	public function __construct( array $rawValues, array $definitions ) {
 		$this->definitions = $definitions;
-		$this->userValues = $userValues;
+		$this->rawValues = $rawValues;
 		$this->key = 0;
 		$this->setCurrent();
 	}
@@ -31,12 +31,12 @@ class ParamList implements Iterator {
 	 * @param $row
 	 */
 	protected function setCurrent() {
-		$value = current( $this->userValues );
+		$value = current( $this->rawValues );
 
 		if ( $value === false ) {
 			$this->current = false;
 		} else {
-			$rawName = key( $this->userValues );
+			$rawName = key( $this->rawValues );
 			$cleanName = $rawName; // TODO
 			$this->current = new Param( $this->definitions[$cleanName] );
 			$this->current->setUserValue( $rawName, $value );
@@ -47,14 +47,14 @@ class ParamList implements Iterator {
 	 * @return integer
 	 */
 	public function count() {
-		return count( $this->userValues );
+		return count( $this->rawValues );
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function isEmpty() {
-		return empty( $this->userValues );
+		return empty( $this->rawValues );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class ParamList implements Iterator {
 	}
 
 	public function next() {
-		$row = next( $this->userValues );
+		$row = next( $this->rawValues );
 		$this->setCurrent( $row );
 		$this->key++;
 	}

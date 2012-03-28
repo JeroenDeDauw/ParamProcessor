@@ -18,7 +18,7 @@ class Param {
 	 * The original parameter name as provided by the user. This can be the
 	 * main name or an alias.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var string
 	 */
@@ -28,7 +28,7 @@ class Param {
 	 * The original value as provided by the user. This is mainly retained for
 	 * usage in error messages when the parameter turns out to be invalid.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var string
 	 */
@@ -37,7 +37,7 @@ class Param {
 	/**
 	 * The value of the parameter.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var mixed
 	 */
@@ -47,7 +47,7 @@ class Param {
 	 * Keeps track of how many times the parameter has been set by the user.
 	 * This is used to detect overrides and for figuring out a parameter is missing.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var integer
 	 */
@@ -56,7 +56,7 @@ class Param {
 	/**
 	 * List of validation errors for this parameter.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var array of ValidationError
 	 */
@@ -65,7 +65,7 @@ class Param {
 	/**
 	 * Indicates if the parameter manipulations should be applied to the default value.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var boolean
 	 */
@@ -74,7 +74,7 @@ class Param {
 	/**
 	 * Indicates if the parameter was set to it's default.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @var boolean
 	 */
@@ -95,7 +95,7 @@ class Param {
 	/**
 	 * Sets and cleans the original value and name.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param string $paramName
 	 * @param string $paramValue
@@ -122,7 +122,7 @@ class Param {
 	/**
 	 * Sets the value.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param mixed $value
 	 */
@@ -133,7 +133,7 @@ class Param {
 	/**
 	 * Sets the $value to a cleaned value of $originalValue.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 */
 	protected function cleanValue() {
 		$this->value = $this->originalValue;
@@ -146,7 +146,7 @@ class Param {
 	/**
 	 * Validates the parameter value and sets the value to it's default when errors occur.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param array $parameters
 	 */
@@ -157,7 +157,7 @@ class Param {
 	/**
 	 * Applies the parameter manipulations.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param array $parameters
 	 */
@@ -175,7 +175,7 @@ class Param {
 	 * Validates the parameter value.
 	 * Also sets the value to the default when it's not set or invalid, assuming there is a default.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param array $parameters
 	 */
@@ -207,7 +207,7 @@ class Param {
 	/**
 	 * Sets the parameter value to the default if needed.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 */
 	protected function setToDefaultIfNeeded() {
 		if ( count( $this->errors ) > 0 && !$this->hasFatalError() ) {
@@ -218,7 +218,7 @@ class Param {
 	/**
 	 * Validates the provided value against all criteria.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param array $parameters
 	 */
@@ -239,7 +239,7 @@ class Param {
 	/**
 	 * Handles any validation errors that occurred for a single criterion.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param CriterionValidationResult $validationResult
 	 */
@@ -253,7 +253,7 @@ class Param {
 	/**
 	 * Returns the original use-provided name.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return string
 	 */
@@ -267,7 +267,7 @@ class Param {
 	/**
 	 * Returns the original use-provided value.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return string
 	 */
@@ -281,7 +281,7 @@ class Param {
 	/**
 	 * Returns all validation errors that occurred so far.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return array of ValidationError
 	 */
@@ -292,7 +292,7 @@ class Param {
 	/**
 	 * Sets the parameter value to the default.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 */
 	protected function setToDefault() {
 		$this->defaulted = true;
@@ -302,7 +302,7 @@ class Param {
 	/**
 	 * Gets if the parameter was set to it's default.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return boolean
 	 */
@@ -313,7 +313,7 @@ class Param {
 	/**
 	 * Set if the parameter manipulations should be applied to the default value.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @param boolean $doOrDoNotThereIsNoTry
 	 */
@@ -346,7 +346,7 @@ class Param {
 	/**
 	 * Returns the parameters value.
 	 *
-	 * @since 0.4
+	 * @since 0.5
 	 *
 	 * @return mixed
 	 */
@@ -354,6 +354,37 @@ class Param {
 		return $this->value;
 	}
 
+	/**
+	 * Returns if the parameter is required or not.
+	 *
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function isRequired() {
+		return $this->definition->isRequired();
+	}
 
+	/**
+	 * Returns if the name of the parameter.
+	 *
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function getName() {
+		return $this->definition->getName();
+	}
+
+	/**
+	 * Returns the parameter name aliases.
+	 *
+	 * @since 0.5
+	 *
+	 * @return array
+	 */
+	public function getAliases() {
+		return $this->definition->getAliases();
+	}
 
 }
