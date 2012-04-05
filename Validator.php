@@ -118,7 +118,3 @@ $wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
 // Since 0.4.8
 $wgHooks['UnitTestsList'][] = 'ValidatorHooks::registerUnitTests';
 
-// This file needs to be included directly, since Validator_Settings.php
-// uses it, in some rare cases before autoloading is defined.
-require_once 'includes/ValidationError.php' ;
-
