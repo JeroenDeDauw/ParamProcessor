@@ -286,7 +286,8 @@ class Validator {
 	protected function doParamProcessing() {
 		$this->getParamsToProcess( array(), $this->paramDefinitions );
 
-		while ( $paramName = array_shift( $this->paramsToHandle ) ) {
+		while ( !empty( $this->paramsToHandle ) ) {
+			$paramName = array_shift( $this->paramsToHandle );
 			$param = new Param( $this->paramDefinitions[$paramName] );
 
 			$setUserValue = $this->attemptToSetUserValue( $param );
