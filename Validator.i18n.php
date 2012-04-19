@@ -1521,6 +1521,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Marine-Blue
+ * @author Shirayuki
  * @author Whym
  * @author Yanajin66
  */
@@ -1543,6 +1544,7 @@ $messages['ja'] = array(
 	'validator-listerrors-normal' => '普通',
 	'validator-listerrors-high' => '重大',
 	'validator-listerrors-fatal' => '非常に重大',
+	'validator-describe-header-aliases' => '別名',
 	'validator_error_empty_argument' => '引数「$1」は空の値をとることができません。',
 	'validator_error_must_be_number' => '引数「$1」は数値でなければなりません。',
 	'validator_error_must_be_integer' => '引数「$1」は整数でなければなりません。',
