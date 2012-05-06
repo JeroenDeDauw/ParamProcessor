@@ -1538,6 +1538,7 @@ $messages['ja'] = array(
 	'validator_error_unknown_argument' => '$1 は有効な引数ではありません。',
 	'validator_error_required_missing' => '必須の引数「$1」が入力されていません。',
 	'validator-error-override-argument' => '値"$3"とともにパラメータ$1 (値: $2)を無視してみてください',
+	'validator-type-boolean' => 'はい/いいえ',
 	'validator-listerrors-errors' => 'エラー',
 	'validator-listerrors-minor' => '非常に軽度',
 	'validator-listerrors-low' => '軽度',
