@@ -50,7 +50,7 @@ class CriterionInRange extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Param $parameter, array $parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		if ( !is_numeric( $value ) ) {
 			return false;
 		}
@@ -73,7 +73,7 @@ class CriterionInRange extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( Param $parameter ) {
+	protected function getItemErrorMessage( Parameter $parameter ) {
 		global $wgLang;
 		
 		return wfMsgExt(
@@ -88,7 +88,7 @@ class CriterionInRange extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getFullListErrorMessage( Param $parameter ) {
+	protected function getFullListErrorMessage( Parameter $parameter ) {
 		global $wgLang;
 		
 		return wfMsgExt(

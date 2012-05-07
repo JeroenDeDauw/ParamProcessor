@@ -35,7 +35,7 @@ class CriterionHasLength extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Param $parameter, array $parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		$strlen = strlen( $value );
 		return ( $this->upperBound === false || $strlen <= $this->upperBound )
 			&& ( $this->lowerBound === false || $strlen >= $this->lowerBound );
@@ -44,7 +44,7 @@ class CriterionHasLength extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( Param $parameter ) {
+	protected function getItemErrorMessage( Parameter $parameter ) {
 		global $wgLang;
 		
 		if ( $this->lowerBound == $this->upperBound ) {

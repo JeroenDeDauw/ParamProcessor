@@ -78,7 +78,7 @@ class CriterionInArray extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Param $parameter, array $parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		return in_array(
 			$this->careAboutCapitalization ? $value : strtolower( $value ),
 			$this->allowedValues
@@ -88,7 +88,7 @@ class CriterionInArray extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( Param $parameter ) {
+	protected function getItemErrorMessage( Parameter $parameter ) {
 		global $wgLang;
 
 		$originalCount = count( $this->allowedValues );
@@ -121,7 +121,7 @@ class CriterionInArray extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getFullListErrorMessage( Param $parameter ) {
+	protected function getFullListErrorMessage( Parameter $parameter ) {
 		global $wgLang;
 
 		$originalCount = count( $this->allowedValues );

@@ -34,7 +34,7 @@ class CriterionIsTitle extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Param $parameter, array $parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		// create wiki Title from text input:
 		$title = Title::newFromText( trim( $value ) );
 		
@@ -52,7 +52,7 @@ class CriterionIsTitle extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( Param $parameter ) {
+	protected function getItemErrorMessage( Parameter $parameter ) {
 		$msg = 'validator_error_must_be_' . (
 				$this->hasToExist
 				? 'existing_'
@@ -64,7 +64,7 @@ class CriterionIsTitle extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getFullListErrorMessage( Param $parameter ) {
+	protected function getFullListErrorMessage( Parameter $parameter ) {
 		$msg = 'validator_list_error_must_be_' . (
 				$this->hasToExist
 				? 'existing_'

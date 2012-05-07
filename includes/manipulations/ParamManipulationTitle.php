@@ -26,7 +26,7 @@ class ParamManipulationTitle extends ItemParameterManipulation {
 	/**
 	 * @see ItemParameterManipulation::doManipulation
 	 */	
-	public function doManipulation( &$value, Param $parameter, array &$parameters ) {
+	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		$value = Title::newFromText( trim( $value ) );
 	}
 	

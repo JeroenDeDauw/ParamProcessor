@@ -46,7 +46,7 @@ class ParamManipulationFunctions extends ItemParameterManipulation {
 	 * 
 	 * @since 0.4.2
 	 */	
-	public function doManipulation( &$value, Param $parameter, array &$parameters ) {
+	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		foreach ( $this->functions as $function ) {
 			$value = call_user_func( $function, $value );
 		}

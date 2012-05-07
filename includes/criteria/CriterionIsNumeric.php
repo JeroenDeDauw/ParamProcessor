@@ -26,21 +26,21 @@ class CriterionIsNumeric extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Param $parameter, array $parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		return is_numeric( $value );
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( Param $parameter ) {
+	protected function getItemErrorMessage( Parameter $parameter ) {
 		return wfMsgExt( 'validator_error_must_be_number', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getFullListErrorMessage( Param $parameter ) {
+	protected function getFullListErrorMessage( Parameter $parameter ) {
 		return wfMsgExt( 'validator_list_error_must_be_number', 'parsemag', $parameter->getOriginalName() );
 	}		
 	

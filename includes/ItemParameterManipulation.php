@@ -28,7 +28,7 @@ abstract class ItemParameterManipulation extends ParameterManipulation {
 	 * 
 	 * @return mixed
 	 */	
-	protected abstract function doManipulation( &$value, Param $parameter, array &$parameters );
+	protected abstract function doManipulation( &$value, Parameter $parameter, array &$parameters );
 	
 	/**
 	 * Constructor.
@@ -54,7 +54,7 @@ abstract class ItemParameterManipulation extends ParameterManipulation {
 	 * 
 	 * @since 0.4
 	 */	
-	public function manipulate( Param &$parameter, array &$parameters ) {
+	public function manipulate( Parameter &$parameter, array &$parameters ) {
 		if ( is_array( $parameter->getValue() ) ) {
 			$value = &$parameter->getValue();
 			foreach ( $value as &$item ) {

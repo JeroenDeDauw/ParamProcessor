@@ -32,7 +32,7 @@ class CriterionIsInteger extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Param $parameter, array $parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		if ( $this->negativesAllowed && strpos( $value, '-' ) === 0 ) {
 			$value = substr( $value, 1 );
 		}
@@ -43,14 +43,14 @@ class CriterionIsInteger extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( Param $parameter ) {
+	protected function getItemErrorMessage( Parameter $parameter ) {
 		return wfMsgExt( 'validator_error_must_be_integer', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getFullListErrorMessage( Param $parameter ) {
+	protected function getFullListErrorMessage( Parameter $parameter ) {
 		return wfMsgExt( 'validator_list_error_must_be_integer', 'parsemag', $parameter->getOriginalName() );
 	}	
 	
