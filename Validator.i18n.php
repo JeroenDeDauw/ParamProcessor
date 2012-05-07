@@ -32,7 +32,7 @@ $messages['en'] = array(
 	// General errors
 	'validator_error_unknown_argument' => '$1 is not a valid parameter.',
 	'validator_error_required_missing' => 'The required parameter "$1" is not provided.',
-	'validator-error-override-argument' => 'Tried to override parameter $1 (value: $2) with value "$3"', 
+	'validator-error-override-argument' => 'Tried to override parameter $1 (value: $2) with value "$3"',
 
 	// Parameter types
 	'validator-type-string' => 'text',
@@ -2774,4 +2774,3 @@ $messages['zh-hant'] = array(
 	'validator_list_error_invalid_range' => '參數 $1 所有合法的值都必須介於 $2 與 $3 之間。',
 	'validator_list_error_invalid_argument' => '參數 $1 的一個或多個值不合法。',
 );
-

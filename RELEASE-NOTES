@@ -1,5 +1,6 @@
 For a documentation of all features, see https://www.mediawiki.org/wiki/Extension:Validator
 
+
 == Validator change log ==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
@@ -228,4 +229,8 @@ Basically everything got rewritten...
 
 * Initial release, featuring parameter validation, defaulting and error generation.
 
+<<<<<<< HEAD
 {{Validator see also}}
+=======
+{{Validator see also}}
+>>>>>>> 2876d688e56e838bb7892ba89e519bf11df4b38f
