@@ -1,10 +1,17 @@
 For a documentation of all features, see http://www.mediawiki.org/wiki/Extension:Validator
 
+
 == Validator change log ==
+
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
 === Validator 0.5 ===
 (dev)
+
+* Split Parameter into Param and ParamDefinition classes. Deprecated Parameter.
+* Deprecated ParameterCriterion and ParameterManipulation (and deriving) classes.
+* New light-weight array definition of ParamDefinition objects supported.
+* ParamDefinition objects each represent a type and have build in support for specific criteria.
 
 === Validator 0.4.14 ===
 (2012-03-10)
