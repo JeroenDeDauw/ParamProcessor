@@ -16,6 +16,23 @@
 abstract class ParamDefinition {
 
 	/**
+	 * Maps the type identifiers to their corresponding classes.
+	 * TODO: have registration system
+	 *
+	 * @since 0.5
+	 *
+	 * @var array
+	 */
+	protected static $typeMap = array(
+		'boolean' => 'BoolParam', // Parameter::TYPE_BOOLEAN
+		'char' => 'CharParam', // Parameter::TYPE_CHAR
+		'float' => 'FloatParam', // Parameter::TYPE_FLOAT
+		'integer' => 'IntParam', // Parameter::TYPE_INTEGER
+		'string' => 'StringParam', // Parameter::TYPE_STRING
+		'title' => 'TitleParam', // Parameter::TYPE_TITLE
+	);
+
+	/**
 	 * Indicates whether parameters that are provided more then once  should be accepted,
 	 * and use the first provided value, or not, and generate an error.
 	 *
@@ -135,6 +152,33 @@ abstract class ParamDefinition {
 	 */
 	protected $prohibitedValues = false;
 
+	/**
+	 * Constructor.
+	 *
+	 * @since 0.5
+	 *
+	 * @param string $name
+	 * @param mixed $default Use null for no default (which makes the parameter required)
+	 * @param string $message
+	 * @param boolean $isList
+	 */
+	public function __construct( $name, $default = null, $message = null, $isList = false ) {
+		$this->name = $name;
+		$this->default = $default;
+		$this->message = $message;
+		$this->isList = $isList;
+	}
+
+	/**
+	 * Returns if the value should be trimmed before validation and any further processing.
+	 *
+	 * @since 0.5
+	 *
+	 * @since boolean
+	 */
+	public function trimBeforeValidate() {
+		$this->trimValue;
+	}
 
 	/**
 	 * Returns the criteria that apply to the list as a whole.
@@ -445,32 +489,6 @@ abstract class ParamDefinition {
 	}
 
 	/**
-	 * Constructor.
-	 *
-	 * @since 0.5
-	 *
-	 * @param string $name
-	 * @param mixed $default Use null for no default (which makes the parameter required)
-	 * @param string $message
-	 * @param boolean $isList
-	 */
-	public function __construct( $name, $default = null, $message = null, $isList = false ) {
-		$this->name = $name;
-		$this->default = $default;
-		$this->message = $message;
-		$this->isList = $isList;
-	}
-
-	protected static $typeMap = array(
-		Parameter::TYPE_BOOLEAN => 'BoolParam',
-		Parameter::TYPE_CHAR => 'CharParam',
-		Parameter::TYPE_FLOAT => 'FloatParam',
-		Parameter::TYPE_INTEGER => 'IntParam',
-		Parameter::TYPE_STRING => 'StringParam',
-		Parameter::TYPE_TITLE => 'TitleParam',
-	);
-
-	/**
 	 * Creates a new instance of a ParamDefinition based on the provided type.
 	 *
 	 * @since 0.5
@@ -533,7 +551,7 @@ abstract class ParamDefinition {
 	 * @throws MWException
 	 */
 	public static function newFromArray( array $param, $getMad = true ) {
-		foreach ( array( 'type', 'name', 'message' ) as $requiredElement ) {
+		foreach ( array( 'name', 'message' ) as $requiredElement ) {
 			if ( !array_key_exists( $requiredElement, $param ) ) {
 				if ( $getMad ) {
 					throw new MWException( 'Could not construct a ParamDefinition from an array without ' . $requiredElement . ' element' );
@@ -544,7 +562,7 @@ abstract class ParamDefinition {
 		}
 
 		$parameter = self::newFromType(
-			$param['type'],
+			array_key_exists( 'type', $param ) ? $param['type'] : 'string',
 			$param['name'],
 			array_key_exists( 'default', $param ) ? $param['default'] : null,
 			$param['message'],
