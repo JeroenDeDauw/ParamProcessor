@@ -3,8 +3,11 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 == Validator change log ==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Validator.
 
+=== Validator 0.5 ===
+(dev)
+
 === Validator 0.4.14 ===
-(trunk)
+(2012-03-10)
 
 * New built-in parameter type 'title'. Accepts existing and non-existing page titles which are valid within the wiki.
 
@@ -227,5 +230,3 @@ Basically everything got rewritten...
 (2009-12-17)
 
 * Initial release, featuring parameter validation, defaulting and error generation.
-
-{{Validator see also}}
