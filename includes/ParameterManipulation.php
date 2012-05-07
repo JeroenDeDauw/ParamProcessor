@@ -23,7 +23,7 @@ abstract class ParameterManipulation {
 	 * 
 	 * @since 0.4
 	 */	
-	public abstract function manipulate( Param &$parameter, array &$parameters );
+	public abstract function manipulate( Parameter &$parameter, array &$parameters );
 	
 	/**
 	 * Returns if the manipulation applies to lists as a whole.

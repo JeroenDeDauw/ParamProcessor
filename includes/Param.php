@@ -164,12 +164,38 @@ class Param {
 	 */
 	public function format( array &$paramDefinitions ) {
 		if ( $this->applyManipulationsToDefault || !$this->wasSetToDefault() ) {
-			$this->definition->format( $this, $paramDefinitions );
+			$parameter = $this->toParameter();
+
+			$this->definition->format( $parameter, $paramDefinitions );
 
 			foreach ( $this->definition->getManipulations() as $manipulation ) {
-				$manipulation->manipulate( $this, $paramDefinitions );
+				$manipulation->manipulate( $parameter, $paramDefinitions );
 			}
 		}
+	}
+
+	/**
+	 * Compatibility helper method, will be removed in 0.7.
+	 *
+	 * @deprecated
+	 * @since 0.5
+	 *
+	 * @return Parameter
+	 */
+	protected function toParameter() {
+		$parameter = new Parameter(
+			$this->definition->getName(),
+			$this->definition->getType(),
+			$this->definition->getDefault(),
+			$this->definition->getAliases(),
+			$this->definition->getCriteria(),
+			$this->definition->getDependencies()
+		);
+
+		$parameter->addManipulations( $this->definition->getManipulations() );
+		$parameter->setUserValue( $this->getName(), $this->getValue() );
+
+		return $parameter;
 	}
 
 	/**

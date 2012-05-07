@@ -4,6 +4,15 @@ class IntParam extends ParamDefinition {
 
 	protected $allowNegatives = true;
 
+	/**
+	 * Returns an identifier for the parameter type.
+	 * @since 0.5
+	 * @return string
+	 */
+	public function getType() {
+		return 'integer';
+	}
+
 	public function setAllowNegatives( $allowNegatives ) {
 		$this->allowNegatives = $allowNegatives;
 	}

@@ -13,7 +13,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ParamDefinition {
+abstract class ParamDefinition {
 
 	/**
 	 * Indicates whether parameters that are provided more then once  should be accepted,
@@ -108,7 +108,7 @@ class ParamDefinition {
 	 * A message that acts as description for the parameter or false when there is none.
 	 * Can be obtained via getMessage and set via setMessage.
 	 *
-	 * @since 0.5.9
+	 * @since 0.5
 	 *
 	 * @var mixed string or false
 	 */
@@ -306,11 +306,9 @@ class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @return string element of the Parameter::TYPE_ enum
+	 * @return string
 	 */
-	public function getType() {
-		return $this->type;
-	}
+	public abstract function getType();
 
 	/**
 	 * Returns an internationalized message indicating the parameter type suited for display to users.
