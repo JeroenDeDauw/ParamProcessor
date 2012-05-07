@@ -164,9 +164,9 @@ class Param {
 	 */
 	public function format( array &$paramDefinitions ) {
 		if ( $this->applyManipulationsToDefault || !$this->wasSetToDefault() ) {
-			$parameter = $this->toParameter();
+			$this->definition->format( $this, $paramDefinitions );
 
-			$this->definition->format( $parameter, $paramDefinitions );
+			$parameter = $this->toParameter();
 
 			foreach ( $this->definition->getManipulations() as $manipulation ) {
 				$manipulation->manipulate( $parameter, $paramDefinitions );
@@ -245,13 +245,16 @@ class Param {
 	/**
 	 * Validates the provided value against all criteria.
 	 *
+	 * @deprecated removal in 0.7
 	 * @since 0.5
 	 *
 	 * @param array $parameters
 	 */
 	protected function validateCriteria( array $parameters ) {
+		$parameter = $this->toParameter();
+
 		foreach ( $this->definition->getCriteria() as $criterion ) {
-			$validationResult = $criterion->validate( $this, $parameters );
+			$validationResult = $criterion->validate( $parameter, $parameters );
 
 			if ( !$validationResult->isValid() ) {
 				$this->handleValidationError( $validationResult );
@@ -266,6 +269,7 @@ class Param {
 	/**
 	 * Handles any validation errors that occurred for a single criterion.
 	 *
+	 * @deprecated removal in 0.7
 	 * @since 0.5
 	 *
 	 * @param CriterionValidationResult $validationResult
@@ -282,11 +286,12 @@ class Param {
 	 *
 	 * @since 0.5
 	 *
+	 * @throws MWException
 	 * @return string
 	 */
 	public function getOriginalName() {
 		if ( $this->setCount == 0 ) {
-			throw new Exception( 'No user imput set to the parameter yet, so the original name does not exist' );
+			throw new MWException( 'No user imput set to the parameter yet, so the original name does not exist' );
 		}
 		return $this->originalName;
 	}
@@ -296,11 +301,12 @@ class Param {
 	 *
 	 * @since 0.5
 	 *
+	 * @throws MWException
 	 * @return string
 	 */
 	public function getOriginalValue() {
 		if ( $this->setCount == 0 ) {
-			throw new Exception( 'No user imput set to the parameter yet, so the original value does not exist' );
+			throw new MWException( 'No user imput set to the parameter yet, so the original value does not exist' );
 		}
 		return $this->originalValue;
 	}
