@@ -1,6 +1,6 @@
 <?php
 
-class CharParam extends ParamDefinition {
+class CharParam extends StringParam {
 
 	/**
 	 * Returns an identifier for the parameter type.

@@ -16,8 +16,12 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ValidatorSettings {
+final class ValidatorSettings {
 
+	/**
+	 * Protected constructor - force singleton usage.
+	 * @since 0.5
+	 */
 	protected function __construct(){}
 
 	/**

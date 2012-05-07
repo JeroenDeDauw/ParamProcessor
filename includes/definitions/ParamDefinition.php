@@ -37,12 +37,13 @@ abstract class ParamDefinition {
 
 	/**
 	 * Indicates if the parameter value should trimmed.
+	 * This is done BEFORE the validation process.
 	 *
 	 * @since 0.5
 	 *
 	 * @var boolean
 	 */
-	public $trimValue = true;
+	protected $trimValue = true;
 
 	/**
 	 * Dependency list containing parameters that need to be handled before this one.
@@ -113,6 +114,26 @@ abstract class ParamDefinition {
 	 * @var mixed string or false
 	 */
 	protected $message = false;
+
+	/**
+	 * A list of allowed values. This means the parameters value(s) must be in the list
+	 * during validation. False for no restriction.
+	 *
+	 * @since 0.5
+	 *
+	 * @var array|false
+	 */
+	protected $allowedValues = false;
+
+	/**
+	 * A list of prohibited values. This means the parameters value(s) must
+	 * not be in the list during validation. False for no restriction.
+	 *
+	 * @since 0.5
+	 *
+	 * @var array|false
+	 */
+	protected $prohibitedValues = false;
 
 
 	/**
@@ -473,6 +494,14 @@ abstract class ParamDefinition {
 		);
 	}
 
+	/**
+	 * @deprecated Compatibility helper, will be removed in 0.7.
+	 * @since 0.5
+	 *
+	 * @param Parameter $parameter
+	 *
+	 * @return ParamDefinition
+	 */
 	public static function newFromParameter( Parameter $parameter ) {
 		$def = self::newFromType(
 			$parameter->getType(),
@@ -492,6 +521,17 @@ abstract class ParamDefinition {
 		return $def;
 	}
 
+	/**
+	 * Construct a new ParamDefinition from an array.
+	 *
+	 * @since 0.5
+	 *
+	 * @param array $param
+	 * @param bool $getMad
+	 *
+	 * @return ParamDefinition|false
+	 * @throws MWException
+	 */
 	public static function newFromArray( array $param, $getMad = true ) {
 		foreach ( array( 'type', 'name', 'message' ) as $requiredElement ) {
 			if ( !array_key_exists( $requiredElement, $param ) ) {
@@ -511,23 +551,44 @@ abstract class ParamDefinition {
 			array_key_exists( 'islist', $param ) ? $param['islist'] : false
 		);
 
-		if ( array_key_exists( 'aliases', $param ) ) {
-			$parameter->addAliases( $param['aliases'] );
-		}
-
-		if ( array_key_exists( 'dependencies', $param ) ) {
-			$parameter->addAliases( $param['dependencies'] );
-		}
-
-		if ( array_key_exists( 'trim', $param ) ) {
-			$parameter->trimValue = $param['trim'];
-		}
+		$parameter->setArrayValues( $param );
 
 		return $parameter;
 	}
 
 	/**
+	 * Sets the parameter definition values contained in the provided array.
 	 *
+	 * @since 0.5
+	 *
+	 * @param array $param
+	 */
+	public function setArrayValues( array $param ) {
+		if ( array_key_exists( 'aliases', $param ) ) {
+			$this->addAliases( $param['aliases'] );
+		}
+
+		if ( array_key_exists( 'dependencies', $param ) ) {
+			$this->addDependencies( $param['dependencies'] );
+		}
+
+		if ( array_key_exists( 'trim', $param ) ) {
+			$this->trimValue = $param['trim'];
+		}
+
+		if ( array_key_exists( 'values', $param ) ) {
+			$this->allowedValues = $param['values'];
+		}
+
+		if ( array_key_exists( 'excluding', $param ) ) {
+			$this->prohibitedValues = $param['excluding'];
+		}
+	}
+
+	/**
+	 * Validates the parameters value.
+	 *
+	 * @since 0.5
 	 *
 	 * @param Param $param
 	 * @param array $paramDefinitions
@@ -535,11 +596,27 @@ abstract class ParamDefinition {
 	 * @return array|true
 	 */
 	public function validate( Param $param, array /* of ParamDefinition */ $paramDefinitions ) {
+		if ( $this->allowedValues !== false && !in_array( $param->getValue(), $this->allowedValues ) ) {
+			return false;
+		}
+
+		if ( $this->prohibitedValues !== false && in_array( $param->getValue(), $this->prohibitedValues ) ) {
+			return false;
+		}
+
 		return true;
 	}
 
+	/**
+	 * Formats the parameter value to it's final result.
+	 *
+	 * @since 0.5
+	 *
+	 * @param Param $param
+	 * @param array $paramDefinitions
+	 */
 	public function format( Param $param, array /* of ParamDefinition */ $paramDefinitions ) {
-
+		// No-op
 	}
 
 }
