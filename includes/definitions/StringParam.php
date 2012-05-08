@@ -20,7 +20,16 @@ class StringParam extends ParamDefinition {
 		return 'string';
 	}
 
-	public function format( Param $param, array /* of Param */ $params ) {
+	/**
+	 * Formats the parameters value to it's final form.
+	 *
+	 * @since 0.5
+	 *
+	 * @param Param $param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
+	 */
+	public function format( Param $param, array $definitions, array $params ) {
 		$value = (string)$param->getValue();
 
 		if ( $this->toLower ) {

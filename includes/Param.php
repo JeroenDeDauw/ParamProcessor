@@ -140,10 +140,11 @@ class Param {
 	 *
 	 * @since 0.5
 	 *
-	 * @param array $paramDefinitions
+	 * @param $paramDefinitions array of ParamDefinition
+	 * @param $params array of Param
 	 */
-	public function validate( array /* of ParamDefinition */ $paramDefinitions ) {
-		$this->doValidation( $paramDefinitions );
+	public function validate( array /* of ParamDefinition */ $paramDefinitions, array /* of Param */ $params ) {
+		$this->doValidation( $paramDefinitions, $params );
 	}
 
 	/**
@@ -152,10 +153,11 @@ class Param {
 	 * @since 0.5
 	 *
 	 * @param array $paramDefinitions
+	 * @param array $params
 	 */
-	public function format( array &$paramDefinitions ) {
+	public function format( array &$paramDefinitions, array /* of Param */ $params ) {
 		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
-			$this->definition->format( $this, $paramDefinitions );
+			$this->definition->format( $this, $paramDefinitions, $params );
 
 			$parameter = $this->toParameter();
 
@@ -174,14 +176,26 @@ class Param {
 	 * @return Parameter
 	 */
 	protected function toParameter() {
-		$parameter = new Parameter(
-			$this->definition->getName(),
-			$this->definition->getType(),
-			$this->definition->getDefault(),
-			$this->definition->getAliases(),
-			$this->definition->getCriteria(),
-			$this->definition->getDependencies()
-		);
+		if ( $this->definition->isList() ) {
+			$parameter = new ListParameter(
+				$this->definition->getName(),
+				$this->definition->getDelimiter(),
+				$this->definition->getType(),
+				$this->definition->getDefault(),
+				$this->definition->getAliases(),
+				$this->definition->getCriteria()
+			);
+		}
+		else {
+			$parameter = new Parameter(
+				$this->definition->getName(),
+				$this->definition->getType(),
+				$this->definition->getDefault(),
+				$this->definition->getAliases(),
+				$this->definition->getCriteria(),
+				$this->definition->getDependencies()
+			);
+		}
 
 		$parameter->addManipulations( $this->definition->getManipulations() );
 		$parameter->setUserValue( $this->getName(), $this->getValue() );
@@ -195,20 +209,23 @@ class Param {
 	 *
 	 * @since 0.5
 	 *
-	 * @param array $paramDefinitions
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
+	 *
+	 * @throws MWException
 	 */
-	protected function doValidation( array  /* of ParamDefinition */ $paramDefinitions ) {
+	protected function doValidation( array $definitions, array $params ) {
 		if ( $this->setCount == 0 ) {
 			if ( $this->definition->isRequired() ) {
 				// This should not occur, so throw an exception.
-				throw new Exception( 'Attempted to validate a required parameter without first setting a value.' );
+				throw new MWException( 'Attempted to validate a required parameter without first setting a value.' );
 			}
 			else {
 				$this->setToDefault();
 			}
 		}
 		else {
-			$validationResult = $this->definition->validate( $this, $paramDefinitions );
+			$validationResult = $this->definition->validate( $this, $definitions, $params );
 
 			if ( is_array( $validationResult ) ) {
 				foreach ( $validationResult as /* ValidationError */ $error ) {
@@ -217,7 +234,7 @@ class Param {
 				}
 			}
 
-			$this->validateCriteria( $paramDefinitions );
+			$this->validateCriteria( $definitions, $params );
 			$this->setToDefaultIfNeeded();
 		}
 	}
@@ -239,13 +256,14 @@ class Param {
 	 * @deprecated removal in 0.7
 	 * @since 0.5
 	 *
-	 * @param array $parameters
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 */
-	protected function validateCriteria( array $parameters ) {
+	protected function validateCriteria( array $definitions, array $params ) {
 		$parameter = $this->toParameter();
 
 		foreach ( $this->definition->getCriteria() as $criterion ) {
-			$validationResult = $criterion->validate( $parameter, $parameters );
+			$validationResult = $criterion->validate( $parameter, $params );
 
 			if ( !$validationResult->isValid() ) {
 				$this->handleValidationError( $validationResult );

@@ -105,6 +105,12 @@ abstract class ParamDefinition {
 	protected $isList;
 
 	/**
+	 * @since 0.5
+	 * @var string
+	 */
+	protected $delimiter = ',';
+
+	/**
 	 * List of aliases for the parameter name.
 	 *
 	 * @since 0.5
@@ -482,6 +488,30 @@ abstract class ParamDefinition {
 	}
 
 	/**
+	 * Returns the delimiter to use to split the raw value in case the
+	 * parameter is a list.
+	 *
+	 * @since 0.5
+	 *
+	 * @return string
+	 */
+	public function getDelimiter() {
+		return $this->delimiter;
+	}
+
+	/**
+	 * Sets the delimiter to use to split the raw value in case the
+	 * parameter is a list.
+	 *
+	 * @since 0.5
+	 *
+	 * @param $delimiter string
+	 */
+	public function setDelimiter( $delimiter ) {
+		$this->delimiter = $delimiter;
+	}
+
+	/**
 	 * Gets the criteria for the type of the parameter.
 	 *
 	 * @deprecated since 0.5, removal in 0.7
@@ -633,6 +663,10 @@ abstract class ParamDefinition {
 		if ( array_key_exists( 'excluding', $param ) ) {
 			$this->prohibitedValues = $param['excluding'];
 		}
+
+		if ( array_key_exists( 'delimiter', $param ) ) {
+			$this->delimiter = $param['delimiter'];
+		}
 	}
 
 	/**
@@ -642,10 +676,11 @@ abstract class ParamDefinition {
 	 *
 	 * @param Param $param
 	 * @param array $paramDefinitions
+	 * @param array $params
 	 *
 	 * @return array|true
 	 */
-	public function validate( Param $param, array /* of ParamDefinition */ $paramDefinitions ) {
+	public function validate( Param $param, array /* of ParamDefinition */ $paramDefinitions, array /* of Param */ $params ) {
 		if ( $this->allowedValues !== false && !in_array( $param->getValue(), $this->allowedValues ) ) {
 			return false;
 		}
@@ -663,9 +698,10 @@ abstract class ParamDefinition {
 	 * @since 0.5
 	 *
 	 * @param Param $param
-	 * @param array $paramDefinitions
+	 * @param array $definitions
+	 * @param array $params
 	 */
-	public function format( Param $param, array /* of ParamDefinition */ $paramDefinitions ) {
+	public function format( Param $param, array /* of ParamDefinition */ $definitions, array /* of Param */ $params ) {
 		// No-op
 	}
 

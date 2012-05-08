@@ -236,7 +236,7 @@ class Parameter {
 	protected function cleanCriteria( array &$criteria ) {
 		foreach ( $criteria as $key => &$criterion ) {
 			if ( !$criterion instanceof ParameterCriterion )  {
-				throw new Exception( "$key is not a valid ParameterCriterion." );
+				throw new MWException( "$key is not a valid ParameterCriterion." );
 			}
 		} 
 	}
@@ -357,7 +357,7 @@ class Parameter {
 	 * Validates the parameter value and sets the value to it's default when errors occur.
 	 * 
 	 * @since 0.4
-	 * 
+	 *
 	 * @param array $parameters
 	 */
 	public function validate( array $parameters ) {
@@ -384,14 +384,14 @@ class Parameter {
 	 * Also sets the value to the default when it's not set or invalid, assuming there is a default.
 	 * 
 	 * @since 0.4
-	 * 
+	 *
 	 * @param array $parameters
 	 */	
 	protected function doValidation( array $parameters ) {
 		if ( $this->setCount == 0 ) {
 			if ( $this->isRequired() ) {
 				// This should not occur, so thorw an exception.
-				throw new Exception( 'Attempted to validate a required parameter without first setting a value.' );
+				throw new MWException( 'Attempted to validate a required parameter without first setting a value.' );
 			}
 			else {
 				$this->setToDefault();
@@ -519,7 +519,7 @@ class Parameter {
 	 */
 	public function getOriginalName() {
 		if ( $this->setCount == 0 ) {
-			throw new Exception( 'No user imput set to the parameter yet, so the original name does not exist' );
+			throw new MWException( 'No user imput set to the parameter yet, so the original name does not exist' );
 		}		
 		return $this->originalName;
 	}
@@ -533,7 +533,7 @@ class Parameter {
 	 */
 	public function getOriginalValue() {
 		if ( $this->setCount == 0 ) {
-			throw new Exception( 'No user imput set to the parameter yet, so the original value does not exist' );
+			throw new MWException( 'No user imput set to the parameter yet, so the original value does not exist' );
 		}
 		return $this->originalValue;
 	}	

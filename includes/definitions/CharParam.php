@@ -11,7 +11,18 @@ class CharParam extends StringParam {
 		return 'char';
 	}
 
-	public function validate( Param $param, array /* of Param */ $params ) {
+	/**
+	 * Validates the parameters value.
+	 *
+	 * @since 0.5
+	 *
+	 * @param Param $param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
+	 *
+	 * @return boolean
+	 */
+	public function validate( Param $param, array $definitions, array $params ) {
 		return strlen( $param->getValue() ) === 1;
 	}
 

@@ -17,7 +17,18 @@ class IntParam extends ParamDefinition {
 		$this->allowNegatives = $allowNegatives;
 	}
 
-	public function validate( Param $param, array /* of Param */ $params ) {
+	/**
+	 * Validates the parameters value.
+	 *
+	 * @since 0.5
+	 *
+	 * @param Param $param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
+	 *
+	 * @return boolean
+	 */
+	public function validate( Param $param, array $definitions, array $params ) {
 		$value = $param->getValue();
 
 		if ( $this->negativesAllowed && strpos( $value, '-' ) === 0 ) {
@@ -27,7 +38,16 @@ class IntParam extends ParamDefinition {
 		return ctype_digit( (string)$value );
 	}
 
-	public function format( Param $param, array /* of Param */ $params ) {
+	/**
+	 * Formats the parameters value to it's final form.
+	 *
+	 * @since 0.5
+	 *
+	 * @param Param $param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
+	 */
+	public function format( Param $param, array $definitions, array $params ) {
 		$param->setValue( (int)$param->getValue() );
 	}
 

@@ -25,7 +25,18 @@ class TitleParam extends ParamDefinition {
 		$this->hasToExist = $hasToExist;
 	}
 
-	public function validate( Param $param, array /* of Param */ $params ) {
+	/**
+	 * Validates the parameters value.
+	 *
+	 * @since 0.5
+	 *
+	 * @param Param $param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
+	 *
+	 * @return boolean
+	 */
+	public function validate( Param $param, array $definitions, array $params ) {
 		$this->title = Title::newFromText( $param->getValue() );
 
 		if( is_null( $this->title ) ) {
@@ -35,7 +46,16 @@ class TitleParam extends ParamDefinition {
 		return $this->hasToExist ? $this->title->isKnown() : true;
 	}
 
-	public function format( Param $param, array /* of Param */ $params ) {
+	/**
+	 * Formats the parameters value to it's final form.
+	 *
+	 * @since 0.5
+	 *
+	 * @param Param $param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
+	 */
+	public function format( Param $param, array $definitions, array $params ) {
 		$param->setValue( $this->title );
 	}
 

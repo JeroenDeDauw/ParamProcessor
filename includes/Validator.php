@@ -213,6 +213,10 @@ class Validator {
 				$paramDefinition = ParamDefinition::newFromParameter( $paramDefinition );
 			}
 
+			if ( !( $paramDefinition instanceof ParamDefinition ) ) {
+				throw new MWException( '$paramDefinition not an instance of ParamDefinition' );
+			}
+
 			$this->paramDefinitions[$paramDefinition->getName()] = $paramDefinition;
 		}
 
@@ -286,9 +290,16 @@ class Validator {
 	protected function doParamProcessing() {
 		$this->getParamsToProcess( array(), $this->paramDefinitions );
 
-		while ( !empty( $this->paramsToHandle ) ) {
+		while ( $this->paramsToHandle !== array() ) {
 			$paramName = array_shift( $this->paramsToHandle );
-			$param = new Param( $this->paramDefinitions[$paramName] );
+			$definition = $this->paramDefinitions[$paramName];
+
+			// Compat code for 0.4.x style definitions, will be removed in 0.7.
+			if ( $definition instanceof Parameter ) {
+				$definition = ParamDefinition::newFromParameter( $definition );
+			}
+
+			$param = new Param( $definition );
 
 			$setUserValue = $this->attemptToSetUserValue( $param );
 			
@@ -302,9 +313,9 @@ class Validator {
 				break;
 			}
 			else {
-				$this->params[] = $param;
+				$this->params[$param->getName()] = $param;
 
-				$param->validate( $this->paramDefinitions );
+				$param->validate( $this->paramDefinitions, $this->params );
 				
 				foreach ( $param->getErrors() as $error ) {
 					$this->registerError( $error );
@@ -317,7 +328,7 @@ class Validator {
 				
 				$initialSet = $this->paramDefinitions;
 
-				$param->format( $this->paramDefinitions );
+				$param->format( $this->paramDefinitions, $this->params );
 
 				$this->getParamsToProcess( $initialSet, $this->paramDefinitions );
 			}
