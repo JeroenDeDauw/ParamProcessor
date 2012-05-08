@@ -596,6 +596,11 @@ abstract class ParamDefinition implements iParamDefinition {
 		$def->addCriteria( $parameter->getCriteria() );
 		$def->addManipulations( $parameter->getManipulations() );
 		$def->addDependencies( $parameter->getDependencies() );
+		$def->setDoManipulationOfDefault( $parameter->applyManipulationsToDefault );
+
+		if ( $parameter->isList() ) {
+			$def->setDelimiter( $parameter->getDelimiter() );
+		}
 
 		$def->trimValue = $parameter->trimValue;
 
@@ -683,14 +688,14 @@ abstract class ParamDefinition implements iParamDefinition {
 	 *
 	 * TODO: return error list (ie Status object)
 	 */
-	public function validate( Param $param, array $definitions, array $params ) {
+	public function validate( iParam $param, array $definitions, array $params ) {
 		if ( $this->isList() ) {
 			$valid = true;
 			$values = $param->getValue();
 
 			foreach ( $values as $value ) {
 				// TODO: restore not bailing out at one error in list but filtering on valid
-				$valid = $this->validateList( $value, $param, $definitions, $params );
+				$valid = $this->validateValue( $value, $param, $definitions, $params );
 
 				if ( !$valid ) {
 					break;
@@ -713,7 +718,7 @@ abstract class ParamDefinition implements iParamDefinition {
 	 * @param $definitions array of iParamDefinition
 	 * @param $params array of iParam
 	 */
-	public function format( Param $param, array $definitions, array $params ) {
+	public function format( iParam $param, array $definitions, array $params ) {
 		if ( $this->isList() ) {
 			$values = $param->getValue();
 
@@ -738,7 +743,7 @@ abstract class ParamDefinition implements iParamDefinition {
 	 * @param $definitions array of iParamDefinition
 	 * @param $params array of iParam
 	 */
-	protected function formatList( Param $param, array $definitions, array $params ) {
+	protected function formatList( iParam $param, array $definitions, array $params ) {
 		// TODO
 	}
 
@@ -753,7 +758,7 @@ abstract class ParamDefinition implements iParamDefinition {
 	 *
 	 * @return boolean
 	 */
-	protected function validateList( Param $param, array $definitions, array $params ) {
+	protected function validateList( iParam $param, array $definitions, array $params ) {
 		// TODO
 	}
 

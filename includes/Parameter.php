@@ -169,7 +169,7 @@ class Parameter {
 	 * 
 	 * @var boolean
 	 */
-	protected $applyManipulationsToDefault = true;
+	public $applyManipulationsToDefault = true;
 	
 	/**
 	 * Indicates if the parameter was set to it's default.

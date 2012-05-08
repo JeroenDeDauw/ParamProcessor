@@ -49,7 +49,7 @@ abstract class ItemParameterManipulation extends ParameterManipulation {
 	/**
 	 * Validate a parameter against the criterion.
 	 * 
-	 * @param Param $parameter
+	 * @param Parameter $parameter
 	 * @param array $parameters
 	 * 
 	 * @since 0.4

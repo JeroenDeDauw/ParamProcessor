@@ -175,10 +175,16 @@ class Param implements iParam {
 		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
 			$this->definition->format( $this, $paramDefinitions, $params );
 
-			$parameter = $this->toParameter();
+			$manipulations = $this->definition->getManipulations();
 
-			foreach ( $this->definition->getManipulations() as $manipulation ) {
-				$manipulation->manipulate( $parameter, $paramDefinitions );
+			if ( $manipulations !== array() ) {
+				$parameter = $this->toParameter();
+
+				foreach ( $manipulations as $manipulation ) {
+					$manipulation->manipulate( $parameter, $paramDefinitions );
+				}
+
+				$this->setValue( $parameter->getValue() );
 			}
 		}
 	}
