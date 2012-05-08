@@ -12,32 +12,36 @@ class FloatParam extends ParamDefinition {
 	}
 
 	/**
-	 * Validates the parameters value.
+	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5
 	 *
+	 * @param mixed $value
 	 * @param Param $param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param array $definitions
+	 * @param array $params
 	 *
 	 * @return boolean
 	 */
-	public function validate( Param $param, array $definitions, array $params ) {
-		return is_float( $param->getValue() )
-			|| preg_match( '/^(-)?\d+((\.|,)\d+)?$/', $param->getValue() );
+	protected function validateValue( $value, Param $param, array $definitions, array $params ) {
+		return is_float( $value )
+			|| preg_match( '/^(-)?\d+((\.|,)\d+)?$/', $value );
 	}
 
 	/**
-	 * Formats the parameters value to it's final form.
+	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5
 	 *
+	 * @param mixed $value
 	 * @param Param $param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param array $definitions
+	 * @param array $params
+	 *
+	 * @return mixed
 	 */
-	public function format( Param $param, array $definitions, array $params ) {
-		$param->setValue( (float)$param->getValue() );
+	protected function formatValue( $value, Param $param, array $definitions, array $params ) {
+		return (float)$value;
 	}
 
 }

@@ -21,22 +21,25 @@ class StringParam extends ParamDefinition {
 	}
 
 	/**
-	 * Formats the parameters value to it's final form.
+	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5
 	 *
+	 * @param mixed $value
 	 * @param Param $param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param array $definitions
+	 * @param array $params
+	 *
+	 * @return mixed
 	 */
-	public function format( Param $param, array $definitions, array $params ) {
-		$value = (string)$param->getValue();
+	protected function formatValue( $value, Param $param, array $definitions, array $params ) {
+		$value = (string)$value;
 
 		if ( $this->toLower ) {
 			$value = strtolower( $value );
 		}
 
-		$param->setValue( $value );
+		return $value;
 	}
 
 	/**

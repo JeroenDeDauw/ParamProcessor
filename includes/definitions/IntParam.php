@@ -18,19 +18,18 @@ class IntParam extends ParamDefinition {
 	}
 
 	/**
-	 * Validates the parameters value.
+	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5
 	 *
+	 * @param mixed $value
 	 * @param Param $param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param array $definitions
+	 * @param array $params
 	 *
 	 * @return boolean
 	 */
-	public function validate( Param $param, array $definitions, array $params ) {
-		$value = $param->getValue();
-
+	protected function validateValue( $value, Param $param, array $definitions, array $params ) {
 		if ( $this->negativesAllowed && strpos( $value, '-' ) === 0 ) {
 			$value = substr( $value, 1 );
 		}
@@ -39,16 +38,19 @@ class IntParam extends ParamDefinition {
 	}
 
 	/**
-	 * Formats the parameters value to it's final form.
+	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5
 	 *
+	 * @param mixed $value
 	 * @param Param $param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param array $definitions
+	 * @param array $params
+	 *
+	 * @return mixed
 	 */
-	public function format( Param $param, array $definitions, array $params ) {
-		$param->setValue( (int)$param->getValue() );
+	protected function formatValue( $value, Param $param, array $definitions, array $params ) {
+		return (int)$value;
 	}
 
 }

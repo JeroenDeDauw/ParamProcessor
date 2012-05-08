@@ -675,21 +675,32 @@ abstract class ParamDefinition {
 	 * @since 0.5
 	 *
 	 * @param Param $param
-	 * @param array $paramDefinitions
+	 * @param array $definitions
 	 * @param array $params
 	 *
 	 * @return array|true
+	 *
+	 * TODO: return error list (ie Status object)
 	 */
-	public function validate( Param $param, array /* of ParamDefinition */ $paramDefinitions, array /* of Param */ $params ) {
-		if ( $this->allowedValues !== false && !in_array( $param->getValue(), $this->allowedValues ) ) {
-			return false;
-		}
+	public function validate( Param $param, array $definitions, array $params ) {
+		if ( $this->isList() ) {
+			$valid = true;
+			$values = $param->getValue();
 
-		if ( $this->prohibitedValues !== false && in_array( $param->getValue(), $this->prohibitedValues ) ) {
-			return false;
-		}
+			foreach ( $values as $value ) {
+				// TODO: restore not bailing out at one error in list but filtering on valid
+				$valid = $this->validateList( $value, $param, $definitions, $params );
 
-		return true;
+				if ( !$valid ) {
+					break;
+				}
+			}
+
+			return $valid && $this->validateList( $param, $definitions, $params );
+		}
+		else {
+			return $this->validateValue( $param->getValue(), $param, $definitions, $params );
+		}
 	}
 
 	/**
@@ -701,8 +712,86 @@ abstract class ParamDefinition {
 	 * @param array $definitions
 	 * @param array $params
 	 */
-	public function format( Param $param, array /* of ParamDefinition */ $definitions, array /* of Param */ $params ) {
+	public function format( Param $param, array $definitions, array $params ) {
+		if ( $this->isList() ) {
+			$values = $param->getValue();
+
+			foreach ( $values as &$value ) {
+				$value = $this->formatValue( $value, $param, $definitions, $params );
+			}
+
+			$param->setValue( $values );
+			$this->formatList( $param, $definitions, $params );
+		}
+		else {
+			$param->setValue( $this->formatValue( $param->getValue(), $param, $definitions, $params ) );
+		}
+	}
+
+	/**
+	 * Formats the parameters values to their final result.
+	 *
+	 * @since 0.5
+	 *
+	 * @param Param $param
+	 * @param array $definitions
+	 * @param array $params
+	 */
+	protected function formatList( Param $param, array $definitions, array $params ) {
+		// TODO
+	}
+
+	/**
+	 * Validates the parameters value set.
+	 *
+	 * @since 0.5
+	 *
+	 * @param Param $param
+	 * @param array $definitions
+	 * @param array $params
+	 *
+	 * @return boolean
+	 */
+	protected function validateList( Param $param, array $definitions, array $params ) {
+		// TODO
+	}
+
+	/**
+	 * Formats the parameter value to it's final result.
+	 *
+	 * @since 0.5
+	 *
+	 * @param mixed $value
+	 * @param Param $param
+	 * @param array $definitions
+	 * @param array $params
+	 *
+	 * @return mixed
+	 */
+	protected function formatValue( $value, Param $param, array $definitions, array $params ) {
 		// No-op
+	}
+
+	/**
+	 * Formats the parameter value to it's final result.
+	 *
+	 * @since 0.5
+	 *
+	 * @param mixed $value
+	 * @param Param $param
+	 * @param array $definitions
+	 * @param array $params
+	 *
+	 * @return boolean
+	 */
+	protected function validateValue( $value, Param $param, array $definitions, array $params ) {
+		if ( $this->allowedValues !== false && !in_array( $value, $this->allowedValues ) ) {
+			return false;
+		}
+
+		if ( $this->prohibitedValues !== false && in_array( $value, $this->prohibitedValues ) ) {
+			return false;
+		}
 	}
 
 }

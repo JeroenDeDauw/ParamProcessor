@@ -12,17 +12,18 @@ class CharParam extends StringParam {
 	}
 
 	/**
-	 * Validates the parameters value.
+	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5
 	 *
+	 * @param mixed $value
 	 * @param Param $param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param array $definitions
+	 * @param array $params
 	 *
 	 * @return boolean
 	 */
-	public function validate( Param $param, array $definitions, array $params ) {
+	protected function validateValue( $value, Param $param, array $definitions, array $params ) {
 		return strlen( $param->getValue() ) === 1;
 	}
 

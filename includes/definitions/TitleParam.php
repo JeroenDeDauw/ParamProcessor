@@ -8,9 +8,9 @@ class TitleParam extends ParamDefinition {
 	protected $hasToExist = true;
 
 	/**
-	 * @var Title|null
+	 * @var array of Title|null
 	 */
-	protected $title;
+	protected $title = array();
 
 	/**
 	 * Returns an identifier for the parameter type.
@@ -26,37 +26,43 @@ class TitleParam extends ParamDefinition {
 	}
 
 	/**
-	 * Validates the parameters value.
+	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5
 	 *
+	 * @param mixed $value
 	 * @param Param $param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param array $definitions
+	 * @param array $params
 	 *
 	 * @return boolean
 	 */
-	public function validate( Param $param, array $definitions, array $params ) {
-		$this->title = Title::newFromText( $param->getValue() );
+	protected function validateValue( $value, Param $param, array $definitions, array $params ) {
+		$title = Title::newFromText( $value );
 
-		if( is_null( $this->title ) ) {
+		if( is_null( $title ) ) {
 			return false;
 		}
 
-		return $this->hasToExist ? $this->title->isKnown() : true;
+		$this->titles[$value] = $title;
+
+		return $this->hasToExist ? $title->isKnown() : true;
 	}
 
 	/**
-	 * Formats the parameters value to it's final form.
+	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5
 	 *
+	 * @param mixed $value
 	 * @param Param $param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param array $definitions
+	 * @param array $params
+	 *
+	 * @return mixed
 	 */
-	public function format( Param $param, array $definitions, array $params ) {
-		$param->setValue( $this->title );
+	protected function formatValue( $value, Param $param, array $definitions, array $params ) {
+		return $this->title[$value];
 	}
 
 }

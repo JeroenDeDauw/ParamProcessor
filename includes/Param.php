@@ -80,6 +80,13 @@ class Param {
 	 */
 	protected $definition;
 
+	/**
+	 * Constructor.
+	 *
+	 * @since 0.5
+	 *
+	 * @param ParamDefinition $definition
+	 */
 	public function __construct( ParamDefinition $definition ) {
 		$this->definition = $definition;
 	}
@@ -130,8 +137,17 @@ class Param {
 	protected function cleanValue() {
 		$this->value = $this->originalValue;
 
+		if ( $this->definition->isList() ) {
+			$this->value = explode( $this->definition->getDelimiter(), $this->value );
+		}
+
 		if ( $this->definition->trimBeforeValidate() ) {
-			$this->value = trim( $this->value );
+			if ( $this->definition->isList() ) {
+				$this->value = array_map( $this->value, 'trim' );
+			}
+			else {
+				$this->value = trim( $this->value );
+			}
 		}
 	}
 
@@ -198,7 +214,11 @@ class Param {
 		}
 
 		$parameter->addManipulations( $this->definition->getManipulations() );
-		$parameter->setUserValue( $this->getName(), $this->getValue() );
+
+		$parameter->setUserValue(
+			$this->getName(),
+			$this->definition->isList() ? implode( $this->definition->getDelimiter(), $this->getValue() ) : $this->getValue()
+		);
 
 		return $parameter;
 	}
