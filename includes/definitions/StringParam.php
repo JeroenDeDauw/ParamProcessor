@@ -39,13 +39,13 @@ class StringParam extends ParamDefinition {
 	 * @since 0.5
 	 *
 	 * @param $value mixed
-	 * @param $param Param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param $param iParam
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
 	 *
 	 * @return mixed
 	 */
-	protected function formatValue( $value, Param $param, array $definitions, array $params ) {
+	protected function formatValue( $value, iParam $param, array $definitions, array $params ) {
 		$value = (string)$value;
 
 		if ( $this->toLower ) {

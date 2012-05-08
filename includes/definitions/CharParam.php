@@ -30,13 +30,13 @@ class CharParam extends StringParam {
 	 * @since 0.5
 	 *
 	 * @param $value mixed
-	 * @param $param Param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param $param iParam
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, Param $param, array $definitions, array $params ) {
+	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
 		return strlen( $param->getValue() ) === 1;
 	}
 

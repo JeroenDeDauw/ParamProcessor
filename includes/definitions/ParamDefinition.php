@@ -14,7 +14,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ParamDefinition {
+abstract class ParamDefinition implements iParamDefinition {
 
 	/**
 	 * Maps the type identifiers to their corresponding classes.
@@ -675,9 +675,9 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param $param Param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param $param iParam
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
 	 *
 	 * @return array|true
 	 *
@@ -709,9 +709,9 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param $param Param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param $param iParam
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
 	 */
 	public function format( Param $param, array $definitions, array $params ) {
 		if ( $this->isList() ) {
@@ -734,9 +734,9 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param $param Param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param $param iParam
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
 	 */
 	protected function formatList( Param $param, array $definitions, array $params ) {
 		// TODO
@@ -747,9 +747,9 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param $param Param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param $param iParam
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
 	 *
 	 * @return boolean
 	 */
@@ -763,13 +763,13 @@ abstract class ParamDefinition {
 	 * @since 0.5
 	 *
 	 * @param $value mixed
-	 * @param $param Param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param $param iParam
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
 	 *
 	 * @return mixed
 	 */
-	protected function formatValue( $value, Param $param, array $definitions, array $params ) {
+	protected function formatValue( $value, iParam $param, array $definitions, array $params ) {
 		// No-op
 	}
 
@@ -779,13 +779,13 @@ abstract class ParamDefinition {
 	 * @since 0.5
 	 *
 	 * @param $value mixed
-	 * @param $param Param
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param $param iParam
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, Param $param, array $definitions, array $params ) {
+	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
 		if ( $this->allowedValues !== false && !in_array( $value, $this->allowedValues ) ) {
 			return false;
 		}

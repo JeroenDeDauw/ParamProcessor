@@ -12,7 +12,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Param {
+class Param implements iParam {
 
 	/**
 	 * The original parameter name as provided by the user. This can be the
@@ -76,7 +76,7 @@ class Param {
 	 *
 	 * @since 0.5
 	 *
-	 * @var ParamDefinition
+	 * @var iParamDefinition
 	 */
 	protected $definition;
 
@@ -85,9 +85,9 @@ class Param {
 	 *
 	 * @since 0.5
 	 *
-	 * @param ParamDefinition $definition
+	 * @param iParamDefinition $definition
 	 */
-	public function __construct( ParamDefinition $definition ) {
+	public function __construct( iParamDefinition $definition ) {
 		$this->definition = $definition;
 	}
 
