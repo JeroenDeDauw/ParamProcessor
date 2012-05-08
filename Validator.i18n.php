@@ -1447,6 +1447,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Marine-Blue
+ * @author Shirayuki
  * @author Whym
  * @author Yanajin66
  */
@@ -1463,12 +1464,19 @@ $messages['ja'] = array(
 	'validator_error_unknown_argument' => '$1 は有効な引数ではありません。',
 	'validator_error_required_missing' => '必須の引数「$1」が入力されていません。',
 	'validator-error-override-argument' => '値"$3"とともにパラメータ$1 (値: $2)を無視してみてください',
+	'validator-type-boolean' => 'はい/いいえ',
 	'validator-listerrors-errors' => 'エラー',
 	'validator-listerrors-minor' => '非常に軽度',
 	'validator-listerrors-low' => '軽度',
 	'validator-listerrors-normal' => '普通',
 	'validator-listerrors-high' => '重大',
 	'validator-listerrors-fatal' => '非常に重大',
+	'validator-describe-header-parameter' => 'パラメータ',
+	'validator-describe-header-aliases' => '別名',
+	'validator-describe-header-default' => '既定',
+	'validator-describe-header-description' => '説明',
+	'validator-describe-parameters' => 'パラメータ',
+	'validator-describe-syntax' => '構文',
 	'validator_error_empty_argument' => '引数「$1」は空の値をとることができません。',
 	'validator_error_must_be_number' => '引数「$1」は数値でなければなりません。',
 	'validator_error_must_be_integer' => '引数「$1」は整数でなければなりません。',
