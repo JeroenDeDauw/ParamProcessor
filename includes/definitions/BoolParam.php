@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Defines the boolean parameter type.
+ * Specifies the type specific validation and formatting logic.
+ *
+ * @since 0.5
+ *
+ * @file
+ * @ingroup Validator
+ * @ingroup ParamDefinition
+ *
+ * @licence GNU GPL v2+
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ */
 class BoolParam extends ParamDefinition {
 
 	protected $true = array( 'yes', 'on', '1' );
@@ -19,10 +32,10 @@ class BoolParam extends ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param mixed $value
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $value mixed
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 *
 	 * @return boolean
 	 */
@@ -36,10 +49,10 @@ class BoolParam extends ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param mixed $value
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $value mixed
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 *
 	 * @return mixed
 	 */

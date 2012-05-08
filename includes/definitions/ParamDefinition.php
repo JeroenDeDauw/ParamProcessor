@@ -9,6 +9,7 @@
  *
  * @file ParamDefinition.php
  * @ingroup Validator
+ * @ingroup ParamDefinition
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -674,9 +675,9 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 *
 	 * @return array|true
 	 *
@@ -708,9 +709,9 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 */
 	public function format( Param $param, array $definitions, array $params ) {
 		if ( $this->isList() ) {
@@ -733,9 +734,9 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 */
 	protected function formatList( Param $param, array $definitions, array $params ) {
 		// TODO
@@ -746,9 +747,9 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 *
 	 * @return boolean
 	 */
@@ -761,10 +762,10 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param mixed $value
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $value mixed
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 *
 	 * @return mixed
 	 */
@@ -777,10 +778,10 @@ abstract class ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param mixed $value
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $value mixed
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 *
 	 * @return boolean
 	 */

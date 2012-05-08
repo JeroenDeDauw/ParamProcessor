@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Defines the title parameter type.
+ * Specifies the type specific validation and formatting logic.
+ *
+ * @since 0.5
+ *
+ * @file
+ * @ingroup Validator
+ * @ingroup ParamDefinition
+ *
+ * @licence GNU GPL v2+
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ */
 class TitleParam extends ParamDefinition {
 
 	/**
@@ -21,6 +34,10 @@ class TitleParam extends ParamDefinition {
 		return 'title';
 	}
 
+	/**
+	 * @since 0.5
+	 * @param boolean $hasToExist
+	 */
 	public function setHasToExist( $hasToExist ) {
 		$this->hasToExist = $hasToExist;
 	}
@@ -30,10 +47,10 @@ class TitleParam extends ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param mixed $value
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $value mixed
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 *
 	 * @return boolean
 	 */
@@ -54,10 +71,10 @@ class TitleParam extends ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param mixed $value
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $value mixed
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 *
 	 * @return mixed
 	 */

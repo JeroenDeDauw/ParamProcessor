@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Defines the string parameter type.
+ * Specifies the type specific validation and formatting logic.
+ *
+ * @since 0.5
+ *
+ * @file
+ * @ingroup Validator
+ * @ingroup ParamDefinition
+ *
+ * @licence GNU GPL v2+
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ */
 class StringParam extends ParamDefinition {
 
 	/**
@@ -25,10 +38,10 @@ class StringParam extends ParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @param mixed $value
-	 * @param Param $param
-	 * @param array $definitions
-	 * @param array $params
+	 * @param $value mixed
+	 * @param $param Param
+	 * @param $definitions array of ParamDefinition
+	 * @param $params array of Param
 	 *
 	 * @return mixed
 	 */
