@@ -63,6 +63,15 @@ abstract class ParamDefinition {
 	protected $trimValue = true;
 
 	/**
+	 * Indicates if the parameter manipulations should be applied to the default value.
+	 *
+	 * @since 0.5
+	 *
+	 * @var boolean
+	 */
+	protected $applyManipulationsToDefault = true;
+
+	/**
 	 * Dependency list containing parameters that need to be handled before this one.
 	 *
 	 * @since 0.5
@@ -304,6 +313,29 @@ abstract class ParamDefinition {
 	 */
 	public function setMessage( $message ) {
 		$this->message = $message;
+	}
+
+	/**
+	 * Set if the parameter manipulations should be applied to the default value.
+	 *
+	 * @since 0.5
+	 *
+	 * @param boolean $doOrDoNotThereIsNoTry
+	 */
+	public function setDoManipulationOfDefault( $doOrDoNotThereIsNoTry ) {
+		$this->applyManipulationsToDefault = $doOrDoNotThereIsNoTry;
+	}
+
+	/**
+	 * Returns if the parameter manipulations should be applied to the default value.
+	 * TODO: have fromArray support.
+	 *
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function shouldManipulateDefault() {
+		return $this->applyManipulationsToDefault;
 	}
 
 	/**

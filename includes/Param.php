@@ -63,15 +63,6 @@ class Param {
 	protected $errors = array();
 
 	/**
-	 * Indicates if the parameter manipulations should be applied to the default value.
-	 *
-	 * @since 0.5
-	 *
-	 * @var boolean
-	 */
-	protected $applyManipulationsToDefault = true;
-
-	/**
 	 * Indicates if the parameter was set to it's default.
 	 *
 	 * @since 0.5
@@ -163,7 +154,7 @@ class Param {
 	 * @param array $paramDefinitions
 	 */
 	public function format( array &$paramDefinitions ) {
-		if ( $this->applyManipulationsToDefault || !$this->wasSetToDefault() ) {
+		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
 			$this->definition->format( $this, $paramDefinitions );
 
 			$parameter = $this->toParameter();
@@ -341,17 +332,6 @@ class Param {
 	 */
 	public function wasSetToDefault() {
 		return $this->defaulted;
-	}
-
-	/**
-	 * Set if the parameter manipulations should be applied to the default value.
-	 *
-	 * @since 0.5
-	 *
-	 * @param boolean $doOrDoNotThereIsNoTry
-	 */
-	public function setDoManipulationOfDefault( $doOrDoNotThereIsNoTry ) {
-		$this->applyManipulationsToDefault = $doOrDoNotThereIsNoTry;
 	}
 
 	/**
