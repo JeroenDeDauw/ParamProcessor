@@ -22,9 +22,9 @@ class ParameterInput {
 	/**
 	 * The parameter to print an input for.
 	 * 
-	 * @since O.4.6
+	 * @since O.5
 	 * 
-	 * @var Parameter
+	 * @var iParamDefinition
 	 */
 	protected $param;
 	
@@ -53,11 +53,20 @@ class ParameterInput {
 	 * 
 	 * @since 0.4.6
 	 * 
-	 * @param Param $param
+	 * @param iParamDefinition|Parameter|array $param
 	 * @param mixed $currentValue
 	 */
-	public function __construct( Param $param, $currentValue = false ) {
-		$this->param = $param;
+	public function __construct( $param, $currentValue = false ) {
+		if ( $param instanceof iParamDefinition ) {
+			$this->param = $param;
+		}
+		elseif ( is_array( $param ) ) {
+			$this->param = ParamDefinition::newFromArray( $param );
+		}
+		else {
+			$this->param = ParamDefinition::newFromParameter( $param );
+		}
+
 		$this->currentValue = $currentValue;
 		$this->inputName = $param->getName();
 	}
