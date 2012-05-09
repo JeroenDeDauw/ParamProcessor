@@ -15,6 +15,13 @@
  */
 class IntParam extends ParamDefinition {
 
+	/**
+	 * If negative values should be allowed or not.
+	 *
+	 * @since 0.5
+	 *
+	 * @param boolean $allowNegatives
+	 */
 	protected $allowNegatives = true;
 
 	/**
@@ -26,6 +33,13 @@ class IntParam extends ParamDefinition {
 		return 'integer';
 	}
 
+	/**
+	 * Sets if negative values should be allowed or not.
+	 *
+	 * @since 0.5
+	 *
+	 * @param boolean $allowNegatives
+	 */
 	public function setAllowNegatives( $allowNegatives ) {
 		$this->allowNegatives = $allowNegatives;
 	}
@@ -43,7 +57,7 @@ class IntParam extends ParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
-		if ( $this->negativesAllowed && strpos( $value, '-' ) === 0 ) {
+		if ( $this->allowNegatives && strpos( $value, '-' ) === 0 ) {
 			$value = substr( $value, 1 );
 		}
 

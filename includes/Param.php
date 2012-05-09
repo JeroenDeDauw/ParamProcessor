@@ -15,6 +15,16 @@
 class Param implements iParam {
 
 	/**
+	 * Indicates whether parameters not found in the criteria list
+	 * should be stored in case they are not accepted. The default is false.
+	 *
+	 * @since 0.5
+	 *
+	 * @var boolean
+	 */
+	public static $accumulateParameterErrors = false;
+
+	/**
 	 * The original parameter name as provided by the user. This can be the
 	 * main name or an alias.
 	 *
