@@ -13,7 +13,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class IntParam extends ParamDefinition {
+class IntParam extends NumericParam {
 
 	/**
 	 * If negative values should be allowed or not.
@@ -57,6 +57,10 @@ class IntParam extends ParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
+		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+			return false;
+		}
+
 		if ( $this->allowNegatives && strpos( $value, '-' ) === 0 ) {
 			$value = substr( $value, 1 );
 		}

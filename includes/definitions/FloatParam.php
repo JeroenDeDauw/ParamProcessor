@@ -13,7 +13,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class FloatParam extends ParamDefinition {
+class FloatParam extends NumericParam {
 
 	/**
 	 * Returns an identifier for the parameter type.
@@ -37,6 +37,10 @@ class FloatParam extends ParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
+		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+			return false;
+		}
+
 		return is_float( $value )
 			|| preg_match( '/^(-)?\d+((\.|,)\d+)?$/', $value );
 	}

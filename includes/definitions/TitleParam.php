@@ -55,6 +55,10 @@ class TitleParam extends ParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
+		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+			return false;
+		}
+
 		$title = Title::newFromText( $value );
 
 		if( is_null( $title ) ) {

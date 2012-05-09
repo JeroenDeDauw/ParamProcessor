@@ -40,6 +40,10 @@ class BoolParam extends ParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
+		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+			return false;
+		}
+
 		return in_array( $value, $this->true )
 			|| in_array( $value, $this->false );
 	}

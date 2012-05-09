@@ -80,6 +80,7 @@ $wgAutoloadClasses['BoolParam']		 				= $incDir . 'definitions/BoolParam.php';
 $wgAutoloadClasses['CharParam']		 				= $incDir . 'definitions/CharParam.php';
 $wgAutoloadClasses['FloatParam']		 			= $incDir . 'definitions/FloatParam.php';
 $wgAutoloadClasses['IntParam']		 				= $incDir . 'definitions/IntParam.php';
+$wgAutoloadClasses['NumericParam']		 			= $incDir . 'definitions/NumericParam.php';
 $wgAutoloadClasses['ParamDefinition']		 		= $incDir . 'definitions/ParamDefinition.php';
 $wgAutoloadClasses['StringParam']		 			= $incDir . 'definitions/StringParam.php';
 $wgAutoloadClasses['TitleParam']		 			= $incDir . 'definitions/TitleParam.php';
