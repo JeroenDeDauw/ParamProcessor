@@ -643,10 +643,10 @@ class Parameter {
 		
 		switch( $this->type ) {
 			case self::TYPE_INTEGER:
-				$manipulations[] = new ParamManipulationInteger();
+				//$manipulations[] = new ParamManipulationInteger();
 				break;
 			case self::TYPE_FLOAT: case self::TYPE_NUMBER: 
-				$manipulations[] = new ParamManipulationFloat();
+				//$manipulations[] = new ParamManipulationFloat();
 				break;
 			case self::TYPE_BOOLEAN:
 				$manipulations[] = new ParamManipulationBoolean();
@@ -655,7 +655,7 @@ class Parameter {
 				$manipulations[] = new ParamManipulationTitle();
 				break;
 			case self::TYPE_CHAR: case self::TYPE_STRING: default:
-				$manipulations[] = new ParamManipulationString();
+				//$manipulations[] = new ParamManipulationString();
 		}		
 		
 		return $manipulations;

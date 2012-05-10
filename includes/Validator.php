@@ -444,7 +444,7 @@ class Validator {
 	 */
 	public function getParameterValues() {
 		$parameters = array();
-		
+
 		foreach ( $this->params as $parameter ) {
 			$parameters[$parameter->getName()] = $parameter->getValue(); 
 		}

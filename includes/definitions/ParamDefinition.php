@@ -778,4 +778,39 @@ abstract class ParamDefinition implements iParamDefinition {
 		}
 	}
 
+	/**
+	 * Compatibility helper method, will be removed in 0.7.
+	 *
+	 * @deprecated
+	 * @since 0.5
+	 *
+	 * @return Parameter
+	 */
+	public function toParameter() {
+		if ( $this->isList() ) {
+			$parameter = new ListParameter(
+				$this->getName(),
+				$this->getDelimiter(),
+				$this->getType(),
+				$this->getDefault(),
+				$this->getAliases(),
+				$this->getCriteria()
+			);
+		}
+		else {
+			$parameter = new Parameter(
+				$this->getName(),
+				$this->getType(),
+				$this->getDefault(),
+				$this->getAliases(),
+				$this->getCriteria(),
+				$this->getDependencies()
+			);
+		}
+
+		$parameter->addManipulations( $this->getManipulations() );
+
+		return $parameter;
+	}
+
 }

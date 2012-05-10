@@ -185,8 +185,18 @@ class Param implements iParam {
 		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
 			$this->definition->format( $this, $definitions, $params );
 
-			$manipulations = $this->definition->getManipulations();
+			// Compat code.
+			$manipulations = array();
 
+			foreach ( $this->definition->getManipulations() as $manipulation ) {
+				if ( !( $manipulation instanceof ParamManipulationInteger )
+					&& !( $manipulation instanceof ParamManipulationFloat )
+					&& !( $manipulation instanceof ParamManipulationString )) {
+					$manipulations[] = $manipulation;
+				}
+			}
+
+			// This whole block is compat code, to be removed in 0.7.
 			if ( $manipulations !== array() ) {
 				$parameter = $this->toParameter();
 				$parameters = array();
@@ -195,11 +205,23 @@ class Param implements iParam {
 					$parameters[$param->getName()] = $param->toParameter();
 				}
 
+				foreach ( $definitions as $definition ) {
+					if ( !array_key_exists( $definition->getName(), $parameters ) ) {
+						$parameters[$definition->getName()] = $definition->toParameter();
+					}
+				}
+
 				foreach ( $manipulations as $manipulation ) {
 					$manipulation->manipulate( $parameter, $parameters );
 				}
 
 				$this->setValue( $parameter->getValue() );
+
+				foreach ( $parameters as /* Parameter */ $parameterObject ) {
+					if ( !array_key_exists( $parameterObject->getName(), $params ) ) {
+						$definitions[$parameterObject->getName()] = ParamDefinition::newFromParameter( $parameterObject );
+					}
+				}
 			}
 		}
 	}
@@ -207,38 +229,16 @@ class Param implements iParam {
 	/**
 	 * Compatibility helper method, will be removed in 0.7.
 	 *
-	 * @deprecated
-	 * @since 0.5
+	 * @deprecated since 0.5, removal in 0.7
 	 *
 	 * @return Parameter
 	 */
 	public function toParameter() {
-		if ( $this->definition->isList() ) {
-			$parameter = new ListParameter(
-				$this->definition->getName(),
-				$this->definition->getDelimiter(),
-				$this->definition->getType(),
-				$this->definition->getDefault(),
-				$this->definition->getAliases(),
-				$this->definition->getCriteria()
-			);
-		}
-		else {
-			$parameter = new Parameter(
-				$this->definition->getName(),
-				$this->definition->getType(),
-				$this->definition->getDefault(),
-				$this->definition->getAliases(),
-				$this->definition->getCriteria(),
-				$this->definition->getDependencies()
-			);
-		}
-
-		$parameter->addManipulations( $this->definition->getManipulations() );
+		$parameter = $this->definition->toParameter();
 
 		$parameter->setUserValue(
 			$this->getName(),
-			$this->definition->isList() ? implode( $this->definition->getDelimiter(), $this->getValue() ) : $this->getValue()
+			is_array( $this->getValue() ) ? implode( $this->definition->getDelimiter(), $this->getValue() ) : $this->getValue()
 		);
 
 		return $parameter;

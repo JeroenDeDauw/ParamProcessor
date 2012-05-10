@@ -62,7 +62,8 @@ abstract class ItemParameterManipulation extends ParameterManipulation {
 			}
 		}
 		else {
-			$this->doManipulation( $parameter->getValue(), $parameter, $parameters );
+			$value = &$parameter->getValue();
+			$this->doManipulation( $value, $parameter, $parameters );
 		}	
 	}
 	
