@@ -13,6 +13,52 @@
  */
 interface iParamDefinition {
 
+	function addAliases( $aliases );
 
+	function addCriteria( $criteria );
+
+	function addDependencies( $dependencies );
+
+	function addManipulations( $manipulations );
+
+	function format( iParam $param, array $definitions, array $params );
+
+	function getAliases();
+
+	function getCriteria();
+
+	function getDefault();
+
+	function getDelimiter();
+
+	function getDependencies();
+
+	function getManipulations();
+
+	function getMessage();
+
+	function getName();
+
+	function getType();
+
+	function hasAlias( $alias );
+
+	function hasDependency( $dependency );
+
+	function isList();
+
+	function isRequired();
+
+	function setDefault( $default, $manipulate = true );
+
+	function setDelimiter( $delimiter );
+
+	function setDoManipulationOfDefault( $doOrDoNotThereIsNoTry );
+
+	function setMessage( $message );
+
+	function shouldManipulateDefault();
+
+	function validate( iParam $param, array $definitions, array $params );
 
 }

@@ -409,7 +409,7 @@ class Param implements iParam {
 	}
 
 	/**
-	 * @return ParamDefinition
+	 * @return iParamDefinition
 	 */
 	public function getDefinition() {
 		return $this->definition;

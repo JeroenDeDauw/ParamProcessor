@@ -13,6 +13,28 @@
  */
 interface iParam {
 
+	function __construct( iParamDefinition $definition );
 
+	function setUserValue( $paramName, $paramValue );
+
+	function setValue( $value );
+
+	function validate( array /* of ParamDefinition */ $definitions, array /* of Param */ $params );
+
+	function format( array &$definitions, array $params );
+
+	function getOriginalName();
+
+	function getOriginalValue();
+
+	function getErrors();
+
+	function wasSetToDefault();
+
+	function getDefinition();
+
+	function &getValue();
+
+	function getName();
 
 }

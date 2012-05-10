@@ -199,12 +199,12 @@ abstract class ParamDefinition implements iParamDefinition {
 	/**
 	 * Returns the criteria that apply to the list as a whole.
 	 *
-	 * @since 0.5
+	 * @deprecated since 0.5, removal in 0.7
 	 *
 	 * @return array
 	 */
 	public function getListCriteria() {
-		return array();
+		return array(); // TODO
 	}
 
 	/**
@@ -274,7 +274,7 @@ abstract class ParamDefinition implements iParamDefinition {
 	 * Override in deriving classes to add a message.
 	 *
 	 * @since 0.5
-	 * @deprecated
+	 * @deprecated since 0.5, removal in 0.7
 	 *
 	 * @return mixed string or false
 	 */
@@ -283,24 +283,10 @@ abstract class ParamDefinition implements iParamDefinition {
 	}
 
 	/**
-	 * Sets a description for the parameter.
-	 * This is a string describing the parameter, if you have a message
-	 * key, ie something that can be passed to wfMsg, then use the
-	 * setMessage method instead.
-	 *
-	 * @since 0.5
-	 *
-	 * @param string $descriptionMessage
-	 */
-	public function setDescription( $descriptionMessage ) {
-		$this->description = $descriptionMessage;
-	}
-
-	/**
 	 * Returns a message that will act as a description message for the parameter, or false when there is none.
 	 * Override in deriving classes to add a message.
 	 *
-	 * @since 0.5.9
+	 * @since 0.5
 	 *
 	 * @return mixed string or false
 	 */
@@ -314,7 +300,7 @@ abstract class ParamDefinition implements iParamDefinition {
 	 * to wfMsg. Not an actual text. If you do not have a message key,
 	 * but only a text, use setDescription instead.
 	 *
-	 * @since 0.5.9
+	 * @since 0.5
 	 *
 	 * @param string $message
 	 */
@@ -406,15 +392,6 @@ abstract class ParamDefinition implements iParamDefinition {
 	}
 
 	/**
-	 * Returns the type of the parameter.
-	 *
-	 * @since 0.5
-	 *
-	 * @return string
-	 */
-	public abstract function getType();
-
-	/**
 	 * Returns an internationalized message indicating the parameter type suited for display to users.
 	 *
 	 * @since 0.5
@@ -424,7 +401,8 @@ abstract class ParamDefinition implements iParamDefinition {
 	public function getTypeMessage() {
 		global $wgLang;
 
-		$message = wfMsg( 'validator-type-' . $this->type );
+		$message = wfMsg( 'validator-type-' . $this->getType() );
+
 		return $this->isList() ?
 			wfMsgExt( 'validator-describe-listtype', 'parsemag', $message )
 			: $wgLang->ucfirst( $message );
