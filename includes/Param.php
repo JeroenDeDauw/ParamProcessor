@@ -178,20 +178,25 @@ class Param implements iParam {
 	 *
 	 * @since 0.5
 	 *
-	 * @param array $paramDefinitions
-	 * @param array $params
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
 	 */
-	public function format( array &$paramDefinitions, array /* of Param */ $params ) {
+	public function format( array &$definitions, array $params ) {
 		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
-			$this->definition->format( $this, $paramDefinitions, $params );
+			$this->definition->format( $this, $definitions, $params );
 
 			$manipulations = $this->definition->getManipulations();
 
 			if ( $manipulations !== array() ) {
 				$parameter = $this->toParameter();
+				$parameters = array();
+
+				foreach ( $params as $param ) {
+					$parameters[$param->getName()] = $param->toParameter();
+				}
 
 				foreach ( $manipulations as $manipulation ) {
-					$manipulation->manipulate( $parameter, $paramDefinitions );
+					$manipulation->manipulate( $parameter, $parameters );
 				}
 
 				$this->setValue( $parameter->getValue() );
@@ -207,7 +212,7 @@ class Param implements iParam {
 	 *
 	 * @return Parameter
 	 */
-	protected function toParameter() {
+	public function toParameter() {
 		if ( $this->definition->isList() ) {
 			$parameter = new ListParameter(
 				$this->definition->getName(),
