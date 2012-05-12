@@ -80,7 +80,7 @@ class IntParam extends NumericParam {
 	 *
 	 * @return mixed
 	 */
-	protected function formatValue( $value, iParam $param, array $definitions, array $params ) {
+	protected function formatValue( $value, iParam $param, array &$definitions, array $params ) {
 		return (int)$value;
 	}
 

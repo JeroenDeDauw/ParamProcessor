@@ -21,7 +21,7 @@ interface iParamDefinition {
 
 	function addManipulations( $manipulations );
 
-	function format( iParam $param, array $definitions, array $params );
+	function format( iParam $param, array &$definitions, array $params );
 
 	function getAliases();
 

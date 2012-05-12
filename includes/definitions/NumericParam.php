@@ -21,7 +21,7 @@ abstract class NumericParam extends ParamDefinition {
 	 *
 	 * @var false|int|float
 	 */
-	protected $lowerBound;
+	protected $lowerBound = false;
 
 	/**
 	 * Upper bound of the range (included). Either a number or false, for no upper limit.
@@ -30,7 +30,7 @@ abstract class NumericParam extends ParamDefinition {
 	 *
 	 * @var false|int|float
 	 */
-	protected $upperBound;
+	protected $upperBound = false;
 
 	/**
 	 * Sets the lower bound (included).

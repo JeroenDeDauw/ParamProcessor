@@ -45,7 +45,7 @@ class StringParam extends ParamDefinition {
 	 *
 	 * @return mixed
 	 */
-	protected function formatValue( $value, iParam $param, array $definitions, array $params ) {
+	protected function formatValue( $value, iParam $param, array &$definitions, array $params ) {
 		$value = (string)$value;
 
 		if ( $this->toLower ) {
@@ -68,6 +68,17 @@ class StringParam extends ParamDefinition {
 		if ( array_key_exists( 'tolower', $param ) ) {
 			$this->toLower = $param['tolower'];
 		}
+	}
+
+	/**
+	 * Sets of the value should be lowercased.
+	 *
+	 * @since 0.5
+	 *
+	 * @param boolean $toLower
+	 */
+	public function setToLower( $toLower ) {
+		$this->toLower = $toLower;
 	}
 
 }

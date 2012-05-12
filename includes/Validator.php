@@ -204,21 +204,7 @@ class Validator {
 	 * @todo: $toLower takes no effect yet.
 	 */
 	public function setParameters( array $parameters, array $paramDefinitions, $toLower = true ) {
-		foreach ( $paramDefinitions as $paramDefinition ) {
-			if ( is_array( $paramDefinition ) ) {
-				$paramDefinition = ParamDefinition::newFromArray( $paramDefinition );
-			}
-			elseif ( $paramDefinition instanceof Parameter ) {
-				// This if for backwards compat, will be removed in 0.7.
-				$paramDefinition = ParamDefinition::newFromParameter( $paramDefinition );
-			}
-
-			if ( !( $paramDefinition instanceof ParamDefinition ) ) {
-				throw new MWException( '$paramDefinition not an instance of ParamDefinition' );
-			}
-
-			$this->paramDefinitions[$paramDefinition->getName()] = $paramDefinition;
-		}
+		$this->paramDefinitions = ParamDefinition::getCleanDefinitions( $paramDefinitions );
 
 		// Loop through all the user provided parameters, and distinguish between those that are allowed and those that are not.
 		foreach ( $parameters as $paramName => $paramData ) {

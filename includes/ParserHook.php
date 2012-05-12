@@ -373,7 +373,7 @@ abstract class ParserHook {
 
 		$fatalError = $this->validator->hasFatalError();
 
-		if ( $fatalError === false ) {q($this->validator->getParameterValues());
+		if ( $fatalError === false ) {
 			$output = $this->render( $this->validator->getParameterValues() );
 			$output = $this->renderErrors( $output );
 		}

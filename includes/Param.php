@@ -185,6 +185,8 @@ class Param implements iParam {
 		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
 			$this->definition->format( $this, $definitions, $params );
 
+			$definitions = ParamDefinition::getCleanDefinitions( $definitions );
+
 			// Compat code.
 			$manipulations = array();
 

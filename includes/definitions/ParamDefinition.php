@@ -696,7 +696,7 @@ abstract class ParamDefinition implements iParamDefinition {
 	 * @param $definitions array of iParamDefinition
 	 * @param $params array of iParam
 	 */
-	public function format( iParam $param, array $definitions, array $params ) {
+	public function format( iParam $param, array &$definitions, array $params ) {
 		if ( $this->isList() ) {
 			$values = $param->getValue();
 
@@ -721,7 +721,7 @@ abstract class ParamDefinition implements iParamDefinition {
 	 * @param $definitions array of iParamDefinition
 	 * @param $params array of iParam
 	 */
-	protected function formatList( iParam $param, array $definitions, array $params ) {
+	protected function formatList( iParam $param, array &$definitions, array $params ) {
 		// TODO
 	}
 
@@ -752,7 +752,7 @@ abstract class ParamDefinition implements iParamDefinition {
 	 *
 	 * @return mixed
 	 */
-	protected function formatValue( $value, iParam $param, array $definitions, array $params ) {
+	protected function formatValue( $value, iParam $param, array &$definitions, array $params ) {
 		// No-op
 	}
 
@@ -811,6 +811,42 @@ abstract class ParamDefinition implements iParamDefinition {
 		$parameter->addManipulations( $this->getManipulations() );
 
 		return $parameter;
+	}
+
+	/**
+	 * Returns a cleaned version of the list of parameter definitions.
+	 * This includes having converted all supported definition types to
+	 * ParamDefinition classes and having all keys set to the names of the
+	 * corresponding parameters.
+	 *
+	 *
+	 * @since 0.5
+	 *
+	 * @param $definitions array of iParamDefinition
+	 *
+	 * @return array
+	 * @throws MWException
+	 */
+	public static function getCleanDefinitions( array $definitions ) {
+		$cleanList = array();
+
+		foreach ( $definitions as $definition ) {
+			if ( is_array( $definition ) ) {
+				$definition = ParamDefinition::newFromArray( $definition );
+			}
+			elseif ( $definition instanceof Parameter ) {
+				// This if for backwards compat, will be removed in 0.7.
+				$definition = ParamDefinition::newFromParameter( $definition );
+			}
+
+			if ( !( $definition instanceof ParamDefinition ) ) {
+				throw new MWException( '$definition not an instance of ParamDefinition' );
+			}
+
+			$cleanList[$definition->getName()] = $definition;
+		}
+
+		return $cleanList;
 	}
 
 }

@@ -82,7 +82,7 @@ class TitleParam extends ParamDefinition {
 	 *
 	 * @return mixed
 	 */
-	protected function formatValue( $value, iParam $param, array $definitions, array $params ) {
+	protected function formatValue( $value, iParam $param, array &$definitions, array $params ) {
 		return $this->title[$value];
 	}
 
