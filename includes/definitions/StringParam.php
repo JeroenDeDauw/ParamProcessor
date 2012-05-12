@@ -34,6 +34,15 @@ class StringParam extends ParamDefinition {
 	protected $length = false;
 
 	/**
+	 * Indicates if the value can be an empty string or not.
+	 *
+	 * @since 0.5
+	 *
+	 * @var boolean
+	 */
+	protected $canBeEmpty = true;
+
+	/**
 	 * Returns an identifier for the parameter type.
 	 * @since 0.5
 	 * @return string
@@ -56,6 +65,10 @@ class StringParam extends ParamDefinition {
 	 */
 	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
 		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+			return false;
+		}
+
+		if ( !$this->canBeEmpty && $value === '' ) {
 			return false;
 		}
 
@@ -111,6 +124,10 @@ class StringParam extends ParamDefinition {
 		if ( array_key_exists( 'length', $param ) ) {
 			$this->setLength( $param['length'] );
 		}
+
+		if ( array_key_exists( 'allowempty', $param ) ) {
+			$this->canBeEmpty = $param['allowempty'];
+		}
 	}
 
 	/**
@@ -140,6 +157,17 @@ class StringParam extends ParamDefinition {
 		}
 
 		$this->length = $length;
+	}
+
+	/**
+	 * Sets if the value can be an empty string or not.
+	 *
+	 * @since 0.5
+	 *
+	 * @param boolean $canBeEmpty
+	 */
+	public function setCanBeEmpty( $canBeEmpty ) {
+		$this->canBeEmpty = $canBeEmpty;
 	}
 
 }
