@@ -25,12 +25,51 @@ class StringParam extends ParamDefinition {
 	protected $toLower = false;
 
 	/**
+	 * The length the string should have (can be a range).
+	 *
+	 * @since 0.5
+	 *
+	 * @var false|integer|array
+	 */
+	protected $length = false;
+
+	/**
 	 * Returns an identifier for the parameter type.
 	 * @since 0.5
 	 * @return string
 	 */
 	public function getType() {
 		return 'string';
+	}
+
+	/**
+	 * Formats the parameter value to it's final result.
+	 *
+	 * @since 0.5
+	 *
+	 * @param $value mixed
+	 * @param $param iParam
+	 * @param $definitions array of iParamDefinition
+	 * @param $params array of iParam
+	 *
+	 * @return boolean
+	 */
+	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
+		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+			return false;
+		}
+
+		if ( $this->length !== false ) {
+			$length = strlen( $value );
+
+			if ( is_array( $this->length ) ) {
+				return ( $this->length[1] === false || $value <= $this->length[1] )
+					&& ( $this->length[0] === false || $value >= $this->length[0] );
+			}
+			else {
+				return $length == $this->length;
+			}
+		}
 	}
 
 	/**
@@ -68,6 +107,10 @@ class StringParam extends ParamDefinition {
 		if ( array_key_exists( 'tolower', $param ) ) {
 			$this->toLower = $param['tolower'];
 		}
+
+		if ( array_key_exists( 'length', $param ) ) {
+			$this->setLength( $param['length'] );
+		}
 	}
 
 	/**
@@ -79,6 +122,24 @@ class StringParam extends ParamDefinition {
 	 */
 	public function setToLower( $toLower ) {
 		$this->toLower = $toLower;
+	}
+
+	/**
+	 * Sets the length the value should have.
+	 *
+	 * @since 0.5
+	 *
+	 * @param mixed $length
+	 */
+	public function setLength( $length ) {
+		if ( ( $length !== false && !is_integer( $length ) && !is_array( $length ) ) || ( is_array( $length ) && count( $length ) != 2 ) ) {
+			throw new MWException(
+				'The length of a string parameter needs to be either an integer,
+				false (for no restriction) or an array with two elements (lower and upper bounds)'
+			);
+		}
+
+		$this->length = $length;
 	}
 
 }
