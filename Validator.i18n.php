@@ -120,6 +120,7 @@ place listerrors at or near the bottom of the page to get all errors.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Kghbln
  * @author Purodha
  * @author Raymond
  */
@@ -135,6 +136,7 @@ $messages['qqq'] = array(
 * $2 = message',
 	'validator-listerrors-normal' => '{{Identical|Normal}}',
 	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
+	'validator-describe-listtype' => 'This is a patchwork message. $1 stands for one of these messages: {{msg-mw|Validator-type-string}}, {{msg-mw|Validator-type-number}}, {{msg-mw|Validator-type-integer}}, {{msg-mw|Validator-type-float}}, {{msg-mw|Validator-type-boolean}}, {{msg-mw|Validator-type-char}}',
 	'validator-describe-empty' => '{{Identical|Empty}}',
 	'validator-describe-required' => '{{Identical|Required}}',
 	'validator-describe-header-parameter' => '{{Identical|Parameter}}',
@@ -446,19 +448,45 @@ $messages['bs'] = array(
  */
 $messages['cs'] = array(
 	'validator-desc' => 'Validátor poskytuje ostatním rozšířením snadnější způsob ověřování parametrů funkcí parseru a značek, nastavování výchozích hodnot a vytváření chybových zpráv.',
+	'validator-warning' => 'Varování: $1',
+	'validator-error' => 'Chyba: $1',
+	'validator-fatal-error' => 'Kritická chyba: $1',
 	'validator_error_parameters' => 'Ve vaší syntaxi {{PLURAL:$1|byla nalezena následující chyba|byly nalezeny následující chyby}}:',
 	'validator_warning_parameters' => 'Ve vaší syntaxi {{PLURAL:$1|je chyba|jsou chyby}}.',
 	'validator_error_unknown_argument' => '$1 není platný parametr.',
 	'validator_error_required_missing' => 'Povinný parameter $1 nebyl specifikován.',
+	'validator-type-string' => 'text',
+	'validator-type-number' => 'číslo',
+	'validator-type-integer' => 'celé číslo',
+	'validator-type-boolean' => 'ano/ne',
+	'validator-type-char' => 'znak',
+	'validator-listerrors-errors' => 'Chyby',
+	'validator-listerrors-low' => 'Nízká',
+	'validator-listerrors-normal' => 'Střední',
+	'validator-listerrors-high' => 'Vysoká',
+	'validator-listerrors-fatal' => 'Kritická',
+	'validator-describe-descriptionmsg' => "''' Popis ''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Alias|Aliasy}}''': $1",
+	'validator-describe-header-parameter' => 'Parametr',
+	'validator-describe-header-aliases' => 'Aliasy',
+	'validator-describe-header-type' => 'Typ',
+	'validator-describe-header-default' => 'Výchozí',
+	'validator-describe-header-description' => 'Popis',
+	'validator-describe-parameters' => 'Parametry',
+	'validator-describe-syntax' => 'Syntaxe',
 	'validator_error_empty_argument' => 'Parametr $1 nemůže být prázdný.',
 	'validator_error_must_be_number' => 'Parametr $1 může být pouze číslo.',
 	'validator_error_must_be_integer' => 'Parametr $1 může být pouze celé číslo.',
 	'validator_error_invalid_range' => 'Parametr $1 musí být v rozmezí $2 až $3.',
+	'validator-error-invalid-regex' => 'Parametr  $1  musí odpovídat tomuto regulárnímu výrazu:  $2.',
 	'validator_error_invalid_argument' => '$1 není platná hodnota pro parametr $2.',
 	'validator_list_error_empty_argument' => 'Parametr $1 npeřijímá prázdné hoodnoty.',
 	'validator_list_error_must_be_number' => 'Parametr $1 může obsahovat pouze čísla.',
 	'validator_list_error_must_be_integer' => 'Paramter $1 může obsahovat pouze celá čísla.',
+	'validator_list_error_must_be_title' => 'Parametr  $1  může obsahovat pouze platné názvy wiki stránek.',
+	'validator_list_error_must_be_existing_title' => 'Parametr  $1  může obsahovat pouze názvy existujících wiki stránek.',
 	'validator_list_error_invalid_range' => 'Všechny hodnoty parametru $1 musí být v rozmezí $2 až $3.',
+	'validator-list-error-invalid-regex' => 'Všechny hodnoty parametru  $1  musí odpovídat tomuto regulárnímu výrazu:  $2.',
 	'validator_list_error_invalid_argument' => 'Jedna nebo více hodnot parametru $1 jsou neplatné.',
 	'validator_error_accepts_only' => 'Parametr $1 nemůže mít hodnotu „$4“; přijímá pouze {{PLURAL:$3|tuto hodnotu|tyto hodnoty}}: $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|Hodnota $1 byla vynechána|Hodnoty $1 byly vynechány}}.',
@@ -486,7 +514,7 @@ $messages['de'] = array(
 	'validator-type-string' => 'Text',
 	'validator-type-number' => 'Zahl',
 	'validator-type-integer' => 'Ganzzahl',
-	'validator-type-float' => 'Zahl',
+	'validator-type-float' => 'Gleitkommazahl',
 	'validator-type-boolean' => 'Ja/Nein',
 	'validator-type-char' => 'Zeichen',
 	'validator-listerrors-errors' => 'Fehler',
@@ -508,7 +536,7 @@ Zeigt sie lediglich bezüglich der Parserhooks an, die über dem Element „list
 	'validator-describe-par-hooks' => 'Die Parserhooks für welche die Dokumentation angezeigt werden soll.',
 	'validator-describe-par-pre' => 'Ermöglicht die Ausgabe der Dokumentation in Wikitext ohne dass dieser bei der Darstellung der Seite genutzt wird.',
 	'validator-describe-par-language' => 'Die Sprache in der die Beschreibungen angezeigt werden sollen',
-	'validator-describe-listtype' => 'Liste von $1 {{PLURAL:$1|Elemente|Elementen}}',
+	'validator-describe-listtype' => 'Liste von Elementen: $1',
 	'validator-describe-empty' => 'leer',
 	'validator-describe-required' => 'erforderlich',
 	'validator-describe-header-parameter' => 'Parameter',
@@ -635,6 +663,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Armando-Martin
  * @author Crazymadlover
  * @author Imre
  * @author Translationista
@@ -652,15 +681,54 @@ $messages['es'] = array(
 	'validator_error_unknown_argument' => '$1 no es un parámetro válido.',
 	'validator_error_required_missing' => 'No se ha provisto el parámetro requerido $1.',
 	'validator-error-override-argument' => 'Se ha intentado sobreescribir el parámetro $1 (valor: $2) con el valor "$3"',
+	'validator-type-string' => 'texto',
+	'validator-type-number' => 'número',
+	'validator-type-integer' => 'número entero',
+	'validator-type-float' => 'número',
+	'validator-type-boolean' => 'sí/no',
+	'validator-type-char' => 'carácter',
 	'validator-listerrors-errors' => 'Errores',
 	'validator-listerrors-minor' => 'Menor',
 	'validator-listerrors-low' => 'Bajo',
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Alto',
 	'validator-listerrors-fatal' => 'Fatal',
+	'validator-listerrors-description' => 'Lista los errores (y advertencias) que se produjeron en las asociaciones (hook) del analizador (parser) añadidas a través de validador.
+Sólo se muestran en las listas las asociaciones del analizador agregados antes de la inserción de listerrors;
+ coloque listerrors alfinal o cerca de la parte inferior de la página para obtener todos los errores.',
+	'validator-listerrors-par-minseverity' => 'La gravedad mínima de una cuestión para que  aparezca en la lista.',
+	'validator-describe-description' => 'Genera documentación para una o más asociaciones del analizador (parser hooks) definidas a través de Validator.',
+	'validator-describe-notfound' => 'No hay ninguna asociación del analizador (parser hook) que controle "$1".',
+	'validator-describe-descriptionmsg' => "'''Descripción''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Alias|Alias}}''': $1",
+	'validator-describe-parserfunction' => 'Implementado sólo como función del analizador (parser).',
+	'validator-describe-tagextension' => 'Implementado sólo como etiqueta de extensión.',
+	'validator-describe-bothhooks' => 'Implementado como función del analizador y como etiqueta de extensión.',
+	'validator-describe-par-hooks' => 'Asociación del analizador (parser hook) para que la que desea mostrar la documentación.',
+	'validator-describe-par-pre' => 'Le permite obtener el texto wiki real para la documentación, sin que se procese (render) como imagen en la página.',
+	'validator-describe-par-language' => 'El idioma en el que mostrar las descripciones',
+	'validator-describe-listtype' => 'Lista de $1 elementos',
+	'validator-describe-empty' => 'vacío',
+	'validator-describe-required' => 'obligatorio',
+	'validator-describe-header-parameter' => 'Parámetro',
+	'validator-describe-header-aliases' => 'Alias',
+	'validator-describe-header-type' => 'Tipo',
+	'validator-describe-header-default' => 'Por defecto',
+	'validator-describe-header-description' => 'Descripción',
+	'validator-describe-parameters' => 'Parámetros',
+	'validator-describe-syntax' => 'Sintaxis',
+	'validator-describe-tagmin' => 'Etiqueta de extensión sólo con los parámetros obligatorios.',
+	'validator-describe-tagmax' => 'Etiqueta de extensión con todos los parámetros.',
+	'validator-describe-tagdefault' => 'Etiqueta de extensión con todos los parámetros, empleando la notación de los parámetros por defecto.',
+	'validator-describe-pfmin' => 'Función del analizador (parser) sólo con los parámetros obligatorios.',
+	'validator-describe-pfmax' => 'Función del analizador (parser) con todos los parámetros.',
+	'validator-describe-pfdefault' => 'Función del analizador (parser) con todos los parámetros, empleando la notación predeterminada de los parámetros.',
+	'validator-describe-autogen' => 'El contenido de esta sección fue generado automáticamente por la asociación del analizador (parser hook) "describe" de la extensión Validator.',
 	'validator_error_empty_argument' => 'El parámetro $1 no puede tener un valor vacío.',
 	'validator_error_must_be_number' => 'El parámetro $1 sólo puede ser un número.',
 	'validator_error_must_be_integer' => 'El parámetro $1 sólo puede ser un número entero.',
+	'validator_error_must_be_title' => 'El parámetro $1 sólo puede ser un nombre de página wiki válido.',
+	'validator_error_must_be_existing_title' => 'El parámetro $1 sólo puede ser un nombre de página wiki existente.',
 	'validator-error-must-be-float' => 'El parámetro $1 tiene que ser un número de punto flotante.',
 	'validator_error_invalid_range' => 'El parámetro $1 debe ser entre $2 y $3.',
 	'validator-error-invalid-regex' => 'El parámetro $1 tiene que coincidir con esta expresión racional : $2.',
@@ -670,6 +738,8 @@ $messages['es'] = array(
 	'validator_list_error_empty_argument' => 'El parámetro $1 no acepta valores vacíos.',
 	'validator_list_error_must_be_number' => 'El parámetro $1 sólo puede contener números.',
 	'validator_list_error_must_be_integer' => 'El parámetro $1 sólo puede contener números enteros.',
+	'validator_list_error_must_be_title' => 'El parámetro $1 sólo puede contener nombres válidos de página wiki.',
+	'validator_list_error_must_be_existing_title' => 'El parámetro $1 sólo puede contener nombres de páginas wiki existentes.',
 	'validator-list-error-must-be-float' => 'El parámetro $1 sólo puede contener floats.',
 	'validator_list_error_invalid_range' => 'Todos los valores del parámetro $1 deben ser entre $2 y $3.',
 	'validator-list-error-invalid-regex' => 'El parámetro $1 tiene que coincidir con esta expresión regular: $2.',
@@ -1086,6 +1156,8 @@ $messages['he'] = array(
 	'validator_error_empty_argument' => 'הפרמטר $1 לא יכול להיות ערך ריק.',
 	'validator_error_must_be_number' => 'הפרמטר $1 יכול להיות מספר בלבד.',
 	'validator_error_must_be_integer' => 'הפרמטר $1 יכול להיות מספר שלם בלבד.',
+	'validator_error_must_be_title' => 'פרמטר $1 יכול להיות רק שם תקין של דף ויקי.',
+	'validator_error_must_be_existing_title' => 'פרמטר $1 יכול להיות רק שם של דף ויקי קיים.',
 	'validator-error-must-be-float' => 'הפרמטר $1 יכול להיות רק מספר עם נקודה צפה.',
 	'validator_error_invalid_range' => 'הפרמטר $1 חייב להיות בין $2 ל־$3.',
 	'validator-error-invalid-regex' => 'פרמטר $1 חייב להתאים לביטוי הרגולרי הבא: $2.',
@@ -1095,6 +1167,8 @@ $messages['he'] = array(
 	'validator_list_error_empty_argument' => 'פרמטר $1 אינו יכול להיות ריק.',
 	'validator_list_error_must_be_number' => 'פרמטר $1 יכול להכיל רק מספרים.',
 	'validator_list_error_must_be_integer' => 'פרמטר $1 יכול להכיל רק מספרים שלמים.',
+	'validator_list_error_must_be_title' => 'פרמטר $1 יכול להכיל רק שמות של דפי ויקי תקינים.',
+	'validator_list_error_must_be_existing_title' => 'פרמטר $1 יכול להכיל רק שמות של דפי ויקי קיימים.',
 	'validator-list-error-must-be-float' => 'פרמטר $1 יכול להכיל רק מספר עם נקודה צפה.',
 	'validator_list_error_invalid_range' => 'כל הערכים של הפרמטר $1 צריכים להיות בין $2 לבין $3.',
 	'validator-list-error-invalid-regex' => 'כל הערכים של הפרמטר $1 צריכים להתאים לביטוי הרגולרי הבא: $2.',
@@ -1504,10 +1578,19 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author David1010
  * @author ITshnik
  */
 $messages['ka'] = array(
+	'validator-describe-descriptionmsg' => "'''აღწერა''': $1",
 	'validator-describe-empty' => 'ცარიელი',
+	'validator-describe-header-parameter' => 'პარამეტრი',
+	'validator-describe-header-aliases' => 'ფსევდონიმები',
+	'validator-describe-header-type' => 'ტიპი',
+	'validator-describe-header-default' => 'სტანდარტული',
+	'validator-describe-header-description' => 'აღწერა',
+	'validator-describe-parameters' => 'პარამეტრები',
+	'validator-describe-syntax' => 'სინტაქსი',
 );
 
 /** Colognian (Ripoarisch)
@@ -1955,6 +2038,16 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'validator-describe-empty' => 'афтид',
+);
+
+/** Pälzisch (Pälzisch)
+ * @author Manuae
+ */
+$messages['pfl'] = array(
+	'validator-type-string' => 'Tegschd',
+	'validator-type-number' => 'Numma',
+	'validator-type-boolean' => 'Ja/Nä',
+	'validator-type-char' => 'Zaische',
 );
 
 /** Polish (Polski)
