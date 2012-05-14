@@ -238,10 +238,12 @@ class Param implements iParam {
 	public function toParameter() {
 		$parameter = $this->definition->toParameter();
 
-		$parameter->setUserValue(
-			$this->getName(),
-			is_array( $this->getValue() ) ? implode( $this->definition->getDelimiter(), $this->getValue() ) : $this->getValue()
-		);
+		$parameter->setValue( $this->getValue() );
+
+//		$parameter->setUserValue(
+//			$this->getName(),
+//			is_array( $this->getValue() ) ? implode( $this->definition->getDelimiter(), $this->getValue() ) : $this->getValue()
+//		);
 
 		return $parameter;
 	}
