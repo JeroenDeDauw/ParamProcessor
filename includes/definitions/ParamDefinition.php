@@ -809,6 +809,7 @@ abstract class ParamDefinition implements iParamDefinition {
 		}
 
 		$parameter->addManipulations( $this->getManipulations() );
+		$parameter->setDoManipulationOfDefault( $this->applyManipulationsToDefault );
 
 		return $parameter;
 	}
