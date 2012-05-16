@@ -239,6 +239,7 @@ class Param implements iParam {
 		$parameter = $this->definition->toParameter();
 
 		$parameter->setValue( $this->getValue() );
+		$parameter->originalName = $this->setCount === 0 ? $this->getName() : $this->getOriginalName();
 
 //		$parameter->setUserValue(
 //			$this->getName(),
@@ -345,7 +346,7 @@ class Param implements iParam {
 	 */
 	public function getOriginalName() {
 		if ( $this->setCount == 0 ) {
-			throw new MWException( 'No user imput set to the parameter yet, so the original name does not exist' );
+			throw new MWException( 'No user input set to the parameter yet, so the original name does not exist' );
 		}
 		return $this->originalName;
 	}
@@ -360,7 +361,7 @@ class Param implements iParam {
 	 */
 	public function getOriginalValue() {
 		if ( $this->setCount == 0 ) {
-			throw new MWException( 'No user imput set to the parameter yet, so the original value does not exist' );
+			throw new MWException( 'No user input set to the parameter yet, so the original value does not exist' );
 		}
 		return $this->originalValue;
 	}

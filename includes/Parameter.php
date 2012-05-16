@@ -122,7 +122,7 @@ class Parameter {
 	 * 
 	 * @var string
 	 */
-	protected $originalName;
+	public $originalName;
 	
 	/**
 	 * The original value as provided by the user. This is mainly retained for
@@ -518,8 +518,8 @@ class Parameter {
 	 * @return string
 	 */
 	public function getOriginalName() {
-		if ( $this->setCount == 0 ) {
-			throw new MWException( 'No user imput set to the parameter yet, so the original name does not exist' );
+		if ( $this->setCount == 0 && empty( $this->originalName ) ) {
+			throw new MWException( 'No user input set to the parameter yet, so the original name does not exist' );
 		}		
 		return $this->originalName;
 	}
@@ -533,7 +533,7 @@ class Parameter {
 	 */
 	public function getOriginalValue() {
 		if ( $this->setCount == 0 ) {
-			throw new MWException( 'No user imput set to the parameter yet, so the original value does not exist' );
+			throw new MWException( 'No user input set to the parameter yet, so the original value does not exist' );
 		}
 		return $this->originalValue;
 	}	
