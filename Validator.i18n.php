@@ -1494,6 +1494,7 @@ tempatkan listerrors pada atau di dekat bagian bawah halaman untuk mendapatkan s
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Civvì
  * @author HalphaZ
  */
@@ -1503,6 +1504,8 @@ $messages['it'] = array(
 	'validator_warning_parameters' => "Nella tua sintassi {{PLURAL:$1|c'è un errore|ci sono errori}}.",
 	'validator_error_unknown_argument' => '$1 non è un parametro valido.',
 	'validator_error_required_missing' => 'Il parametro richiesto $1 non è stato fornito.',
+	'validator-describe-header-parameter' => 'Parametro',
+	'validator-describe-parameters' => 'Parametri',
 	'validator_error_empty_argument' => 'Il parametro $1 non può avere un valore vuoto.',
 	'validator_error_must_be_number' => 'Il parametro $1 può essere solo un numero.',
 	'validator_error_must_be_integer' => 'Il parametro $1 può essere solo un intero.',
