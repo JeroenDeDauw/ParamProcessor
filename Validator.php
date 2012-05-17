@@ -121,3 +121,6 @@ $wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
 // Since 0.4.8
 $wgHooks['UnitTestsList'][] = 'ValidatorHooks::registerUnitTests';
 
+
+
+$egValidatorSettings = array();
