@@ -27,7 +27,7 @@ class Validator {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var array of Param
+	 * @var array of IParam
 	 */
 	protected $params;
 	
@@ -373,11 +373,11 @@ class Validator {
 	 * 
 	 * @since 0.4
 	 *
-	 * @param Param $param
+	 * @param IParam $param
 	 * 
 	 * @return boolean
 	 */
-	protected function attemptToSetUserValue( Param $param ) {
+	protected function attemptToSetUserValue( IParam $param ) {
 		if ( array_key_exists( $param->getName(), $this->rawParameters ) ) {
 			$param->setUserValue( $param->getName(), $this->rawParameters[$param->getName()] );
 			unset( $this->rawParameters[$param->getName()] );
@@ -401,7 +401,7 @@ class Validator {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return array of Param
+	 * @return array of IParam
 	 */
 	public function getParameters() {
 		return $this->params;
@@ -414,7 +414,7 @@ class Validator {
 	 * 
 	 * @param string $parameterName The name of the parameter to return
 	 * 
-	 * @return Parameter
+	 * @return IParam
 	 */
 	public function getParameter( $parameterName ) {
 		return $this->params[$parameterName];
