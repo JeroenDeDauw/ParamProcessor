@@ -31,13 +31,13 @@ class DimensionParam extends ParamDefinition {
 	 * @since 0.5
 	 *
 	 * @param $value mixed
-	 * @param $param iParam
-	 * @param $definitions array of iParamDefinition
+	 * @param $param IParam
+	 * @param $definitions array of IParamDefinition
 	 * @param $params array of iParam
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, iParam $param, array $definitions, array $params ) {
+	protected function validateValue( $value, IParam $param, array $definitions, array $params ) {
 		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
 			return false;
 		}
@@ -65,13 +65,13 @@ class DimensionParam extends ParamDefinition {
 	 * @since 0.5
 	 *
 	 * @param $value mixed
-	 * @param $param iParam
-	 * @param $definitions array of iParamDefinition
+	 * @param $param IParam
+	 * @param $definitions array of IParamDefinition
 	 * @param $params array of iParam
 	 *
 	 * @return mixed
 	 */
-	protected function formatValue( $value, iParam $param, array &$definitions, array $params ) {
+	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
 		$value = (string)$value;
 
 		if ( $this->toLower ) {
