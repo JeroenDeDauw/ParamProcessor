@@ -662,6 +662,10 @@ abstract class ParamDefinition implements IParamDefinition {
 		if ( array_key_exists( 'delimiter', $param ) ) {
 			$this->delimiter = $param['delimiter'];
 		}
+
+		if ( array_key_exists( 'manipulatedefault', $param ) ) {
+			$this->setDoManipulationOfDefault( $param['manipulatedefault'] );
+		}
 	}
 
 	/**
