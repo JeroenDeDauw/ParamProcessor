@@ -582,6 +582,19 @@ Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: 
 	'validator_list_omitted' => '{{PLURAL:$2|Der Wert „$1“ wurde|Die Werte „$1“ wurden}} ausgelassen.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'validator-listerrors-errors' => 'Xırabi',
+	'validator-listerrors-minor' => 'Qıcek',
+	'validator-listerrors-low' => 'Kêm',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'Berz',
+	'validator-describe-header-parameter' => 'Parametre',
+	'validator-describe-header-type' => 'Babet',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -2674,10 +2687,13 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Erdemaslancan
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'validator_error_unknown_argument' => '$1, geçerli bir parametre değildir.',
+	'validator-describe-header-parameter' => 'Parametre',
+	'validator-describe-header-type' => 'Tür',
 	'validator_error_empty_argument' => '$1 parametresi boş bir değere sahip olamaz.',
 	'validator_error_must_be_number' => '$1 parametresi sadece sayı olabilir.',
 	'validator_error_must_be_integer' => '$1 parametresi sadece bir tamsayı olabilir',
