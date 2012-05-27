@@ -72,8 +72,8 @@ $wgAutoloadClasses['Validator']				  		= $incDir . 'Validator.php';
 $wgAutoloadClasses['TopologicalSort']				= $incDir . 'TopologicalSort.php';
 $wgAutoloadClasses['ValidationError']				= $incDir . 'ValidationError.php';
 $wgAutoloadClasses['ValidationErrorHandler']	 	= $incDir . 'ValidationErrorHandler.php';
-$wgAutoloadClasses['iParam']				  		= $incDir . 'iParam.php';
-$wgAutoloadClasses['iParamDefinition']				= $incDir . 'iParamDefinition.php';
+$wgAutoloadClasses['IParam']				  		= $incDir . 'IParam.php';
+$wgAutoloadClasses['IParamDefinition']				= $incDir . 'IParamDefinition.php';
 
 // includes/definitions
 $wgAutoloadClasses['BoolParam']		 				= $incDir . 'definitions/BoolParam.php';

@@ -23,7 +23,7 @@ class ParameterInput {
 	 * 
 	 * @since O.5
 	 * 
-	 * @var iParamDefinition
+	 * @var IParamDefinition
 	 */
 	protected $param;
 	
@@ -52,11 +52,11 @@ class ParameterInput {
 	 * 
 	 * @since 0.4.6
 	 * 
-	 * @param iParamDefinition|Parameter|array $param
+	 * @param IParamDefinition|Parameter|array $param
 	 * @param mixed $currentValue
 	 */
 	public function __construct( $param, $currentValue = false ) {
-		if ( $param instanceof iParamDefinition ) {
+		if ( $param instanceof IParamDefinition ) {
 			$this->param = $param;
 		}
 		elseif ( is_array( $param ) ) {

@@ -11,7 +11,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-interface iParamDefinition {
+interface IParamDefinition {
 
 	function addAliases( $aliases );
 
@@ -21,7 +21,7 @@ interface iParamDefinition {
 
 	function addManipulations( $manipulations );
 
-	function format( iParam $param, array &$definitions, array $params );
+	function format( IParam $param, array &$definitions, array $params );
 
 	function getAliases();
 
@@ -59,6 +59,6 @@ interface iParamDefinition {
 
 	function shouldManipulateDefault();
 
-	function validate( iParam $param, array $definitions, array $params );
+	function validate( IParam $param, array $definitions, array $params );
 
 }

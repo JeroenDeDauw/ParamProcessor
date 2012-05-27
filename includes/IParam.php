@@ -11,15 +11,15 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-interface iParam {
+interface IParam {
 
-	function __construct( iParamDefinition $definition );
+	function __construct( IParamDefinition $definition );
 
 	function setUserValue( $paramName, $paramValue );
 
 	function setValue( $value );
 
-	function validate( array /* of ParamDefinition */ $definitions, array /* of Param */ $params );
+	function validate( array /* of IParamDefinition */ $definitions, array /* of IParam */ $params );
 
 	function format( array &$definitions, array $params );
 

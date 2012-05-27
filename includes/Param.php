@@ -12,7 +12,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Param implements iParam {
+class Param implements IParam {
 
 	/**
 	 * Indicates whether parameters not found in the criteria list
@@ -86,7 +86,7 @@ class Param implements iParam {
 	 *
 	 * @since 0.5
 	 *
-	 * @var iParamDefinition
+	 * @var IParamDefinition
 	 */
 	protected $definition;
 
@@ -95,9 +95,9 @@ class Param implements iParam {
 	 *
 	 * @since 0.5
 	 *
-	 * @param iParamDefinition $definition
+	 * @param IParamDefinition $definition
 	 */
-	public function __construct( iParamDefinition $definition ) {
+	public function __construct( IParamDefinition $definition ) {
 		$this->definition = $definition;
 	}
 
@@ -178,8 +178,8 @@ class Param implements iParam {
 	 *
 	 * @since 0.5
 	 *
-	 * @param $definitions array of iParamDefinition
-	 * @param $params array of iParam
+	 * @param $definitions array of IParamDefinition
+	 * @param $params array of IParam
 	 */
 	public function format( array &$definitions, array $params ) {
 		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
@@ -414,7 +414,7 @@ class Param implements iParam {
 	}
 
 	/**
-	 * @return iParamDefinition
+	 * @return IParamDefinition
 	 */
 	public function getDefinition() {
 		return $this->definition;
