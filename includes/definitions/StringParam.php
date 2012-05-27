@@ -83,6 +83,8 @@ class StringParam extends ParamDefinition {
 				return $length == $this->length;
 			}
 		}
+
+		return true;
 	}
 
 	/**

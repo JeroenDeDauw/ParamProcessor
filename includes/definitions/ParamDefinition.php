@@ -699,6 +699,7 @@ abstract class ParamDefinition implements IParamDefinition {
 		}
 		else {
 			$valid = $this->validateValue( $param->getValue(), $param, $definitions, $params );
+
 			return $valid ? true : array( new ValidationError( 'Error' ) ); // TODO
 		}
 	}
@@ -792,6 +793,8 @@ abstract class ParamDefinition implements IParamDefinition {
 		if ( $this->prohibitedValues !== false && in_array( $value, $this->prohibitedValues ) ) {
 			return false;
 		}
+
+		return true;
 	}
 
 	/**
