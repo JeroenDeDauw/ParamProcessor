@@ -94,6 +94,7 @@ abstract class NumericParam extends ParamDefinition {
 	 * @since 0.5
 	 *
 	 * @param array $param
+	 * @throws MWException
 	 */
 	public function setArrayValues( array $param ) {
 		parent::setArrayValues( $param );
