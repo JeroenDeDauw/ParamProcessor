@@ -694,7 +694,8 @@ abstract class ParamDefinition implements IParamDefinition {
 			return $valid && $this->validateList( $param, $definitions, $params );
 		}
 		else {
-			return $this->validateValue( $param->getValue(), $param, $definitions, $params );
+			$valid = $this->validateValue( $param->getValue(), $param, $definitions, $params );
+			return $valid ? true : array( new ValidationError( 'Error' ) ); // TODO
 		}
 	}
 
