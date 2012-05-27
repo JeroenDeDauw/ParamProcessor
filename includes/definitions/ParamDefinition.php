@@ -245,6 +245,17 @@ abstract class ParamDefinition implements iParamDefinition {
 	}
 
 	/**
+	 * Returns the list of allowed values, or false if there is no such restriction.
+	 *
+	 * @since 0.5
+	 *
+	 * @return array|false
+	 */
+	public function getAllowedValues() {
+		return $this->allowedValues;
+	}
+
+	/**
 	 * Sets the default parameter value. Null indicates no default,
 	 * and therefore makes the parameter required.
 	 *

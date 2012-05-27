@@ -6,7 +6,6 @@
  * 
  * Based on 'addOptionInput' from Special:Ask in SMW 1.5.6.
  * 
- * TODO: support lists (now only done when values are restricted to an array)
  * TODO: nicify HTML
  * 
  * @since 0.4.6
@@ -63,7 +62,7 @@ class ParameterInput {
 		elseif ( is_array( $param ) ) {
 			$this->param = ParamDefinition::newFromArray( $param );
 		}
-		else {
+		else { // Compat code, will go in 0.7
 			$this->param = ParamDefinition::newFromParameter( $param );
 		}
 
@@ -102,7 +101,12 @@ class ParameterInput {
 	 */
 	public function getHtml() {
 		$valueList = array();
-		
+
+		if ( is_array( $this->param->getAllowedValues() ) ) {
+			$valueList[] = $this->param->getAllowedValues();
+		}
+
+		// Compat code, will got in 0.7
         foreach ( $this->param->getCriteria() as $criterion ) {
     		if ( $criterion instanceof CriterionInArray ) {
     			$valueList[] = $criterion->getAllowedValues();
@@ -110,7 +114,9 @@ class ParameterInput {
         }
 
         if ( count( $valueList ) > 0 ) {
+			// Compat code, will got in 0.7
         	$valueList = count( $valueList ) > 1 ? call_user_func_array( 'array_intersect', $valueList ) : $valueList[0];
+
         	$html = $this->param->isList() ? $this->getCheckboxListInput( $valueList ) : $this->getSelectInput( $valueList );
         }
         else {
