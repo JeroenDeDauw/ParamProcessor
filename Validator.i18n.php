@@ -509,6 +509,7 @@ $messages['cs'] = array(
  * @author Imre
  * @author Kghbln
  * @author LWChris
+ * @author Metalhead64
  */
 $messages['de'] = array(
 	'validator-desc' => 'Ermöglicht anderen Softwareerweiterungen die Verarbeitung von Parametern',
@@ -524,11 +525,17 @@ $messages['de'] = array(
 	'validator_error_required_missing' => 'Der notwendige Parameter „$1“ wurde nicht angegeben.',
 	'validator-error-override-argument' => 'Es wurde versucht Parameter $1 ($2) mit dem Wert „$3“ zu überschreiben.',
 	'validator-type-string' => 'Text',
-	'validator-type-number' => 'Zahl',
 	'validator-type-integer' => 'Ganzzahl',
 	'validator-type-float' => 'Gleitkommazahl',
 	'validator-type-boolean' => 'Ja/Nein',
 	'validator-type-char' => 'Zeichen',
+	'validator-type-title' => 'Titel',
+	'validator-type-string-list' => 'Textliste',
+	'validator-type-integer-list' => 'Liste ganzer Zahlen',
+	'validator-type-float-list' => 'Ziffernliste',
+	'validator-type-boolean-list' => 'Ja-Nein-Liste',
+	'validator-type-char-list' => 'Zeichen auflisten',
+	'validator-type-title-list' => 'Titelliste',
 	'validator-listerrors-errors' => 'Fehler',
 	'validator-listerrors-minor' => 'Marginal',
 	'validator-listerrors-low' => 'Klein',
@@ -592,6 +599,7 @@ Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: 
 	'validator_error_accepts_only' => 'Der Wert „$4“ ist nicht gültig für den Parameter $1. Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2.',
 	'validator-error-accepts-only-omitted' => 'Der Wert „$2“ ist nicht gültig für den Parameter $1. Nur {{PLURAL:$5|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $3 (sowie $4 nicht angezeigte {{PLURAL:$4|Wert|Werte}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Der Wert „$1“ wurde|Die Werte „$1“ wurden}} ausgelassen.',
+	'validator-message-nodesc' => 'Keine Beschreibung angegeben',
 );
 
 /** Zazaki (Zazaki)
