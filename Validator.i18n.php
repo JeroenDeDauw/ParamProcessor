@@ -36,11 +36,19 @@ $messages['en'] = array(
 
 	// Parameter types
 	'validator-type-string' => 'text',
-	'validator-type-number' => 'number',
 	'validator-type-integer' => 'whole number',
 	'validator-type-float' => 'number',
 	'validator-type-boolean' => 'yes/no',
 	'validator-type-char' => 'character',
+	'validator-type-title' => 'title',
+
+	// Parameter types: lists
+	'validator-type-string-list' => 'list of texts',
+	'validator-type-integer-list' => 'list of integers',
+	'validator-type-float-list' => 'list of numbers',
+	'validator-type-boolean-list' => 'list of yes/no',
+	'validator-type-char-list' => 'list characters',
+	'validator-type-title-list' => 'list of titles',
 
 	// Listerrors
 	'validator-listerrors-errors' => 'Errors',
