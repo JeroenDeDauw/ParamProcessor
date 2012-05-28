@@ -144,9 +144,9 @@ abstract class ParamDefinition implements IParamDefinition {
 	 *
 	 * @since 0.5
 	 *
-	 * @var mixed string or false
+	 * @var string
 	 */
-	protected $message = false;
+	protected $message = 'validator-message-nodesc';
 
 	/**
 	 * A list of allowed values. This means the parameters value(s) must be in the list
@@ -294,12 +294,11 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns a message that will act as a description message for the parameter, or false when there is none.
-	 * Override in deriving classes to add a message.
+	 * Returns a message that will act as a description message for the parameter.
 	 *
 	 * @since 0.5
 	 *
-	 * @return mixed string or false
+	 * @return string
 	 */
 	public function getMessage() {
 		return $this->message;
@@ -403,20 +402,20 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns an internationalized message indicating the parameter type suited for display to users.
+	 * Returns a message key for a message describing the parameter type.
 	 *
 	 * @since 0.5
 	 *
 	 * @return string
 	 */
 	public function getTypeMessage() {
-		global $wgLang;
+		$message = 'validator-type-' . $this->getType();
 
-		$message = wfMsg( 'validator-type-' . $this->getType() );
+		if ( $this->isList() ) {
+			$message .= '-list';
+		}
 
-		return $this->isList() ?
-			wfMsgExt( 'validator-describe-listtype', 'parsemag', $message )
-			: $wgLang->ucfirst( $message );
+		return $message;
 	}
 
 	/**
@@ -577,7 +576,7 @@ abstract class ParamDefinition implements IParamDefinition {
 			$parameter->getType(),
 			$parameter->getName(),
 			$parameter->getDefault(),
-			$parameter->getMessage(),
+			$parameter->getMessage() === false ? 'validator-message-nodesc' : $parameter->getMessage(),
 			$parameter->isList()
 		);
 

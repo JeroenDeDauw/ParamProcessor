@@ -61,4 +61,13 @@ interface IParamDefinition {
 
 	function validate( IParam $param, array $definitions, array $params );
 
+	/**
+	 * Returns a message key for a message describing the parameter type.
+	 *
+	 * @since 0.5
+	 *
+	 * @return string
+	 */
+	function getTypeMessage();
+
 }

@@ -115,6 +115,9 @@ place listerrors at or near the bottom of the page to get all errors.',
 	'validator-error-accepts-only-omitted' => 'The value "$2" is not valid for parameter $1. It only accepts {{PLURAL:$5|this value|these values}}: $3 (and $4 omitted {{PLURAL:$4|value|values}}).',
 
 	'validator_list_omitted' => 'The {{PLURAL:$2|value|values}} $1 {{PLURAL:$2|has|have}} been omitted.',
+
+	// Parameter descriptions
+	'validator-message-nodesc' => 'No description provided',
 );
 
 /** Message documentation (Message documentation)
@@ -144,6 +147,7 @@ $messages['qqq'] = array(
 	'validator-describe-header-default' => '{{Identical|Default}}',
 	'validator-describe-header-description' => '{{Identical|Description}}',
 	'validator-describe-parameters' => '{{Identical|Parameter}}',
+	'validator-message-nodesc' => 'Indicates that no parameter description is available',
 );
 
 /** Afrikaans (Afrikaans)
