@@ -599,7 +599,7 @@ Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: 
 	'validator_error_accepts_only' => 'Der Wert „$4“ ist nicht gültig für den Parameter $1. Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2.',
 	'validator-error-accepts-only-omitted' => 'Der Wert „$2“ ist nicht gültig für den Parameter $1. Nur {{PLURAL:$5|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $3 (sowie $4 nicht angezeigte {{PLURAL:$4|Wert|Werte}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Der Wert „$1“ wurde|Die Werte „$1“ wurden}} ausgelassen.',
-	'validator-message-nodesc' => 'Keine Beschreibung angegeben',
+	'validator-message-nodesc' => 'Es wurde keine Beschreibung angegeben.',
 );
 
 /** Zazaki (Zazaki)
@@ -801,6 +801,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Cedric31
  * @author Crochet.david
+ * @author DavidL
  * @author Gomoko
  * @author IAlex
  * @author Jean-Frédéric
@@ -825,11 +826,17 @@ $messages['fr'] = array(
 	'validator_error_required_missing' => 'Le paramètre requis $1 n’est pas fourni.',
 	'validator-error-override-argument' => 'Le logiciel a essayé de remplacer le paramètre $1 (valeur : $2) avec la valeur « $3 »',
 	'validator-type-string' => 'texte',
-	'validator-type-number' => 'nombre',
 	'validator-type-integer' => 'nombre entier',
 	'validator-type-float' => 'nombre',
 	'validator-type-boolean' => 'oui/non',
 	'validator-type-char' => 'caractère',
+	'validator-type-title' => 'titre',
+	'validator-type-string-list' => 'liste de textes',
+	'validator-type-integer-list' => 'liste de nombres entiers',
+	'validator-type-float-list' => 'liste de nombres',
+	'validator-type-boolean-list' => 'liste de oui/non',
+	'validator-type-char-list' => 'caractères de la liste',
+	'validator-type-title-list' => 'liste de titres',
 	'validator-listerrors-errors' => 'Erreurs',
 	'validator-listerrors-minor' => 'Mineur',
 	'validator-listerrors-low' => 'Faible',
@@ -895,6 +902,7 @@ Celui-ci n’accepte que {{PLURAL:$3|cette valeur|ces valeurs}} : $2 (et $4 {{PL
 	'validator-error-accepts-only-omitted' => 'La valeur « $2 » n’est pas valable pour le paramètre $1.
 Celui-ci n’accepte que {{PLURAL:$5|cette valeur|ces valeurs}} : $3 (et $4 {{PLURAL:$4|valeur omise|valeurs omises}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|La valeur|Les valeurs}} $1 {{PLURAL:$2|a été oubliée|ont été oubliées}}.',
+	'validator-message-nodesc' => 'Aucune description fournie',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -967,11 +975,17 @@ $messages['gl'] = array(
 	'validator_error_required_missing' => 'Non se proporcionou o parámetro $1 necesario.',
 	'validator-error-override-argument' => 'Intentouse sobrescribir o parámetro $1 (valor: $2) co valor "$3"',
 	'validator-type-string' => 'texto',
-	'validator-type-number' => 'número',
-	'validator-type-integer' => 'número completo',
+	'validator-type-integer' => 'número enteiro',
 	'validator-type-float' => 'número',
 	'validator-type-boolean' => 'si/non',
 	'validator-type-char' => 'carácter',
+	'validator-type-title' => 'título',
+	'validator-type-string-list' => 'lista de textos',
+	'validator-type-integer-list' => 'lista de números enteiros',
+	'validator-type-float-list' => 'lista de números',
+	'validator-type-boolean-list' => 'lista de si/non',
+	'validator-type-char-list' => 'lista de caracteres',
+	'validator-type-title-list' => 'lista de títulos',
 	'validator-listerrors-errors' => 'Erros',
 	'validator-listerrors-minor' => 'Menor',
 	'validator-listerrors-low' => 'Baixo',
@@ -1037,6 +1051,7 @@ Só acepta {{PLURAL:$3|este valor|estes valores}}: $2 (e $4 {{PLURAL:$4|valor om
 	'validator-error-accepts-only-omitted' => 'O valor "$2" non é válido para o parámetro $1.
 Só acepta {{PLURAL:$5|este valor|estes valores}}: $3 (e $4 {{PLURAL:$4|valor omitido|valores omitidos}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|O valor|Os valores}} $1 {{PLURAL:$2|foi omitido|foron omitidos}}.',
+	'validator-message-nodesc' => 'Non se achegou descrición ningunha',
 );
 
 /** Swiss German (Alemannisch)
@@ -1230,11 +1245,17 @@ $messages['hsb'] = array(
 	'validator_error_required_missing' => 'Trěbny parameter $1 njeje podaty.',
 	'validator-error-override-argument' => 'Spyta so parameter $1 (hódnota: $2) přez "$3" přepisować',
 	'validator-type-string' => 'tekst',
-	'validator-type-number' => 'ličba',
 	'validator-type-integer' => 'cyła ličba',
 	'validator-type-float' => 'ličba',
 	'validator-type-boolean' => 'haj/ně',
 	'validator-type-char' => 'znamješko',
+	'validator-type-title' => 'titul',
+	'validator-type-string-list' => 'tekstowa lisćina',
+	'validator-type-integer-list' => 'lisćina cyłych ličbow',
+	'validator-type-float-list' => 'lisćina ličbow',
+	'validator-type-boolean-list' => 'lisćina haj-ně',
+	'validator-type-char-list' => 'znamješka nalistować',
+	'validator-type-title-list' => 'lisćina titulow',
 	'validator-listerrors-errors' => 'Zmylki',
 	'validator-listerrors-minor' => 'Snadny',
 	'validator-listerrors-low' => 'Niski',
@@ -1297,6 +1318,7 @@ staj "listerrors" deleka na stronje abo blisko kónca strony, zo by wšě zmylki
 	'validator_error_accepts_only' => 'Hódnota "$4" za parameter $1 płaćiwa njeje. Akceptuje jenož {{PLURAL:$3|tutu hódnotu|tutej hódnoće|tute hódnoty|tute hódnoty}}: $2.',
 	'validator-error-accepts-only-omitted' => 'Hódnota "$2" njeje płaćiwa za parameter $1. {{PLURAL:$5|Akceptuje|Akceptujetej|Akceptuja|Akceptuja}} so jenož {{PLURAL:$5|tuta hódnota|tutej hódnoće|tute hódnoty|tute hódnoty}}: $3 (a $4 {{PLURAl:$4|wuwostajena hódnota|wuwostajenej hódnoće|wuwostajene hódnoty|wuwostajenych hódnotow}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Hódnota|Hódnoće|Hódnoty|Hódnoty}} $1 {{PLURAL:$2|je so wuwostajiła|stej so wuwostajiłoj|su so wuwostajili|su so wuwostajili}}.',
+	'validator-message-nodesc' => 'Žane wopisanje podate',
 );
 
 /** Hungarian (Magyar)
@@ -1814,11 +1836,17 @@ $messages['mk'] = array(
 	'validator_error_required_missing' => 'Бараниот параметар $1 не е наведен.',
 	'validator-error-override-argument' => 'Се обидовте да презапишете врз параметарот $1 (вредност: $2) со вредност „$3“',
 	'validator-type-string' => 'текст',
-	'validator-type-number' => 'број',
 	'validator-type-integer' => 'цел број',
 	'validator-type-float' => 'број',
 	'validator-type-boolean' => 'да/не',
 	'validator-type-char' => 'знак',
+	'validator-type-title' => 'наслов',
+	'validator-type-string-list' => 'список на текстови',
+	'validator-type-integer-list' => 'список на цели броеви',
+	'validator-type-float-list' => 'список на броеви',
+	'validator-type-boolean-list' => 'список на да/не',
+	'validator-type-char-list' => 'список на знаци',
+	'validator-type-title-list' => 'списо на наслови',
 	'validator-listerrors-errors' => 'Грешки',
 	'validator-listerrors-severity-message' => '($1) $2',
 	'validator-listerrors-minor' => 'Ситни',
@@ -1884,6 +1912,7 @@ $messages['mk'] = array(
 	'validator_error_accepts_only' => 'Вредноста „$4“ е неважечка за параметарот $1. Се {{PLURAL:$3|прифаќа само следнава вредност|прифаќаат само следниве вредности}}: $2.',
 	'validator-error-accepts-only-omitted' => 'Вредноста „$2“ не е важечка за параметарот $1. Се прифаќаат само следниве вредности: $3 (и $4 изоставени вредности).',
 	'validator_list_omitted' => '{{PLURAL:$2|Вредноста|Вредностите}} $1 {{PLURAL:$2|беше испуштена|беа испуштени}}.',
+	'validator-message-nodesc' => 'Нема наведено опис',
 );
 
 /** Malay (Bahasa Melayu)
@@ -2002,11 +2031,17 @@ $messages['nl'] = array(
 	'validator_error_required_missing' => 'De verplichte parameter $1 is niet opgegeven.',
 	'validator-error-override-argument' => 'Geprobeerd de parameter $1 (waarde: $2) te overschrijven met waarde "$3".',
 	'validator-type-string' => 'tekst',
-	'validator-type-number' => 'getal',
 	'validator-type-integer' => 'geheel getal',
 	'validator-type-float' => 'getal',
 	'validator-type-boolean' => 'ja / nee',
 	'validator-type-char' => 'teken',
+	'validator-type-title' => 'paginanaam',
+	'validator-type-string-list' => 'lijst met teksten',
+	'validator-type-integer-list' => 'lijst met gehele getallen',
+	'validator-type-float-list' => 'lijst met getallen',
+	'validator-type-boolean-list' => 'lijst met ja/nee',
+	'validator-type-char-list' => 'lijst met tekens',
+	'validator-type-title-list' => 'lijst met paginanamen',
 	'validator-listerrors-errors' => 'Fouten',
 	'validator-listerrors-minor' => 'Overkomelijk',
 	'validator-listerrors-low' => 'Laag',
@@ -2074,6 +2109,7 @@ Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
 Alleen deze {{PLURAL:$5|waarde is|waarden zijn}} toegestaan: $3.
 Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
 	'validator_list_omitted' => 'De {{PLURAL:$2|waarde|waarden}} $1 {{PLURAL:$2|mist|missen}}.',
+	'validator-message-nodesc' => 'Geen beschrijving',
 );
 
 /** Occitan (Occitan)
