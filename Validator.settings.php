@@ -72,6 +72,21 @@ final class ValidatorSettings {
 	}
 
 	/**
+	 * Builds the settings if needed.
+	 * This includes merging the set settings over the default ones.
+	 *
+	 * @since 0.5
+	 */
+	protected function buildSettings() {
+		if ( is_null( $this->settings ) ) {
+			$this->settings = array_merge(
+				self::getDefaultSettings(),
+				$GLOBALS['egValidatorSettings']
+			);
+		}
+	}
+
+	/**
 	 * Retruns an array with all settings after making sure they are
 	 * initialized (ie set settings have been merged with the defaults).
 	 * setting name (string) => setting value (mixed)
@@ -81,13 +96,7 @@ final class ValidatorSettings {
 	 * @return array
 	 */
 	public function getSettings() {
-		if ( is_null( $this->settings ) ) {
-			$this->settings = array_merge(
-				$this->getDefaultSettings(),
-				$GLOBALS['egValidatorSettings']
-			);
-		}
-
+		$this->buildSettings();
 		return $this->settings;
 	}
 
@@ -102,6 +111,8 @@ final class ValidatorSettings {
 	 * @return mixed
 	 */
 	public function getSetting( $settingName ) {
+		$this->buildSettings();
+
 		if ( !array_key_exists( $settingName, $this->settings ) ) {
 			throw new MWException( 'Attempt to get non-existing setting "' . $settingName . '"' );
 		}
@@ -120,6 +131,7 @@ final class ValidatorSettings {
 	 * @return mixed
 	 */
 	public function hasSetting( $settingName ) {
+		$this->buildSettings();
 		return array_key_exists( $settingName, $this->settings );
 	}
 
