@@ -1159,11 +1159,17 @@ $messages['he'] = array(
 	'validator_error_required_missing' => 'הפרמטר הדרוש $1 לא צוין.',
 	'validator-error-override-argument' => 'ניסיתי לעקוף את הפרמטר $1 (ערך: $2) ולהציב את הערך "$3"',
 	'validator-type-string' => 'טקסט',
-	'validator-type-number' => 'מספר',
 	'validator-type-integer' => 'מספר שלם',
 	'validator-type-float' => 'מספר',
 	'validator-type-boolean' => 'כן או לא',
 	'validator-type-char' => 'תו',
+	'validator-type-title' => 'כותרת',
+	'validator-type-string-list' => 'רשימת טקסטים',
+	'validator-type-integer-list' => 'רשימת מספרים שלמים',
+	'validator-type-float-list' => 'רשימת מספרים',
+	'validator-type-boolean-list' => 'רשימת כן/לא',
+	'validator-type-char-list' => 'רשימת תווים',
+	'validator-type-title-list' => 'רשימת כותרות',
 	'validator-listerrors-errors' => 'שגיאות',
 	'validator-listerrors-minor' => 'משנית',
 	'validator-listerrors-low' => 'נמוכה',
@@ -1226,6 +1232,7 @@ $messages['he'] = array(
 	'validator_error_accepts_only' => 'הערך "$4" אינו תקין עבור הפרמטר $1. הוא מקבל רק את {{PLURAL:$3|הערך הבא|הערכים הבאים}}: $2.',
 	'validator-error-accepts-only-omitted' => 'הערך "$2" אינו תקין עבור הפרמטר $1. הוא יכול לקבל רק את {{PLURAL:$5|הערך הבא|הערכים הבאים}}: $3 (וכן {{PLURAL:$4|ערך מושמט אחד|$4 ערכים מושמטים}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|הערך|הערכים}} $1 {{PLURAL:$2|הושמט|הושמטו}}.',
+	'validator-message-nodesc' => 'ללא תיאור',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
