@@ -352,7 +352,7 @@ $messages['bn'] = array(
 	'validator-describe-header-description' => 'বিবরণ',
 );
 
-/** Breton (Brezhoneg)
+/** Breton (brezhoneg)
  * @author Fohanno
  * @author Fulup
  * @author Gwendal
@@ -377,6 +377,12 @@ $messages['br'] = array(
 	'validator-type-boolean' => 'ya/nann',
 	'validator-type-char' => 'arouezenn',
 	'validator-type-title' => 'titl',
+	'validator-type-string-list' => 'roll testennoù',
+	'validator-type-integer-list' => 'roll niveroù anterin',
+	'validator-type-float-list' => 'roll niveroù',
+	'validator-type-boolean-list' => 'roll ya/ket',
+	'validator-type-char-list' => 'roll arouezennoù',
+	'validator-type-title-list' => 'roll titiloù',
 	'validator-listerrors-errors' => 'Fazioù',
 	'validator-listerrors-minor' => 'Minor',
 	'validator-listerrors-low' => 'Gwan',
@@ -798,7 +804,7 @@ $messages['fi'] = array(
 	'validator_error_must_be_integer' => 'Parametrin $1 on oltava kokonaisluku.',
 );
 
-/** French (Français)
+/** French (français)
  * @author Cedric31
  * @author Crochet.david
  * @author DavidL
@@ -1825,7 +1831,7 @@ $messages['lv'] = array(
 	'validator-listerrors-fatal' => 'Fatālas',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  * @author McDutchie
  */
