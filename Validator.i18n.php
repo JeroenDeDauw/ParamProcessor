@@ -701,7 +701,7 @@ $messages['eo'] = array(
 	'validator_list_error_invalid_argument' => 'Unu aŭ pliaj valoroj por parametro $1 estas malvalida.',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author Armando-Martin
  * @author Crazymadlover
  * @author Imre
@@ -721,11 +721,17 @@ $messages['es'] = array(
 	'validator_error_required_missing' => 'No se ha provisto el parámetro requerido $1.',
 	'validator-error-override-argument' => 'Se ha intentado sobreescribir el parámetro $1 (valor: $2) con el valor "$3"',
 	'validator-type-string' => 'texto',
-	'validator-type-number' => 'número',
 	'validator-type-integer' => 'número entero',
 	'validator-type-float' => 'número',
 	'validator-type-boolean' => 'sí/no',
 	'validator-type-char' => 'carácter',
+	'validator-type-title' => 'título',
+	'validator-type-string-list' => 'lista de textos',
+	'validator-type-integer-list' => 'lista de números enteros',
+	'validator-type-float-list' => 'lista de números',
+	'validator-type-boolean-list' => 'lista de sí/no',
+	'validator-type-char-list' => 'listar caracteres',
+	'validator-type-title-list' => 'lista de títulos',
 	'validator-listerrors-errors' => 'Errores',
 	'validator-listerrors-minor' => 'Menor',
 	'validator-listerrors-low' => 'Bajo',
@@ -791,6 +797,7 @@ Sólo acepta {{PLURAL:$3|este valor|estos valores}}: $2 (y $4 {{PLURAL:$4|valor 
 	'validator-error-accepts-only-omitted' => 'El valor $2 no es válido para el parámetro $1.
 Sólo acepta {{PLURAL:$5|este valor|estos valores}}: $3 (y $4 {{PLURAL:$4|valor omitido|valores omitidos}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|El valor|Los valores}} $1 {{PLURAL:$2|ha sido omitido|han sido omitidos}}.',
+	'validator-message-nodesc' => 'No se aporta ninguna descripción',
 );
 
 /** Finnish (Suomi)
@@ -1640,6 +1647,8 @@ $messages['ja'] = array(
 	'validator-listerrors-normal' => '普通',
 	'validator-listerrors-high' => '重大',
 	'validator-listerrors-fatal' => '非常に重大',
+	'validator-describe-empty' => '空',
+	'validator-describe-required' => '必須',
 	'validator-describe-header-parameter' => 'パラメータ',
 	'validator-describe-header-aliases' => '別名',
 	'validator-describe-header-default' => '既定',
@@ -1649,27 +1658,24 @@ $messages['ja'] = array(
 	'validator_error_empty_argument' => '引数「$1」は空の値をとることができません。',
 	'validator_error_must_be_number' => '引数「$1」は数値でなければなりません。',
 	'validator_error_must_be_integer' => '引数「$1」は整数でなければなりません。',
-	'validator-error-must-be-float' => 'パラメータ$1は浮動小数点数になることだけができます。',
-	'validator_error_invalid_range' => '引数「$1」は $2 と $3 の間の値でなければなりません。',
-	'validator-error-invalid-regex' => 'パラメータ $1 は次の正規表現と一致する必要があります： $2',
-	'validator-error-invalid-length' => 'パラメータ$1は$2の長さを保持していなければならない。',
-	'validator-error-invalid-length-range' => 'パラメータ$1は$2と$3間の長さを保持していなければならない。',
+	'validator-error-must-be-float' => 'パラメーター $1 は浮動小数点数のみです。',
+	'validator_error_invalid_range' => '引数「$1」は $2 から $3 の間の値である必要があります。',
+	'validator-error-invalid-regex' => 'パラメーター $1 は次の正規表現に一致する必要があります：$2',
+	'validator-error-invalid-length' => 'パラメーター $1 には $2 の長さが必要です。',
+	'validator-error-invalid-length-range' => 'パラメーター $1 の長さは $2 から $3 の間である必要があります。',
 	'validator_error_invalid_argument' => '値「$1」は引数「$2」として妥当ではありません。',
 	'validator_list_error_empty_argument' => '引数「$1」は空の値をとりません。',
 	'validator_list_error_must_be_number' => '引数「$1」は数値しかとることができません。',
 	'validator_list_error_must_be_integer' => '引数「$1」は整数値しかとることができません。',
-	'validator-list-error-must-be-float' => 'パラメータ $1 は整数値しか利用できません。',
+	'validator-list-error-must-be-float' => 'パラメーター $1 は浮動小数点数のみです。',
 	'validator_list_error_invalid_range' => '引数「$1」の値はすべて $2 と $3 の間のものでなくてはなりません。',
-	'validator-list-error-invalid-regex' => 'パラメータ $1 の値は次の正規表現と一致する必要があります： $2',
-	'validator_list_error_invalid_argument' => '引数「$1」の値に不正なものが1つ以上あります。',
-	'validator-list-error-accepts-only' => 'パラメータ $1 に無効な値が含まれています。
-このパラメータは{{PLURAL:$3|次の値}}しか利用できません： $2',
-	'validator-list-error-accepts-only-omitted' => 'パラメータ $1 に無効な値が含まれています。
-このパラメータは{{PLURAL:$3|次の値}}しか利用できません： $2 （と省略された $4 の値）',
-	'validator_error_accepts_only' => '値"$4"はパラメーター$1にとって有効ではありません。{{PLURAL:$3|この値|これらの値}}のみ受け入れられます。: $2。',
-	'validator-error-accepts-only-omitted' => 'パラメータ $1 の値 "$2" は有効ではありません。
-このパラメータは{{PLURAL:$5|次の値}}しか利用できません： $3 （と省略された $4 の値）',
-	'validator_list_omitted' => '{{PLURAL:$2|値}} $1 は省かれました。',
+	'validator-list-error-invalid-regex' => 'パラメーター $1 の値は次の正規表現と一致する必要があります： $2',
+	'validator_list_error_invalid_argument' => 'パラメーター「$1」の値に不正なものが1つ以上あります。',
+	'validator-list-error-accepts-only' => 'パラメーター $1 に無効な値が含まれています。{{PLURAL:$3|この値|これらの値}}のみを使用できます：$2',
+	'validator-list-error-accepts-only-omitted' => 'パラメーター $1 に無効な値が含まれています。{{PLURAL:$3|この値|これらの値}}のみを使用できます：$2（と省略された $4 の{{PLURAL:$4|値}}）',
+	'validator_error_accepts_only' => 'パラメーター $1 の値「$4」は有効ではありません。{{PLURAL:$3|この値|これらの値}}のみを使用できます：$2。',
+	'validator-error-accepts-only-omitted' => 'パラメーター $1 の値「$2」は有効ではありません。{{PLURAL:$5|この値|これらの値}}のみを使用できます：$3（と省略された $4 の{{PLURAL:$4|値}}）',
+	'validator_list_omitted' => '{{PLURAL:$2|値}} $1 は省略されました。',
 );
 
 /** Georgian (ქართული)
