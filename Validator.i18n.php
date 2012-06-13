@@ -1755,9 +1755,15 @@ $messages['ksh'] = array(
  */
 $messages['ku-latn'] = array(
 	'validator-error' => 'Çewtî:$1',
+	'validator-type-string' => 'nivîs',
 	'validator-type-boolean' => 'erê/na',
+	'validator-type-title' => 'sernav',
+	'validator-listerrors-errors' => 'Çewtî',
 	'validator-listerrors-high' => 'bilind',
+	'validator-describe-empty' => 'vala',
+	'validator-describe-header-parameter' => 'Parametre',
 	'validator-describe-header-type' => 'Cure',
+	'validator-describe-header-description' => 'Danasîn',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
