@@ -264,7 +264,6 @@ $messages['be-tarask'] = array(
 	'validator_error_required_missing' => 'Не пададзены абавязковы парамэтар $1.',
 	'validator-error-override-argument' => 'Спрабаваў памяняць значэньне парамэтру $1 з «$2» на «$3»',
 	'validator-type-string' => 'тэкст',
-	'validator-type-number' => 'лік',
 	'validator-type-integer' => 'цэлы лік',
 	'validator-type-float' => 'лік',
 	'validator-type-boolean' => 'так/не',
@@ -336,7 +335,7 @@ $messages['be-tarask'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|Значэньне|Значэньні}} $1 {{PLURAL:$2|было прапушчанае|былі прапушчаныя}}.',
 );
 
-/** Bulgarian (Български)
+/** Bulgarian (български)
  * @author DCLXVI
  * @author Reedy
  */
@@ -427,7 +426,7 @@ Ne zegemer nemet an {{PLURAL:$5|talvoud|talvoudoù}}-mañ : $3 (ha $4 {{PLURAL:$
 	'validator_list_omitted' => 'Disoñjet eo bet an {{PLURAL:$2|talvoudenn|talvoudennoù}} $1.',
 );
 
-/** Bosnian (Bosanski)
+/** Bosnian (bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
@@ -459,7 +458,7 @@ $messages['bs'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|Vrijednost|Vrijednosti}} $1 {{PLURAL:$2|je ispuštena|su ispuštene}}.',
 );
 
-/** Czech (Česky)
+/** Czech (česky)
  * @author Matěj Grabovský
  * @author Mormegil
  * @author Reaperman
@@ -474,7 +473,6 @@ $messages['cs'] = array(
 	'validator_error_unknown_argument' => '$1 není platný parametr.',
 	'validator_error_required_missing' => 'Povinný parameter $1 nebyl specifikován.',
 	'validator-type-string' => 'text',
-	'validator-type-number' => 'číslo',
 	'validator-type-integer' => 'celé číslo',
 	'validator-type-boolean' => 'ano/ne',
 	'validator-type-char' => 'znak',
@@ -635,7 +633,6 @@ $messages['dsb'] = array(
 	'validator_error_unknown_argument' => '$1 njejo płaśiwy parameter.',
 	'validator_error_required_missing' => 'Trěbny parameter $1 njejo pódany.',
 	'validator-type-string' => 'tekst',
-	'validator-type-number' => 'licba',
 	'validator-type-integer' => 'ceła licba',
 	'validator-type-float' => 'licba',
 	'validator-type-boolean' => 'jo/ně',
@@ -800,7 +797,7 @@ Sólo acepta {{PLURAL:$5|este valor|estos valores}}: $3 (y $4 {{PLURAL:$4|valor 
 	'validator-message-nodesc' => 'No se aporta ninguna descripción',
 );
 
-/** Finnish (Suomi)
+/** Finnish (suomi)
  * @author Crt
  * @author Silvonen
  * @author Str4nd
@@ -918,7 +915,7 @@ Celui-ci n’accepte que {{PLURAL:$5|cette valeur|ces valeurs}} : $3 (et $4 {{PL
 	'validator-message-nodesc' => 'Aucune description fournie',
 );
 
-/** Franco-Provençal (Arpetan)
+/** Franco-Provençal (arpetan)
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
@@ -934,7 +931,6 @@ $messages['frp'] = array(
 	'validator_error_required_missing' => 'Lo paramètre nècèssèro $1 est pas balyê.',
 	'validator-error-override-argument' => 'La programeria at tâchiê de remplaciér lo paramètre $1 (valor : $2) avouéc la valor « $3 »',
 	'validator-type-string' => 'tèxto',
-	'validator-type-number' => 'nombro',
 	'validator-type-integer' => 'nombro entiér',
 	'validator-type-float' => 'nombro',
 	'validator-type-boolean' => 'ouè/nan',
@@ -1085,7 +1081,6 @@ $messages['gsw'] = array(
 	'validator_error_required_missing' => 'Dr Paramter $1, wu aagforderet woren isch, wird nit z Verfiegig gstellt.',
 	'validator-error-override-argument' => 'S isch versuecht wore, dr Parameter $1 (Wärt: $2) mit em Wärt „$3“ z iberschryybe',
 	'validator-type-string' => 'Täxt',
-	'validator-type-number' => 'Zahl',
 	'validator-type-integer' => 'Ganzzahl',
 	'validator-type-float' => 'Zahl',
 	'validator-type-boolean' => 'Jo/Nei',
@@ -1341,7 +1336,7 @@ staj "listerrors" deleka na stronje abo blisko kónca strony, zo by wšě zmylki
 	'validator-message-nodesc' => 'Žane wopisanje podate',
 );
 
-/** Hungarian (Magyar)
+/** Hungarian (magyar)
  * @author Dani
  * @author Glanthor Reviol
  */
@@ -1355,7 +1350,6 @@ $messages['hu'] = array(
 	'validator_error_unknown_argument' => 'A(z) $1 nem érvényes paraméter.',
 	'validator_error_required_missing' => 'A(z) $1 kötelező paraméter nem lett megadva.',
 	'validator-type-string' => 'szöveg',
-	'validator-type-number' => 'szám',
 	'validator-type-integer' => 'egész szám',
 	'validator-type-float' => 'szám',
 	'validator-type-boolean' => 'igen/nem',
@@ -1395,7 +1389,7 @@ $messages['hu'] = array(
 	'validator_list_omitted' => 'A(z) $1 {{PLURAL:$2|érték mellőzve lett.|értékek mellőzve lettek.}}',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -1412,7 +1406,6 @@ $messages['ia'] = array(
 	'validator_error_required_missing' => 'Le parametro requisite $1 non ha essite fornite.',
 	'validator-error-override-argument' => 'Tentava supplantar le parametro $1 (valor: $2) con le valor "$3"',
 	'validator-type-string' => 'texto',
-	'validator-type-number' => 'numero',
 	'validator-type-integer' => 'numero integre',
 	'validator-type-float' => 'numero',
 	'validator-type-boolean' => 'si/no',
@@ -1504,7 +1497,6 @@ $messages['id'] = array(
 	'validator_error_required_missing' => 'Parameter $1 yang diperlukan tidak diberikan.',
 	'validator-error-override-argument' => 'Mencoba menimpa parameter $1 (nilai: $2) dengan nilai "$3"',
 	'validator-type-string' => 'teks',
-	'validator-type-number' => 'nomor',
 	'validator-type-integer' => 'bilangan bulat',
 	'validator-type-float' => 'nomor',
 	'validator-type-boolean' => 'ya/tidak',
@@ -1568,7 +1560,7 @@ tempatkan listerrors pada atau di dekat bagian bawah halaman untuk mendapatkan s
 	'validator_list_omitted' => '{{PLURAL:$2|Nilai|Nilai}} $1 {{PLURAL:$2|telah|telah}} dihapus.',
 );
 
-/** Italian (Italiano)
+/** Italian (italiano)
  * @author Beta16
  * @author Civvì
  * @author HalphaZ
@@ -1585,7 +1577,6 @@ $messages['it'] = array(
 	'validator_error_unknown_argument' => '$1 non è un parametro valido.',
 	'validator_error_required_missing' => 'Il parametro richiesto $1 non è stato fornito.',
 	'validator-type-string' => 'testo',
-	'validator-type-number' => 'numero',
 	'validator-type-integer' => 'numero intero',
 	'validator-type-float' => 'numero',
 	'validator-type-boolean' => 'sì/no',
@@ -1711,7 +1702,6 @@ $messages['ksh'] = array(
 	'validator_error_required_missing' => 'Dä Parameeter $1 moß aanjejovve sin, un fählt.',
 	'validator-error-override-argument' => 'Versooht, dä Parrameeter $1 (mem Wäät: $2) met „$3“ ze övverschriive.',
 	'validator-type-string' => 'Täx',
-	'validator-type-number' => 'Zahl',
 	'validator-type-integer' => 'janze Zahl (ohne Komma!)',
 	'validator-type-float' => 'Zahl (met Komma)',
 	'validator-type-boolean' => 'Joh udder Nää',
@@ -1784,7 +1774,6 @@ $messages['lb'] = array(
 	'validator_error_required_missing' => 'Den obligatoresche Parameter $1 war net derbäi.',
 	'validator-error-override-argument' => 'huet versicht de Parameter $1 (Wäert: $2) mam Wäert "$3" z\'iwwerschreiwen',
 	'validator-type-string' => 'Text',
-	'validator-type-number' => 'Zuel',
 	'validator-type-integer' => 'Ganz Zuel',
 	'validator-type-float' => 'Zuel',
 	'validator-type-boolean' => 'Jo/Neen',
@@ -1834,7 +1823,7 @@ En akzeptéiert nëmmen {{PLURAL:$5|dëse Wäert|dës Wäerter}}: $3 (an {{PLURA
 	'validator_list_omitted' => "{{PLURAL:$2|De Wäert|D'Wäerter}} $1 {{PLURAL:$2|gouf|goufe}} vergiess.",
 );
 
-/** Latvian (Latviešu)
+/** Latvian (latviešu)
  * @author GreenZeb
  */
 $messages['lv'] = array(
@@ -2137,7 +2126,7 @@ Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
 	'validator-message-nodesc' => 'Geen beschrijving',
 );
 
-/** Occitan (Occitan)
+/** Occitan (occitan)
  * @author Cedric31
  * @author Jfblanc
  */
@@ -2166,12 +2155,11 @@ $messages['os'] = array(
  */
 $messages['pfl'] = array(
 	'validator-type-string' => 'Tegschd',
-	'validator-type-number' => 'Numma',
 	'validator-type-boolean' => 'Ja/Nä',
 	'validator-type-char' => 'Zaische',
 );
 
-/** Polish (Polski)
+/** Polish (polski)
  * @author BeginaFelicysym
  * @author Fizykaa
  * @author Sp5uhe
@@ -2191,7 +2179,6 @@ $messages['pl'] = array(
 	'validator_error_required_missing' => 'Obowiązkowy parametr $1 nie został przekazany.',
 	'validator-error-override-argument' => 'Próba nadpisania parametru $1 o wartości „$2” nową wartością „$3”',
 	'validator-type-string' => 'tekst',
-	'validator-type-number' => 'liczba',
 	'validator-type-integer' => 'liczba całkowita',
 	'validator-type-float' => 'liczba rzeczywista',
 	'validator-type-boolean' => 'tak lub nie',
@@ -2282,7 +2269,6 @@ $messages['pms'] = array(
 	'validator_error_required_missing' => "Ël paràmetr obligatòri $1 a l'é pa dàit.",
 	'validator-error-override-argument' => 'Provà a coaté ël paràmetr $1 (valor: $2) con ël valor "$3"',
 	'validator-type-string' => 'test',
-	'validator-type-number' => 'nùmer',
 	'validator-type-integer' => 'nùmer antregh',
 	'validator-type-float' => 'nùmer',
 	'validator-type-boolean' => 'bò/nò',
@@ -2354,7 +2340,6 @@ A aceta mach {{PLURAL:$3|sto valor|sti valor}}: $2 (e $4 {{PLURAL:$4|valor|valor
  */
 $messages['ps'] = array(
 	'validator-type-string' => 'متن',
-	'validator-type-number' => 'شمېره',
 	'validator-type-float' => 'شمېره',
 	'validator-type-boolean' => 'هو/نه',
 	'validator-type-char' => 'لوښه',
@@ -2363,7 +2348,7 @@ $messages['ps'] = array(
 	'validator-describe-header-default' => 'تلواليز',
 );
 
-/** Portuguese (Português)
+/** Portuguese (português)
  * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
@@ -2383,7 +2368,6 @@ $messages['pt'] = array(
 	'validator_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
 	'validator-error-override-argument' => 'Tentativa de sobrepor o parâmetro $1 (valor: $2) com o valor "$3"',
 	'validator-type-string' => 'texto',
-	'validator-type-number' => 'número',
 	'validator-type-integer' => 'número inteiro',
 	'validator-type-float' => 'número',
 	'validator-type-boolean' => 'sim/não',
@@ -2451,7 +2435,7 @@ Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PL
 	'validator_list_omitted' => '{{PLURAL:$2|O valor $1 foi omitido|Os valores $1 foram omitidos}}.',
 );
 
-/** Brazilian Portuguese (Português do Brasil)
+/** Brazilian Portuguese (português do Brasil)
  * @author Giro720
  * @author Luckas Blade
  */
@@ -2469,7 +2453,6 @@ $messages['pt-br'] = array(
 	'validator_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
 	'validator-error-override-argument' => 'Tentativa de sobrepor o parâmetro $1 (valor: $2) com o valor "$3"',
 	'validator-type-string' => 'texto',
-	'validator-type-number' => 'número',
 	'validator-type-integer' => 'número inteiro',
 	'validator-listerrors-errors' => 'Erros',
 	'validator-listerrors-minor' => 'Menor',
@@ -2503,7 +2486,7 @@ Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PL
 	'validator_list_omitted' => '{{PLURAL:$2|O valor $1 foi omitido|Os valores $1 foram omitidos}}.',
 );
 
-/** Romanian (Română)
+/** Romanian (română)
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -2517,7 +2500,7 @@ $messages['ro'] = array(
 	'validator_error_must_be_integer' => 'Parametrul $1 poate fi doar un număr întreg.',
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author Aleksandrit
  * @author Eleferen
  * @author Haffman
@@ -2541,7 +2524,6 @@ $messages['ru'] = array(
 	'validator_error_required_missing' => 'Не указан обязательный параметр $1.',
 	'validator-error-override-argument' => 'Попытка переопределения параметра $1 (значение: $2) значением «$3»',
 	'validator-type-string' => 'текст',
-	'validator-type-number' => 'число',
 	'validator-type-integer' => 'целое число',
 	'validator-type-float' => 'число',
 	'validator-type-boolean' => 'да/нет',
@@ -2624,19 +2606,19 @@ $messages['si'] = array(
 	'validator_error_accepts_only' => '$1 පරාමිතිය විසින් පිළිගනු ලබන්නේ {{PLURAL:$3|මෙම අගය|මෙම අගයන්}}: $2 පමණි.',
 );
 
-/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'validator-listerrors-severity-message' => '($1) $2',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'validator-listerrors-severity-message' => '($1) $2',
 );
 
-/** Swedish (Svenska)
+/** Swedish (svenska)
  * @author Fluff
  * @author Ozp
  * @author Per
@@ -2672,7 +2654,6 @@ $messages['te'] = array(
 	'validator_error_unknown_argument' => '$1 అనేది సరైన పరామితి కాదు.',
 	'validator_error_required_missing' => 'తప్పకుండా కావాల్సిన $1 పరామితిని ఇవ్వలేదు.',
 	'validator-type-string' => 'పాఠ్యం',
-	'validator-type-number' => 'సంఖ్య',
 	'validator-type-integer' => 'పూర్ణ సంఖ్య',
 	'validator-type-float' => 'సంఖ్య',
 	'validator-type-boolean' => 'అవును/కాదు',
@@ -2710,7 +2691,6 @@ $messages['tl'] = array(
 	'validator_error_required_missing' => 'Hindi ibinigay ang kailangang parametro na $1.',
 	'validator-error-override-argument' => 'Sinubukang pangingibabawan ang parametrong $1 (halaga: $2) ng halagang "$3"',
 	'validator-type-string' => 'teksto',
-	'validator-type-number' => 'bilang',
 	'validator-type-integer' => 'buong bilang',
 	'validator-type-float' => 'bilang',
 	'validator-type-boolean' => 'oo/hindi',
@@ -2782,7 +2762,7 @@ $messages['tr'] = array(
 	'validator_list_error_must_be_number' => '$1 parametresi sadece sayı içerebilir.',
 );
 
-/** Ukrainian (Українська)
+/** Ukrainian (українська)
  * @author NickK
  * @author Prima klasy4na
  */
@@ -2821,7 +2801,7 @@ $messages['vi'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|Giá trị|Các giá trị}} “$1” bị bỏ qua.',
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文（简体）‬)
  * @author Hydra
  * @author Richarddong
  * @author Wilsonmess
@@ -2840,7 +2820,6 @@ $messages['zh-hans'] = array(
 	'validator_error_required_missing' => '未能提供必要的参数 $1 。',
 	'validator-error-override-argument' => '试图用 "$3" 覆盖参数 $1 的值（$2）',
 	'validator-type-string' => '文本',
-	'validator-type-number' => '号码',
 	'validator-type-float' => '浮点数',
 	'validator-type-boolean' => '布尔值',
 	'validator-type-char' => '字符',
@@ -2868,7 +2847,7 @@ $messages['zh-hans'] = array(
 	'validator_list_error_invalid_argument' => '参数 $1 的一个或多个值不合法。',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (‪中文（繁體）‬)
  * @author Mark85296341
  * @author Wrightbus
  */
@@ -2881,7 +2860,6 @@ $messages['zh-hant'] = array(
 	'validator_error_required_missing' => '未能提供必要的參數 $1 。',
 	'validator-error-override-argument' => '試圖用 "$3" 覆蓋參數 $1 的值（$2）',
 	'validator-type-string' => '文本',
-	'validator-type-number' => '號碼',
 	'validator-type-float' => '浮點數',
 	'validator-type-boolean' => '布爾值',
 	'validator-type-char' => '字符',
