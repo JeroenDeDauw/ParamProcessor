@@ -665,6 +665,16 @@ abstract class ParamDefinition implements IParamDefinition {
 		if ( array_key_exists( 'manipulatedefault', $param ) ) {
 			$this->setDoManipulationOfDefault( $param['manipulatedefault'] );
 		}
+
+		// Backward compatibility code, will be removed in 0.7.
+		if ( array_key_exists( 'manipulations', $param ) ) {
+			$this->addManipulations( $param['manipulations'] );
+		}
+
+		// Backward compatibility code, will be removed in 0.7.
+		if ( array_key_exists( 'criteria', $param ) ) {
+			$this->addCriteria( $param['criteria'] );
+		}
 	}
 
 	/**
@@ -849,8 +859,12 @@ abstract class ParamDefinition implements IParamDefinition {
 	public static function getCleanDefinitions( array $definitions ) {
 		$cleanList = array();
 
-		foreach ( $definitions as $definition ) {
+		foreach ( $definitions as $key => $definition ) {
 			if ( is_array( $definition ) ) {
+				if ( !array_key_exists( 'name', $definition ) && is_string( $key ) ) {
+					$definition['name'] = $key;
+				}
+
 				$definition = ParamDefinition::newFromArray( $definition );
 			}
 			elseif ( $definition instanceof Parameter ) {

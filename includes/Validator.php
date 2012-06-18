@@ -330,7 +330,7 @@ class Validator {
 	 * @param array $resultingParamSet
 	 */
 	protected function getParamsToProcess( array $initialParamSet, array $resultingParamSet ) {
-		if ( count( $initialParamSet ) == 0 ) {
+		if ( $initialParamSet === array() ) {
 			$this->paramsToHandle = array_keys( $resultingParamSet );
 		}
 		else {
