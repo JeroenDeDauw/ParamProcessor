@@ -681,6 +681,14 @@ class Parameter {
 	public function wasSetToDefault() {
 		return $this->defaulted;
 	}
+
+	/**
+	 * @since 0.5
+	 * @param boolean $defaulted
+	 */
+	public function setWasSetToDefault( $defaulted ) {
+		$this->defaulted = $defaulted;
+	}
 	
 	/**
 	 * Returns the criteria that apply to the list as a whole.

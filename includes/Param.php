@@ -241,10 +241,7 @@ class Param implements IParam {
 		$parameter->setValue( $this->getValue() );
 		$parameter->originalName = $this->setCount === 0 ? $this->getName() : $this->getOriginalName();
 
-//		$parameter->setUserValue(
-//			$this->getName(),
-//			is_array( $this->getValue() ) ? implode( $this->definition->getDelimiter(), $this->getValue() ) : $this->getValue()
-//		);
+		$parameter->setWasSetToDefault( $this->wasSetToDefault() );
 
 		return $parameter;
 	}
