@@ -216,7 +216,7 @@ abstract class ParserHook {
 	}
 
 	/**
-	 * returns an array with the names for the parser hook.
+	 * Returns an array with the names for the parser hook.
 	 *
 	 * @since 0.4
 	 *

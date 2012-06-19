@@ -26,15 +26,6 @@ class TitleParam extends ParamDefinition {
 	protected $title = array();
 
 	/**
-	 * Returns an identifier for the parameter type.
-	 * @since 0.5
-	 * @return string
-	 */
-	public function getType() {
-		return 'title';
-	}
-
-	/**
 	 * @since 0.5
 	 * @param boolean $hasToExist
 	 */

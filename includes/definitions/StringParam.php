@@ -43,15 +43,6 @@ class StringParam extends ParamDefinition {
 	protected $canBeEmpty = true;
 
 	/**
-	 * Returns an identifier for the parameter type.
-	 * @since 0.5
-	 * @return string
-	 */
-	public function getType() {
-		return 'string';
-	}
-
-	/**
 	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5

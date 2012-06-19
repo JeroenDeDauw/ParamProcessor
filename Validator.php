@@ -124,3 +124,12 @@ $wgHooks['UnitTestsList'][] = 'ValidatorHooks::registerUnitTests';
 
 
 $egValidatorSettings = array();
+
+$egParamDefinitions = array(
+	'boolean' => 'BoolParam', // Parameter::TYPE_BOOLEAN
+	'char' => 'CharParam', // Parameter::TYPE_CHAR
+	'float' => 'FloatParam', // Parameter::TYPE_FLOAT
+	'integer' => 'IntParam', // Parameter::TYPE_INTEGER
+	'string' => 'StringParam', // Parameter::TYPE_STRING
+	'title' => 'TitleParam', // Parameter::TYPE_TITLE
+);

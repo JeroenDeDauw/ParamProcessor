@@ -17,23 +17,6 @@
 abstract class ParamDefinition implements IParamDefinition {
 
 	/**
-	 * Maps the type identifiers to their corresponding classes.
-	 * TODO: have registration system
-	 *
-	 * @since 0.5
-	 *
-	 * @var array
-	 */
-	protected static $typeMap = array(
-		'boolean' => 'BoolParam', // Parameter::TYPE_BOOLEAN
-		'char' => 'CharParam', // Parameter::TYPE_CHAR
-		'float' => 'FloatParam', // Parameter::TYPE_FLOAT
-		'integer' => 'IntParam', // Parameter::TYPE_INTEGER
-		'string' => 'StringParam', // Parameter::TYPE_STRING
-		'title' => 'TitleParam', // Parameter::TYPE_TITLE
-	);
-
-	/**
 	 * Indicates whether parameters that are provided more then once  should be accepted,
 	 * and use the first provided value, or not, and generate an error.
 	 *
@@ -183,6 +166,18 @@ abstract class ParamDefinition implements IParamDefinition {
 		$this->default = $default;
 		$this->message = $message;
 		$this->isList = $isList;
+
+		$this->postConstruct();
+	}
+
+	/**
+	 * Allows deriving classed to do additional stuff on instance construction
+	 * without having to get and pass all the constructor arguments.
+	 *
+	 * @since 0.5
+	 */
+	protected function postConstruct() {
+
 	}
 
 	/**
@@ -550,10 +545,21 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @param string $message
 	 * @param boolean $isList
 	 *
-	 * @return ParamDefinition
+	 * @return IParamDefinition
 	 */
 	public static function newFromType( $type, $name, $default, $message, $isList = false ) {
-		$class = self::$typeMap[$type];
+		static $typeMap = false;
+
+		if ( $typeMap === false ) {
+			global $egParamDefinitions;
+			$typeMap = $egParamDefinitions;
+		}
+
+		if ( !array_key_exists( $type, $typeMap ) ) {
+			throw new MWException( 'Unknown parameter type "' . $type . '".' );
+		}
+
+		$class = $typeMap[$type];
 
 		return new $class(
 			$name,
@@ -569,7 +575,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 *
 	 * @param Parameter $parameter
 	 *
-	 * @return ParamDefinition
+	 * @return IParamDefinition
 	 */
 	public static function newFromParameter( Parameter $parameter ) {
 		$def = self::newFromType(
@@ -603,7 +609,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @param array $param
 	 * @param bool $getMad
 	 *
-	 * @return ParamDefinition|false
+	 * @return IParamDefinition|false
 	 * @throws MWException
 	 */
 	public static function newFromArray( array $param, $getMad = true ) {
@@ -880,6 +886,28 @@ abstract class ParamDefinition implements IParamDefinition {
 		}
 
 		return $cleanList;
+	}
+
+	/**
+	 * @see IParamDefinition::getType()
+	 *
+	 * @since 0.5
+	 *
+	 * @return string
+	 */
+	public function getType() {
+		static $typeMap = false;
+
+		if ( $typeMap === false ) {
+			global $egParamDefinitions;
+			$typeMap = array_flip( $egParamDefinitions );
+		}
+
+		if ( !array_key_exists( get_called_class(), $typeMap ) ) {
+			throw new MWException( 'Parameter class "' . get_called_class() . '" is not registered in $egParamDefinitions.' );
+		}
+
+		return $typeMap[get_called_class()];
 	}
 
 }

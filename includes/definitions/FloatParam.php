@@ -16,15 +16,6 @@
 class FloatParam extends NumericParam {
 
 	/**
-	 * Returns an identifier for the parameter type.
-	 * @since 0.5
-	 * @return string
-	 */
-	public function getType() {
-		return 'float';
-	}
-
-	/**
 	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5

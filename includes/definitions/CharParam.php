@@ -16,15 +16,6 @@
 class CharParam extends StringParam {
 
 	/**
-	 * Returns an identifier for the parameter type.
-	 * @since 0.5
-	 * @return string
-	 */
-	public function getType() {
-		return 'char';
-	}
-
-	/**
 	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5

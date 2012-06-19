@@ -19,15 +19,6 @@ class BoolParam extends ParamDefinition {
 	protected $false = array( 'no', 'off', '0' );
 
 	/**
-	 * Returns an identifier for the parameter type.
-	 * @since 0.5
-	 * @return string
-	 */
-	public function getType() {
-		return 'boolean';
-	}
-
-	/**
 	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 0.5

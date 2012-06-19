@@ -25,15 +25,6 @@ class IntParam extends NumericParam {
 	protected $allowNegatives = true;
 
 	/**
-	 * Returns an identifier for the parameter type.
-	 * @since 0.5
-	 * @return string
-	 */
-	public function getType() {
-		return 'integer';
-	}
-
-	/**
 	 * Sets if negative values should be allowed or not.
 	 *
 	 * @since 0.5
@@ -90,7 +81,6 @@ class IntParam extends NumericParam {
 	 * @since 0.5
 	 *
 	 * @param array $param
-	 * @throws MWException
 	 */
 	public function setArrayValues( array $param ) {
 		parent::setArrayValues( $param );
