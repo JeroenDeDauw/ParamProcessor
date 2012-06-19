@@ -13,28 +13,115 @@
  */
 interface IParam {
 
-	function __construct( IParamDefinition $definition );
+	/**
+	 * Constructor.
+	 *
+	 * @since 0.5
+	 *
+	 * @param IParamDefinition $definition
+	 */
+	public function __construct( IParamDefinition $definition );
 
-	function setUserValue( $paramName, $paramValue );
+	/**
+	 * Sets and cleans the original value and name.
+	 *
+	 * @since 0.5
+	 *
+	 * @param string $paramName
+	 * @param string $paramValue
+	 */
+	public function setUserValue( $paramName, $paramValue );
 
-	function setValue( $value );
+	/**
+	 * Sets the value.
+	 *
+	 * @since 0.5
+	 *
+	 * @param mixed $value
+	 */
+	public function setValue( $value );
 
-	function validate( array /* of IParamDefinition */ $definitions, array /* of IParam */ $params );
+	/**
+	 * Validates the parameter value and sets the value to it's default when errors occur.
+	 *
+	 * @since 0.5
+	 *
+	 * @param $definitions array of IParamDefinition
+	 * @param $params array of IParam
+	 */
+	public function validate( array $definitions, array $params );
 
-	function format( array &$definitions, array $params );
+	/**
+	 * Applies the parameter manipulations.
+	 *
+	 * @since 0.5
+	 *
+	 * @param $definitions array of IParamDefinition
+	 * @param $params array of IParam
+	 */
+	public function format( array &$definitions, array $params );
 
-	function getOriginalName();
+	/**
+	 * Returns the original use-provided name.
+	 *
+	 * @since 0.5
+	 *
+	 * @return string
+	 */
+	public function getOriginalName();
 
-	function getOriginalValue();
+	/**
+	 * Returns the original use-provided value.
+	 *
+	 * @since 0.5
+	 *
+	 * @return string
+	 */
+	public function getOriginalValue();
 
-	function getErrors();
+	/**
+	 * Returns all validation errors that occurred so far.
+	 *
+	 * @since 0.5
+	 *
+	 * @return array of ValidationError
+	 */
+	public function getErrors();
 
-	function wasSetToDefault();
+	/**
+	 * Gets if the parameter was set to it's default.
+	 *
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function wasSetToDefault();
 
-	function getDefinition();
+	/**
+	 * Returns the IParamDefinition this IParam was constructed from.
+	 *
+	 * @since 0.5
+	 *
+	 * @return IParamDefinition
+	 */
+	public function getDefinition();
 
-	function &getValue();
+	/**
+	 * Returns the parameters value.
+	 *
+	 * @since 0.5
+	 *
+	 * @return mixed
+	 */
+	public function &getValue();
 
-	function getName();
+	/**
+	 * Returns if the name of the parameter.
+	 *
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function getName();
 
 }

@@ -166,11 +166,11 @@ class Param implements IParam {
 	 *
 	 * @since 0.5
 	 *
-	 * @param $paramDefinitions array of ParamDefinition
-	 * @param $params array of Param
+	 * @param $definitions array of IParamDefinition
+	 * @param $params array of IParam
 	 */
-	public function validate( array /* of ParamDefinition */ $paramDefinitions, array /* of Param */ $params ) {
-		$this->doValidation( $paramDefinitions, $params );
+	public function validate( array $definitions, array $params ) {
+		$this->doValidation( $definitions, $params );
 	}
 
 	/**
@@ -411,6 +411,10 @@ class Param implements IParam {
 	}
 
 	/**
+	 * Returns the IParamDefinition this IParam was constructed from.
+	 *
+	 * @since 0.5
+	 *
 	 * @return IParamDefinition
 	 */
 	public function getDefinition() {
