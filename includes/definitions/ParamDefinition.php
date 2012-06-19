@@ -535,41 +535,6 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Creates a new instance of a ParamDefinition based on the provided type.
-	 *
-	 * @since 0.5
-	 *
-	 * @param string $type
-	 * @param string $name
-	 * @param mixed $default
-	 * @param string $message
-	 * @param boolean $isList
-	 *
-	 * @return IParamDefinition
-	 */
-	public static function newFromType( $type, $name, $default, $message, $isList = false ) {
-		static $typeMap = false;
-
-		if ( $typeMap === false ) {
-			global $egParamDefinitions;
-			$typeMap = $egParamDefinitions;
-		}
-
-		if ( !array_key_exists( $type, $typeMap ) ) {
-			throw new MWException( 'Unknown parameter type "' . $type . '".' );
-		}
-
-		$class = $typeMap[$type];
-
-		return new $class(
-			$name,
-			$default,
-			$message,
-			$isList
-		);
-	}
-
-	/**
 	 * @deprecated Compatibility helper, will be removed in 0.7.
 	 * @since 0.5
 	 *
@@ -896,18 +861,51 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @return string
 	 */
 	public function getType() {
-		static $typeMap = false;
+		global $egParamDefinitions;
 
-		if ( $typeMap === false ) {
-			global $egParamDefinitions;
-			$typeMap = array_flip( $egParamDefinitions );
+		static $classToType = false;
+
+		if ( $classToType === false ) {
+			$classToType = array_flip( $egParamDefinitions );
 		}
 
-		if ( !array_key_exists( get_called_class(), $typeMap ) ) {
-			throw new MWException( 'Parameter class "' . get_called_class() . '" is not registered in $egParamDefinitions.' );
+		if ( !array_key_exists( get_called_class(), $classToType ) ) {
+			$egParamDefinitions['class-' . get_called_class()] = get_called_class();
+			$classToType = false;
+			return $this->getType();
 		}
 
-		return $typeMap[get_called_class()];
+		return $classToType[get_called_class()];
+	}
+
+	/**
+	 * Creates a new instance of a ParamDefinition based on the provided type.
+	 *
+	 * @since 0.5
+	 *
+	 * @param string $type
+	 * @param string $name
+	 * @param mixed $default
+	 * @param string $message
+	 * @param boolean $isList
+	 *
+	 * @return IParamDefinition
+	 */
+	public static function newFromType( $type, $name, $default, $message, $isList = false ) {
+		global $egParamDefinitions;
+
+		if ( !array_key_exists( $type, $egParamDefinitions ) ) {
+			throw new MWException( 'Unknown parameter type "' . $type . '".' );
+		}
+
+		$class = $egParamDefinitions[$type];
+
+		return new $class(
+			$name,
+			$default,
+			$message,
+			$isList
+		);
 	}
 
 }
