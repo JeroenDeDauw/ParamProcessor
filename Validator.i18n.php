@@ -245,7 +245,7 @@ $messages['ar'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|القيمة|القيم}} $1 {{PLURAL:$2|تم|تم}} مسحها.',
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -268,6 +268,10 @@ $messages['be-tarask'] = array(
 	'validator-type-float' => 'лік',
 	'validator-type-boolean' => 'так/не',
 	'validator-type-char' => 'сымбаль',
+	'validator-type-title' => 'назва',
+	'validator-type-string-list' => 'сьпіс тэкстаў',
+	'validator-type-integer-list' => 'сьпіс цэлых лікаў',
+	'validator-type-float-list' => 'сьпіс лічбаў',
 	'validator-listerrors-errors' => 'Памылкі',
 	'validator-listerrors-minor' => 'Дробная',
 	'validator-listerrors-low' => 'Малая',
@@ -1410,6 +1414,13 @@ $messages['ia'] = array(
 	'validator-type-float' => 'numero',
 	'validator-type-boolean' => 'si/no',
 	'validator-type-char' => 'character',
+	'validator-type-title' => 'titulo',
+	'validator-type-string-list' => 'lista de textos',
+	'validator-type-integer-list' => 'lista de numeros integre',
+	'validator-type-float-list' => 'lista de numeros',
+	'validator-type-boolean-list' => 'lista de si/no',
+	'validator-type-char-list' => 'lista de characteres',
+	'validator-type-title-list' => 'lista de titulos',
 	'validator-listerrors-errors' => 'Errores',
 	'validator-listerrors-minor' => 'Minor',
 	'validator-listerrors-low' => 'Basse',
@@ -1475,6 +1486,7 @@ Illo accepta solmente iste {{PLURAL:$3|valor|valores}}: $2. (e $4 {{PLURAL:$4|va
 	'validator-error-accepts-only-omitted' => 'Le valor "$2" non es valide pro le parametro $1.
 Illo accepta solmente iste {{PLURAL:$5|valor|valores}}: $3 (e $4 {{PLURAL:$4|valor|valores}} omittite).',
 	'validator_list_omitted' => 'Le {{PLURAL:$2|valor|valores}} $1 ha essite omittite.',
+	'validator-message-nodesc' => 'Sin description',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1778,6 +1790,11 @@ $messages['lb'] = array(
 	'validator-type-float' => 'Zuel',
 	'validator-type-boolean' => 'Jo/Neen',
 	'validator-type-char' => 'Zeechen',
+	'validator-type-title' => 'Titel',
+	'validator-type-string-list' => 'Lëscht vun den Texter',
+	'validator-type-float-list' => 'Lëscht vun Zuelen',
+	'validator-type-boolean-list' => 'Jo/Neen Lëscht',
+	'validator-type-title-list' => 'Lëscht vun Titelen',
 	'validator-listerrors-errors' => 'Feeler',
 	'validator-listerrors-minor' => 'Marginal',
 	'validator-listerrors-low' => 'Niddreg',
@@ -1821,6 +1838,7 @@ En akzeptéiert nëmmen {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2.',
 	'validator-error-accepts-only-omitted' => 'De Wäert "$2" ass net valabel fir de Parameter $1.
 En akzeptéiert nëmmen {{PLURAL:$5|dëse Wäert|dës Wäerter}}: $3 (an {{PLURAL:$4|een ausgeloossene Wäert|$4 ausgeloosse Wäerter}}).',
 	'validator_list_omitted' => "{{PLURAL:$2|De Wäert|D'Wäerter}} $1 {{PLURAL:$2|gouf|goufe}} vergiess.",
+	'validator-message-nodesc' => 'Et gëtt keng Beschreiwung',
 );
 
 /** Latvian (latviešu)
