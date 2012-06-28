@@ -113,7 +113,7 @@ abstract class NumericParam extends ParamDefinition {
 		}
 
 		if ( array_key_exists( 'upperbound', $param ) ) {
-			$this->setLowerBound( $param['upperbound'] );
+			$this->setUpperBound( $param['upperbound'] );
 		}
 	}
 
