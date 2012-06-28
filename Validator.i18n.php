@@ -1697,6 +1697,47 @@ $messages['ka'] = array(
 	'validator-describe-syntax' => 'სინტაქსი',
 );
 
+/** Korean (한국어)
+ * @author 아라
+ */
+$messages['ko'] = array(
+	'validator-warning' => '경고: $1',
+	'validator-error' => '오류: $1',
+	'validator-fatal-error' => '치명적인 오류: $1',
+	'validator_error_unknown_argument' => '$1(은)는 올바른 변수가 아닙니다.',
+	'validator-type-string' => '텍스트',
+	'validator-type-integer' => '정수',
+	'validator-type-float' => '숫자',
+	'validator-type-boolean' => '예/아니오',
+	'validator-type-char' => '글자',
+	'validator-type-title' => '제목',
+	'validator-type-string-list' => '텍스트 목록',
+	'validator-type-integer-list' => '정수 목록',
+	'validator-type-float-list' => '숫자 목록',
+	'validator-type-boolean-list' => '예/아니오 목록',
+	'validator-type-char-list' => '글자 목록',
+	'validator-type-title-list' => '제목 목록',
+	'validator-listerrors-errors' => '오류',
+	'validator-listerrors-minor' => '사소',
+	'validator-listerrors-low' => '낮음',
+	'validator-listerrors-normal' => '보통',
+	'validator-listerrors-high' => '높음',
+	'validator-listerrors-fatal' => '심각',
+	'validator-describe-descriptionmsg' => "'''설명''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|별칭}}''': $1",
+	'validator-describe-listtype' => '$1 항목의 목록',
+	'validator-describe-empty' => '비었음',
+	'validator-describe-required' => '필수',
+	'validator-describe-header-parameter' => '변수',
+	'validator-describe-header-aliases' => '별칭',
+	'validator-describe-header-type' => '종류',
+	'validator-describe-header-default' => '기본값',
+	'validator-describe-header-description' => '설명',
+	'validator-describe-parameters' => '변수',
+	'validator-describe-syntax' => '구문',
+	'validator-message-nodesc' => '설명을 제공하지 않았습니다',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
