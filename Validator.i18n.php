@@ -1776,6 +1776,9 @@ $messages['ko'] = array(
 	'validator-listerrors-normal' => '보통',
 	'validator-listerrors-high' => '높음',
 	'validator-listerrors-fatal' => '심각',
+	'validator-listerrors-description' => '변수기를 통해 추가한 파서 훅에서 발생한 오류(와 경고) 목록입니다.
+파서 훅에 대한 목록만 오류 목록이 삽입하는 곳에 추가됩니다.
+모든 오류를 얻으려면 문서 하단이나 가까운 오류 목록에 넣으십시오.',
 	'validator-listerrors-par-minseverity' => '이에 대한 문제의 최소 심각도를 나타내야 합니다.',
 	'validator-describe-description' => '변수기를 통해 지정한 하나 이상의 파서 훅에 대한 문서를 만듭니다.',
 	'validator-describe-notfound' => '"$1" 핸들에는 파서 훅이 없습니다.',
