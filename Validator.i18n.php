@@ -143,7 +143,7 @@ $messages['qqq'] = array(
 * $1 is the number of syntax errors, for PLURAL support (optional)',
 	'validator-listerrors-errors' => '{{Identical|Error}}',
 	'validator-listerrors-severity-message' => '{{Optional}}
-* $1 = severit
+* $1 = severity
 * $2 = message',
 	'validator-listerrors-normal' => '{{Identical|Normal}}',
 	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
@@ -518,6 +518,7 @@ $messages['cs'] = array(
  * @author Kghbln
  * @author LWChris
  * @author Metalhead64
+ * @author Purodha
  */
 $messages['de'] = array(
 	'validator-desc' => 'Ermöglicht anderen Softwareerweiterungen die Verarbeitung von Parametern',
@@ -540,7 +541,7 @@ $messages['de'] = array(
 	'validator-type-title' => 'Titel',
 	'validator-type-string-list' => 'Textliste',
 	'validator-type-integer-list' => 'Liste ganzer Zahlen',
-	'validator-type-float-list' => 'Ziffernliste',
+	'validator-type-float-list' => 'Liste von Zahlen',
 	'validator-type-boolean-list' => 'Ja-Nein-Liste',
 	'validator-type-char-list' => 'Zeichen auflisten',
 	'validator-type-title-list' => 'Titelliste',
@@ -1856,6 +1857,11 @@ $messages['ksh'] = array(
 	'validator-type-float' => 'Zahl (met Komma)',
 	'validator-type-boolean' => 'Joh udder Nää',
 	'validator-type-char' => 'Zeiche, Zeffer, Boochshtaabe,&nbsp;…',
+	'validator-type-title' => 'Tittel',
+	'validator-type-string-list' => 'Lėß met Täxte',
+	'validator-type-integer-list' => 'Lėß met janze Zahle',
+	'validator-type-float-list' => 'Lėß met Zahle',
+	'validator-type-boolean-list' => 'Lėß met Joh udder Nää',
 	'validator-listerrors-errors' => 'Fähler',
 	'validator-listerrors-minor' => 'Bahl ejaal',
 	'validator-listerrors-low' => 'Kleineshkeit',
