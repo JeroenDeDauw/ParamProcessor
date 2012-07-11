@@ -624,7 +624,7 @@ $messages['diq'] = array(
 	'validator-describe-header-type' => 'Babet',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -972,7 +972,7 @@ $messages['frp'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|La valor|Les valors}} $1 {{PLURAL:$2|at étâ oubliâ|ont étâ oubliâs}}.',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -1248,7 +1248,7 @@ $messages['he'] = array(
 	'validator-message-nodesc' => 'ללא תיאור',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -2101,9 +2101,8 @@ $messages['ms'] = array(
 	'validator-describe-header-default' => 'Asali',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+/** Norwegian Bokmål (‪norsk (bokmål)‬)
  * @author Event
- * @author Jon Harald Søby
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
@@ -2120,7 +2119,6 @@ $messages['nb'] = array(
 	'validator_error_required_missing' => 'Den nødvendige parameteren «$1» er ikke angitt.',
 	'validator-error-override-argument' => 'Prøvde å overkjøre parameter $1 (verdi: $2) med verdien «$3»',
 	'validator-type-string' => 'tekst',
-	'validator-type-number' => 'tall',
 	'validator-type-integer' => 'heltall',
 	'validator-type-float' => 'tall',
 	'validator-type-boolean' => 'ja/nei',
