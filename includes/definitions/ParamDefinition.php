@@ -869,13 +869,13 @@ abstract class ParamDefinition implements IParamDefinition {
 			$classToType = array_flip( $egParamDefinitions );
 		}
 
-		if ( !array_key_exists( get_called_class(), $classToType ) ) {
-			$egParamDefinitions['class-' . get_called_class()] = get_called_class();
+		if ( !array_key_exists( get_class(), $classToType ) ) {
+			$egParamDefinitions['class-' . get_class()] = get_class();
 			$classToType = false;
 			return $this->getType();
 		}
 
-		return $classToType[get_called_class()];
+		return $classToType[get_class()];
 	}
 
 	/**
