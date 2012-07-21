@@ -203,7 +203,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns the parameter name aliases.
+	 * @see IParamDefinition::getAliases
 	 *
 	 * @since 0.5
 	 *
@@ -214,7 +214,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns if the parameter has a certain alias.
+	 * @see IParamDefinition::hasAlias
 	 *
 	 * @since 0.5
 	 *
@@ -227,7 +227,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns if the parameter has a certain dependency.
+	 * @see IParamDefinition::hasDependency
 	 *
 	 * @since 0.5
 	 *
@@ -251,8 +251,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Sets the default parameter value. Null indicates no default,
-	 * and therefore makes the parameter required.
+	 * @see IParamDefinition::setDefault
 	 *
 	 * @since 0.5
 	 *
@@ -265,7 +264,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns the default value.
+	 * @see IParamDefinition::getDefault
 	 *
 	 * @since 0.5
 	 *
@@ -289,7 +288,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns a message that will act as a description message for the parameter.
+	 * @see IParamDefinition::getMessage
 	 *
 	 * @since 0.5
 	 *
@@ -300,10 +299,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Sets a message for the parameter that will act as description.
-	 * This should be a message key, ie something that can be passed
-	 * to wfMsg. Not an actual text. If you do not have a message key,
-	 * but only a text, use setDescription instead.
+	 * @see IParamDefinition::setMessage
 	 *
 	 * @since 0.5
 	 *
@@ -314,7 +310,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Set if the parameter manipulations should be applied to the default value.
+	 * @see IParamDefinition::setDoManipulationOfDefault
 	 *
 	 * @since 0.5
 	 *
@@ -325,8 +321,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns if the parameter manipulations should be applied to the default value.
-	 * TODO: have fromArray support.
+	 * @see IParamDefinition::shouldManipulateDefault
 	 *
 	 * @since 0.5
 	 *
@@ -337,7 +332,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Adds one or more aliases for the parameter name.
+	 * @see IParamDefinition::addAliases
 	 *
 	 * @since 0.5
 	 *
@@ -349,7 +344,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Adds one or more ParameterCriterion.
+	 * @see IParamDefinition::addCriteria
 	 *
 	 * @since 0.5
 	 *
@@ -361,8 +356,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Adds one or more dependencies. There are the names of parameters
-	 * that need to be validated and formatted before this one.
+	 * @see IParamDefinition::addDependencies
 	 *
 	 * @since 0.5
 	 *
@@ -374,8 +368,9 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Adds one or more ParameterManipulation.
+	 * @see IParamDefinition::addManipulations
 	 *
+	 * @deprecated since 0.5, removal in 0.7
 	 * @since 0.5
 	 *
 	 * @param mixed $manipulations ParameterManipulation or array of ParameterManipulation
@@ -386,7 +381,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns the parameters main name.
+	 * @see IParamDefinition::getName
 	 *
 	 * @since 0.5
 	 *
@@ -414,8 +409,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns a list of dependencies the parameter has, in the form of
-	 * other parameter names.
+	 * @see IParamDefinition::getDependencies
 	 *
 	 * @since 0.5
 	 *
@@ -426,7 +420,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns if the parameter is a required one or not.
+	 * @see IParamDefinition::isRequired
 	 *
 	 * @since 0.5
 	 *
@@ -437,7 +431,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns if the parameter is a list or not.
+	 * @see IParamDefinition::isList
 	 *
 	 * @since 0.5
 	 *
@@ -448,7 +442,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns the parameter criteria.
+	 * @see IParamDefinition::getCriteria
 	 *
 	 * @deprecated since 0.5, removal in 0.7
 	 * @since 0.5
@@ -460,7 +454,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns the parameter manipulations.
+	 * @see IParamDefinition::getManipulations
 	 *
 	 * @deprecated since 0.5, removal in 0.7
 	 * @since 0.5
@@ -472,8 +466,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns the delimiter to use to split the raw value in case the
-	 * parameter is a list.
+	 * @see IParamDefinition::getDelimiter
 	 *
 	 * @since 0.5
 	 *
@@ -484,8 +477,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Sets the delimiter to use to split the raw value in case the
-	 * parameter is a list.
+	 * @see IParamDefinition::setDelimiter
 	 *
 	 * @since 0.5
 	 *
@@ -649,7 +641,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Validates the parameters value.
+	 * @see IParamDefinition::validate
 	 *
 	 * @since 0.5
 	 *
@@ -685,7 +677,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Formats the parameter value to it's final result.
+	 * @see IParamDefinition::format
 	 *
 	 * @since 0.5
 	 *

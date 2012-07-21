@@ -13,53 +13,245 @@
  */
 interface IParamDefinition {
 
-	function addAliases( $aliases );
+	/**
+	 * Adds one or more aliases for the parameter name.
+	 *
+	 * @since 0.5
+	 *
+	 * @param mixed $aliases string or array of string
+	 */
+	public function addAliases( $aliases );
 
-	function addCriteria( $criteria );
+	/**
+	 * Adds one or more ParameterCriterion.
+	 *
+	 * @since 0.5
+	 *
+	 * @param mixed $criteria ParameterCriterion or array of ParameterCriterion
+	 */
+	public function addCriteria( $criteria );
 
-	function addDependencies( $dependencies );
+	/**
+	 * Adds one or more dependencies. There are the names of parameters
+	 * that need to be validated and formatted before this one.
+	 *
+	 * @since 0.5
+	 *
+	 * @param mixed $dependencies string or array of string
+	 */
+	public function addDependencies( $dependencies );
 
-	function addManipulations( $manipulations );
+	/**
+	 * Adds one or more ParameterManipulation.
+	 *
+	 * @deprecated since 0.5, removal in 0.7
+	 * @since 0.5
+	 *
+	 * @param mixed $manipulations ParameterManipulation or array of ParameterManipulation
+	 */
+	public function addManipulations( $manipulations );
 
-	function format( IParam $param, array &$definitions, array $params );
+	/**
+	 * Formats the parameter value to it's final result.
+	 *
+	 * @since 0.5
+	 *
+	 * @param $param IParam
+	 * @param $definitions array of IParamDefinition
+	 * @param $params array of IParam
+	 */
+	public function format( IParam $param, array &$definitions, array $params );
 
-	function getAliases();
+	/**
+	 * Returns the parameter name aliases.
+	 *
+	 * @since 0.5
+	 *
+	 * @return array
+	 */
+	public function getAliases();
 
-	function getCriteria();
+	/**
+	 * Returns the parameter criteria.
+	 *
+	 * @deprecated since 0.5, removal in 0.7
+	 * @since 0.5
+	 *
+	 * @return array of ParameterCriterion
+	 */
+	public function getCriteria();
 
-	function getDefault();
+	/**
+	 * Returns the default value.
+	 *
+	 * @since 0.5
+	 *
+	 * @return mixed
+	 */
+	public function getDefault();
 
-	function getDelimiter();
+	/**
+	 * Returns the delimiter to use to split the raw value in case the
+	 * parameter is a list.
+	 *
+	 * @since 0.5
+	 *
+	 * @return string
+	 */
+	public function getDelimiter();
 
-	function getDependencies();
+	/**
+	 * Returns a list of dependencies the parameter has, in the form of
+	 * other parameter names.
+	 *
+	 * @since 0.5
+	 *
+	 * @return array
+	 */
+	public function getDependencies();
 
-	function getManipulations();
+	/**
+	 * Returns the parameter manipulations.
+	 *
+	 * @deprecated since 0.5, removal in 0.7
+	 * @since 0.5
+	 *
+	 * @return array of ParameterManipulation
+	 */
+	public function getManipulations();
 
-	function getMessage();
+	/**
+	 * Returns a message that will act as a description message for the parameter.
+	 *
+	 * @since 0.5
+	 *
+	 * @return string
+	 */
+	public function getMessage();
 
-	function getName();
+	/**
+	 * Returns the parameters main name.
+	 *
+	 * @since 0.5
+	 *
+	 * @return string
+	 */
+	public function getName();
 
-	function getType();
+	/**
+	 * Returns an identifier for the type of the parameter.
+	 *
+	 * @since 0.5
+	 *
+	 * @return string
+	 */
+	public function getType();
 
-	function hasAlias( $alias );
+	/**
+	 * Returns if the parameter has a certain alias.
+	 *
+	 * @since 0.5
+	 *
+	 * @param string $alias
+	 *
+	 * @return boolean
+	 */
+	public function hasAlias( $alias );
 
-	function hasDependency( $dependency );
+	/**
+	 * Returns if the parameter has a certain dependency.
+	 *
+	 * @since 0.5
+	 *
+	 * @param string $dependency
+	 *
+	 * @return boolean
+	 */
+	public function hasDependency( $dependency );
 
-	function isList();
+	/**
+	 * Returns if the parameter is a list or not.
+	 *
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function isList();
 
-	function isRequired();
+	/**
+	 * Returns if the parameter is a required one or not.
+	 *
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function isRequired();
 
-	function setDefault( $default, $manipulate = true );
+	/**
+	 * Sets the default parameter value. Null indicates no default,
+	 * and therefore makes the parameter required.
+	 *
+	 * @since 0.5
+	 *
+	 * @param mixed $default
+	 * @param boolean $manipulate Should the default be manipulated or not? Since 0.4.6.
+	 */
+	public function setDefault( $default, $manipulate = true );
 
-	function setDelimiter( $delimiter );
+	/**
+	 * Sets the delimiter to use to split the raw value in case the
+	 * parameter is a list.
+	 *
+	 * @since 0.5
+	 *
+	 * @param $delimiter string
+	 */
+	public function setDelimiter( $delimiter );
 
-	function setDoManipulationOfDefault( $doOrDoNotThereIsNoTry );
+	/**
+	 * Set if the parameter manipulations should be applied to the default value.
+	 *
+	 * @since 0.5
+	 *
+	 * @param boolean $doOrDoNotThereIsNoTry
+	 */
+	public function setDoManipulationOfDefault( $doOrDoNotThereIsNoTry );
 
-	function setMessage( $message );
+	/**
+	 * Sets a message for the parameter that will act as description.
+	 * This should be a message key, ie something that can be passed
+	 * to wfMsg. Not an actual text. If you do not have a message key,
+	 * but only a text, use setDescription instead.
+	 *
+	 * @since 0.5
+	 *
+	 * @param string $message
+	 */
+	public function setMessage( $message );
 
-	function shouldManipulateDefault();
+	/**
+	 * Returns if the parameter manipulations should be applied to the default value.
+	 *
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function shouldManipulateDefault();
 
-	function validate( IParam $param, array $definitions, array $params );
+	/**
+	 * Validates the parameters value.
+	 *
+	 * @since 0.5
+	 *
+	 * @param $param IParam
+	 * @param $definitions array of IParamDefinition
+	 * @param $params array of IParam
+	 *
+	 * @return array|true
+	 *
+	 * TODO: return error list (ie Status object)
+	 */
+	public function validate( IParam $param, array $definitions, array $params );
 
 	/**
 	 * Returns a message key for a message describing the parameter type.
@@ -68,6 +260,6 @@ interface IParamDefinition {
 	 *
 	 * @return string
 	 */
-	function getTypeMessage();
+	public function getTypeMessage();
 
 }
