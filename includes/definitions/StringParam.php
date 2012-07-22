@@ -55,6 +55,10 @@ class StringParam extends ParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateValue( $value, IParam $param, array $definitions, array $params ) {
+		if ( !is_string( $value ) ) {
+			return false;
+		}
+
 		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
 			return false;
 		}

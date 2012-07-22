@@ -17,9 +17,31 @@
  */
 abstract class ParamDefinitionTest extends MediaWikiTestCase {
 
-	public abstract function definitionProvider();
-
 	public abstract function valueProvider();
+
+	public abstract function getType();
+
+	public function getDefinitions() {
+		$params = array();
+
+		$params['empty'] = array();
+
+		$params['values'] = array(
+			'values' => array( 'foo', '1', '0.1', 'yes', 1, 0.1 )
+		);
+
+		return $params;
+	}
+
+	public function definitionProvider() {
+		$definitions = $this->getDefinitions();
+
+		foreach ( $definitions as &$definition ) {
+			$definition['type'] = $this->getType();
+		}
+
+		return $definitions;
+	}
 
 	public function instanceProvider() {
 		$definitions = array();
@@ -40,7 +62,7 @@ abstract class ParamDefinitionTest extends MediaWikiTestCase {
 	 * @dataProvider instanceProvider
 	 */
 	public function testGetType( IParamDefinition $definition )  {
-		$this->assertInternalType( 'string', $definition->getType() );
+		$this->assertEquals( $this->getType(), $definition->getType() );
 	}
 
 	/**

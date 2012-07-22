@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Unit test for the IntParamTest class.
+ * Unit test for the IntParam class.
  *
  * @file
  * @since 0.5
@@ -17,8 +17,11 @@
  */
 class IntParamTest extends ParamDefinitionTest {
 
-	public function definitionProvider() {
-		$params = array();
+	/**
+	 * @see ParamDefinitionTest::getDefinitions
+	 */
+	public function getDefinitions() {
+		$params = parent::getDefinitions();
 
 		$params['count'] = array(
 			'type' => 'integer',
@@ -40,6 +43,9 @@ class IntParamTest extends ParamDefinitionTest {
 		return $params;
 	}
 
+	/**
+	 * @see ParamDefinitionTest::valueProvider
+	 */
 	public function valueProvider() {
 		return array(
 			'count' => array(
@@ -64,7 +70,27 @@ class IntParamTest extends ParamDefinitionTest {
 				array( -1, false ),
 				array( 4.2, false ),
 			),
+			'empty' => array(
+				array( 42, true, 42 ),
+				array( 4.2, false ),
+				array( array( 42 ), false ),
+			),
+			'values' => array(
+				array( 1, true, 1 ),
+				array( '1', true, 1 ),
+				array( 'yes', false ),
+				array( true, false ),
+				array( 0.1, false ),
+				array( array(), false ),
+			),
 		);
+	}
+
+	/**
+	 * @see ParamDefinitionTest::getType
+	 */
+	public function getType() {
+		return 'integer';
 	}
 
 }
