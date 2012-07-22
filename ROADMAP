@@ -1,0 +1,16 @@
+
+== Validator 0.5 ==
+
+First half of September 2012.
+
+== Validator 0.6 ==
+
+End of 2012.
+
+* Drop PHP 5.2 compatibility
+** Kill ParamDefinition::get_called_class
+** Kill boilerplate in ParserHook
+
+== Validator 0.7 ==
+
+* Remove Parameter and associated compatibility code

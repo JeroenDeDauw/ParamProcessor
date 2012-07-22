@@ -861,13 +861,15 @@ abstract class ParamDefinition implements IParamDefinition {
 			$classToType = array_flip( $egParamDefinitions );
 		}
 
-		if ( !array_key_exists( get_class(), $classToType ) ) {
-			$egParamDefinitions['class-' . get_class()] = get_class();
+		$class = $class = function_exists( 'get_called_class' ) ? get_called_class() : self::get_called_class();
+
+		if ( !array_key_exists( $class, $classToType ) ) {
+			$egParamDefinitions['class-' . $class] = $class;
 			$classToType = false;
 			return $this->getType();
 		}
 
-		return $classToType[get_class()];
+		return $classToType[$class];
 	}
 
 	/**
@@ -900,4 +902,34 @@ abstract class ParamDefinition implements IParamDefinition {
 		);
 	}
 
+
+	/**
+	 * Compatibility fallback function so the singleton method works on PHP < 5.3.
+	 * Code borrowed from http://www.php.net/manual/en/function.get-called-class.php#107445
+	 *
+	 * @since 1.20
+	 *
+	 * @return string
+	 */
+	protected static function get_called_class() {
+		$bt = debug_backtrace();
+		$l = count($bt) - 1;
+		$matches = array();
+		while(empty($matches) && $l > -1){
+			$lines = file($bt[$l]['file']);
+			$callerLine = $lines[$bt[$l]['line']-1];
+			preg_match('/([a-zA-Z0-9\_]+)::'.$bt[$l--]['function'].'/',
+				$callerLine,
+				$matches);
+		}
+		if (!isset($matches[1])) $matches[1]=NULL; //for notices
+		if ($matches[1] == 'self') {
+			$line = $bt[$l]['line']-1;
+			while ($line > 0 && strpos($lines[$line], 'class') === false) {
+				$line--;
+			}
+			preg_match('/class[\s]+(.+?)[\s]+/si', $lines[$line], $matches);
+		}
+		return $matches[1];
+	}
 }
