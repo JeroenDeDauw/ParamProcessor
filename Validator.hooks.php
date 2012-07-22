@@ -19,12 +19,18 @@ final class ValidatorHooks {
 	 * @since 0.4.8
 	 * 
 	 * @param array $files
+	 *
+	 * @return boolean
 	 */
 	public static function registerUnitTests( array &$files ) {
-		$testDir = dirname( __FILE__ ) . '/test/';
-		
-		$files[] = $testDir . 'ValidatorCriteriaTests.php';
-		
+		$testFiles = array(
+			'definitions/IntParam'
+		);
+
+		foreach ( $testFiles as $file ) {
+			$files[] = dirname( __FILE__ ) . '/tests/' . $file . 'Test.php';
+		}
+
 		return true;
 	}
 	

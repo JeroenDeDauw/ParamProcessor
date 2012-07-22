@@ -108,8 +108,13 @@ $wgAutoloadClasses['ParamManipulationInteger']   	= $incDir . 'manipulations/Par
 $wgAutoloadClasses['ParamManipulationString']		= $incDir . 'manipulations/ParamManipulationString.php';
 $wgAutoloadClasses['ParamManipulationTitle']	 	= $incDir . 'manipulations/ParamManipulationTitle.php';
 
+// tests
+$wgAutoloadClasses['ParamDefinitionTest']	 		= $incDir . '../tests/definitions/ParamDefinitionTest.php';
+
+// parser hooks
 $wgAutoloadClasses['ValidatorDescribe']		  		= $incDir . 'parserHooks/Validator_Describe.php';
 $wgAutoloadClasses['ValidatorListErrors']			= $incDir . 'parserHooks/Validator_ListErrors.php';
+
 unset( $incDir );
 
 # Registration of the listerrors parser hooks.

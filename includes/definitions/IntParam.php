@@ -52,6 +52,10 @@ class IntParam extends NumericParam {
 			return false;
 		}
 
+		if ( !is_string( $value ) && !is_int( $value ) ) {
+			return false;
+		}
+
 		if ( $this->allowNegatives && strpos( $value, '-' ) === 0 ) {
 			$value = substr( $value, 1 );
 		}
@@ -88,6 +92,18 @@ class IntParam extends NumericParam {
 		if ( array_key_exists( 'negatives', $param ) ) {
 			$this->setAllowNegatives( $param['negatives'] );
 		}
+	}
+
+	/**
+	 * Returns if negatives are allowed.
+	 * Can be set via @see IntParam::setAllowNegatives
+	 *
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function allowsNegatives() {
+		return $this->allowNegatives;
 	}
 
 }
