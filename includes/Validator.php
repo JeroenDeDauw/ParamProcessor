@@ -89,16 +89,46 @@ class Validator {
 	protected $unknownInvalid;
 
 	/**
+	 * Options for this validator object.
+	 *
+	 * @since 0.5
+	 *
+	 * @var ValidatorOptions
+	 */
+	protected $options;
+
+	/**
 	 * Constructor.
+	 * @deprecated since 0.5, breaking changes in 0.7, use newFrom* instead.
 	 * 
 	 * @param string $element
 	 * @param boolean $unknownInvalid Should unknown parameter be regarded as invalid (or, if not, just be ignored)
+	 * @param ValidatorOptions $options
 	 * 
 	 * @since 0.4
 	 */
-	public function __construct( $element = '', $unknownInvalid = true ) {
-		$this->element = $element;
-		$this->unknownInvalid = $unknownInvalid;
+	public function __construct( $element = '', $unknownInvalid = true, ValidatorOptions $options = null ) {
+		if ( is_null( $options ) ) {
+			$this->element = $element;
+			$this->unknownInvalid = $unknownInvalid;
+
+			$options = new ValidatorOptions();
+		}
+
+		$this->options = $options;
+	}
+
+	/**
+	 * Constructs and returns a Validator object based on the provided options.
+	 *
+	 * @since 0.5
+	 *
+	 * @param ValidatorOptions $options
+	 *
+	 * @return Validator
+	 */
+	public static function newFromOptions( ValidatorOptions $options ) {
+
 	}
 	
 	/**
