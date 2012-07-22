@@ -1,3 +1,7 @@
+This is the roadmap and release schedule for the Validator extension.
+
+Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Validator
+Latest version of the roadmap: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Validator.git;a=blob;f=ROADMAP
 
 == Validator 0.5 ==
 
@@ -12,5 +16,7 @@ End of 2012.
 ** Kill boilerplate in ParserHook
 
 == Validator 0.7 ==
+
+First half of 2013.
 
 * Remove Parameter and associated compatibility code

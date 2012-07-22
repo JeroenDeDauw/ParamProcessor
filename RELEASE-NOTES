@@ -1,4 +1,7 @@
-For a documentation of all features, see https://www.mediawiki.org/wiki/Extension:Validator
+These are the release notes for the Validator extension.
+
+Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Validator
+Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Validator.git;a=blob;f=RELEASE-NOTES
 
 
 == Validator change log ==
