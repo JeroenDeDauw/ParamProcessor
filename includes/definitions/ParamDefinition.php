@@ -907,11 +907,11 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * Compatibility fallback function so the singleton method works on PHP < 5.3.
 	 * Code borrowed from http://www.php.net/manual/en/function.get-called-class.php#107445
 	 *
-	 * @since 1.20
+	 * @since 0.5
 	 *
 	 * @return string
 	 */
-	protected static function get_called_class() {
+	private static function get_called_class() {
 		$bt = debug_backtrace();
 		$l = count($bt) - 1;
 		$matches = array();
