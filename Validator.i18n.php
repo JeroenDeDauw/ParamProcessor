@@ -521,7 +521,7 @@ $messages['cs'] = array(
  * @author Purodha
  */
 $messages['de'] = array(
-	'validator-desc' => 'Ermöglicht anderen Softwareerweiterungen die Verarbeitung von Parametern',
+	'validator-desc' => 'Ermöglicht anderen Programmerweiterungen die Verarbeitung von Parametern',
 	'validator-warning' => 'Warnung: $1',
 	'validator-error' => 'Fehler: $1',
 	'validator-fatal-error' => "'''Schwerwiegender Fehler:''' $1",
@@ -2855,12 +2855,22 @@ $messages['tl'] = array(
 	'validator-type-float' => 'bilang',
 	'validator-type-boolean' => 'oo/hindi',
 	'validator-type-char' => 'panitik',
+	'validator-type-title' => 'pamagat',
+	'validator-type-string-list' => 'lista ng mga teksto',
+	'validator-type-integer-list' => 'lista ng mga buumbilang',
+	'validator-type-float-list' => 'lista ng mga bilang',
+	'validator-type-boolean-list' => 'lista ng oo/hindi',
+	'validator-type-char-list' => 'lista ng mga panitik',
+	'validator-type-title-list' => 'lista ng mga pamagat',
 	'validator-listerrors-errors' => 'Mga kamalian',
 	'validator-listerrors-minor' => 'Munti',
 	'validator-listerrors-low' => 'Mababa',
 	'validator-listerrors-normal' => 'Karaniwan',
 	'validator-listerrors-high' => 'Mataas',
 	'validator-listerrors-fatal' => 'Nakamamatay',
+	'validator-listerrors-description' => 'Naglilista ng mga kamalian (at mga babala) na naganap sa mga kawit na pambanghay na idinagdag sa pamamagitan ng Validator (Tagapagpatunay).
+Naglilista lang ng mga kawit na pambanghay na idinagdag sa itaas kung saan isiningit ang listerrors (mga kamalian sa lista);
+ilagay ang listerrrors (mga kamalian sa lista) doon o malapit sa ilalim ng pahina upang makuha ang lahat ng mga kamalian.',
 	'validator-listerrors-par-minseverity' => 'Ang pinakamaliit na kalubhaan ng isang paksa para ito maitala.',
 	'validator-describe-description' => 'Bumbuo ng dokumentasyon para sa isa o mahigit pang mga kalawit na pambanghay na binigyan ng kahulugan sa pamamagitan ng Tagapagpatunay.',
 	'validator-describe-notfound' => 'Walang kawit ng pambanghay na humahawak sa "$1".',
@@ -2870,6 +2880,8 @@ $messages['tl'] = array(
 	'validator-describe-tagextension' => 'Ipinatupad lamang bilang dugtong ng tatak.',
 	'validator-describe-bothhooks' => 'Ipinatupad bilang kapwa tungkulin ng pambanghay at bilang dugtong ng tatak.',
 	'validator-describe-par-hooks' => 'Ang mga kalawit ng pambanghay para kung saan ipapakita ang dokumentasyon.',
+	'validator-describe-par-pre' => 'Nagpapahintulot sa iyo upang makuha ang talagang teksto ng wiki para sa dokumentasyon, na hindi ito inihaharap sa ibabaw ng pahina.',
+	'validator-describe-par-language' => 'Ang wika na pagpapakitaan ng mga paglalarawan',
 	'validator-describe-listtype' => 'Tala ng $1 mga bagay',
 	'validator-describe-empty' => 'walang laman',
 	'validator-describe-required' => 'kailangan',
@@ -2886,9 +2898,12 @@ $messages['tl'] = array(
 	'validator-describe-pfmin' => 'Tungkuling pambanghay na mayroon lamang ng kinakailangang mga parametro.',
 	'validator-describe-pfmax' => 'Tungkulin ng pambanghay na mayroon ng lahat ng mga parametro.',
 	'validator-describe-pfdefault' => 'Tungkulin ng pambanghay na mayroon ng lahat ng mga parametro na ginagamit ang likas na nakatakdang katalaan ng parametro.',
+	'validator-describe-autogen' => 'Ang nilalaman ng seksiyong ito ay kusang nilikha ng kawit na pambanghay na "describe" ng dugtong na Validator.',
 	'validator_error_empty_argument' => 'Hindi dapat na isang halagang walang laman ang parametrong $1.',
 	'validator_error_must_be_number' => 'Dapat na bilang lang ang parametrong $1.',
 	'validator_error_must_be_integer' => 'Dapat na tambilang lang ang parametrong $1.',
+	'validator_error_must_be_title' => 'Ang parametrong $1 ay maaaring maging isang katanggap-tanggap na pangalan ng pahina ng wiki lamang.',
+	'validator_error_must_be_existing_title' => 'Ang parametrong $1 ay maaaring maging isang umiiral na pangalan ng pahina ng wiki lamang.',
 	'validator-error-must-be-float' => 'Ang parametrong $1 ay maaaring isang lumulutang na bilang ng punto lamang.',
 	'validator_error_invalid_range' => 'Dapat na nasa pagitan ng $2 at $3 ang parametrong $1.',
 	'validator-error-invalid-regex' => 'Ang parametrong $1 ay dapat tumugma sa ganitong pangkaraniwang pagsasaad: $2.',
@@ -2898,13 +2913,19 @@ $messages['tl'] = array(
 	'validator_list_error_empty_argument' => 'Hindi tumatanggap ng halagang walang laman ang parametrong $1.',
 	'validator_list_error_must_be_number' => 'Dapat na naglalaman lang ng mga bilang ang parametrong $1.',
 	'validator_list_error_must_be_integer' => 'Dapat na naglalaman lang ng mga tambilang ang parametrong $1.',
+	'validator_list_error_must_be_title' => 'Ang parametrong $1 ay maaaring maglaman lamang ng katanggap-tanggap na mga pangalan ng pahina ng wiki.',
+	'validator_list_error_must_be_existing_title' => 'Ang parametrong $1 ay maaaring maglaman lamang ng umiiral na mga pangalan ng pahina ng wiki lamang.',
 	'validator-list-error-must-be-float' => 'Ang parametrong $1 ay maaaring maglaman lamang ng mga palutang.',
 	'validator_list_error_invalid_range' => 'Dapat na nasa pagitan ng $2 at $3 ang lahat ng mga halaga ng parametrong $1.',
 	'validator-list-error-invalid-regex' => 'Ang lahat ng mga halaga ng parametrong $1 ay dapat na tumugma sa pangkaraniwang pagsasaad na ito: $2.',
 	'validator_list_error_invalid_argument' => 'Hindi tanggap ang isa o higit pang mga halaga para sa parametrong $1.',
+	'validator-list-error-accepts-only' => 'Hindi katanggap-tanggap ang isa o mas maraming mga halaga para sa parametrong $1. Tumatanggap lamang ito ng {{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2.',
+	'validator-list-error-accepts-only-omitted' => 'Hindi katanggap-tanggap ang isa o masa marami pang mga halaga para sa parametrong $1. Tumatanggap lamang ito ng {{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2 (at $4 na inalis na {{PLURAL:$4|halaga|mga halaga}}).',
 	'validator_error_accepts_only' => 'Ang halagang "$4" ay hindi tanggap para sa parametrong $1.  Tumatanggap lamang ito ng 
 {{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2.',
+	'validator-error-accepts-only-omitted' => 'Ang halagang "$2" ay hindi katanggap-tanggap para sa parametrong $1. Tumatanggap lamang ito ng {{PLURAL:$5|ganitong halaga|ganitong mga halaga}}: $3 (at $4 na inalis na {{PLURAL:$4|halaga|mga halaga}}).',
 	'validator_list_omitted' => 'Tinanggal {{PLURAL:$2|na ang|na ang mga}} {{PLURAL:$2|halaga|halaga}} ng $1.',
+	'validator-message-nodesc' => 'Walang ibinigay na paglalarawan',
 );
 
 /** Turkish (Türkçe)
