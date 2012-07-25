@@ -509,7 +509,7 @@ abstract class ParserHook {
 			'names' => $this->getNames(),
 			'description' => $this->getDescription(),
 			'message' => $this->getMessage(),
-			'parameters' => $this->getParameterInfo( $type ),
+			'parameters' => ParamDefinition::getCleanDefinitions( $this->getParameterInfo( $type ) ),
 			'defaults' => $this->getDefaultParameters( $type ),
 		);
 	}
