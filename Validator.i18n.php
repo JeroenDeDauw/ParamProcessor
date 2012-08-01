@@ -622,6 +622,7 @@ $messages['diq'] = array(
 	'validator-listerrors-high' => 'Berz',
 	'validator-describe-header-parameter' => 'Parametre',
 	'validator-describe-header-type' => 'Babet',
+	'validator-describe-header-default' => 'Hesıbyaye',
 );
 
 /** Lower Sorbian (dolnoserbski)
@@ -1862,6 +1863,7 @@ $messages['ksh'] = array(
 	'validator-type-integer-list' => 'Lėß met janze Zahle',
 	'validator-type-float-list' => 'Lėß met Zahle',
 	'validator-type-boolean-list' => 'Lėß met Joh udder Nää',
+	'validator-type-title-list' => 'Leß vun Tittelle',
 	'validator-listerrors-errors' => 'Fähler',
 	'validator-listerrors-minor' => 'Bahl ejaal',
 	'validator-listerrors-low' => 'Kleineshkeit',
@@ -1877,6 +1879,7 @@ $messages['ksh'] = array(
 	'validator-describe-header-parameter' => 'Parrameeter',
 	'validator-describe-header-type' => 'Zoot',
 	'validator-describe-header-default' => 'Shtandatt',
+	'validator-describe-header-description' => 'Beschrievong',
 	'validator-describe-parameters' => 'Parrameetere',
 	'validator-describe-syntax' => 'Süntax',
 	'validator_error_empty_argument' => 'Dä Parameeter $1 kann keine Wäät met nix dren hann.',
@@ -1889,11 +1892,13 @@ $messages['ksh'] = array(
 	'validator-error-invalid-length-range' => 'Dä Parameeter $1 moß zwesche $2 un $3 Zeijshe lang sin.',
 	'validator_error_invalid_argument' => 'Däm Parameeter $2 singe Wäät es $1, dat es ävver doför nit jöltesch.',
 	'validator_list_error_empty_argument' => 'Dä Parameeter $1 kann nit läddesh sin.',
-	'validator_list_error_must_be_number' => 'Dä Parameeter $1 kann blohß Zeffere enthallde.',
-	'validator_list_error_must_be_integer' => 'Dä Parameeter $1 kann blohß janze Zahle enthallde.',
+	'validator_list_error_must_be_number' => 'Dä Parameeter $1 kann blohß Zeffere änthallde.',
+	'validator_list_error_must_be_integer' => 'Dä Parameeter $1 kann blohß janze Zahle änthallde.',
+	'validator-list-error-must-be-float' => 'Dä Parameeter $1 kann blohß Zahle met Komma dren änthallde.',
 	'validator_list_error_invalid_range' => 'All de Wääte vum Parameeter $1 möße zwesche $2 un $3 lijje.',
 	'validator_error_accepts_only' => '„$4“ es nit ze Bruche, weil dä Parameeter $1 {{PLURAL:$3|bloß eine Wäät|bloß eine vun heh dä Wääte|keine Wäät}} han kann: $2',
 	'validator_list_omitted' => '{{PLURAL:$2|Dä Wäät|De Wääte|Keine Wäät}} $1 {{PLURAL:$2|es|sen|se}} fottjelohße woode.',
+	'validator-message-nodesc' => 'Kein Beschrievong doh',
 );
 
 /** Kurdish (Latin script) (‪Kurdî (latînî)‬)
@@ -2945,11 +2950,20 @@ $messages['tr'] = array(
 
 /** Ukrainian (українська)
  * @author NickK
+ * @author Olvin
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'validator-desc' => 'Валідатор забезпечує іншим розширенням можливості перевірки параметрів функцій парсера і тегів, встановлення значень за умовчанням та створення повідомлень про помилки',
 	'validator_error_parameters' => 'У вашому синтаксисі {{PLURAL:$1|виявлена така помилка|виявлені такі помилки}}:',
+	'validator-describe-header-default' => 'Стандартно',
+	'validator-describe-header-description' => 'Опис',
+	'validator-describe-parameters' => 'Параметри',
+	'validator-describe-syntax' => 'Синтаксис',
+	'validator-describe-tagmin' => "Доповнення тегу з одними лише обов'язковими параметрами.",
+	'validator-describe-tagmax' => 'Доповнення тегу з усіма параметрами.',
+	'validator-describe-tagdefault' => 'Доповнення тегу з усіма параметрами, із застосуванням стандартної нотації параметрів.',
+	'validator-describe-pfmin' => "Функція аналізатора, що має лише обов'язкові параметри.",
 );
 
 /** Vietnamese (Tiếng Việt)
