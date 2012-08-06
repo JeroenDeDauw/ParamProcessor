@@ -2868,6 +2868,7 @@ $messages['tl'] = array(
 	'validator-type-char-list' => 'lista ng mga panitik',
 	'validator-type-title-list' => 'lista ng mga pamagat',
 	'validator-listerrors-errors' => 'Mga kamalian',
+	'validator-listerrors-severity-message' => '($1) $2',
 	'validator-listerrors-minor' => 'Munti',
 	'validator-listerrors-low' => 'Mababa',
 	'validator-listerrors-normal' => 'Karaniwan',
