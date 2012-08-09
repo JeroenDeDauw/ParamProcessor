@@ -2517,6 +2517,7 @@ $messages['ps'] = array(
  * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
+ * @author SandroHc
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -2537,6 +2538,13 @@ $messages['pt'] = array(
 	'validator-type-float' => 'número',
 	'validator-type-boolean' => 'sim/não',
 	'validator-type-char' => 'carácter',
+	'validator-type-title' => 'título',
+	'validator-type-string-list' => 'lista de textos',
+	'validator-type-integer-list' => 'lista de números inteiros',
+	'validator-type-float-list' => 'lista de números',
+	'validator-type-boolean-list' => 'lista de sim/não',
+	'validator-type-char-list' => 'lista de caracteres',
+	'validator-type-title-list' => 'lista de títulos',
 	'validator-listerrors-errors' => 'Erros',
 	'validator-listerrors-minor' => 'Menor',
 	'validator-listerrors-low' => 'Baixo',
@@ -2577,6 +2585,8 @@ para obter todos os erros, coloque listerrors ao fundo da página.',
 	'validator_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
 	'validator_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
 	'validator_error_must_be_integer' => 'O parâmetro $1 só pode ser um número inteiro.',
+	'validator_error_must_be_title' => 'O parâmetro $1 só pode ser um nome válido de página wiki.',
+	'validator_error_must_be_existing_title' => 'O parâmetro $1 só pode ser um nome de uma página wiki já existente.',
 	'validator-error-must-be-float' => 'O parâmetro $1 só pode ser um número de vírgula flutuante.',
 	'validator_error_invalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
 	'validator-error-invalid-regex' => 'O parâmetro $1 deve corresponder à expressão regular: $2.',
@@ -2656,10 +2666,32 @@ Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PL
  */
 $messages['ro'] = array(
 	'validator-warning' => 'Avertisment: $1',
+	'validator-error' => 'Eroare: $1',
 	'validator-fatal-error' => 'Eroare fatală: $1',
+	'validator-error-problem' => 'S-a produs o problemă cu parametrul $1.',
 	'validator_error_unknown_argument' => '$1 nu este un parametru valid.',
 	'validator_error_required_missing' => 'Parametrul solicitat „$1” nu este furnizat.',
+	'validator-type-string' => 'text',
+	'validator-type-integer' => 'număr întreg',
+	'validator-type-float' => 'număr',
+	'validator-type-boolean' => 'da/nu',
+	'validator-type-char' => 'caracter',
+	'validator-type-title' => 'titlu',
+	'validator-type-string-list' => 'lista textelor',
+	'validator-type-integer-list' => 'lista numerelor întregi',
+	'validator-type-float-list' => 'lista numerelor',
+	'validator-type-boolean-list' => 'lista valorilor da/nu',
+	'validator-type-char-list' => 'lista caracterelor',
+	'validator-type-title-list' => 'lista titlurilor',
 	'validator-listerrors-errors' => 'Erori',
+	'validator-describe-required' => 'necesară',
+	'validator-describe-header-parameter' => 'Parametru',
+	'validator-describe-header-aliases' => 'Aliasuri',
+	'validator-describe-header-type' => 'Tip',
+	'validator-describe-header-default' => 'Implicit',
+	'validator-describe-header-description' => 'Descriere',
+	'validator-describe-parameters' => 'Parametrii',
+	'validator-describe-syntax' => 'Sintaxă',
 	'validator_error_empty_argument' => 'Parametrul $1 nu poate avea o valoare goală.',
 	'validator_error_must_be_number' => 'Parametrul $1 poate fi doar un număr.',
 	'validator_error_must_be_integer' => 'Parametrul $1 poate fi doar un număr întreg.',
