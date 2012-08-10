@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Internationalization file for the Validator extension
  *
@@ -32,7 +31,7 @@ $messages['en'] = array(
 	// General errors
 	'validator_error_unknown_argument' => '$1 is not a valid parameter.',
 	'validator_error_required_missing' => 'The required parameter "$1" is not provided.',
-	'validator-error-override-argument' => 'Tried to override parameter $1 (value: $2) with value "$3"', 
+	'validator-error-override-argument' => 'Tried to override parameter $1 (value: $2) with value "$3"',
 
 	// Parameter types
 	'validator-type-string' => 'text',
@@ -58,7 +57,7 @@ $messages['en'] = array(
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'High',
 	'validator-listerrors-fatal' => 'Fatal',
-	'validator-listerrors-description' => 'Lists errors (and warnings) that occured in parser hooks added via Validator.
+	'validator-listerrors-description' => 'Lists errors (and warnings) that occurred in parser hooks added via Validator.
 Only lists for parser hooks added above where listerrors is inserted;
 place listerrors at or near the bottom of the page to get all errors.',
 	'validator-listerrors-par-minseverity' => 'The minimum severity of an issue for it to be listed.',
@@ -792,9 +791,9 @@ Sólo se muestran en las listas las asociaciones del analizador agregados antes 
 	'validator_list_error_invalid_range' => 'Todos los valores del parámetro $1 deben ser entre $2 y $3.',
 	'validator-list-error-invalid-regex' => 'El parámetro $1 tiene que coincidir con esta expresión regular: $2.',
 	'validator_list_error_invalid_argument' => 'Uno o más valores del parámetros $1 son inválidos.',
-	'validator-list-error-accepts-only' => 'Uno o más valores para el parámetro $1 son inválidos. 
+	'validator-list-error-accepts-only' => 'Uno o más valores para el parámetro $1 son inválidos.
 Sólo acepta{{PLURAL:$3|este valor| estos valores}}: $2.',
-	'validator-list-error-accepts-only-omitted' => 'Uno o más valores para el parámetro $1 son inválidos. 
+	'validator-list-error-accepts-only-omitted' => 'Uno o más valores para el parámetro $1 son inválidos.
 Sólo acepta {{PLURAL:$3|este valor|estos valores}}: $2 (y $4 {{PLURAL:$4|valor omitido|valores omitidos}}).',
 	'validator_error_accepts_only' => 'El valor "$4" no es válido para el parámetro $1. El parámetro sólo acepta {{PLURAL:$3|este valor|estos valores}}: $2.',
 	'validator-error-accepts-only-omitted' => 'El valor $2 no es válido para el parámetro $1.
@@ -859,8 +858,8 @@ $messages['fr'] = array(
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Élevé',
 	'validator-listerrors-fatal' => 'Fatal',
-	'validator-listerrors-description' => "Liste les erreurs (et les avertissements) qui se sont produits dans les ''hooks'' de l'analyseur syntaxique ''via'' ''Validator''. 
-Seules les listes pour les ''hooks'' de l'analyseur syntaxique (ajoutées où apparaît <code>listerrors</code>) sont insérées ; 
+	'validator-listerrors-description' => "Liste les erreurs (et les avertissements) qui se sont produits dans les ''hooks'' de l'analyseur syntaxique ''via'' ''Validator''.
+Seules les listes pour les ''hooks'' de l'analyseur syntaxique (ajoutées où apparaît <code>listerrors</code>) sont insérées ;
 placer <code>listerrors</code> au plus bas de la page pour obtenir toutes les erreurs.",
 	'validator-listerrors-par-minseverity' => "La sévérité minimale d'une erreur pour être listée.",
 	'validator-describe-description' => "Génère la documentation pour un ou plusieurs ''hooks'' de l'analyseur syntaxique ''via'' ''Validator'.",
@@ -2278,7 +2277,7 @@ plaats fouten onderaan of bijna onderaan pagina's om alle fouten weer te geven."
 	'validator_list_error_invalid_range' => 'Alle waarden voor de parameter $1 moeten tussen $2 en $3 liggen.',
 	'validator-list-error-invalid-regex' => 'Alle waarden voor de parameter $1 moeten voldoen aan deze reguliere expressie: $2.',
 	'validator_list_error_invalid_argument' => 'Een of meerdere waarden voor de parameter $1 zijn ongeldig.',
-	'validator-list-error-accepts-only' => 'Een of meer waarden voor de parameter $1 zijn ongeldig. 
+	'validator-list-error-accepts-only' => 'Een of meer waarden voor de parameter $1 zijn ongeldig.
 Alleen deze {{PLURAL:$3|waarde is|waarden zijn}} toegestaan: $2.',
 	'validator-list-error-accepts-only-omitted' => 'Een of meer waarden voor de parameter $1 zijn ongeldig.
 Alleen deze {{PLURAL:$3|waarde is|waarden zijn}} toegestaan: $2.
@@ -2600,9 +2599,9 @@ para obter todos os erros, coloque listerrors ao fundo da página.',
 	'validator_list_error_invalid_range' => 'Todos os valores do parâmetro $1 têm de ser entre $2 e $3.',
 	'validator-list-error-invalid-regex' => 'Todos os valores do parâmetro $1 devem corresponder à expressão regular: $2.',
 	'validator_list_error_invalid_argument' => 'Um ou mais valores do parâmetro $1 são inválidos.',
-	'validator-list-error-accepts-only' => 'Um ou mais valores para o parâmetro $1 são inválidos. 
+	'validator-list-error-accepts-only' => 'Um ou mais valores para o parâmetro $1 são inválidos.
 Só {{PLURAL:$3|é aceite este valor|são aceites estes valores}}: $2.',
-	'validator-list-error-accepts-only-omitted' => 'Um ou mais valores para o parâmetro $1 são inválidos. 
+	'validator-list-error-accepts-only-omitted' => 'Um ou mais valores para o parâmetro $1 são inválidos.
 Só {{PLURAL:$3|é aceite este valor|são aceites estes valores}}: $2 (e $4 {{PLURAL:$4|valor omitido|valores omitidos}}).',
 	'validator_error_accepts_only' => 'O valor "$4" não é válido para o parâmetro $1. O parâmetro só aceita {{PLURAL:$3|este valor|estes valores}}: $2.',
 	'validator-error-accepts-only-omitted' => 'O valor $2 não é válido para o parâmetro $1.
@@ -2651,9 +2650,9 @@ $messages['pt-br'] = array(
 	'validator_list_error_invalid_range' => 'Todos os valores do parâmetro $1 têm de ser entre $2 e $3.',
 	'validator-list-error-invalid-regex' => 'Todos os valores do parâmetro $1 devem corresponder à expressão regular: $2.',
 	'validator_list_error_invalid_argument' => 'Um ou mais valores do parâmetro $1 são inválidos.',
-	'validator-list-error-accepts-only' => 'Um ou mais valores para o parâmetro $1 são inválidos. 
+	'validator-list-error-accepts-only' => 'Um ou mais valores para o parâmetro $1 são inválidos.
 Só {{PLURAL:$3|é aceite este valor|são aceites estes valores}}: $2.',
-	'validator-list-error-accepts-only-omitted' => 'Um ou mais valores para o parâmetro $1 são inválidos. 
+	'validator-list-error-accepts-only-omitted' => 'Um ou mais valores para o parâmetro $1 são inválidos.
 Só {{PLURAL:$3|é aceite este valor|são aceites estes valores}}: $2 (e $4 {{PLURAL:$4|valor omitido|valores omitidos}}).',
 	'validator_error_accepts_only' => 'O valor $4 não é válido para o parâmetro $1. Esse parâmetro só aceita {{PLURAL:$3|este valor|estes valores}}: $2.',
 	'validator-error-accepts-only-omitted' => 'O valor $2 não é válido para o parâmetro $1.
@@ -2778,12 +2777,12 @@ $messages['ru'] = array(
 	'validator_list_error_invalid_range' => 'Все значения параметра $1 должна находиться в диапазоне от $2 до $3.',
 	'validator-list-error-invalid-regex' => 'Все значения параметра «$1» должны соответствовать регулярноve выражению «$2».',
 	'validator_list_error_invalid_argument' => 'Одно или несколько значений параметра $1 ошибочны.',
-	'validator-list-error-accepts-only' => 'Ошибочны один или несколько значений параметра $1. 
+	'validator-list-error-accepts-only' => 'Ошибочны один или несколько значений параметра $1.
 {{PLURAL:$3|Допустимо только следующее значение|Допустимы только следующие значения}}: $2.',
-	'validator-list-error-accepts-only-omitted' => 'Ошибочны один или несколько значений параметра $1. 
+	'validator-list-error-accepts-only-omitted' => 'Ошибочны один или несколько значений параметра $1.
 {{PLURAL:$3|Допустимо только следующее значение|Допустимы только следующие значения}}: $2 (и $4 {{PLURAL:$4|опущенное значение|опущенных значения|опущенных значений}}).',
 	'validator_error_accepts_only' => 'Значение «$4» не подходит для параметра $1. Оно может принимать только {{PLURAL:$3|следующее значение|следующие значения}}: $2.',
-	'validator-error-accepts-only-omitted' => 'Значение «$2» не подходит для параметра $1. 
+	'validator-error-accepts-only-omitted' => 'Значение «$2» не подходит для параметра $1.
 {{PLURAL:$5|Допускается только значение|Допускаются только значения}}: $3 (и $4 {{PLURAL:$4|пропущенное значение|пропущенных значения|пропущенных значений}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Значение $1 было пропущено|Значения $1 были пропущены}}.',
 );
@@ -2959,7 +2958,7 @@ ilagay ang listerrrors (mga kamalian sa lista) doon o malapit sa ilalim ng pahin
 	'validator_list_error_invalid_argument' => 'Hindi tanggap ang isa o higit pang mga halaga para sa parametrong $1.',
 	'validator-list-error-accepts-only' => 'Hindi katanggap-tanggap ang isa o mas maraming mga halaga para sa parametrong $1. Tumatanggap lamang ito ng {{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2.',
 	'validator-list-error-accepts-only-omitted' => 'Hindi katanggap-tanggap ang isa o masa marami pang mga halaga para sa parametrong $1. Tumatanggap lamang ito ng {{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2 (at $4 na inalis na {{PLURAL:$4|halaga|mga halaga}}).',
-	'validator_error_accepts_only' => 'Ang halagang "$4" ay hindi tanggap para sa parametrong $1.  Tumatanggap lamang ito ng 
+	'validator_error_accepts_only' => 'Ang halagang "$4" ay hindi tanggap para sa parametrong $1.  Tumatanggap lamang ito ng
 {{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2.',
 	'validator-error-accepts-only-omitted' => 'Ang halagang "$2" ay hindi katanggap-tanggap para sa parametrong $1. Tumatanggap lamang ito ng {{PLURAL:$5|ganitong halaga|ganitong mga halaga}}: $3 (at $4 na inalis na {{PLURAL:$4|halaga|mga halaga}}).',
 	'validator_list_omitted' => 'Tinanggal {{PLURAL:$2|na ang|na ang mga}} {{PLURAL:$2|halaga|halaga}} ng $1.',
