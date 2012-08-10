@@ -802,6 +802,16 @@ Sólo acepta {{PLURAL:$5|este valor|estos valores}}: $3 (y $4 {{PLURAL:$4|valor 
 	'validator-message-nodesc' => 'No se aporta ninguna descripción',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'validator-type-boolean' => 'بله/خیر',
+	'validator-listerrors-low' => 'کم',
+	'validator-listerrors-normal' => 'عادی',
+	'validator-listerrors-high' => 'زیاد',
+);
+
 /** Finnish (suomi)
  * @author Crt
  * @author Silvonen
@@ -2611,6 +2621,7 @@ Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PL
 
 /** Brazilian Portuguese (português do Brasil)
  * @author Giro720
+ * @author Jaideraf
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -2628,15 +2639,58 @@ $messages['pt-br'] = array(
 	'validator-error-override-argument' => 'Tentativa de sobrepor o parâmetro $1 (valor: $2) com o valor "$3"',
 	'validator-type-string' => 'texto',
 	'validator-type-integer' => 'número inteiro',
+	'validator-type-float' => 'número',
+	'validator-type-boolean' => 'sim/não',
+	'validator-type-char' => 'caractere',
+	'validator-type-title' => 'título',
+	'validator-type-string-list' => 'lista de textos',
+	'validator-type-integer-list' => 'lista de números inteiros',
+	'validator-type-float-list' => 'lista de números',
+	'validator-type-boolean-list' => 'lista de sim/não',
+	'validator-type-char-list' => 'lista de caracteres',
+	'validator-type-title-list' => 'lista de títulos',
 	'validator-listerrors-errors' => 'Erros',
 	'validator-listerrors-minor' => 'Menor',
 	'validator-listerrors-low' => 'Baixo',
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Alto',
 	'validator-listerrors-fatal' => 'Fatal',
+	'validator-listerrors-description' => 'Lista os erros (e avisos) que ocorreram nos hooks do analisador sintático adicionados através da extensão Validator.
+Constarão na lista apenas os hooks adicionados acima de onde estão inseridos os listerrors;
+para obter todos os erros, coloque listerrors ao final da página.',
+	'validator-listerrors-par-minseverity' => 'A gravidade mínima de um problema para que ele seja listado.',
+	'validator-describe-description' => 'Gera a documentação para um ou mais hooks do analisador sintático definidos através da extensão Validator.',
+	'validator-describe-notfound' => 'Não existe qualquer hook para lidar com "$1".',
+	'validator-describe-descriptionmsg' => "'''Descrição''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Nome alternativo|Nomes alternativos}}''': $1",
+	'validator-describe-parserfunction' => 'Implementado apenas como parser function.',
+	'validator-describe-tagextension' => 'Implementado apenas como extensão de tag.',
+	'validator-describe-bothhooks' => 'Implementado tanto como parser function e como extensão de tag.',
+	'validator-describe-par-hooks' => 'Os hooks do analisador sintático para os quais serão mostradas a documentação.',
+	'validator-describe-par-pre' => 'Permite obter o wikitexto real da documentação sem que ele esteja formatado na página.',
+	'validator-describe-par-language' => 'A língua em que as descrições serão apresentadas',
+	'validator-describe-listtype' => 'Lista de $1 itens',
+	'validator-describe-empty' => 'vazio',
+	'validator-describe-required' => 'obrigatório',
+	'validator-describe-header-parameter' => 'Parâmetro',
+	'validator-describe-header-aliases' => 'Nomes alternativos',
+	'validator-describe-header-type' => 'Tipo',
+	'validator-describe-header-default' => 'Padrão',
+	'validator-describe-header-description' => 'Descrição',
+	'validator-describe-parameters' => 'Parâmetros',
+	'validator-describe-syntax' => 'Sintaxe',
+	'validator-describe-tagmin' => 'Extensão de tag só com os parâmetros obrigatórios.',
+	'validator-describe-tagmax' => 'Extensão de tag com todos os parâmetros.',
+	'validator-describe-tagdefault' => 'Extensão de tag com todos os parâmetros utilizando a notação de parâmetro padrão.',
+	'validator-describe-pfmin' => 'Parser function só com os parâmetros obrigatórios.',
+	'validator-describe-pfmax' => 'Parser function com todos os parâmetros.',
+	'validator-describe-pfdefault' => 'Parser function com todos os parâmetros utilizando a notação de parâmetro padrão.',
+	'validator-describe-autogen' => 'O conteúdo desta seção foi gerado de forma automática pelo hook "describe" do analisador sintático criado pela extensão Validator.',
 	'validator_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
 	'validator_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
 	'validator_error_must_be_integer' => 'O parâmetro $1 só pode ser um número inteiro.',
+	'validator_error_must_be_title' => 'O parâmetro $1 só pode ser um nome válido de página wiki.',
+	'validator_error_must_be_existing_title' => 'O parâmetro $1 só pode ser um nome de página wiki existente.',
 	'validator-error-must-be-float' => 'O parâmetro $1 deve ser um número de ponto flutuante.',
 	'validator_error_invalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
 	'validator-error-invalid-regex' => 'O parâmetro $1 deve corresponder à expressão regular: $2.',
@@ -2646,6 +2700,8 @@ $messages['pt-br'] = array(
 	'validator_list_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
 	'validator_list_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
 	'validator_list_error_must_be_integer' => 'O parâmetro $1 só pode ser um número inteiro.',
+	'validator_list_error_must_be_title' => 'O parâmetro $1 só pode conter nomes válidos de páginas wiki.',
+	'validator_list_error_must_be_existing_title' => 'O parâmetro $1 só pode conter nomes de páginas wiki existentes.',
 	'validator-list-error-must-be-float' => 'O parâmetro $1 só pode conter valores de ponto flutuante.',
 	'validator_list_error_invalid_range' => 'Todos os valores do parâmetro $1 têm de ser entre $2 e $3.',
 	'validator-list-error-invalid-regex' => 'Todos os valores do parâmetro $1 devem corresponder à expressão regular: $2.',
@@ -2658,6 +2714,7 @@ Só {{PLURAL:$3|é aceite este valor|são aceites estes valores}}: $2 (e $4 {{PL
 	'validator-error-accepts-only-omitted' => 'O valor $2 não é válido para o parâmetro $1.
 Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PLURAL:$4|valor omitido|valores omitidos}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|O valor $1 foi omitido|Os valores $1 foram omitidos}}.',
+	'validator-message-nodesc' => 'Nenhuma descrição fornecida',
 );
 
 /** Romanian (română)
@@ -2683,6 +2740,7 @@ $messages['ro'] = array(
 	'validator-type-char-list' => 'lista caracterelor',
 	'validator-type-title-list' => 'lista titlurilor',
 	'validator-listerrors-errors' => 'Erori',
+	'validator-describe-listtype' => 'Lista de $1 obiecte',
 	'validator-describe-required' => 'necesară',
 	'validator-describe-header-parameter' => 'Parametru',
 	'validator-describe-header-aliases' => 'Aliasuri',
@@ -2694,6 +2752,7 @@ $messages['ro'] = array(
 	'validator_error_empty_argument' => 'Parametrul $1 nu poate avea o valoare goală.',
 	'validator_error_must_be_number' => 'Parametrul $1 poate fi doar un număr.',
 	'validator_error_must_be_integer' => 'Parametrul $1 poate fi doar un număr întreg.',
+	'validator-message-nodesc' => 'Nicio descriere furnizată',
 );
 
 /** Russian (русский)
@@ -3031,6 +3090,7 @@ $messages['vi'] = array(
 /** Simplified Chinese (‪中文（简体）‬)
  * @author Hydra
  * @author Richarddong
+ * @author Shirayuki
  * @author Wilsonmess
  * @author Xiaomingyan
  */
@@ -3058,9 +3118,14 @@ $messages['zh-hans'] = array(
 	'validator-listerrors-fatal' => '致命',
 	'validator-describe-descriptionmsg' => "'''说明'''：$1",
 	'validator-describe-empty' => '空白',
+	'validator-describe-required' => '必填',
 	'validator-describe-header-parameter' => '参数',
+	'validator-describe-header-aliases' => '别名',
 	'validator-describe-header-type' => '类型',
+	'validator-describe-header-default' => '默认',
 	'validator-describe-header-description' => '说明',
+	'validator-describe-parameters' => '参数',
+	'validator-describe-syntax' => '语法',
 	'validator_error_empty_argument' => '参数 $1 不能为空。',
 	'validator_error_must_be_number' => '参数 $1 只能为数字。',
 	'validator_error_must_be_integer' => '参数 $1 只能为整数。',
