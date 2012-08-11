@@ -3,7 +3,7 @@
 namespace Validator\Test;
 
 /**
- * Unit test for the StringParam class.
+ * Unit test for the BoolParam class.
  *
  * @file
  * @since 0.5
@@ -17,36 +17,41 @@ namespace Validator\Test;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class StringParamTest extends ParamDefinitionTest {
+class BoolParamTest extends ParamDefinitionTest {
 
 	/**
 	 * @see ParamDefinitionTest::getDefinitions
+	 * @return array
 	 */
 	public function getDefinitions() {
 		$params = parent::getDefinitions();
-
-
 
 		return $params;
 	}
 
 	/**
 	 * @see ParamDefinitionTest::valueProvider
+	 * @return array
 	 */
 	public function valueProvider() {
 		return array(
 			'empty' => array(
-				array( 'ohi there', true, 'ohi there' ),
-				array( 4.2, false ),
-				array( array( 42 ), false ),
+				array( 'yes', true, true ),
+				array( 'on', true, true ),
+				array( '1', true, true ),
+				array( 'no', true, false ),
+				array( 'off', true, false ),
+				array( '0', true, false ),
+				array( 'foobar', false ),
+				array( '2', false ),
+				array( array(), false ),
+				array( 42, false ),
 			),
 			'values' => array(
-				array( 'foo', true, 'foo' ),
-				array( '1', true, '1' ),
-				array( 'yes', true, 'yes' ),
-				array( true, false ),
-				array( 0.1, false ),
-				array( array(), false ),
+				array( '1', true, true ),
+				array( 'yes', true, true ),
+				array( 'no', false ),
+				array( 'foobar', false ),
 			),
 		);
 	}
@@ -56,7 +61,7 @@ class StringParamTest extends ParamDefinitionTest {
 	 * @return string
 	 */
 	public function getType() {
-		return 'string';
+		return 'boolean';
 	}
 
 }

@@ -1,5 +1,8 @@
 <?php
 
+namespace Validator\Test;
+use ParamDefinition, IParamDefinition, Param;
+
 /**
  * Unit test base for ParamDefinition deriving classes.
  *
@@ -15,8 +18,21 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ParamDefinitionTest extends MediaWikiTestCase {
+abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 
+	/**
+	 * Returns a list of arrays that hold values to test handling of.
+	 * Each array holds the following unnamed elements:
+	 * - value (mixed, required)
+	 * - valid (boolean, required)
+	 * - expected (mixed, optional)
+	 *
+	 * ie array( '42', true, 42 )
+	 *
+	 * @since 0.1
+	 *
+	 * @return array
+	 */
 	public abstract function valueProvider();
 
 	public abstract function getType();

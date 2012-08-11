@@ -109,7 +109,7 @@ $wgAutoloadClasses['ParamManipulationString']		= $incDir . 'manipulations/ParamM
 $wgAutoloadClasses['ParamManipulationTitle']	 	= $incDir . 'manipulations/ParamManipulationTitle.php';
 
 // tests
-$wgAutoloadClasses['ParamDefinitionTest']	 		= $incDir . '../tests/definitions/ParamDefinitionTest.php';
+$wgAutoloadClasses['Validator\Test\ParamDefinitionTest']	= dirname( __FILE__ ) . '/tests/definitions/ParamDefinitionTest.php';
 
 // parser hooks
 $wgAutoloadClasses['ValidatorDescribe']		  		= $incDir . 'parserHooks/Validator_Describe.php';

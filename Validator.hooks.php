@@ -24,6 +24,7 @@ final class ValidatorHooks {
 	 */
 	public static function registerUnitTests( array &$files ) {
 		$testFiles = array(
+			'definitions/BoolParam',
 			'definitions/IntParam',
 			'definitions/StringParam',
 		);

@@ -1,5 +1,7 @@
 <?php
 
+namespace Validator\Test;
+
 /**
  * Unit test for the IntParam class.
  *
@@ -19,6 +21,7 @@ class IntParamTest extends ParamDefinitionTest {
 
 	/**
 	 * @see ParamDefinitionTest::getDefinitions
+	 * @return array
 	 */
 	public function getDefinitions() {
 		$params = parent::getDefinitions();
@@ -45,6 +48,7 @@ class IntParamTest extends ParamDefinitionTest {
 
 	/**
 	 * @see ParamDefinitionTest::valueProvider
+	 * @return array
 	 */
 	public function valueProvider() {
 		return array(
@@ -88,6 +92,7 @@ class IntParamTest extends ParamDefinitionTest {
 
 	/**
 	 * @see ParamDefinitionTest::getType
+	 * @return string
 	 */
 	public function getType() {
 		return 'integer';
