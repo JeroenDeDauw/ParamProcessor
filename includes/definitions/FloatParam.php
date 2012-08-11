@@ -33,7 +33,7 @@ class FloatParam extends NumericParam {
 		}
 
 		return is_float( $value )
-			|| preg_match( '/^(-)?\d+((\.|,)\d+)?$/', $value );
+			|| ( is_string( $value ) && preg_match( '/^(-)?\d+((\.|,)\d+)?$/', $value ) );
 	}
 
 	/**
