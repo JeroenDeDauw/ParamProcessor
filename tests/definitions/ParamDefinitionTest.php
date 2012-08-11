@@ -59,6 +59,14 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 		return $definitions;
 	}
 
+	public function getEmptyInstance() {
+		return ParamDefinition::newFromArray( array(
+			'name' => 'empty',
+			'message' => 'test-empty',
+			'type' => $this->getType(),
+		) );
+	}
+
 	public function instanceProvider() {
 		$definitions = array();
 
@@ -124,6 +132,17 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 				);
 			}
 		}
+	}
+
+	protected function validate( \IParamDefinition $definition, $testValue, $validity ) {
+		$def = clone $definition;
+
+		$param = new \Param( $def );
+		$param->setUserValue( $def->getName(), $testValue );
+
+		$success = $def->validate( $param, array(), array() );
+
+		$this->assertEquals( $validity, $success === true );
 	}
 
 }

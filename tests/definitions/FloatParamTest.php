@@ -17,7 +17,7 @@ namespace Validator\Test;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class FloatParamTest extends ParamDefinitionTest {
+class FloatParamTest extends NumericParamTest {
 
 	/**
 	 * @see ParamDefinitionTest::getDefinitions
