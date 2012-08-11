@@ -74,7 +74,23 @@ class TitleParam extends ParamDefinition {
 	 * @return mixed
 	 */
 	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
-		return $this->titles[$value];
+		return array_key_exists( $value, $this->titles ) ? $this->titles[$value] : Title::newFromText( $value );
+	}
+
+	/**
+	 * Sets the parameter definition values contained in the provided array.
+	 *
+	 * @since 0.5
+	 *
+	 * @param array $param
+	 * @throws MWException
+	 */
+	public function setArrayValues( array $param ) {
+		parent::setArrayValues( $param );
+
+		if ( array_key_exists( 'hastoexist', $param ) ) {
+			$this->setHasToExist( $param['hastoexist'] );
+		}
 	}
 
 }

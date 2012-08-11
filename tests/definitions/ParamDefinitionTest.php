@@ -132,6 +132,8 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 				);
 			}
 		}
+
+		$this->assertTrue( true );
 	}
 
 	protected function validate( \IParamDefinition $definition, $testValue, $validity ) {
