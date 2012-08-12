@@ -1,7 +1,7 @@
 <?php
 
 namespace Validator\Test;
-use Validator;
+use Validator, ValidatorOptions;
 
 /**
  * Unit test for the Validator class.
@@ -41,7 +41,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 	public function newFromOptionsProvider() {
 		$options = array();
 
-		$option = new \ValidatorOptions();
+		$option = new ValidatorOptions();
 
 		$options[] = clone $option;
 
@@ -63,19 +63,18 @@ class ValidatorTest extends \MediaWikiTestCase {
 	}
 
 	public function testNewFromOptions() {
-		$options = new \ValidatorOptions();
+		$options = new ValidatorOptions();
 		$validator = Validator::newFromOptions( clone $options );
 		$this->assertInstanceOf( '\Validator', $validator );
 		$this->assertEquals( $options, $validator->getOptions() );
 	}
 
-	public function parameterProvider() {
-		// $params, $definitions [, $expected]
-		$argLists = array();
-
+	protected function getSimpleParams() {
 		$params = array(
 			'awesome' => 'yes',
 			'howmuch' => '9001',
+			'float' => '4.2',
+			'page' => 'Ohi there!',
 		);
 
 		$definitions = array(
@@ -85,18 +84,42 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'howmuch' => array(
 				'type' => 'integer',
 			),
+			'float' => array(
+				'type' => 'float',
+			),
+			'page' => array(
+				'type' => 'title',
+				'hastoexist' => false,
+			),
 		);
+
+		$options = new ValidatorOptions();
 
 		$expected = array(
 			'awesome' => true,
 			'howmuch' => 9001,
+			'float' => 4.2,
+			'page' => \Title::newFromText( 'Ohi there!' ),
 		);
 
-		$argLists[] = array( $params, $definitions, $expected );
+		return array( $params, $definitions, $options, $expected );
+	}
+
+	public function parameterProvider() {
+		// $params, $definitions [, $options, $expected]
+		$argLists = array();
+
+		$argLists[] = $this->getSimpleParams();
+
+		$argLists[] = $this->getSimpleParams();
 
 		foreach ( $argLists as &$argList ) {
 			foreach ( $argList[1] as $key => &$definition ) {
 				$definition['message'] = 'test-' . $key;
+			}
+
+			if ( !array_key_exists( 2, $argList ) ) {
+				$argList[2] = new ValidatorOptions();
 			}
 		}
 
@@ -106,8 +129,8 @@ class ValidatorTest extends \MediaWikiTestCase {
 	/**
 	 * @dataProvider parameterProvider
 	 */
-	public function testSetParameters( array $params, array $definitions, array $expected = array() ) {
-		$validator = Validator::newFromOptions( new \ValidatorOptions() );
+	public function testSetParameters( array $params, array $definitions, ValidatorOptions $options, array $expected = array() ) {
+		$validator = Validator::newFromOptions( $options );
 
 		$validator->setParameters( $params, $definitions );
 
@@ -117,8 +140,8 @@ class ValidatorTest extends \MediaWikiTestCase {
 	/**
 	 * @dataProvider parameterProvider
 	 */
-	public function testValidateParameters( array $params, array $definitions, array $expected = array() ) {
-		$validator = Validator::newFromOptions( new \ValidatorOptions() );
+	public function testValidateParameters( array $params, array $definitions, ValidatorOptions $options, array $expected = array() ) {
+		$validator = Validator::newFromOptions( $options );
 
 		$validator->setParameters( $params, $definitions );
 
