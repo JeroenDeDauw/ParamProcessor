@@ -69,6 +69,7 @@ $wgAutoloadClasses['ParameterInput']			 	= $incDir . 'ParameterInput.php';
 $wgAutoloadClasses['ParameterManipulation']	  		= $incDir . 'ParameterManipulation.php'; // Deprecated!
 $wgAutoloadClasses['ParserHook']				 	= $incDir . 'ParserHook.php';
 $wgAutoloadClasses['Validator']				  		= $incDir . 'Validator.php';
+$wgAutoloadClasses['ValidatorOptions']				= $incDir . 'ValidatorOptions.php';
 $wgAutoloadClasses['TopologicalSort']				= $incDir . 'TopologicalSort.php';
 $wgAutoloadClasses['ValidationError']				= $incDir . 'ValidationError.php';
 $wgAutoloadClasses['ValidationErrorHandler']	 	= $incDir . 'ValidationErrorHandler.php';
