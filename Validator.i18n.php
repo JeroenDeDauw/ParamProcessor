@@ -2563,10 +2563,13 @@ A aceta mach {{PLURAL:$3|sto valor|sti valor}}: $2 (e $4 {{PLURAL:$4|valor|valor
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'validator-error' => 'تېروتنه: $1',
 	'validator-type-string' => 'متن',
 	'validator-type-float' => 'شمېره',
 	'validator-type-boolean' => 'هو/نه',
 	'validator-type-char' => 'لوښه',
+	'validator-type-title' => 'سرليک',
+	'validator-listerrors-errors' => 'تېروتنې',
 	'validator-listerrors-normal' => 'نورمال',
 	'validator-describe-empty' => 'تش',
 	'validator-describe-header-default' => 'تلواليز',
@@ -2894,6 +2897,14 @@ $messages['ru'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|Значение $1 было пропущено|Значения $1 были пропущены}}.',
 );
 
+/** Rusyn (русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'validator-type-string' => 'текст',
+	'validator-listerrors-errors' => 'Хыбы',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  * @author පසිඳු කාවින්ද
@@ -2975,6 +2986,20 @@ $messages['sv'] = array(
 	'validator_list_error_invalid_argument' => 'Ett eller flera värden av parameter $1 är ogiltiga.',
 	'validator_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|Värdet|Värdena}} $1 har blivit {{PLURAL:$2|utelämnat|utelämnade}}.',
+);
+
+/** Tamil (தமிழ்)
+ * @author Karthi.dr
+ */
+$messages['ta'] = array(
+	'validator-error' => 'பிழை: $1',
+	'validator-type-string' => 'உரை',
+	'validator-type-integer' => 'முழு எண்',
+	'validator-type-float' => 'எண்',
+	'validator-type-boolean' => 'ஆம்/இல்லை',
+	'validator-type-title' => 'தலைப்பு',
+	'validator-type-title-list' => 'தலைப்புகளின் பட்டியல்',
+	'validator-listerrors-errors' => 'பிழைகள்',
 );
 
 /** Telugu (తెలుగు)
