@@ -70,25 +70,6 @@ class Validator {
 	protected $errors = array();
 
 	/**
-	 * Name of the element that's being validated.
-	 * 
-	 * @since 0.4
-	 * 
-	 * @var string
-	 */
-	protected $element;
-	
-	/** 
-	 * Indicates if unknown parameters should be seen as invalid.
-	 * If this value is false, they will simply be ignored.
-	 * 
-	 * @since 0.4.3
-	 * 
-	 * @var boolean
-	 */
-	protected $unknownInvalid;
-
-	/**
 	 * Options for this validator object.
 	 *
 	 * @since 0.5
@@ -109,10 +90,9 @@ class Validator {
 	 */
 	public function __construct( $element = '', $unknownInvalid = true, ValidatorOptions $options = null ) {
 		if ( is_null( $options ) ) {
-			$this->element = $element;
-			$this->unknownInvalid = $unknownInvalid;
-
 			$options = new ValidatorOptions();
+			$options->setName( $element );
+			$options->setUnknownInvalid( $unknownInvalid );
 		}
 
 		$this->options = $options;
@@ -128,7 +108,7 @@ class Validator {
 	 * @return Validator
 	 */
 	public static function newFromOptions( ValidatorOptions $options ) {
-
+		return new Validator( '', true, $options );
 	}
 	
 	/**
@@ -259,7 +239,7 @@ class Validator {
 			new ValidationError(
 				$message,
 				$severity,
-				$this->element,
+				$this->options->getName(),
 				(array)$tags
 			)
 		);
@@ -273,7 +253,7 @@ class Validator {
 	 * @param ValidationError $error
 	 */
 	protected function registerError( ValidationError $error ) {
-		$error->element = $this->element;
+		$error->element = $this->options->getName();
 		$this->errors[] = $error;
 		ValidationErrorHandler::addError( $error );		
 	}
@@ -286,7 +266,7 @@ class Validator {
 	public function validateParameters() {
 		$this->doParamProcessing();
 		
-		if ( !$this->hasFatalError() && $this->unknownInvalid ) {
+		if ( !$this->hasFatalError() && $this->options->unknownIsInvalid() ) {
 			// Loop over the remaining raw parameters.
 			// These are unrecognized parameters, as they where not used by any parameter definition.
 			foreach ( $this->rawParameters as $paramName => $paramValue ) {
@@ -414,7 +394,7 @@ class Validator {
 			return true;
 		}
 		else {
-			foreach ( $param->getAliases() as $alias ) {
+			foreach ( $param->getDefinition()->getAliases() as $alias ) {
 				if ( array_key_exists( $alias, $this->rawParameters ) ) {
 					$param->setUserValue( $alias, $this->rawParameters[$alias] );
 					unset( $this->rawParameters[$alias] );
@@ -462,6 +442,9 @@ class Validator {
 		$parameters = array();
 
 		foreach ( $this->params as $parameter ) {
+			/**
+			 * @var IParam $parameter
+			 */
 			$parameters[$parameter->getName()] = $parameter->getValue(); 
 		}
 		
