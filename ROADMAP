@@ -20,3 +20,11 @@ End of 2012.
 First half of 2013.
 
 * Remove Parameter and associated compatibility code
+
+== Validator 1.0 ==
+
+Unknown, below list is stuff that should be completed at some point before this release:
+
+* Fully implement error handling system, including inline settings and inline reporting
+* Good test coverage
+* Have the core library work as stand alone (ie isolate and split off MW specific code)
