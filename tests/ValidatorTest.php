@@ -64,7 +64,67 @@ class ValidatorTest extends \MediaWikiTestCase {
 
 	public function testNewFromOptions() {
 		$options = new \ValidatorOptions();
-		$this->assertInstanceOf( '\Validator', Validator::newFromOptions( $options ) );
+		$validator = Validator::newFromOptions( clone $options );
+		$this->assertInstanceOf( '\Validator', $validator );
+		$this->assertEquals( $options, $validator->getOptions() );
+	}
+
+	public function parameterProvider() {
+		// $params, $definitions [, $expected]
+		$argLists = array();
+
+		$params = array(
+			'awesome' => 'yes',
+			'howmuch' => '9001',
+		);
+
+		$definitions = array(
+			'awesome' => array(
+				'type' => 'boolean',
+			),
+			'howmuch' => array(
+				'type' => 'integer',
+			),
+		);
+
+		$expected = array(
+			'awesome' => true,
+			'howmuch' => 9001,
+		);
+
+		$argLists[] = array( $params, $definitions, $expected );
+
+		foreach ( $argLists as &$argList ) {
+			foreach ( $argList[1] as $key => &$definition ) {
+				$definition['message'] = 'test-' . $key;
+			}
+		}
+
+		return $argLists;
+	}
+
+	/**
+	 * @dataProvider parameterProvider
+	 */
+	public function testSetParameters( array $params, array $definitions, array $expected = array() ) {
+		$validator = Validator::newFromOptions( new \ValidatorOptions() );
+
+		$validator->setParameters( $params, $definitions );
+
+		$this->assertTrue( true ); // TODO
+	}
+
+	/**
+	 * @dataProvider parameterProvider
+	 */
+	public function testValidateParameters( array $params, array $definitions, array $expected = array() ) {
+		$validator = Validator::newFromOptions( new \ValidatorOptions() );
+
+		$validator->setParameters( $params, $definitions );
+
+		$validator->validateParameters();
+
+		$this->assertArrayEquals( $expected, $validator->getParameterValues(), false, true );
 	}
 
 }

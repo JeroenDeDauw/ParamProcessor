@@ -109,6 +109,17 @@ class Validator {
 	public static function newFromOptions( ValidatorOptions $options ) {
 		return new Validator( '', true, $options );
 	}
+
+	/**
+	 * Returns the options used by this Validator object.
+	 *
+	 * @since 0.5
+	 *
+	 * @return ValidatorOptions
+	 */
+	public function getOptions() {
+		return clone $this->options;
+	}
 	
 	/**
 	 * Determines the names and values of all parameters. Also takes care of default parameters. 
@@ -208,11 +219,8 @@ class Validator {
 	 * 
 	 * @param array $parameters Parameter name as key, parameter value as value
 	 * @param array $paramDefinitions List of parameter definitions. Either ParamDefinition objects or equivalent arrays.
-	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
-	 * 
-	 * @todo: $toLower takes no effect yet.
 	 */
-	public function setParameters( array $parameters, array $paramDefinitions, $toLower = true ) {
+	public function setParameters( array $parameters, array $paramDefinitions ) {
 		$this->paramDefinitions = ParamDefinition::getCleanDefinitions( $paramDefinitions );
 
 		// Loop through all the user provided parameters, and distinguish between those that are allowed and those that are not.
