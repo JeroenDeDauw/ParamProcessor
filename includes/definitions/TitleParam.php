@@ -72,9 +72,27 @@ class TitleParam extends ParamDefinition {
 	 * @param $params array of IParam
 	 *
 	 * @return mixed
+	 * @throws MWException
 	 */
 	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
-		return array_key_exists( $value, $this->titles ) ? $this->titles[$value] : Title::newFromText( $value );
+		if ( $value instanceof Title ) {
+			return $value;
+		}
+
+		if ( ( is_string( $value ) || is_integer( $value ) ) && array_key_exists( $value, $this->titles ) ) {
+			return $this->titles[$value];
+		}
+
+		if ( is_string( $value ) ) {
+			$title = Title::newFromText( $value );
+
+			if ( !is_null( $title ) ) {
+				$this->titles[$value] = $title;
+				return $title;
+			}
+		}
+
+		throw new MWException( 'Could not format value to Title object!' );
 	}
 
 	/**

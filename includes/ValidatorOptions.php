@@ -34,6 +34,8 @@ class ValidatorOptions {
 
 	protected $lowercaseNames = true;
 
+	protected $trimNames = true;
+
 	protected $rawStringInputs = true;
 
 	protected $trimValues = false;
@@ -90,6 +92,15 @@ class ValidatorOptions {
 	 *
 	 * @param boolean $trim
 	 */
+	public function setTrimNames( $trim ) {
+		$this->trimNames = $trim;
+	}
+
+	/**
+	 * @since 0.5
+	 *
+	 * @param boolean $trim
+	 */
 	public function setTrimValues( $trim ) {
 		$this->trimValues = $trim;
 	}
@@ -137,6 +148,15 @@ class ValidatorOptions {
 	 */
 	public function getRawStringInputs() {
 		return $this->rawStringInputs;
+	}
+
+	/**
+	 * @since 0.5
+	 *
+	 * @return boolean
+	 */
+	public function trimNames() {
+		return $this->trimNames;
 	}
 
 	/**

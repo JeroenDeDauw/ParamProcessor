@@ -225,7 +225,14 @@ class Validator {
 
 		// Loop through all the user provided parameters, and distinguish between those that are allowed and those that are not.
 		foreach ( $parameters as $paramName => $paramData ) {
-			$paramName = trim( strtolower( $paramName ) );
+			if ( $this->options->lowercaseNames() ) {
+				$paramName = strtolower( $paramName );
+			}
+
+			if ( $this->options->trimNames() ) {
+				$paramName = trim( $paramName );
+			}
+
 			$paramValue = is_array( $paramData ) ? $paramData['original-value'] : trim( $paramData );
 			
 			$this->rawParameters[$paramName] = $paramValue;

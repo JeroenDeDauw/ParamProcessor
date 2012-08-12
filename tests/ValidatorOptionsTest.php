@@ -51,6 +51,7 @@ class ValidatorOptionsTest extends \MediaWikiTestCase {
 			'setUnknownInvalid' => 'unknownIsInvalid',
 			'setLowercaseNames' => 'lowercaseNames',
 			'setRawStringInputs' => 'getRawStringInputs',
+			'setTrimNames' => 'trimNames',
 			'setTrimValues' => 'trimValues',
 			'setLowercaseValues' => 'lowercaseValues',
 		);

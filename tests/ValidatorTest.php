@@ -69,12 +69,18 @@ class ValidatorTest extends \MediaWikiTestCase {
 		$this->assertEquals( $options, $validator->getOptions() );
 	}
 
+	/**
+	 * Simple parameter definitions and values that should all pass.
+	 *
+	 * @return array
+	 */
 	protected function getSimpleParams() {
 		$params = array(
 			'awesome' => 'yes',
 			'howmuch' => '9001',
 			'float' => '4.2',
 			'page' => 'Ohi there!',
+			'text' => 'foo bar baz o_O',
 		);
 
 		$definitions = array(
@@ -91,6 +97,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 				'type' => 'title',
 				'hastoexist' => false,
 			),
+			'text' => array(),
 		);
 
 		$options = new ValidatorOptions();
@@ -100,6 +107,108 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'howmuch' => 9001,
 			'float' => 4.2,
 			'page' => \Title::newFromText( 'Ohi there!' ),
+			'text' => 'foo bar baz o_O',
+		);
+
+		return array( $params, $definitions, $options, $expected );
+	}
+
+	/**
+	 * Simple parameter definitions with defaults and values
+	 * that are invalid or missing and therefore default.
+	 *
+	 * @return array
+	 */
+	protected function getDefaultingParams() {
+		$params = array(
+			'awesome' => 'omg!',
+			'howmuch' => 'omg!',
+			'float' => 'omg!',
+			'page' => '|',
+		);
+
+		$definitions = array(
+			'awesome' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'howmuch' => array(
+				'type' => 'integer',
+				'default' => 9001,
+			),
+			'float' => array(
+				'type' => 'float',
+				'default' => 4.2,
+			),
+			'page' => array(
+				'type' => 'title',
+				'hastoexist' => false,
+				'default' => \Title::newFromText( 'Ohi there!' ),
+			),
+			'text' => array(
+				'default' => 'foo bar baz o_O',
+			),
+		);
+
+		$options = new ValidatorOptions();
+
+		$expected = array(
+			'awesome' => true,
+			'howmuch' => 9001,
+			'float' => 4.2,
+			'page' => \Title::newFromText( 'Ohi there!' ),
+			'text' => 'foo bar baz o_O',
+		);
+
+		return array( $params, $definitions, $options, $expected );
+	}
+
+	/**
+	 * Values and definitions in-system parameter handling.
+	 * Options set to expect non-raw values.
+	 *
+	 * @return array
+	 */
+	protected function getTypedParams() {
+		$params = array(
+			'awesome' => true,
+			'howmuch' => 9001,
+			'float' => 4.2,
+			'page' => \Title::newFromText( 'Ohi there!' ),
+			'Text' => 'foo bar baz o_O',
+		);
+
+		$definitions = array(
+			'awesome' => array(
+				'type' => 'boolean',
+			),
+			'howmuch' => array(
+				'type' => 'integer',
+			),
+			'float' => array(
+				'type' => 'float',
+				'lowerbound' => 9001,
+				'default' => 9000.1
+			),
+			'page' => array(
+				'type' => 'title',
+				'hastoexist' => false,
+			),
+			'text' => array(
+				'default' => 'some text',
+			),
+		);
+
+		$options = new ValidatorOptions();
+		$options->setRawStringInputs( false );
+		$options->setLowercaseNames( false );
+
+		$expected = array(
+			'awesome' => true,
+			'howmuch' => 9001,
+			'float' => 9000.1,
+			'page' => \Title::newFromText( 'Ohi there!' ),
+			'text' => 'some text',
 		);
 
 		return array( $params, $definitions, $options, $expected );
@@ -111,7 +220,9 @@ class ValidatorTest extends \MediaWikiTestCase {
 
 		$argLists[] = $this->getSimpleParams();
 
-		$argLists[] = $this->getSimpleParams();
+		$argLists[] = $this->getDefaultingParams();
+
+		$argLists[] = $this->getTypedParams();
 
 		foreach ( $argLists as &$argList ) {
 			foreach ( $argList[1] as $key => &$definition ) {
