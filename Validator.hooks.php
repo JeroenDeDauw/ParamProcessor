@@ -32,6 +32,7 @@ final class ValidatorHooks {
 			'definitions/TitleParam',
 
 			'ValidatorOptions',
+			'Validator',
 		);
 
 		foreach ( $testFiles as $file ) {

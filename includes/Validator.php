@@ -79,8 +79,7 @@ class Validator {
 	protected $options;
 
 	/**
-	 * Constructor.
-	 * @deprecated since 0.5, breaking changes in 0.7, use newFrom* instead.
+	 * Deprecated since 0.5, breaking changes in 0.7, use newFrom* instead.
 	 * 
 	 * @param string $element
 	 * @param boolean $unknownInvalid Should unknown parameter be regarded as invalid (or, if not, just be ignored)
