@@ -5,6 +5,21 @@
  * This parameter describes the size of a dimension (ie width) in some unit (ie px) or a percentage.
  * Specifies the type specific validation and formatting logic.
  *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @since 0.5
  *
  * @file
@@ -26,19 +41,21 @@ class DimensionParam extends ParamDefinition {
 	}
 
 	/**
-	 * Formats the parameter value to it's final result.
+	 * Validates the parameters value and returns the result.
+	 * @see ParamDefinition::validateValue
 	 *
 	 * @since 0.5
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
-	 * @param $params array of iParam
+	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params ) {
-		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+		if ( !parent::validateValue( $value, $param, $definitions, $params, $options ) ) {
 			return false;
 		}
 
@@ -61,6 +78,7 @@ class DimensionParam extends ParamDefinition {
 
 	/**
 	 * Formats the parameter value to it's final result.
+	 * @see ParamDefinition::formatValue
 	 *
 	 * @since 0.5
 	 *
@@ -83,6 +101,7 @@ class DimensionParam extends ParamDefinition {
 
 	/**
 	 * Sets the parameter definition values contained in the provided array.
+	 * @see ParamDefinition::setArrayValues
 	 *
 	 * @since 0.5
 	 *

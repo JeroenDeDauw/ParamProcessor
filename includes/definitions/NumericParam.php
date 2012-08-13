@@ -68,7 +68,8 @@ abstract class NumericParam extends ParamDefinition {
 	}
 
 	/**
-	 * Formats the parameter value to it's final result.
+	 * Validates the parameters value and returns the result.
+	 * @see ParamDefinition::validateValue
 	 *
 	 * @since 0.5
 	 *
@@ -91,6 +92,7 @@ abstract class NumericParam extends ParamDefinition {
 
 	/**
 	 * Sets the parameter definition values contained in the provided array.
+	 * @see ParamDefinition::setArrayValues
 	 *
 	 * @since 0.5
 	 *

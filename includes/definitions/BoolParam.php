@@ -19,7 +19,8 @@ class BoolParam extends ParamDefinition {
 	protected $false = array( 'no', 'off', '0' );
 
 	/**
-	 * Formats the parameter value to it's final result.
+	 * Validates the parameters value and returns the result.
+	 * @see ParamDefinition::validateValue
 	 *
 	 * @since 0.5
 	 *
@@ -42,6 +43,7 @@ class BoolParam extends ParamDefinition {
 
 	/**
 	 * Formats the parameter value to it's final result.
+	 * @see ParamDefinition::formatValue
 	 *
 	 * @since 0.5
 	 *

@@ -16,7 +16,8 @@
 class CharParam extends StringParam {
 
 	/**
-	 * Formats the parameter value to it's final result.
+	 * Validates the parameters value and returns the result.
+	 * @see ParamDefinition::validateValue
 	 *
 	 * @since 0.5
 	 *

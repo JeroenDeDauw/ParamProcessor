@@ -43,7 +43,8 @@ class StringParam extends ParamDefinition {
 	protected $canBeEmpty = true;
 
 	/**
-	 * Formats the parameter value to it's final result.
+	 * Validates the parameters value and returns the result.
+	 * @see ParamDefinition::validateValue
 	 *
 	 * @since 0.5
 	 *
@@ -85,6 +86,7 @@ class StringParam extends ParamDefinition {
 
 	/**
 	 * Formats the parameter value to it's final result.
+	 * @see ParamDefinition::formatValue
 	 *
 	 * @since 0.5
 	 *
@@ -107,6 +109,7 @@ class StringParam extends ParamDefinition {
 
 	/**
 	 * Sets the parameter definition values contained in the provided array.
+	 * @see ParamDefinition::setArrayValues
 	 *
 	 * @since 0.5
 	 *
