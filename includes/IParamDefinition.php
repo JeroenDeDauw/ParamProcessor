@@ -246,12 +246,13 @@ interface IParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return array|true
 	 *
 	 * TODO: return error list (ie Status object)
 	 */
-	public function validate( IParam $param, array $definitions, array $params );
+	public function validate( IParam $param, array $definitions, array $params, ValidatorOptions $options );
 
 	/**
 	 * Returns a message key for a message describing the parameter type.
@@ -261,5 +262,15 @@ interface IParamDefinition {
 	 * @return string
 	 */
 	public function getTypeMessage();
+
+	/**
+	 * Returns if the value should be trimmed before validation and any further processing.
+	 * @see IParamDefinition::trimDuringClean
+	 *
+	 * @since 0.5
+	 *
+	 * @since boolean|null
+	 */
+	public function trimDuringClean();
 
 }

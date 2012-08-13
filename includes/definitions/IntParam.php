@@ -44,23 +44,48 @@ class IntParam extends NumericParam {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params ) {
-		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+		if ( $options->isStringlyTyped() ) {
+			if ( !is_string( $value ) ) {
+				return false;
+			}
+
+			$isNegative = false;
+
+			if ( $this->allowNegatives && strpos( $value, '-' ) === 0 ) {
+				$value = substr( $value, 1 );
+				$isNegative = true;
+			}
+
+			if ( ctype_digit( (string)$value ) ) {
+				$value = (int)$value;
+
+				if ( $isNegative ) {
+					$value = -$value;
+				}
+			}
+			else {
+				return false;
+			}
+		}
+		elseif ( ( !is_int( $value ) && !is_float( $value ) ) || ( !$this->allowNegatives && $value < 0 ) ) {
 			return false;
 		}
 
-		if ( !is_string( $value ) && !is_int( $value ) ) {
-			return false;
+		if ( is_float( $value ) ) {
+			if ( (int)$value == $value ) {
+				$value = (int)$value;
+			}
+			else {
+				return false;
+			}
 		}
 
-		if ( $this->allowNegatives && strpos( $value, '-' ) === 0 ) {
-			$value = substr( $value, 1 );
-		}
-
-		return ctype_digit( (string)$value );
+		return parent::validateValue( $value, $param, $definitions, $params, $options );
 	}
 
 	/**

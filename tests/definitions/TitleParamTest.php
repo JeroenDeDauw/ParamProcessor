@@ -45,15 +45,20 @@ class TitleParamTest extends ParamDefinitionTest {
 
 		$params['values-empty'] = $params['values'];
 		$params['values-empty']['hastoexist'] = false;
+		$params['values-empty']['values'][] = 'Foo';
 
 		return $params;
 	}
 
 	/**
 	 * @see ParamDefinitionTest::valueProvider
+	 *
+	 * @param boolean $stringlyTyped
+	 *
+	 * @return array
 	 */
-	public function valueProvider() {
-		return array(
+	public function valueProvider( $stringlyTyped = true ) {
+		$values = array(
 			'empty-empty' => array(
 				array( 'foo bar page', true, \Title::newFromText( 'foo bar page' ) ),
 				array( '|', false ),
@@ -73,6 +78,16 @@ class TitleParamTest extends ParamDefinitionTest {
 				array( 'foo bar page', false ),
 			),
 		);
+
+		if ( !$stringlyTyped ) {
+			foreach ( $values as &$set ) {
+				foreach ( $set as &$value ) {
+					$value[0] = \Title::newFromText( $value[0] );
+				}
+			}
+		}
+
+		return $values;
 	}
 
 	/**

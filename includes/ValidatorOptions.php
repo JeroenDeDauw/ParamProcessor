@@ -30,17 +30,17 @@ class ValidatorOptions {
 
 	protected $name;
 
+	// During setup
 	protected $unknownInvalid = true;
-
 	protected $lowercaseNames = true;
-
 	protected $trimNames = true;
 
-	protected $rawStringInputs = true;
-
+	// During clean
 	protected $trimValues = false;
-
 	protected $lowercaseValues = false;
+
+	// During validation
+	protected $rawStringInputs = true;
 
 	/**
 	 * Constructor.
@@ -146,7 +146,7 @@ class ValidatorOptions {
 	 *
 	 * @return boolean
 	 */
-	public function getRawStringInputs() {
+	public function isStringlyTyped() {
 		return $this->rawStringInputs;
 	}
 

@@ -46,14 +46,17 @@ class FloatParamTest extends NumericParamTest {
 
 	/**
 	 * @see ParamDefinitionTest::valueProvider
+	 *
+	 * @param boolean $stringlyTyped
+	 *
 	 * @return array
 	 */
-	public function valueProvider() {
-		return array(
+	public function valueProvider( $stringlyTyped = true ) {
+		$values = array(
 			'empty' => array(
-				array( '1', true, 1 ),
-				array( '1.1', true, 1.1 ),
-				array( '0.2555', true, 0.2555 ),
+				array( 1, true, 1 ),
+				array( 1.1, true, 1.1 ),
+				array( 0.2555, true, 0.2555 ),
 				array( '1.1.1', false ),
 				array( 'foobar', false ),
 				array( array(), false ),
@@ -61,13 +64,25 @@ class FloatParamTest extends NumericParamTest {
 				array( false, false ),
 			),
 			'values' => array(
-				array( '1', true, 1 ),
+				array( 1, true, 1 ),
 				array( 'yes', false ),
 				array( 'no', false ),
-				array( '0.1', true, 0.1 ),
-				array( '0.2555', false ),
+				array( 0.1, true, 0.1 ),
+				array( 0.2555, false ),
 			),
 		);
+
+		if ( $stringlyTyped ) {
+			foreach ( $values as &$set ) {
+				foreach ( $set as &$value ) {
+					if ( is_float( $value[0] ) || is_int( $value[0] ) ) {
+						$value[0] = (string)$value[0];
+					}
+				}
+			}
+		}
+
+		return $values;
 	}
 
 	/**

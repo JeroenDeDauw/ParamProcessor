@@ -47,8 +47,12 @@ class StringParamTest extends ParamDefinitionTest {
 
 	/**
 	 * @see ParamDefinitionTest::valueProvider
+	 *
+	 * @param boolean $stringlyTyped
+	 *
+	 * @return array
 	 */
-	public function valueProvider() {
+	public function valueProvider( $stringlyTyped = true ) {
 		return array(
 			'empty' => array(
 				array( 'ohi there', true, 'ohi there' ),

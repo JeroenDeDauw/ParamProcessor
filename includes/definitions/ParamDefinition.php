@@ -37,14 +37,13 @@ abstract class ParamDefinition implements IParamDefinition {
 	public static $accumulateParameterErrors = false;
 
 	/**
-	 * Indicates if the parameter value should trimmed.
-	 * This is done BEFORE the validation process.
+	 * Indicates if the parameter value should trimmed during the clean process.
 	 *
 	 * @since 0.5
 	 *
-	 * @var boolean
+	 * @var boolean|null
 	 */
-	protected $trimValue = true;
+	protected $trimValue = null;
 
 	/**
 	 * Indicates if the parameter manipulations should be applied to the default value.
@@ -181,14 +180,14 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns if the value should be trimmed before validation and any further processing.
+	 * @see IParamDefinition::trimDuringClean
 	 *
 	 * @since 0.5
 	 *
-	 * @since boolean
+	 * @since boolean|null
 	 */
-	public function trimBeforeValidate() {
-		$this->trimValue;
+	public function trimDuringClean() {
+		return $this->trimValue;
 	}
 
 	/**
@@ -648,32 +647,52 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return array|true
 	 *
 	 * TODO: return error list (ie Status object)
 	 */
-	public function validate( IParam $param, array $definitions, array $params ) {
+	public function validate( IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
 		if ( $this->isList() ) {
 			$valid = true;
 			$values = $param->getValue();
 
 			foreach ( $values as $value ) {
 				// TODO: restore not bailing out at one error in list but filtering on valid
-				$valid = $this->validateValue( $value, $param, $definitions, $params );
+				$valid = $this->validateValueBase( $value, $param, $definitions, $params, $options );
 
 				if ( !$valid ) {
 					break;
 				}
 			}
 
-			return $valid && $this->validateList( $param, $definitions, $params );
+			return $valid && $this->validateList( $param, $definitions, $params, $options );
 		}
 		else {
-			$valid = $this->validateValue( $param->getValue(), $param, $definitions, $params );
+			$valid = $this->validateValueBase( $param->getValue(), $param, $definitions, $params, $options );
 
 			return $valid ? true : array( new ValidationError( 'Error' ) ); // TODO
 		}
+	}
+
+	/**
+	 * @since 0.5
+	 *
+	 * @param mixed $value
+	 * @param IParam $param
+	 * @param $definitions array of IParamDefinition
+	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
+	 *
+	 * @return boolean
+	 */
+	protected final function validateValueBase( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+		if ( $options->isStringlyTyped() && !is_string( $value ) ) {
+			return false;
+		}
+
+		return $this->validateValue( $value, $param, $definitions, $params, $options );
 	}
 
 	/**
@@ -722,10 +741,11 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateList( IParam $param, array $definitions, array $params ) {
+	protected function validateList( IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
 		// TODO
 	}
 
@@ -754,10 +774,11 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params ) {
+	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
 		if ( $this->allowedValues !== false && !in_array( $value, $this->allowedValues ) ) {
 			return false;
 		}

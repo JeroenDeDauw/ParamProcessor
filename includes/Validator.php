@@ -233,8 +233,8 @@ class Validator {
 				$paramName = trim( $paramName );
 			}
 
-			$paramValue = is_array( $paramData ) ? $paramData['original-value'] : trim( $paramData );
-			
+			$paramValue = is_array( $paramData ) ? $paramData['original-value'] : $paramData;
+
 			$this->rawParameters[$paramName] = $paramValue;
 		}
 	}
@@ -325,7 +325,7 @@ class Validator {
 			else {
 				$this->params[$param->getName()] = $param;
 
-				$param->validate( $this->paramDefinitions, $this->params );
+				$param->validate( $this->paramDefinitions, $this->params, $this->options );
 				
 				foreach ( $param->getErrors() as $error ) {
 					$this->registerError( $error );
@@ -338,7 +338,7 @@ class Validator {
 				
 				$initialSet = $this->paramDefinitions;
 
-				$param->format( $this->paramDefinitions, $this->params );
+				$param->format( $this->paramDefinitions, $this->params, $this->options );
 
 				$this->getParamsToProcess( $initialSet, $this->paramDefinitions );
 			}
@@ -403,14 +403,14 @@ class Validator {
 	 */
 	protected function attemptToSetUserValue( IParam $param ) {
 		if ( array_key_exists( $param->getName(), $this->rawParameters ) ) {
-			$param->setUserValue( $param->getName(), $this->rawParameters[$param->getName()] );
+			$param->setUserValue( $param->getName(), $this->rawParameters[$param->getName()], $this->options );
 			unset( $this->rawParameters[$param->getName()] );
 			return true;
 		}
 		else {
 			foreach ( $param->getDefinition()->getAliases() as $alias ) {
 				if ( array_key_exists( $alias, $this->rawParameters ) ) {
-					$param->setUserValue( $alias, $this->rawParameters[$alias] );
+					$param->setUserValue( $alias, $this->rawParameters[$alias], $this->options );
 					unset( $this->rawParameters[$alias] );
 					return true;
 				}

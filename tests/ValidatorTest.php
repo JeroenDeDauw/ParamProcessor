@@ -77,8 +77,8 @@ class ValidatorTest extends \MediaWikiTestCase {
 	protected function getSimpleParams() {
 		$params = array(
 			'awesome' => 'yes',
-			'howmuch' => '9001',
-			'float' => '4.2',
+			'Howmuch' => '9001',
+			'FLOAT' => '4.2',
 			'page' => 'Ohi there!',
 			'text' => 'foo bar baz o_O',
 		);
@@ -125,6 +125,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'howmuch' => 'omg!',
 			'float' => 'omg!',
 			'page' => '|',
+			'whot?' => 'O_o',
 		);
 
 		$definitions = array(
@@ -172,7 +173,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 	protected function getTypedParams() {
 		$params = array(
 			'awesome' => true,
-			'howmuch' => 9001,
+			'howmuch' => '42',
 			'float' => 4.2,
 			'page' => \Title::newFromText( 'Ohi there!' ),
 			'Text' => 'foo bar baz o_O',
@@ -184,6 +185,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 			),
 			'howmuch' => array(
 				'type' => 'integer',
+				'default' => 9001,
 			),
 			'float' => array(
 				'type' => 'float',

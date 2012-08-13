@@ -76,11 +76,12 @@ abstract class NumericParam extends ParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params ) {
-		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+		if ( !parent::validateValue( $value, $param, $definitions, $params, $options ) ) {
 			return false;
 		}
 

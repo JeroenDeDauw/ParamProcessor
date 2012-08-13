@@ -58,7 +58,11 @@ abstract class NumericParamTest extends ParamDefinitionTest {
 		$definition = $this->getEmptyInstance();
 		$definition->setLowerBound( $bound );
 
-		$this->validate( $definition, $testValue, $validity );
+		$this->validate( $definition, (string)$testValue, $validity );
+
+		$options = new \ValidatorOptions();
+		$options->setRawStringInputs( false );
+		$this->validate( $definition, $testValue, $validity, $options );
 	}
 
 	public function upperBoundProvider() {
@@ -85,7 +89,11 @@ abstract class NumericParamTest extends ParamDefinitionTest {
 		$definition = $this->getEmptyInstance();
 		$definition->setUpperBound( $bound );
 
-		$this->validate( $definition, $testValue, $validity );
+		$this->validate( $definition, (string)$testValue, $validity );
+
+		$options = new \ValidatorOptions();
+		$options->setRawStringInputs( false );
+		$this->validate( $definition, $testValue, $validity, $options );
 	}
 
 }

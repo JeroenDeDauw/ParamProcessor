@@ -27,16 +27,17 @@ class BoolParam extends ParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params ) {
-		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+		if ( !parent::validateValue( $value, $param, $definitions, $params, $options ) ) {
 			return false;
 		}
 
-		return in_array( $value, $this->true )
-			|| in_array( $value, $this->false );
+		return ( !$options->isStringlyTyped() && is_bool( $value ) )
+			|| ( $options->isStringlyTyped() && ( in_array( $value, $this->true ) || in_array( $value, $this->false ) ) );
 	}
 
 	/**

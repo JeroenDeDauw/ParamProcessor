@@ -103,15 +103,17 @@ class Param implements IParam {
 
 	/**
 	 * Sets and cleans the original value and name.
+	 * @see IParam::setUserValue
 	 *
 	 * @since 0.5
 	 *
 	 * @param string $paramName
 	 * @param string $paramValue
+	 * @param ValidatorOptions $options
 	 *
 	 * @return boolean
 	 */
-	public function setUserValue( $paramName, $paramValue ) {
+	public function setUserValue( $paramName, $paramValue, ValidatorOptions $options ) {
 		if ( $this->setCount > 0 && !self::$acceptOverriding ) {
 			// TODO
 			return false;
@@ -120,7 +122,7 @@ class Param implements IParam {
 			$this->originalName = $paramName;
 			$this->originalValue = $paramValue;
 
-			$this->cleanValue();
+			$this->cleanValue( $options );
 
 			$this->setCount++;
 
@@ -143,45 +145,70 @@ class Param implements IParam {
 	 * Sets the $value to a cleaned value of $originalValue.
 	 *
 	 * @since 0.5
+	 *
+	 * @param ValidatorOptions $options
 	 */
-	protected function cleanValue() {
+	protected function cleanValue( ValidatorOptions $options ) {
 		$this->value = $this->originalValue;
 
 		if ( $this->definition->isList() ) {
 			$this->value = explode( $this->definition->getDelimiter(), $this->value );
 		}
 
-		if ( $this->definition->trimBeforeValidate() ) {
+		$trim = $this->getDefinition()->trimDuringClean();
+
+		if ( $trim === true || ( is_null( $trim ) && $options->trimValues() ) ) {
 			if ( $this->definition->isList() ) {
-				$this->value = array_map( $this->value, 'trim' );
+				foreach ( $this->value as &$element ) {
+					if ( is_string( $element ) ) {
+						$element = trim( $element );
+					}
+				}
 			}
-			else {
+			elseif ( is_string( $this->value ) ) {
 				$this->value = trim( $this->value );
+			}
+		}
+
+		if ( $options->lowercaseValues() ) {
+			if ( $this->definition->isList() ) {
+				foreach ( $this->value as &$element ) {
+					if ( is_string( $element ) ) {
+						$element = strtolower( $element );
+					}
+				}
+			}
+			elseif ( is_string( $this->value ) ) {
+				$this->value = strtolower( $this->value );
 			}
 		}
 	}
 
 	/**
 	 * Validates the parameter value and sets the value to it's default when errors occur.
+	 * @see IParam::validate
 	 *
 	 * @since 0.5
 	 *
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 */
-	public function validate( array $definitions, array $params ) {
-		$this->doValidation( $definitions, $params );
+	public function validate( array $definitions, array $params, ValidatorOptions $options ) {
+		$this->doValidation( $definitions, $params, $options );
 	}
 
 	/**
 	 * Applies the parameter manipulations.
+	 * @see IParam::format
 	 *
 	 * @since 0.5
 	 *
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 */
-	public function format( array &$definitions, array $params ) {
+	public function format( array &$definitions, array $params, ValidatorOptions $options ) {
 		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
 			$this->definition->format( $this, $definitions, $params );
 
@@ -254,10 +281,11 @@ class Param implements IParam {
 	 *
 	 * @param $definitions array of ParamDefinition
 	 * @param $params array of Param
+	 * @param ValidatorOptions $options
 	 *
 	 * @throws MWException
 	 */
-	protected function doValidation( array $definitions, array $params ) {
+	protected function doValidation( array $definitions, array $params, ValidatorOptions $options ) {
 		if ( $this->setCount == 0 ) {
 			if ( $this->definition->isRequired() ) {
 				// This should not occur, so throw an exception.
@@ -268,10 +296,13 @@ class Param implements IParam {
 			}
 		}
 		else {
-			$validationResult = $this->definition->validate( $this, $definitions, $params );
+			$validationResult = $this->definition->validate( $this, $definitions, $params, $options );
 
 			if ( is_array( $validationResult ) ) {
-				foreach ( $validationResult as /* ValidationError */ $error ) {
+				/**
+				 * @var ValidationError $error
+				 */
+				foreach ( $validationResult as $error ) {
 					$error->addTags( $this->getName() );
 					$this->errors[] = $error;
 				}

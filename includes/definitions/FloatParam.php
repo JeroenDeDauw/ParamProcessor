@@ -24,16 +24,24 @@ class FloatParam extends NumericParam {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params ) {
-		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+		if ( $options->isStringlyTyped() ) {
+			if ( preg_match( '/^(-)?\d+((\.|,)\d+)?$/', $value ) ) {
+				$value = (float)$value;
+			}
+			else {
+				return false;
+			}
+		}
+		elseif ( !is_float( $value ) && !is_int( $value ) ) {
 			return false;
 		}
 
-		return is_float( $value ) || is_int( $value )
-			|| ( is_string( $value ) && preg_match( '/^(-)?\d+((\.|,)\d+)?$/', $value ) );
+		return parent::validateValue( $value, $param, $definitions, $params, $options );
 	}
 
 	/**

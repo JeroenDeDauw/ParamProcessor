@@ -46,9 +46,11 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 	 *
 	 * @since 0.1
 	 *
+	 * @param boolean $stringlyTyped
+	 *
 	 * @return array
 	 */
-	public abstract function valueProvider();
+	public abstract function valueProvider( $stringlyTyped = true );
 
 	public abstract function getType();
 
@@ -108,18 +110,22 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 	 * @dataProvider instanceProvider
 	 */
 	public function testValidate( IParamDefinition $definition ) {
-		$values = $this->valueProvider();
+		foreach ( array( true, false ) as $stringlyTyped ) {
+			$values = $this->valueProvider( $stringlyTyped );
+			$options = new \ValidatorOptions();
+			$options->setRawStringInputs( $stringlyTyped );
 
-		foreach ( $values[$definition->getName()] as $data ) {
-			list( $input, $valid, ) = $data;
+			foreach ( $values[$definition->getName()] as $data ) {
+				list( $input, $valid, ) = $data;
 
-			$param = new Param( $definition );
-			$param->setUserValue( $definition->getName(), $input );
+				$param = new Param( $definition );
+				$param->setUserValue( $definition->getName(), $input, $options );
 
-			$this->assertEquals(
-				$valid,
-				$definition->validate( $param, array(), array() ) === true
-			);
+				$this->assertEquals(
+					$valid,
+					$definition->validate( $param, array(), array(), $options ) === true
+				);
+			}
 		}
 	}
 
@@ -128,6 +134,7 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 	 */
 	public function testFormat( IParamDefinition $sourceDefinition ) {
 		$values = $this->valueProvider();
+		$options = new \ValidatorOptions();
 
 		foreach ( $values[$sourceDefinition->getName()] as $data ) {
 			$definition = clone $sourceDefinition;
@@ -135,7 +142,7 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 			list( $input, $valid, ) = $data;
 
 			$param = new Param( $definition );
-			$param->setUserValue( $definition->getName(), $input );
+			$param->setUserValue( $definition->getName(), $input, $options );
 
 			if ( $valid && array_key_exists( 2, $data ) ) {
 				$defs = array();
@@ -151,13 +158,14 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 		$this->assertTrue( true );
 	}
 
-	protected function validate( \IParamDefinition $definition, $testValue, $validity ) {
+	protected function validate( \IParamDefinition $definition, $testValue, $validity, \ValidatorOptions $options = null ) {
 		$def = clone $definition;
+		$options = $options === null ? new \ValidatorOptions() : $options;
 
 		$param = new \Param( $def );
-		$param->setUserValue( $def->getName(), $testValue );
+		$param->setUserValue( $def->getName(), $testValue, $options );
 
-		$success = $def->validate( $param, array(), array() );
+		$success = $def->validate( $param, array(), array(), $options );
 
 		$this->assertEquals( $validity, $success === true );
 	}

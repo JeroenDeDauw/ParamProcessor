@@ -42,23 +42,31 @@ class TitleParam extends ParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params ) {
-		if ( !parent::validateValue( $value, $param, $definitions, $params ) ) {
+	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+		$plainValue = $value instanceof Title ? $value->getFullText() : $value;
+
+		if ( !parent::validateValue( $plainValue, $param, $definitions, $params, $options ) ) {
 			return false;
 		}
 
-		$title = Title::newFromText( $value );
+		if ( $options->isStringlyTyped() ) {
+			$value = Title::newFromText( $value );
 
-		if( is_null( $title ) ) {
+			if( is_null( $value ) ) {
+				return false;
+			}
+
+			$this->titles[$value->getFullText()] = $value;
+		}
+		elseif ( !( $value instanceof Title ) ) {
 			return false;
 		}
 
-		$this->titles[$value] = $title;
-
-		return $this->hasToExist ? $title->isKnown() : true;
+		return $this->hasToExist ? $value->isKnown() : true;
 	}
 
 	/**
