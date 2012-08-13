@@ -36,7 +36,7 @@ class ValidatorOptions {
 	protected $trimNames = true;
 
 	// During clean
-	protected $trimValues = false;
+	protected $trimValues = true;
 	protected $lowercaseValues = false;
 
 	// During validation

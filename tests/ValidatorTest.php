@@ -77,10 +77,10 @@ class ValidatorTest extends \MediaWikiTestCase {
 	protected function getSimpleParams() {
 		$params = array(
 			'awesome' => 'yes',
-			'Howmuch' => '9001',
+			'Howmuch ' => '9001',
 			'FLOAT' => '4.2',
-			'page' => 'Ohi there!',
-			'text' => 'foo bar baz o_O',
+			' page' => 'Ohi there!',
+			' text     ' => 'foo bar baz o_O',
 		);
 
 		$definitions = array(
@@ -126,6 +126,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'float' => 'omg!',
 			'page' => '|',
 			'whot?' => 'O_o',
+			'integerr' => ' 9001 ',
 		);
 
 		$definitions = array(
@@ -149,9 +150,14 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'text' => array(
 				'default' => 'foo bar baz o_O',
 			),
+			'integerr' => array(
+				'type' => 'integer',
+				'default' => 42,
+			),
 		);
 
 		$options = new ValidatorOptions();
+		$options->setTrimValues( false );
 
 		$expected = array(
 			'awesome' => true,
@@ -159,6 +165,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'float' => 4.2,
 			'page' => \Title::newFromText( 'Ohi there!' ),
 			'text' => 'foo bar baz o_O',
+			'integerr' => 42,
 		);
 
 		return array( $params, $definitions, $options, $expected );
@@ -177,6 +184,8 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'float' => 4.2,
 			'page' => \Title::newFromText( 'Ohi there!' ),
 			'Text' => 'foo bar baz o_O',
+			'text1 ' => 'foo bar baz o_O',
+			' text2' => 'foo bar baz o_O',
 		);
 
 		$definitions = array(
@@ -199,11 +208,18 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'text' => array(
 				'default' => 'some text',
 			),
+			'text1' => array(
+				'default' => 'some text',
+			),
+			'text2' => array(
+				'default' => 'some text',
+			),
 		);
 
 		$options = new ValidatorOptions();
 		$options->setRawStringInputs( false );
 		$options->setLowercaseNames( false );
+		$options->setTrimNames( false );
 
 		$expected = array(
 			'awesome' => true,
@@ -211,6 +227,47 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'float' => 9000.1,
 			'page' => \Title::newFromText( 'Ohi there!' ),
 			'text' => 'some text',
+			'text1' => 'some text',
+			'text2' => 'some text',
+		);
+
+		return array( $params, $definitions, $options, $expected );
+	}
+
+	/**
+	 * Values with capitalization and preceding/tailing spaces to test
+	 * of the clean options work.
+	 *
+	 * @return array
+	 */
+	protected function getUncleanParams() {
+		$params = array(
+			'awesome' => ' yes ',
+			'text' => ' FOO  bar  ',
+			'integerr' => ' 9001 ',
+		);
+
+		$definitions = array(
+			'awesome' => array(
+				'type' => 'boolean',
+			),
+			'text' => array(
+				'default' => 'bar',
+			),
+			'integerr' => array(
+				'type' => 'integer',
+				'default' => 42,
+			),
+		);
+
+		$options = new ValidatorOptions();
+		$options->setLowercaseValues( true );
+		$options->setTrimValues( true );
+
+		$expected = array(
+			'awesome' => true,
+			'text' => 'foo  bar',
+			'integerr' => 9001,
 		);
 
 		return array( $params, $definitions, $options, $expected );
@@ -225,6 +282,8 @@ class ValidatorTest extends \MediaWikiTestCase {
 		$argLists[] = $this->getDefaultingParams();
 
 		$argLists[] = $this->getTypedParams();
+
+		$argLists[] = $this->getUncleanParams();
 
 		foreach ( $argLists as &$argList ) {
 			foreach ( $argList[1] as $key => &$definition ) {
