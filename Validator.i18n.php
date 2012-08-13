@@ -1777,6 +1777,7 @@ $messages['ka'] = array(
 	'validator-warning' => 'გაფრთხილება: $1',
 	'validator-error' => 'შეცდომა: $1',
 	'validator-fatal-error' => 'ფატალური შეცდომა: $1',
+	'validator_error_unknown_argument' => '$1 არ არის სწორი პარამეტრი.',
 	'validator-type-string' => 'ტექსტი',
 	'validator-type-integer' => 'მთლიანი რიცხვი',
 	'validator-type-float' => 'ნომერი',
@@ -1789,11 +1790,14 @@ $messages['ka'] = array(
 	'validator-type-char-list' => 'სიმბოლოების სია',
 	'validator-type-title-list' => 'სათაურების სია',
 	'validator-listerrors-errors' => 'შეცდომები',
+	'validator-listerrors-minor' => 'უმნიშვნელო',
 	'validator-listerrors-low' => 'დაბალი',
 	'validator-listerrors-normal' => 'ნორმალური',
 	'validator-listerrors-high' => 'მაღალი',
+	'validator-listerrors-fatal' => 'ფატალური',
 	'validator-describe-descriptionmsg' => "'''აღწერა''': $1",
 	'validator-describe-empty' => 'ცარიელი',
+	'validator-describe-required' => 'სავალდებულოა',
 	'validator-describe-header-parameter' => 'პარამეტრი',
 	'validator-describe-header-aliases' => 'ფსევდონიმები',
 	'validator-describe-header-type' => 'ტიპი',
@@ -1801,6 +1805,7 @@ $messages['ka'] = array(
 	'validator-describe-header-description' => 'აღწერა',
 	'validator-describe-parameters' => 'პარამეტრები',
 	'validator-describe-syntax' => 'სინტაქსი',
+	'validator_error_empty_argument' => 'პარამეტრი $1 არ შეუძლია ცარიელი მნიშვნელობის მიღება.',
 );
 
 /** Korean (한국어)
@@ -2990,6 +2995,7 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Karthi.dr
+ * @author Shanmugamp7
  */
 $messages['ta'] = array(
 	'validator-error' => 'பிழை: $1',
@@ -2998,8 +3004,25 @@ $messages['ta'] = array(
 	'validator-type-float' => 'எண்',
 	'validator-type-boolean' => 'ஆம்/இல்லை',
 	'validator-type-title' => 'தலைப்பு',
+	'validator-type-string-list' => 'உரைகளின் பட்டியல்',
+	'validator-type-integer-list' => 'முழு எண்களின் பட்டியல்',
+	'validator-type-float-list' => 'எண்களின் பட்டியல்',
+	'validator-type-boolean-list' => 'ஆம்/இல்லை களின் பட்டியல்',
+	'validator-type-char-list' => 'எழுத்துகளை பட்டியலிடு',
 	'validator-type-title-list' => 'தலைப்புகளின் பட்டியல்',
 	'validator-listerrors-errors' => 'பிழைகள்',
+	'validator-listerrors-minor' => 'சிறிய',
+	'validator-listerrors-low' => 'குறைவு',
+	'validator-listerrors-normal' => 'சாதரணம்',
+	'validator-listerrors-high' => 'அதிகம்',
+	'validator-describe-empty' => 'காலி',
+	'validator-describe-required' => 'தேவைபடுகிறது',
+	'validator-describe-header-parameter' => 'அளபுரு',
+	'validator-describe-header-type' => 'வகை',
+	'validator-describe-header-default' => 'இயல்புநிலை',
+	'validator-describe-header-description' => 'விளக்கம்',
+	'validator-describe-parameters' => 'அளபுருக்கள்',
+	'validator-describe-syntax' => 'வழிமுறைத் தொடரமைப்பு',
 );
 
 /** Telugu (తెలుగు)
