@@ -86,8 +86,26 @@ abstract class NumericParam extends ParamDefinition {
 			return false;
 		}
 
-		return ( $this->upperBound === false || $value <= $this->upperBound )
-			&& ( $this->lowerBound === false || $value >= $this->lowerBound );
+		return $this->validateBounds( $value );
+	}
+
+	/**
+	 * Validates the parameters value and returns the result.
+	 *
+	 * @since 0.5
+	 *
+	 * @param $value mixed
+	 * @param float|null|false $upperBound
+	 * @param float|null|false $lowerBound
+	 *
+	 * @return boolean
+	 */
+	protected function validateBounds( $value, $upperBound = null, $lowerBound = null ) {
+		$upperBound = is_null( $upperBound ) ? $this->upperBound : $upperBound;
+		$lowerBound = is_null( $lowerBound ) ? $this->lowerBound : $lowerBound;
+
+		return ( $upperBound === false || $value <= $upperBound )
+			&& ( $lowerBound === false || $value >= $lowerBound );
 	}
 
 	/**

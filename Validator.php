@@ -71,6 +71,7 @@ $wgAutoloadClasses['IParamDefinition']				= $incDir . 'IParamDefinition.php';
 // includes/definitions
 $wgAutoloadClasses['BoolParam']		 				= $incDir . 'definitions/BoolParam.php';
 $wgAutoloadClasses['CharParam']		 				= $incDir . 'definitions/CharParam.php';
+$wgAutoloadClasses['DimensionParam']		 		= $incDir . 'definitions/DimensionParam.php';
 $wgAutoloadClasses['FloatParam']		 			= $incDir . 'definitions/FloatParam.php';
 $wgAutoloadClasses['IntParam']		 				= $incDir . 'definitions/IntParam.php';
 $wgAutoloadClasses['NumericParam']		 			= $incDir . 'definitions/NumericParam.php';
@@ -106,6 +107,7 @@ $egParamDefinitions = array(
 	'integer' => 'IntParam', // Parameter::TYPE_INTEGER
 	'string' => 'StringParam', // Parameter::TYPE_STRING
 	'title' => 'TitleParam', // Parameter::TYPE_TITLE
+	'dimension' => 'DimensionParam',
 );
 
 

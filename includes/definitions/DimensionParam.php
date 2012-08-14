@@ -29,7 +29,42 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class DimensionParam extends ParamDefinition {
+class DimensionParam extends NumericParam {
+
+	/**
+	 * @since 0.5
+	 *
+	 * @var boolean
+	 */
+	protected $allowAuto = false;
+
+	/**
+	 * @since 0.5
+	 *
+	 * @var array
+	 */
+	protected $allowedUnits = array( 'px', '' );
+
+	/**
+	 * @since 0.5
+	 *
+	 * @var integer
+	 */
+	protected $minPercentage = 0;
+
+	/**
+	 * @since 0.5
+	 *
+	 * @var integer
+	 */
+	protected $maxPercentage = 100;
+
+	/**
+	 * @since 0.5
+	 *
+	 * @var string
+	 */
+	protected $defaultUnit = 'px';
 
 	/**
 	 * Returns an identifier for the parameter type.
@@ -55,25 +90,30 @@ class DimensionParam extends ParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
-		if ( !parent::validateValue( $value, $param, $definitions, $params, $options ) ) {
+		if ( !$this->valueIsAllowed( $value ) ) {
 			return false;
 		}
 
-		if ( !$this->canBeEmpty && $value === '' ) {
+		if ( $value === 'auto' ) {
+			return $this->allowAuto;
+		}
+
+		if ( !preg_match( '/^\d+(\.\d+)?(' . implode( '|', $this->allowedUnits ) . ')$/', $value ) ) {
 			return false;
 		}
 
-		if ( $this->length !== false ) {
-			$length = strlen( $value );
-
-			if ( is_array( $this->length ) ) {
-				return ( $this->length[1] === false || $value <= $this->length[1] )
-					&& ( $this->length[0] === false || $value >= $this->length[0] );
-			}
-			else {
-				return $length == $this->length;
-			}
+		if ( in_string( '%', $value ) ) {
+			$upperBound = $this->maxPercentage;
+			$lowerBound = $this->minPercentage;
 		}
+		else {
+			$upperBound = null;
+			$lowerBound = null;
+		}
+
+		$value = (float)preg_replace( '/[^0-9]/', '', $value );
+
+		return $this->validateBounds( $value, $upperBound, $lowerBound );
 	}
 
 	/**
@@ -90,13 +130,17 @@ class DimensionParam extends ParamDefinition {
 	 * @return mixed
 	 */
 	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
-		$value = (string)$value;
-
-		if ( $this->toLower ) {
-			$value = strtolower( $value );
+		if ( $value === 'auto' ) {
+			return $value;
 		}
 
-		return $value;
+		foreach ( $this->allowedUnits as $unit ) {
+			if ( $unit !== '' && in_string( $unit, $value ) ) {
+				return $value;
+			}
+		}
+
+		return $value . $this->defaultUnit;
 	}
 
 	/**
@@ -110,6 +154,80 @@ class DimensionParam extends ParamDefinition {
 	public function setArrayValues( array $param ) {
 		parent::setArrayValues( $param );
 
+		if ( array_key_exists( 'allowauto', $param ) ) {
+			$this->setAllowAuto( $param['allowauto'] );
+		}
+
+		if ( array_key_exists( 'maxpercentage', $param ) ) {
+			$this->setMaxPercentage( $param['maxpercentage'] );
+		}
+
+		if ( array_key_exists( 'minpercentage', $param ) ) {
+			$this->setMinPercentage( $param['minpercentage'] );
+		}
+
+		if ( array_key_exists( 'units', $param ) ) {
+			$this->setAllowedUnits( $param['units'] );
+		}
+
+		if ( array_key_exists( 'defaultunit', $param ) ) {
+			$this->setDefaultUnit( $param['defaultunit'] );
+		}
+	}
+
+	/**
+	 * If 'auto' should be seen as a valid value.
+	 *
+	 * @since 0.5
+	 *
+	 * @param boolean $allowAuto
+	 */
+	public function setAllowAuto( $allowAuto ) {
+		$this->allowAuto = $allowAuto;
+	}
+
+	/**
+	 * Set the upper bound for the value in case it's a percentage.
+	 *
+	 * @since 0.5
+	 *
+	 * @param integer $maxPercentage
+	 */
+	public function setMaxPercentage( $maxPercentage ) {
+		$this->maxPercentage = $maxPercentage;
+	}
+
+	/**
+	 * Set the lower bound for the value in case it's a percentage.
+	 *
+	 * @since 0.5
+	 *
+	 * @param integer $minPercentage
+	 */
+	public function setMinPercentage( $minPercentage ) {
+		$this->minPercentage = $minPercentage;
+	}
+
+	/**
+	 * Sets the default unit, ie the one that will be assumed when the empty unit is provided.
+	 *
+	 * @since 0.5
+	 *
+	 * @param string $defaultUnit
+	 */
+	public function setDefaultUnit( $defaultUnit ) {
+		$this->defaultUnit = $defaultUnit;
+	}
+
+	/**
+	 * If percentage values should be accepted.
+	 *
+	 * @since 0.5
+	 *
+	 * @param array $units
+	 */
+	public function setAllowedUnits( array $units = array( 'px', 'em', 'ex', '%', '' ) ) {
+		$this->allowedUnits = $units;
 	}
 
 }

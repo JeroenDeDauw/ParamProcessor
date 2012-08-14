@@ -26,6 +26,7 @@ final class ValidatorHooks {
 		$testFiles = array(
 			'definitions/BoolParam',
 			'definitions/CharParam',
+			'definitions/DimensionParam',
 			'definitions/FloatParam',
 			'definitions/IntParam',
 			'definitions/StringParam',

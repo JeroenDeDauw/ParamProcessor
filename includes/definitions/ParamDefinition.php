@@ -780,6 +780,20 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+		return $this->valueIsAllowed( $value );
+	}
+
+	/**
+	 * Returns if the value is in the allowed values list in case this list is set,
+	 * and if it's not in the prohibited values list in case that one is set.
+	 *
+	 * @since 0.5
+	 *
+	 * @param mixed $value
+	 *
+	 * @return boolean
+	 */
+	protected function valueIsAllowed( $value ) {
 		if ( $this->allowedValues !== false && !in_array( $value, $this->allowedValues ) ) {
 			return false;
 		}
