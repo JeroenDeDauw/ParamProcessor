@@ -824,6 +824,20 @@ $messages['et'] = array(
 	'validator-describe-parameters' => 'Parameetrid',
 );
 
+/** Basque (euskara)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['eu'] = array(
+	'validator-type-string' => 'testua',
+	'validator-listerrors-low' => 'Baxua',
+	'validator-listerrors-normal' => 'Normala',
+	'validator-listerrors-high' => 'Altua',
+	'validator-describe-empty' => 'hutsik',
+	'validator-describe-header-type' => 'Mota',
+	'validator-describe-header-default' => 'Lehenetsia',
+	'validator-describe-header-description' => 'Deskribapena',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */
@@ -972,6 +986,12 @@ $messages['frp'] = array(
 	'validator-type-float' => 'nombro',
 	'validator-type-boolean' => 'ouè/nan',
 	'validator-type-char' => 'caractèro',
+	'validator-type-title' => 'titro',
+	'validator-type-string-list' => 'lista de tèxtos',
+	'validator-type-integer-list' => 'lista de nombros entiérs',
+	'validator-type-float-list' => 'lista de nombros',
+	'validator-type-boolean-list' => 'lista de ouè / nan',
+	'validator-type-char-list' => 'lista de caractèros',
 	'validator-listerrors-errors' => 'Èrrors',
 	'validator-listerrors-minor' => 'Petiôt',
 	'validator-listerrors-low' => 'Fêblo',
