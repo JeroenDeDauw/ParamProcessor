@@ -992,6 +992,7 @@ $messages['frp'] = array(
 	'validator-type-float-list' => 'lista de nombros',
 	'validator-type-boolean-list' => 'lista de ouè / nan',
 	'validator-type-char-list' => 'lista de caractèros',
+	'validator-type-title-list' => 'lista de titros',
 	'validator-listerrors-errors' => 'Èrrors',
 	'validator-listerrors-minor' => 'Petiôt',
 	'validator-listerrors-low' => 'Fêblo',
@@ -1022,6 +1023,16 @@ $messages['frp'] = array(
 	'validator_list_error_invalid_argument' => 'Yona ou ben un mouél de valors du paramètre $1 sont envalides.',
 	'validator_error_accepts_only' => 'La valor « $4 » est pas valida por lo paramètre $1. Accèpte ren que {{PLURAL:$3|ceta valor|cetes valors}} : $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|La valor|Les valors}} $1 {{PLURAL:$2|at étâ oubliâ|ont étâ oubliâs}}.',
+);
+
+/** Irish (Gaeilge)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ga'] = array(
+	'validator-type-title' => 'Teideal',
+	'validator-listerrors-normal' => 'Gnáth',
+	'validator-describe-header-type' => 'Cineál',
+	'validator-describe-header-default' => 'réamhshocrú',
 );
 
 /** Galician (galego)
@@ -3210,6 +3221,7 @@ $messages['uk'] = array(
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
+ * @author පසිඳු කාවින්ද
  */
 $messages['vi'] = array(
 	'validator-desc' => 'Bộ phê chuẩn cho phép các phần mở rộng khác phê chuẩn tham số của hàm cú pháp và thẻ mở rộng, đặt giá trị mặc định, và báo cáo lỗi.',
@@ -3219,10 +3231,17 @@ $messages['vi'] = array(
 	'validator_warning_parameters' => 'Có {{PLURAL:$1|lỗi|lỗi}} cú pháp trong mã của bạn.',
 	'validator_error_unknown_argument' => '$1 không phải là tham số hợp lệ.',
 	'validator_error_required_missing' => 'Không định rõ tham số bắt buộc “$1”.',
+	'validator-type-string' => 'văn bản',
+	'validator-type-float' => 'Số',
+	'validator-type-title' => 'Tựa đề',
 	'validator-listerrors-errors' => 'Lỗi',
 	'validator-listerrors-low' => 'Thấp',
 	'validator-listerrors-normal' => 'Thường',
 	'validator-listerrors-high' => 'Cao',
+	'validator-describe-empty' => 'có sản phẩm nào',
+	'validator-describe-header-type' => 'Loại',
+	'validator-describe-header-default' => 'Mặc định',
+	'validator-describe-header-description' => 'Mô tả',
 	'validator_error_empty_argument' => 'Tham số “$1” không được để trống.',
 	'validator_error_must_be_number' => 'Tham số “$1” phải là con số.',
 	'validator_error_must_be_integer' => 'Tham số “$1” phải là số nguyên.',
@@ -3235,6 +3254,17 @@ $messages['vi'] = array(
 	'validator_list_error_invalid_argument' => 'Ít nhất một giá trị của tham số “$1” không hợp lệ.',
 	'validator_error_accepts_only' => 'Tham số $1 có giá trị không hợp lệ “$4”. Tham số chỉ nhận được {{PLURAL:$3|giá trị|các giá trị}} này: $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|Giá trị|Các giá trị}} “$1” bị bỏ qua.',
+);
+
+/** Yiddish (ייִדיש)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['yi'] = array(
+	'validator-type-string' => 'טעקסט',
+	'validator-type-title' => 'קעפל',
+	'validator-listerrors-normal' => 'נארמאַל',
+	'validator-describe-empty' => 'ליידיק',
+	'validator-describe-header-description' => 'באַשרײַבונג',
 );
 
 /** Simplified Chinese (‪中文（简体）‬)
