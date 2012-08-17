@@ -3218,6 +3218,25 @@ $messages['uk'] = array(
 	'validator-describe-pfmin' => "Функція аналізатора, що має лише обов'язкові параметри.",
 );
 
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'validator-type-string' => 'ٹیکسٹ',
+	'validator-type-char' => 'کردار',
+	'validator-type-title' => 'عنوان',
+	'validator-listerrors-errors' => 'غلطیاں',
+	'validator-listerrors-low' => 'کم',
+	'validator-listerrors-normal' => 'عام',
+	'validator-listerrors-high' => 'اعلی',
+	'validator-listerrors-fatal' => 'مہلک',
+	'validator-describe-empty' => 'خالی',
+	'validator-describe-header-type' => 'قسم',
+	'validator-describe-header-default' => 'پہلے سے طے شدہ',
+	'validator-describe-header-description' => 'تفصیل',
+	'validator-describe-syntax' => 'نحو',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
