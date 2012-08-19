@@ -849,12 +849,20 @@ $messages['fa'] = array(
 );
 
 /** Finnish (suomi)
+ * @author Beluga
  * @author Crt
  * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'validator-desc' => 'Tarkastaja tarjoaa helpon tavan muille laajennuksille jäsenninfunktioiden ja tagilaajennusten parametrien tarkastukseen, oletusarvojen asettamiseen ja virheilmoitusten luomiseen.',
+	'validator-type-string' => 'teksti',
+	'validator-type-integer' => 'kokonaisluku',
+	'validator-type-float' => 'luku',
+	'validator-type-boolean' => 'kyllä/ei',
+	'validator-type-char' => 'merkki',
+	'validator-type-title' => 'otsikko',
+	'validator-listerrors-errors' => 'Virheet',
 	'validator_error_must_be_number' => 'Parametrin $1 on oltava luku.',
 	'validator_error_must_be_integer' => 'Parametrin $1 on oltava kokonaisluku.',
 );
@@ -1750,7 +1758,7 @@ metti listerrors alla fine o in prossimità della parte inferiore della pagina p
  * @author Yanajin66
  */
 $messages['ja'] = array(
-	'validator-desc' => '妥当性評価器は他の拡張機能にパーサー関数やタグ拡張の引数の妥当性を確認したり、規定値を設定したり、エラーメッセージを生成する手段を提供する',
+	'validator-desc' => '他の拡張機能に、汎用的なパラメーター処理機能を提供する',
 	'validator-warning' => '警告: $1',
 	'validator-error' => 'エラー： $1',
 	'validator-fatal-error' => '致命的なエラー： $1',
@@ -1761,7 +1769,7 @@ $messages['ja'] = array(
 	'validator-error-problem' => 'パラメータ $1 に問題が見つかりました。',
 	'validator_error_unknown_argument' => '$1 は有効な引数ではありません。',
 	'validator_error_required_missing' => '必須の引数「$1」が入力されていません。',
-	'validator-error-override-argument' => '値"$3"とともにパラメータ$1 (値: $2)を無視してみてください',
+	'validator-error-override-argument' => 'パラメーター $1 (値: $2) を値「$3」で上書きしようと試みました',
 	'validator-type-boolean' => 'はい/いいえ',
 	'validator-listerrors-errors' => 'エラー',
 	'validator-listerrors-minor' => '非常に軽度',
@@ -1798,6 +1806,7 @@ $messages['ja'] = array(
 	'validator_error_accepts_only' => 'パラメーター $1 の値「$4」は有効ではありません。{{PLURAL:$3|この値|これらの値}}のみを使用できます：$2。',
 	'validator-error-accepts-only-omitted' => 'パラメーター $1 の値「$2」は有効ではありません。{{PLURAL:$5|この値|これらの値}}のみを使用できます：$3（と省略された $4 の{{PLURAL:$4|値}}）',
 	'validator_list_omitted' => '{{PLURAL:$2|値}} $1 は省略されました。',
+	'validator-message-nodesc' => '説明はありません',
 );
 
 /** Georgian (ქართული)
