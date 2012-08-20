@@ -7,6 +7,8 @@ Latest version of the roadmap: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki
 
 First half of September 2012.
 
+* Fix design issues with ParamDefinition deriving classes
+
 == Validator 0.6 ==
 
 End of 2012.
