@@ -79,6 +79,13 @@ $wgAutoloadClasses['ParamDefinition']		 		= $incDir . 'definitions/ParamDefiniti
 $wgAutoloadClasses['StringParam']		 			= $incDir . 'definitions/StringParam.php';
 $wgAutoloadClasses['TitleParam']		 			= $incDir . 'definitions/TitleParam.php';
 
+// includes/valueparser
+$wgAutoloadClasses['NullParser']		 			= $incDir . 'valueparser/NullParser.php';
+$wgAutoloadClasses['ValueParser']		 			= $incDir . 'valueparser/ValueParser.php';
+$wgAutoloadClasses['ValueParserResult']		 		= $incDir . 'valueparser/ValueParserResult.php';
+$wgAutoloadClasses['ValueParserResultObject']		= $incDir . 'valueparser/ValueParserResultObject.php';
+
+
 // tests
 $wgAutoloadClasses['Validator\Test\NumericParamTest']		= dirname( __FILE__ ) . '/tests/definitions/NumericParamTest.php';
 $wgAutoloadClasses['Validator\Test\ParamDefinitionTest']	= dirname( __FILE__ ) . '/tests/definitions/ParamDefinitionTest.php';
