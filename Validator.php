@@ -89,6 +89,7 @@ $wgAutoloadClasses['ValueParserResultObject']		= $incDir . 'valueparser/ValuePar
 // tests
 $wgAutoloadClasses['Validator\Test\NumericParamTest']		= dirname( __FILE__ ) . '/tests/definitions/NumericParamTest.php';
 $wgAutoloadClasses['Validator\Test\ParamDefinitionTest']	= dirname( __FILE__ ) . '/tests/definitions/ParamDefinitionTest.php';
+$wgAutoloadClasses['Validator\Test\ValueParserTestBase']	= dirname( __FILE__ ) . '/tests/valueparser/ValueParserTestBase.php';
 
 // parser hooks
 $wgAutoloadClasses['ValidatorDescribe']		  		= $incDir . 'parserHooks/Validator_Describe.php';
