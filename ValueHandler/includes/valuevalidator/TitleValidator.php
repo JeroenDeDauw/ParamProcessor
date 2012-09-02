@@ -44,22 +44,20 @@ class TitleValidator extends ValueValidatorObject {
 	}
 
 	/**
-	 * @see ValueValidator::validate
+	 * @see ValueValidator::doValidation
 	 *
 	 * @since 0.1
 	 *
 	 * @param mixed $value
-	 *
-	 * @return ValueParserResult
 	 */
-	public function validate( $value ) {
+	public function doValidation( $value ) {
 		$value = Title::newFromText( $value );
 
 		if ( is_null( $value ) ) {
-			return ValueParserResultObject::newError( 'Not a title' ); // TODO
+			$this->addErrorMessage( 'Not a valid title' );
 		}
-		else {
-			return ValueParserResultObject::newSuccess( $value );
+		elseif ( $this->hasToExist && !$value->exists() ) {
+			$this->addErrorMessage( 'Title does not exist' );
 		}
 	}
 

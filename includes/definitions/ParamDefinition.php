@@ -345,6 +345,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::addCriteria
 	 *
+	 * @deprecated since 1.0, removal in 1.1
 	 * @since 1.0
 	 *
 	 * @param mixed $criteria ParameterCriterion or array of ParameterCriterion
