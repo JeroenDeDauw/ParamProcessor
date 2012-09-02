@@ -21,7 +21,7 @@ namespace ValueHandler\Test;
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @since 1.0
+ * @since 0.1
  *
  * @ingroup ValueHandler
  * @ingroup Test
@@ -34,18 +34,18 @@ namespace ValueHandler\Test;
 abstract class ValueParserTestBase extends \MediaWikiTestCase {
 
 	/**
-	 * @since 1.0
+	 * @since 0.1
 	 */
 	public abstract function parseProvider();
 
 	/**
-	 * @since 1.0
+	 * @since 0.1
 	 * @return string
 	 */
 	protected abstract function getParserClass();
 
 	/**
-	 * @since 1.0
+	 * @since 0.1
 	 * @return \ValueParser
 	 */
 	protected function getInstance() {
@@ -55,7 +55,7 @@ abstract class ValueParserTestBase extends \MediaWikiTestCase {
 
 	/**
 	 * @dataProvider parseProvider
-	 * @since 1.0
+	 * @since 0.1
 	 * @param $value
 	 * @param \ValueParserResult $expected
 	 * @param \ValueParser|null $parser

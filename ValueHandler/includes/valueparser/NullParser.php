@@ -18,7 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 1.0
+ * @since 0.1
  *
  * @file
  * @ingroup ValueHandler
@@ -32,7 +32,7 @@ class NullParser implements ValueParser {
 	/**
 	 * @see ValueParser::parse
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 *
 	 * @param mixed $value
 	 *

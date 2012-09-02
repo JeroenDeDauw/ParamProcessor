@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ValueParser that parses the string representation of a boolean.
+ * Interface for ValueHandler errors.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,40 +22,27 @@
  *
  * @file
  * @ingroup ValueHandler
- * @ingroup ValueParser
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class BoolParser extends StringValueParser {
+interface ValueHandlerError {
 
-	protected $values = array(
-		'yes' => true,
-		'on' => true,
-		'1' => true,
-		'true' => true,
-		'no' => false,
-		'off' => false,
-		'0' => false,
-		'false' => false,
-	);
+	const SEVERITY_ERROR = 9;
+	const SEVERITY_WARNING = 4;
 
 	/**
-	 * @see StringValueParser::stringParse
-	 *
 	 * @since 0.1
 	 *
-	 * @param string $value
-	 *
-	 * @return ValueParserResult
+	 * @return string
 	 */
-	public function stringParse( $value ) {
-		if ( array_key_exists( $value, $this->values ) ) {
-			return ValueParserResultObject::newSuccess( $this->values[$value] );
-		}
-		else {
-			return $this->newErrorResult( 'Not a boolean' );
-		}
-	}
+	public function getText();
+
+	/**
+	 * @since 0.1
+	 *
+	 * @return integer
+	 */
+	public function getSeverity();
 
 }

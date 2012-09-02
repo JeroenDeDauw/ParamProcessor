@@ -18,7 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 1.0
+ * @since 0.1
  *
  * @file
  * @ingroup ValueHandler
@@ -32,7 +32,7 @@ class TitleParser extends StringValueParser {
 	/**
 	 * @see StringValueParser::stringParse
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 *
 	 * @param string $value
 	 *
@@ -42,7 +42,7 @@ class TitleParser extends StringValueParser {
 		$value = Title::newFromText( $value );
 
 		if ( is_null( $value ) ) {
-			return ValueParserResultObject::newError( 'Not a title' ); // TODO
+			return $this->newErrorResult( 'Not a title' );
 		}
 		else {
 			return ValueParserResultObject::newSuccess( $value );

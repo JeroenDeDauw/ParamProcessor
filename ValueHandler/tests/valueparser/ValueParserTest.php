@@ -21,7 +21,7 @@ namespace ValueHandler\Test;
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @since 1.0
+ * @since 0.1
  *
  * @ingroup ValueHandler
  * @ingroup Test
