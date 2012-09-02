@@ -30,24 +30,87 @@
 class ValueValidatorObject implements ValueValidator {
 
 	/**
+	 * A list of allowed values. This means the parameters value(s) must be in the list
+	 * during validation. False for no restriction.
+	 *
+	 * @since 1.0
+	 *
+	 * @var array|false
+	 */
+	protected $allowedValues = false;
+
+	/**
+	 * A list of prohibited values. This means the parameters value(s) must
+	 * not be in the list during validation. False for no restriction.
+	 *
+	 * @since 1.0
+	 *
+	 * @var array|false
+	 */
+	protected $prohibitedValues = false;
+
+	/**
+	 * @since 0.1
+	 *
+	 * @var array of string
+	 */
+	private $errorMessages;
+
+	/**
 	 * @see ValueValidator::validate
 	 *
 	 * @since 0.1
 	 *
 	 * @param mixed $value
 	 *
-	 * @return ValueParserResult
+	 * @return ValueValidatorResult
 	 */
-	public function validate( $value ) {
-		$value = Title::newFromText( $value );
+	public final function validate( $value ) {
+		$this->errorMessages = array();
 
-		if ( is_null( $value ) ) {
-			return ValueParserResultObject::newError( 'Not a title' ); // TODO
+		$this->valueIsAllowed( $value );
+
+		$this->doValidation( $value );
+
+		if ( $this->errorMessages === array() ) {
+			return ValueValidatorResultObject::newSuccess();
 		}
 		else {
-			return ValueParserResultObject::newSuccess( $value );
+			$errors = array();
+
+			foreach ( $this->errorMessages as $errorMessage ) {
+				$errors[] = ValueHandlerErrorObject::newError( $errorMessage );
+			}
+
+			return ValueValidatorResultObject::newError( $errors );
 		}
 	}
+
+	/**
+	 * Checks the value against the allowed values and prohibited values lists in case they are set.
+	 *
+	 * @since 0.1
+	 *
+	 * @param mixed $value
+	 */
+	protected function valueIsAllowed( $value ) {
+		if ( $this->allowedValues !== false && !in_array( $value, $this->allowedValues, true ) ) {
+			$this->addErrorMessage( 'Value not in whitelist' );
+		}
+
+		if ( $this->prohibitedValues !== false && in_array( $value, $this->prohibitedValues, true ) ) {
+			$this->addErrorMessage( 'Value in blacklist' );
+		}
+	}
+
+	/**
+	 * @see ValueValidator::validate
+	 *
+	 * @since 0.1
+	 *
+	 * @param mixed $value
+	 */
+	public abstract function doValidation( $value );
 
 	/**
 	 * Sets the parameter definition values contained in the provided array.
@@ -58,11 +121,24 @@ class ValueValidatorObject implements ValueValidator {
 	 * @param array $param
 	 */
 	public function setOptions( array $param ) {
-		parent::setArrayValues( $param );
-
-		if ( array_key_exists( 'hastoexist', $param ) ) {
-			$this->setHasToExist( $param['hastoexist'] );
+		if ( array_key_exists( 'values', $param ) ) {
+			$this->allowedValues = $param['values'];
 		}
+
+		if ( array_key_exists( 'excluding', $param ) ) {
+			$this->prohibitedValues = $param['excluding'];
+		}
+	}
+
+	/**
+	 *
+	 *
+	 * @since 0.1
+	 *
+	 * @param string $errorMessage
+	 */
+	protected function addErrorMessage( $errorMessage ) {
+		return $this->errorMessages[] = $errorMessage;
 	}
 
 }
