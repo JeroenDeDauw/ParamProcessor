@@ -4,7 +4,7 @@
  * Defines the string parameter type.
  * Specifies the type specific validation and formatting logic.
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
  * @ingroup Validator
@@ -18,7 +18,7 @@ class StringParam extends ParamDefinition {
 	/**
 	 * Indicates if the parameter should be lowercased post validation.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
@@ -27,7 +27,7 @@ class StringParam extends ParamDefinition {
 	/**
 	 * The length the string should have (can be a range).
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var false|integer|array
 	 */
@@ -36,7 +36,7 @@ class StringParam extends ParamDefinition {
 	/**
 	 * Indicates if the value can be an empty string or not.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
@@ -46,7 +46,7 @@ class StringParam extends ParamDefinition {
 	 * Validates the parameters value and returns the result.
 	 * @see ParamDefinition::validateValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -88,7 +88,7 @@ class StringParam extends ParamDefinition {
 	 * Formats the parameter value to it's final result.
 	 * @see ParamDefinition::formatValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -111,7 +111,7 @@ class StringParam extends ParamDefinition {
 	 * Sets the parameter definition values contained in the provided array.
 	 * @see ParamDefinition::setArrayValues
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param array $param
 	 */
@@ -134,7 +134,7 @@ class StringParam extends ParamDefinition {
 	/**
 	 * Sets of the value should be lowercased.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $toLower
 	 */
@@ -145,7 +145,7 @@ class StringParam extends ParamDefinition {
 	/**
 	 * Sets the length the value should have.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param mixed $length
 	 */
@@ -163,7 +163,7 @@ class StringParam extends ParamDefinition {
 	/**
 	 * Sets if the value can be an empty string or not.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $canBeEmpty
 	 */

@@ -1,22 +1,23 @@
 <?php
 
 /**
- * Static class for hooks handled by the Validator extension.
+ * Class holding handles for the hooks used by the ValueHandler extension.
  * 
- * @since 0.4.8
+ * @since 0.1
  * 
- * @file Validator.hooks.php
- * @ingroup Validator
+ * @file
+ * @ingroup ValueHandler
  * 
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-final class ValidatorHooks {
+final class ValueHandlerHooks {
 	
 	/**
 	 * Hook to add PHPUnit test cases.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
 	 * 
-	 * @since 0.4.8
+	 * @since 0.1
 	 * 
 	 * @param array $files
 	 *
@@ -24,16 +25,10 @@ final class ValidatorHooks {
 	 */
 	public static function registerUnitTests( array &$files ) {
 		$testFiles = array(
-			'definitions/BoolParam',
-			'definitions/CharParam',
-			'definitions/DimensionParam',
-			'definitions/FloatParam',
-			'definitions/IntParam',
-			'definitions/StringParam',
-			'definitions/TitleParam',
-
-			'ValidatorOptions',
-			'Validator',
+			'valueparser/BoolParser',
+			'valueparser/NullParser',
+			'valueparser/TitleParser',
+			'valueparser/ValueParser',
 		);
 
 		foreach ( $testFiles as $file ) {

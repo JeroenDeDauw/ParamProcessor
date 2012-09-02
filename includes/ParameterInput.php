@@ -62,7 +62,7 @@ class ParameterInput {
 		elseif ( is_array( $param ) ) {
 			$this->param = ParamDefinition::newFromArray( $param );
 		}
-		else { // Compat code, will go in 0.7
+		else { // Compat code, will go in 1.1
 			$this->param = ParamDefinition::newFromParameter( $param );
 		}
 
@@ -106,7 +106,7 @@ class ParameterInput {
 			$valueList[] = $this->param->getAllowedValues();
 		}
 
-		// Compat code, will got in 0.7
+		// Compat code, will got in 1.1
         foreach ( $this->param->getCriteria() as $criterion ) {
     		if ( $criterion instanceof CriterionInArray ) {
     			$valueList[] = $criterion->getAllowedValues();
@@ -114,7 +114,7 @@ class ParameterInput {
         }
 
         if ( count( $valueList ) > 0 ) {
-			// Compat code, will got in 0.7
+			// Compat code, will got in 1.1
         	$valueList = count( $valueList ) > 1 ? call_user_func_array( 'array_intersect', $valueList ) : $valueList[0];
 
         	$html = $this->param->isList() ? $this->getCheckboxListInput( $valueList ) : $this->getSelectInput( $valueList );

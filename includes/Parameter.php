@@ -2,7 +2,7 @@
 
 /**
  * Parameter definition class.
- * @deprecated since 0.5, removal in 0.7.
+ * @deprecated since 1.0, removal in 1.1.
  *
  * @since 0.4
  * 
@@ -683,7 +683,7 @@ class Parameter {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 * @param boolean $defaulted
 	 */
 	public function setWasSetToDefault( $defaulted ) {

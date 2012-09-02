@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ValueParser that parses the string representation of a Title object.
+ * Interface for value parser results.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,35 +18,38 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
- * @ingroup Validator
+ * @ingroup ValueHandler
  * @ingroup ValueParser
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class TitleParser extends StringValueParser {
+interface ValueParserResult {
 
 	/**
-	 * @see StringValueParser::stringParse
+	 * @since 1.0
 	 *
-	 * @since 0.5
-	 *
-	 * @param string $value
-	 *
-	 * @return ValueParserResult
+	 * @return mixed
 	 */
-	public function stringParse( $value ) {
-		$value = Title::newFromText( $value );
+	public function getValue();
 
-		if ( is_null( $value ) ) {
-			return ValueParserResultObject::newError( 'Not a title' ); // TODO
-		}
-		else {
-			return ValueParserResultObject::newSuccess( $value );
-		}
-	}
+	/**
+	 * @since 1.0
+	 *
+	 * @return boolean
+	 */
+	public function isValid();
+
+	/**
+	 * Returns error message in case the value is invalid or null otherwise.
+	 *
+	 * @since 1.0
+	 *
+	 * @return string|null
+	 */
+	public function getError();
 
 }

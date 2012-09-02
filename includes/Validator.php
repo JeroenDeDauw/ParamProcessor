@@ -54,7 +54,7 @@ class Validator {
 	/**
 	 *
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var array
 	 */
@@ -72,14 +72,14 @@ class Validator {
 	/**
 	 * Options for this validator object.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var ValidatorOptions
 	 */
 	protected $options;
 
 	/**
-	 * Deprecated since 0.5, breaking changes in 0.7, use newFrom* instead.
+	 * Deprecated since 1.0, breaking changes in 1.1, use newFrom* instead.
 	 * 
 	 * @param string $element
 	 * @param boolean $unknownInvalid Should unknown parameter be regarded as invalid (or, if not, just be ignored)
@@ -100,7 +100,7 @@ class Validator {
 	/**
 	 * Constructs and returns a Validator object based on the provided options.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param ValidatorOptions $options
 	 *
@@ -113,7 +113,7 @@ class Validator {
 	/**
 	 * Returns the options used by this Validator object.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return ValidatorOptions
 	 */
@@ -304,7 +304,7 @@ class Validator {
 			$paramName = array_shift( $this->paramsToHandle );
 			$definition = $this->paramDefinitions[$paramName];
 
-			// Compat code for 0.4.x style definitions, will be removed in 0.7.
+			// Compat code for 0.4.x style definitions, will be removed in 1.1.
 			if ( $definition instanceof Parameter ) {
 				$definition = ParamDefinition::newFromParameter( $definition );
 			}
@@ -325,20 +325,14 @@ class Validator {
 			else {
 				$this->params[$param->getName()] = $param;
 
-				$param->validate( $this->paramDefinitions, $this->params, $this->options );
-				
-				foreach ( $param->getErrors() as $error ) {
-					$this->registerError( $error );
-				}
-				
-				if ( $param->hasFatalError() ) {
-					// If there was a fatal error, and the parameter is required, stop processing. 
-					break;
-				}
-				
 				$initialSet = $this->paramDefinitions;
 
-				$param->format( $this->paramDefinitions, $this->params, $this->options );
+				$param->process( $this->paramDefinitions, $this->params, $this->options );
+
+				if ( $param->hasFatalError() ) {
+					// If there was a fatal error, and the parameter is required, stop processing.
+					break;
+				}
 
 				$this->getParamsToProcess( $initialSet, $this->paramDefinitions );
 			}

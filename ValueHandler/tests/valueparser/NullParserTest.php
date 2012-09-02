@@ -1,7 +1,9 @@
 <?php
 
+namespace ValueHandler\Test;
+
 /**
- * Interface for value parser results.
+ * Unit test NullParser class.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,38 +20,41 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 0.5
- *
  * @file
- * @ingroup Validator
- * @ingroup ValueParser
+ * @since 1.0
+ *
+ * @ingroup ValueHandler
+ * @ingroup Test
+ *
+ * @group ValueHandler
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-interface ValueParserResult {
+class NullParserTest extends ValueParserTestBase {
 
 	/**
-	 * @since 0.5
+	 * @see ValueParserTestBase::parseProvider
 	 *
-	 * @return mixed
+	 * @since 1.0
 	 */
-	public function getValue();
+	public function parseProvider() {
+		$argLists = array();
+
+		foreach ( array( '42', 42, false, array(), 'ohi there!', null, 4.2 ) as $value ) {
+			$argLists[] = array( $value, \ValueParserResultObject::newSuccess( $value ) );
+		}
+
+		return $argLists;
+	}
 
 	/**
-	 * @since 0.5
-	 *
-	 * @return boolean
+	 * @see ValueParserTestBase::getParserClass
+	 * @since 1.0
+	 * @return string
 	 */
-	public function isValid();
-
-	/**
-	 * Returns error message in case the value is invalid or null otherwise.
-	 *
-	 * @since 0.5
-	 *
-	 * @return string|null
-	 */
-	public function getError();
+	protected function getParserClass() {
+		return 'NullParser';
+	}
 
 }

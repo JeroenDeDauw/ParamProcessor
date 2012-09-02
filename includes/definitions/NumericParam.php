@@ -3,7 +3,7 @@
 /**
  * Base class for numeric parameter types.
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
  * @ingroup Validator
@@ -17,7 +17,7 @@ abstract class NumericParam extends ParamDefinition {
 	/**
 	 * Lower bound of the range (included). Either a number or false, for no lower limit.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var false|int|float
 	 */
@@ -26,7 +26,7 @@ abstract class NumericParam extends ParamDefinition {
 	/**
 	 * Upper bound of the range (included). Either a number or false, for no upper limit.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var false|int|float
 	 */
@@ -35,7 +35,7 @@ abstract class NumericParam extends ParamDefinition {
 	/**
 	 * Sets the lower bound (included).
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $lowerBound false|int|float
 	 */
@@ -46,7 +46,7 @@ abstract class NumericParam extends ParamDefinition {
 	/**
 	 * Sets the upper bound (included).
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $upperBound false|int|float
 	 */
@@ -57,7 +57,7 @@ abstract class NumericParam extends ParamDefinition {
 	/**
 	 * Requires the value to be in the specified range.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $lowerBound false|int|float
 	 * @param $upperBound false|int|float
@@ -71,7 +71,7 @@ abstract class NumericParam extends ParamDefinition {
 	 * Validates the parameters value and returns the result.
 	 * @see ParamDefinition::validateValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -92,7 +92,7 @@ abstract class NumericParam extends ParamDefinition {
 	/**
 	 * Validates the parameters value and returns the result.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param float|null|false $upperBound
@@ -112,7 +112,7 @@ abstract class NumericParam extends ParamDefinition {
 	 * Sets the parameter definition values contained in the provided array.
 	 * @see ParamDefinition::setArrayValues
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param array $param
 	 * @throws MWException

@@ -20,7 +20,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
  * @ingroup Validator
@@ -32,35 +32,35 @@
 class DimensionParam extends NumericParam {
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
 	protected $allowAuto = false;
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var array
 	 */
 	protected $allowedUnits = array( 'px', '' );
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var integer
 	 */
 	protected $minPercentage = 0;
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var integer
 	 */
 	protected $maxPercentage = 100;
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var string
 	 */
@@ -68,7 +68,7 @@ class DimensionParam extends NumericParam {
 
 	/**
 	 * Returns an identifier for the parameter type.
-	 * @since 0.5
+	 * @since 1.0
 	 * @return string
 	 */
 	public function getType() {
@@ -79,7 +79,7 @@ class DimensionParam extends NumericParam {
 	 * Validates the parameters value and returns the result.
 	 * @see ParamDefinition::validateValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -120,7 +120,7 @@ class DimensionParam extends NumericParam {
 	 * Formats the parameter value to it's final result.
 	 * @see ParamDefinition::formatValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -147,7 +147,7 @@ class DimensionParam extends NumericParam {
 	 * Sets the parameter definition values contained in the provided array.
 	 * @see ParamDefinition::setArrayValues
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param array $param
 	 */
@@ -178,7 +178,7 @@ class DimensionParam extends NumericParam {
 	/**
 	 * If 'auto' should be seen as a valid value.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $allowAuto
 	 */
@@ -189,7 +189,7 @@ class DimensionParam extends NumericParam {
 	/**
 	 * Set the upper bound for the value in case it's a percentage.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param integer $maxPercentage
 	 */
@@ -200,7 +200,7 @@ class DimensionParam extends NumericParam {
 	/**
 	 * Set the lower bound for the value in case it's a percentage.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param integer $minPercentage
 	 */
@@ -211,7 +211,7 @@ class DimensionParam extends NumericParam {
 	/**
 	 * Sets the default unit, ie the one that will be assumed when the empty unit is provided.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param string $defaultUnit
 	 */
@@ -222,7 +222,7 @@ class DimensionParam extends NumericParam {
 	/**
 	 * If percentage values should be accepted.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param array $units
 	 */

@@ -18,7 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
  * @ingroup Validator
@@ -45,14 +45,14 @@ class ValidatorOptions {
 	/**
 	 * Constructor.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 */
 	public function __construct() {
 		
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param string $name
 	 */
@@ -61,7 +61,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $unknownInvalid
 	 */
@@ -70,7 +70,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $lowercase
 	 */
@@ -79,7 +79,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $rawInputs
 	 */
@@ -88,7 +88,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $trim
 	 */
@@ -97,7 +97,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $trim
 	 */
@@ -106,7 +106,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $lowercase
 	 */
@@ -115,7 +115,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -124,7 +124,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -133,7 +133,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -142,7 +142,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -151,7 +151,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -160,7 +160,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -169,7 +169,7 @@ class ValidatorOptions {
 	}
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */

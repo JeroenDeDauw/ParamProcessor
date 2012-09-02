@@ -1,6 +1,6 @@
 <?php
 
-namespace Validator\Test;
+namespace ValueHandler\Test;
 
 /**
  * Unit test for the implementation of the ValueParser interface.
@@ -21,12 +21,12 @@ namespace Validator\Test;
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @since 0.5
+ * @since 1.0
  *
- * @ingroup Validator
+ * @ingroup ValueHandler
  * @ingroup Test
  *
- * @group Validator
+ * @group ValueHandler
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

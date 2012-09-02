@@ -1,6 +1,6 @@
 <?php
 
-namespace Validator\Test;
+namespace ValueHandler\Test;
 
 /**
  * Base for unit tests for ValueParser implementing classes.
@@ -21,12 +21,12 @@ namespace Validator\Test;
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @since 0.5
+ * @since 1.0
  *
- * @ingroup Validator
+ * @ingroup ValueHandler
  * @ingroup Test
  *
- * @group Validator
+ * @group ValueHandler
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -34,18 +34,18 @@ namespace Validator\Test;
 abstract class ValueParserTestBase extends \MediaWikiTestCase {
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 */
 	public abstract function parseProvider();
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 * @return string
 	 */
 	protected abstract function getParserClass();
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 * @return \ValueParser
 	 */
 	protected function getInstance() {
@@ -55,7 +55,7 @@ abstract class ValueParserTestBase extends \MediaWikiTestCase {
 
 	/**
 	 * @dataProvider parseProvider
-	 * @since 0.5
+	 * @since 1.0
 	 * @param $value
 	 * @param \ValueParserResult $expected
 	 * @param \ValueParser|null $parser

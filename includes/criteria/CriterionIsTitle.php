@@ -4,7 +4,7 @@
  * Parameter criterion stating that the value must be a Title valid within the wiki.
  * Optionally the Title also has to be an existing one within the wiki.
  *
- * @deprecated since 0.5, removal in 0.7
+ * @deprecated since 1.0, removal in 1.1
  * @since 0.4.14
  * 
  * @file CriterionIsTitle.php

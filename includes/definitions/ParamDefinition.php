@@ -5,7 +5,7 @@
  * Specifies what kind of values are accepted, how they should be validated,
  * how they should be formatted, what their dependencies are and how they should be described.
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file ParamDefinition.php
  * @ingroup Validator
@@ -20,7 +20,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * Indicates whether parameters that are provided more then once  should be accepted,
 	 * and use the first provided value, or not, and generate an error.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
@@ -30,7 +30,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * Indicates whether parameters not found in the criteria list
 	 * should be stored in case they are not accepted. The default is false.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
@@ -39,7 +39,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Indicates if the parameter value should trimmed during the clean process.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean|null
 	 */
@@ -48,7 +48,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Indicates if the parameter manipulations should be applied to the default value.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
@@ -57,7 +57,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Dependency list containing parameters that need to be handled before this one.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var array
 	 */
@@ -66,7 +66,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * The default value for the parameter, or null when the parameter is required.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var mixed
 	 */
@@ -75,20 +75,20 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * The main name of the parameter.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var string
 	 */
 	protected $name;
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 * @var boolean
 	 */
 	protected $isList;
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 * @var string
 	 */
 	protected $delimiter = ',';
@@ -96,7 +96,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * List of aliases for the parameter name.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var array
 	 */
@@ -105,7 +105,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * List of criteria the parameter value needs to hold against.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var array of ParameterCriterion
 	 */
@@ -114,7 +114,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * List of manipulations the parameter value needs to undergo.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var array of ParameterManipulation
 	 */
@@ -124,7 +124,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * A message that acts as description for the parameter or false when there is none.
 	 * Can be obtained via getMessage and set via setMessage.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var string
 	 */
@@ -134,7 +134,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * A list of allowed values. This means the parameters value(s) must be in the list
 	 * during validation. False for no restriction.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var array|false
 	 */
@@ -144,7 +144,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * A list of prohibited values. This means the parameters value(s) must
 	 * not be in the list during validation. False for no restriction.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var array|false
 	 */
@@ -153,7 +153,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Constructor.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param string $name
 	 * @param mixed $default Use null for no default (which makes the parameter required)
@@ -173,7 +173,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * Allows deriving classed to do additional stuff on instance construction
 	 * without having to get and pass all the constructor arguments.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 */
 	protected function postConstruct() {
 
@@ -182,7 +182,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::trimDuringClean
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @since boolean|null
 	 */
@@ -193,7 +193,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Returns the criteria that apply to the list as a whole.
 	 *
-	 * @deprecated since 0.5, removal in 0.7
+	 * @deprecated since 1.0, removal in 1.1
 	 *
 	 * @return array
 	 */
@@ -204,7 +204,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::getAliases
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return array
 	 */
@@ -215,7 +215,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::hasAlias
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param string $alias
 	 *
@@ -228,7 +228,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::hasDependency
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param string $dependency
 	 *
@@ -241,7 +241,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Returns the list of allowed values, or false if there is no such restriction.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return array|false
 	 */
@@ -252,7 +252,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::setDefault
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param mixed $default
 	 * @param boolean $manipulate Should the default be manipulated or not? Since 0.4.6.
@@ -265,7 +265,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::getDefault
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return mixed
 	 */
@@ -277,8 +277,8 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * Returns a description message for the parameter, or false when there is none.
 	 * Override in deriving classes to add a message.
 	 *
-	 * @since 0.5
-	 * @deprecated since 0.5, removal in 0.7
+	 * @since 1.0
+	 * @deprecated since 1.0, removal in 1.1
 	 *
 	 * @return mixed string or false
 	 */
@@ -289,7 +289,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::getMessage
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -300,7 +300,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::setMessage
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param string $message
 	 */
@@ -311,7 +311,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::setDoManipulationOfDefault
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $doOrDoNotThereIsNoTry
 	 */
@@ -322,7 +322,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::shouldManipulateDefault
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -333,7 +333,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::addAliases
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param mixed $aliases string or array of string
 	 */
@@ -345,7 +345,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::addCriteria
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param mixed $criteria ParameterCriterion or array of ParameterCriterion
 	 */
@@ -357,7 +357,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::addDependencies
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param mixed $dependencies string or array of string
 	 */
@@ -369,8 +369,8 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::addManipulations
 	 *
-	 * @deprecated since 0.5, removal in 0.7
-	 * @since 0.5
+	 * @deprecated since 1.0, removal in 1.1
+	 * @since 1.0
 	 *
 	 * @param mixed $manipulations ParameterManipulation or array of ParameterManipulation
 	 */
@@ -382,7 +382,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::getName
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -393,7 +393,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Returns a message key for a message describing the parameter type.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -410,7 +410,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::getDependencies
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return array
 	 */
@@ -421,7 +421,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::isRequired
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -432,7 +432,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::isList
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -443,8 +443,8 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::getCriteria
 	 *
-	 * @deprecated since 0.5, removal in 0.7
-	 * @since 0.5
+	 * @deprecated since 1.0, removal in 1.1
+	 * @since 1.0
 	 *
 	 * @return array of ParameterCriterion
 	 */
@@ -455,8 +455,8 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::getManipulations
 	 *
-	 * @deprecated since 0.5, removal in 0.7
-	 * @since 0.5
+	 * @deprecated since 1.0, removal in 1.1
+	 * @since 1.0
 	 *
 	 * @return array of ParameterManipulation
 	 */
@@ -467,7 +467,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::getDelimiter
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -478,7 +478,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::setDelimiter
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $delimiter string
 	 */
@@ -489,8 +489,8 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Gets the criteria for the type of the parameter.
 	 *
-	 * @deprecated since 0.5, removal in 0.7
-	 * @since 0.5
+	 * @deprecated since 1.0, removal in 1.1
+	 * @since 1.0
 	 *
 	 * @return array
 	 */
@@ -526,8 +526,8 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @deprecated Compatibility helper, will be removed in 0.7.
-	 * @since 0.5
+	 * @deprecated Compatibility helper, will be removed in 1.1.
+	 * @since 1.0
 	 *
 	 * @param Parameter $parameter
 	 *
@@ -560,7 +560,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Construct a new ParamDefinition from an array.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param array $param
 	 * @param bool $getMad
@@ -595,7 +595,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Sets the parameter definition values contained in the provided array.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param array $param
 	 */
@@ -628,12 +628,12 @@ abstract class ParamDefinition implements IParamDefinition {
 			$this->setDoManipulationOfDefault( $param['manipulatedefault'] );
 		}
 
-		// Backward compatibility code, will be removed in 0.7.
+		// Backward compatibility code, will be removed in 1.1.
 		if ( array_key_exists( 'manipulations', $param ) ) {
 			$this->addManipulations( $param['manipulations'] );
 		}
 
-		// Backward compatibility code, will be removed in 0.7.
+		// Backward compatibility code, will be removed in 1.1.
 		if ( array_key_exists( 'criteria', $param ) ) {
 			$this->addCriteria( $param['criteria'] );
 		}
@@ -642,7 +642,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::validate
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
@@ -660,7 +660,7 @@ abstract class ParamDefinition implements IParamDefinition {
 
 			foreach ( $values as $value ) {
 				// TODO: restore not bailing out at one error in list but filtering on valid
-				$valid = $this->validateValueBase( $value, $param, $definitions, $params, $options );
+				$valid = $this->validateValue( $value, $param, $definitions, $params, $options );
 
 				if ( !$valid ) {
 					break;
@@ -670,35 +670,16 @@ abstract class ParamDefinition implements IParamDefinition {
 			return $valid && $this->validateList( $param, $definitions, $params, $options );
 		}
 		else {
-			$valid = $this->validateValueBase( $param->getValue(), $param, $definitions, $params, $options );
+			$valid = $this->validateValue( $param->getValue(), $param, $definitions, $params, $options );
 
 			return $valid ? true : array( new ValidationError( 'Error' ) ); // TODO
 		}
 	}
 
 	/**
-	 * @since 0.5
-	 *
-	 * @param mixed $value
-	 * @param IParam $param
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
-	 *
-	 * @return boolean
-	 */
-	protected final function validateValueBase( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
-		if ( $options->isStringlyTyped() && !is_string( $value ) ) {
-			return false;
-		}
-
-		return $this->validateValue( $value, $param, $definitions, $params, $options );
-	}
-
-	/**
 	 * @see IParamDefinition::format
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
@@ -723,7 +704,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Formats the parameters values to their final result.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
@@ -736,7 +717,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Validates the parameters value set.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
@@ -752,7 +733,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Formats the parameter value to it's final result.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -769,7 +750,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * Validates the parameters value and returns the result.
 	 * @see ParamDefinition::validateValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -787,7 +768,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * Returns if the value is in the allowed values list in case this list is set,
 	 * and if it's not in the prohibited values list in case that one is set.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param mixed $value
 	 *
@@ -806,10 +787,10 @@ abstract class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Compatibility helper method, will be removed in 0.7.
+	 * Compatibility helper method, will be removed in 1.1.
 	 *
 	 * @deprecated
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return Parameter
 	 */
@@ -848,7 +829,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * corresponding parameters.
 	 *
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $definitions array of IParamDefinition
 	 *
@@ -867,7 +848,7 @@ abstract class ParamDefinition implements IParamDefinition {
 				$definition = ParamDefinition::newFromArray( $definition );
 			}
 			elseif ( $definition instanceof Parameter ) {
-				// This if for backwards compat, will be removed in 0.7.
+				// This if for backwards compat, will be removed in 1.1.
 				$definition = ParamDefinition::newFromParameter( $definition );
 			}
 
@@ -884,7 +865,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::getType()
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -911,7 +892,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	/**
 	 * Creates a new instance of a ParamDefinition based on the provided type.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param string $type
 	 * @param string $name
@@ -938,12 +919,11 @@ abstract class ParamDefinition implements IParamDefinition {
 		);
 	}
 
-
 	/**
 	 * Compatibility fallback function so the singleton method works on PHP < 5.3.
 	 * Code borrowed from http://www.php.net/manual/en/function.get-called-class.php#107445
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -968,4 +948,27 @@ abstract class ParamDefinition implements IParamDefinition {
 		}
 		return $matches[1];
 	}
+
+	/**
+	 * @see IParamDefinition::getValueParser
+	 *
+	 * @since 1.0
+	 *
+	 * @param ValidatorOptions $options
+	 *
+	 * @return ValueParser
+	 */
+	public function getValueParser( ValidatorOptions $options ) {
+		return $options->isStringlyTyped() ? new BoolParser() : new NullParser();
+	}
+
+	/**
+	 * Returns a StringValueParser that can parse string representations of this parameter type.
+	 *
+	 * @since 1.0
+	 *
+	 * @return StringValueParser
+	 */
+	protected abstract function getStringValueParser();
+
 }

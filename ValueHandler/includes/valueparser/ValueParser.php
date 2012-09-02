@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ValueParser that parses the string representation of something.
+ * Interface for value parsers.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,44 +18,26 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
- * @ingroup Validator
+ * @ingroup ValueHandler
  * @ingroup ValueParser
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class StringValueParser implements ValueParser {
+interface ValueParser {
 
 	/**
-	 * @see ValueParser::parse
+	 * Parses a value.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
-	 * @param mixed $value
+	 * @param mixed $value The value to parse
 	 *
 	 * @return ValueParserResult
 	 */
-	public function parse( $value ) {
-		if ( is_string( $value ) ) {
-			return $this->stringParse( $value );
-		}
-		else {
-			return ValueParserResultObject::newError( 'Not a string' ); // TODO
-		}
-	}
-
-	/**
-	 * Parses the provided string and returns the result.
-	 *
-	 * @since 0.5
-	 *
-	 * @param string $value
-	 *
-	 * @return ValueParserResult
-	 */
-	protected abstract function stringParse( $value );
+	public function parse( $value );
 
 }

@@ -18,10 +18,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
- * @ingroup Validator
+ * @ingroup ValueHandler
  * @ingroup ValueParser
  *
  * @licence GNU GPL v2+
@@ -30,21 +30,21 @@
 class ValueParserResultObject implements  ValueParserResult {
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
 	protected $isValid;
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var mixed
 	 */
 	protected $value;
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var string|null
 	 */
@@ -75,7 +75,7 @@ class ValueParserResultObject implements  ValueParserResult {
 	/**
 	 * Constructor.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $isValid
 	 * @param mixed $value
@@ -90,7 +90,7 @@ class ValueParserResultObject implements  ValueParserResult {
 	/**
 	 * @see ValueParserResult::getValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return mixed
 	 * @throws Exception
@@ -107,7 +107,7 @@ class ValueParserResultObject implements  ValueParserResult {
 	/**
 	 * @see ValueParserResult::isValid
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -118,7 +118,7 @@ class ValueParserResultObject implements  ValueParserResult {
 	/**
 	 * @see ValueParserResult::getError
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string|null
 	 */
