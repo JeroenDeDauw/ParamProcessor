@@ -131,24 +131,13 @@ abstract class ParamDefinition implements IParamDefinition {
 	protected $message = 'validator-message-nodesc';
 
 	/**
-	 * A list of allowed values. This means the parameters value(s) must be in the list
-	 * during validation. False for no restriction.
+	 * Original array definition of the parameter
 	 *
 	 * @since 1.0
 	 *
-	 * @var array|false
+	 * @var array
 	 */
-	protected $allowedValues = false;
-
-	/**
-	 * A list of prohibited values. This means the parameters value(s) must
-	 * not be in the list during validation. False for no restriction.
-	 *
-	 * @since 1.0
-	 *
-	 * @var array|false
-	 */
-	protected $prohibitedValues = false;
+	protected $options = array();
 
 	/**
 	 * Constructor.
@@ -613,14 +602,6 @@ abstract class ParamDefinition implements IParamDefinition {
 			$this->trimValue = $param['trim'];
 		}
 
-		if ( array_key_exists( 'values', $param ) ) {
-			$this->allowedValues = $param['values'];
-		}
-
-		if ( array_key_exists( 'excluding', $param ) ) {
-			$this->prohibitedValues = $param['excluding'];
-		}
-
 		if ( array_key_exists( 'delimiter', $param ) ) {
 			$this->delimiter = $param['delimiter'];
 		}
@@ -638,6 +619,9 @@ abstract class ParamDefinition implements IParamDefinition {
 		if ( array_key_exists( 'criteria', $param ) ) {
 			$this->addCriteria( $param['criteria'] );
 		}
+
+		// TODO: public method + keep lists in sync
+		$this->options = $param;
 	}
 
 	/**
@@ -762,29 +746,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
-		return $this->valueIsAllowed( $value );
-	}
-
-	/**
-	 * Returns if the value is in the allowed values list in case this list is set,
-	 * and if it's not in the prohibited values list in case that one is set.
-	 *
-	 * @since 1.0
-	 *
-	 * @param mixed $value
-	 *
-	 * @return boolean
-	 */
-	protected function valueIsAllowed( $value ) {
-		if ( $this->allowedValues !== false && !in_array( $value, $this->allowedValues ) ) {
-			return false;
-		}
-
-		if ( $this->prohibitedValues !== false && in_array( $value, $this->prohibitedValues ) ) {
-			return false;
-		}
-
-		return true;
+		return true; // FIXME
 	}
 
 	/**
@@ -971,5 +933,27 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @return StringValueParser
 	 */
 	protected abstract function getStringValueParser();
+
+	/**
+	 * @since 1.0
+	 *
+	 * @return ValueValidator
+	 */
+	protected function getValidator() {
+		return new ValueValidatorObject();
+	}
+
+	/**
+	 * Returns a ValueValidator that can be used to validate the parameters value.
+	 *
+	 * @since 1.0
+	 *
+	 * @return ValueValidator
+	 */
+	public function getValueValidator() {
+		$valueValidator = $this->getValidator();
+		$valueValidator->setOptions( $this->options );
+		return $valueValidator;
+	}
 
 }

@@ -43,7 +43,7 @@ interface IParam {
 	public function setValue( $value );
 
 	/**
-	 * Validates the parameter value and sets the value to it's default when errors occur.
+	 * Processes the parameter. This includes parsing, validation and additional formatting.
 	 *
 	 * @since 1.0
 	 *
@@ -51,18 +51,7 @@ interface IParam {
 	 * @param $params array of IParam
 	 * @param ValidatorOptions $options
 	 */
-	public function validate( array $definitions, array $params, ValidatorOptions $options );
-
-	/**
-	 * Applies the parameter manipulations.
-	 *
-	 * @since 1.0
-	 *
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
-	 */
-	public function format( array &$definitions, array $params, ValidatorOptions $options );
+	public function process( array &$definitions, array $params, ValidatorOptions $options );
 
 	/**
 	 * Returns the original use-provided name.

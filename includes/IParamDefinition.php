@@ -284,4 +284,13 @@ interface IParamDefinition {
 	 */
 	public function getValueParser( ValidatorOptions $options );
 
+	/**
+	 * Returns a ValueValidator that can be used to validate the parameters value.
+	 *
+	 * @since 1.0
+	 *
+	 * @return ValueValidator
+	 */
+	public function getValueValidator();
+
 }
