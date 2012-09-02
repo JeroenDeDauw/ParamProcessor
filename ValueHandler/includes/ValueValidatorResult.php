@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ValueParser that parses the string representation of a boolean.
+ * Interface for value validator results.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,40 +22,29 @@
  *
  * @file
  * @ingroup ValueHandler
- * @ingroup ValueParser
+ * @ingroup ValueValidator
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class BoolParser extends StringValueParser {
-
-	protected $values = array(
-		'yes' => true,
-		'on' => true,
-		'1' => true,
-		'true' => true,
-		'no' => false,
-		'off' => false,
-		'0' => false,
-		'false' => false,
-	);
+interface ValueValidatorResult {
 
 	/**
-	 * @see StringValueParser::stringParse
+	 * Returns if the value was found to be valid or not.
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $value
-	 *
-	 * @return ValueParserResult
+	 * @return boolean
 	 */
-	public function stringParse( $value ) {
-		if ( array_key_exists( $value, $this->values ) ) {
-			return ValueParserResultObject::newSuccess( $this->values[$value] );
-		}
-		else {
-			return $this->newErrorResult( 'Not a boolean' );
-		}
-	}
+	public function isValid();
+
+	/**
+	 * Returns an array with the errors that occurred during validation.
+	 *
+	 * @since 0.1
+	 *
+	 * @return array of ValueHandlerError
+	 */
+	public function getErrors();
 
 }

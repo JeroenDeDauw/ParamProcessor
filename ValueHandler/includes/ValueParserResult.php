@@ -18,7 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 1.0
+ * @since 0.1
  *
  * @file
  * @ingroup ValueHandler
@@ -30,25 +30,25 @@
 interface ValueParserResult {
 
 	/**
-	 * @since 1.0
+	 * @since 0.1
 	 *
 	 * @return mixed
 	 */
 	public function getValue();
 
 	/**
-	 * @since 1.0
+	 * @since 0.1
 	 *
 	 * @return boolean
 	 */
 	public function isValid();
 
 	/**
-	 * Returns error message in case the value is invalid or null otherwise.
+	 * Returns error in case the value is invalid or null otherwise.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 *
-	 * @return string|null
+	 * @return ValueHandlerError|null
 	 */
 	public function getError();
 

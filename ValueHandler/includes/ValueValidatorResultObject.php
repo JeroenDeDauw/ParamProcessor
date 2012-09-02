@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implementation of the value parser result interface.
+ * Implementation of the value validator result interface.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,12 +22,12 @@
  *
  * @file
  * @ingroup ValueHandler
- * @ingroup ValueParser
+ * @ingroup ValueValidator
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ValueParserResultObject implements  ValueParserResult {
+class ValueValidatorResultObject implements  ValueValidatorResult {
 
 	/**
 	 * @since 0.1
@@ -39,37 +39,28 @@ class ValueParserResultObject implements  ValueParserResult {
 	/**
 	 * @since 0.1
 	 *
-	 * @var mixed
-	 */
-	protected $value;
-
-	/**
-	 * @since 0.1
-	 *
-	 * @var ValueHandlerError|null
+	 * @var string|null
 	 */
 	protected $error;
 
 	/**
 	 * @since 0.1
 	 *
-	 * @param mixed $value
-	 *
-	 * @return ValueParserResult
+	 * @return ValueValidatorResult
 	 */
-	public static function newSuccess( $value ) {
-		return new static( true, $value );
+	public static function newSuccess() {
+		return new static( true );
 	}
 
 	/**
 	 * @since 0.1
 	 *
-	 * @param ValueHandlerError $error
+	 * @param $errors array of ValueHandlerError
 	 *
-	 * @return ValueParserResult
+	 * @return ValueValidatorResult
 	 */
-	public static function newError( $error ) {
-		return new static( false, null, $error );
+	public static function newError( array $errors ) {
+		return new static( false, $errors );
 	}
 
 	/**
@@ -78,30 +69,11 @@ class ValueParserResultObject implements  ValueParserResult {
 	 * @since 0.1
 	 *
 	 * @param boolean $isValid
-	 * @param mixed $value
-	 * @param ValueHandlerError $error
+	 * @param $errors array of ValueHandlerError
 	 */
-	protected function __construct( $isValid, $value = null, ValueHandlerError $error = null ) {
+	protected function __construct( $isValid, array $errors = array() ) {
 		$this->isValid = $isValid;
-		$this->value = $value;
-		$this->error = $error;
-	}
-
-	/**
-	 * @see ValueParserResult::getValue
-	 *
-	 * @since 0.1
-	 *
-	 * @return mixed
-	 * @throws Exception
-	 */
-	public function getValue() {
-		if ( $this->isValid() ) {
-			return $this->value;
-		}
-		else {
-			throw new Exception( 'Cannot obtain the value of the parsing result as the parser got invalid input' );
-		}
+		$this->errors = $errors;
 	}
 
 	/**
@@ -120,9 +92,9 @@ class ValueParserResultObject implements  ValueParserResult {
 	 *
 	 * @since 0.1
 	 *
-	 * @return ValueHandlerError|null
+	 * @return array of ValueHandlerError
 	 */
-	public function getError() {
+	public function getErrors() {
 		return $this->error;
 	}
 

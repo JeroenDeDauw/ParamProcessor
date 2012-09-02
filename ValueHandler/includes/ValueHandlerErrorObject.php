@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ValueParser that parses the string representation of something.
+ * Implementation of the value handler error interface.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,51 +22,70 @@
  *
  * @file
  * @ingroup ValueHandler
- * @ingroup ValueParser
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class StringValueParser implements ValueParser {
+class ValueHandlerErrorObject implements ValueHandlerError {
+
+	protected $text;
+	protected $severity;
 
 	/**
-	 * @see ValueParser::parse
-	 *
 	 * @since 0.1
 	 *
-	 * @param mixed $value
+	 * @param string $text
 	 *
-	 * @return ValueParserResult
+	 * @return ValueHandlerError
 	 */
-	public function parse( $value ) {
-		if ( is_string( $value ) ) {
-			return $this->stringParse( $value );
-		}
-		else {
-			return ValueParserResultObject::newError( 'Not a string' ); // TODO
-		}
+	public static function newError( $text = '' ) {
+		return new static( $text, ValueHandlerError::SEVERITY_ERROR );
 	}
 
 	/**
-	 * Parses the provided string and returns the result.
-	 *
 	 * @since 0.1
 	 *
-	 * @param string $value
+	 * @param string $text
 	 *
-	 * @return ValueParserResult
+	 * @return ValueHandlerError
 	 */
-	protected abstract function stringParse( $value );
+	public static function newWarning( $text = '' ) {
+		return new static( $text, ValueHandlerError::SEVERITY_WARNING );
+	}
 
 	/**
+	 * Constructor.
+	 *
 	 * @since 0.1
 	 *
-	 * @param string $errorMessage
-	 *
-	 * @return ValueParserResult
+	 * @param string $text
+	 * @param integer $severity
 	 */
-	protected function newErrorResult( $errorMessage ) {
-		return ValueParserResultObject::newError( ValueHandlerErrorObject::newError( $errorMessage ) );
+	protected function __construct( $text, $severity ) {
+		$this->text = $text;
+		$this->severity = $severity;
+	}
+
+	/**
+	 * @see ValueHandlerError::getText
+	 *
+	 * @since 0.1
+	 *
+	 * @return string
+	 */
+	public function getText() {
+		return $this->text;
+	}
+
+	/**
+	 * @see ValueHandlerError::getSeverity
+	 *
+	 * @since 0.1
+	 *
+	 * @return integer
+	 */
+	public function getSeverity() {
+		return $this->severity;
 	}
 
 }

@@ -121,4 +121,15 @@ class TitleParam extends ParamDefinition {
 		}
 	}
 
+	/**
+	 * @see ParamDefinition::getStringValueParser
+	 *
+	 * @since 1.0
+	 *
+	 * @return StringValueParser
+	 */
+	protected function getStringValueParser() {
+		return new TitleParser();
+	}
+
 }

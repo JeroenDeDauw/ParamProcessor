@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ValueParser that parses the string representation of a boolean.
+ * ValueValidator that holds base validation functions for any type of object.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,39 +22,46 @@
  *
  * @file
  * @ingroup ValueHandler
- * @ingroup ValueParser
+ * @ingroup ValueValidator
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class BoolParser extends StringValueParser {
-
-	protected $values = array(
-		'yes' => true,
-		'on' => true,
-		'1' => true,
-		'true' => true,
-		'no' => false,
-		'off' => false,
-		'0' => false,
-		'false' => false,
-	);
+class ValueValidatorObject implements ValueValidator {
 
 	/**
-	 * @see StringValueParser::stringParse
+	 * @see ValueValidator::validate
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $value
+	 * @param mixed $value
 	 *
 	 * @return ValueParserResult
 	 */
-	public function stringParse( $value ) {
-		if ( array_key_exists( $value, $this->values ) ) {
-			return ValueParserResultObject::newSuccess( $this->values[$value] );
+	public function validate( $value ) {
+		$value = Title::newFromText( $value );
+
+		if ( is_null( $value ) ) {
+			return ValueParserResultObject::newError( 'Not a title' ); // TODO
 		}
 		else {
-			return $this->newErrorResult( 'Not a boolean' );
+			return ValueParserResultObject::newSuccess( $value );
+		}
+	}
+
+	/**
+	 * Sets the parameter definition values contained in the provided array.
+	 * @see ParamDefinition::setArrayValues
+	 *
+	 * @since 0.1
+	 *
+	 * @param array $param
+	 */
+	public function setOptions( array $param ) {
+		parent::setArrayValues( $param );
+
+		if ( array_key_exists( 'hastoexist', $param ) ) {
+			$this->setHasToExist( $param['hastoexist'] );
 		}
 	}
 

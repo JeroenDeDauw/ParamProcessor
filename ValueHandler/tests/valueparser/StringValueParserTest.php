@@ -21,7 +21,7 @@ namespace ValueHandler\Test;
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @since 1.0
+ * @since 0.1
  *
  * @ingroup ValueHandler
  * @ingroup Test
@@ -36,7 +36,7 @@ abstract class StringValueParserTest extends ValueParserTestBase {
 	/**
 	 * @see ValueParserTestBase::parseProvider
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 */
 	public function parseProvider() {
 		$argLists = array();
