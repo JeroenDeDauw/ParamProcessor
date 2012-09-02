@@ -193,8 +193,10 @@ class Param implements IParam {
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
 	 * @param ValidatorOptions $options
+	 *
+	 * @throws MWException
 	 */
-	public function process( array $definitions, array $params, ValidatorOptions $options ) {
+	public function process( array &$definitions, array $params, ValidatorOptions $options ) {
 		if ( $this->setCount == 0 ) {
 			if ( $this->definition->isRequired() ) {
 				// This should not occur, so throw an exception.
@@ -205,43 +207,43 @@ class Param implements IParam {
 			}
 		}
 		else {
-			$parser = $this->definition->getValueParser( $options );
-			$parsingResult = $parser->parse( $this->getValue() );
-
-			if ( $parsingResult->isValid() ) {
-				// TODO
-				$validationResult = $this->definition->validate( $this, $definitions, $params, $options );
-
-				if ( is_array( $validationResult ) ) {
-					/**
-					 * @var ValidationError $error
-					 */
-					foreach ( $validationResult as $error ) {
-						$error->addTags( $this->getName() );
-						$this->errors[] = $error;
-					}
-				}
-			}
-			else {
-				$this->errors[] = $parsingResult->getError(); // FIXME: type
-			}
-
-
-
-			$this->validateCriteria( $definitions, $params );
-			$this->setToDefaultIfNeeded();
+			$this->parseAndValidate( $definitions, $params, $options  );
 		}
 
-
-
-
-
-
-		$param->format( $this->paramDefinitions, $this->params, $this->options );
+		$this->format( $definitions, $params, $options );
 	}
 
-	protected function parse( ValidatorOptions $options ) {
+	/**
+	 * @since 1.0
+	 *
+	 * @param array $definitions
+	 * @param array $params
+	 * @param ValidatorOptions $options
+	 */
+	protected function parseAndValidate( array &$definitions, array $params, ValidatorOptions $options ) {
+		$parser = $this->definition->getValueParser( $options );
+		$parsingResult = $parser->parse( $this->getValue() );
 
+		if ( $parsingResult->isValid() ) {
+			$this->setValue( $parsingResult->getValue() );
+
+			$validationResult = $this->definition->getValueValidator()->validate( $this->getValue() );
+
+			if ( !$validationResult->isValid() ) {
+				/**
+				 * @var ValueHandlerError $error
+				 */
+				foreach ( $validationResult->getErrors() as $error ) {
+					$this->errors[] = new ValidationError( $error->getText() );
+				}
+			}
+		}
+		else {
+			$this->errors[] = new ValidationError( $parsingResult->getError()->getText() );
+		}
+
+		$this->validateCriteria( $definitions, $params );
+		$this->setToDefaultIfNeeded();
 	}
 
 	/**
@@ -260,7 +262,6 @@ class Param implements IParam {
 
 	/**
 	 * Applies the parameter manipulations.
-	 * @see IParam::format
 	 *
 	 * @since 1.0
 	 *
@@ -268,7 +269,7 @@ class Param implements IParam {
 	 * @param $params array of IParam
 	 * @param ValidatorOptions $options
 	 */
-	public function format( array &$definitions, array $params, ValidatorOptions $options ) {
+	protected function format( array &$definitions, array $params, ValidatorOptions $options ) {
 		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
 			$this->definition->format( $this, $definitions, $params );
 
