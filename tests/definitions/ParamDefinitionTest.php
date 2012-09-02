@@ -22,7 +22,7 @@ use ParamDefinition, IParamDefinition, Param;
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @since 0.5
+ * @since 1.0
  *
  * @ingroup Validator
  * @ingroup Test

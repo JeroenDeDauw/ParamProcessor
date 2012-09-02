@@ -3,7 +3,7 @@
 /**
  * Parameter criterion stating that the value must not be empty (empty being a string with 0 lentgh).
  *
- * @deprecated since 0.5, removal in 0.7
+ * @deprecated since 1.0, removal in 1.1
  * @since 0.4
  * 
  * @file CriterionNotEmpty.php

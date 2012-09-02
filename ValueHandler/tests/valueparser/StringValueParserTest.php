@@ -1,9 +1,9 @@
 <?php
 
-namespace Validator\Test;
+namespace ValueHandler\Test;
 
 /**
- * Unit test TitleParser class.
+ * Unit test StringValueParser class.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,45 +21,40 @@ namespace Validator\Test;
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @since 0.5
+ * @since 1.0
  *
- * @ingroup Validator
+ * @ingroup ValueHandler
  * @ingroup Test
  *
- * @group Validator
+ * @group ValueHandler
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class TitleParserTest extends StringValueParserTest {
+abstract class StringValueParserTest extends ValueParserTestBase {
 
 	/**
 	 * @see ValueParserTestBase::parseProvider
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 */
 	public function parseProvider() {
 		$argLists = array();
 
-		$valid = array(
-			'Foo bar',
-			'Ohi there!',
+		$invalid = array(
+			true,
+			false,
+			null,
+			4.2,
+			array(),
+			42,
 		);
 
-		foreach ( $valid as $value ) {
-			$argLists[] = array( $value, \ValueParserResultObject::newSuccess( \Title::newFromText( $value ) ) );
+		foreach ( $invalid as $value ) {
+			$argLists[] = array( $value, \ValueParserResultObject::newError( '' ) );
 		}
 
-		return array_merge( $argLists, parent::parseProvider() );
-	}
-
-	/**
-	 * @see ValueParserTestBase::getParserClass
-	 * @since 0.5
-	 * @return string
-	 */
-	protected function getParserClass() {
-		return 'TitleParser';
+		return $argLists;
 	}
 
 }

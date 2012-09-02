@@ -5,13 +5,20 @@ Latest version of the roadmap: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki
 
 == Validator 1.0 ==
 
-End of 2012.
+First half of September 2012.
+
+* Fix design issues with ParamDefinition deriving classes
+
+== Validator 1.1 ==
+
+End of 2012 or Q1 2013.
 
 * Remove Parameter and associated compatibility code
 * Drop PHP 5.2 compatibility
 ** Kill ParamDefinition::get_called_class
 ** Kill boilerplate in ParserHook
 ** __DIR__
+* Remove Parameter and associated compatibility code
 
 == Validator 2.0 ==
 

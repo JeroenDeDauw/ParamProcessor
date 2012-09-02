@@ -4,7 +4,7 @@
  * Defines the float parameter type.
  * Specifies the type specific validation and formatting logic.
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
  * @ingroup Validator
@@ -19,7 +19,7 @@ class FloatParam extends NumericParam {
 	 * Validates the parameters value and returns the result.
 	 * @see ParamDefinition::validateValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -49,7 +49,7 @@ class FloatParam extends NumericParam {
 	 * Formats the parameter value to it's final result.
 	 * @see ParamDefinition::formatValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam

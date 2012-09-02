@@ -18,10 +18,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
- * @ingroup Validator
+ * @ingroup ValueHandler
  * @ingroup ValueParser
  *
  * @licence GNU GPL v2+
@@ -32,7 +32,7 @@ class NullParser implements ValueParser {
 	/**
 	 * @see ValueParser::parse
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param mixed $value
 	 *

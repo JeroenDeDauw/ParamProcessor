@@ -3,7 +3,7 @@
 /**
  * Interface for objects representing an "instance" of a parameter.
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
  * @ingroup Validator
@@ -16,7 +16,7 @@ interface IParam {
 	/**
 	 * Constructor.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param IParamDefinition $definition
 	 */
@@ -25,7 +25,7 @@ interface IParam {
 	/**
 	 * Sets and cleans the original value and name.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param string $paramName
 	 * @param string $paramValue
@@ -36,7 +36,7 @@ interface IParam {
 	/**
 	 * Sets the value.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param mixed $value
 	 */
@@ -45,7 +45,7 @@ interface IParam {
 	/**
 	 * Validates the parameter value and sets the value to it's default when errors occur.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
@@ -56,7 +56,7 @@ interface IParam {
 	/**
 	 * Applies the parameter manipulations.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
@@ -67,7 +67,7 @@ interface IParam {
 	/**
 	 * Returns the original use-provided name.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -76,7 +76,7 @@ interface IParam {
 	/**
 	 * Returns the original use-provided value.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -85,7 +85,7 @@ interface IParam {
 	/**
 	 * Returns all validation errors that occurred so far.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return array of ValidationError
 	 */
@@ -94,7 +94,7 @@ interface IParam {
 	/**
 	 * Gets if the parameter was set to it's default.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -103,7 +103,7 @@ interface IParam {
 	/**
 	 * Returns the IParamDefinition this IParam was constructed from.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return IParamDefinition
 	 */
@@ -112,7 +112,7 @@ interface IParam {
 	/**
 	 * Returns the parameters value.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return mixed
 	 */
@@ -121,7 +121,7 @@ interface IParam {
 	/**
 	 * Returns if the name of the parameter.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */

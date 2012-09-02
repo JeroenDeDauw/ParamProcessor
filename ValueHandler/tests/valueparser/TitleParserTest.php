@@ -1,9 +1,9 @@
 <?php
 
-namespace Validator\Test;
+namespace ValueHandler\Test;
 
 /**
- * Unit test BoolParser class.
+ * Unit test TitleParser class.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,48 +21,33 @@ namespace Validator\Test;
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @since 0.5
+ * @since 1.0
  *
- * @ingroup Validator
+ * @ingroup ValueHandler
  * @ingroup Test
  *
- * @group Validator
+ * @group ValueHandler
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class BoolParserTest extends StringValueParserTest {
+class TitleParserTest extends StringValueParserTest {
 
 	/**
 	 * @see ValueParserTestBase::parseProvider
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 */
 	public function parseProvider() {
 		$argLists = array();
 
 		$valid = array(
-			'yes' => true,
-			'on' => true,
-			'1' => true,
-			'true' => true,
-			'no' => false,
-			'off' => false,
-			'0' => false,
-			'false' => false,
+			'Foo bar',
+			'Ohi there!',
 		);
 
-		foreach ( $valid as $value => $expected ) {
-			$argLists[] = array( (string)$value, \ValueParserResultObject::newSuccess( $expected ) );
-		}
-
-		$invalid = array(
-			'foo',
-			'2',
-		);
-
-		foreach ( $invalid as $value ) {
-			$argLists[] = array( $value, \ValueParserResultObject::newError( '' ) );
+		foreach ( $valid as $value ) {
+			$argLists[] = array( $value, \ValueParserResultObject::newSuccess( \Title::newFromText( $value ) ) );
 		}
 
 		return array_merge( $argLists, parent::parseProvider() );
@@ -70,11 +55,11 @@ class BoolParserTest extends StringValueParserTest {
 
 	/**
 	 * @see ValueParserTestBase::getParserClass
-	 * @since 0.5
+	 * @since 1.0
 	 * @return string
 	 */
 	protected function getParserClass() {
-		return 'BoolParser';
+		return 'TitleParser';
 	}
 
 }

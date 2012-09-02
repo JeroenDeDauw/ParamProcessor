@@ -4,7 +4,7 @@
  * Defines the boolean integer type.
  * Specifies the type specific validation and formatting logic.
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
  * @ingroup Validator
@@ -18,7 +18,7 @@ class IntParam extends NumericParam {
 	/**
 	 * If negative values should be allowed or not.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $allowNegatives
 	 */
@@ -27,7 +27,7 @@ class IntParam extends NumericParam {
 	/**
 	 * Sets if negative values should be allowed or not.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param boolean $allowNegatives
 	 */
@@ -39,7 +39,7 @@ class IntParam extends NumericParam {
 	 * Validates the parameters value and returns the result.
 	 * @see ParamDefinition::validateValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -93,7 +93,7 @@ class IntParam extends NumericParam {
 	 * Formats the parameter value to it's final result.
 	 * @see ParamDefinition::formatValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -110,7 +110,7 @@ class IntParam extends NumericParam {
 	 * Sets the parameter definition values contained in the provided array.
 	 * @see ParamDefinition::setArrayValues
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param array $param
 	 */
@@ -126,7 +126,7 @@ class IntParam extends NumericParam {
 	 * Returns if negatives are allowed.
 	 * Can be set via @see IntParam::setAllowNegatives
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */

@@ -5,7 +5,7 @@
  * that apply to list parameters as a whole instead of to their
  * individual items.
  * 
- * @deprecated since 0.5, removal in 0.7
+ * @deprecated since 1.0, removal in 1.1
  * @since 0.4
  * 
  * @file ListParameterCriterion.php

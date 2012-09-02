@@ -4,7 +4,7 @@
  * Parameter class, representing the "instance" of a parameter.
  * Holds a ParamDefinition, user provided input (name & value) and processing state.
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file Param.php
  * @ingroup Validator
@@ -18,7 +18,7 @@ class Param implements IParam {
 	 * Indicates whether parameters not found in the criteria list
 	 * should be stored in case they are not accepted. The default is false.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
@@ -28,7 +28,7 @@ class Param implements IParam {
 	 * The original parameter name as provided by the user. This can be the
 	 * main name or an alias.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var string
 	 */
@@ -38,7 +38,7 @@ class Param implements IParam {
 	 * The original value as provided by the user. This is mainly retained for
 	 * usage in error messages when the parameter turns out to be invalid.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var string
 	 */
@@ -47,7 +47,7 @@ class Param implements IParam {
 	/**
 	 * The value of the parameter.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var mixed
 	 */
@@ -57,7 +57,7 @@ class Param implements IParam {
 	 * Keeps track of how many times the parameter has been set by the user.
 	 * This is used to detect overrides and for figuring out a parameter is missing.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var integer
 	 */
@@ -66,7 +66,7 @@ class Param implements IParam {
 	/**
 	 * List of validation errors for this parameter.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var array of ValidationError
 	 */
@@ -75,7 +75,7 @@ class Param implements IParam {
 	/**
 	 * Indicates if the parameter was set to it's default.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
@@ -84,7 +84,7 @@ class Param implements IParam {
 	/**
 	 * The definition of the parameter.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @var IParamDefinition
 	 */
@@ -93,7 +93,7 @@ class Param implements IParam {
 	/**
 	 * Constructor.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param IParamDefinition $definition
 	 */
@@ -105,7 +105,7 @@ class Param implements IParam {
 	 * Sets and cleans the original value and name.
 	 * @see IParam::setUserValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param string $paramName
 	 * @param string $paramValue
@@ -133,7 +133,7 @@ class Param implements IParam {
 	/**
 	 * Sets the value.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param mixed $value
 	 */
@@ -144,7 +144,7 @@ class Param implements IParam {
 	/**
 	 * Sets the $value to a cleaned value of $originalValue.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param ValidatorOptions $options
 	 */
@@ -185,10 +185,70 @@ class Param implements IParam {
 	}
 
 	/**
+	 * Parameter processing entry point.
+	 * @see IParam::process
+	 *
+	 * @since 1.0
+	 *
+	 * @param $definitions array of IParamDefinition
+	 * @param $params array of IParam
+	 * @param ValidatorOptions $options
+	 */
+	public function process( array $definitions, array $params, ValidatorOptions $options ) {
+		if ( $this->setCount == 0 ) {
+			if ( $this->definition->isRequired() ) {
+				// This should not occur, so throw an exception.
+				throw new MWException( 'Attempted to validate a required parameter without first setting a value.' );
+			}
+			else {
+				$this->setToDefault();
+			}
+		}
+		else {
+			$parser = $this->definition->getValueParser( $options );
+			$parsingResult = $parser->parse( $this->getValue() );
+
+			if ( $parsingResult->isValid() ) {
+				// TODO
+				$validationResult = $this->definition->validate( $this, $definitions, $params, $options );
+
+				if ( is_array( $validationResult ) ) {
+					/**
+					 * @var ValidationError $error
+					 */
+					foreach ( $validationResult as $error ) {
+						$error->addTags( $this->getName() );
+						$this->errors[] = $error;
+					}
+				}
+			}
+			else {
+				$this->errors[] = $parsingResult->getError(); // FIXME: type
+			}
+
+
+
+			$this->validateCriteria( $definitions, $params );
+			$this->setToDefaultIfNeeded();
+		}
+
+
+
+
+
+
+		$param->format( $this->paramDefinitions, $this->params, $this->options );
+	}
+
+	protected function parse( ValidatorOptions $options ) {
+
+	}
+
+	/**
 	 * Validates the parameter value and sets the value to it's default when errors occur.
 	 * @see IParam::validate
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
@@ -202,7 +262,7 @@ class Param implements IParam {
 	 * Applies the parameter manipulations.
 	 * @see IParam::format
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
@@ -225,7 +285,7 @@ class Param implements IParam {
 				}
 			}
 
-			// This whole block is compat code, to be removed in 0.7.
+			// This whole block is compat code, to be removed in 1.1.
 			if ( $manipulations !== array() ) {
 				$parameter = $this->toParameter();
 				$parameters = array();
@@ -256,9 +316,9 @@ class Param implements IParam {
 	}
 
 	/**
-	 * Compatibility helper method, will be removed in 0.7.
+	 * Compatibility helper method, will be removed in 1.1.
 	 *
-	 * @deprecated since 0.5, removal in 0.7
+	 * @deprecated since 1.0, removal in 1.1
 	 *
 	 * @return Parameter
 	 */
@@ -277,7 +337,7 @@ class Param implements IParam {
 	 * Validates the parameter value.
 	 * Also sets the value to the default when it's not set or invalid, assuming there is a default.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $definitions array of ParamDefinition
 	 * @param $params array of Param
@@ -316,10 +376,10 @@ class Param implements IParam {
 	/**
 	 * Sets the parameter value to the default if needed.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 */
 	protected function setToDefaultIfNeeded() {
-		if ( count( $this->errors ) > 0 && !$this->hasFatalError() ) {
+		if ( $this->errors !== array() && !$this->hasFatalError() ) {
 			$this->setToDefault();
 		}
 	}
@@ -327,8 +387,8 @@ class Param implements IParam {
 	/**
 	 * Validates the provided value against all criteria.
 	 *
-	 * @deprecated removal in 0.7
-	 * @since 0.5
+	 * @deprecated removal in 1.1
+	 * @since 1.0
 	 *
 	 * @param $definitions array of ParamDefinition
 	 * @param $params array of Param
@@ -352,8 +412,8 @@ class Param implements IParam {
 	/**
 	 * Handles any validation errors that occurred for a single criterion.
 	 *
-	 * @deprecated removal in 0.7
-	 * @since 0.5
+	 * @deprecated removal in 1.1
+	 * @since 1.0
 	 *
 	 * @param CriterionValidationResult $validationResult
 	 */
@@ -367,7 +427,7 @@ class Param implements IParam {
 	/**
 	 * Returns the original use-provided name.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @throws MWException
 	 * @return string
@@ -382,7 +442,7 @@ class Param implements IParam {
 	/**
 	 * Returns the original use-provided value.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @throws MWException
 	 * @return string
@@ -397,7 +457,7 @@ class Param implements IParam {
 	/**
 	 * Returns all validation errors that occurred so far.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return array of ValidationError
 	 */
@@ -408,7 +468,7 @@ class Param implements IParam {
 	/**
 	 * Sets the parameter value to the default.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 */
 	protected function setToDefault() {
 		$this->defaulted = true;
@@ -418,7 +478,7 @@ class Param implements IParam {
 	/**
 	 * Gets if the parameter was set to it's default.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -444,7 +504,7 @@ class Param implements IParam {
 	/**
 	 * Returns the IParamDefinition this IParam was constructed from.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return IParamDefinition
 	 */
@@ -455,7 +515,7 @@ class Param implements IParam {
 	/**
 	 * Returns the parameters value.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return mixed
 	 */
@@ -466,7 +526,7 @@ class Param implements IParam {
 	/**
 	 * Returns if the parameter is required or not.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -477,7 +537,7 @@ class Param implements IParam {
 	/**
 	 * Returns if the name of the parameter.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return boolean
 	 */
@@ -488,7 +548,7 @@ class Param implements IParam {
 	/**
 	 * Returns the parameter name aliases.
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @return array
 	 */

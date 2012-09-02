@@ -4,7 +4,7 @@
  * Defines the char parameter type.
  * Specifies the type specific validation and formatting logic.
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
  * @ingroup Validator
@@ -19,7 +19,7 @@ class CharParam extends StringParam {
 	 * Validates the parameters value and returns the result.
 	 * @see ParamDefinition::validateValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam

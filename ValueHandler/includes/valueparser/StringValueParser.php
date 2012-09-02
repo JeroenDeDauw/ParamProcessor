@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ValueParser that parses the string representation of a boolean.
+ * ValueParser that parses the string representation of something.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,44 +18,44 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
- * @ingroup Validator
+ * @ingroup ValueHandler
  * @ingroup ValueParser
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class BoolParser extends StringValueParser {
-
-	protected $values = array(
-		'yes' => true,
-		'on' => true,
-		'1' => true,
-		'true' => true,
-		'no' => false,
-		'off' => false,
-		'0' => false,
-		'false' => false,
-	);
+abstract class StringValueParser implements ValueParser {
 
 	/**
-	 * @see StringValueParser::stringParse
+	 * @see ValueParser::parse
 	 *
-	 * @since 0.5
+	 * @since 1.0
+	 *
+	 * @param mixed $value
+	 *
+	 * @return ValueParserResult
+	 */
+	public function parse( $value ) {
+		if ( is_string( $value ) ) {
+			return $this->stringParse( $value );
+		}
+		else {
+			return ValueParserResultObject::newError( 'Not a string' ); // TODO
+		}
+	}
+
+	/**
+	 * Parses the provided string and returns the result.
+	 *
+	 * @since 1.0
 	 *
 	 * @param string $value
 	 *
 	 * @return ValueParserResult
 	 */
-	public function stringParse( $value ) {
-		if ( array_key_exists( $value, $this->values ) ) {
-			return ValueParserResultObject::newSuccess( $this->values[$value] );
-		}
-		else {
-			return ValueParserResultObject::newError( 'Not a boolean' ); // TODO
-		}
-	}
+	protected abstract function stringParse( $value );
 
 }

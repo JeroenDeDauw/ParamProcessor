@@ -4,7 +4,7 @@
  * Defines the title parameter type.
  * Specifies the type specific validation and formatting logic.
  *
- * @since 0.5
+ * @since 1.0
  *
  * @file
  * @ingroup Validator
@@ -26,7 +26,7 @@ class TitleParam extends ParamDefinition {
 	protected $titles = array();
 
 	/**
-	 * @since 0.5
+	 * @since 1.0
 	 * @param boolean $hasToExist
 	 */
 	public function setHasToExist( $hasToExist ) {
@@ -37,7 +37,7 @@ class TitleParam extends ParamDefinition {
 	 * Validates the parameters value and returns the result.
 	 * @see ParamDefinition::validateValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -74,7 +74,7 @@ class TitleParam extends ParamDefinition {
 	 * Formats the parameter value to it's final result.
 	 * @see ParamDefinition::formatValue
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param $value mixed
 	 * @param $param IParam
@@ -109,7 +109,7 @@ class TitleParam extends ParamDefinition {
 	 * Sets the parameter definition values contained in the provided array.
 	 * @see ParamDefinition::setArrayValues
 	 *
-	 * @since 0.5
+	 * @since 1.0
 	 *
 	 * @param array $param
 	 */

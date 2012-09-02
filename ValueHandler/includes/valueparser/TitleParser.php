@@ -1,9 +1,7 @@
 <?php
 
-namespace Validator\Test;
-
 /**
- * Unit test StringValueParser class.
+ * ValueParser that parses the string representation of a Title object.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,41 +18,35 @@ namespace Validator\Test;
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @since 1.0
+ *
  * @file
- * @since 0.5
- *
- * @ingroup Validator
- * @ingroup Test
- *
- * @group Validator
+ * @ingroup ValueHandler
+ * @ingroup ValueParser
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class StringValueParserTest extends ValueParserTestBase {
+class TitleParser extends StringValueParser {
 
 	/**
-	 * @see ValueParserTestBase::parseProvider
+	 * @see StringValueParser::stringParse
 	 *
-	 * @since 0.5
+	 * @since 1.0
+	 *
+	 * @param string $value
+	 *
+	 * @return ValueParserResult
 	 */
-	public function parseProvider() {
-		$argLists = array();
+	public function stringParse( $value ) {
+		$value = Title::newFromText( $value );
 
-		$invalid = array(
-			true,
-			false,
-			null,
-			4.2,
-			array(),
-			42,
-		);
-
-		foreach ( $invalid as $value ) {
-			$argLists[] = array( $value, \ValueParserResultObject::newError( '' ) );
+		if ( is_null( $value ) ) {
+			return ValueParserResultObject::newError( 'Not a title' ); // TODO
 		}
-
-		return $argLists;
+		else {
+			return ValueParserResultObject::newSuccess( $value );
+		}
 	}
 
 }

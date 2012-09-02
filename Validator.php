@@ -33,7 +33,17 @@ if ( defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> Tried to include Validator a second time. Please make sure you are including it before any extensions that make use of it.' );
 }
 
-define( 'Validator_VERSION', '0.5 rc1' );
+// Include the ValueHandler extension if that hasn't been done yet, since it's required for Validator to work.
+if ( !defined( 'ValueHandler_VERSION' ) ) {
+	@include_once( dirname( __FILE__ ) . '/ValueHandler/ValueHandler.php' );
+}
+
+// Only initialize the extension when all dependencies are present.
+if ( !defined( 'ValueHandler_VERSION' ) ) {
+	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:ValueHandler">ValueHandler</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a>.<br />' );
+}
+
+define( 'Validator_VERSION', '1.0 alpha' );
 
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Validator'] = dirname( __FILE__ ) . '/Validator.i18n.php';
@@ -79,21 +89,10 @@ $wgAutoloadClasses['ParamDefinition']		 		= $incDir . 'definitions/ParamDefiniti
 $wgAutoloadClasses['StringParam']		 			= $incDir . 'definitions/StringParam.php';
 $wgAutoloadClasses['TitleParam']		 			= $incDir . 'definitions/TitleParam.php';
 
-// includes/valueparser
-$wgAutoloadClasses['BoolParser']		 			= $incDir . 'valueparser/BoolParser.php';
-$wgAutoloadClasses['NullParser']		 			= $incDir . 'valueparser/NullParser.php';
-$wgAutoloadClasses['ValueParser']		 			= $incDir . 'valueparser/ValueParser.php';
-$wgAutoloadClasses['StringValueParser']		 		= $incDir . 'valueparser/StringValueParser.php';
-$wgAutoloadClasses['TitleParser']			 		= $incDir . 'valueparser/TitleParser.php';
-$wgAutoloadClasses['ValueParserResult']		 		= $incDir . 'valueparser/ValueParserResult.php';
-$wgAutoloadClasses['ValueParserResultObject']		= $incDir . 'valueparser/ValueParserResultObject.php';
-
 
 // tests
 $wgAutoloadClasses['Validator\Test\NumericParamTest']		= dirname( __FILE__ ) . '/tests/definitions/NumericParamTest.php';
 $wgAutoloadClasses['Validator\Test\ParamDefinitionTest']	= dirname( __FILE__ ) . '/tests/definitions/ParamDefinitionTest.php';
-$wgAutoloadClasses['Validator\Test\StringValueParserTest']	= dirname( __FILE__ ) . '/tests/valueparser/StringValueParserTest.php';
-$wgAutoloadClasses['Validator\Test\ValueParserTestBase']	= dirname( __FILE__ ) . '/tests/valueparser/ValueParserTestBase.php';
 
 // parser hooks
 $wgAutoloadClasses['ValidatorDescribe']		  		= $incDir . 'parserHooks/Validator_Describe.php';
