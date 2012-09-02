@@ -32,7 +32,9 @@ final class ValidatorHooks {
 			'definitions/StringParam',
 			'definitions/TitleParam',
 
+			'valueparser/BoolParser',
 			'valueparser/NullParser',
+			'valueparser/TitleParser',
 			'valueparser/ValueParser',
 
 			'ValidatorOptions',
