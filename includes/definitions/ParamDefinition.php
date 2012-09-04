@@ -841,7 +841,7 @@ abstract class ParamDefinition implements IParamDefinition {
 			$classToType = array_flip( $egParamDefinitions );
 		}
 
-		$class = $class = function_exists( 'get_called_class' ) ? get_called_class() : self::get_called_class();
+		$class = function_exists( 'get_called_class' ) ? get_called_class() : self::get_called_class();
 
 		if ( !array_key_exists( $class, $classToType ) ) {
 			$egParamDefinitions['class-' . $class] = $class;
