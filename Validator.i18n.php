@@ -279,6 +279,9 @@ $messages['be-tarask'] = array(
 	'validator-type-string-list' => 'сьпіс тэкстаў',
 	'validator-type-integer-list' => 'сьпіс цэлых лікаў',
 	'validator-type-float-list' => 'сьпіс лічбаў',
+	'validator-type-boolean-list' => 'сьпіс «так/не»',
+	'validator-type-char-list' => 'сьпіс сымбаляў',
+	'validator-type-title-list' => 'сьпіс загалоўкаў',
 	'validator-listerrors-errors' => 'Памылкі',
 	'validator-listerrors-minor' => 'Дробная',
 	'validator-listerrors-low' => 'Малая',
@@ -344,6 +347,7 @@ $messages['be-tarask'] = array(
 	'validator-error-accepts-only-omitted' => 'Значэньне «$2» зьяўляецца няслушным для парамэтру $1.
 {{PLURAL:$5|Ён мусіць мець наступнае значэньне|Яны мусяць мець наступныя значэньні}}: $3. (і $4  {{PLURAL:$4|прапушчанае значэньне|прапушчаныя значэньні|прапушчаных значэньняў}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Значэньне|Значэньні}} $1 {{PLURAL:$2|было прапушчанае|былі прапушчаныя}}.',
+	'validator-message-nodesc' => 'Апісаньне не пазначанае',
 );
 
 /** Bulgarian (български)
