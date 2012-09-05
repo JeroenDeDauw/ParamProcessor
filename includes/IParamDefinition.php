@@ -278,11 +278,18 @@ interface IParamDefinition {
 	 *
 	 * @since 1.0
 	 *
-	 * @param ValidatorOptions $options
-	 *
 	 * @return ValueParser
 	 */
-	public function getValueParser( ValidatorOptions $options );
+	public function getValueParser();
+
+	/**
+	 * Returns the ValueParser object to parse the parameters value.
+	 *
+	 * @since 1.0
+	 *
+	 * @param ValueParser $parser
+	 */
+	public function setValueParser( ValueParser $parser );
 
 	/**
 	 * Returns a ValueValidator that can be used to validate the parameters value.
@@ -292,5 +299,53 @@ interface IParamDefinition {
 	 * @return ValueValidator
 	 */
 	public function getValueValidator();
+
+	/**
+	 * Sets the ValueValidator that can be used to validate the parameters value.
+	 *
+	 * @since 1.0
+	 *
+	 * @param ValueValidator $validator
+	 */
+	public function setValueValidator( ValueValidator $validator );
+
+	/**
+	 * Returns a ListValidator that can be used to validate the parameters value list.
+	 *
+	 * @since 1.0
+	 *
+	 * @return ListValidator
+	 */
+	public function getListValidator();
+
+	/**
+	 * Sets the ListValidator that can be used to validate the parameters value list.
+	 *
+	 * @since 1.0
+	 *
+	 * @param ListValidator $validator
+	 */
+	public function setListValidator( ListValidator $validator );
+
+	/**
+	 * Sets a validation function that will be run before the ValueValidator.
+	 *
+	 * This can be used instead of a ValueValidator where validation is very
+	 * trivial, ie checking if something is a boolean can be done with is_bool.
+	 *
+	 * @since 1.0
+	 *
+	 * @param callable $validationFunction
+	 */
+	public function setValidationCallback( /* callable */ $validationFunction );
+
+	/**
+	 * Sets the parameter definition values contained in the provided array.
+	 *
+	 * @since 1.0
+	 *
+	 * @param array $options
+	 */
+	public function setArrayValues( array $options );
 
 }

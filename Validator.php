@@ -67,6 +67,7 @@ $wgAutoloadClasses['ValidatorSettings']		  		= $incDir . '../Validator.settings.
 // includes
 
 $wgAutoloadClasses['Param']				  			= $incDir . 'Param.php';
+$wgAutoloadClasses['ParamDefinitionFactory']		= $incDir . 'ParamDefinitionFactory.php';
 $wgAutoloadClasses['ParamDefinition']				= $incDir . 'ParamDefinition.php';
 $wgAutoloadClasses['ParameterInput']			 	= $incDir . 'ParameterInput.php';
 $wgAutoloadClasses['ParserHook']				 	= $incDir . 'ParserHook.php';
@@ -79,7 +80,6 @@ $wgAutoloadClasses['IParam']				  		= $incDir . 'IParam.php';
 $wgAutoloadClasses['IParamDefinition']				= $incDir . 'IParamDefinition.php';
 
 // includes/definitions
-$wgAutoloadClasses['BoolParam']		 				= $incDir . 'definitions/BoolParam.php';
 $wgAutoloadClasses['CharParam']		 				= $incDir . 'definitions/CharParam.php';
 $wgAutoloadClasses['DimensionParam']		 		= $incDir . 'definitions/DimensionParam.php';
 $wgAutoloadClasses['FloatParam']		 			= $incDir . 'definitions/FloatParam.php';
@@ -112,13 +112,26 @@ $wgHooks['UnitTestsList'][] = 'ValidatorHooks::registerUnitTests';
 $egValidatorSettings = array();
 
 $egParamDefinitions = array(
-	'boolean' => 'BoolParam', // Parameter::TYPE_BOOLEAN
-	'char' => 'CharParam', // Parameter::TYPE_CHAR
-	'float' => 'FloatParam', // Parameter::TYPE_FLOAT
-	'integer' => 'IntParam', // Parameter::TYPE_INTEGER
-	'string' => 'StringParam', // Parameter::TYPE_STRING
-	'title' => 'TitleParam', // Parameter::TYPE_TITLE
-	'dimension' => 'DimensionParam',
+	'boolean' => array( // Parameter::TYPE_BOOLEAN
+		'string-parser' => 'BoolParser',
+		'validation-callback' => 'is_boolean',
+	),
+	'float' => array( // Parameter::TYPE_FLOAT
+		'FloatParam'
+	),
+	'integer' => array( // Parameter::TYPE_INTEGER
+		'IntParam'
+	),
+	'string' => array( // Parameter::TYPE_STRING
+		'StringParam'
+	),
+	'title' => array( // Parameter::TYPE_TITLE
+		'string-parser' => 'TitleParser',
+		'validator' => 'TitleValidator',
+	),
+	'dimension' => array(
+		'DimensionParam',
+	),
 );
 
 

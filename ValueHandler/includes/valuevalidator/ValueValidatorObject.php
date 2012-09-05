@@ -27,13 +27,13 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ValueValidatorObject implements ValueValidator {
+abstract class ValueValidatorObject implements ValueValidator {
 
 	/**
 	 * A list of allowed values. This means the parameters value(s) must be in the list
 	 * during validation. False for no restriction.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 *
 	 * @var array|false
 	 */
@@ -43,7 +43,7 @@ class ValueValidatorObject implements ValueValidator {
 	 * A list of prohibited values. This means the parameters value(s) must
 	 * not be in the list during validation. False for no restriction.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 *
 	 * @var array|false
 	 */
@@ -52,9 +52,23 @@ class ValueValidatorObject implements ValueValidator {
 	/**
 	 * @since 0.1
 	 *
+	 * @var array
+	 */
+	protected $options = array();
+
+	/**
+	 * @since 0.1
+	 *
 	 * @var array of string
 	 */
 	private $errorMessages;
+
+	/**
+	 * @since 0.1
+	 *
+	 * @var array of ValueHandlerError
+	 */
+	private $errors;
 
 	/**
 	 * @see ValueValidator::validate
@@ -68,7 +82,9 @@ class ValueValidatorObject implements ValueValidator {
 	public final function validate( $value ) {
 		$this->errorMessages = array();
 
-		$this->valueIsAllowed( $value );
+		if ( $this->enableWhitelistRestrictions() ) {
+			$this->valueIsAllowed( $value );
+		}
 
 		$this->doValidation( $value );
 
@@ -76,7 +92,7 @@ class ValueValidatorObject implements ValueValidator {
 			return ValueValidatorResultObject::newSuccess();
 		}
 		else {
-			$errors = array();
+			$errors = $this->errors;
 
 			foreach ( $this->errorMessages as $errorMessage ) {
 				$errors[] = ValueHandlerErrorObject::newError( $errorMessage );
@@ -121,24 +137,95 @@ class ValueValidatorObject implements ValueValidator {
 	 * @param array $param
 	 */
 	public function setOptions( array $param ) {
-		if ( array_key_exists( 'values', $param ) ) {
-			$this->allowedValues = $param['values'];
+		if ( $this->enableWhitelistRestrictions() ) {
+			if ( array_key_exists( 'values', $param ) ) {
+				$this->allowedValues = $param['values'];
+			}
+
+			if ( array_key_exists( 'excluding', $param ) ) {
+				$this->prohibitedValues = $param['excluding'];
+			}
 		}
 
-		if ( array_key_exists( 'excluding', $param ) ) {
-			$this->prohibitedValues = $param['excluding'];
-		}
+		$this->options = $param;
 	}
 
 	/**
-	 *
+	 * Registers an error message.
 	 *
 	 * @since 0.1
 	 *
 	 * @param string $errorMessage
 	 */
 	protected function addErrorMessage( $errorMessage ) {
-		return $this->errorMessages[] = $errorMessage;
+		$this->errorMessages[] = $errorMessage;
+	}
+
+	/**
+	 * Registers an error.
+	 *
+	 * @since 0.1
+	 *
+	 * @param ValueHandlerError $error
+	 */
+	protected function addError( ValueHandlerError $error ) {
+		$this->errors[] = $error;
+	}
+
+	/**
+	 * Registers a list of errors.
+	 *
+	 * @since 0.1
+	 *
+	 * @param $errors array of ValueHandlerError
+	 */
+	protected function addErrors( array $errors ) {
+		$this->errors = array_merge( $this->errors, $errors );
+	}
+
+	/**
+	 * Runs the value through the provided ValueValidator and registers the errors.
+	 * Options of $this can be mapped to those of the passed ValueValidator using
+	 * the $optionMap parameter in which keys are source names and values are target
+	 * names.
+	 *
+	 * @since 0.1
+	 *
+	 * @param mixed $value
+	 * @param ValueValidator $validator
+	 * @param string|null $property
+	 * @param array $optionMap
+	 */
+	protected function runSubValidator( $value, ValueValidator $validator, $property = null, array $optionMap = array() ) {
+		if ( $optionMap !== array() ) {
+			$options = array();
+
+			foreach ( $optionMap as $source => $target ) {
+				if ( array_key_exists( $source, $this->options ) ) {
+					$options[$target] = $this->options[$source];
+				}
+			}
+
+			$validator->setOptions( $options );
+		}
+
+		/**
+		 * @var ValueHandlerError $error
+		 */
+		foreach ( $validator->validate( $value )->getErrors() as $error ) {
+			$this->addError( ValueHandlerErrorObject::newError( $error->getText(), $property ) );
+		}
+	}
+
+	/**
+	 * If the "values" and "excluding" arguments should be helf into account.
+	 *
+	 * @since 0.1
+	 *
+	 * @return boolean
+	 */
+	protected function enableWhitelistRestrictions() {
+		return true;
 	}
 
 }

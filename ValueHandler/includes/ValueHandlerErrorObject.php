@@ -30,28 +30,35 @@ class ValueHandlerErrorObject implements ValueHandlerError {
 
 	protected $text;
 	protected $severity;
+	protected $property;
 
 	/**
+	 * Create a new error.
+	 *
 	 * @since 0.1
 	 *
 	 * @param string $text
+	 * @param string|null $property
 	 *
 	 * @return ValueHandlerError
 	 */
-	public static function newError( $text = '' ) {
-		return new static( $text, ValueHandlerError::SEVERITY_ERROR );
+	public static function newError( $text = '', $property = null ) {
+		return new static( $text, ValueHandlerError::SEVERITY_ERROR, $property );
 	}
 
 	/**
+	 * Create a new warning.
+	 *
 	 * @since 0.1
 	 *
 	 * @param string $text
+	 * @param string|null $property
 	 *
 	 * @return ValueHandlerError
 	 */
-	public static function newWarning( $text = '' ) {
-		return new static( $text, ValueHandlerError::SEVERITY_WARNING );
-	}
+//	public static function newWarning( $text = '', $property = null ) {
+//		return new static( $text, ValueHandlerError::SEVERITY_WARNING, $property );
+//	}
 
 	/**
 	 * Constructor.
@@ -60,10 +67,12 @@ class ValueHandlerErrorObject implements ValueHandlerError {
 	 *
 	 * @param string $text
 	 * @param integer $severity
+	 * @param string|null $property
 	 */
-	protected function __construct( $text, $severity ) {
+	protected function __construct( $text, $severity, $property ) {
 		$this->text = $text;
 		$this->severity = $severity;
+		$this->property = $property;
 	}
 
 	/**
@@ -86,6 +95,17 @@ class ValueHandlerErrorObject implements ValueHandlerError {
 	 */
 	public function getSeverity() {
 		return $this->severity;
+	}
+
+	/**
+	 * @see ValueHandlerError::getProperty
+	 *
+	 * @since 0.1
+	 *
+	 * @return string|null
+	 */
+	public function getProperty() {
+		return $this->property;
 	}
 
 }

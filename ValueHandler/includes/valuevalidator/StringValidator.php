@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ValueValidator that validates a Title object.
+ * ValueValidator that validates a string value.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,53 +27,42 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class TitleValidator extends ValueValidatorObject {
+class StringValidator extends ValueValidatorObject {
 
 	/**
-	 * @since 0.1
-	 * @var boolean
-	 */
-	protected $hasToExist = true;
-
-	/**
-	 * @since 0.1
-	 * @param boolean $hasToExist
-	 */
-	public function setHasToExist( $hasToExist ) {
-		$this->hasToExist = $hasToExist;
-	}
-
-	/**
-	 * @see ValueValidator::doValidation
+	 * @see ValueValidatorObject::doValidation
 	 *
 	 * @since 0.1
 	 *
 	 * @param mixed $value
 	 */
 	public function doValidation( $value ) {
-		/**
-		 * @var Title $value
-		 */
-		if ( !$value instanceof Title ) {
-			$this->addErrorMessage( 'Not a title' );
+		if ( !is_string( $value ) ) {
+			$this->addErrorMessage( 'Not a string' );
+			return;
 		}
-		elseif( $this->hasToExist && !$value->exists() ) {
-			$this->addErrorMessage( 'Title does not exist' );
+
+		$lowerBound = false;
+		$upperBound = false;
+
+		if ( array_key_exists( 'length', $this->options ) ) {
+			$lowerBound = $this->options['length'];
+			$upperBound = $this->options['length'];
 		}
-	}
+		else {
+			if ( array_key_exists( 'minlength', $this->options ) ) {
+				$lowerBound = $this->options['minlength'];
+			}
 
-	/**
-	 * @see ValueValidator::setOptions
-	 *
-	 * @since 0.1
-	 *
-	 * @param array $options
-	 */
-	public function setOptions( array $options ) {
-		parent::setOptions( $options );
+			if ( array_key_exists( 'maxlength', $this->options ) ) {
+				$upperBound = $this->options['maxlength'];
+			}
+		}
 
-		if ( array_key_exists( 'hastoexist', $options ) ) {
-			$this->setHasToExist( $options['hastoexist'] );
+		if ( $lowerBound !== false || $upperBound !== false ) {
+			$rangeValidator = new RangeValidator();
+			$rangeValidator->setRange( $lowerBound, $upperBound );
+			$this->runSubValidator( count( $value ), $rangeValidator, 'length' );
 		}
 	}
 

@@ -2,6 +2,7 @@
 
 /**
  * Interface for ValueHandler errors.
+ * Immutable.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,6 +33,8 @@ interface ValueHandlerError {
 	const SEVERITY_WARNING = 4;
 
 	/**
+	 * Returns the error text.
+	 *
 	 * @since 0.1
 	 *
 	 * @return string
@@ -39,10 +42,21 @@ interface ValueHandlerError {
 	public function getText();
 
 	/**
+	 * Returns the severity of the error
+	 *
 	 * @since 0.1
 	 *
-	 * @return integer
+	 * @return integer, element of the ValueHandlerError::SEVERITY_ enum
 	 */
 	public function getSeverity();
+
+	/**
+	 * Returns the property of the value for which the error occurred, or null if it occurred for the value itself.
+	 *
+	 * @since 0.1
+	 *
+	 * @return string|null
+	 */
+	public function getProperty();
 
 }

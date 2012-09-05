@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Interface for value validator results.
- * Immutable.
+ * ValueValidator that validates a list of values.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,24 +27,39 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-interface ValueValidatorResult {
+class ListValidator extends ValueValidatorObject {
 
 	/**
-	 * Returns if the value was found to be valid or not.
+	 * @see ValueValidator::doValidation
+	 *
+	 * @since 0.1
+	 *
+	 * @param mixed $value
+	 */
+	public function doValidation( $value ) {
+		if ( !is_array( $value ) ) {
+			$this->addErrorMessage( 'Not an array' );
+			return;
+		}
+
+		$optionMap = array(
+			'elementcount' => 'range',
+			'maxelements' => 'upperbound',
+			'minelements' => 'lowerbound',
+		);
+
+		$this->runSubValidator( count( $value ), new RangeValidator(), 'length', $optionMap );
+	}
+
+	/**
+	 * @see ValueValidatorObject::enableWhitelistRestrictions
 	 *
 	 * @since 0.1
 	 *
 	 * @return boolean
 	 */
-	public function isValid();
-
-	/**
-	 * Returns an array with the errors that occurred during validation.
-	 *
-	 * @since 0.1
-	 *
-	 * @return array of ValueHandlerError
-	 */
-	public function getErrors();
+	protected function enableWhitelistRestrictions() {
+		return false;
+	}
 
 }
