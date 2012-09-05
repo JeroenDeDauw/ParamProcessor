@@ -77,7 +77,7 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 	}
 
 	public function getEmptyInstance() {
-		return ParamDefinition::newFromArray( array(
+		return \ParamDefinitionFactory::singleton()->newDefinitionFromArray( array(
 			'name' => 'empty',
 			'message' => 'test-empty',
 			'type' => $this->getType(),
@@ -93,7 +93,7 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 			}
 
 			$definition['name'] = $name;
-			$definitions[] = array( ParamDefinition::newFromArray( $definition ) );
+			$definitions[] = array( \ParamDefinitionFactory::singleton()->newDefinitionFromArray( $definition ) );
 		}
 
 		return $definitions;

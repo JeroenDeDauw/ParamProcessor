@@ -210,7 +210,9 @@ class Param implements IParam {
 			$this->parseAndValidate( $definitions, $params, $options  );
 		}
 
-		$this->format( $definitions, $params, $options );
+		if ( !$this->hasFatalError() && ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) ) {
+			$this->format( $definitions, $params, $options );
+		}
 	}
 
 	/**
@@ -224,6 +226,8 @@ class Param implements IParam {
 		$parser = $this->definition->getValueParser( $options );
 		$parsingResult = $parser->parse( $this->getValue() );
 
+		$severity = $this->isRequired() ? ValidationError::SEVERITY_FATAL : ValidationError::SEVERITY_NORMAL;
+
 		if ( $parsingResult->isValid() ) {
 			$this->setValue( $parsingResult->getValue() );
 
@@ -234,12 +238,12 @@ class Param implements IParam {
 				 * @var ValueHandlerError $error
 				 */
 				foreach ( $validationResult->getErrors() as $error ) {
-					$this->errors[] = new ValidationError( $error->getText() );
+					$this->errors[] = new ValidationError( $error->getText(), $severity );
 				}
 			}
 		}
 		else {
-			$this->errors[] = new ValidationError( $parsingResult->getError()->getText() );
+			$this->errors[] = new ValidationError( $parsingResult->getError()->getText(), $severity );
 		}
 
 		$this->validateCriteria( $definitions, $params );
@@ -270,47 +274,45 @@ class Param implements IParam {
 	 * @param ValidatorOptions $options
 	 */
 	protected function format( array &$definitions, array $params, ValidatorOptions $options ) {
-		if ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) {
-			$this->definition->format( $this, $definitions, $params );
+		$this->definition->format( $this, $definitions, $params );
 
-			$definitions = ParamDefinition::getCleanDefinitions( $definitions );
+		$definitions = ParamDefinition::getCleanDefinitions( $definitions );
 
-			// Compat code.
-			$manipulations = array();
+		// Compat code.
+		$manipulations = array();
 
-			foreach ( $this->definition->getManipulations() as $manipulation ) {
-				if ( !( $manipulation instanceof ParamManipulationInteger )
-					&& !( $manipulation instanceof ParamManipulationFloat )
-					&& !( $manipulation instanceof ParamManipulationString )) {
-					$manipulations[] = $manipulation;
+		foreach ( $this->definition->getManipulations() as $manipulation ) {
+			if ( !( $manipulation instanceof ParamManipulationInteger )
+				&& !( $manipulation instanceof ParamManipulationFloat )
+				&& !( $manipulation instanceof ParamManipulationString )) {
+				$manipulations[] = $manipulation;
+			}
+		}
+
+		// This whole block is compat code, to be removed in 1.1.
+		if ( $manipulations !== array() ) {
+			$parameter = $this->toParameter();
+			$parameters = array();
+
+			foreach ( $params as $param ) {
+				$parameters[$param->getName()] = $param->toParameter();
+			}
+
+			foreach ( $definitions as $definition ) {
+				if ( !array_key_exists( $definition->getName(), $parameters ) ) {
+					$parameters[$definition->getName()] = $definition->toParameter();
 				}
 			}
 
-			// This whole block is compat code, to be removed in 1.1.
-			if ( $manipulations !== array() ) {
-				$parameter = $this->toParameter();
-				$parameters = array();
+			foreach ( $manipulations as $manipulation ) {
+				$manipulation->manipulate( $parameter, $parameters );
+			}
 
-				foreach ( $params as $param ) {
-					$parameters[$param->getName()] = $param->toParameter();
-				}
+			$this->setValue( $parameter->getValue() );
 
-				foreach ( $definitions as $definition ) {
-					if ( !array_key_exists( $definition->getName(), $parameters ) ) {
-						$parameters[$definition->getName()] = $definition->toParameter();
-					}
-				}
-
-				foreach ( $manipulations as $manipulation ) {
-					$manipulation->manipulate( $parameter, $parameters );
-				}
-
-				$this->setValue( $parameter->getValue() );
-
-				foreach ( $parameters as /* Parameter */ $parameterObject ) {
-					if ( !array_key_exists( $parameterObject->getName(), $params ) ) {
-						$definitions[$parameterObject->getName()] = ParamDefinition::newFromParameter( $parameterObject );
-					}
+			foreach ( $parameters as /* Parameter */ $parameterObject ) {
+				if ( !array_key_exists( $parameterObject->getName(), $params ) ) {
+					$definitions[$parameterObject->getName()] = ParamDefinition::newFromParameter( $parameterObject );
 				}
 			}
 		}

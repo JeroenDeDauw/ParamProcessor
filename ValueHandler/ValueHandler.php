@@ -59,6 +59,9 @@ $wgAutoloadClasses['StringValueParser']		 		= $incDir . 'valueparser/StringValue
 $wgAutoloadClasses['TitleParser']			 		= $incDir . 'valueparser/TitleParser.php';
 
 // includes/valuevalidator
+$wgAutoloadClasses['NullValidator']		 			= $incDir . 'valuevalidator/NullValidator.php';
+$wgAutoloadClasses['ListValidator']		 			= $incDir . 'valuevalidator/ListValidator.php';
+$wgAutoloadClasses['RangeValidator']		 		= $incDir . 'valuevalidator/RangeValidator.php';
 $wgAutoloadClasses['TitleValidator']		 		= $incDir . 'valuevalidator/TitleValidator.php';
 $wgAutoloadClasses['ValueValidator']		 		= $incDir . 'valuevalidator/ValueValidator.php';
 $wgAutoloadClasses['ValueValidatorObject']		 	= $incDir . 'valuevalidator/ValueValidatorObject.php';

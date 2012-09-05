@@ -29,92 +29,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class DimensionParam extends NumericParam {
-
-	/**
-	 * @since 1.0
-	 *
-	 * @var boolean
-	 */
-	protected $allowAuto = false;
-
-	/**
-	 * @since 1.0
-	 *
-	 * @var array
-	 */
-	protected $allowedUnits = array( 'px', '' );
-
-	/**
-	 * @since 1.0
-	 *
-	 * @var integer
-	 */
-	protected $minPercentage = 0;
-
-	/**
-	 * @since 1.0
-	 *
-	 * @var integer
-	 */
-	protected $maxPercentage = 100;
-
-	/**
-	 * @since 1.0
-	 *
-	 * @var string
-	 */
-	protected $defaultUnit = 'px';
-
-	/**
-	 * Returns an identifier for the parameter type.
-	 * @since 1.0
-	 * @return string
-	 */
-	public function getType() {
-		return 'dimension';
-	}
-
-	/**
-	 * Validates the parameters value and returns the result.
-	 * @see ParamDefinition::validateValue
-	 *
-	 * @since 1.0
-	 *
-	 * @param $value mixed
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
-	 *
-	 * @return boolean
-	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
-		if ( !$this->valueIsAllowed( $value ) ) {
-			return false;
-		}
-
-		if ( $value === 'auto' ) {
-			return $this->allowAuto;
-		}
-
-		if ( !preg_match( '/^\d+(\.\d+)?(' . implode( '|', $this->allowedUnits ) . ')$/', $value ) ) {
-			return false;
-		}
-
-		if ( in_string( '%', $value ) ) {
-			$upperBound = $this->maxPercentage;
-			$lowerBound = $this->minPercentage;
-		}
-		else {
-			$upperBound = null;
-			$lowerBound = null;
-		}
-
-		$value = (float)preg_replace( '/[^0-9]/', '', $value );
-
-		return $this->validateBounds( $value, $upperBound, $lowerBound );
-	}
+class DimensionParam extends ParamDefinition {
 
 	/**
 	 * Formats the parameter value to it's final result.
@@ -128,106 +43,27 @@ class DimensionParam extends NumericParam {
 	 * @param $params array of iParam
 	 *
 	 * @return mixed
+	 * @throws MWException
 	 */
 	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
 		if ( $value === 'auto' ) {
 			return $value;
 		}
 
-		foreach ( $this->allowedUnits as $unit ) {
-			if ( $unit !== '' && in_string( $unit, $value ) ) {
-				return $value;
+		$validator = $this->getValueValidator();
+
+		if ( get_class( $validator ) === 'DimensionValidator' ) {
+			foreach ( $this->getValueValidator()->getAllowedUnits() as $unit ) {
+				if ( $unit !== '' && in_string( $unit, $value ) ) {
+					return $value;
+				}
 			}
+
+			return $value . $this->getValueValidator()->getDefaultUnit();
 		}
-
-		return $value . $this->defaultUnit;
-	}
-
-	/**
-	 * Sets the parameter definition values contained in the provided array.
-	 * @see ParamDefinition::setArrayValues
-	 *
-	 * @since 1.0
-	 *
-	 * @param array $param
-	 */
-	public function setArrayValues( array $param ) {
-		parent::setArrayValues( $param );
-
-		if ( array_key_exists( 'allowauto', $param ) ) {
-			$this->setAllowAuto( $param['allowauto'] );
+		else {
+			throw new MWException( 'ValueValidator of a DimensionParam should be a DimensionValidator' );
 		}
-
-		if ( array_key_exists( 'maxpercentage', $param ) ) {
-			$this->setMaxPercentage( $param['maxpercentage'] );
-		}
-
-		if ( array_key_exists( 'minpercentage', $param ) ) {
-			$this->setMinPercentage( $param['minpercentage'] );
-		}
-
-		if ( array_key_exists( 'units', $param ) ) {
-			$this->setAllowedUnits( $param['units'] );
-		}
-
-		if ( array_key_exists( 'defaultunit', $param ) ) {
-			$this->setDefaultUnit( $param['defaultunit'] );
-		}
-	}
-
-	/**
-	 * If 'auto' should be seen as a valid value.
-	 *
-	 * @since 1.0
-	 *
-	 * @param boolean $allowAuto
-	 */
-	public function setAllowAuto( $allowAuto ) {
-		$this->allowAuto = $allowAuto;
-	}
-
-	/**
-	 * Set the upper bound for the value in case it's a percentage.
-	 *
-	 * @since 1.0
-	 *
-	 * @param integer $maxPercentage
-	 */
-	public function setMaxPercentage( $maxPercentage ) {
-		$this->maxPercentage = $maxPercentage;
-	}
-
-	/**
-	 * Set the lower bound for the value in case it's a percentage.
-	 *
-	 * @since 1.0
-	 *
-	 * @param integer $minPercentage
-	 */
-	public function setMinPercentage( $minPercentage ) {
-		$this->minPercentage = $minPercentage;
-	}
-
-	/**
-	 * Sets the default unit, ie the one that will be assumed when the empty unit is provided.
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $defaultUnit
-	 */
-	public function setDefaultUnit( $defaultUnit ) {
-		$this->defaultUnit = $defaultUnit;
-	}
-
-	/**
-	 * If percentage values should be accepted.
-	 *
-	 * @since 1.0
-	 *
-	 * @param array $units
-	 */
-	public function setAllowedUnits( array $units = array( 'px', 'em', 'ex', '%', '' ) ) {
-		$this->allowedUnits = $units;
 	}
 
 }

@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Interface for value validator results.
- * Immutable.
+ * ValueValidator does a null validation (ie everything passes).
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,24 +27,30 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-interface ValueValidatorResult {
+class NullValidator implements ValueValidator {
 
 	/**
-	 * Returns if the value was found to be valid or not.
+	 * @see ValueValidator::validate
 	 *
 	 * @since 0.1
 	 *
-	 * @return boolean
+	 * @param mixed $value
+	 *
+	 * @return ValueValidatorResult
 	 */
-	public function isValid();
+	public function validate( $value ) {
+		return ValueValidatorResultObject::newSuccess();
+	}
 
 	/**
-	 * Returns an array with the errors that occurred during validation.
+	 * @see ValueValidator::setOptions
 	 *
 	 * @since 0.1
 	 *
-	 * @return array of ValueHandlerError
+	 * @param array $options
 	 */
-	public function getErrors();
+	public function setOptions( array $options ) {
+		// No op
+	}
 
 }

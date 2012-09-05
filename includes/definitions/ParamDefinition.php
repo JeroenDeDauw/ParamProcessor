@@ -14,7 +14,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ParamDefinition implements IParamDefinition {
+class ParamDefinition implements IParamDefinition {
 
 	/**
 	 * Indicates whether parameters that are provided more then once  should be accepted,
@@ -138,6 +138,27 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @var array
 	 */
 	protected $options = array();
+
+	/**
+	 * @since 1.0
+	 *
+	 * @var ValueParser|null
+	 */
+	protected $parser = null;
+
+	/**
+	 * @since 1.0
+	 *
+	 * @var ValueValidator|null
+	 */
+	protected $validator = null;
+
+	/**
+	 * @since 0.1
+	 *
+	 * @var callable|null
+	 */
+	protected $validationFunction = null;
 
 	/**
 	 * Constructor.
@@ -487,27 +508,27 @@ abstract class ParamDefinition implements IParamDefinition {
 	protected function getCriteriaForType() {
 		$criteria = array();
 
-		switch( $this->type ) {
-			case self::TYPE_INTEGER:
+		switch( $this->getType() ) {
+			case Parameter::TYPE_INTEGER:
 				$criteria[] = new CriterionIsInteger();
 				break;
-			case self::TYPE_FLOAT:
+			case Parameter::TYPE_FLOAT:
 				$criteria[] = new CriterionIsFloat();
 				break;
-			case self::TYPE_NUMBER: // Note: This accepts non-decimal notations!
+			case Parameter::TYPE_NUMBER: // Note: This accepts non-decimal notations!
 				$criteria[] = new CriterionIsNumeric();
 				break;
-			case self::TYPE_BOOLEAN:
+			case Parameter::TYPE_BOOLEAN:
 				// TODO: work with list of true and false values and i18n.
 				$criteria[] = new CriterionInArray( 'yes', 'no', 'on', 'off', '1', '0' );
 				break;
-			case self::TYPE_CHAR:
+			case Parameter::TYPE_CHAR:
 				$criteria[] = new CriterionHasLength( 1, 1 );
 				break;
-			case self::TYPE_TITLE:
+			case Parameter::TYPE_TITLE:
 				$criteria[] = new CriterionIsTitle();
 				break;
-			case self::TYPE_STRING: default:
+			case Parameter::TYPE_STRING: default:
 			// No extra criteria for strings.
 			break;
 		}
@@ -524,7 +545,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @return IParamDefinition
 	 */
 	public static function newFromParameter( Parameter $parameter ) {
-		$def = self::newFromType(
+		$def = ParamDefinitionFactory::singleton()->newDefinition(
 			$parameter->getType(),
 			$parameter->getName(),
 			$parameter->getDefault(),
@@ -542,48 +563,13 @@ abstract class ParamDefinition implements IParamDefinition {
 			$def->setDelimiter( $parameter->getDelimiter() );
 		}
 
-		$def->trimValue = $parameter->trimValue;
+		$def->trimDuringClean( $parameter->trimValue );
 
 		return $def;
 	}
 
 	/**
-	 * Construct a new ParamDefinition from an array.
-	 *
-	 * @since 1.0
-	 *
-	 * @param array $param
-	 * @param bool $getMad
-	 *
-	 * @return IParamDefinition|false
-	 * @throws MWException
-	 */
-	public static function newFromArray( array $param, $getMad = true ) {
-		foreach ( array( 'name', 'message' ) as $requiredElement ) {
-			if ( !array_key_exists( $requiredElement, $param ) ) {
-				if ( $getMad ) {
-					throw new MWException( 'Could not construct a ParamDefinition from an array without ' . $requiredElement . ' element' );
-				}
-
-				return false;
-			}
-		}
-
-		$parameter = self::newFromType(
-			array_key_exists( 'type', $param ) ? $param['type'] : 'string',
-			$param['name'],
-			array_key_exists( 'default', $param ) ? $param['default'] : null,
-			$param['message'],
-			array_key_exists( 'islist', $param ) ? $param['islist'] : false
-		);
-
-		$parameter->setArrayValues( $param );
-
-		return $parameter;
-	}
-
-	/**
-	 * Sets the parameter definition values contained in the provided array.
+	 * @see IParamDefinition::setArrayValues
 	 *
 	 * @since 1.0
 	 *
@@ -620,7 +606,6 @@ abstract class ParamDefinition implements IParamDefinition {
 			$this->addCriteria( $param['criteria'] );
 		}
 
-		// TODO: public method + keep lists in sync
 		$this->options = $param;
 	}
 
@@ -791,7 +776,6 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * ParamDefinition classes and having all keys set to the names of the
 	 * corresponding parameters.
 	 *
-	 *
 	 * @since 1.0
 	 *
 	 * @param $definitions array of IParamDefinition
@@ -808,15 +792,15 @@ abstract class ParamDefinition implements IParamDefinition {
 					$definition['name'] = $key;
 				}
 
-				$definition = ParamDefinition::newFromArray( $definition );
+				$definition = ParamDefinitionFactory::singleton()->newDefinitionFromArray( $definition );
 			}
 			elseif ( $definition instanceof Parameter ) {
 				// This if for backwards compat, will be removed in 1.1.
 				$definition = ParamDefinition::newFromParameter( $definition );
 			}
 
-			if ( !( $definition instanceof ParamDefinition ) ) {
-				throw new MWException( '$definition not an instance of ParamDefinition' );
+			if ( !( $definition instanceof IParamDefinition ) ) {
+				throw new MWException( '$definition not an instance of IParamDefinition' );
 			}
 
 			$cleanList[$definition->getName()] = $definition;
@@ -833,53 +817,10 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @return string
 	 */
 	public function getType() {
-		global $egParamDefinitions;
+		$class = function_exists( 'get_called_class' ) ? get_called_class() : $this->get_called_class();
+		$type = ParamDefinitionFactory::singleton()->getType( $class );
 
-		static $classToType = false;
-
-		if ( $classToType === false ) {
-			$classToType = array_flip( $egParamDefinitions );
-		}
-
-		$class = function_exists( 'get_called_class' ) ? get_called_class() : self::get_called_class();
-
-		if ( !array_key_exists( $class, $classToType ) ) {
-			$egParamDefinitions['class-' . $class] = $class;
-			$classToType = false;
-			return $this->getType();
-		}
-
-		return $classToType[$class];
-	}
-
-	/**
-	 * Creates a new instance of a ParamDefinition based on the provided type.
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $type
-	 * @param string $name
-	 * @param mixed $default
-	 * @param string $message
-	 * @param boolean $isList
-	 *
-	 * @return IParamDefinition
-	 */
-	public static function newFromType( $type, $name, $default, $message, $isList = false ) {
-		global $egParamDefinitions;
-
-		if ( !array_key_exists( $type, $egParamDefinitions ) ) {
-			throw new MWException( 'Unknown parameter type "' . $type . '".' );
-		}
-
-		$class = $egParamDefinitions[$type];
-
-		return new $class(
-			$name,
-			$default,
-			$message,
-			$isList
-		);
+		return $type === false ? "class-$class" : $type;
 	}
 
 	/**
@@ -890,7 +831,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 *
 	 * @return string
 	 */
-	private static function get_called_class() {
+	private function get_called_class() {
 		$bt = debug_backtrace();
 		$l = count($bt) - 1;
 		$matches = array();
@@ -917,43 +858,65 @@ abstract class ParamDefinition implements IParamDefinition {
 	 *
 	 * @since 1.0
 	 *
-	 * @param ValidatorOptions $options
-	 *
 	 * @return ValueParser
 	 */
-	public function getValueParser( ValidatorOptions $options ) {
-		return $options->isStringlyTyped() ? new BoolParser() : new NullParser();
+	public function getValueParser() {
+		if ( $this->parser === null ) {
+			$this->parser = new NullParser();
+		}
+
+		return $this->parser;
 	}
 
 	/**
-	 * Returns a StringValueParser that can parse string representations of this parameter type.
-	 *
-	 * @since 1.0
-	 *
-	 * @return StringValueParser
-	 */
-	protected abstract function getStringValueParser();
-
-	/**
-	 * @since 1.0
-	 *
-	 * @return ValueValidator
-	 */
-	protected function getValidator() {
-		return new ValueValidatorObject();
-	}
-
-	/**
-	 * Returns a ValueValidator that can be used to validate the parameters value.
+	 * @see IParamDefinition::getValueValidator
 	 *
 	 * @since 1.0
 	 *
 	 * @return ValueValidator
 	 */
 	public function getValueValidator() {
-		$valueValidator = $this->getValidator();
-		$valueValidator->setOptions( $this->options );
-		return $valueValidator;
+		if ( $this->validator === null ) {
+			$this->validator = new NullValidator();
+		}
+
+		return $this->validator;
+	}
+
+	/**
+	 * @see IParamDefinition::setValueParser
+	 *
+	 * @since 1.0
+	 *
+	 * @param ValueParser $parser
+	 */
+	public function setValueParser( ValueParser $parser ) {
+		$this->parser = $parser;
+	}
+
+	/**
+	 * @see IParamDefinition::setValueValidator
+	 *
+	 * @since 1.0
+	 *
+	 * @param ValueValidator $validator
+	 */
+	public function setValueValidator( ValueValidator $validator ) {
+		$this->validator = $validator;
+	}
+
+	/**
+	 * Sets a validation function that will be run before the ValueValidator.
+	 *
+	 * This can be used instead of a ValueValidator where validation is very
+	 * trivial, ie checking if something is a boolean can be done with is_bool.
+	 *
+	 * @since 1.0
+	 *
+	 * @param callable $validationFunction
+	 */
+	public function setValidationCallback( /* callable */ $validationFunction ) {
+		$this->validationFunction = $validationFunction;
 	}
 
 }

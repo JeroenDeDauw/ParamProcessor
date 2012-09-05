@@ -25,66 +25,6 @@ class StringParam extends ParamDefinition {
 	protected $toLower = false;
 
 	/**
-	 * The length the string should have (can be a range).
-	 *
-	 * @since 1.0
-	 *
-	 * @var false|integer|array
-	 */
-	protected $length = false;
-
-	/**
-	 * Indicates if the value can be an empty string or not.
-	 *
-	 * @since 1.0
-	 *
-	 * @var boolean
-	 */
-	protected $canBeEmpty = true;
-
-	/**
-	 * Validates the parameters value and returns the result.
-	 * @see ParamDefinition::validateValue
-	 *
-	 * @since 1.0
-	 *
-	 * @param $value mixed
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
-	 *
-	 * @return boolean
-	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
-		if ( !is_string( $value ) ) {
-			return false;
-		}
-
-		if ( !parent::validateValue( $value, $param, $definitions, $params, $options ) ) {
-			return false;
-		}
-
-		if ( !$this->canBeEmpty && $value === '' ) {
-			return false;
-		}
-
-		if ( $this->length !== false ) {
-			$length = strlen( $value );
-
-			if ( is_array( $this->length ) ) {
-				return ( $this->length[1] === false || $value <= $this->length[1] )
-					&& ( $this->length[0] === false || $value >= $this->length[0] );
-			}
-			else {
-				return $length == $this->length;
-			}
-		}
-
-		return true;
-	}
-
-	/**
 	 * Formats the parameter value to it's final result.
 	 * @see ParamDefinition::formatValue
 	 *
@@ -121,14 +61,6 @@ class StringParam extends ParamDefinition {
 		if ( array_key_exists( 'tolower', $param ) ) {
 			$this->toLower = $param['tolower'];
 		}
-
-		if ( array_key_exists( 'length', $param ) ) {
-			$this->setLength( $param['length'] );
-		}
-
-		if ( array_key_exists( 'allowempty', $param ) ) {
-			$this->canBeEmpty = $param['allowempty'];
-		}
 	}
 
 	/**
@@ -140,35 +72,6 @@ class StringParam extends ParamDefinition {
 	 */
 	public function setToLower( $toLower ) {
 		$this->toLower = $toLower;
-	}
-
-	/**
-	 * Sets the length the value should have.
-	 *
-	 * @since 1.0
-	 *
-	 * @param mixed $length
-	 */
-	public function setLength( $length ) {
-		if ( ( $length !== false && !is_integer( $length ) && !is_array( $length ) ) || ( is_array( $length ) && count( $length ) != 2 ) ) {
-			throw new MWException(
-				'The length of a string parameter needs to be either an integer,
-				false (for no restriction) or an array with two elements (lower and upper bounds)'
-			);
-		}
-
-		$this->length = $length;
-	}
-
-	/**
-	 * Sets if the value can be an empty string or not.
-	 *
-	 * @since 1.0
-	 *
-	 * @param boolean $canBeEmpty
-	 */
-	public function setCanBeEmpty( $canBeEmpty ) {
-		$this->canBeEmpty = $canBeEmpty;
 	}
 
 }
