@@ -154,6 +154,13 @@ class ParamDefinition implements IParamDefinition {
 	protected $validator = null;
 
 	/**
+	 * @since 1.0
+	 *
+	 * @var ValueValidator|null
+	 */
+	protected $listValidator = null;
+
+	/**
 	 * @since 0.1
 	 *
 	 * @var callable|null
@@ -884,6 +891,21 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
+	 * @see IParamDefinition::getListValidator
+	 *
+	 * @since 1.0
+	 *
+	 * @return ListValidator
+	 */
+	public function getListValidator() {
+		if ( $this->listValidator === null ) {
+			$this->listValidator = new NullValidator();
+		}
+
+		return $this->listValidator;
+	}
+
+	/**
 	 * @see IParamDefinition::setValueParser
 	 *
 	 * @since 1.0
@@ -903,6 +925,17 @@ class ParamDefinition implements IParamDefinition {
 	 */
 	public function setValueValidator( ValueValidator $validator ) {
 		$this->validator = $validator;
+	}
+
+	/**
+	 * @see IParamDefinition::setListValidator
+	 *
+	 * @since 1.0
+	 *
+	 * @param ValueValidator $validator
+	 */
+	public function setListValidator( ValueValidator $validator ) {
+		$this->listValidator = $validator;
 	}
 
 	/**
