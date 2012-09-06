@@ -65,7 +65,6 @@ $wgAutoloadClasses['ValidatorHooks']				= $incDir . '../Validator.hooks.php';
 $wgAutoloadClasses['ValidatorSettings']		  		= $incDir . '../Validator.settings.php';
 
 // includes
-
 $wgAutoloadClasses['Param']				  			= $incDir . 'Param.php';
 $wgAutoloadClasses['ParamDefinitionFactory']		= $incDir . 'ParamDefinitionFactory.php';
 $wgAutoloadClasses['ParamDefinition']				= $incDir . 'ParamDefinition.php';
@@ -80,14 +79,9 @@ $wgAutoloadClasses['IParam']				  		= $incDir . 'IParam.php';
 $wgAutoloadClasses['IParamDefinition']				= $incDir . 'IParamDefinition.php';
 
 // includes/definitions
-$wgAutoloadClasses['CharParam']		 				= $incDir . 'definitions/CharParam.php';
 $wgAutoloadClasses['DimensionParam']		 		= $incDir . 'definitions/DimensionParam.php';
-$wgAutoloadClasses['FloatParam']		 			= $incDir . 'definitions/FloatParam.php';
-$wgAutoloadClasses['IntParam']		 				= $incDir . 'definitions/IntParam.php';
-$wgAutoloadClasses['NumericParam']		 			= $incDir . 'definitions/NumericParam.php';
 $wgAutoloadClasses['ParamDefinition']		 		= $incDir . 'definitions/ParamDefinition.php';
 $wgAutoloadClasses['StringParam']		 			= $incDir . 'definitions/StringParam.php';
-$wgAutoloadClasses['TitleParam']		 			= $incDir . 'definitions/TitleParam.php';
 
 
 // tests
@@ -117,13 +111,15 @@ $egParamDefinitions = array(
 		'validation-callback' => 'is_boolean',
 	),
 	'float' => array( // Parameter::TYPE_FLOAT
-		'FloatParam'
+		'string-parser' => 'FloatParser',
+		'validator' => 'FloatValidator',
 	),
 	'integer' => array( // Parameter::TYPE_INTEGER
-		'IntParam'
+		'string-parser' => 'IntParser',
+		'validator' => 'IntValidator',
 	),
 	'string' => array( // Parameter::TYPE_STRING
-		'StringParam'
+		'validator' => 'StringValidator',
 	),
 	'title' => array( // Parameter::TYPE_TITLE
 		'string-parser' => 'TitleParser',

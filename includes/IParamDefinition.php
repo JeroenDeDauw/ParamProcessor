@@ -323,9 +323,9 @@ interface IParamDefinition {
 	 *
 	 * @since 1.0
 	 *
-	 * @param ListValidator $validator
+	 * @param ValueValidator $validator
 	 */
-	public function setListValidator( ListValidator $validator );
+	public function setListValidator( ValueValidator $validator );
 
 	/**
 	 * Sets a validation function that will be run before the ValueValidator.
