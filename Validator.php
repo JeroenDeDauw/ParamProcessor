@@ -108,7 +108,7 @@ $egValidatorSettings = array();
 $egParamDefinitions = array(
 	'boolean' => array( // Parameter::TYPE_BOOLEAN
 		'string-parser' => 'BoolParser',
-		'validation-callback' => 'is_boolean',
+		'validation-callback' => 'is_bool',
 	),
 	'float' => array( // Parameter::TYPE_FLOAT
 		'string-parser' => 'FloatParser',

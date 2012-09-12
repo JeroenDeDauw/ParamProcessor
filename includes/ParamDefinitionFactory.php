@@ -38,15 +38,6 @@ class ParamDefinitionFactory {
 	protected $typeToClass = array();
 
 	/**
-	 * Maps IParameterDefinition implementing class to associated parameter type.
-	 *
-	 * @since 1.0
-	 *
-	 * @var array
-	 */
-	protected $classToType = array();
-
-	/**
 	 * Maps parameter type to its associated components.
 	 *
 	 * @since 1.0
@@ -127,7 +118,6 @@ class ParamDefinitionFactory {
 
 		$class = array_key_exists( 'definition', $data ) ? $data['definition'] : 'ParamDefinition';
 		$this->typeToClass[$type] = $class;
-		$this->classToType[$class] = $type;
 
 		$defaults = array(
 			'string-parser' => 'NullParser',
@@ -143,20 +133,6 @@ class ParamDefinitionFactory {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Returns the parameter type associated with the provided class name,
-	 * or false if there is no such association.
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $class
-	 *
-	 * @return string|false
-	 */
-	public function getType( $class ) {
-		return array_key_exists( $class, $this->classToType ) ? $this->classToType[$class] : false;
 	}
 
 	/**
@@ -184,6 +160,7 @@ class ParamDefinitionFactory {
 		 * @var IParamDefinition $definition
 		 */
 		$definition = new $class(
+			$type,
 			$name,
 			$default,
 			$message,
