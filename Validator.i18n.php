@@ -2468,6 +2468,13 @@ $messages['pl'] = array(
 	'validator-type-float' => 'liczba rzeczywista',
 	'validator-type-boolean' => 'tak lub nie',
 	'validator-type-char' => 'znak',
+	'validator-type-title' => 'tytuł',
+	'validator-type-string-list' => 'lista ciągów znaków',
+	'validator-type-integer-list' => 'lista liczb całkowitych',
+	'validator-type-float-list' => 'lista liczb',
+	'validator-type-boolean-list' => 'lista tak/nie',
+	'validator-type-char-list' => 'lista znaków',
+	'validator-type-title-list' => 'lista tytułów',
 	'validator-listerrors-errors' => 'Błędy',
 	'validator-listerrors-minor' => 'Nieistotny',
 	'validator-listerrors-low' => 'Mało istotny',
@@ -2533,6 +2540,7 @@ Może przyjmować wyłącznie {{PLURAL:$3|wartość|wartości:}} $2 (oraz $4 {{P
 	'validator-error-accepts-only-omitted' => 'Wartość „$2” parametru $1 jest nieprawidłowa.
 Parametr może przyjmować wyłącznie {{PLURAL:$5|wartość|wartości:}} $3 (oraz $4 {{PLURAL:$4|pominiętą wartość|pominięte wartości|pominiętych wartości}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Parametr|Parametry}} $1 {{PLURAL:$2|został opuszczony|zostały opuszczone}}.',
+	'validator-message-nodesc' => 'Nie podano opisu',
 );
 
 /** Piedmontese (Piemontèis)
