@@ -52,11 +52,8 @@ abstract class NumericParamTest extends ParamDefinitionTest {
 	 * @dataProvider lowerBoundProvider
 	 */
 	public function testSetLowerBound( $bound, $testValue, $validity ) {
-		/**
-		 * @var \NumericParam $definition
-		 */
 		$definition = $this->getEmptyInstance();
-		$definition->setLowerBound( $bound );
+		$definition->setArrayValues( array( 'lowerbound' => $bound ) );
 
 		$this->validate( $definition, (string)$testValue, $validity );
 
@@ -83,11 +80,8 @@ abstract class NumericParamTest extends ParamDefinitionTest {
 	 * @dataProvider upperBoundProvider
 	 */
 	public function testSetUpperBound( $bound, $testValue, $validity ) {
-		/**
-		 * @var \NumericParam $definition
-		 */
 		$definition = $this->getEmptyInstance();
-		$definition->setUpperBound( $bound );
+		$definition->setArrayValues( array( 'upperbound' => $bound ) );
 
 		$this->validate( $definition, (string)$testValue, $validity );
 

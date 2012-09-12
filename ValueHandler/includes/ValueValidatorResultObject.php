@@ -39,9 +39,9 @@ class ValueValidatorResultObject implements  ValueValidatorResult {
 	/**
 	 * @since 0.1
 	 *
-	 * @var string|null
+	 * @var array of ValueHandlerError
 	 */
-	protected $error;
+	protected $errors = array();
 
 	/**
 	 * @since 0.1
@@ -95,7 +95,7 @@ class ValueValidatorResultObject implements  ValueValidatorResult {
 	 * @return array of ValueHandlerError
 	 */
 	public function getErrors() {
-		return $this->error;
+		return $this->errors;
 	}
 
 }
