@@ -51,7 +51,7 @@ abstract class StringValueParserTest extends ValueParserTestBase {
 		);
 
 		foreach ( $invalid as $value ) {
-			$argLists[] = array( $value, \ValueParserResultObject::newError( '' ) );
+			$argLists[] = array( $value, \ValueParserResultObject::newErrorText( '' ) );
 		}
 
 		return $argLists;
