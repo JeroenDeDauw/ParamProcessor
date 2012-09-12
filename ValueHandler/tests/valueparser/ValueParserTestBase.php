@@ -81,6 +81,11 @@ abstract class ValueParserTestBase extends \MediaWikiTestCase {
 	}
 
 	/**
+	 * Asserts that an exception of the specified type occurs when running
+	 * the provided code.
+	 *
+	 * @since 0.1
+	 *
 	 * @param string $expected
 	 * @param callable $code
 	 */
