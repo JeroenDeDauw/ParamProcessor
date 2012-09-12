@@ -53,10 +53,12 @@ $wgAutoloadClasses['ValueValidatorResultObject']	= $incDir . 'ValueValidatorResu
 
 // includes/valueparser
 $wgAutoloadClasses['BoolParser']		 			= $incDir . 'valueparser/BoolParser.php';
+$wgAutoloadClasses['FloatParser']		 			= $incDir . 'valueparser/FloatParser.php';
+$wgAutoloadClasses['IntParser']		 				= $incDir . 'valueparser/IntParser.php';
 $wgAutoloadClasses['NullParser']		 			= $incDir . 'valueparser/NullParser.php';
-$wgAutoloadClasses['ValueParser']		 			= $incDir . 'valueparser/ValueParser.php';
 $wgAutoloadClasses['StringValueParser']		 		= $incDir . 'valueparser/StringValueParser.php';
 $wgAutoloadClasses['TitleParser']			 		= $incDir . 'valueparser/TitleParser.php';
+$wgAutoloadClasses['ValueParser']		 			= $incDir . 'valueparser/ValueParser.php';
 
 // includes/valuevalidator
 $wgAutoloadClasses['DimensionValidator']		 	= $incDir . 'valuevalidator/DimensionValidator.php';

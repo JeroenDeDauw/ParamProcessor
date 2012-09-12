@@ -122,6 +122,7 @@ $egParamDefinitions = array(
 	),
 	'string' => array( // Parameter::TYPE_STRING
 		'validator' => 'StringValidator',
+		'definition' => 'StringParam',
 	),
 	'title' => array( // Parameter::TYPE_TITLE
 		'string-parser' => 'TitleParser',
