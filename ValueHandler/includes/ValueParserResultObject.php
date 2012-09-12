@@ -68,8 +68,19 @@ class ValueParserResultObject implements  ValueParserResult {
 	 *
 	 * @return ValueParserResult
 	 */
-	public static function newError( $error ) {
+	public static function newError( ValueHandlerError $error ) {
 		return new static( false, null, $error );
+	}
+
+	/**
+	 * @since 0.1
+	 *
+	 * @param string $error
+	 *
+	 * @return ValueParserResult
+	 */
+	public static function newErrorText( $error ) {
+		return static::newError( ValueHandlerErrorObject::newError( $error ) );
 	}
 
 	/**

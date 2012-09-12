@@ -939,10 +939,7 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Sets a validation function that will be run before the ValueValidator.
-	 *
-	 * This can be used instead of a ValueValidator where validation is very
-	 * trivial, ie checking if something is a boolean can be done with is_bool.
+	 * @see IParamDefinition::setValidationCallback
 	 *
 	 * @since 1.0
 	 *
@@ -950,6 +947,17 @@ class ParamDefinition implements IParamDefinition {
 	 */
 	public function setValidationCallback( /* callable */ $validationFunction ) {
 		$this->validationFunction = $validationFunction;
+	}
+
+	/**
+	 * @see IParamDefinition::getValidationCallback
+	 *
+	 * @since 1.0
+	 *
+	 * @return callable|null
+	 */
+	public function getValidationCallback() {
+		return $this->validationFunction;
 	}
 
 }

@@ -348,4 +348,13 @@ interface IParamDefinition {
 	 */
 	public function setArrayValues( array $options );
 
+	/**
+	 * Returns a validation function that should be run before the ValueValidator.
+	 *
+	 * @since 1.0
+	 *
+	 * @return callable|null
+	 */
+	public function getValidationCallback();
+
 }

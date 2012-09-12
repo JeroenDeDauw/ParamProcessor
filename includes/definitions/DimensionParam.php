@@ -20,6 +20,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * TODO: this class is silly, should be handled by a dedicated formatting object/function.
+ *
  * @since 1.0
  *
  * @file

@@ -74,9 +74,8 @@ class ParamDefinitionFactory {
 
 		if ( $instance === false ) {
 			$instance = new static();
+			$instance->registerGlobals();
 		}
-
-		$instance->registerGlobals();
 
 		return $instance;
 	}
@@ -90,6 +89,10 @@ class ParamDefinitionFactory {
 		global $egParamDefinitions;
 
 		foreach ( $egParamDefinitions as $type => $data ) {
+			if ( is_string( $data ) ) {
+				$data = array( 'definition' => $data );
+			}
+
 			$this->registerType( $type, $data );
 		}
 	}
@@ -187,25 +190,10 @@ class ParamDefinitionFactory {
 			$isList
 		);
 
-		$parser = $definition->
-
-
-		$stringParser = $this->typeToComponent[$type]['string-parser'];
-
-		if ( $stringParser !== 'NullParser' ) {
-			$definition->setStringParser( new $stringParser() );
-		}
-
-		$typedParser = $this->typeToComponent[$type]['typed-parser'];
-
-		if ( $typedParser !== 'NullParser' ) {
-			$definition->setTypedParser( new $typedParser() );
-		}
-
 		$validator = $this->typeToComponent[$type]['validator'];
 
 		if ( $validator !== 'NullValidator' ) {
-			$definition->setValidator( new $validator() );
+			$definition->setValueValidator( new $validator() );
 		}
 
 		$validationCallback = $this->typeToComponent[$type]['validation-callback'];
@@ -213,6 +201,32 @@ class ParamDefinitionFactory {
 		if ( $validationCallback !== null ) {
 			$definition->setValidationCallback( $validationCallback );
 		}
+
+		return $definition;
+	}
+
+	/**
+	 * Returns the specified component for the provided parameter type.
+	 * This method is likely to change in the future in a compat breaking way.
+	 *
+	 * @since 1.0
+	 *
+	 * @param string $paramType
+	 * @param string $componentType
+	 *
+	 * @throws MWException
+	 * @return mixed
+	 */
+	public function getComponentForType( $paramType, $componentType ) {
+		if ( !array_key_exists( $paramType, $this->typeToComponent ) ) {
+			throw new MWException( 'Unknown parameter type "' . $paramType . '".' );
+		}
+
+		if ( !array_key_exists( $componentType, $this->typeToComponent[$paramType] ) ) {
+			throw new MWException( 'Unknown parameter component type "' . $paramType . '".' );
+		}
+
+		return $this->typeToComponent[$paramType][$componentType];
 	}
 
 	/**

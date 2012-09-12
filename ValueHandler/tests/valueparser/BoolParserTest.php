@@ -62,7 +62,7 @@ class BoolParserTest extends StringValueParserTest {
 		);
 
 		foreach ( $invalid as $value ) {
-			$argLists[] = array( $value, \ValueParserResultObject::newError( '' ) );
+			$argLists[] = array( $value, \ValueParserResultObject::newErrorText( '' ) );
 		}
 
 		return array_merge( $argLists, parent::parseProvider() );

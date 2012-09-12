@@ -112,11 +112,13 @@ $egParamDefinitions = array(
 	),
 	'float' => array( // Parameter::TYPE_FLOAT
 		'string-parser' => 'FloatParser',
-		'validator' => 'FloatValidator',
+		'validation-callback' => 'is_float',
+		'validator' => 'RangeValidator',
 	),
 	'integer' => array( // Parameter::TYPE_INTEGER
 		'string-parser' => 'IntParser',
-		'validator' => 'IntValidator',
+		'validation-callback' => 'is_int',
+		'validator' => 'RangeValidator',
 	),
 	'string' => array( // Parameter::TYPE_STRING
 		'validator' => 'StringValidator',
@@ -126,7 +128,8 @@ $egParamDefinitions = array(
 		'validator' => 'TitleValidator',
 	),
 	'dimension' => array(
-		'DimensionParam',
+		'definition' => 'DimensionParam',
+		'validator' => 'DimensionValidator',
 	),
 );
 

@@ -12,7 +12,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Param implements IParam {
+final class Param implements IParam {
 
 	/**
 	 * Indicates whether parameters not found in the criteria list
@@ -207,7 +207,7 @@ class Param implements IParam {
 			}
 		}
 		else {
-			$this->parseAndValidate( $definitions, $params, $options  );
+			$this->parseAndValidate( $definitions, $params, $options );
 		}
 
 		if ( !$this->hasFatalError() && ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) ) {
@@ -218,12 +218,34 @@ class Param implements IParam {
 	/**
 	 * @since 1.0
 	 *
+	 * @param ValidatorOptions $options
+	 *
+	 * @return ValueParser
+	 */
+	protected function getValueParser( ValidatorOptions $options ) {
+		$parser = $this->definition->getValueParser();
+
+		if ( get_class( $parser ) === 'NullParser' ) {
+			$parserType = $options->isStringlyTyped() ? 'string-parser' : 'typed-parser';
+			$parserClass = ParamDefinitionFactory::singleton()->getComponentForType( $this->definition->getType(), $parserType );
+
+			if ( $parserClass !== 'NullParser' ) {
+				$parser = new $parserClass();
+			}
+		}
+
+		return $parser;
+	}
+
+	/**
+	 * @since 1.0
+	 *
 	 * @param array $definitions
 	 * @param array $params
 	 * @param ValidatorOptions $options
 	 */
 	protected function parseAndValidate( array &$definitions, array $params, ValidatorOptions $options ) {
-		$parser = $this->definition->getValueParser( $options );
+		$parser = $this->getValueParser( $options );
 		$parsingResult = $parser->parse( $this->getValue() );
 
 		$severity = $this->isRequired() ? ValidationError::SEVERITY_FATAL : ValidationError::SEVERITY_NORMAL;
@@ -231,14 +253,21 @@ class Param implements IParam {
 		if ( $parsingResult->isValid() ) {
 			$this->setValue( $parsingResult->getValue() );
 
-			$validationResult = $this->definition->getValueValidator()->validate( $this->getValue() );
+			$validationCallback = $this->definition->getValidationCallback();
 
-			if ( !$validationResult->isValid() ) {
-				/**
-				 * @var ValueHandlerError $error
-				 */
-				foreach ( $validationResult->getErrors() as $error ) {
-					$this->errors[] = new ValidationError( $error->getText(), $severity );
+			if ( $validationCallback !== null && $validationCallback( $this->getValue() ) !== true ) {
+				$this->errors[] = new ValidationError( 'Validation callback failed', $severity );
+			}
+			else {
+				$validationResult = $this->definition->getValueValidator()->validate( $this->getValue() );
+
+				if ( !$validationResult->isValid() ) {
+					/**
+					 * @var ValueHandlerError $error
+					 */
+					foreach ( $validationResult->getErrors() as $error ) {
+						$this->errors[] = new ValidationError( $error->getText(), $severity );
+					}
 				}
 			}
 		}
@@ -248,20 +277,6 @@ class Param implements IParam {
 
 		$this->validateCriteria( $definitions, $params );
 		$this->setToDefaultIfNeeded();
-	}
-
-	/**
-	 * Validates the parameter value and sets the value to it's default when errors occur.
-	 * @see IParam::validate
-	 *
-	 * @since 1.0
-	 *
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
-	 */
-	public function validate( array $definitions, array $params, ValidatorOptions $options ) {
-		$this->doValidation( $definitions, $params, $options );
 	}
 
 	/**
@@ -326,6 +341,9 @@ class Param implements IParam {
 	 * @return Parameter
 	 */
 	public function toParameter() {
+		/**
+		 * @var Parameter $parameter
+		 */
 		$parameter = $this->definition->toParameter();
 
 		$parameter->setValue( $this->getValue() );
@@ -334,46 +352,6 @@ class Param implements IParam {
 		$parameter->setWasSetToDefault( $this->wasSetToDefault() );
 
 		return $parameter;
-	}
-
-	/**
-	 * Validates the parameter value.
-	 * Also sets the value to the default when it's not set or invalid, assuming there is a default.
-	 *
-	 * @since 1.0
-	 *
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
-	 * @param ValidatorOptions $options
-	 *
-	 * @throws MWException
-	 */
-	protected function doValidation( array $definitions, array $params, ValidatorOptions $options ) {
-		if ( $this->setCount == 0 ) {
-			if ( $this->definition->isRequired() ) {
-				// This should not occur, so throw an exception.
-				throw new MWException( 'Attempted to validate a required parameter without first setting a value.' );
-			}
-			else {
-				$this->setToDefault();
-			}
-		}
-		else {
-			$validationResult = $this->definition->validate( $this, $definitions, $params, $options );
-
-			if ( is_array( $validationResult ) ) {
-				/**
-				 * @var ValidationError $error
-				 */
-				foreach ( $validationResult as $error ) {
-					$error->addTags( $this->getName() );
-					$this->errors[] = $error;
-				}
-			}
-
-			$this->validateCriteria( $definitions, $params );
-			$this->setToDefaultIfNeeded();
-		}
 	}
 
 	/**
