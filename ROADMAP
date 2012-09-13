@@ -3,28 +3,17 @@ This is the roadmap and release schedule for the Validator extension.
 Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Validator
 Latest version of the roadmap: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Validator.git;a=blob;f=ROADMAP
 
-== Validator 0.5 ==
-
-First half of September 2012.
-
-* Fix design issues with ParamDefinition deriving classes
-
-== Validator 0.6 ==
+== Validator 1.0 ==
 
 End of 2012.
 
+* Remove Parameter and associated compatibility code
 * Drop PHP 5.2 compatibility
 ** Kill ParamDefinition::get_called_class
 ** Kill boilerplate in ParserHook
 ** __DIR__
 
-== Validator 0.7 ==
-
-First half of 2013.
-
-* Remove Parameter and associated compatibility code
-
-== Validator 1.0 ==
+== Validator 2.0 ==
 
 Unknown, below list is stuff that should be completed at some point before this release:
 * Fully implement error handling system, including inline settings and inline reporting
