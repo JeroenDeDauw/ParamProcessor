@@ -635,6 +635,7 @@ $messages['diq'] = array(
 	'validator-describe-header-type' => 'Babet',
 	'validator-describe-header-default' => 'Hesıbyaye',
 	'validator-describe-header-description' => 'Sılasnayış',
+	'validator-describe-parameters' => 'Parametrey',
 );
 
 /** Lower Sorbian (dolnoserbski)
