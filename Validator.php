@@ -35,7 +35,7 @@ if ( defined( 'Validator_VERSION' ) ) {
 
 // Include the ValueHandler extension if that hasn't been done yet, since it's required for Validator to work.
 if ( !defined( 'ValueHandler_VERSION' ) ) {
-	@include_once( dirname( __FILE__ ) . '/ValueHandler/ValueHandler.php' );
+	@include_once( dirname( __FILE__ ) . '../ValueHandler/ValueHandler.php' );
 }
 
 // Only initialize the extension when all dependencies are present.
