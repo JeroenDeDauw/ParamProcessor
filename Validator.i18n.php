@@ -3381,7 +3381,7 @@ $messages['zh-hans'] = array(
 	'validator_list_error_invalid_argument' => '参数 $1 的一个或多个值不合法。',
 );
 
-/** Traditional Chinese (‪中文（繁體）‬)
+/** Traditional Chinese (中文（繁體）‎)
  * @author Mark85296341
  * @author Wrightbus
  */
@@ -3405,9 +3405,14 @@ $messages['zh-hant'] = array(
 	'validator-listerrors-fatal' => '致命',
 	'validator-describe-descriptionmsg' => "'''說明'''：$1",
 	'validator-describe-empty' => '空白',
+	'validator-describe-required' => '必填',
 	'validator-describe-header-parameter' => '參數',
+	'validator-describe-header-aliases' => '別名',
 	'validator-describe-header-type' => '類型',
+	'validator-describe-header-default' => '默認',
 	'validator-describe-header-description' => '說明',
+	'validator-describe-parameters' => '參數',
+	'validator-describe-syntax' => '語法',
 	'validator_error_empty_argument' => '參數 $1 不能為空。',
 	'validator_error_must_be_number' => '參數 $1 只能為數字。',
 	'validator_error_must_be_integer' => '參數 $1 只能為整數。',
