@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Interface for objects representing an "instance" of a parameter.
  *

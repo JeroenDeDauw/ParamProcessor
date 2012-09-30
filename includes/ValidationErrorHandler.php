@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Static class for error handling.
  * 

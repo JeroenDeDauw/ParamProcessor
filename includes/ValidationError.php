@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Error class.
  *

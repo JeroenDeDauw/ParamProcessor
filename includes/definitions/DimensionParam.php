@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Defines the dimension parameter type.
  * This parameter describes the size of a dimension (ie width) in some unit (ie px) or a percentage.

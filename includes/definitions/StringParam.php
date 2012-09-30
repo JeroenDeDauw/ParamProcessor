@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Defines the string parameter type.
  * Specifies the type specific validation and formatting logic.

@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Object for holding options affecting the behaviour of a Validator object.
  *

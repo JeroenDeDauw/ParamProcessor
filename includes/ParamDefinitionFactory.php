@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Factory for IParamDefinition implementing objects.
  *

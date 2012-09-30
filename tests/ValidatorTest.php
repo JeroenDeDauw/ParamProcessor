@@ -34,8 +34,8 @@ use Validator, ValidatorOptions;
  */
 class ValidatorTest extends \MediaWikiTestCase {
 
-	public function testConstructor() {
-		$this->assertInstanceOf( '\Validator', new Validator() );
+	public function testNewDefault() {
+		$this->assertInstanceOf( '\Validator', Validator::newDefault() );
 	}
 
 	public function newFromOptionsProvider() {

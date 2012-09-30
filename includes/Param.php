@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Parameter class, representing the "instance" of a parameter.
  * Holds a ParamDefinition, user provided input (name & value) and processing state.

@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Class for parameter validation of a single parser hook or other parametrized construct.
  *
@@ -12,7 +14,7 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
  */
-class Validator {
+class Processor {
 	
 	/**
 	 * Flag for unnamed default parameters used in Validator::setFunctionParams() to determine that
@@ -87,6 +89,17 @@ class Validator {
 	 */
 	protected function __construct( ValidatorOptions $options ) {
 		$this->options = $options;
+	}
+
+	/**
+	 * Constructs and returns a Validator object based on the default options.
+	 *
+	 * @since 1.0
+	 *
+	 * @return Validator
+	 */
+	public static function newDefault() {
+		return new Validator( new ValidatorOptions() );
 	}
 
 	/**

@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Sorts a series of dependency pairs in linear order.
  *

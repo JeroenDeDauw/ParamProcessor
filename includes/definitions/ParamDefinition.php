@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Parameter definition.
  * Specifies what kind of values are accepted, how they should be validated,
