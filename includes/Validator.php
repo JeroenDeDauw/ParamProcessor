@@ -79,21 +79,13 @@ class Validator {
 	protected $options;
 
 	/**
-	 * Deprecated since 1.0, breaking changes in 1.1, use newFrom* instead.
+	 * Constructor.
 	 * 
-	 * @param string $element
-	 * @param boolean $unknownInvalid Should unknown parameter be regarded as invalid (or, if not, just be ignored)
 	 * @param ValidatorOptions $options
 	 * 
-	 * @since 0.4
+	 * @since 1.0
 	 */
-	public function __construct( $element = '', $unknownInvalid = true, ValidatorOptions $options = null ) {
-		if ( is_null( $options ) ) {
-			$options = new ValidatorOptions();
-			$options->setName( $element );
-			$options->setUnknownInvalid( $unknownInvalid );
-		}
-
+	protected function __construct( ValidatorOptions $options ) {
 		$this->options = $options;
 	}
 
@@ -107,7 +99,7 @@ class Validator {
 	 * @return Validator
 	 */
 	public static function newFromOptions( ValidatorOptions $options ) {
-		return new Validator( '', true, $options );
+		return new Validator( $options );
 	}
 
 	/**
@@ -303,11 +295,6 @@ class Validator {
 		while ( $this->paramsToHandle !== array() ) {
 			$paramName = array_shift( $this->paramsToHandle );
 			$definition = $this->paramDefinitions[$paramName];
-
-			// Compat code for 0.4.x style definitions, will be removed in 1.1.
-			if ( $definition instanceof Parameter ) {
-				$definition = ParamDefinition::newFromParameter( $definition );
-			}
 
 			$param = new Param( $definition );
 

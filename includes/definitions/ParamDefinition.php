@@ -217,17 +217,6 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns the criteria that apply to the list as a whole.
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 *
-	 * @return array
-	 */
-	public function getListCriteria() {
-		return array(); // TODO
-	}
-
-	/**
 	 * @see IParamDefinition::getAliases
 	 *
 	 * @since 1.0
@@ -300,19 +289,6 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Returns a description message for the parameter, or false when there is none.
-	 * Override in deriving classes to add a message.
-	 *
-	 * @since 1.0
-	 * @deprecated since 1.0, removal in 1.1
-	 *
-	 * @return mixed string or false
-	 */
-	public function getDescription() {
-		return wfMsg( $this->message );
-	}
-
-	/**
 	 * @see IParamDefinition::getMessage
 	 *
 	 * @since 1.0
@@ -369,19 +345,6 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::addCriteria
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 * @since 1.0
-	 *
-	 * @param mixed $criteria ParameterCriterion or array of ParameterCriterion
-	 */
-	public function addCriteria( $criteria ) {
-		$args = func_get_args();
-		$this->criteria = array_merge( $this->criteria, is_array( $args[0] ) ? $args[0] : $args );
-	}
-
-	/**
 	 * @see IParamDefinition::addDependencies
 	 *
 	 * @since 1.0
@@ -391,19 +354,6 @@ class ParamDefinition implements IParamDefinition {
 	public function addDependencies( $dependencies ) {
 		$args = func_get_args();
 		$this->dependencies = array_merge( $this->dependencies, is_array( $args[0] ) ? $args[0] : $args );
-	}
-
-	/**
-	 * @see IParamDefinition::addManipulations
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 * @since 1.0
-	 *
-	 * @param mixed $manipulations ParameterManipulation or array of ParameterManipulation
-	 */
-	public function addManipulations( $manipulations ) {
-		$args = func_get_args();
-		$this->manipulations = array_merge( $this->manipulations, is_array( $args[0] ) ? $args[0] : $args );
 	}
 
 	/**

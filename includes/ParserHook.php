@@ -240,7 +240,7 @@ abstract class ParserHook {
 	 * @param array $magicWords
 	 * @param string $langCode
 	 *
-	 * @return true
+	 * @return boolean
 	 */
 	public function magic( array &$magicWords, $langCode ) {
 		foreach ( $this->getNames() as $name ) {

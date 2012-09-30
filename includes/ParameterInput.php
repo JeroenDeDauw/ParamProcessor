@@ -52,7 +52,7 @@ class ParameterInput {
 	 * 
 	 * @since 0.4.6
 	 * 
-	 * @param IParamDefinition|Parameter|array $param
+	 * @param IParamDefinition|array $param
 	 * @param mixed $currentValue
 	 */
 	public function __construct( $param, $currentValue = false ) {
@@ -61,9 +61,6 @@ class ParameterInput {
 		}
 		elseif ( is_array( $param ) ) {
 			$this->param = ParamDefinition::newFromArray( $param );
-		}
-		else { // Compat code, will go in 1.1
-			$this->param = ParamDefinition::newFromParameter( $param );
 		}
 
 		$this->currentValue = $currentValue;
