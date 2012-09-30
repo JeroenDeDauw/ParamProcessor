@@ -146,15 +146,5 @@ $wgAutoloadClasses['ParameterCriterion']		 	= $incDir . 'ParameterCriterion.php'
 $wgAutoloadClasses['ParameterManipulation']	  		= $incDir . 'ParameterManipulation.php';
 
 
-// Deprecated!
-$wgAutoloadClasses['ParamManipulationBoolean']   	= $incDir . 'manipulations/ParamManipulationBoolean.php';
-$wgAutoloadClasses['ParamManipulationFloat']	 	= $incDir . 'manipulations/ParamManipulationFloat.php';
-$wgAutoloadClasses['ParamManipulationFunctions'] 	= $incDir . 'manipulations/ParamManipulationFunctions.php';
-$wgAutoloadClasses['ParamManipulationImplode']   	= $incDir . 'manipulations/ParamManipulationImplode.php';
-$wgAutoloadClasses['ParamManipulationInteger']   	= $incDir . 'manipulations/ParamManipulationInteger.php';
-$wgAutoloadClasses['ParamManipulationString']		= $incDir . 'manipulations/ParamManipulationString.php';
-$wgAutoloadClasses['ParamManipulationTitle']	 	= $incDir . 'manipulations/ParamManipulationTitle.php';
-
-
 
 unset( $incDir );
