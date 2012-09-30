@@ -103,6 +103,7 @@ class_alias( 'ParamProcessor\DimensionParam', 'DimensionParam' );
 class_alias( 'ParamProcessor\StringParam', 'StringParam' );
 
 class_alias( 'ParamProcessor\ValidationError', 'ValidationError' ); // Deprecated since 1.0, removal in 1.2
+class_alias( 'ParamProcessor\Options', 'ValidatorOptions' ); // Deprecated since 1.0, removal in 1.2
 
 
 

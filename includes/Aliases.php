@@ -36,3 +36,4 @@ class DimensionParam extends ParamProcessor\DimensionParam {}
 class StringParam extends ParamProcessor\StringParam {}
 
 class ValidationError extends ParamProcessor\ValidationError {} // Deprecated since 1.0, removal in 1.2
+class ValidatorOptions extends ParamProcessor\Options {} // Deprecated since 1.0, removal in 1.2

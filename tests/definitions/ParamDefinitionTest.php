@@ -1,6 +1,6 @@
 <?php
 
-namespace Validator\Test;
+namespace ParamProcessor\Test;
 use ParamDefinition, IParamDefinition, Param;
 
 /**
