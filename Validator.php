@@ -131,20 +131,4 @@ $egParamDefinitions = array(
 );
 
 
-
-
-
-// Deprecated!
-$wgAutoloadClasses['CriterionValidationResult']  	= $incDir . 'CriterionValidationResult.php';
-$wgAutoloadClasses['ItemParameterCriterion']	 	= $incDir . 'ItemParameterCriterion.php';
-$wgAutoloadClasses['ItemParameterManipulation']  	= $incDir . 'ItemParameterManipulation.php';
-$wgAutoloadClasses['ListParameter']			  		= $incDir . 'ListParameter.php';
-$wgAutoloadClasses['ListParameterCriterion']	 	= $incDir . 'ListParameterCriterion.php';
-$wgAutoloadClasses['ListParameterManipulation']  	= $incDir . 'ListParameterManipulation.php';
-$wgAutoloadClasses['Parameter']				  		= $incDir . 'Parameter.php';
-$wgAutoloadClasses['ParameterCriterion']		 	= $incDir . 'ParameterCriterion.php';
-$wgAutoloadClasses['ParameterManipulation']	  		= $incDir . 'ParameterManipulation.php';
-
-
-
 unset( $incDir );
