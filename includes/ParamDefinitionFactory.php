@@ -38,15 +38,6 @@ class ParamDefinitionFactory {
 	protected $typeToClass = array();
 
 	/**
-	 * Maps IParameterDefinition implementing class to associated parameter type.
-	 *
-	 * @since 1.0
-	 *
-	 * @var array
-	 */
-	protected $classToType = array();
-
-	/**
 	 * Maps parameter type to its associated components.
 	 *
 	 * @since 1.0
@@ -74,9 +65,8 @@ class ParamDefinitionFactory {
 
 		if ( $instance === false ) {
 			$instance = new static();
+			$instance->registerGlobals();
 		}
-
-		$instance->registerGlobals();
 
 		return $instance;
 	}
@@ -90,6 +80,10 @@ class ParamDefinitionFactory {
 		global $egParamDefinitions;
 
 		foreach ( $egParamDefinitions as $type => $data ) {
+			if ( is_string( $data ) ) {
+				$data = array( 'definition' => $data );
+			}
+
 			$this->registerType( $type, $data );
 		}
 	}
@@ -124,7 +118,6 @@ class ParamDefinitionFactory {
 
 		$class = array_key_exists( 'definition', $data ) ? $data['definition'] : 'ParamDefinition';
 		$this->typeToClass[$type] = $class;
-		$this->classToType[$class] = $type;
 
 		$defaults = array(
 			'string-parser' => 'NullParser',
@@ -140,20 +133,6 @@ class ParamDefinitionFactory {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Returns the parameter type associated with the provided class name,
-	 * or false if there is no such association.
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $class
-	 *
-	 * @return string|false
-	 */
-	public function getType( $class ) {
-		return array_key_exists( $class, $this->classToType ) ? $this->classToType[$class] : false;
 	}
 
 	/**
@@ -181,31 +160,17 @@ class ParamDefinitionFactory {
 		 * @var IParamDefinition $definition
 		 */
 		$definition = new $class(
+			$type,
 			$name,
 			$default,
 			$message,
 			$isList
 		);
 
-		$parser = $definition->
-
-
-		$stringParser = $this->typeToComponent[$type]['string-parser'];
-
-		if ( $stringParser !== 'NullParser' ) {
-			$definition->setStringParser( new $stringParser() );
-		}
-
-		$typedParser = $this->typeToComponent[$type]['typed-parser'];
-
-		if ( $typedParser !== 'NullParser' ) {
-			$definition->setTypedParser( new $typedParser() );
-		}
-
 		$validator = $this->typeToComponent[$type]['validator'];
 
 		if ( $validator !== 'NullValidator' ) {
-			$definition->setValidator( new $validator() );
+			$definition->setValueValidator( new $validator() );
 		}
 
 		$validationCallback = $this->typeToComponent[$type]['validation-callback'];
@@ -213,6 +178,32 @@ class ParamDefinitionFactory {
 		if ( $validationCallback !== null ) {
 			$definition->setValidationCallback( $validationCallback );
 		}
+
+		return $definition;
+	}
+
+	/**
+	 * Returns the specified component for the provided parameter type.
+	 * This method is likely to change in the future in a compat breaking way.
+	 *
+	 * @since 1.0
+	 *
+	 * @param string $paramType
+	 * @param string $componentType
+	 *
+	 * @throws MWException
+	 * @return mixed
+	 */
+	public function getComponentForType( $paramType, $componentType ) {
+		if ( !array_key_exists( $paramType, $this->typeToComponent ) ) {
+			throw new MWException( 'Unknown parameter type "' . $paramType . '".' );
+		}
+
+		if ( !array_key_exists( $componentType, $this->typeToComponent[$paramType] ) ) {
+			throw new MWException( 'Unknown parameter component type "' . $paramType . '".' );
+		}
+
+		return $this->typeToComponent[$paramType][$componentType];
 	}
 
 	/**

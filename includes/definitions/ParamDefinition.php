@@ -168,16 +168,25 @@ class ParamDefinition implements IParamDefinition {
 	protected $validationFunction = null;
 
 	/**
+	 * @since 0.1
+	 *
+	 * @var string
+	 */
+	protected $type;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0
 	 *
+	 * @param string $type
 	 * @param string $name
 	 * @param mixed $default Use null for no default (which makes the parameter required)
 	 * @param string $message
 	 * @param boolean $isList
 	 */
-	public function __construct( $name, $default = null, $message = null, $isList = false ) {
+	public function __construct( $type, $name, $default = null, $message = null, $isList = false ) {
+		$this->type = $type;
 		$this->name = $name;
 		$this->default = $default;
 		$this->message = $message;
@@ -201,7 +210,7 @@ class ParamDefinition implements IParamDefinition {
 	 *
 	 * @since 1.0
 	 *
-	 * @since boolean|null
+	 * @return boolean|null
 	 */
 	public function trimDuringClean() {
 		return $this->trimValue;
@@ -817,47 +826,14 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::getType()
+	 * @see IParamDefinition::getType
 	 *
 	 * @since 1.0
 	 *
 	 * @return string
 	 */
 	public function getType() {
-		$class = function_exists( 'get_called_class' ) ? get_called_class() : $this->get_called_class();
-		$type = ParamDefinitionFactory::singleton()->getType( $class );
-
-		return $type === false ? "class-$class" : $type;
-	}
-
-	/**
-	 * Compatibility fallback function so the singleton method works on PHP < 5.3.
-	 * Code borrowed from http://www.php.net/manual/en/function.get-called-class.php#107445
-	 *
-	 * @since 1.0
-	 *
-	 * @return string
-	 */
-	private function get_called_class() {
-		$bt = debug_backtrace();
-		$l = count($bt) - 1;
-		$matches = array();
-		while(empty($matches) && $l > -1){
-			$lines = file($bt[$l]['file']);
-			$callerLine = $lines[$bt[$l]['line']-1];
-			preg_match('/([a-zA-Z0-9\_]+)::'.$bt[$l--]['function'].'/',
-				$callerLine,
-				$matches);
-		}
-		if (!isset($matches[1])) $matches[1]=NULL; //for notices
-		if ($matches[1] == 'self') {
-			$line = $bt[$l]['line']-1;
-			while ($line > 0 && strpos($lines[$line], 'class') === false) {
-				$line--;
-			}
-			preg_match('/class[\s]+(.+?)[\s]+/si', $lines[$line], $matches);
-		}
-		return $matches[1];
+		return $this->type;
 	}
 
 	/**
@@ -939,10 +915,7 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Sets a validation function that will be run before the ValueValidator.
-	 *
-	 * This can be used instead of a ValueValidator where validation is very
-	 * trivial, ie checking if something is a boolean can be done with is_bool.
+	 * @see IParamDefinition::setValidationCallback
 	 *
 	 * @since 1.0
 	 *
@@ -950,6 +923,17 @@ class ParamDefinition implements IParamDefinition {
 	 */
 	public function setValidationCallback( /* callable */ $validationFunction ) {
 		$this->validationFunction = $validationFunction;
+	}
+
+	/**
+	 * @see IParamDefinition::getValidationCallback
+	 *
+	 * @since 1.0
+	 *
+	 * @return callable|null
+	 */
+	public function getValidationCallback() {
+		return $this->validationFunction;
 	}
 
 }

@@ -47,28 +47,4 @@ class ParamDefinitionFactoryTest extends \MediaWikiTestCase {
 		return $this->arrayWrap( $classes );
 	}
 
-	/**
-	 * @dataProvider classProvider
-	 * @param string $class
-	 */
-	public function testGetType( $class ) {
-		$this->assertTypeOrValue( 'string', ParamDefinitionFactory::singleton()->getType( $class ) );
-	}
-
-	protected function assertTypeOrValue( $type, $actual, $value = false ) {
-		if ( $actual === $value ) {
-			$this->assertTrue( true );
-		}
-		else {
-			$this->assertInternalType( $type, $actual );
-		}
-	}
-
-	public function testRegisterType() {
-		$factory = ParamDefinitionFactory::singleton();
-
-		$this->assertTrue( $factory->registerType( 'foobarbaz', array() ) );
-		$this->assertFalse( $factory->registerType( 'foobarbaz', array() ) );
-	}
-
 }

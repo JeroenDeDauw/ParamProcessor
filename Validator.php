@@ -35,7 +35,7 @@ if ( defined( 'Validator_VERSION' ) ) {
 
 // Include the ValueHandler extension if that hasn't been done yet, since it's required for Validator to work.
 if ( !defined( 'ValueHandler_VERSION' ) ) {
-	@include_once( dirname( __FILE__ ) . '/ValueHandler/ValueHandler.php' );
+	@include_once( dirname( __FILE__ ) . '../ValueHandler/ValueHandler.php' );
 }
 
 // Only initialize the extension when all dependencies are present.
@@ -108,25 +108,29 @@ $egValidatorSettings = array();
 $egParamDefinitions = array(
 	'boolean' => array( // Parameter::TYPE_BOOLEAN
 		'string-parser' => 'BoolParser',
-		'validation-callback' => 'is_boolean',
+		'validation-callback' => 'is_bool',
 	),
 	'float' => array( // Parameter::TYPE_FLOAT
 		'string-parser' => 'FloatParser',
-		'validator' => 'FloatValidator',
+		'validation-callback' => 'is_float',
+		'validator' => 'RangeValidator',
 	),
 	'integer' => array( // Parameter::TYPE_INTEGER
 		'string-parser' => 'IntParser',
-		'validator' => 'IntValidator',
+		'validation-callback' => 'is_int',
+		'validator' => 'RangeValidator',
 	),
 	'string' => array( // Parameter::TYPE_STRING
 		'validator' => 'StringValidator',
+		'definition' => 'StringParam',
 	),
 	'title' => array( // Parameter::TYPE_TITLE
 		'string-parser' => 'TitleParser',
 		'validator' => 'TitleValidator',
 	),
 	'dimension' => array(
-		'DimensionParam',
+		'definition' => 'DimensionParam',
+		'validator' => 'DimensionValidator',
 	),
 );
 
