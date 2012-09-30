@@ -655,14 +655,14 @@ abstract class ParamDefinition implements IParamDefinition {
 	 */
 	public function validate( IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
 		if ( $this->isList() ) {
-			$valid = true;
+			$valid = empty( $values );
 			$values = $param->getValue();
 
 			foreach ( $values as $value ) {
 				// TODO: restore not bailing out at one error in list but filtering on valid
 				$valid = $this->validateValueBase( $value, $param, $definitions, $params, $options );
 
-				if ( !$valid ) {
+				if ( $valid ) {
 					break;
 				}
 			}
@@ -746,6 +746,7 @@ abstract class ParamDefinition implements IParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateList( IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+		return true;
 		// TODO
 	}
 
