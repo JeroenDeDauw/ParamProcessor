@@ -145,19 +145,6 @@ $wgAutoloadClasses['Parameter']				  		= $incDir . 'Parameter.php';
 $wgAutoloadClasses['ParameterCriterion']		 	= $incDir . 'ParameterCriterion.php';
 $wgAutoloadClasses['ParameterManipulation']	  		= $incDir . 'ParameterManipulation.php';
 
-// Deprecated!
-$wgAutoloadClasses['CriterionHasLength']		 	= $incDir . 'criteria/CriterionHasLength.php';
-$wgAutoloadClasses['CriterionInArray']		   		= $incDir . 'criteria/CriterionInArray.php';
-$wgAutoloadClasses['CriterionInRange']		   		= $incDir . 'criteria/CriterionInRange.php';
-$wgAutoloadClasses['CriterionIsFloat']		   		= $incDir . 'criteria/CriterionIsFloat.php';
-$wgAutoloadClasses['CriterionIsInteger']		 	= $incDir . 'criteria/CriterionIsInteger.php';
-$wgAutoloadClasses['CriterionIsNumeric']		 	= $incDir . 'criteria/CriterionIsNumeric.php';
-$wgAutoloadClasses['CriterionIsTitle']		   		= $incDir . 'criteria/CriterionIsTitle.php';
-$wgAutoloadClasses['CriterionItemCount']		 	= $incDir . 'criteria/CriterionItemCount.php';
-$wgAutoloadClasses['CriterionMatchesRegex']	  		= $incDir . 'criteria/CriterionMatchesRegex.php';
-$wgAutoloadClasses['CriterionNotEmpty']		  		= $incDir . 'criteria/CriterionNotEmpty.php';
-$wgAutoloadClasses['CriterionTrue']			  		= $incDir . 'criteria/CriterionTrue.php';
-$wgAutoloadClasses['CriterionUniqueItems']	   		= $incDir . 'criteria/CriterionUniqueItems.php';
 
 // Deprecated!
 $wgAutoloadClasses['ParamManipulationBoolean']   	= $incDir . 'manipulations/ParamManipulationBoolean.php';
