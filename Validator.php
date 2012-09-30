@@ -33,15 +33,28 @@ if ( defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> Tried to include Validator a second time. Please make sure you are including it before any extensions that make use of it.' );
 }
 
-// Include the ValueHandler extension if that hasn't been done yet, since it's required for Validator to work.
-if ( !defined( 'ValueHandler_VERSION' ) ) {
-	@include_once( dirname( __FILE__ ) . '../ValueHandler/ValueHandler.php' );
+// Include the DataValues extension if that hasn't been done yet, since it's required for Validator to work.
+if ( !defined( 'DataValues_VERSION' ) ) {
+	@include_once( __DIR__ . '/../DataValues/DataValues.php' );
 }
 
-// Only initialize the extension when all dependencies are present.
-if ( !defined( 'ValueHandler_VERSION' ) ) {
-	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:ValueHandler">ValueHandler</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a>.<br />' );
+$dependencies = array(
+	'DataValues_VERSION' => 'DataValues',
+	'ValueParsers_VERSION' => 'ValueParsers',
+	'DataTypes_VERSION' => 'DataTypes',
+);
+
+foreach ( $dependencies as $constant => $name ) {
+	if ( !defined( $constant ) ) {
+		die(
+			'<b>Error:</b> Validator depends on the <a href="https://www.mediawiki.org/wiki/Extension:'
+				. $name . '">' . $name . '</a> extension.'
+		);
+	}
 }
+
+unset( $dependencies );
+
 
 define( 'Validator_VERSION', '1.0 alpha' );
 
