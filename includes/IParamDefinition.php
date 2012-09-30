@@ -42,16 +42,6 @@ interface IParamDefinition {
 	public function addDependencies( $dependencies );
 
 	/**
-	 * Adds one or more ParameterManipulation.
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 * @since 1.0
-	 *
-	 * @param mixed $manipulations ParameterManipulation or array of ParameterManipulation
-	 */
-	public function addManipulations( $manipulations );
-
-	/**
 	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 1.0
@@ -70,16 +60,6 @@ interface IParamDefinition {
 	 * @return array
 	 */
 	public function getAliases();
-
-	/**
-	 * Returns the parameter criteria.
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 * @since 1.0
-	 *
-	 * @return array of ParameterCriterion
-	 */
-	public function getCriteria();
 
 	/**
 	 * Returns the default value.
@@ -109,16 +89,6 @@ interface IParamDefinition {
 	 * @return array
 	 */
 	public function getDependencies();
-
-	/**
-	 * Returns the parameter manipulations.
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 * @since 1.0
-	 *
-	 * @return array of ParameterManipulation
-	 */
-	public function getManipulations();
 
 	/**
 	 * Returns a message that will act as a description message for the parameter.

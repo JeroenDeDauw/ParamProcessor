@@ -612,16 +612,6 @@ class ParamDefinition implements IParamDefinition {
 			$this->setDoManipulationOfDefault( $param['manipulatedefault'] );
 		}
 
-		// Backward compatibility code, will be removed in 1.1.
-		if ( array_key_exists( 'manipulations', $param ) ) {
-			$this->addManipulations( $param['manipulations'] );
-		}
-
-		// Backward compatibility code, will be removed in 1.1.
-		if ( array_key_exists( 'criteria', $param ) ) {
-			$this->addCriteria( $param['criteria'] );
-		}
-
 		$this->options = $param;
 	}
 
@@ -751,42 +741,6 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Compatibility helper method, will be removed in 1.1.
-	 *
-	 * @deprecated
-	 * @since 1.0
-	 *
-	 * @return Parameter
-	 */
-	public function toParameter() {
-		if ( $this->isList() ) {
-			$parameter = new ListParameter(
-				$this->getName(),
-				$this->getDelimiter(),
-				$this->getType(),
-				$this->getDefault(),
-				$this->getAliases(),
-				$this->getCriteria()
-			);
-		}
-		else {
-			$parameter = new Parameter(
-				$this->getName(),
-				$this->getType(),
-				$this->getDefault(),
-				$this->getAliases(),
-				$this->getCriteria(),
-				$this->getDependencies()
-			);
-		}
-
-		$parameter->addManipulations( $this->getManipulations() );
-		$parameter->setDoManipulationOfDefault( $this->applyManipulationsToDefault );
-
-		return $parameter;
-	}
-
-	/**
 	 * Returns a cleaned version of the list of parameter definitions.
 	 * This includes having converted all supported definition types to
 	 * ParamDefinition classes and having all keys set to the names of the
@@ -809,10 +763,6 @@ class ParamDefinition implements IParamDefinition {
 				}
 
 				$definition = ParamDefinitionFactory::singleton()->newDefinitionFromArray( $definition );
-			}
-			elseif ( $definition instanceof Parameter ) {
-				// This if for backwards compat, will be removed in 1.1.
-				$definition = ParamDefinition::newFromParameter( $definition );
 			}
 
 			if ( !( $definition instanceof IParamDefinition ) ) {

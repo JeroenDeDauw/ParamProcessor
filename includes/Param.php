@@ -275,7 +275,6 @@ final class Param implements IParam {
 			$this->errors[] = new ValidationError( $parsingResult->getError()->getText(), $severity );
 		}
 
-		$this->validateCriteria( $definitions, $params );
 		$this->setToDefaultIfNeeded();
 	}
 
@@ -290,68 +289,6 @@ final class Param implements IParam {
 	 */
 	protected function format( array &$definitions, array $params, ValidatorOptions $options ) {
 		$this->definition->format( $this, $definitions, $params );
-
-		$definitions = ParamDefinition::getCleanDefinitions( $definitions );
-
-		// Compat code.
-		$manipulations = array();
-
-		foreach ( $this->definition->getManipulations() as $manipulation ) {
-			if ( !( $manipulation instanceof ParamManipulationInteger )
-				&& !( $manipulation instanceof ParamManipulationFloat )
-				&& !( $manipulation instanceof ParamManipulationString )) {
-				$manipulations[] = $manipulation;
-			}
-		}
-
-		// This whole block is compat code, to be removed in 1.1.
-		if ( $manipulations !== array() ) {
-			$parameter = $this->toParameter();
-			$parameters = array();
-
-			foreach ( $params as $param ) {
-				$parameters[$param->getName()] = $param->toParameter();
-			}
-
-			foreach ( $definitions as $definition ) {
-				if ( !array_key_exists( $definition->getName(), $parameters ) ) {
-					$parameters[$definition->getName()] = $definition->toParameter();
-				}
-			}
-
-			foreach ( $manipulations as $manipulation ) {
-				$manipulation->manipulate( $parameter, $parameters );
-			}
-
-			$this->setValue( $parameter->getValue() );
-
-			foreach ( $parameters as /* Parameter */ $parameterObject ) {
-				if ( !array_key_exists( $parameterObject->getName(), $params ) ) {
-					$definitions[$parameterObject->getName()] = ParamDefinition::newFromParameter( $parameterObject );
-				}
-			}
-		}
-	}
-
-	/**
-	 * Compatibility helper method, will be removed in 1.1.
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 *
-	 * @return Parameter
-	 */
-	public function toParameter() {
-		/**
-		 * @var Parameter $parameter
-		 */
-		$parameter = $this->definition->toParameter();
-
-		$parameter->setValue( $this->getValue() );
-		$parameter->originalName = $this->setCount === 0 ? $this->getName() : $this->getOriginalName();
-
-		$parameter->setWasSetToDefault( $this->wasSetToDefault() );
-
-		return $parameter;
 	}
 
 	/**
@@ -362,46 +299,6 @@ final class Param implements IParam {
 	protected function setToDefaultIfNeeded() {
 		if ( $this->errors !== array() && !$this->hasFatalError() ) {
 			$this->setToDefault();
-		}
-	}
-
-	/**
-	 * Validates the provided value against all criteria.
-	 *
-	 * @deprecated removal in 1.1
-	 * @since 1.0
-	 *
-	 * @param $definitions array of ParamDefinition
-	 * @param $params array of Param
-	 */
-	protected function validateCriteria( array $definitions, array $params ) {
-		$parameter = $this->toParameter();
-
-		foreach ( $this->definition->getCriteria() as $criterion ) {
-			$validationResult = $criterion->validate( $parameter, $params );
-
-			if ( !$validationResult->isValid() ) {
-				$this->handleValidationError( $validationResult );
-
-				if ( !self::$accumulateParameterErrors || $this->hasFatalError() ) {
-					break;
-				}
-			}
-		}
-	}
-
-	/**
-	 * Handles any validation errors that occurred for a single criterion.
-	 *
-	 * @deprecated removal in 1.1
-	 * @since 1.0
-	 *
-	 * @param CriterionValidationResult $validationResult
-	 */
-	protected function handleValidationError( CriterionValidationResult $validationResult ) {
-		foreach ( $validationResult->getErrors() as $error ) {
-			$error->addTags( $this->getName() );
-			$this->errors[] = $error;
 		}
 	}
 
