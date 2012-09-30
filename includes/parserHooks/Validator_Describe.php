@@ -50,23 +50,29 @@ class ValidatorDescribe extends ParserHook {
 	 *
 	 * @since 0.4.3
 	 *
+	 * @param integer $type Item of the ParserHook::TYPE_ enum
+	 *
 	 * @return array of Parameter
 	 */
 	protected function getParameterInfo( $type ) {
 		$params = array();
 
-		$params['hooks'] = new ListParameter( 'hooks' );
-		$params['hooks']->setDefault( array_keys( ParserHook::getRegisteredParserHooks() ) );
-		$params['hooks']->setMessage( 'validator-describe-par-hooks' );
-		$params['hooks']->addAliases( 'hook' );
+		$params['hooks'] = array(
+			'default' => array_keys( ParserHook::getRegisteredParserHooks() ),
+			'message' => 'validator-describe-par-hooks',
+			'aliases' => 'hook',
+		);
 
-		$params['pre'] = new Parameter( 'pre', Parameter::TYPE_BOOLEAN );
-		$params['pre']->setDefault( 'off' );
-		$params['pre']->setMessage( 'validator-describe-par-pre' );
+		$params['pre'] = array(
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'validator-describe-par-pre',
+		);
 
-		$params['language'] = new Parameter( 'language' );
-		$params['language']->setDefault( $GLOBALS['wgLanguageCode'] );
-		$params['language']->setMessage( 'validator-describe-par-language' );
+		$params['language'] = array(
+			'default' => $GLOBALS['wgLanguageCode'],
+			'message' => 'validator-describe-par-language',
+		);
 
  		return $params;
 	}
@@ -76,6 +82,8 @@ class ValidatorDescribe extends ParserHook {
 	 * @see ParserHook::getDefaultParameters
 	 *
 	 * @since 0.4.3
+	 *
+	 * @param integer $type Item of the ParserHook::TYPE_ enum
 	 *
 	 * @return array
 	 */
