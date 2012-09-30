@@ -106,31 +106,21 @@ class ParameterInput {
 			$valueList[] = $this->param->getAllowedValues();
 		}
 
-		// Compat code, will got in 1.1
-        foreach ( $this->param->getCriteria() as $criterion ) {
-    		if ( $criterion instanceof CriterionInArray ) {
-    			$valueList[] = $criterion->getAllowedValues();
-    		}	
-        }
-
         if ( count( $valueList ) > 0 ) {
-			// Compat code, will got in 1.1
-        	$valueList = count( $valueList ) > 1 ? call_user_func_array( 'array_intersect', $valueList ) : $valueList[0];
-
         	$html = $this->param->isList() ? $this->getCheckboxListInput( $valueList ) : $this->getSelectInput( $valueList );
         }
         else {
 			switch ( $this->param->getType() ) {
-				case Parameter::TYPE_CHAR:
-				case Parameter::TYPE_FLOAT:
-				case Parameter::TYPE_INTEGER:
-				case Parameter::TYPE_NUMBER:
+				case 'char':
+				case 'float':
+				case 'integer':
+				case 'number':
 					$html = $this->getNumberInput();
 					break;
-				case Parameter::TYPE_BOOLEAN:
+				case 'boolean':
 					$html = $this->getBooleanInput();
 					break;
-				case Parameter::TYPE_STRING:
+				case 'string':
 				default:
 					$html = $this->getStrInput();
 					break;					

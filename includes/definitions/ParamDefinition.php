@@ -468,30 +468,6 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::getCriteria
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 * @since 1.0
-	 *
-	 * @return array of ParameterCriterion
-	 */
-	public function getCriteria() {
-		return $this->criteria;
-	}
-
-	/**
-	 * @see IParamDefinition::getManipulations
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 * @since 1.0
-	 *
-	 * @return array of ParameterManipulation
-	 */
-	public function getManipulations() {
-		return $this->manipulations;
-	}
-
-	/**
 	 * @see IParamDefinition::getDelimiter
 	 *
 	 * @since 1.0
@@ -513,76 +489,6 @@ class ParamDefinition implements IParamDefinition {
 		$this->delimiter = $delimiter;
 	}
 
-	/**
-	 * Gets the criteria for the type of the parameter.
-	 *
-	 * @deprecated since 1.0, removal in 1.1
-	 * @since 1.0
-	 *
-	 * @return array
-	 */
-	protected function getCriteriaForType() {
-		$criteria = array();
-
-		switch( $this->getType() ) {
-			case Parameter::TYPE_INTEGER:
-				$criteria[] = new CriterionIsInteger();
-				break;
-			case Parameter::TYPE_FLOAT:
-				$criteria[] = new CriterionIsFloat();
-				break;
-			case Parameter::TYPE_NUMBER: // Note: This accepts non-decimal notations!
-				$criteria[] = new CriterionIsNumeric();
-				break;
-			case Parameter::TYPE_BOOLEAN:
-				// TODO: work with list of true and false values and i18n.
-				$criteria[] = new CriterionInArray( 'yes', 'no', 'on', 'off', '1', '0' );
-				break;
-			case Parameter::TYPE_CHAR:
-				$criteria[] = new CriterionHasLength( 1, 1 );
-				break;
-			case Parameter::TYPE_TITLE:
-				$criteria[] = new CriterionIsTitle();
-				break;
-			case Parameter::TYPE_STRING: default:
-			// No extra criteria for strings.
-			break;
-		}
-
-		return $criteria;
-	}
-
-	/**
-	 * @deprecated Compatibility helper, will be removed in 1.1.
-	 * @since 1.0
-	 *
-	 * @param Parameter $parameter
-	 *
-	 * @return IParamDefinition
-	 */
-	public static function newFromParameter( Parameter $parameter ) {
-		$def = ParamDefinitionFactory::singleton()->newDefinition(
-			$parameter->getType(),
-			$parameter->getName(),
-			$parameter->getDefault(),
-			$parameter->getMessage() === false ? 'validator-message-nodesc' : $parameter->getMessage(),
-			$parameter->isList()
-		);
-
-		$def->addAliases( $parameter->getAliases() );
-		$def->addCriteria( $parameter->getCriteria() );
-		$def->addManipulations( $parameter->getManipulations() );
-		$def->addDependencies( $parameter->getDependencies() );
-		$def->setDoManipulationOfDefault( $parameter->applyManipulationsToDefault );
-
-		if ( $parameter->isList() ) {
-			$def->setDelimiter( $parameter->getDelimiter() );
-		}
-
-		$def->trimDuringClean( $parameter->trimValue );
-
-		return $def;
-	}
 
 	/**
 	 * @see IParamDefinition::setArrayValues

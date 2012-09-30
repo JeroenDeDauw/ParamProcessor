@@ -23,15 +23,6 @@ interface IParamDefinition {
 	public function addAliases( $aliases );
 
 	/**
-	 * Adds one or more ParameterCriterion.
-	 *
-	 * @since 1.0
-	 *
-	 * @param mixed $criteria ParameterCriterion or array of ParameterCriterion
-	 */
-	public function addCriteria( $criteria );
-
-	/**
 	 * Adds one or more dependencies. There are the names of parameters
 	 * that need to be validated and formatted before this one.
 	 *
