@@ -60,8 +60,8 @@ define( 'ParamProcessor_VERSION', '1.0 alpha' );
 define( 'Validator_VERSION', ParamProcessor_VERSION ); // @deprecated
 
 // Register the internationalization file.
-$wgExtensionMessagesFiles['Validator'] = dirname( __FILE__ ) . '/Validator.i18n.php';
-$wgExtensionMessagesFiles['ValidatorMagic'] = dirname( __FILE__ ) . '/Validator.i18n.magic.php';
+$wgExtensionMessagesFiles['Validator'] = __DIR__ . '/Validator.i18n.php';
+$wgExtensionMessagesFiles['ValidatorMagic'] = __DIR__ . '/Validator.i18n.magic.php';
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -72,7 +72,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'validator-desc',
 );
 
-$incDir = dirname( __FILE__ ) . '/includes/';
+$incDir = __DIR__ . '/includes/';
 
 // Autoload the classes.
 $wgAutoloadClasses['ParamProcessor\Hooks']			= $incDir . 'ParamProcessor.hooks.php';
@@ -108,8 +108,8 @@ class_alias( 'ParamProcessor\Options', 'ValidatorOptions' ); // Deprecated since
 
 
 // tests
-$wgAutoloadClasses['Validator\Test\NumericParamTest']		= dirname( __FILE__ ) . '/tests/definitions/NumericParamTest.php';
-$wgAutoloadClasses['Validator\Test\ParamDefinitionTest']	= dirname( __FILE__ ) . '/tests/definitions/ParamDefinitionTest.php';
+$wgAutoloadClasses['Validator\Test\NumericParamTest']		= __DIR__ . '/tests/definitions/NumericParamTest.php';
+$wgAutoloadClasses['Validator\Test\ParamDefinitionTest']	= __DIR__ . '/tests/definitions/ParamDefinitionTest.php';
 
 // utils
 $wgAutoloadClasses['ParserHook']				 	= $incDir . 'utils/ParserHook.php';

@@ -38,7 +38,7 @@ final class ValidatorHooks {
 		);
 
 		foreach ( $testFiles as $file ) {
-			$files[] = dirname( __FILE__ ) . '/tests/' . $file . 'Test.php';
+			$files[] = __DIR__ . '/tests/' . $file . 'Test.php';
 		}
 
 		return true;
