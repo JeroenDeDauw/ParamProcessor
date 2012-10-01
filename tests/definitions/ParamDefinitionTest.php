@@ -178,9 +178,10 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 		$param = new Param( $def );
 		$param->setUserValue( $def->getName(), $testValue, $options );
 
-		$success = $def->validate( $param, array(), array(), $options );
+		$defs = array();
+		$param->process( $defs, array(), $options );
 
-		$this->assertEquals( $validity, $success === true );
+		$this->assertEquals( $validity, $param->getErrors() === array() );
 	}
 
 }

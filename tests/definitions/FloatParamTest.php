@@ -55,6 +55,7 @@ class FloatParamTest extends NumericParamTest {
 		$values = array(
 			'empty' => array(
 				array( 1, true, 1.0 ),
+				array( 1.0, true, 1.0 ),
 				array( 1.1, true, 1.1 ),
 				array( 0.2555, true, 0.2555 ),
 				array( '1.1.1', false ),
