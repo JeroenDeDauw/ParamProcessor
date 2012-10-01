@@ -110,24 +110,6 @@ class ParamDefinition implements IParamDefinition {
 	protected $aliases = array();
 
 	/**
-	 * List of criteria the parameter value needs to hold against.
-	 *
-	 * @since 1.0
-	 *
-	 * @var array of ParameterCriterion
-	 */
-	protected $criteria = array();
-
-	/**
-	 * List of manipulations the parameter value needs to undergo.
-	 *
-	 * @since 1.0
-	 *
-	 * @var array of ParameterManipulation
-	 */
-	protected $manipulations = array();
-
-	/**
 	 * A message that acts as description for the parameter or false when there is none.
 	 * Can be obtained via getMessage and set via setMessage.
 	 *
@@ -566,6 +548,7 @@ class ParamDefinition implements IParamDefinition {
 	 * @return boolean
 	 */
 	protected function validateList( IParam $param, array $definitions, array $params, Options $options ) {
+		return true;
 		// TODO
 	}
 
@@ -582,6 +565,7 @@ class ParamDefinition implements IParamDefinition {
 	 * @return mixed
 	 */
 	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
+		return $value;
 		// No-op
 	}
 
@@ -747,6 +731,15 @@ class ParamDefinition implements IParamDefinition {
 	 */
 	public function getValidationCallback() {
 		return $this->validationFunction;
+	}
+
+	/**
+	 * @since 0.1
+	 *
+	 * @return array
+	 */
+	public function getOptions() {
+		return $this->options;
 	}
 
 }

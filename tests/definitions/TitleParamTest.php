@@ -45,7 +45,7 @@ class TitleParamTest extends ParamDefinitionTest {
 
 		$params['values-empty'] = $params['values'];
 		$params['values-empty']['hastoexist'] = false;
-		$params['values-empty']['values'][] = 'Foo';
+		$params['values-empty']['values'][] = \Title::newFromText( 'foo' );
 
 		return $params;
 	}

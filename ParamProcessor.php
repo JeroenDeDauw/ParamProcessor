@@ -134,7 +134,9 @@ $egParamDefinitions = array(
 	),
 	'float' => array(
 		'string-parser' => '\ValueParsers\FloatParser',
-		'validation-callback' => 'is_float',
+		'validation-callback' => function( $value ) {
+			return is_float( $value ) || is_int( $value );
+		},
 		'validator' => '\ValueValidators\RangeValidator',
 	),
 	'integer' => array(

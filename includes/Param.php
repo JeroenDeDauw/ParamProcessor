@@ -215,7 +215,7 @@ final class Param implements IParam {
 		}
 
 		if ( !$this->hasFatalError() && ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) ) {
-			$this->format( $definitions, $params, $options );
+			$this->definition->format( $this, $definitions, $params );
 		}
 	}
 
@@ -226,14 +226,14 @@ final class Param implements IParam {
 	 *
 	 * @return ValueParser
 	 */
-	protected function getValueParser( Options $options ) {
+	public function getValueParser( Options $options ) {
 		$parser = $this->definition->getValueParser();
 
-		if ( get_class( $parser ) === 'NullParser' ) {
+		if ( get_class( $parser ) === 'ValueParsers\NullParser' ) {
 			$parserType = $options->isStringlyTyped() ? 'string-parser' : 'typed-parser';
 			$parserClass = ParamDefinitionFactory::singleton()->getComponentForType( $this->definition->getType(), $parserType );
 
-			if ( $parserClass !== 'NullParser' ) {
+			if ( $parserClass !== 'ValueParsers\NullParser' ) {
 				$parser = new $parserClass();
 			}
 		}
@@ -255,15 +255,18 @@ final class Param implements IParam {
 		$severity = $this->isRequired() ? ValidationError::SEVERITY_FATAL : ValidationError::SEVERITY_NORMAL;
 
 		if ( $parsingResult->isValid() ) {
-			$this->setValue( $parsingResult->getDataValue() );
+			$value = $parsingResult->getDataValue()->getValue();
+			$this->setValue( $value );
 
 			$validationCallback = $this->definition->getValidationCallback();
 
-			if ( $validationCallback !== null && $validationCallback( $this->getValue() ) !== true ) {
+			if ( $validationCallback !== null && $validationCallback( $value ) !== true ) {
 				$this->errors[] = new ValidationError( 'Validation callback failed', $severity );
 			}
 			else {
-				$validationResult = $this->definition->getValueValidator()->validate( $this->getValue() );
+				$validator = $this->definition->getValueValidator();
+				$validator->setOptions( $this->definition->getOptions() );
+				$validationResult = $validator->validate( $value );
 
 				if ( !$validationResult->isValid() ) {
 					/**
@@ -280,19 +283,6 @@ final class Param implements IParam {
 		}
 
 		$this->setToDefaultIfNeeded();
-	}
-
-	/**
-	 * Applies the parameter manipulations.
-	 *
-	 * @since 1.0
-	 *
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param Options $options
-	 */
-	protected function format( array &$definitions, array $params, Options $options ) {
-		$this->definition->format( $this, $definitions, $params );
 	}
 
 	/**

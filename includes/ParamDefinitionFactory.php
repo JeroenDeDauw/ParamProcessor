@@ -123,9 +123,9 @@ class ParamDefinitionFactory {
 		$this->typeToClass[$type] = $class;
 
 		$defaults = array(
-			'string-parser' => 'NullParser',
-			'typed-parser' => 'NullParser',
-			'validator' => 'NullValidator',
+			'string-parser' => 'ValueParsers\NullParser',
+			'typed-parser' => 'ValueParsers\NullParser',
+			'validator' => 'ValueValidators\NullValidator',
 			'validation-callback' => null,
 		);
 
@@ -172,7 +172,7 @@ class ParamDefinitionFactory {
 
 		$validator = $this->typeToComponent[$type]['validator'];
 
-		if ( $validator !== 'NullValidator' ) {
+		if ( $validator !== '\ValueValidators\NullValidator' ) {
 			$definition->setValueValidator( new $validator() );
 		}
 

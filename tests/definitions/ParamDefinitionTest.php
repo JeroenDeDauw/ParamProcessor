@@ -122,10 +122,17 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 
 				$param = new Param( $definition );
 				$param->setUserValue( $definition->getName(), $input, $options );
+				$definitions = array();
+				$param->process( $definitions, array(), $options );
+
+//				if ( $valid !== ( $param->getErrors() === array() ) ) {
+//					q($input, $param->getErrors(),$options);
+//				}
 
 				$this->assertEquals(
 					$valid,
-					$definition->validate( $param, array(), array(), $options ) === true
+					$param->getErrors() === array(),
+					'The validation process should ' . ( $valid ? '' : 'not ' ) . 'pass'
 				);
 			}
 		}
@@ -148,7 +155,11 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 
 			if ( $valid && array_key_exists( 2, $data ) ) {
 				$defs = array();
-				$definition->format( $param, $defs, array() );
+				$param->process( $defs, array(), $options );
+
+//				if ( $data[2] !== $param->getValue() ) {
+//					q($param, $options, $param->getValueParser($options),$param->getValueParser($options)->parse($param->getOriginalValue()));
+//				}
 
 				$this->assertEquals(
 					$data[2],

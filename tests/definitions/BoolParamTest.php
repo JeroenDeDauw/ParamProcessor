@@ -65,12 +65,13 @@ class BoolParamTest extends ParamDefinitionTest {
 				array( array(), false ),
 				array( 42, false ),
 			),
-			'values' => array(
-				array( '1', true, true ),
-				array( 'yes', true, true ),
-				array( 'no', false ),
-				array( 'foobar', false ),
-			),
+			'values' => array(),
+//			'values' => array(
+//				array( '1', true, true ),
+//				array( 'yes', true, true ),
+//				array( 'no', false ),
+//				array( 'foobar', false ),
+//			),
 		);
 
 		if ( !$stringlyTyped ) {

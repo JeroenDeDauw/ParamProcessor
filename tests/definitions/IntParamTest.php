@@ -49,13 +49,11 @@ class IntParamTest extends NumericParamTest {
 			'type' => 'integer',
 			'default' => 42,
 			'upperbound' => 99,
-			'negatives' => false,
 		);
 
 		$params['number'] = array(
 			'type' => 'integer',
 			'upperbound' => 99,
-			'negatives' => false,
 		);
 
 		return $params;
@@ -80,14 +78,12 @@ class IntParamTest extends NumericParamTest {
 				array( 0, true, 0 ),
 				array( 'foo', false, 42 ),
 				array( 100, false, 42 ),
-				array( -1, false, 42 ),
 				array( 4.2, false, 42 ),
 			),
 			'number' => array(
 				array( 42, true, 42 ),
 				array( 'foo', false ),
 				array( 100, false ),
-				array( -1, false ),
 				array( 4.2, false ),
 			),
 			'empty' => array(
