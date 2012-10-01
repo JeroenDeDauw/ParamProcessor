@@ -10,7 +10,7 @@ namespace ParamProcessor;
  * @since 1.0
  *
  * @file ParamDefinition.php
- * @ingroup Validator
+ * @ingroup ParamProcessor
  * @ingroup ParamDefinition
  *
  * @licence GNU GPL v2+

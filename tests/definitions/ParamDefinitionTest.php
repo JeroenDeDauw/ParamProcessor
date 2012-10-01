@@ -24,7 +24,7 @@ use ParamDefinition, IParamDefinition, Param;
  * @file
  * @since 1.0
  *
- * @ingroup Validator
+ * @ingroup ParamProcessor
  * @ingroup Test
  *
  * @group Validator

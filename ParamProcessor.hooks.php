@@ -6,7 +6,7 @@
  * @since 0.4.8
  * 
  * @file Validator.hooks.php
- * @ingroup Validator
+ * @ingroup ParamProcessor
  * 
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

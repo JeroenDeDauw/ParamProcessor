@@ -24,7 +24,7 @@ use Validator, ValidatorOptions;
  * @file
  * @since 1.0
  *
- * @ingroup Validator
+ * @ingroup ParamProcessor
  * @ingroup Test
  *
  * @group Validator

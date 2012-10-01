@@ -11,7 +11,7 @@
  * @since 0.4.6
  * 
  * @file ParameterInput.php
- * @ingroup Validator
+ * @ingroup ParamProcessor
  * 
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

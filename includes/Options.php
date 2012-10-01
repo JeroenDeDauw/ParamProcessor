@@ -3,7 +3,7 @@
 namespace ParamProcessor;
 
 /**
- * Object for holding options affecting the behaviour of a Validator object.
+ * Object for holding options affecting the behaviour of a ParamProcessor object.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ namespace ParamProcessor;
  * @since 1.0
  *
  * @file
- * @ingroup Validator
+ * @ingroup ParamProcessor
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

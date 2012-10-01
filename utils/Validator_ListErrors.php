@@ -6,7 +6,7 @@
  * @since 0.4
  * 
  * @file Validator_ListErrors.php
- * @ingroup Validator
+ * @ingroup ParamProcessor
  * 
  * @author Jeroen De Dauw
  */

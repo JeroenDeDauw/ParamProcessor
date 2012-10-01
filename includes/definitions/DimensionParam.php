@@ -27,7 +27,7 @@ namespace ParamProcessor;
  * @since 1.0
  *
  * @file
- * @ingroup Validator
+ * @ingroup ParamProcessor
  * @ingroup ParamDefinition
  *
  * @licence GNU GPL v2+

@@ -23,7 +23,7 @@ namespace ParamProcessor;
  * @file
  * @since 1.0
  *
- * @ingroup Validator
+ * @ingroup ParamProcessor
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
