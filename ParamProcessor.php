@@ -129,30 +129,30 @@ $wgHooks['UnitTestsList'][] = 'ParamProcessor\Hooks::registerUnitTests';
 $egValidatorSettings = array();
 
 $egParamDefinitions = array(
-	'boolean' => array( // Parameter::TYPE_BOOLEAN
-		'string-parser' => 'BoolParser',
+	'boolean' => array(
+		'string-parser' => '\ValueParsers\BoolParser',
 		'validation-callback' => 'is_bool',
 	),
-	'float' => array( // Parameter::TYPE_FLOAT
-		'string-parser' => 'FloatParser',
+	'float' => array(
+		'string-parser' => '\ValueParsers\FloatParser',
 		'validation-callback' => 'is_float',
-		'validator' => 'RangeValidator',
+		'validator' => '\ValueValidators\RangeValidator',
 	),
-	'integer' => array( // Parameter::TYPE_INTEGER
-		'string-parser' => 'IntParser',
+	'integer' => array(
+		'string-parser' => '\ValueParsers\IntParser',
 		'validation-callback' => 'is_int',
-		'validator' => 'RangeValidator',
+		'validator' => '\ValueValidators\RangeValidator',
 	),
-	'string' => array( // Parameter::TYPE_STRING
-		'validator' => 'StringValidator',
-		'definition' => 'StringParam',
+	'string' => array(
+		'validator' => '\ValueValidators\StringValidator',
+		'definition' => '\ParamProcessor\StringParam',
 	),
-	'title' => array( // Parameter::TYPE_TITLE
-		'string-parser' => 'TitleParser',
-		'validator' => 'TitleValidator',
+	'title' => array(
+		'string-parser' => '\ValueParsers\TitleParser',
+		'validator' => '\ValueValidators\TitleValidator',
 	),
 	'dimension' => array(
-		'definition' => 'DimensionParam',
-		'validator' => 'DimensionValidator',
+		'definition' => '\ParamProcessor\DimensionParam',
+		'validator' => '\ValueValidators\DimensionValidator',
 	),
 );
