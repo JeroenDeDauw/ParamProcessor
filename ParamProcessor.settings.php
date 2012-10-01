@@ -1,5 +1,8 @@
 <?php
 
+namespace ParamProcessor;
+use MWException;
+
 /**
  * File defining the settings for the Validator extension.
  * More info can be found at https://www.mediawiki.org/wiki/Extension:Validator#Settings
@@ -16,7 +19,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-final class ValidatorSettings {
+final class Settings {
 
 	/**
 	 * Protected constructor - force singleton usage.
@@ -26,7 +29,7 @@ final class ValidatorSettings {
 
 	/**
 	 * @since 1.0
-	 * @var ValidatorSettings|null
+	 * @var Settings|null
 	 */
 	protected static $instance = null;
 
@@ -41,7 +44,7 @@ final class ValidatorSettings {
 	 *
 	 * @since 1.0
 	 *
-	 * @return ValidatorSettings
+	 * @return Settings
 	 */
 	public static function singleton() {
 		if ( is_null( self::$instance ) ) {

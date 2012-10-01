@@ -72,28 +72,26 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'validator-desc',
 );
 
-$incDir = __DIR__ . '/includes/';
-
 // Autoload the classes.
-$wgAutoloadClasses['ParamProcessor\Hooks']			= $incDir . 'ParamProcessor.hooks.php';
-$wgAutoloadClasses['ParamProcessor\Settings']		= $incDir . 'ParamProcessor.settings.php';
+$wgAutoloadClasses['ParamProcessor\Hooks']			= __DIR__ . '/ParamProcessor.hooks.php';
+$wgAutoloadClasses['ParamProcessor\Settings']		= __DIR__ . '/ParamProcessor.settings.php';
 
 // includes
-$wgAutoloadClasses['ParamProcessor\Param']				  		= $incDir . 'Param.php';
-$wgAutoloadClasses['ParamProcessor\ParamDefinitionFactory']		= $incDir . 'ParamDefinitionFactory.php';
-$wgAutoloadClasses['ParamProcessor\ParamDefinition']			= $incDir . 'ParamDefinition.php';
-$wgAutoloadClasses['ParamProcessor\Processor']				  	= $incDir . 'Processor.php';
-$wgAutoloadClasses['ParamProcessor\Options']					= $incDir . 'Options.php';
-$wgAutoloadClasses['ParamProcessor\TopologicalSort']			= $incDir . 'TopologicalSort.php';
-$wgAutoloadClasses['ParamProcessor\ValidationError']			= $incDir . 'ValidationError.php';
-$wgAutoloadClasses['ParamProcessor\ValidationErrorHandler']	 	= $incDir . 'ValidationErrorHandler.php';
-$wgAutoloadClasses['ParamProcessor\IParam']				  		= $incDir . 'IParam.php';
-$wgAutoloadClasses['ParamProcessor\IParamDefinition']			= $incDir . 'IParamDefinition.php';
+$wgAutoloadClasses['ParamProcessor\Param']				  		= __DIR__ . '/includes/Param.php';
+$wgAutoloadClasses['ParamProcessor\ParamDefinitionFactory']		= __DIR__ . '/includes/ParamDefinitionFactory.php';
+$wgAutoloadClasses['ParamProcessor\ParamDefinition']			= __DIR__ . '/includes/ParamDefinition.php';
+$wgAutoloadClasses['ParamProcessor\Processor']				  	= __DIR__ . '/includes/Processor.php';
+$wgAutoloadClasses['ParamProcessor\Options']					= __DIR__ . '/includes/Options.php';
+$wgAutoloadClasses['ParamProcessor\TopologicalSort']			= __DIR__ . '/includes/TopologicalSort.php';
+$wgAutoloadClasses['ParamProcessor\ValidationError']			= __DIR__ . '/includes/ValidationError.php';
+$wgAutoloadClasses['ParamProcessor\ValidationErrorHandler']	 	= __DIR__ . '/includes/ValidationErrorHandler.php';
+$wgAutoloadClasses['ParamProcessor\IParam']				  		= __DIR__ . '/includes/IParam.php';
+$wgAutoloadClasses['ParamProcessor\IParamDefinition']			= __DIR__ . '/includes/IParamDefinition.php';
 
 // includes/definitions
-$wgAutoloadClasses['ParamProcessor\DimensionParam']		 		= $incDir . 'definitions/DimensionParam.php';
-$wgAutoloadClasses['ParamProcessor\ParamDefinition']		 	= $incDir . 'definitions/ParamDefinition.php';
-$wgAutoloadClasses['ParamProcessor\StringParam']		 		= $incDir . 'definitions/StringParam.php';
+$wgAutoloadClasses['ParamProcessor\DimensionParam']		 		= __DIR__ . '/includes/definitions/DimensionParam.php';
+$wgAutoloadClasses['ParamProcessor\ParamDefinition']		 	= __DIR__ . '/includes/definitions/ParamDefinition.php';
+$wgAutoloadClasses['ParamProcessor\StringParam']		 		= __DIR__ . '/includes/definitions/StringParam.php';
 
 class_alias( 'ParamProcessor\ParamDefinitionFactory', 'ParamDefinitionFactory' );
 class_alias( 'ParamProcessor\ParamDefinition', 'ParamDefinition' );
@@ -108,14 +106,14 @@ class_alias( 'ParamProcessor\Options', 'ValidatorOptions' ); // Deprecated since
 
 
 // tests
-$wgAutoloadClasses['Validator\Test\NumericParamTest']		= __DIR__ . '/tests/definitions/NumericParamTest.php';
-$wgAutoloadClasses['Validator\Test\ParamDefinitionTest']	= __DIR__ . '/tests/definitions/ParamDefinitionTest.php';
+$wgAutoloadClasses['ParamProcessor\Test\NumericParamTest']		= __DIR__ . '/tests/definitions/NumericParamTest.php';
+$wgAutoloadClasses['ParamProcessor\Test\ParamDefinitionTest']	= __DIR__ . '/tests/definitions/ParamDefinitionTest.php';
 
 // utils
-$wgAutoloadClasses['ParserHook']				 	= __DIR__ . 'utils/ParserHook.php';
-$wgAutoloadClasses['ParameterInput']			 	= __DIR__ . 'utils/ParameterInput.php';
-$wgAutoloadClasses['ValidatorDescribe']		  		= __DIR__ . 'utils/Describe.php';
-$wgAutoloadClasses['ValidatorListErrors']			= __DIR__ . 'utils/ListErrors.php';
+$wgAutoloadClasses['ParserHook']				 	= __DIR__ . '/utils/ParserHook.php';
+$wgAutoloadClasses['ParameterInput']			 	= __DIR__ . '/utils/ParameterInput.php';
+$wgAutoloadClasses['ValidatorDescribe']		  		= __DIR__ . '/utils/Describe.php';
+$wgAutoloadClasses['ValidatorListErrors']			= __DIR__ . '/utils/ListErrors.php';
 
 # Registration of the listerrors parser hooks.
 $wgHooks['ParserFirstCallInit'][] = 'ValidatorListErrors::staticInit';
@@ -158,6 +156,3 @@ $egParamDefinitions = array(
 		'validator' => 'DimensionValidator',
 	),
 );
-
-
-unset( $incDir );

@@ -1,5 +1,7 @@
 <?php
 
+namespace ParamProcessor;
+
 /**
  * Static class for hooks handled by the Validator extension.
  * 
@@ -11,7 +13,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-final class ValidatorHooks {
+final class Hooks {
 	
 	/**
 	 * Hook to add PHPUnit test cases.
