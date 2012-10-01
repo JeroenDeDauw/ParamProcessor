@@ -1,6 +1,9 @@
 <?php
 
 namespace ParamProcessor;
+use callable;
+use ValueParsers\ValueParser;
+use ValueValidators\ValueValidator;
 
 /**
  * Interface for parameter definition classes.
@@ -209,13 +212,13 @@ interface IParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 *
 	 * @return array|true
 	 *
 	 * TODO: return error list (ie Status object)
 	 */
-	public function validate( IParam $param, array $definitions, array $params, ValidatorOptions $options );
+	public function validate( IParam $param, array $definitions, array $params, Options $options );
 
 	/**
 	 * Returns a message key for a message describing the parameter type.

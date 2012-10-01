@@ -31,9 +31,9 @@ interface IParam {
 	 *
 	 * @param string $paramName
 	 * @param string $paramValue
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 */
-	public function setUserValue( $paramName, $paramValue, ValidatorOptions $options );
+	public function setUserValue( $paramName, $paramValue, Options $options );
 
 	/**
 	 * Sets the value.
@@ -51,9 +51,9 @@ interface IParam {
 	 *
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 */
-	public function process( array &$definitions, array $params, ValidatorOptions $options );
+	public function process( array &$definitions, array $params, Options $options );
 
 	/**
 	 * Returns the original use-provided name.

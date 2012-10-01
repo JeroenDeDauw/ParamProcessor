@@ -1,6 +1,7 @@
 <?php
 
 namespace ParamProcessor;
+use MWException;
 
 /**
  * Parameter class, representing the "instance" of a parameter.
@@ -111,11 +112,11 @@ final class Param implements IParam {
 	 *
 	 * @param string $paramName
 	 * @param string $paramValue
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 *
 	 * @return boolean
 	 */
-	public function setUserValue( $paramName, $paramValue, ValidatorOptions $options ) {
+	public function setUserValue( $paramName, $paramValue, Options $options ) {
 		if ( $this->setCount > 0 && !self::$acceptOverriding ) {
 			// TODO
 			return false;
@@ -148,9 +149,9 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 */
-	protected function cleanValue( ValidatorOptions $options ) {
+	protected function cleanValue( Options $options ) {
 		$this->value = $this->originalValue;
 
 		if ( $this->definition->isList() ) {
@@ -194,11 +195,11 @@ final class Param implements IParam {
 	 *
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 *
 	 * @throws MWException
 	 */
-	public function process( array &$definitions, array $params, ValidatorOptions $options ) {
+	public function process( array &$definitions, array $params, Options $options ) {
 		if ( $this->setCount == 0 ) {
 			if ( $this->definition->isRequired() ) {
 				// This should not occur, so throw an exception.
@@ -220,11 +221,11 @@ final class Param implements IParam {
 	/**
 	 * @since 1.0
 	 *
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 *
 	 * @return ValueParser
 	 */
-	protected function getValueParser( ValidatorOptions $options ) {
+	protected function getValueParser( Options $options ) {
 		$parser = $this->definition->getValueParser();
 
 		if ( get_class( $parser ) === 'NullParser' ) {
@@ -244,9 +245,9 @@ final class Param implements IParam {
 	 *
 	 * @param array $definitions
 	 * @param array $params
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 */
-	protected function parseAndValidate( array &$definitions, array $params, ValidatorOptions $options ) {
+	protected function parseAndValidate( array &$definitions, array $params, Options $options ) {
 		$parser = $this->getValueParser( $options );
 		$parsingResult = $parser->parse( $this->getValue() );
 
@@ -287,9 +288,9 @@ final class Param implements IParam {
 	 *
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 */
-	protected function format( array &$definitions, array $params, ValidatorOptions $options ) {
+	protected function format( array &$definitions, array $params, Options $options ) {
 		$this->definition->format( $this, $definitions, $params );
 	}
 

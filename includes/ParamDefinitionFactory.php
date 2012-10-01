@@ -1,6 +1,7 @@
 <?php
 
 namespace ParamProcessor;
+use MWException;
 
 /**
  * Factory for IParamDefinition implementing objects.

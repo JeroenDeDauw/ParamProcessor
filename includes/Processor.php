@@ -76,18 +76,18 @@ class Processor {
 	 *
 	 * @since 1.0
 	 *
-	 * @var ValidatorOptions
+	 * @var Options
 	 */
 	protected $options;
 
 	/**
 	 * Constructor.
 	 * 
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 * 
 	 * @since 1.0
 	 */
-	protected function __construct( ValidatorOptions $options ) {
+	protected function __construct( Options $options ) {
 		$this->options = $options;
 	}
 
@@ -96,10 +96,10 @@ class Processor {
 	 *
 	 * @since 1.0
 	 *
-	 * @return Validator
+	 * @return Processor
 	 */
 	public static function newDefault() {
-		return new Validator( new ValidatorOptions() );
+		return new Processor( new Options() );
 	}
 
 	/**
@@ -107,12 +107,12 @@ class Processor {
 	 *
 	 * @since 1.0
 	 *
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 *
-	 * @return Validator
+	 * @return Processor
 	 */
-	public static function newFromOptions( ValidatorOptions $options ) {
-		return new Validator( $options );
+	public static function newFromOptions( Options $options ) {
+		return new Processor( $options );
 	}
 
 	/**
@@ -120,7 +120,7 @@ class Processor {
 	 *
 	 * @since 1.0
 	 *
-	 * @return ValidatorOptions
+	 * @return Options
 	 */
 	public function getOptions() {
 		return clone $this->options;

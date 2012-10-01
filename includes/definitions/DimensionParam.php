@@ -1,6 +1,7 @@
 <?php
 
 namespace ParamProcessor;
+use MWException;
 
 /**
  * Defines the dimension parameter type.

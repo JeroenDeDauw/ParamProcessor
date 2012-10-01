@@ -1,6 +1,7 @@
 <?php
 
 namespace ParamProcessor;
+use MWException;
 
 /**
  * Parameter definition.
@@ -481,13 +482,13 @@ class ParamDefinition implements IParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 *
 	 * @return array|true
 	 *
 	 * TODO: return error list (ie Status object)
 	 */
-	public function validate( IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+	public function validate( IParam $param, array $definitions, array $params, Options $options ) {
 		if ( $this->isList() ) {
 			$valid = true;
 			$values = $param->getValue();
@@ -556,11 +557,11 @@ class ParamDefinition implements IParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateList( IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+	protected function validateList( IParam $param, array $definitions, array $params, Options $options ) {
 		// TODO
 	}
 
@@ -590,11 +591,11 @@ class ParamDefinition implements IParamDefinition {
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
 	 * @param $params array of IParam
-	 * @param ValidatorOptions $options
+	 * @param Options $options
 	 *
 	 * @return boolean
 	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params, ValidatorOptions $options ) {
+	protected function validateValue( $value, IParam $param, array $definitions, array $params, Options $options ) {
 		return true; // FIXME
 	}
 
