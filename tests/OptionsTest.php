@@ -27,8 +27,8 @@ use ParamProcessor\Options;
  * @ingroup ParamProcessor
  * @ingroup Test
  *
- * @group Validator
- * @group ValidatorOptions
+ * @group ParamProcessor
+ * @group ParamProcessorOptions
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

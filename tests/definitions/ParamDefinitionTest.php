@@ -27,7 +27,7 @@ use ParamDefinition, IParamDefinition, Param;
  * @ingroup ParamProcessor
  * @ingroup Test
  *
- * @group Validator
+ * @group ParamProcessor
  * @group ParamDefinition
  *
  * @licence GNU GPL v2+
