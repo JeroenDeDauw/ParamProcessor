@@ -7,7 +7,7 @@ namespace ParamProcessor;
  *
  * @since 0.1
  *
- * @file Validator.php
+ * @file
  * @ingroup ParamProcessor
  *
  * @licence GNU GPL v2+

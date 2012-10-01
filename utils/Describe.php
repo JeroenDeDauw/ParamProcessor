@@ -5,7 +5,7 @@
  *
  * @since 0.4.3
  *
- * @file Validator_Describe.php
+ * @file
  * @ingroup ParamProcessor
  *
  * @licence GNU GPL v2+

@@ -10,7 +10,7 @@
  * 
  * @since 0.4.6
  * 
- * @file ParameterInput.php
+ * @file
  * @ingroup ParamProcessor
  * 
  * @licence GNU GPL v2+

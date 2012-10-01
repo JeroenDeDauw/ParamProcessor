@@ -2,7 +2,7 @@
 /**
  * Internationalization file for the Validator extension
  *
- * @file Validator.i18n.php
+ * @file
  * @ingroup ParamProcessor
  *
  * @licence GNU GPL v2+

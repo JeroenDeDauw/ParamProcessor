@@ -9,7 +9,7 @@ use MWException;
  *
  * @since 1.0
  *
- * @file Param.php
+ * @file
  * @ingroup ParamProcessor
  *
  * @licence GNU GPL v2+

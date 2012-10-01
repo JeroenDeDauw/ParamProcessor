@@ -1,7 +1,11 @@
 <?php
 
 namespace ParamProcessor;
-use MWException;
+use MWException, callable;
+use ValueParsers\ValueParser;
+use ValueValidators\ValueValidator;
+use \ValueParsers\NullParser;
+use ValueValidators\NullValidator;
 
 /**
  * Parameter definition.
@@ -10,7 +14,7 @@ use MWException;
  *
  * @since 1.0
  *
- * @file ParamDefinition.php
+ * @file
  * @ingroup ParamProcessor
  * @ingroup ParamDefinition
  *

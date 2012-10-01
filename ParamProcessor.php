@@ -6,7 +6,7 @@
  *
  * You will be validated. Resistance is futile.
  *
- * @file Validator.php
+ * @file
  * @ingroup ParamProcessor
  *
  * @licence GNU GPL v2+
@@ -112,10 +112,10 @@ $wgAutoloadClasses['Validator\Test\NumericParamTest']		= __DIR__ . '/tests/defin
 $wgAutoloadClasses['Validator\Test\ParamDefinitionTest']	= __DIR__ . '/tests/definitions/ParamDefinitionTest.php';
 
 // utils
-$wgAutoloadClasses['ParserHook']				 	= $incDir . 'utils/ParserHook.php';
-$wgAutoloadClasses['ParameterInput']			 	= $incDir . 'utils/ParameterInput.php';
-$wgAutoloadClasses['ValidatorDescribe']		  		= $incDir . 'utils/Validator_Describe.php';
-$wgAutoloadClasses['ValidatorListErrors']			= $incDir . 'utils/Validator_ListErrors.php';
+$wgAutoloadClasses['ParserHook']				 	= __DIR__ . 'utils/ParserHook.php';
+$wgAutoloadClasses['ParameterInput']			 	= __DIR__ . 'utils/ParameterInput.php';
+$wgAutoloadClasses['ValidatorDescribe']		  		= __DIR__ . 'utils/Describe.php';
+$wgAutoloadClasses['ValidatorListErrors']			= __DIR__ . 'utils/ListErrors.php';
 
 # Registration of the listerrors parser hooks.
 $wgHooks['ParserFirstCallInit'][] = 'ValidatorListErrors::staticInit';

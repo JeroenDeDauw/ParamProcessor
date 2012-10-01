@@ -10,7 +10,7 @@
  *
  * @since 1.0
  *
- * @file Validator.settings.php
+ * @file
  * @ingroup ParamProcessor
  *
  * @licence GNU GPL v2+

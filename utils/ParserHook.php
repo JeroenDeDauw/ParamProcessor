@@ -6,7 +6,7 @@
  *
  * @since 0.4
  *
- * @file ParserHook.php
+ * @file
  * @ingroup ParamProcessor
  *
  * @licence GNU GPL v2+
