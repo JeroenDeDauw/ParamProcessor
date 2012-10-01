@@ -1,7 +1,7 @@
 <?php
 
 namespace ParamProcessor\Test;
-use ValidatorOptions;
+use ParamProcessor\Options;
 
 /**
  * Unit test for the Validator\Options class.
@@ -33,17 +33,21 @@ use ValidatorOptions;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ValidatorOptionsTest extends \MediaWikiTestCase {
+class OptionsTest extends \MediaWikiTestCase {
+
+	public function testCompatAlias() {
+		$this->assertInstanceOf( '\ParamProcessor\Options', new \ValidatorOptions() );
+	}
 
 	public function testConstructor() {
-		$this->assertInstanceOf( '\ValidatorOptions', new ValidatorOptions() );
+		$this->assertInstanceOf( '\ParamProcessor\Options', new Options() );
 	}
 
 	/**
-	 * @return \ValidatorOptions
+	 * @return Options
 	 */
 	protected function getInstance() {
-		return new ValidatorOptions();
+		return new Options();
 	}
 
 	public function testBooleanSettersAndGetters() {

@@ -1,7 +1,8 @@
 <?php
 
 namespace ParamProcessor\Test;
-use Validator, ValidatorOptions;
+use ParamProcessor\Processor;
+use ParamProcessor\Options;
 
 /**
  * Unit test for the Validator class.
@@ -32,16 +33,20 @@ use Validator, ValidatorOptions;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ValidatorTest extends \MediaWikiTestCase {
+class ProcessorTest extends \MediaWikiTestCase {
+
+	public function testCompatAlias() {
+		$this->assertInstanceOf( '\ParamProcessor\Processor', \Validator::newDefault() );
+	}
 
 	public function testNewDefault() {
-		$this->assertInstanceOf( '\Validator', Validator::newDefault() );
+		$this->assertInstanceOf( '\ParamProcessor\Processor', Processor::newDefault() );
 	}
 
 	public function newFromOptionsProvider() {
 		$options = array();
 
-		$option = new ValidatorOptions();
+		$option = new Options();
 
 		$options[] = clone $option;
 
@@ -63,8 +68,8 @@ class ValidatorTest extends \MediaWikiTestCase {
 	}
 
 	public function testNewFromOptions() {
-		$options = new ValidatorOptions();
-		$validator = Validator::newFromOptions( clone $options );
+		$options = new Options();
+		$validator = Processor::newFromOptions( clone $options );
 		$this->assertInstanceOf( '\Validator', $validator );
 		$this->assertEquals( $options, $validator->getOptions() );
 	}
@@ -100,7 +105,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 			'text' => array(),
 		);
 
-		$options = new ValidatorOptions();
+		$options = new Options();
 
 		$expected = array(
 			'awesome' => true,
@@ -156,7 +161,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 			),
 		);
 
-		$options = new ValidatorOptions();
+		$options = new Options();
 		$options->setTrimValues( false );
 
 		$expected = array(
@@ -216,7 +221,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 			),
 		);
 
-		$options = new ValidatorOptions();
+		$options = new Options();
 		$options->setRawStringInputs( false );
 		$options->setLowercaseNames( false );
 		$options->setTrimNames( false );
@@ -260,7 +265,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 			),
 		);
 
-		$options = new ValidatorOptions();
+		$options = new Options();
 		$options->setLowercaseValues( true );
 		$options->setTrimValues( true );
 
@@ -291,7 +296,7 @@ class ValidatorTest extends \MediaWikiTestCase {
 			}
 
 			if ( !array_key_exists( 2, $argList ) ) {
-				$argList[2] = new ValidatorOptions();
+				$argList[2] = new Options();
 			}
 		}
 
@@ -301,8 +306,8 @@ class ValidatorTest extends \MediaWikiTestCase {
 	/**
 	 * @dataProvider parameterProvider
 	 */
-	public function testSetParameters( array $params, array $definitions, ValidatorOptions $options, array $expected = array() ) {
-		$validator = Validator::newFromOptions( $options );
+	public function testSetParameters( array $params, array $definitions, Options $options, array $expected = array() ) {
+		$validator = Processor::newFromOptions( $options );
 
 		$validator->setParameters( $params, $definitions );
 
@@ -312,8 +317,8 @@ class ValidatorTest extends \MediaWikiTestCase {
 	/**
 	 * @dataProvider parameterProvider
 	 */
-	public function testValidateParameters( array $params, array $definitions, ValidatorOptions $options, array $expected = array() ) {
-		$validator = Validator::newFromOptions( $options );
+	public function testValidateParameters( array $params, array $definitions, Options $options, array $expected = array() ) {
+		$validator = Processor::newFromOptions( $options );
 
 		$validator->setParameters( $params, $definitions );
 

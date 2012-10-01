@@ -17,7 +17,7 @@ namespace ParamProcessor;
 class Processor {
 	
 	/**
-	 * Flag for unnamed default parameters used in Validator::setFunctionParams() to determine that
+	 * Flag for unnamed default parameters used in Processor::setFunctionParams() to determine that
 	 * a parameter should not have a named fallback.
 	 * 
 	 * @since 0.4.13
@@ -128,14 +128,14 @@ class Processor {
 	
 	/**
 	 * Determines the names and values of all parameters. Also takes care of default parameters. 
-	 * After that the resulting parameter list is passed to Validator::setParameters
+	 * After that the resulting parameter list is passed to Processor::setParameters
 	 * 
 	 * @since 0.4
 	 * 
 	 * @param array $rawParams
 	 * @param array $parameterInfo
 	 * @param array $defaultParams array of strings or array of arrays to define which parameters can be used unnamed.
-	 *        The second value in array-form is reserved for flags. Currently, Validator::PARAM_UNNAMED determines that
+	 *        The second value in array-form is reserved for flags. Currently, Processor::PARAM_UNNAMED determines that
 	 *        the parameter has no name which can be used to set it. Therefore all these parameters must be set before
 	 *        any named parameter. The effect is, that '=' within the string won't confuse the parameter anymore like
 	 *        it would happen with default parameters that still have a name as well.
