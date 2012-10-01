@@ -2,6 +2,7 @@
 
 namespace ParamProcessor;
 use MWException;
+use ValueParsers\ValueParser;
 
 /**
  * Parameter class, representing the "instance" of a parameter.
@@ -254,7 +255,7 @@ final class Param implements IParam {
 		$severity = $this->isRequired() ? ValidationError::SEVERITY_FATAL : ValidationError::SEVERITY_NORMAL;
 
 		if ( $parsingResult->isValid() ) {
-			$this->setValue( $parsingResult->getValue() );
+			$this->setValue( $parsingResult->getDataValue() );
 
 			$validationCallback = $this->definition->getValidationCallback();
 

@@ -1,7 +1,9 @@
 <?php
 
 namespace ParamProcessor\Test;
-use ParamDefinition, IParamDefinition, Param;
+use ParamProcessor\ParamDefinition;
+use ParamProcessor\IParamDefinition;
+use ParamProcessor\Param;
 
 /**
  * Unit test base for ParamDefinition deriving classes.
@@ -162,7 +164,7 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 		$def = clone $definition;
 		$options = $options === null ? new \ValidatorOptions() : $options;
 
-		$param = new \Param( $def );
+		$param = new Param( $def );
 		$param->setUserValue( $def->getName(), $testValue, $options );
 
 		$success = $def->validate( $param, array(), array(), $options );

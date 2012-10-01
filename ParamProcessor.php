@@ -90,7 +90,6 @@ $wgAutoloadClasses['ParamProcessor\IParamDefinition']			= __DIR__ . '/includes/I
 
 // includes/definitions
 $wgAutoloadClasses['ParamProcessor\DimensionParam']		 		= __DIR__ . '/includes/definitions/DimensionParam.php';
-$wgAutoloadClasses['ParamProcessor\ParamDefinition']		 	= __DIR__ . '/includes/definitions/ParamDefinition.php';
 $wgAutoloadClasses['ParamProcessor\StringParam']		 		= __DIR__ . '/includes/definitions/StringParam.php';
 
 class_alias( 'ParamProcessor\ParamDefinitionFactory', 'ParamDefinitionFactory' );

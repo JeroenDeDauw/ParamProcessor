@@ -55,19 +55,25 @@ class DimensionParam extends ParamDefinition {
 			return $value;
 		}
 
+		/**
+		 * @var \ValueValidators\DimensionValidator $validator
+		 */
 		$validator = $this->getValueValidator();
 
-		if ( get_class( $validator ) === 'DimensionValidator' ) {
-			foreach ( $this->getValueValidator()->getAllowedUnits() as $unit ) {
+		if ( get_class( $validator ) === 'ValueValidators\DimensionValidator' ) {
+			foreach ( $validator->getAllowedUnits() as $unit ) {
 				if ( $unit !== '' && in_string( $unit, $value ) ) {
 					return $value;
 				}
 			}
 
-			return $value . $this->getValueValidator()->getDefaultUnit();
+			return $value . $validator->getDefaultUnit();
 		}
 		else {
-			throw new MWException( 'ValueValidator of a DimensionParam should be a DimensionValidator' );
+			throw new MWException(
+				'ValueValidator of a DimensionParam should be a ValueValidators\DimensionValidator and not a '
+					. get_class( $validator )
+			);
 		}
 	}
 
