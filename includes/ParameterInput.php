@@ -41,11 +41,20 @@ class ParameterInput {
 	/**
 	 * Name for the input.
 	 * 
-	 * @since 0.6.4
+	 * @since 0.4.6
 	 * 
 	 * @var string
 	 */
 	protected $inputName;
+
+	/**
+	 * Name for the input class.
+	 *
+	 * @since 0.5
+	 *
+	 * @var string
+	 */
+	protected $inputClass;
 	
 	/**
 	 * Constructor.
@@ -68,6 +77,7 @@ class ParameterInput {
 
 		$this->currentValue = $currentValue;
 		$this->inputName = $param->getName();
+		$this->inputClass = '';
 	}
 	
 	/**
@@ -84,7 +94,7 @@ class ParameterInput {
 	/**
 	 * Sets the name for the input; defaults to the name of the parameter.
 	 * 
-	 * @since 0.6.4
+	 * @since 0.4.6
 	 * 
 	 * @param string $name
 	 */
@@ -92,6 +102,17 @@ class ParameterInput {
 		$this->inputName = $name;
 	}
 	
+	/**
+	 * Sets the class for the input
+	 *
+	 * @since 0.5
+	 *
+	 * @param string $name
+	 */
+	public function setInputClass( $class ) {
+		$this->inputClass = $class;
+	}
+
 	/**
 	 * Returns the HTML for the parameter input.
 	 * 
@@ -170,7 +191,8 @@ class ParameterInput {
 			$this->getValueToUse(),
 			'text',
 			array(
-				'size' => 6
+				'size' => 6,
+				'class' => $this->inputClass
 			)
 		);
 	}
@@ -188,7 +210,8 @@ class ParameterInput {
 			$this->getValueToUse(),
 			'text',
 			array(
-				'size' => 32
+				'size' => 32,
+				'class' => $this->inputClass
 			)
 		);
 	}
