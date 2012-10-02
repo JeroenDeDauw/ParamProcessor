@@ -252,7 +252,7 @@ $messages['ar'] = array(
 	'validator-message-nodesc' => 'لا وصف تم توفيره',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -2022,7 +2022,7 @@ $messages['ksh'] = array(
 	'validator-message-nodesc' => 'Kein Beschrievong doh',
 );
 
-/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -2227,7 +2227,7 @@ $messages['ms'] = array(
 	'validator-describe-header-default' => 'Asali',
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬)
+/** Norwegian Bokmål (norsk (bokmål)‎)
  * @author Event
  * @author Nghtwlkr
  */
@@ -3032,14 +3032,14 @@ $messages['si'] = array(
 	'validator-message-nodesc' => 'විස්තරයක් සපයා නොමැත',
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'validator-listerrors-severity-message' => '($1) $2',
 );
 
-/** Serbian (Latin script) (‪srpski (latinica)‬) */
+/** Serbian (Latin script) (srpski (latinica)‎) */
 $messages['sr-el'] = array(
 	'validator-listerrors-severity-message' => '($1) $2',
 );
@@ -3329,7 +3329,7 @@ $messages['yi'] = array(
 	'validator-describe-header-description' => 'באַשרײַבונג',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Hydra
  * @author Richarddong
  * @author Shirayuki
