@@ -3046,16 +3046,53 @@ $messages['sr-el'] = array(
 
 /** Swedish (svenska)
  * @author Fluff
+ * @author Martinwiss
  * @author Ozp
  * @author Per
  * @author Sertion
  */
 $messages['sv'] = array(
 	'validator-desc' => 'Valideraren skapar ett smidigt sätt för andra tillägg att validera olika parserfunktioners parametrar och taggar, sätta standardvärden för tilläggen samt att generera felmeddelanden',
+	'validator-warning' => 'Varning: $1',
+	'validator-error' => 'Fel: $1',
+	'validator-fatal-error' => 'Kritiskt fel: $1',
 	'validator_error_parameters' => 'Följande {{PLURAL:$1|fel|fel}} har upptäckts i din syntax:',
 	'validator_warning_parameters' => 'Det finns {{PLURAL:$1|ett|flera}} fel i din syntax.',
+	'validator-warning-adittional-errors' => '
+... och {{PLURAL:$1|ett problem till|fler problem}}.',
+	'validator-error-omitted' => '{{PLURAL:$2|Värdet "$1" har|Värdena"$1" har}} uteslutits',
+	'validator-error-problem' => 'Ett problem uppstod med parametern $1.',
 	'validator_error_unknown_argument' => '$1 är inte en giltig paramter.',
 	'validator_error_required_missing' => 'Den nödvändiga parametern $1 har inte angivits.',
+	'validator-error-override-argument' => 'Försökte skriva över parametern $1 (värde: $2) med värde "$3"',
+	'validator-type-string' => 'text',
+	'validator-type-integer' => 'helt nummer',
+	'validator-type-float' => 'nummer',
+	'validator-type-boolean' => 'ja/nej',
+	'validator-type-char' => 'tecken',
+	'validator-type-title' => 'titel',
+	'validator-type-string-list' => 'listor med texter',
+	'validator-type-integer-list' => 'listor med heltal',
+	'validator-type-float-list' => 'listor med siffror',
+	'validator-type-boolean-list' => 'listor med ja/nej',
+	'validator-type-char-list' => 'listor med tecken',
+	'validator-type-title-list' => 'listor med rubriker',
+	'validator-listerrors-errors' => 'Fel',
+	'validator-listerrors-minor' => 'Smärre',
+	'validator-listerrors-low' => 'Låg',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'Hög',
+	'validator-listerrors-fatal' => 'Kritisk',
+	'validator-describe-listtype' => 'Lista med "$1"-element',
+	'validator-describe-empty' => 'tom',
+	'validator-describe-required' => 'behövs',
+	'validator-describe-header-parameter' => 'Parameter',
+	'validator-describe-header-aliases' => 'Alias',
+	'validator-describe-header-type' => 'Typ',
+	'validator-describe-header-default' => 'Förvalt',
+	'validator-describe-header-description' => 'Beskrivning',
+	'validator-describe-parameters' => 'Parametrar',
+	'validator-describe-syntax' => 'Syntax',
 	'validator_error_empty_argument' => 'Parametern $1 kan inte lämnas tom.',
 	'validator_error_must_be_number' => 'Parameter $1 måste bestå av ett tal.',
 	'validator_error_must_be_integer' => 'Parametern $1 måste vara ett heltal.',
