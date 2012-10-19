@@ -136,15 +136,47 @@ place listerrors at or near the bottom of the page to get all errors.',
  */
 $messages['qqq'] = array(
 	'validator-desc' => '{{desc}}',
-	'validator-warning' => '{{Identical|Warning}}',
-	'validator-error' => '{{Identical|Error}}',
+	'validator-warning' => 'This message indicates an error detected. $1 holds the warning message.
+
+{{Identical|Warning}}',
+	'validator-error' => 'This message indicates an error detected. $1 holds the error report.
+
+{{Identical|Error}}',
+	'validator-fatal-error' => 'This message indicates a fatal error detected. $1 holds the fatal error report.',
 	'validator_error_parameters' => 'Parameters:
 * $1 is the number of syntax errors, for PLURAL support (optional)',
-	'validator-listerrors-errors' => '{{Identical|Error}}',
+	'validator-error-problem' => 'This is an error message. $1 holds the name of the parameter causing the error.',
+	'validator_error_unknown_argument' => 'This is an error message. $1 holds the name of the erroneous parameter provided.',
+	'validator_error_required_missing' => 'This is an error message. $1 holds the name of the parameter which was not provided.',
+	'validator-type-string' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "text" (string).
+
+{{Identical|Text}}',
+	'validator-type-integer' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "whole number" (integer).',
+	'validator-type-float' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "number".',
+	'validator-type-boolean' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is a boolean value (yes or no).',
+	'validator-type-char' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "character".',
+	'validator-type-title' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is the "title" of a page.
+
+{{Identical|Title}}',
+	'validator-type-string-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "texts" (strings).',
+	'validator-type-integer-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "whole numbers" (integers).',
+	'validator-type-float-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "numbers".',
+	'validator-type-boolean-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "booleans" (yes or no).',
+	'validator-type-char-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "characters".',
+	'validator-type-title-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "page names".',
+	'validator-listerrors-errors' => 'This is the title of the section added to a page after inserting the "listerrors" tag or the "listerrors" parser function. Possible errors which were detected are listed in this section.
+
+{{Identical|Error}}',
 	'validator-listerrors-severity-message' => '{{Optional}}
 * $1 = severity
 * $2 = message',
-	'validator-listerrors-normal' => '{{Identical|Normal}}',
+	'validator-listerrors-minor' => 'This is the name of a status that is assigned to an error report.',
+	'validator-listerrors-low' => 'This is the name of a status that is assigned to an error report.',
+	'validator-listerrors-normal' => 'This is the name of a status that is assigned to an error report.
+
+{{Identical|Normal}}',
+	'validator-listerrors-high' => 'This is the name of a status that is assigned to an error report.',
+	'validator-listerrors-fatal' => 'This is the name of a status that is assigned to an error report.',
 	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
 	'validator-describe-listtype' => 'This is a patchwork message. $1 stands for one of these messages: {{msg-mw|Validator-type-string}}, {{msg-mw|Validator-type-number}}, {{msg-mw|Validator-type-integer}}, {{msg-mw|Validator-type-float}}, {{msg-mw|Validator-type-boolean}}, {{msg-mw|Validator-type-char}}',
 	'validator-describe-empty' => '{{Identical|Empty}}',
@@ -1779,6 +1811,7 @@ $messages['ja'] = array(
 	'validator-type-float' => '数値',
 	'validator-type-boolean' => 'はい/いいえ',
 	'validator-type-char' => '文字',
+	'validator-type-title' => 'ページ名',
 	'validator-listerrors-errors' => 'エラー',
 	'validator-listerrors-minor' => '非常に軽度',
 	'validator-listerrors-low' => '軽度',
