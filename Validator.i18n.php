@@ -194,7 +194,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'validator-desc' => 'Die valideerder gee ander uitbreidings die vermoë om parameters van ontlederfunksies en etiket-uitbreidings te valideer, op hulle verstekwaardes in te stel en om foutboodskappe te genereer',
-	'validator-warning' => 'Waarskuwing: $ 1',
+	'validator-warning' => 'Waarskuwing: $ 1', # Fuzzy
 	'validator-error' => 'Fout: $1',
 	'validator-fatal-error' => 'Onherstelbare fout: $1',
 	'validator_error_parameters' => 'Die volgende {{PLURAL:$1|fout|foute}} is in u sintaks waargeneem:',
@@ -211,7 +211,7 @@ $messages['af'] = array(
 	'validator_error_must_be_integer' => "Die parameter $1 kan slegs 'n heelgetal wees.",
 	'validator_error_invalid_range' => 'Die parameter $1 moet tussen $2 en $3 lê.',
 	'validator_error_invalid_argument' => 'Die waarde $1 is nie geldig vir parameter $2 nie.',
-	'validator_error_accepts_only' => 'Die parameter $1 kan slegs die volgende {{PLURAL:$3|waarde|waardes}} hê: $2.',
+	'validator_error_accepts_only' => 'Die parameter $1 kan slegs die volgende {{PLURAL:$3|waarde|waardes}} hê: $2.', # Fuzzy
 );
 
 /** Gheg Albanian (Gegë)
@@ -233,7 +233,7 @@ $messages['aln'] = array(
 	'validator_list_error_must_be_integer' => 'Parametër $1 mund të përmbajë vetëm numra të plotë.',
 	'validator_list_error_invalid_range' => 'Të gjitha vlerat e parametrit $1 duhet të jetë në mes të $2 dhe $3.',
 	'validator_list_error_invalid_argument' => 'Një ose më shumë vlera për parametër $1 janë të pavlefshme.',
-	'validator_error_accepts_only' => 'Parametër $1 vetëm pranon {{PLURAL:$3|kjo vlerë|këtyre vlerave}}: $2.',
+	'validator_error_accepts_only' => 'Parametër $1 vetëm pranon {{PLURAL:$3|kjo vlerë|këtyre vlerave}}: $2.', # Fuzzy
 	'validator_list_omitted' => '{{PLURAL:$2 |vlerë|vlerat}} $1 {{PLURAL:$2|ka|kanë}} janë lënë jashtë.',
 );
 
@@ -279,7 +279,7 @@ $messages['ar'] = array(
 	'validator_list_error_must_be_integer' => 'المحدد $1 يمكن أن يحتوي فقط على أرقام صحيحة.',
 	'validator_list_error_invalid_range' => 'كل قيم المحدد $1 يجب أن تكون بين $2 و$3.',
 	'validator_list_error_invalid_argument' => 'قيمة واحدة أو أكثر للمحدد $1 غير صحيحة.',
-	'validator_error_accepts_only' => 'المحدد $1 يقبل فقط {{PLURAL:$3|هذه القيمة|هذه القيم}}: $2.',
+	'validator_error_accepts_only' => 'المحدد $1 يقبل فقط {{PLURAL:$3|هذه القيمة|هذه القيم}}: $2.', # Fuzzy
 	'validator_list_omitted' => '{{PLURAL:$2|القيمة|القيم}} $1 {{PLURAL:$2|تم|تم}} مسحها.',
 	'validator-message-nodesc' => 'لا وصف تم توفيره',
 );
@@ -387,7 +387,7 @@ $messages['be-tarask'] = array(
  * @author Reedy
  */
 $messages['bg'] = array(
-	'validator_error_empty_argument' => 'Параметърът $1 не може да има празна стойност.',
+	'validator_error_empty_argument' => 'Параметърът $1 не може да има празна стойност.', # Fuzzy
 );
 
 /** Bengali (বাংলা)
@@ -1509,7 +1509,7 @@ $messages['hu'] = array(
 	'validator-list-error-must-be-float' => 'A(z) $1 paraméter csak lebegőpontos számokat tartalmazhat.',
 	'validator_list_error_invalid_range' => 'A(z) $1 paraméter összes értékének $2 és $3 közöttinek kell lennie.',
 	'validator_list_error_invalid_argument' => 'A(z) $1 paraméter egy vagy több értéke érvénytelen.',
-	'validator_error_accepts_only' => 'A(z) $1 paraméter csak a következő {{PLURAL:$3|értéket|értékeket}} fogadja el: $2',
+	'validator_error_accepts_only' => 'A(z) $1 paraméter csak a következő {{PLURAL:$3|értéket|értékeket}} fogadja el: $2', # Fuzzy
 	'validator_list_omitted' => 'A(z) $1 {{PLURAL:$2|érték mellőzve lett.|értékek mellőzve lettek.}}',
 );
 
@@ -2451,7 +2451,7 @@ Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
  */
 $messages['oc'] = array(
 	'validator-desc' => "Validator porgís a d'autras extensions un biais per validar aisidament los paramètres de foncions d'analisi e las extensions de mercas, definir de valors per manca e crear de messatges d'error",
-	'validator_error_parameters' => '{{PLURAL:$1|Aquela error es estada detectada|Aquelas errors son estadas detectadas}} dins la sintaxi',
+	'validator_error_parameters' => '{{PLURAL:$1|Aquela error es estada detectada|Aquelas errors son estadas detectadas}} dins la sintaxi', # Fuzzy
 	'validator_error_unknown_argument' => '$1 es pas un paramètre valedor.',
 	'validator_error_required_missing' => "Manca lo paramètre $1 qu'es obligatòri.",
 	'validator_error_empty_argument' => 'Lo paramètre $1 pòt pas estar voide.',
@@ -2459,7 +2459,7 @@ $messages['oc'] = array(
 	'validator_error_must_be_integer' => 'Lo paramètre $1 deu èsser un nombre entièr.',
 	'validator_error_invalid_range' => 'Lo paramètre $1 deu èsser entre $2 e $3.',
 	'validator_error_invalid_argument' => '$1 es pas valedor pel paramètre $2.',
-	'validator_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.',
+	'validator_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.', # Fuzzy
 );
 
 /** Ossetic (Ирон)
@@ -3030,7 +3030,7 @@ $messages['si'] = array(
 	'validator-warning' => 'අවවාදය: $1',
 	'validator-error' => 'දෝෂය: $1',
 	'validator-fatal-error' => 'මාරාන්තික දෝෂය: $1',
-	'validator_error_parameters' => 'ඔබේ වාග් රීතිය මඟින් පහත {{PLURAL:$1|දෝෂය|දෝෂයන්}} අනාවරණය කරනු ලැබ ඇත',
+	'validator_error_parameters' => 'ඔබේ වාග් රීතිය මඟින් පහත {{PLURAL:$1|දෝෂය|දෝෂයන්}} අනාවරණය කරනු ලැබ ඇත', # Fuzzy
 	'validator_error_unknown_argument' => '$1 වලංගු පරාමිතියක් නොවේ.',
 	'validator_error_required_missing' => 'අවශ්‍ය වන $1 පරාමිතිය සපයා නොමැත.',
 	'validator-type-string' => 'පෙළ',
@@ -3062,7 +3062,7 @@ $messages['si'] = array(
 	'validator_error_must_be_number' => '$1 පරාමිතිය විය හැක්කේ ඉලක්කමක් පමණි.',
 	'validator_error_invalid_range' => '$1 පරාමිතිය $2 හා $3 අතර විය යුතුය.',
 	'validator_error_invalid_argument' => '$2 පරාමිතිය සඳහා $1 අගය වලංගු නොවේ.',
-	'validator_error_accepts_only' => '$1 පරාමිතිය විසින් පිළිගනු ලබන්නේ {{PLURAL:$3|මෙම අගය|මෙම අගයන්}}: $2 පමණි.',
+	'validator_error_accepts_only' => '$1 පරාමිතිය විසින් පිළිගනු ලබන්නේ {{PLURAL:$3|මෙම අගය|මෙම අගයන්}}: $2 පමණි.', # Fuzzy
 	'validator-message-nodesc' => 'විස්තරයක් සපයා නොමැත',
 );
 
@@ -3073,7 +3073,8 @@ $messages['sr-ec'] = array(
 	'validator-listerrors-severity-message' => '($1) $2',
 );
 
-/** Serbian (Latin script) (srpski (latinica)‎) */
+/** Serbian (Latin script) (srpski (latinica)‎)
+ */
 $messages['sr-el'] = array(
 	'validator-listerrors-severity-message' => '($1) $2',
 );
@@ -3137,7 +3138,7 @@ $messages['sv'] = array(
 	'validator_list_error_must_be_integer' => 'Parameter $1 får endast innehålla heltal.',
 	'validator_list_error_invalid_range' => 'Alla värden av parameter $1 måste vara mellan $2 och $3.',
 	'validator_list_error_invalid_argument' => 'Ett eller flera värden av parameter $1 är ogiltiga.',
-	'validator_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
+	'validator_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.', # Fuzzy
 	'validator_list_omitted' => '{{PLURAL:$2|Värdet|Värdena}} $1 har blivit {{PLURAL:$2|utelämnat|utelämnade}}.',
 );
 
@@ -3411,10 +3412,10 @@ $messages['zh-hans'] = array(
 	'validator-warning' => '警告：$1',
 	'validator-error' => '错误：$1',
 	'validator-fatal-error' => '致命错误：$1',
-	'validator_error_parameters' => '从您的语法中检测到以下错误：',
-	'validator_warning_parameters' => '您的语法中存在错误。',
-	'validator-warning-adittional-errors' => '⋯⋯以及更多的问题。',
-	'validator-error-omitted' => '"$1"等值被忽略。',
+	'validator_error_parameters' => '从您的语法中检测到以下错误：', # Fuzzy
+	'validator_warning_parameters' => '您的语法中存在错误。', # Fuzzy
+	'validator-warning-adittional-errors' => '⋯⋯以及更多的问题。', # Fuzzy
+	'validator-error-omitted' => '"$1"等值被忽略。', # Fuzzy
 	'validator-error-problem' => '参数 $1 存在一个问题。',
 	'validator_error_unknown_argument' => '$1 不是一个有效的参数。',
 	'validator_error_required_missing' => '未能提供必要的参数 $1 。',
@@ -3496,4 +3497,3 @@ $messages['zh-hant'] = array(
 	'validator_list_error_invalid_range' => '參數 $1 所有合法的值都必須介於 $2 與 $3 之間。',
 	'validator_list_error_invalid_argument' => '參數 $1 的一個或多個值不合法。',
 );
-
