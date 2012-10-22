@@ -878,12 +878,32 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Mjbmr
+ * @author پاناروما
  */
 $messages['fa'] = array(
+	'validator-type-string' => 'متن',
+	'validator-type-integer' => 'عدد صحیح',
+	'validator-type-float' => 'شماره',
 	'validator-type-boolean' => 'بله/خیر',
+	'validator-type-char' => 'شخصیت',
+	'validator-type-title' => 'عنوان',
+	'validator-type-string-list' => 'فهرست متون',
+	'validator-type-integer-list' => 'فهرست اعداد صحیح',
+	'validator-type-float-list' => 'فهرست شماره‌ها',
+	'validator-type-char-list' => 'فهرست شخصیت‌ها',
+	'validator-type-title-list' => 'فهرست عناوین',
+	'validator-listerrors-errors' => 'خطاها',
 	'validator-listerrors-low' => 'کم',
 	'validator-listerrors-normal' => 'عادی',
 	'validator-listerrors-high' => 'زیاد',
+	'validator-listerrors-fatal' => 'کشنده',
+	'validator-describe-empty' => 'خالی',
+	'validator-describe-required' => 'ضروری',
+	'validator-describe-header-parameter' => 'مولفه',
+	'validator-describe-header-aliases' => 'نام‌های مستعار',
+	'validator-describe-header-type' => 'نوع',
+	'validator-describe-header-default' => 'پیش فرض',
+	'validator-describe-header-description' => 'تشریح',
 );
 
 /** Finnish (suomi)
