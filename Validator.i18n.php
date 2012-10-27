@@ -1828,6 +1828,7 @@ $messages['ja'] = array(
 	'validator_error_unknown_argument' => '$1 は有効な引数ではありません。',
 	'validator_error_required_missing' => '必須の引数「$1」が指定されていません。',
 	'validator-error-override-argument' => '引数 $1 (値: $2) を値「$3」で上書きしようとしました',
+	'validator-type-string' => 'テキスト',
 	'validator-type-float' => '数値',
 	'validator-type-boolean' => 'はい/いいえ',
 	'validator-type-char' => '文字',
