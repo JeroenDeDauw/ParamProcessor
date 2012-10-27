@@ -125,10 +125,6 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 				$definitions = array();
 				$param->process( $definitions, array(), $options );
 
-//				if ( $valid !== ( $param->getErrors() === array() ) ) {
-//					q($input, $param->getErrors(),$options);
-//				}
-
 				$this->assertEquals(
 					$valid,
 					$param->getErrors() === array(),
@@ -136,6 +132,8 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 				);
 			}
 		}
+
+		$this->assertTrue( true );
 	}
 
 	/**
