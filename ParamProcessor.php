@@ -127,7 +127,7 @@ $wgHooks['UnitTestsList'][] = 'ParamProcessor\Hooks::registerUnitTests';
 
 $egValidatorSettings = array();
 
-$egParamDefinitions = array(
+$wgParamDefinitions = array(
 	'boolean' => array(
 		'string-parser' => '\ValueParsers\BoolParser',
 		'validation-callback' => 'is_bool',

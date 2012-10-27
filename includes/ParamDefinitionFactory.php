@@ -75,14 +75,14 @@ class ParamDefinitionFactory {
 	}
 
 	/**
-	 * Registers the parameter types specified in the global $egParamDefinitions.
+	 * Registers the parameter types specified in the global $wgParamDefinitions.
 	 *
 	 * @since 1.0
 	 */
 	public function registerGlobals() {
-		global $egParamDefinitions;
+		global $wgParamDefinitions;
 
-		foreach ( $egParamDefinitions as $type => $data ) {
+		foreach ( $wgParamDefinitions as $type => $data ) {
 			if ( is_string( $data ) ) {
 				$data = array( 'definition' => $data );
 			}
