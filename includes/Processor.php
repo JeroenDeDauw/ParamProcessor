@@ -123,7 +123,7 @@ class Processor {
 	 * @return Options
 	 */
 	public function getOptions() {
-		return clone $this->options;
+		return $this->options;
 	}
 	
 	/**

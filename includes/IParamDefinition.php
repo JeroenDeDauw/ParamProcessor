@@ -1,7 +1,6 @@
 <?php
 
 namespace ParamProcessor;
-use callable;
 use ValueParsers\ValueParser;
 use ValueValidators\ValueValidator;
 

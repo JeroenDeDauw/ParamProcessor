@@ -1,7 +1,7 @@
 <?php
 
 namespace ParamProcessor;
-use MWException, callable;
+use MWException;
 use ValueParsers\ValueParser;
 use ValueValidators\ValueValidator;
 use \ValueParsers\NullParser;

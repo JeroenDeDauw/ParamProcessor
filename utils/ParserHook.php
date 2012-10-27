@@ -1,5 +1,7 @@
 <?php
 
+use ParamProcessor\Processor;
+
 /**
  * Class for out of the box parser hook functionality integrated with the validation
  * provided by Validator.
@@ -360,7 +362,8 @@ abstract class ParserHook {
 	 */
 	public function validateAndRender( array $arguments, $type ) {
 		$names = $this->getNames();
-		$this->validator = new Validator( $names[0] );
+		$this->validator = Processor::newDefault();
+		$this->validator->getOptions()->setName( $names[0] );
 
 		if ( $type === self::TYPE_FUNCTION ) {
 			$this->validator->setFunctionParams( $arguments, $this->getParameterInfo( $type ), $this->getDefaultParameters( $type ) );
