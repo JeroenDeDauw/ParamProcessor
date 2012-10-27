@@ -28,7 +28,7 @@ class TopologicalSort {
 	 * Dependency pairs are a list of arrays in the form
 	 * $name => $val where $key must come before $val in load order.
 	 */
-	function __construct( $dependencies = array(), $parse = true ) {
+	public function __construct( array $dependencies = array(), $parse = true ) {
 		$this->mNodeNames = array_keys( $dependencies );
 		
 		if ( $parse ) {
@@ -48,7 +48,7 @@ class TopologicalSort {
 	/**
 	 * Perform Topological Sort.
 	 *
-	 * @return sorted array
+	 * @return array Sorted array
 	 */
 	public function doSort() {
 		$nodes = $this->mNodes;
