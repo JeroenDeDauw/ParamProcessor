@@ -156,4 +156,7 @@ $wgParamDefinitions = array(
 		'definition' => '\ParamProcessor\DimensionParam',
 		'validator' => '\ValueValidators\DimensionValidator',
 	),
+	'coordinate' => array(
+		'string-parser' => '\ValueParsers\GeoCoordinateParser',
+	),
 );
