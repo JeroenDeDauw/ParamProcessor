@@ -3101,6 +3101,7 @@ $messages['sr-el'] = array(
 );
 
 /** Swedish (svenska)
+ * @author Cybjit
  * @author Fluff
  * @author Martinwiss
  * @author Ozp
@@ -3159,7 +3160,7 @@ $messages['sv'] = array(
 	'validator_list_error_must_be_integer' => 'Parameter $1 får endast innehålla heltal.',
 	'validator_list_error_invalid_range' => 'Alla värden av parameter $1 måste vara mellan $2 och $3.',
 	'validator_list_error_invalid_argument' => 'Ett eller flera värden av parameter $1 är ogiltiga.',
-	'validator_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.', # Fuzzy
+	'validator_error_accepts_only' => 'Värdet "$4" är inte giltigt för parametern $1. Den accepterar bara {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|Värdet|Värdena}} $1 har blivit {{PLURAL:$2|utelämnat|utelämnade}}.',
 );
 
