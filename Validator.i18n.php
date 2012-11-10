@@ -3167,13 +3167,16 @@ $messages['sv'] = array(
 /** Tamil (தமிழ்)
  * @author Karthi.dr
  * @author Shanmugamp7
+ * @author மதனாஹரன்
  */
 $messages['ta'] = array(
+	'validator-warning' => 'எச்சரிக்கை: $1',
 	'validator-error' => 'பிழை: $1',
 	'validator-type-string' => 'உரை',
 	'validator-type-integer' => 'முழு எண்',
 	'validator-type-float' => 'எண்',
 	'validator-type-boolean' => 'ஆம்/இல்லை',
+	'validator-type-char' => 'வரியுரு',
 	'validator-type-title' => 'தலைப்பு',
 	'validator-type-string-list' => 'உரைகளின் பட்டியல்',
 	'validator-type-integer-list' => 'முழு எண்களின் பட்டியல்',
@@ -3186,6 +3189,7 @@ $messages['ta'] = array(
 	'validator-listerrors-low' => 'குறைவு',
 	'validator-listerrors-normal' => 'சாதரணம்',
 	'validator-listerrors-high' => 'அதிகம்',
+	'validator-describe-listtype' => '$1 உருப்படிகளின் பட்டியல்',
 	'validator-describe-empty' => 'காலி',
 	'validator-describe-required' => 'தேவைபடுகிறது',
 	'validator-describe-header-parameter' => 'அளபுரு',
@@ -3194,6 +3198,7 @@ $messages['ta'] = array(
 	'validator-describe-header-description' => 'விளக்கம்',
 	'validator-describe-parameters' => 'அளபுருக்கள்',
 	'validator-describe-syntax' => 'வழிமுறைத் தொடரமைப்பு',
+	'validator-message-nodesc' => 'விவரணமேதும் வழங்கப்படவில்லை',
 );
 
 /** Telugu (తెలుగు)
