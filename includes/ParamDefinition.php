@@ -457,6 +457,10 @@ class ParamDefinition implements IParamDefinition {
 			$this->setDoManipulationOfDefault( $param['manipulatedefault'] );
 		}
 
+		if ( array_key_exists( 'is-list', $param ) ) {
+			$this->isList = $param['is-list'];
+		}
+
 		$this->options = $param;
 	}
 

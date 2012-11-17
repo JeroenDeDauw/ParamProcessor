@@ -369,6 +369,14 @@ class Processor {
 		foreach ( $this->paramsToHandle as $paramName ) {
 			$dependencies = array();
 
+			if ( !array_key_exists( $paramName, $this->paramDefinitions ) ) {
+				throw new \UnexpectedValueException( 'Unexpected parameter name "' . $paramName . '"' );
+			}
+
+			if ( !is_object( $this->paramDefinitions[$paramName] ) || !( $this->paramDefinitions[$paramName] instanceof IParamDefinition ) ) {
+				throw new \UnexpectedValueException( 'Parameter "' . $paramName . '" is not a IParamDefinition' );
+			}
+
 			// Only include dependencies that are in the list of parameters to handle.
 			foreach ( $this->paramDefinitions[$paramName]->getDependencies() as $dependency ) {
 				if ( in_array( $dependency, $this->paramsToHandle ) ) {
