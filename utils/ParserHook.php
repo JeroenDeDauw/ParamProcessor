@@ -472,6 +472,10 @@ abstract class ParserHook {
 		return array();
 	}
 
+	public function getParamDefinitions( $type = self::TYPE_FUNCTION ) {
+		return $this->getParameterInfo( $type );
+	}
+
 	/**
 	 * Returns the list of default parameters. These parameters can be used as
 	 * unnamed parameters where it is not necessary to use the name and the '=' as

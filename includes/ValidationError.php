@@ -153,7 +153,7 @@ class ValidationError {
 	 * @return integer Element of the ValidationError::ACTION_ enum
 	 */
 	public function getAction() {
-		$errorActions = ValidatorSettings::get( 'errorActions' );
+		$errorActions = Settings::get( 'errorActions' );
 
 		if ( $this->severity === self::SEVERITY_FATAL ) {
 			// This action should not be configurable, as lowering it would break in the Validator class.
@@ -163,7 +163,7 @@ class ValidationError {
 			return $errorActions[$this->severity];
 		}
 		else {
-			throw new Exception( "No action associated with error severity '$this->severity'" );
+			throw new \Exception( "No action associated with error severity '$this->severity'" );
 		}
 	}
 
