@@ -159,7 +159,10 @@ class TSNode {
 	public $children = array();
 	public $parents = array();
 	
-	public function TSNode( $name = '' ) {
+	public function __construct( $name = '' ) {
+		if ( !is_string( $name ) ) {
+			throw new \InvalidArgumentException( 'Name needs to be a string' );
+		}
 		$this->name = $name;
 	}
 }

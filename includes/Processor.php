@@ -29,7 +29,7 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var array of IParam
+	 * @var IParam[]
 	 */
 	protected $params;
 	
@@ -40,7 +40,7 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var array of string
+	 * @var string[]
 	 */
 	protected $rawParameters = array();
 	
@@ -49,7 +49,7 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var array
+	 * @var string[]
 	 */
 	protected $paramsToHandle = array();
 
@@ -58,7 +58,7 @@ class Processor {
 	 *
 	 * @since 1.0
 	 *
-	 * @var array
+	 * @var IParamDefinition[]
 	 */
 	protected $paramDefinitions = array();
 	
@@ -67,7 +67,7 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var array
+	 * @var ValidationError[]
 	 */
 	protected $errors = array();
 
@@ -223,7 +223,7 @@ class Processor {
 	 * for unknown parameters and optionally for parameter overriding.
 	 * 
 	 * @param array $parameters Parameter name as key, parameter value as value
-	 * @param array $paramDefinitions List of parameter definitions. Either ParamDefinition objects or equivalent arrays.
+	 * @param IParamDefinition[] $paramDefinitions List of parameter definitions. Either ParamDefinition objects or equivalent arrays.
 	 */
 	public function setParameters( array $parameters, array $paramDefinitions ) {
 		$this->paramDefinitions = ParamDefinition::getCleanDefinitions( $paramDefinitions );
@@ -419,7 +419,7 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return array of IParam
+	 * @return IParam[]
 	 */
 	public function getParameters() {
 		return $this->params;
@@ -464,7 +464,7 @@ class Processor {
 	 *
 	 * @since 0.4
 	 *
-	 * @return array of ValidationError
+	 * @return ValidationError[]
 	 */
 	public function getErrors() {
 		return $this->errors;
@@ -473,7 +473,7 @@ class Processor {
 	/**
 	 * @since 0.4.6
 	 * 
-	 * @return array of string
+	 * @return string[]
 	 */
 	public function getErrorMessages() {
 		$errors = array();
@@ -497,7 +497,7 @@ class Processor {
 	/**
 	 * Returns false when there are no fatal errors or an ValidationError when one is found.
 	 * 
-	 * @return mixed false or ValidationError
+	 * @return ValidationError|boolean false
 	 */
 	public function hasFatalError() {
 		foreach ( $this->errors as $error ) {
