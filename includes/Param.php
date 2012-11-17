@@ -255,7 +255,12 @@ final class Param implements IParam {
 		$severity = $this->isRequired() ? ValidationError::SEVERITY_FATAL : ValidationError::SEVERITY_NORMAL;
 
 		if ( $parsingResult->isValid() ) {
-			$value = $parsingResult->getDataValue()->getValue();
+			$value = $parsingResult->getValue();
+
+			if ( $value instanceof \DataValues\DataValue ) {
+				$value = $value->getValue();
+			}
+
 			$this->setValue( $value );
 
 			$validationCallback = $this->definition->getValidationCallback();
