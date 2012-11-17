@@ -336,7 +336,7 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @return array of ValidationError
+	 * @return ValidationError[]
 	 */
 	public function getErrors() {
 		return $this->errors;

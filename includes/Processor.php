@@ -329,6 +329,10 @@ class Processor {
 
 				$param->process( $this->paramDefinitions, $this->params, $this->options );
 
+				foreach ( $param->getErrors() as $error ) {
+					$this->registerError( $error );
+				}
+
 				if ( $param->hasFatalError() ) {
 					// If there was a fatal error, and the parameter is required, stop processing.
 					break;
@@ -458,10 +462,7 @@ class Processor {
 		$parameters = array();
 
 		foreach ( $this->params as $parameter ) {
-			/**
-			 * @var IParam $parameter
-			 */
-			$parameters[$parameter->getName()] = $parameter->getValue(); 
+			$parameters[$parameter->getName()] = $parameter->getValue();
 		}
 		
 		return $parameters;
