@@ -595,9 +595,9 @@ class ParamDefinition implements IParamDefinition {
 	 *
 	 * @since 1.0
 	 *
-	 * @param $definitions array of IParamDefinition
+	 * @param IParamDefinition[] $definitions
 	 *
-	 * @return array
+	 * @return IParamDefinition[]
 	 * @throws MWException
 	 */
 	public static function getCleanDefinitions( array $definitions ) {
