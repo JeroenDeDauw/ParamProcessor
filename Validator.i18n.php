@@ -651,7 +651,7 @@ Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: 
 	'validator_error_accepts_only' => 'Der Wert „$4“ ist nicht gültig für den Parameter $1. Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $2.',
 	'validator-error-accepts-only-omitted' => 'Der Wert „$2“ ist nicht gültig für den Parameter $1. Nur {{PLURAL:$5|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: $3 (sowie $4 nicht angezeigte {{PLURAL:$4|Wert|Werte}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Der Wert „$1“ wurde|Die Werte „$1“ wurden}} ausgelassen.',
-	'validator-message-nodesc' => 'Es wurde keine Beschreibung angegeben.',
+	'validator-message-nodesc' => 'Die Beschreibung dieses Parameters ist nicht vorhanden',
 );
 
 /** Zazaki (Zazaki)
