@@ -148,6 +148,8 @@ final class Param implements IParam {
 	/**
 	 * Sets the $value to a cleaned value of $originalValue.
 	 *
+	 * TODO: the per-parameter lowercaseing and trimming here needs some thought
+	 *
 	 * @since 1.0
 	 *
 	 * @param Options $options
@@ -174,7 +176,9 @@ final class Param implements IParam {
 			}
 		}
 
-		if ( $options->lowercaseValues() ) {
+		$definitionOptions = $this->definition->getOptions();
+
+		if ( $options->lowercaseValues() || ( array_key_exists( 'tolower', $definitionOptions ) && $definitionOptions['tolower'] ) ) {
 			if ( $this->definition->isList() ) {
 				foreach ( $this->value as &$element ) {
 					if ( is_string( $element ) ) {
@@ -211,7 +215,7 @@ final class Param implements IParam {
 			}
 		}
 		else {
-			$this->parseAndValidate( $definitions, $params, $options );
+			$this->parseAndValidate( $options );
 		}
 
 		if ( !$this->hasFatalError() && ( $this->definition->shouldManipulateDefault() || !$this->wasSetToDefault() ) ) {
@@ -244,11 +248,9 @@ final class Param implements IParam {
 	/**
 	 * @since 1.0
 	 *
-	 * @param array $definitions
-	 * @param array $params
 	 * @param Options $options
 	 */
-	protected function parseAndValidate( array &$definitions, array $params, Options $options ) {
+	protected function parseAndValidate( Options $options ) {
 		$parser = $this->getValueParser( $options );
 		$parsingResult = $parser->parse( $this->getValue() );
 
@@ -274,9 +276,6 @@ final class Param implements IParam {
 				$validationResult = $validator->validate( $value );
 
 				if ( !$validationResult->isValid() ) {
-					/**
-					 * @var ValueHandlerError $error
-					 */
 					foreach ( $validationResult->getErrors() as $error ) {
 						$this->errors[] = new ValidationError( $error->getText(), $severity );
 					}
