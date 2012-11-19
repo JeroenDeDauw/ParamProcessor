@@ -663,6 +663,7 @@ $messages['diq'] = array(
 	'validator-listerrors-low' => 'Kêm',
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Berz',
+	'validator-describe-required' => 'mecburiyo',
 	'validator-describe-header-parameter' => 'Parametre',
 	'validator-describe-header-type' => 'Babet',
 	'validator-describe-header-default' => 'Hesıbyaye',
@@ -3333,6 +3334,7 @@ ilagay ang listerrrors (mga kamalian sa lista) doon o malapit sa ilalim ng pahin
  */
 $messages['tr'] = array(
 	'validator_error_unknown_argument' => '$1, geçerli bir parametre değildir.',
+	'validator-describe-required' => 'gerekli',
 	'validator-describe-header-parameter' => 'Parametre',
 	'validator-describe-header-type' => 'Tür',
 	'validator_error_empty_argument' => '$1 parametresi boş bir değere sahip olamaz.',
