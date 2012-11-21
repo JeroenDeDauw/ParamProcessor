@@ -157,7 +157,7 @@ class TSNode {
 	public $children = array();
 	public $parents = array();
 	
-	public function TSNode( $name = '' ) {
+	public function __construct( $name = '' ) {
 		$this->name = $name;
 	}
 }

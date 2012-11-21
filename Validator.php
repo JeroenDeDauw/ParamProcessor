@@ -33,7 +33,7 @@ if ( defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> Tried to include Validator a second time. Please make sure you are including it before any extensions that make use of it.' );
 }
 
-define( 'Validator_VERSION', '0.5' );
+define( 'Validator_VERSION', '0.5.1' );
 
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Validator'] = dirname( __FILE__ ) . '/Validator.i18n.php';
