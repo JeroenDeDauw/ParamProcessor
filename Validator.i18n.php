@@ -724,12 +724,17 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Dada
  * @author Lou
+ * @author Protnet
  * @author ZaDiak
  * @author Απεργός
  */
 $messages['el'] = array(
+	'validator-desc' => 'Παρέχει γενική υποστήριξη χειρισμού παραμέτρων για άλλες επεκτάσεις',
+	'validator-error' => 'Σφάλμα: $1',
+	'validator-fatal-error' => 'Ανεπανόρθωτο σφάλμα: $1',
 	'validator_error_unknown_argument' => '$1 δεν είναι μια έγκυρη παράμετρος.',
 	'validator_error_required_missing' => 'Λείπει η απαιτούμενη παράμετρος $1.',
+	'validator-type-string' => 'κείμενο',
 	'validator_error_must_be_number' => 'Η παράμετρος $1 μπορεί να είναι μόνο αριθμός.',
 	'validator_error_must_be_integer' => 'Η παράμετρος $1 μπορεί να είναι μόνο ακέραιος αριθμός.',
 	'validator_list_error_must_be_number' => 'Η παράμετρος $1 μπορεί να περιέχει μόνο αριθμούς.',
