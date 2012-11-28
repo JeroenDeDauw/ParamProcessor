@@ -915,11 +915,16 @@ $messages['fa'] = array(
 /** Finnish (suomi)
  * @author Beluga
  * @author Crt
+ * @author Nedergard
  * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'validator-desc' => 'Tarkastaja tarjoaa helpon tavan muille laajennuksille jäsenninfunktioiden ja tagilaajennusten parametrien tarkastukseen, oletusarvojen asettamiseen ja virheilmoitusten luomiseen.',
+	'validator-warning' => 'Varoitus: $1',
+	'validator-error' => 'Virhe: $1',
+	'validator-fatal-error' => 'Vakava virhe: $1',
+	'validator_error_unknown_argument' => '$1 ei ole sallittu parametri.',
 	'validator-type-string' => 'teksti',
 	'validator-type-integer' => 'kokonaisluku',
 	'validator-type-float' => 'luku',
