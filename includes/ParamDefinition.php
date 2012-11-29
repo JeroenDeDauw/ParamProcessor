@@ -536,23 +536,6 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * Validates the parameters value set.
-	 *
-	 * @since 1.0
-	 *
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param Options $options
-	 *
-	 * @return boolean
-	 */
-	protected function validateList( IParam $param, array $definitions, array $params, Options $options ) {
-		return true;
-		// TODO
-	}
-
-	/**
 	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 1.0
@@ -567,24 +550,6 @@ class ParamDefinition implements IParamDefinition {
 	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
 		return $value;
 		// No-op
-	}
-
-	/**
-	 * Validates the parameters value and returns the result.
-	 * @see ParamDefinition::validateValue
-	 *
-	 * @since 1.0
-	 *
-	 * @param $value mixed
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param Options $options
-	 *
-	 * @return boolean
-	 */
-	protected function validateValue( $value, IParam $param, array $definitions, array $params, Options $options ) {
-		return true; // FIXME
 	}
 
 	/**
