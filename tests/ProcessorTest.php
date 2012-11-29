@@ -278,6 +278,46 @@ class ProcessorTest extends \MediaWikiTestCase {
 		return array( $params, $definitions, $options, $expected );
 	}
 
+	/**
+	 * List parameters to test if list handling works correctly.
+	 *
+	 * @return array
+	 */
+	protected function getListParams() {
+		$params = array(
+			'awesome' => ' yes, no, on, off ',
+			'float' => ' 9001 ; 42 ; 4.2;0',
+		);
+
+		$definitions = array(
+			'awesome' => array(
+				'type' => 'boolean',
+				'islist' => true,
+			),
+			'text' => array(
+				'default' => array( 'bar' ),
+				'islist' => true,
+			),
+			'float' => array(
+				'type' => 'float',
+				'islist' => true,
+				'delimiter' => ';'
+			),
+		);
+
+		$options = new Options();
+		$options->setLowercaseValues( true );
+		$options->setTrimValues( true );
+
+		$expected = array(
+			'awesome' => array( true, false, true, false ),
+			'text' => array( 'bar' ),
+			'float' => array( 9001.0, 42.0, 4.2, 0.0 ),
+		);
+
+		return array( $params, $definitions, $options, $expected );
+	}
+
 	public function parameterProvider() {
 		// $params, $definitions [, $options, $expected]
 		$argLists = array();
@@ -289,6 +329,8 @@ class ProcessorTest extends \MediaWikiTestCase {
 		$argLists[] = $this->getTypedParams();
 
 		$argLists[] = $this->getUncleanParams();
+
+		$argLists[] = $this->getListParams();
 
 		foreach ( $argLists as &$argList ) {
 			foreach ( $argList[1] as $key => &$definition ) {

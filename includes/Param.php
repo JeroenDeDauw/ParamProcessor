@@ -252,7 +252,46 @@ final class Param implements IParam {
 	 */
 	protected function parseAndValidate( Options $options ) {
 		$parser = $this->getValueParser( $options );
-		$parsingResult = $parser->parse( $this->getValue() );
+
+		if ( $this->definition->isList() ) {
+			$values = array();
+
+			foreach ( $this->getValue() as $value ) {
+				$parsedValue = $this->parseAndValidateValue( $parser, $value );
+
+				if ( is_array( $parsedValue ) ) {
+					$values[] = $parsedValue[0];
+				}
+			}
+
+			$this->setValue( $values );
+		}
+		else {
+			$parsedValue = $this->parseAndValidateValue( $parser, $this->getValue() );
+
+			if ( is_array( $parsedValue ) ) {
+				$this->setValue( $parsedValue[0] );
+			}
+		}
+
+		$this->setToDefaultIfNeeded();
+	}
+
+	/**
+	 * Parses and validates the provdied with with specified parser.
+	 * The result is returned in an array on success. On fail, false is returned.
+	 *
+	 * Parsing and validattion errors get added to $this->errors.
+	 *
+	 * @since 1.0
+	 *
+	 * @param ValueParser $parser
+	 * @param mixed $value
+	 *
+	 * @return array|bool
+	 */
+	protected function parseAndValidateValue( ValueParser $parser, $value ) {
+		$parsingResult = $parser->parse( $value );
 
 		$severity = $this->isRequired() ? ValidationError::SEVERITY_FATAL : ValidationError::SEVERITY_NORMAL;
 
@@ -263,8 +302,6 @@ final class Param implements IParam {
 				$value = $value->getValue();
 			}
 
-			$this->setValue( $value );
-
 			$validationCallback = $this->definition->getValidationCallback();
 
 			if ( $validationCallback !== null && $validationCallback( $value ) !== true ) {
@@ -272,7 +309,7 @@ final class Param implements IParam {
 			}
 			else {
 				$validator = $this->definition->getValueValidator();
-				$validator->setOptions( $this->definition->getOptions() );
+				$validator->setOptions( $this->definition->getOptions() ); // TODO
 				$validationResult = $validator->validate( $value );
 
 				if ( !$validationResult->isValid() ) {
@@ -281,12 +318,14 @@ final class Param implements IParam {
 					}
 				}
 			}
+
+			return array( $value );
 		}
 		else {
 			$this->errors[] = new ValidationError( $parsingResult->getError()->getText(), $severity );
 		}
 
-		$this->setToDefaultIfNeeded();
+		return false;
 	}
 
 	/**
