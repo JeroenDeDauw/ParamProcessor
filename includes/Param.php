@@ -238,7 +238,7 @@ final class Param implements IParam {
 			$parserClass = ParamDefinitionFactory::singleton()->getComponentForType( $this->definition->getType(), $parserType );
 
 			if ( $parserClass !== 'ValueParsers\NullParser' ) {
-				$parser = new $parserClass();
+				$parser = new $parserClass( new \ValueParsers\ParserOptions() );
 			}
 		}
 
