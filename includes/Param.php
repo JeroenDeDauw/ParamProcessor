@@ -118,7 +118,7 @@ final class Param implements IParam {
 	 * @return boolean
 	 */
 	public function setUserValue( $paramName, $paramValue, Options $options ) {
-		if ( $this->setCount > 0 && !self::$acceptOverriding ) {
+		if ( $this->setCount > 0 && !self::$acceptOverriding ) { // FIXME
 			// TODO
 			return false;
 		}

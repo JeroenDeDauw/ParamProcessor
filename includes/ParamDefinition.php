@@ -520,6 +520,10 @@ class ParamDefinition implements IParamDefinition {
 		else {
 			$param->setValue( $this->formatValue( $param->getValue(), $param, $definitions, $params ) );
 		}
+
+		if ( array_key_exists( 'post-format', $this->options ) ) {
+			$param->setValue( call_user_func( $this->options['post-format'], $param->getValue() ) );
+		}
 	}
 
 	/**
