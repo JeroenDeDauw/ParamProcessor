@@ -2429,7 +2429,7 @@ plaats fouten onderaan of bijna onderaan pagina's om alle fouten weer te geven."
 	'validator-describe-par-language' => 'De taal om de beschrijvingen in weer te geven',
 	'validator-describe-listtype' => 'Lijst met $1 items',
 	'validator-describe-empty' => 'leeg',
-	'validator-describe-required' => 'verplicht',
+	'validator-describe-required' => 'vereist',
 	'validator-describe-header-parameter' => 'Parameter',
 	'validator-describe-header-aliases' => 'Aliassen',
 	'validator-describe-header-type' => 'Type',
