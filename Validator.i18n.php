@@ -133,9 +133,10 @@ place listerrors at or near the bottom of the page to get all errors.',
  * @author Kghbln
  * @author Purodha
  * @author Raymond
+ * @author Shirayuki
  */
 $messages['qqq'] = array(
-	'validator-desc' => '{{desc}}',
+	'validator-desc' => '{{desc|name=Validator|url=http://www.mediawiki.org/wiki/Extension:Validator}}',
 	'validator-warning' => 'This message indicates an error detected. $1 holds the warning message.
 
 {{Identical|Warning}}',
