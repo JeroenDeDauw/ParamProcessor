@@ -16,7 +16,7 @@ $messages = array();
  * @author Daniel Werner
  */
 $messages['en'] = array(
-	'validator-desc' => 'Provides generic parameter handling support for other extensions',
+	'validator-desc' => 'Declarative parameter processing library',
 
 	// General
 	'validator-warning' => 'Warning: $1',

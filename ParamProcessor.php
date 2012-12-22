@@ -57,7 +57,7 @@ unset( $dependencies );
 
 
 define( 'ParamProcessor_VERSION', '1.0 alpha' );
-define( 'Validator_VERSION', ParamProcessor_VERSION ); // @deprecated
+define( 'Validator_VERSION', ParamProcessor_VERSION ); // @deprecated since 1.0
 
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Validator'] = __DIR__ . '/Validator.i18n.php';
@@ -65,7 +65,7 @@ $wgExtensionMessagesFiles['ValidatorMagic'] = __DIR__ . '/Validator.i18n.magic.p
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'Validator',
+	'name' => 'Validator (ParamProcessor)',
 	'version' => ParamProcessor_VERSION,
 	'author' => array( '[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Validator',
