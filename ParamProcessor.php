@@ -125,10 +125,10 @@ $wgAutoloadClasses['ParameterInput']			 	= __DIR__ . '/utils/ParameterInput.php'
 $wgAutoloadClasses['ValidatorDescribe']		  		= __DIR__ . '/utils/Describe.php';
 $wgAutoloadClasses['ValidatorListErrors']			= __DIR__ . '/utils/ListErrors.php';
 
-# Registration of the listerrors parser hooks.
+// Registration of the listerrors parser hooks.
 $wgHooks['ParserFirstCallInit'][] = 'ValidatorListErrors::staticInit';
 
-# Registration of the describe parser hooks.
+// Registration of the describe parser hooks.
 $wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
 
 // Since 0.4.8
