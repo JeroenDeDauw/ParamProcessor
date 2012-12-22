@@ -859,9 +859,18 @@ Sólo acepta {{PLURAL:$5|este valor|estos valores}}: $3 (y $4 {{PLURAL:$4|valor 
  * @author Avjoska
  */
 $messages['et'] = array(
+	'validator-type-string' => 'tekst',
+	'validator-type-integer' => 'kogu number',
 	'validator-type-float' => 'number',
 	'validator-type-boolean' => 'jah/ei',
+	'validator-type-char' => 'karakter',
 	'validator-type-title' => 'pealkiri',
+	'validator-type-string-list' => 'tekstide loetelu',
+	'validator-type-float-list' => 'numbrite loend',
+	'validator-listerrors-errors' => 'Vead',
+	'validator-listerrors-low' => 'Madal',
+	'validator-listerrors-normal' => 'Normaalne',
+	'validator-listerrors-high' => 'Kõrge',
 	'validator-describe-empty' => 'tühi',
 	'validator-describe-required' => 'nõutav',
 	'validator-describe-header-parameter' => 'Parameeter',
@@ -888,6 +897,9 @@ $messages['eu'] = array(
  * @author پاناروما
  */
 $messages['fa'] = array(
+	'validator-warning' => 'هشدار: $1',
+	'validator-error' => 'خطا: $1',
+	'validator-fatal-error' => 'خطای مهلک: $1',
 	'validator-type-string' => 'متن',
 	'validator-type-integer' => 'عدد صحیح',
 	'validator-type-float' => 'شماره',
@@ -900,10 +912,12 @@ $messages['fa'] = array(
 	'validator-type-char-list' => 'فهرست شخصیت‌ها',
 	'validator-type-title-list' => 'فهرست عناوین',
 	'validator-listerrors-errors' => 'خطاها',
+	'validator-listerrors-minor' => 'جزئی',
 	'validator-listerrors-low' => 'کم',
 	'validator-listerrors-normal' => 'عادی',
 	'validator-listerrors-high' => 'زیاد',
 	'validator-listerrors-fatal' => 'کشنده',
+	'validator-describe-descriptionmsg' => "'''شرح''': $1",
 	'validator-describe-empty' => 'خالی',
 	'validator-describe-required' => 'ضروری',
 	'validator-describe-header-parameter' => 'مولفه',
@@ -3535,6 +3549,7 @@ $messages['zh-hans'] = array(
 	'validator-type-boolean' => '布尔值',
 	'validator-type-char' => '字符',
 	'validator-listerrors-errors' => '错误',
+	'validator-listerrors-severity-message' => '（$1）$2',
 	'validator-listerrors-minor' => '很小',
 	'validator-listerrors-low' => '小',
 	'validator-listerrors-normal' => '中',
@@ -3565,6 +3580,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎)
  * @author Mark85296341
+ * @author Shirayuki
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -3580,6 +3596,7 @@ $messages['zh-hant'] = array(
 	'validator-type-boolean' => '布爾值',
 	'validator-type-char' => '字符',
 	'validator-listerrors-errors' => '錯誤',
+	'validator-listerrors-severity-message' => '（$1）$2',
 	'validator-listerrors-minor' => '很小',
 	'validator-listerrors-low' => '小',
 	'validator-listerrors-normal' => '中',
