@@ -42,15 +42,15 @@ class DimensionParam extends ParamDefinition {
 	 *
 	 * @since 1.0
 	 *
-	 * @param $value mixed
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of iParam
+	 * @param mixed $value
+	 * @param IParam $param
+	 * @param IParamDefinition[] $definitions
+	 * @param iParam[] $params
 	 *
 	 * @return mixed
 	 * @throws MWException
 	 */
-	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
+	protected function formatValue( $value, \IParam $param, array &$definitions, array $params ) {
 		if ( $value === 'auto' ) {
 			return $value;
 		}

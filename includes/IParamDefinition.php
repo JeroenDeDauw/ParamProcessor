@@ -275,24 +275,6 @@ interface IParamDefinition {
 	public function setValueValidator( ValueValidator $validator );
 
 	/**
-	 * Returns a ListValidator that can be used to validate the parameters value list.
-	 *
-	 * @since 1.0
-	 *
-	 * @return ListValidator
-	 */
-	public function getListValidator();
-
-	/**
-	 * Sets the ListValidator that can be used to validate the parameters value list.
-	 *
-	 * @since 1.0
-	 *
-	 * @param ValueValidator $validator
-	 */
-	public function setListValidator( ValueValidator $validator );
-
-	/**
 	 * Sets a validation function that will be run before the ValueValidator.
 	 *
 	 * This can be used instead of a ValueValidator where validation is very

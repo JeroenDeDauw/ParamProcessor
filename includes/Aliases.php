@@ -31,9 +31,20 @@
 class ParamDefinitionFactory extends ParamProcessor\ParamDefinitionFactory {}
 class ParamDefinition extends ParamProcessor\ParamDefinition {}
 interface IParamDefinition extends ParamProcessor\IParamDefinition {}
-class Validator extends ParamProcessor\Processor {}
 class DimensionParam extends ParamProcessor\DimensionParam {}
 class StringParam extends ParamProcessor\StringParam {}
 
-class ValidationError extends ParamProcessor\ValidationError {} // Deprecated since 1.0, removal in 1.2
-class ValidatorOptions extends ParamProcessor\Options {} // Deprecated since 1.0, removal in 1.2
+/**
+ * @deprecated since 1.0, removal in 1.2
+ */
+class ValidationError extends ParamProcessor\ValidationError {}
+
+/**
+ * @deprecated since 1.0, removal in 1.2
+ */
+class ValidatorOptions extends ParamProcessor\Options {}
+
+/**
+ * @deprecated since 1.0, removal in 1.2
+ */
+interface IParam extends ParamProcessor\IParam {}

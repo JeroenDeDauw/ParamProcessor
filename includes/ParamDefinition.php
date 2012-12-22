@@ -2,15 +2,20 @@
 
 namespace ParamProcessor;
 use MWException;
+
 use ValueParsers\ValueParser;
+use ValueParsers\NullParser;
+
 use ValueValidators\ValueValidator;
-use \ValueParsers\NullParser;
 use ValueValidators\NullValidator;
 
 /**
  * Parameter definition.
  * Specifies what kind of values are accepted, how they should be validated,
  * how they should be formatted, what their dependencies are and how they should be described.
+ *
+ * Try to avoid using this interface outside of ParamProcessor for anything else then defining parameters.
+ * In particular, do not derive from this class to implement methods such as formatValue.
  *
  * @since 1.0
  *
@@ -141,13 +146,6 @@ class ParamDefinition implements IParamDefinition {
 	 * @var ValueValidator|null
 	 */
 	protected $validator = null;
-
-	/**
-	 * @since 1.0
-	 *
-	 * @var ValueValidator|null
-	 */
-	protected $listValidator = null;
 
 	/**
 	 * @since 0.1
@@ -464,6 +462,7 @@ class ParamDefinition implements IParamDefinition {
 	 * @see IParamDefinition::validate
 	 *
 	 * @since 1.0
+	 * @deprecated
 	 *
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
@@ -501,10 +500,11 @@ class ParamDefinition implements IParamDefinition {
 	 * @see IParamDefinition::format
 	 *
 	 * @since 1.0
+	 * @deprecated
 	 *
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
+	 * @param IParam $param
+	 * @param IParamDefinition[] $definitions
+	 * @param IParam[] $params
 	 */
 	public function format( IParam $param, array &$definitions, array $params ) {
 		if ( $this->isList() ) {
@@ -521,6 +521,9 @@ class ParamDefinition implements IParamDefinition {
 			$param->setValue( $this->formatValue( $param->getValue(), $param, $definitions, $params ) );
 		}
 
+		// deprecated, deriving classes should not add array-definitions to the list
+		$definitions = self::getCleanDefinitions( $definitions );
+
 		if ( array_key_exists( 'post-format', $this->options ) ) {
 			$param->setValue( call_user_func( $this->options['post-format'], $param->getValue() ) );
 		}
@@ -530,6 +533,7 @@ class ParamDefinition implements IParamDefinition {
 	 * Formats the parameters values to their final result.
 	 *
 	 * @since 1.0
+	 * @deprecated
 	 *
 	 * @param $param IParam
 	 * @param $definitions array of IParamDefinition
@@ -543,15 +547,16 @@ class ParamDefinition implements IParamDefinition {
 	 * Formats the parameter value to it's final result.
 	 *
 	 * @since 1.0
+	 * @deprecated
 	 *
-	 * @param $value mixed
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
+	 * @param mixed $value
+	 * @param \IParam $param
+	 * @param IParamDefinition[] $definitions
+	 * @param IParam[] $params
 	 *
 	 * @return mixed
 	 */
-	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
+	protected function formatValue( $value, \IParam $param, array &$definitions, array $params ) {
 		return $value;
 		// No-op
 	}
@@ -633,21 +638,6 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::getListValidator
-	 *
-	 * @since 1.0
-	 *
-	 * @return ListValidator
-	 */
-	public function getListValidator() {
-		if ( $this->listValidator === null ) {
-			$this->listValidator = new NullValidator();
-		}
-
-		return $this->listValidator;
-	}
-
-	/**
 	 * @see IParamDefinition::setValueParser
 	 *
 	 * @since 1.0
@@ -667,17 +657,6 @@ class ParamDefinition implements IParamDefinition {
 	 */
 	public function setValueValidator( ValueValidator $validator ) {
 		$this->validator = $validator;
-	}
-
-	/**
-	 * @see IParamDefinition::setListValidator
-	 *
-	 * @since 1.0
-	 *
-	 * @param ValueValidator $validator
-	 */
-	public function setListValidator( ValueValidator $validator ) {
-		$this->listValidator = $validator;
 	}
 
 	/**

@@ -95,12 +95,23 @@ $wgAutoloadClasses['ParamProcessor\StringParam']		 		= __DIR__ . '/includes/defi
 class_alias( 'ParamProcessor\ParamDefinitionFactory', 'ParamDefinitionFactory' );
 class_alias( 'ParamProcessor\ParamDefinition', 'ParamDefinition' );
 class_alias( 'ParamProcessor\IParamDefinition', 'IParamDefinition' );
-class_alias( 'ParamProcessor\Processor', 'Validator' );
 class_alias( 'ParamProcessor\DimensionParam', 'DimensionParam' );
 class_alias( 'ParamProcessor\StringParam', 'StringParam' );
 
 class_alias( 'ParamProcessor\ValidationError', 'ValidationError' ); // Deprecated since 1.0, removal in 1.2
 class_alias( 'ParamProcessor\Options', 'ValidatorOptions' ); // Deprecated since 1.0, removal in 1.2
+class_alias( 'ParamProcessor\IParam', 'IParam' ); // Deprecated since 1.0, removal in 1.2
+
+/**
+ * @deprecated since 1.0, removal in 1.3
+ */
+class Validator extends ParamProcessor\Processor {
+
+	public function __construct() {
+		parent::__construct( new ParamProcessor\Options() );
+	}
+
+}
 
 
 

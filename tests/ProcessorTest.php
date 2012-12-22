@@ -70,7 +70,7 @@ class ProcessorTest extends \MediaWikiTestCase {
 	public function testNewFromOptions() {
 		$options = new Options();
 		$validator = Processor::newFromOptions( clone $options );
-		$this->assertInstanceOf( '\Validator', $validator );
+		$this->assertInstanceOf( '\ParamProcessor\Processor', $validator );
 		$this->assertEquals( $options, $validator->getOptions() );
 	}
 
