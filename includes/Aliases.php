@@ -32,7 +32,6 @@ class ParamDefinitionFactory extends ParamProcessor\ParamDefinitionFactory {}
 class ParamDefinition extends ParamProcessor\ParamDefinition {}
 interface IParamDefinition extends ParamProcessor\IParamDefinition {}
 class DimensionParam extends ParamProcessor\DimensionParam {}
-class StringParam extends ParamProcessor\StringParam {}
 
 /**
  * @deprecated since 1.0, removal in 1.2

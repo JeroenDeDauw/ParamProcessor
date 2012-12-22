@@ -96,7 +96,6 @@ class_alias( 'ParamProcessor\ParamDefinitionFactory', 'ParamDefinitionFactory' )
 class_alias( 'ParamProcessor\ParamDefinition', 'ParamDefinition' );
 class_alias( 'ParamProcessor\IParamDefinition', 'IParamDefinition' );
 class_alias( 'ParamProcessor\DimensionParam', 'DimensionParam' );
-class_alias( 'ParamProcessor\StringParam', 'StringParam' );
 
 class_alias( 'ParamProcessor\ValidationError', 'ValidationError' ); // Deprecated since 1.0, removal in 1.2
 class_alias( 'ParamProcessor\Options', 'ValidatorOptions' ); // Deprecated since 1.0, removal in 1.2
@@ -109,6 +108,17 @@ class Validator extends ParamProcessor\Processor {
 
 	public function __construct() {
 		parent::__construct( new ParamProcessor\Options() );
+	}
+
+}
+
+/**
+ * @deprecated since 1.0, removal in 1.3
+ */
+class StringParam extends ParamProcessor\StringParam {
+
+	public function __construct( $name, $default = null ) {
+		parent::__construct( get_called_class(), $name, $default );
 	}
 
 }
