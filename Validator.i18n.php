@@ -386,8 +386,16 @@ $messages['be-tarask'] = array(
 /** Bulgarian (български)
  * @author DCLXVI
  * @author Reedy
+ * @author පසිඳු කාවින්ද
  */
 $messages['bg'] = array(
+	'validator-type-string' => 'текст',
+	'validator-type-float' => 'номер',
+	'validator-type-title' => 'заглавие',
+	'validator-describe-empty' => 'празно',
+	'validator-describe-header-type' => 'Тип',
+	'validator-describe-header-default' => 'По подразбиране',
+	'validator-describe-parameters' => 'Параметри',
 	'validator_error_empty_argument' => 'Параметърът $1 не може да има празна стойност.', # Fuzzy
 );
 
@@ -857,13 +865,14 @@ Sólo acepta {{PLURAL:$5|este valor|estos valores}}: $3 (y $4 {{PLURAL:$4|valor 
 
 /** Estonian (eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'validator-type-string' => 'tekst',
 	'validator-type-integer' => 'kogu number',
 	'validator-type-float' => 'number',
 	'validator-type-boolean' => 'jah/ei',
-	'validator-type-char' => 'karakter',
+	'validator-type-char' => 'märk',
 	'validator-type-title' => 'pealkiri',
 	'validator-type-string-list' => 'tekstide loetelu',
 	'validator-type-float-list' => 'numbrite loend',
@@ -3133,6 +3142,7 @@ $messages['sr-el'] = array(
  * @author Ozp
  * @author Per
  * @author Sertion
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'validator-desc' => 'Valideraren skapar ett smidigt sätt för andra tillägg att validera olika parserfunktioners parametrar och taggar, sätta standardvärden för tilläggen samt att generera felmeddelanden',
@@ -3180,10 +3190,14 @@ $messages['sv'] = array(
 	'validator_error_must_be_number' => 'Parameter $1 måste bestå av ett tal.',
 	'validator_error_must_be_integer' => 'Parametern $1 måste vara ett heltal.',
 	'validator_error_invalid_range' => 'Parameter $1 måste vara i mellan $2 och $3.',
+	'validator-error-invalid-length' => 'Parametern $1 måste ha en längd på $2.',
+	'validator-error-invalid-length-range' => 'Parametern $1 måste ha en längd mellan $2 och $3.',
 	'validator_error_invalid_argument' => 'Värdet $1 är inte giltigt som parameter $2.',
 	'validator_list_error_empty_argument' => 'Parameter $1 accepterar inte tomma värden.',
 	'validator_list_error_must_be_number' => 'Parameter $1 får endast innehålla siffror.',
 	'validator_list_error_must_be_integer' => 'Parameter $1 får endast innehålla heltal.',
+	'validator_list_error_must_be_title' => 'Parametern $1 kan endast innehåll giltiga namn på wikisidor.',
+	'validator_list_error_must_be_existing_title' => 'Parametern $1 kan endast innehåll existerande namn på wikisidor.',
 	'validator_list_error_invalid_range' => 'Alla värden av parameter $1 måste vara mellan $2 och $3.',
 	'validator_list_error_invalid_argument' => 'Ett eller flera värden av parameter $1 är ogiltiga.',
 	'validator_error_accepts_only' => 'Värdet "$4" är inte giltigt för parametern $1. Den accepterar bara {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
@@ -3548,6 +3562,7 @@ $messages['zh-hans'] = array(
 	'validator-type-float' => '浮点数',
 	'validator-type-boolean' => '布尔值',
 	'validator-type-char' => '字符',
+	'validator-type-title' => '标题',
 	'validator-listerrors-errors' => '错误',
 	'validator-listerrors-severity-message' => '（$1）$2',
 	'validator-listerrors-minor' => '很小',
@@ -3595,6 +3610,7 @@ $messages['zh-hant'] = array(
 	'validator-type-float' => '浮點數',
 	'validator-type-boolean' => '布爾值',
 	'validator-type-char' => '字符',
+	'validator-type-title' => '標題',
 	'validator-listerrors-errors' => '錯誤',
 	'validator-listerrors-severity-message' => '（$1）$2',
 	'validator-listerrors-minor' => '很小',
