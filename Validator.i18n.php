@@ -868,6 +868,8 @@ Sólo acepta {{PLURAL:$5|este valor|estos valores}}: $3 (y $4 {{PLURAL:$4|valor 
  * @author Pikne
  */
 $messages['et'] = array(
+	'validator-warning' => 'Hoiatus: $1',
+	'validator-error' => 'Tõrge: $1',
 	'validator-type-string' => 'tekst',
 	'validator-type-integer' => 'kogu number',
 	'validator-type-float' => 'number',
@@ -880,11 +882,14 @@ $messages['et'] = array(
 	'validator-listerrors-low' => 'Madal',
 	'validator-listerrors-normal' => 'Normaalne',
 	'validator-listerrors-high' => 'Kõrge',
+	'validator-describe-descriptionmsg' => "'''Kirjeldus''': $1",
 	'validator-describe-empty' => 'tühi',
 	'validator-describe-required' => 'nõutav',
 	'validator-describe-header-parameter' => 'Parameeter',
+	'validator-describe-header-type' => 'Tüüp',
 	'validator-describe-header-description' => 'Kirjeldus',
 	'validator-describe-parameters' => 'Parameetrid',
+	'validator-describe-syntax' => 'Süntaks',
 );
 
 /** Basque (euskara)
@@ -1905,7 +1910,7 @@ $messages['ja'] = array(
 	'validator_list_error_must_be_existing_title' => '引数 $1 には既存のウィキ ページ名 (複数) のみを指定できます。',
 	'validator-list-error-must-be-float' => '引数 $1 には浮動小数点数のみを指定できます。',
 	'validator_list_error_invalid_range' => '引数「$1」の値はすべて $2 と $3 の間のものでなくてはなりません。',
-	'validator-list-error-invalid-regex' => 'パラメーター $1 の値は次の正規表現と一致する必要があります： $2',
+	'validator-list-error-invalid-regex' => 'パラメーター $1 の値は次の正規表現と一致する必要があります: $2',
 	'validator_list_error_invalid_argument' => 'パラメーター「$1」の値に不正なものが1つ以上あります。',
 	'validator-list-error-accepts-only' => 'パラメーター $1 に無効な値が含まれています。{{PLURAL:$3|この値|これらの値}}のみを使用できます：$2',
 	'validator-list-error-accepts-only-omitted' => 'パラメーター $1 に無効な値が含まれています。{{PLURAL:$3|この値|これらの値}}のみを使用できます：$2（と省略された $4 の{{PLURAL:$4|値}}）',
@@ -2656,6 +2661,13 @@ $messages['pms'] = array(
 	'validator-type-float' => 'nùmer',
 	'validator-type-boolean' => 'bò/nò',
 	'validator-type-char' => 'caràter',
+	'validator-type-title' => 'tìtol',
+	'validator-type-string-list' => 'lista ëd test',
+	'validator-type-integer-list' => "lista d'anter",
+	'validator-type-float-list' => 'lista ëd nùmer',
+	'validator-type-boolean-list' => 'lista ëd é!/nò',
+	'validator-type-char-list' => 'lista caràter',
+	'validator-type-title-list' => 'lista ëd tìtoj',
 	'validator-listerrors-errors' => 'Eror',
 	'validator-listerrors-minor' => 'Pi cit',
 	'validator-listerrors-low' => 'Bass',
@@ -2696,6 +2708,8 @@ piassé listerrors dzora o davzin ël fond ëd la pàgina për ciapé tùit j'er
 	'validator_error_empty_argument' => 'Ël paràmetr $1 a peul pa avèj un valor veuid.',
 	'validator_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
 	'validator_error_must_be_integer' => "Ël paràmetr $1 a peul mach esse n'antregh.",
+	'validator_error_must_be_title' => 'Paràmetr $1 a peul mach esse un nòm ëd pagina wiki bon.',
+	'validator_error_must_be_existing_title' => 'Paràmetr $1 a peul mach esse un nòm ëd pagina wiki esistenta.',
 	'validator-error-must-be-float' => 'Ël paràmetr $1 a peul mach esse un nùmer an vìrgola mòbil.',
 	'validator_error_invalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
 	'validator-error-invalid-regex' => 'Ël paràmetr $1 a dev cobiesse con sta espression regolar: $2.',
@@ -2705,6 +2719,8 @@ piassé listerrors dzora o davzin ël fond ëd la pàgina për ciapé tùit j'er
 	'validator_list_error_empty_argument' => 'Ël paràmetr $1 a aceta pa dij valor veuid.',
 	'validator_list_error_must_be_number' => 'Ël paràmetr $1 a peul mach conten-e dij nùmer.',
 	'validator_list_error_must_be_integer' => "Ël paràmetr $1 a peul mach conten-e dj'antegr.",
+	'validator_list_error_must_be_title' => 'Paràmetr $1 a peul mach conten-e dij nòm ëd pagina wiki bon.',
+	'validator_list_error_must_be_existing_title' => 'Paràmetr $1 a peul mach conten-e dij nòm ëd pagina wiki esistenta.',
 	'validator-list-error-must-be-float' => 'Ël paràmetr $1 a peul mach conten-e dij nùmer con vìrgola.',
 	'validator_list_error_invalid_range' => 'Tùit ij valor dël paràmetr $1 a deuvo esse tra $2 e $3.',
 	'validator-list-error-invalid-regex' => 'Tùit ij valor dël paràmetr $1 a devo cobiesse con sta espression regolar: $2.',
@@ -2716,6 +2732,7 @@ A aceta mach {{PLURAL:$3|sto valor|sti valor}}: $2 (e $4 {{PLURAL:$4|valor|valor
 	'validator_error_accepts_only' => 'Ël valor "$4" a l\'é pa bon për ël paràmetr $1. A aceta mach {{PLURAL:$3|sto valor-sì|sti valor-sì}}: $2.',
 	'validator-error-accepts-only-omitted' => 'Ël valor "$2" a l\'é pa bon për ël paràmetr $1. A aceta mach sti valor: $3 (e ij valor pa butà $4).',
 	'validator_list_omitted' => "{{PLURAL:$2|Ël valor|Ij valor}} $1 {{PLURAL:$2|a l'é|a son}} pa stàit butà.",
+	'validator-message-nodesc' => 'Pa gnun-e descrission dàite',
 );
 
 /** Pashto (پښتو)
@@ -3388,6 +3405,7 @@ $messages['tr'] = array(
  * @author NickK
  * @author Olvin
  * @author Prima klasy4na
+ * @author Ата
  */
 $messages['uk'] = array(
 	'validator-desc' => 'Валідатор забезпечує іншим розширенням можливості перевірки параметрів функцій парсера і тегів, встановлення значень за умовчанням та створення повідомлень про помилки',
@@ -3420,9 +3438,19 @@ $messages['uk'] = array(
 	'validator-listerrors-normal' => 'Звичайна',
 	'validator-listerrors-high' => 'Висока',
 	'validator-listerrors-fatal' => 'Фатальна',
+	'validator-listerrors-description' => 'Перераховує помилки (і попередження), що трапляються в обробниках парсеру, доданих через Validator.
+Виводяться тільки обробники парсеру, додані вище, де вставлено listerrors;
+помістіть listerrors в кінець сторінки, щоб отримати усі помилки.',
+	'validator-listerrors-par-minseverity' => 'Мінімальна серйозність питання для включення його в список.',
+	'validator-describe-description' => 'Створює документацію для одного чи декількох обробників парсеру, визначених через Validator.',
 	'validator-describe-notfound' => 'Не існує обробнику парсеру для «$1».',
 	'validator-describe-descriptionmsg' => "'''Опис''': $1",
 	'validator-describe-aliases' => "'''{{PLURAL:$2|Псевдонім|Псевдоніми|Псевдонімів}}''': $1",
+	'validator-describe-parserfunction' => 'Реалізовано лише як парсерна функція.',
+	'validator-describe-tagextension' => 'Реалізовано лише як тег розширення.',
+	'validator-describe-bothhooks' => 'Реалізовано і як парсерна функція, і як тег розширення.',
+	'validator-describe-par-hooks' => 'Обробник парсеру, для якого відображається документація.',
+	'validator-describe-par-pre' => 'Дозволяє отримувати фактичний вікітекст для документації без виведення його на сторінку.',
 	'validator-describe-par-language' => 'Мова для відображення описів',
 	'validator-describe-listtype' => 'Список елементів типу $1',
 	'validator-describe-empty' => 'пусто',
@@ -3439,6 +3467,8 @@ $messages['uk'] = array(
 	'validator-describe-tagdefault' => 'Доповнення тегу з усіма параметрами, із застосуванням стандартної нотації параметрів.',
 	'validator-describe-pfmin' => "Функція аналізатора, що має лише обов'язкові параметри.",
 	'validator-describe-pfmax' => 'Функція парсера зі всіма параметрами.',
+	'validator-describe-pfdefault' => 'Парсерна функція з усіма параметрами, із застосуванням стандартної нотації параметрів.',
+	'validator-describe-autogen' => 'Вміст цього розділу було автоматично створено обробником парсеру "describe" розширення Validator.',
 	'validator_error_empty_argument' => 'Параметр $1 не може приймати порожнє значення.',
 	'validator_error_must_be_number' => 'Параметр $1 може бути лише числом.',
 	'validator_error_must_be_integer' => 'Параметр $1 може бути лише цілим числом.',
@@ -3456,6 +3486,15 @@ $messages['uk'] = array(
 	'validator_list_error_must_be_title' => 'Параметр $1 може включати лише допустимі назви вікі-сторінок.',
 	'validator_list_error_must_be_existing_title' => 'Параметр $1 може включати лише назви існуючих вікі-сторінок.',
 	'validator-list-error-must-be-float' => 'Параметр $1 може включати лише числа з плаваючою крапкою.',
+	'validator_list_error_invalid_range' => 'Усі значення параметра $1 мають лежати між $2 і $3.',
+	'validator-list-error-invalid-regex' => 'Усі значення параметра $1 мають відповідати цьому регулярному виразу: $2.',
+	'validator_list_error_invalid_argument' => 'Одне або більше значень параметра $1 не припустимі.',
+	'validator-list-error-accepts-only' => 'Одне або більше значень параметра $1 не припустимі. {{PLURAL:$3|Допустиме лише таке значення|Допустимі лише такі значення}}: $2.',
+	'validator-list-error-accepts-only-omitted' => 'Одне або більше значень параметра $1 не припустимі. {{PLURAL:$3|Допустиме лише таке значення|Допустимі лише такі значення}}: $2 (і $4 {{PLURAL:$4|опущене значення|опущені значення|опущених значень}}).',
+	'validator_error_accepts_only' => 'Значення "$4" не припустиме для параметра $1. {{PLURAL:$3|Допустиме лише таке значення|Допустимі лише такі значення}}: $2.',
+	'validator-error-accepts-only-omitted' => 'Значення параметра "$2" не припустиме для параметра $1. {{PLURAL:$5|Допустиме лише таке значення|Допустимі лише такі значення}}: $3 (і $4 {{PLURAL:$4|опущене значення|опущені значення|опущених значень}}).',
+	'validator_list_omitted' => '{{PLURAL:$2|Значення}} $1 {{PLURAL:$2|було пропущене|були пропущені}}.',
+	'validator-message-nodesc' => 'Опис відсутній',
 );
 
 /** Urdu (اردو)
