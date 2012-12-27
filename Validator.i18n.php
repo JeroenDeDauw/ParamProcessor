@@ -947,6 +947,7 @@ $messages['fa'] = array(
  * @author Nedergard
  * @author Silvonen
  * @author Str4nd
+ * @author VezonThunder
  */
 $messages['fi'] = array(
 	'validator-desc' => 'Tarkastaja tarjoaa helpon tavan muille laajennuksille jäsenninfunktioiden ja tagilaajennusten parametrien tarkastukseen, oletusarvojen asettamiseen ja virheilmoitusten luomiseen.',
@@ -961,6 +962,10 @@ $messages['fi'] = array(
 	'validator-type-char' => 'merkki',
 	'validator-type-title' => 'otsikko',
 	'validator-listerrors-errors' => 'Virheet',
+	'validator-describe-empty' => 'tyhjä',
+	'validator-describe-required' => 'pakollinen',
+	'validator-describe-header-default' => 'Oletus',
+	'validator-describe-header-description' => 'Kuvaus',
 	'validator_error_must_be_number' => 'Parametrin $1 on oltava luku.',
 	'validator_error_must_be_integer' => 'Parametrin $1 on oltava kokonaisluku.',
 );
@@ -972,6 +977,7 @@ $messages['fi'] = array(
  * @author Gomoko
  * @author IAlex
  * @author Jean-Frédéric
+ * @author LIMAFOX76
  * @author McDutchie
  * @author Peter17
  * @author PieRRoMaN
@@ -980,17 +986,17 @@ $messages['fi'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'validator-desc' => 'Le validateur fournit aux autres extensions un moyen simple de valider les paramètres des fonctions de l’analyseur syntaxique et des extensions de balises, de définir des valeurs par défaut et de générer des messages d’erreur',
+	'validator-desc' => 'Validator fournit aux autres extensions un moyen simple de valider les paramètres des fonctions de l’analyseur syntaxique et des extensions de balises, de définir des valeurs par défaut et de générer des messages d’erreur',
 	'validator-warning' => 'Attention : $1',
 	'validator-error' => 'Erreur : $1',
 	'validator-fatal-error' => 'Erreur fatale : $1',
 	'validator_error_parameters' => '{{PLURAL:$1|L’erreur suivante a été détectée|Les erreurs suivantes ont été détectées}} dans votre syntaxe :',
 	'validator_warning_parameters' => 'Il y a {{PLURAL:$1|une erreur|des erreurs}} dans votre syntaxe.',
-	'validator-warning-adittional-errors' => '... et {{PLURAL:$1|un problème supplémentaire|plusieurs autres problèmes}}.',
+	'validator-warning-adittional-errors' => "... ainsi {{PLURAL:$1|qu'un problème supplémentaire|que plusieurs autres problèmes}}.",
 	'validator-error-omitted' => '{{PLURAL:$2|La valeur « $1 » a été oubliée|Les valeurs « $1 » ont été oubliées}}.',
 	'validator-error-problem' => 'Il y a un problème avec le paramètre $1.',
 	'validator_error_unknown_argument' => '$1 n’est pas un paramètre valide.',
-	'validator_error_required_missing' => 'Le paramètre requis $1 n’est pas fourni.',
+	'validator_error_required_missing' => 'Le paramètre requis $1 n’est pas renseigné.',
 	'validator-error-override-argument' => 'Le logiciel a essayé de remplacer le paramètre $1 (valeur : $2) avec la valeur « $3 »',
 	'validator-type-string' => 'texte',
 	'validator-type-integer' => 'nombre entier',
@@ -1010,19 +1016,19 @@ $messages['fr'] = array(
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Élevé',
 	'validator-listerrors-fatal' => 'Fatal',
-	'validator-listerrors-description' => "Liste les erreurs (et les avertissements) qui se sont produits dans les ''hooks'' de l'analyseur syntaxique ''via'' ''Validator''.
+	'validator-listerrors-description' => "Liste les erreurs (et les avertissements) qui se sont produites dans les ''hooks'' de l'analyseur syntaxique ''via'' ''Validator''.
 Seules les listes pour les ''hooks'' de l'analyseur syntaxique (ajoutées où apparaît <code>listerrors</code>) sont insérées ;
 placer <code>listerrors</code> au plus bas de la page pour obtenir toutes les erreurs.",
 	'validator-listerrors-par-minseverity' => "La sévérité minimale d'une erreur pour être listée.",
 	'validator-describe-description' => "Génère la documentation pour un ou plusieurs ''hooks'' de l'analyseur syntaxique ''via'' ''Validator'.",
 	'validator-describe-notfound' => "Il n'y a pas de ''hook'' qui gère « $1 ».",
-	'validator-describe-descriptionmsg' => "'''Description''': $1",
-	'validator-describe-aliases' => "'''{{PLURAL:$2|Alias|Alias}}''': $1",
-	'validator-describe-parserfunction' => "Mis en oeuvre uniquement comme fonction de l'analyseur syntaxique.",
+	'validator-describe-descriptionmsg' => "'''Description''' : $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Alias}}''' : $1",
+	'validator-describe-parserfunction' => "Mis en œuvre uniquement comme fonction de l'analyseur syntaxique.",
 	'validator-describe-tagextension' => "Mis en œuvre seulement comme balise d'extension.",
-	'validator-describe-bothhooks' => "Mis en oeuvre comme fonction de l'analyseur syntaxique et comme balise d'extension.",
+	'validator-describe-bothhooks' => "Mis en œuvre comme fonction de l'analyseur syntaxique et comme balise d'extension.",
 	'validator-describe-par-hooks' => "Les ''hooks'' de l'analyseur syntaxique dont il faut afficher la documentation.",
-	'validator-describe-par-pre' => "Permet d'obtenir le wikitexte de la documentation, sans qu'il soit rendu sur la page.",
+	'validator-describe-par-pre' => "Vous permet d'obtenir le wikitexte courant de la documentation, sans qu'il soit rendu sur la page.",
 	'validator-describe-par-language' => 'La langue dans laquelle afficher les descriptions',
 	'validator-describe-listtype' => 'Liste de $1 éléments',
 	'validator-describe-empty' => 'vide',
@@ -1034,21 +1040,21 @@ placer <code>listerrors</code> au plus bas de la page pour obtenir toutes les er
 	'validator-describe-header-description' => 'Description',
 	'validator-describe-parameters' => 'Paramètres',
 	'validator-describe-syntax' => 'Syntaxe',
-	'validator-describe-tagmin' => "Balise d'extension avec seulement les paramètres requis.",
-	'validator-describe-tagmax' => "Balise d'extension avec tous les paramètres.",
-	'validator-describe-tagdefault' => "Balise d'extension avec tous les paramètres en utilisant la notation par défaut des paramètres.",
-	'validator-describe-pfmin' => "Fonction de l'analyseur syntaxique avec seulement les paramètres requis.",
-	'validator-describe-pfmax' => "Fonction de l'analyseur syntaxique avec tous les paramètres.",
-	'validator-describe-pfdefault' => "Fonction de l'analyseur syntaxique avec tous les paramètres en utilisant la notation par défaut des paramètres.",
+	'validator-describe-tagmin' => "Balise d'extension comprenant seulement les paramètres requis.",
+	'validator-describe-tagmax' => "Balise d'extension comprenant tous les paramètres.",
+	'validator-describe-tagdefault' => "Balise d'extension comprenant tous les paramètres en utilisant la notation par défaut des paramètres.",
+	'validator-describe-pfmin' => "Fonction de l'analyseur syntaxique comprenant seulement les paramètres requis.",
+	'validator-describe-pfmax' => "Fonction de l'analyseur syntaxique comprenant tous les paramètres.",
+	'validator-describe-pfdefault' => "Fonction de l'analyseur syntaxique comprenant tous les paramètres en utilisant la notation par défaut des paramètres.",
 	'validator-describe-autogen' => "Le contenu de cette section a été généré automatiquement par le ''hook'' ''Describe'' de l'extension ''Validator''.",
 	'validator_error_empty_argument' => 'Le paramètre $1 ne peut pas avoir une valeur vide.',
-	'validator_error_must_be_number' => 'Le paramètre $1 peut être uniquement un nombre.',
-	'validator_error_must_be_integer' => 'Le paramètre $1 peut seulement être un entier.',
+	'validator_error_must_be_number' => "Le paramètre $1 ne peut être qu'un nombre.",
+	'validator_error_must_be_integer' => "Le paramètre $1 ne peut être qu'un entier.",
 	'validator_error_must_be_title' => "Le paramètre $1 ne peut être qu'un nom de page wiki valide.",
 	'validator_error_must_be_existing_title' => "Le paramètre $1 ne peut être qu'un nom de page wiki existante.",
-	'validator-error-must-be-float' => 'Le paramètre $1 doit être un nombre à virgule flottante.',
-	'validator_error_invalid_range' => 'Le paramètre $1 doit être entre $2 et $3.',
-	'validator-error-invalid-regex' => 'Le paramètre $1 doit vérifier cette expression rationnelle : « $2 ».',
+	'validator-error-must-be-float' => "Le paramètre $1 ne peut être qu'un nombre à virgule flottante.",
+	'validator_error_invalid_range' => 'Le paramètre $1 doit être compris entre $2 et $3.',
+	'validator-error-invalid-regex' => 'Le paramètre $1 doit concorder avec cette expression rationnelle : « $2 ».',
 	'validator-error-invalid-length' => 'Le paramètre $1 doit avoir une longueur de $2.',
 	'validator-error-invalid-length-range' => 'Le paramètre $1 doit avoir une longueur comprise entre $2 et $3.',
 	'validator_error_invalid_argument' => 'La valeur $1 n’est pas valide pour le paramètre $2.',
@@ -1059,15 +1065,12 @@ placer <code>listerrors</code> au plus bas de la page pour obtenir toutes les er
 	'validator_list_error_must_be_existing_title' => 'Le paramètre $1 ne peut contenir que des noms de page wiki existantes.',
 	'validator-list-error-must-be-float' => 'Le paramètre $1 ne peut contenir que des nombres à virgule.',
 	'validator_list_error_invalid_range' => 'Toutes les valeurs du paramètre $1 doivent être comprises entre $2 et $3.',
-	'validator-list-error-invalid-regex' => 'Toutes les valeurs du paramètre $1 doivent vérifier cette expression rationnelle : « $2 ».',
+	'validator-list-error-invalid-regex' => 'Toutes les valeurs du paramètre $1 doivent concorder avec cette expression rationnelle : « $2 ».',
 	'validator_list_error_invalid_argument' => 'Une ou plusieurs valeurs du paramètre $1 sont invalides.',
-	'validator-list-error-accepts-only' => 'Une ou plusieurs valeur(s) du paramètre $1 est(sont) invalide(s).
-Il n’accepte que {{PLURAL:$3|cette valeur|ces valeurs}} : $2.',
-	'validator-list-error-accepts-only-omitted' => 'Une ou plusieurs valeur(s) du paramètre $1 est(sont) invalide(s).
-Celui-ci n’accepte que {{PLURAL:$3|cette valeur|ces valeurs}} : $2 (et $4 {{PLURAL:$4|valeur omise|valeurs omises}}).',
-	'validator_error_accepts_only' => "La valeur « $4 » n'est pas valable pour le paramètre $1. Il accepte uniquement {{PLURAL:$3|cette valeur|ces valeurs}} : $2.",
-	'validator-error-accepts-only-omitted' => 'La valeur « $2 » n’est pas valable pour le paramètre $1.
-Celui-ci n’accepte que {{PLURAL:$5|cette valeur|ces valeurs}} : $3 (et $4 {{PLURAL:$4|valeur omise|valeurs omises}}).',
+	'validator-list-error-accepts-only' => 'Une ou plusieurs valeurs du paramètre $1 sont invalides. Ce paramètre n’accepte que {{PLURAL:$3|cette valeur|ces valeurs}} : $2.',
+	'validator-list-error-accepts-only-omitted' => 'Une ou plusieurs valeurs du paramètre $1 sont invalides. Ce paramètre n’accepte que {{PLURAL:$3|cette valeur|ces valeurs}} : $2 (et {{PLURAL:$4|la valeur omise|les valeurs omises}} $4).',
+	'validator_error_accepts_only' => "La valeur « $4 » n'est pas valable pour le paramètre $1. Ce paramètre accepte uniquement {{PLURAL:$3|cette valeur|ces valeurs}} : $2.",
+	'validator-error-accepts-only-omitted' => 'La valeur « $2 » n’est pas valable pour le paramètre $1. Ce paramètre n’accepte que {{PLURAL:$5|cette valeur|ces valeurs}} : $3 (et {{PLURAL:$4|la valeur omise|les valeurs omises}} $4).',
 	'validator_list_omitted' => '{{PLURAL:$2|La valeur|Les valeurs}} $1 {{PLURAL:$2|a été oubliée|ont été oubliées}}.',
 	'validator-message-nodesc' => 'Aucune description fournie',
 );
