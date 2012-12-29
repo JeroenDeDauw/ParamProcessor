@@ -3129,6 +3129,7 @@ $messages['si'] = array(
 	'validator-describe-empty' => 'හිස්',
 	'validator-describe-required' => 'අවශ්‍යයි',
 	'validator-describe-header-parameter' => 'පරාමිතිය',
+	'validator-describe-header-aliases' => 'අන්වර්ථ නාම',
 	'validator-describe-header-type' => 'වර්ගය',
 	'validator-describe-header-default' => 'සාමාන්‍ය',
 	'validator-describe-header-description' => 'විස්තරය',
