@@ -943,6 +943,7 @@ $messages['fa'] = array(
 	'validator-describe-header-type' => 'نوع',
 	'validator-describe-header-default' => 'پیش فرض',
 	'validator-describe-header-description' => 'تشریح',
+	'validator-describe-parameters' => 'پارامترها',
 );
 
 /** Finnish (suomi)
@@ -2549,13 +2550,14 @@ $messages['pfl'] = array(
 /** Polish (polski)
  * @author BeginaFelicysym
  * @author Fizykaa
+ * @author Matma Rex
  * @author Sp5uhe
  * @author Woytecr
  */
 $messages['pl'] = array(
 	'validator-desc' => 'Dostarcza innym rozszerzeniom ogólną obsługę parametrów',
-	'validator-warning' => 'Uwaga – $1',
-	'validator-error' => 'Błąd – $1',
+	'validator-warning' => 'Uwaga: $1',
+	'validator-error' => 'Błąd: $1',
 	'validator-fatal-error' => 'Błąd krytyczny – $1',
 	'validator_error_parameters' => 'W Twoim kodzie {{PLURAL:$1|został wykryty następujący błąd|zostały wykryte następujące błędy}} składni:',
 	'validator_warning_parameters' => 'W Twoim kodzie {{PLURAL:$1|wystąpił błąd|wystąpiły błędy}} składni.',
@@ -3111,6 +3113,7 @@ $messages['si'] = array(
 	'validator-error' => 'දෝෂය: $1',
 	'validator-fatal-error' => 'මාරාන්තික දෝෂය: $1',
 	'validator_error_parameters' => 'ඔබේ වාග් රීතිය මඟින් පහත {{PLURAL:$1|දෝෂය|දෝෂයන්}} අනාවරණය කරනු ලැබ ඇත', # Fuzzy
+	'validator-error-problem' => '$1 පරාමිතිය සමඟ ගැටලුවක් තිබුණි.',
 	'validator_error_unknown_argument' => '$1 වලංගු පරාමිතියක් නොවේ.',
 	'validator_error_required_missing' => 'අවශ්‍ය වන $1 පරාමිතිය සපයා නොමැත.',
 	'validator-type-string' => 'පෙළ',
@@ -3133,6 +3136,8 @@ $messages['si'] = array(
 	'validator-listerrors-fatal' => 'මාරාන්තික',
 	'validator-describe-descriptionmsg' => "'''විස්තරය''': $1",
 	'validator-describe-aliases' => "'''{{PLURAL:$2|අන්වර්ථ නාමය|අන්වර්ථ නාම}}''': $1",
+	'validator-describe-parserfunction' => 'ව්‍යාකරණ විග්‍රහ කෘත්‍යක් ලෙස පමණක් ක්‍රියාවට නංවා ඇත.',
+	'validator-describe-tagextension' => 'ටැග විස්තීර්ණයක් ලෙස පමණක් ක්‍රියාවට නංවා ඇත.',
 	'validator-describe-par-language' => 'විස්තර සංදර්ශනය කල යුතු භාෂාව',
 	'validator-describe-listtype' => '$1 අයිතමවල ලැයිස්තුව',
 	'validator-describe-empty' => 'හිස්',
