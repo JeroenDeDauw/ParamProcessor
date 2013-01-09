@@ -120,7 +120,6 @@ $wgAutoloadClasses['ParamProcessor\Test\ParamDefinitionTest']	= __DIR__ . '/test
 
 // utils
 $wgAutoloadClasses['ParserHook']				 	= __DIR__ . '/utils/ParserHook.php';
-$wgAutoloadClasses['ParameterInput']			 	= __DIR__ . '/utils/ParameterInput.php';
 $wgAutoloadClasses['ValidatorDescribe']		  		= __DIR__ . '/utils/Describe.php';
 $wgAutoloadClasses['ValidatorListErrors']			= __DIR__ . '/utils/ListErrors.php';
 

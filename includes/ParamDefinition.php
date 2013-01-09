@@ -245,10 +245,21 @@ class ParamDefinition implements IParamDefinition {
 	 *
 	 * @since 1.0
 	 *
-	 * @return array|false
+	 * @return array|boolean false
 	 */
 	public function getAllowedValues() {
-		return $this->allowedValues;
+		$allowedValues = array();
+
+		// TODO: properly implement this
+		if ( $this->validator === null ) {
+			$allowedValues = $this->validator->getWhitelistedValues();
+
+			if ( $allowedValues === false ) {
+				$allowedValues = array();
+			}
+		}
+
+		return $allowedValues;
 	}
 
 	/**
