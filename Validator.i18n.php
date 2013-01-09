@@ -1080,7 +1080,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'validator-desc' => 'O servizo de validación ofrece un medio sinxelo a outras extensións para validar os parámetros de funcións analíticas e etiquetas de extensións, para establecer os valores por defecto e para xerar mensaxes de erro',
+	'validator-desc' => 'Biblioteca de procesamento de parámetros declarativos',
 	'validator-warning' => 'Atención: $1',
 	'validator-error' => 'Erro: $1',
 	'validator-fatal-error' => 'Erro fatal: $1',
