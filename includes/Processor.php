@@ -290,7 +290,7 @@ class Processor {
 			// These are unrecognized parameters, as they where not used by any parameter definition.
 			foreach ( $this->rawParameters as $paramName => $paramValue ) {
 				$this->registerNewError(
-					wfMsgExt( 'validator_error_unknown_argument', 'parsemag', $paramName ),
+					$paramName . ' is not a valid parameter', // TODO
 					$paramName
 				);
 			}			
