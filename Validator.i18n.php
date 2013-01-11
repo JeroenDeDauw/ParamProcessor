@@ -1898,7 +1898,7 @@ $messages['ka'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'validator-desc' => '다른 확장 기능에 대한 일반 변수 처리 지원을 제공',
+	'validator-desc' => '선언적 변수 처리 라이브러리',
 	'validator-warning' => '경고: $1',
 	'validator-error' => '오류: $1',
 	'validator-fatal-error' => '치명적인 오류: $1',
@@ -1979,10 +1979,10 @@ $messages['ko'] = array(
 	'validator_list_error_invalid_range' => '$1 변수의 모든 값은 $2(와)과 $3 사이여야 합니다.',
 	'validator-list-error-invalid-regex' => '$1 변수의 모든 값은 이 정규 표현식과 일치해야 합니다: $2.',
 	'validator_list_error_invalid_argument' => '$1 변수에 대해 하나 이상의 값이 잘못되었습니다.',
-	'validator-list-error-accepts-only' => '$1 변수에 대해 하나 이상의 값이 잘못되었습니다. 이는 {{PLURAL:$3|이 값}}만 승인합니다: $2.',
-	'validator-list-error-accepts-only-omitted' => '$1 변수에 대해 하나 이상의 값이 잘못되었습니다. 이는 {{PLURAL:$3|이 값}}만 승인합니다: $2 (그리고 $4 값은 생략합니다).',
-	'validator_error_accepts_only' => '"$4" 값은 $1 변수에 대해 유효하지 않습니다. 이는 {{PLURAL:$3|이 값}}만 승인합니다: $2.',
-	'validator-error-accepts-only-omitted' => '"$2" 값은 $1 변수에 대해 유효하지 않습니다. 이는 {{PLURAL:$5|이 값}}만 승인합니다: $3 (그리고 $4 값은 생략합니다).',
+	'validator-list-error-accepts-only' => '$1 변수에 대해 하나 이상의 값이 잘못되었습니다. {{PLURAL:$3|이 값}}만 승인합니다: $2.',
+	'validator-list-error-accepts-only-omitted' => '$1 변수에 대해 하나 이상의 값이 잘못되었습니다. {{PLURAL:$3|이 값}}만 승인합니다: $2 (그리고 $4 값은 생략합니다).',
+	'validator_error_accepts_only' => '"$4" 값은 $1 변수에 대해 유효하지 않습니다. {{PLURAL:$3|이 값}}만 승인합니다: $2.',
+	'validator-error-accepts-only-omitted' => '"$2" 값은 $1 변수에 대해 유효하지 않습니다. {{PLURAL:$5|이 값}}만 승인합니다: $3 (그리고 $4 값은 생략합니다).',
 	'validator_list_omitted' => '$1 {{PLURAL:$2|값}}은 생략{{PLURAL:$2|합니다}}.',
 	'validator-message-nodesc' => '설명을 제공하지 않았습니다',
 );
