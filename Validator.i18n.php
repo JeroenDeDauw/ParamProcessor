@@ -133,19 +133,67 @@ place listerrors at or near the bottom of the page to get all errors.',
  * @author Kghbln
  * @author Purodha
  * @author Raymond
+ * @author Shirayuki
  */
 $messages['qqq'] = array(
-	'validator-desc' => '{{desc}}',
-	'validator-warning' => '{{Identical|Warning}}',
-	'validator-error' => '{{Identical|Error}}',
+	'validator-desc' => '{{desc|name=Validator|url=http://www.mediawiki.org/wiki/Extension:Validator}}',
+	'validator-warning' => 'This message indicates an error detected. $1 holds the warning message.
+
+{{Identical|Warning}}',
+	'validator-error' => 'This message indicates an error detected. $1 holds the error report.
+
+{{Identical|Error}}',
+	'validator-fatal-error' => 'This message indicates a fatal error detected. $1 holds the fatal error report.',
 	'validator_error_parameters' => 'Parameters:
 * $1 is the number of syntax errors, for PLURAL support (optional)',
-	'validator-listerrors-errors' => '{{Identical|Error}}',
+	'validator-error-problem' => 'This is an error message. $1 holds the name of the parameter causing the error.',
+	'validator_error_unknown_argument' => 'This is an error message. $1 holds the name of the erroneous parameter provided.',
+	'validator_error_required_missing' => 'This is an error message. $1 holds the name of the parameter which was not provided.',
+	'validator-type-string' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "text" (string).
+{{Related|Validator-type}}
+{{Identical|Text}}',
+	'validator-type-integer' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "whole number" (integer).
+{{Related|Validator-type}}',
+	'validator-type-float' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "number".
+{{Related|Validator-type}}',
+	'validator-type-boolean' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is a boolean value (yes or no).
+{{Related|Validator-type}}',
+	'validator-type-char' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "character".
+{{Related|Validator-type}}',
+	'validator-type-title' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is the "title" of a page.
+{{Related|Validator-type}}
+{{Identical|Title}}',
+	'validator-type-string-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "texts" (strings).
+{{Related|Validator-type}}',
+	'validator-type-integer-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "whole numbers" (integers).
+{{Related|Validator-type}}',
+	'validator-type-float-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "numbers".
+{{Related|Validator-type}}',
+	'validator-type-boolean-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "booleans" (yes or no).
+{{Related|Validator-type}}',
+	'validator-type-char-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "characters".
+{{Related|Validator-type}}',
+	'validator-type-title-list' => 'This is the name of a type of values that may be assigned to a parameter. In this case multiple "page names".
+{{Related|Validator-type}}',
+	'validator-listerrors-errors' => 'This is the title of the section added to a page after inserting the "listerrors" tag or the "listerrors" parser function. Possible errors which were detected are listed in this section.
+
+{{Identical|Error}}',
 	'validator-listerrors-severity-message' => '{{Optional}}
 * $1 = severity
 * $2 = message',
-	'validator-listerrors-normal' => '{{Identical|Normal}}',
+	'validator-listerrors-minor' => 'This is the name of a status that is assigned to an error report.',
+	'validator-listerrors-low' => 'This is the name of a status that is assigned to an error report.
+{{Identical|Low}}',
+	'validator-listerrors-normal' => 'This is the name of a status that is assigned to an error report.
+
+{{Identical|Normal}}',
+	'validator-listerrors-high' => 'This is the name of a status that is assigned to an error report.
+{{Identical|High}}',
+	'validator-listerrors-fatal' => 'This is the name of a status that is assigned to an error report.',
 	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
+	'validator-describe-parserfunction' => '{{Related|Validator-describe}}',
+	'validator-describe-tagextension' => '{{Related|Validator-describe}}',
+	'validator-describe-bothhooks' => '{{Related|Validator-describe}}',
 	'validator-describe-listtype' => 'This is a patchwork message. $1 stands for one of these messages: {{msg-mw|Validator-type-string}}, {{msg-mw|Validator-type-number}}, {{msg-mw|Validator-type-integer}}, {{msg-mw|Validator-type-float}}, {{msg-mw|Validator-type-boolean}}, {{msg-mw|Validator-type-char}}',
 	'validator-describe-empty' => '{{Identical|Empty}}',
 	'validator-describe-required' => '{{Identical|Required}}',
@@ -154,6 +202,94 @@ $messages['qqq'] = array(
 	'validator-describe-header-default' => '{{Identical|Default}}',
 	'validator-describe-header-description' => '{{Identical|Description}}',
 	'validator-describe-parameters' => '{{Identical|Parameter}}',
+	'validator-describe-tagmin' => '{{Related|Validator-describe}}',
+	'validator-describe-tagmax' => '{{Related|Validator-describe}}',
+	'validator-describe-tagdefault' => '{{Related|Validator-describe}}',
+	'validator-describe-pfmin' => '{{Related|Validator-describe}}',
+	'validator-describe-pfmax' => '{{Related|Validator-describe}}',
+	'validator-describe-pfdefault' => '{{Related|Validator-describe}}',
+	'validator-describe-autogen' => '{{Related|Validator-describe}}',
+	'validator_error_empty_argument' => 'See also:
+* {{msg-mw|Validator list error empty argument}}
+{{Related|Validator error}}',
+	'validator_error_must_be_number' => 'See also:
+* {{msg-mw|Validator list error must be number}}
+{{Related|Validator error}}',
+	'validator_error_must_be_integer' => 'See also:
+* {{msg-mw|Validator list error must be integer}}
+{{Related|Validator error}}',
+	'validator_error_must_be_title' => 'See also:
+* {{msg-mw|Validator list error must be title}}
+{{Related|Validator error}}',
+	'validator_error_must_be_existing_title' => 'See also:
+* {{msg-mw|Validator list error must be existing title}}
+{{Related|Validator error}}',
+	'validator-error-must-be-float' => 'See also:
+* {{msg-mw|Validator-list-error-must-be-float}}
+{{Related|Validator error}}',
+	'validator_error_invalid_range' => 'See also:
+* {{msg-mw|Validator list error invalid range}}
+{{Related|Validator error}}',
+	'validator-error-invalid-regex' => 'See also:
+* {{msg-mw|Validator-list-error-invalid-regex}}
+{{Related|Validator error}}',
+	'validator-error-invalid-length' => '{{Related|Validator error}}',
+	'validator-error-invalid-length-range' => '{{Related|Validator error}}',
+	'validator_error_invalid_argument' => 'See also:
+* {{msg-mw|Validator list error invalid argument}}
+{{Related|Validator error}}',
+	'validator_list_error_empty_argument' => 'See also:
+* {{msg-mw|Validator error empty argument}}
+{{Related|Validator list error}}',
+	'validator_list_error_must_be_number' => 'See also:
+* {{msg-mw|Validator error must be number}}
+{{Related|Validator list error}}',
+	'validator_list_error_must_be_integer' => 'See also:
+* {{msg-mw|Validator error must be integer}}
+{{Related|Validator list error}}',
+	'validator_list_error_must_be_title' => 'See also:
+* {{msg-mw|Validator error must be title}}
+{{Related|Validator list error}}',
+	'validator_list_error_must_be_existing_title' => 'See also:
+* {{msg-mw|Validator error must be existing title}}
+{{Related|Validator list error}}',
+	'validator-list-error-must-be-float' => 'See also:
+* {{msg-mw|Validator-error-must-be-float}}
+{{Related|Validator list error}}',
+	'validator_list_error_invalid_range' => 'See also:
+* {{msg-mw|Validator error invalid range}}
+{{Related|Validator list error}}',
+	'validator-list-error-invalid-regex' => 'See also:
+* {{msg-mw|Validator-error-invalid-regex}}
+{{Related|Validator list error}}',
+	'validator_list_error_invalid_argument' => 'See also:
+* {{msg-mw|Validator-list-error-accepts-only}}
+* {{msg-mw|Validator-list-error-accepts-only-omitted}}
+* {{msg-mw|Validator error accepts only}}
+* {{msg-mw|Validator-error-accepts-only-omitted}}
+{{Related|Validator list error}}',
+	'validator-list-error-accepts-only' => 'See also:
+* {{msg-mw|Validator list error invalid argument}}
+* {{msg-mw|Validator-list-error-accepts-only-omitted}}
+* {{msg-mw|Validator error accepts only}}
+* {{msg-mw|Validator-error-accepts-only-omitted}}
+{{Related|Validator list error}}',
+	'validator-list-error-accepts-only-omitted' => 'See also:
+* {{msg-mw|Validator list error invalid argument}}
+* {{msg-mw|Validator-list-error-accepts-only}}
+* {{msg-mw|Validator error accepts only}}
+* {{msg-mw|Validator-error-accepts-only-omitted}}
+{{Related|Validator list error}}',
+	'validator_error_accepts_only' => 'See also:
+* {{msg-mw|Validator list error invalid argument}}
+* {{msg-mw|Validator-list-error-accepts-only}}
+* {{msg-mw|Validator-list-error-accepts-only-omitted}}
+* {{msg-mw|Validator-error-accepts-only-omitted}}',
+	'validator-error-accepts-only-omitted' => 'See also:
+* {{msg-mw|Validator list error invalid argument}}
+* {{msg-mw|Validator-list-error-accepts-only}}
+* {{msg-mw|Validator-list-error-accepts-only-omitted}}
+* {{msg-mw|Validator error accepts only}}',
 	'validator-message-nodesc' => 'Indicates that no parameter description is available',
 );
 
@@ -1798,7 +1934,7 @@ $messages['ja'] = array(
 	'validator_error_parameters' => '以下の構文{{PLURAL:$1|エラー}}を検出しました:',
 	'validator_warning_parameters' => '構文{{PLURAL:$1|エラー}}があります。',
 	'validator-warning-adittional-errors' => '...と{{PLURAL:$1|&#32;1 件の問題点|複数の問題点}}。',
-	'validator-error-omitted' => '{{PLURAL:$2|値 $1}} を省略しました。',
+	'validator-error-omitted' => '{{PLURAL:$2|値「$1」}}を省略しました。',
 	'validator-error-problem' => '引数 $1 に問題点がありました。',
 	'validator_error_unknown_argument' => '$1 は有効な引数ではありません。',
 	'validator_error_required_missing' => '必須の引数「$1」が指定されていません。',
@@ -1815,6 +1951,7 @@ $messages['ja'] = array(
 	'validator-listerrors-high' => '重大',
 	'validator-listerrors-fatal' => '非常に重大',
 	'validator-describe-descriptionmsg' => "'''説明''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|別名}}''': $1",
 	'validator-describe-parserfunction' => 'パーサー関数としてのみ実装されています。',
 	'validator-describe-tagextension' => 'タグ拡張機能としてのみ実装されています。',
 	'validator-describe-bothhooks' => 'パーサー関数およびタグ拡張機能の両方として実装されています。',
@@ -1827,30 +1964,34 @@ $messages['ja'] = array(
 	'validator-describe-header-description' => '説明',
 	'validator-describe-parameters' => '引数',
 	'validator-describe-syntax' => '構文',
-	'validator_error_empty_argument' => '引数「$1」は空の値を取ることはできません。',
-	'validator_error_must_be_number' => '引数「$1」には数値のみを指定できます。',
-	'validator_error_must_be_integer' => '引数「$1」には整数のみを指定できます。',
+	'validator-describe-tagmin' => '必須の引数のみを持つタグ拡張機能です。',
+	'validator-describe-tagmax' => 'すべての引数を持つタグ拡張機能です。',
+	'validator-describe-pfmin' => '必須の引数のみを持つパーサー関数です。',
+	'validator-describe-pfmax' => 'すべての引数を持つパーサー関数です。',
+	'validator_error_empty_argument' => '引数 $1 は空の値を取ることはできません。',
+	'validator_error_must_be_number' => '引数 $1 には数値のみを指定できます。',
+	'validator_error_must_be_integer' => '引数 $1 には整数のみを指定できます。',
 	'validator_error_must_be_title' => '引数 $1 には有効なウィキ ページ名のみを指定できます。',
 	'validator_error_must_be_existing_title' => '引数 $1 には既存のウィキ ページ名のみを指定できます。',
 	'validator-error-must-be-float' => '引数 $1 には浮動小数点数のみ指定できます。',
-	'validator_error_invalid_range' => '引数「$1」は $2 から $3 の間の値である必要があります。',
+	'validator_error_invalid_range' => '引数 $1 は $2 から $3 の間の値である必要があります。',
 	'validator-error-invalid-regex' => '引数 $1 はこの正規表現に一致する必要があります: $2',
 	'validator-error-invalid-length' => '引数 $1 は長さが $2 である必要があります。',
 	'validator-error-invalid-length-range' => '引数 $1 は長さが $2 から $3 までの範囲である必要があります。',
-	'validator_error_invalid_argument' => '値「$1」は引数「$2」として無効です。',
-	'validator_list_error_empty_argument' => '引数「$1」は空の値を取りません。',
-	'validator_list_error_must_be_number' => '引数「$1」には数値のみを指定できます。',
-	'validator_list_error_must_be_integer' => '引数「$1」には整数のみを指定できます。',
+	'validator_error_invalid_argument' => '引数 $2 の値 $1 は無効です。',
+	'validator_list_error_empty_argument' => '引数 $1 は空の値を取りません。',
+	'validator_list_error_must_be_number' => '引数 $1 には数値のみを指定できます。',
+	'validator_list_error_must_be_integer' => '引数 $1 には整数のみを指定できます。',
 	'validator_list_error_must_be_title' => '引数 $1 には有効なウィキ ページ名 (複数) のみを指定できます。',
 	'validator_list_error_must_be_existing_title' => '引数 $1 には既存のウィキ ページ名 (複数) のみを指定できます。',
 	'validator-list-error-must-be-float' => '引数 $1 には浮動小数点数のみを指定できます。',
-	'validator_list_error_invalid_range' => '引数「$1」の値はすべて $2 と $3 の間のものでなくてはなりません。',
-	'validator-list-error-invalid-regex' => 'パラメーター $1 の値は次の正規表現と一致する必要があります: $2',
-	'validator_list_error_invalid_argument' => 'パラメーター「$1」の値に不正なものが1つ以上あります。',
-	'validator-list-error-accepts-only' => 'パラメーター $1 に無効な値が含まれています。{{PLURAL:$3|この値|これらの値}}のみを使用できます：$2',
-	'validator-list-error-accepts-only-omitted' => 'パラメーター $1 に無効な値が含まれています。{{PLURAL:$3|この値|これらの値}}のみを使用できます：$2（と省略された $4 の{{PLURAL:$4|値}}）',
-	'validator_error_accepts_only' => 'パラメーター $1 の値「$4」は有効ではありません。{{PLURAL:$3|この値|これらの値}}のみを使用できます：$2。',
-	'validator-error-accepts-only-omitted' => 'パラメーター $1 の値「$2」は有効ではありません。{{PLURAL:$5|この値|これらの値}}のみを使用できます：$3（と省略された $4 の{{PLURAL:$4|値}}）',
+	'validator_list_error_invalid_range' => '引数 $1 の値はすべて $2 と $3 の間のものでなくてはなりません。',
+	'validator-list-error-invalid-regex' => '引数 $1 のすべての値は以下の正規表現と一致する必要があります: $2',
+	'validator_list_error_invalid_argument' => '引数 $1 に 1 つ以上の無効な値があります。',
+	'validator-list-error-accepts-only' => '引数 $1 に 1 つ以上の無効な値があります。{{PLURAL:$3|この値|これらの値}}のみを使用できます: $2',
+	'validator-list-error-accepts-only-omitted' => '引数 $1 に 1 つ以上の無効な値があります。{{PLURAL:$3|この値|これらの値}}のみを使用できます: $2 (と省略された $4 の{{PLURAL:$4|値}})',
+	'validator_error_accepts_only' => '引数 $1 の値「$4」は無効です。{{PLURAL:$3|この値|これらの値}}のみを使用できます: $2',
+	'validator-error-accepts-only-omitted' => '引数 $1 の値「$2」は無効です。{{PLURAL:$5|この値|これらの値}}のみを使用できます: $3 (と省略された $4 の{{PLURAL:$4|値}})',
 	'validator_list_omitted' => '{{PLURAL:$2|値}} $1 は省略されました。',
 	'validator-message-nodesc' => '説明はありません',
 );
