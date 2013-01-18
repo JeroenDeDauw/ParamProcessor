@@ -10,6 +10,7 @@ Validator requires:
 
 * MediaWiki 1.16 or above ( MediaWiki 1.19 or above recommended)
 * PHP 5.2 or above (PHP 5.3 or above recommended)
+* DataValues extension
 
 == Download ==
 
