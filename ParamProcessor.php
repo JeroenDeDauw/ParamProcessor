@@ -21,6 +21,11 @@
  * @defgroup Validator Validator
  */
 
+if ( defined( 'ParamProcessor_VERSION' ) ) {
+	// Do not initialize more then once.
+	return;
+}
+
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
