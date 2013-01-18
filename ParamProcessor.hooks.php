@@ -27,7 +27,6 @@ final class Hooks {
 	public static function registerUnitTests( array &$files ) {
 		$testFiles = array(
 			'definitions/BoolParam',
-			'definitions/CharParam',
 			'definitions/DimensionParam',
 			'definitions/FloatParam',
 			'definitions/IntParam',
