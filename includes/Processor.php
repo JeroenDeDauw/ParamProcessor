@@ -316,7 +316,7 @@ class Processor {
 			// If the parameter is required but not provided, register a fatal error and stop processing. 
 			if ( !$setUserValue && $param->isRequired() ) {
 				$this->registerNewError(
-					wfMsgExt( 'validator_error_required_missing', 'parsemag', $paramName ),
+					"Required parameter '$paramName' is missing", // FIXME: i18n validator_error_required_missing
 					array( $paramName, 'missing' ),
 					ValidationError::SEVERITY_FATAL
 				);

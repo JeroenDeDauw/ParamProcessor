@@ -378,7 +378,6 @@ abstract class ParserHook {
 
 		if ( $fatalError === false ) {
 			$output = $this->render( $this->validator->getParameterValues() );
-			$output = $this->renderErrors( $output );
 		}
 		else {
 			$output = $this->renderFatalError( $fatalError );
@@ -422,41 +421,11 @@ abstract class ParserHook {
 	 */
 	protected function renderFatalError( ValidationError $error ) {		
 		return '<div><span class="errorbox">' .
-			htmlspecialchars( wfMsgExt( 'validator-fatal-error', array( 'parsemag', 'content' ), $error->getMessage() ) ) .
-			'</span></div><br /><br />';
+			htmlspecialchars( wfMessage( 'validator-fatal-error', array( 'parsemag', 'content' ), $error->getMessage() )->text() ) .
+			'</span></div><br /><br />'; // TODO: use non deprecated i18n
 	}
 
-	/**
-	 * @since 0.4
-	 *
-	 * @param string $output
-	 *
-	 * @return string
-	 */
-	protected function renderErrors( $output ) {
-		$displayStuff = $this->getErrorsToDisplay();
-
-		if ( count( $displayStuff['errors'] ) > 0 ) {
-			$output .= wfMsgExt( 'validator_error_parameters', array( 'parsemag', 'content' ), count( $displayStuff['errors'] ) );
-
-			foreach( $displayStuff['errors'] as $error ) {
-				$output .= '<br />* ' . $error->getMessage();
-			}
-
-			if ( count( $displayStuff['warnings'] ) > 0 ) {
-				$output .= '<br />* ' . wfMsgExt( 'validator-warning-adittional-errors', array( 'parsemag', 'content' ), count( $displayStuff['warnings'] ) );
-			}
-		}
-		elseif ( count( $displayStuff['warnings'] ) > 0 ) {
-			$output .= wfMsgExt(
-				'validator-warning',
-				array( 'parsemag', 'content' ),
-				wfMsgExt( 'validator_warning_parameters', array( 'parsemag', 'content' ), count( $displayStuff['warnings'] ) )
-			);
-		}
-
-		return $output;
-	}
+	// TODO: replace render errors functionality
 
 	/**
 	 * Returns an array containing the parameter info.
@@ -526,6 +495,7 @@ abstract class ParserHook {
 	 * Override in deriving classes to add a message.
 	 *
 	 * @since 0.4.3
+	 * @deprecated since 1.0
 	 *
 	 * @return mixed string or false
 	 */
