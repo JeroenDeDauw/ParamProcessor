@@ -14,7 +14,9 @@ use ParamProcessor\Processor;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
- * 
+ *
+ * TODO: fix i18n issues (dependencies need to be injected)
+ *
  * @ToDo: Add possiblity to use 'functionTagHooks'. See Parser::setFunctionTagHook() for
  *        details. There is not much information on this kind of parser funktion hook though.
  */
@@ -421,8 +423,8 @@ abstract class ParserHook {
 	 */
 	protected function renderFatalError( ValidationError $error ) {		
 		return '<div><span class="errorbox">' .
-			htmlspecialchars( wfMessage( 'validator-fatal-error', array( 'parsemag', 'content' ), $error->getMessage() )->text() ) .
-			'</span></div><br /><br />'; // TODO: use non deprecated i18n
+			wfMessage( 'validator-fatal-error', $error->getMessage() )->parse() .
+			'</span></div><br /><br />';
 	}
 
 	// TODO: replace render errors functionality
