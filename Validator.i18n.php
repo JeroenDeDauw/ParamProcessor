@@ -2721,7 +2721,7 @@ Parametr może przyjmować wyłącznie {{PLURAL:$5|wartość|wartości:}} $3 (or
  * @author McDutchie
  */
 $messages['pms'] = array(
-	'validator-desc' => "Validator a dà na manera bel fé për àutre estension ëd validé ij paràmetr ëd le funsion dël parser e j'estension dij tag, d'amposté ij valor ëd default e generé mëssagi d'eror",
+	'validator-desc' => 'Paràmetr diciarativ për traté librerìe',
 	'validator-warning' => 'Avis: $1',
 	'validator-error' => 'Eror: $1',
 	'validator-fatal-error' => 'Eror Fatal: $1',
@@ -2738,6 +2738,13 @@ $messages['pms'] = array(
 	'validator-type-float' => 'nùmer',
 	'validator-type-boolean' => 'bò/nò',
 	'validator-type-char' => 'caràter',
+	'validator-type-title' => 'tìtol',
+	'validator-type-string-list' => 'lista ëd test',
+	'validator-type-integer-list' => "lista d'antregh",
+	'validator-type-float-list' => 'lista ëd nùmer',
+	'validator-type-boolean-list' => 'lista ëd sì/nò',
+	'validator-type-char-list' => 'caràter ëd la lista',
+	'validator-type-title-list' => 'lista ëd tìtoj',
 	'validator-listerrors-errors' => 'Eror',
 	'validator-listerrors-minor' => 'Pi cit',
 	'validator-listerrors-low' => 'Bass',
@@ -2778,6 +2785,8 @@ piassé listerrors dzora o davzin ël fond ëd la pàgina për ciapé tùit j'er
 	'validator_error_empty_argument' => 'Ël paràmetr $1 a peul pa avèj un valor veuid.',
 	'validator_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
 	'validator_error_must_be_integer' => "Ël paràmetr $1 a peul mach esse n'antregh.",
+	'validator_error_must_be_title' => 'Ël paràmeter $1 a peul mach esse un nòm ëd pàgina wiki bon.',
+	'validator_error_must_be_existing_title' => 'Ël paràmetr $1 a peul mach esse un nòm ëd pàgina wiki esistenta.',
 	'validator-error-must-be-float' => 'Ël paràmetr $1 a peul mach esse un nùmer an vìrgola mòbil.',
 	'validator_error_invalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
 	'validator-error-invalid-regex' => 'Ël paràmetr $1 a dev cobiesse con sta espression regolar: $2.',
@@ -2787,6 +2796,8 @@ piassé listerrors dzora o davzin ël fond ëd la pàgina për ciapé tùit j'er
 	'validator_list_error_empty_argument' => 'Ël paràmetr $1 a aceta pa dij valor veuid.',
 	'validator_list_error_must_be_number' => 'Ël paràmetr $1 a peul mach conten-e dij nùmer.',
 	'validator_list_error_must_be_integer' => "Ël paràmetr $1 a peul mach conten-e dj'antegr.",
+	'validator_list_error_must_be_title' => 'Ël paràmetr $1 a peul mach conten-e dij nòm ëd pàgina wiki bon.',
+	'validator_list_error_must_be_existing_title' => 'Ël paràmetr $1 a peul mach conten-e dij nòm ëd pàgine wiki esistente.',
 	'validator-list-error-must-be-float' => 'Ël paràmetr $1 a peul mach conten-e dij nùmer con vìrgola.',
 	'validator_list_error_invalid_range' => 'Tùit ij valor dël paràmetr $1 a deuvo esse tra $2 e $3.',
 	'validator-list-error-invalid-regex' => 'Tùit ij valor dël paràmetr $1 a devo cobiesse con sta espression regolar: $2.',
@@ -2798,6 +2809,7 @@ A aceta mach {{PLURAL:$3|sto valor|sti valor}}: $2 (e $4 {{PLURAL:$4|valor|valor
 	'validator_error_accepts_only' => 'Ël valor "$4" a l\'é pa bon për ël paràmetr $1. A aceta mach {{PLURAL:$3|sto valor-sì|sti valor-sì}}: $2.',
 	'validator-error-accepts-only-omitted' => 'Ël valor "$2" a l\'é pa bon për ël paràmetr $1. A aceta mach sti valor: $3 (e ij valor pa butà $4).',
 	'validator_list_omitted' => "{{PLURAL:$2|Ël valor|Ij valor}} $1 {{PLURAL:$2|a l'é|a son}} pa stàit butà.",
+	'validator-message-nodesc' => 'Gnun-a descrission fornìa',
 );
 
 /** Pashto (پښتو)
