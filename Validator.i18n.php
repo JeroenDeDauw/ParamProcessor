@@ -672,7 +672,7 @@ $messages['cs'] = array(
  * @author Purodha
  */
 $messages['de'] = array(
-	'validator-desc' => 'Deklarative Parameterprozessbibliothek',
+	'validator-desc' => 'Stellt anderen Programmerweiterungen eine deklarative Bibliothek zur Verarbeitung von Parametern bereit',
 	'validator-warning' => 'Warnung: $1',
 	'validator-error' => 'Fehler: $1',
 	'validator-fatal-error' => "'''Schwerwiegender Fehler:''' $1",
