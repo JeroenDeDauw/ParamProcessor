@@ -298,8 +298,8 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'validator-desc' => 'Die valideerder gee ander uitbreidings die vermoë om parameters van ontlederfunksies en etiket-uitbreidings te valideer, op hulle verstekwaardes in te stel en om foutboodskappe te genereer',
-	'validator-warning' => 'Waarskuwing: $ 1',
+	'validator-desc' => 'Die valideerder gee ander uitbreidings die vermoë om parameters van ontlederfunksies en etiket-uitbreidings te valideer, op hulle verstekwaardes in te stel en om foutboodskappe te genereer', # Fuzzy
+	'validator-warning' => 'Waarskuwing: $ 1', # Fuzzy
 	'validator-error' => 'Fout: $1',
 	'validator-fatal-error' => 'Onherstelbare fout: $1',
 	'validator_error_parameters' => 'Die volgende {{PLURAL:$1|fout|foute}} is in u sintaks waargeneem:',
@@ -316,14 +316,14 @@ $messages['af'] = array(
 	'validator_error_must_be_integer' => "Die parameter $1 kan slegs 'n heelgetal wees.",
 	'validator_error_invalid_range' => 'Die parameter $1 moet tussen $2 en $3 lê.',
 	'validator_error_invalid_argument' => 'Die waarde $1 is nie geldig vir parameter $2 nie.',
-	'validator_error_accepts_only' => 'Die parameter $1 kan slegs die volgende {{PLURAL:$3|waarde|waardes}} hê: $2.',
+	'validator_error_accepts_only' => 'Die parameter $1 kan slegs die volgende {{PLURAL:$3|waarde|waardes}} hê: $2.', # Fuzzy
 );
 
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
 $messages['aln'] = array(
-	'validator-desc' => 'Validator është një zgjerim MediaWiki që ofron parametër përgjithshme trajtimin mbështetje të shtesave të tjera',
+	'validator-desc' => 'Validator është një zgjerim MediaWiki që ofron parametër përgjithshme trajtimin mbështetje të shtesave të tjera', # Fuzzy
 	'validator_error_parameters' => 'Më poshtë {{PLURAL:$1|gabim ka gabime|kanë}} është zbuluar në sintaksën e juaj:',
 	'validator_warning_parameters' => 'Ka {{PLURAL:$1|është|janë gabime gabim}} në sintaksë tuaj.',
 	'validator_error_unknown_argument' => '$1 nuk është një parametër i vlefshëm.',
@@ -338,7 +338,7 @@ $messages['aln'] = array(
 	'validator_list_error_must_be_integer' => 'Parametër $1 mund të përmbajë vetëm numra të plotë.',
 	'validator_list_error_invalid_range' => 'Të gjitha vlerat e parametrit $1 duhet të jetë në mes të $2 dhe $3.',
 	'validator_list_error_invalid_argument' => 'Një ose më shumë vlera për parametër $1 janë të pavlefshme.',
-	'validator_error_accepts_only' => 'Parametër $1 vetëm pranon {{PLURAL:$3|kjo vlerë|këtyre vlerave}}: $2.',
+	'validator_error_accepts_only' => 'Parametër $1 vetëm pranon {{PLURAL:$3|kjo vlerë|këtyre vlerave}}: $2.', # Fuzzy
 	'validator_list_omitted' => '{{PLURAL:$2 |vlerë|vlerat}} $1 {{PLURAL:$2|ka|kanë}} janë lënë jashtë.',
 );
 
@@ -347,7 +347,7 @@ $messages['aln'] = array(
  * @author روخو
  */
 $messages['ar'] = array(
-	'validator-desc' => 'المحقق يوفر طريقة سهلة للامتدادات الأخرى للتحقق من محددات دوال المحلل وامتدادات الوسوم، وضبط القيم الافتراضية وتوليد رسائل الخطأ',
+	'validator-desc' => 'المحقق يوفر طريقة سهلة للامتدادات الأخرى للتحقق من محددات دوال المحلل وامتدادات الوسوم، وضبط القيم الافتراضية وتوليد رسائل الخطأ', # Fuzzy
 	'validator-warning' => 'تحذير: $1',
 	'validator-error' => 'خطأ: $1',
 	'validator-fatal-error' => 'خطأ قاتل: $1',
@@ -384,18 +384,18 @@ $messages['ar'] = array(
 	'validator_list_error_must_be_integer' => 'المحدد $1 يمكن أن يحتوي فقط على أرقام صحيحة.',
 	'validator_list_error_invalid_range' => 'كل قيم المحدد $1 يجب أن تكون بين $2 و$3.',
 	'validator_list_error_invalid_argument' => 'قيمة واحدة أو أكثر للمحدد $1 غير صحيحة.',
-	'validator_error_accepts_only' => 'المحدد $1 يقبل فقط {{PLURAL:$3|هذه القيمة|هذه القيم}}: $2.',
+	'validator_error_accepts_only' => 'المحدد $1 يقبل فقط {{PLURAL:$3|هذه القيمة|هذه القيم}}: $2.', # Fuzzy
 	'validator_list_omitted' => '{{PLURAL:$2|القيمة|القيم}} $1 {{PLURAL:$2|تم|تم}} مسحها.',
 	'validator-message-nodesc' => 'لا وصف تم توفيره',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'validator-desc' => 'Правяраючы палягчае іншым пашырэньням працу па праверцы парамэтраў функцыяў парсэру і тэгаў пашырэньняў, устанаўлівае значэньні па змоўчваньні і стварае паведамленьні пра памылкі',
+	'validator-desc' => 'Правяраючы палягчае іншым пашырэньням працу па праверцы парамэтраў функцыяў парсэру і тэгаў пашырэньняў, устанаўлівае значэньні па змоўчваньні і стварае паведамленьні пра памылкі', # Fuzzy
 	'validator-warning' => 'Папярэджаньне: $1',
 	'validator-error' => 'Памылка: $1',
 	'validator-fatal-error' => 'Крытычная памылка: $1',
@@ -490,9 +490,17 @@ $messages['be-tarask'] = array(
 /** Bulgarian (български)
  * @author DCLXVI
  * @author Reedy
+ * @author පසිඳු කාවින්ද
  */
 $messages['bg'] = array(
-	'validator_error_empty_argument' => 'Параметърът $1 не може да има празна стойност.',
+	'validator-type-string' => 'текст',
+	'validator-type-float' => 'номер',
+	'validator-type-title' => 'заглавие',
+	'validator-describe-empty' => 'празно',
+	'validator-describe-header-type' => 'Тип',
+	'validator-describe-header-default' => 'По подразбиране',
+	'validator-describe-parameters' => 'Параметри',
+	'validator_error_empty_argument' => 'Параметърът $1 не може да има празна стойност.', # Fuzzy
 );
 
 /** Bengali (বাংলা)
@@ -510,7 +518,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'validator-desc' => 'Un doare aes eo kadarnataer evit an astennoù all da gadarnaat arventennoù ar fonksionoù parser hag astennoù ar balizennoù, evit termeniñ talvoudennoù dre ziouer ha sevel kemennoù fazioù',
+	'validator-desc' => 'Un doare aes eo kadarnataer evit an astennoù all da gadarnaat arventennoù ar fonksionoù parser hag astennoù ar balizennoù, evit termeniñ talvoudennoù dre ziouer ha sevel kemennoù fazioù', # Fuzzy
 	'validator-warning' => 'Diwallit : $1',
 	'validator-error' => 'Fazi : $1',
 	'validator-fatal-error' => 'Fazi diremed: $1',
@@ -582,7 +590,7 @@ Ne zegemer nemet an {{PLURAL:$5|talvoud|talvoudoù}}-mañ : $3 (ha $4 {{PLURAL:$
  * @author CERminator
  */
 $messages['bs'] = array(
-	'validator-desc' => 'Validator pruža jednostavni način za druga proširenja u svrhu validacije parametara parserskih funkcija i proširenja oznaka, postavlja pretpostavljene vrijednosti i generira poruke pogrešaka.',
+	'validator-desc' => 'Validator pruža jednostavni način za druga proširenja u svrhu validacije parametara parserskih funkcija i proširenja oznaka, postavlja pretpostavljene vrijednosti i generira poruke pogrešaka.', # Fuzzy
 	'validator-warning' => 'Upozorenje: $1',
 	'validator-error' => 'Greška: $1',
 	'validator-fatal-error' => 'Fatalna greška: $1',
@@ -772,17 +780,19 @@ $messages['diq'] = array(
 	'validator-listerrors-low' => 'Kêm',
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Berz',
+	'validator-describe-required' => 'mecburiyo',
 	'validator-describe-header-parameter' => 'Parametre',
 	'validator-describe-header-type' => 'Babet',
 	'validator-describe-header-default' => 'Hesıbyaye',
 	'validator-describe-header-description' => 'Sılasnayış',
+	'validator-describe-parameters' => 'Parametrey',
 );
 
 /** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'validator-desc' => 'Validator stoj lažki nałog za druge rozšyrjenja k dispoziciji, aby se pśekontrolěrowali parametry parserowych funkcijow a toflickich rozšyrjenjow, nastajili standardne gódnoty a napórali zmólkowe powěsći',
+	'validator-desc' => 'Validator stoj lažki nałog za druge rozšyrjenja k dispoziciji, aby se pśekontrolěrowali parametry parserowych funkcijow a toflickich rozšyrjenjow, nastajili standardne gódnoty a napórali zmólkowe powěsći', # Fuzzy
 	'validator-warning' => 'Warnowanje: $1',
 	'validator-error' => 'Zmólka: $1',
 	'validator-fatal-error' => 'Rozwažna zmólka: $1',
@@ -831,12 +841,17 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Dada
  * @author Lou
+ * @author Protnet
  * @author ZaDiak
  * @author Απεργός
  */
 $messages['el'] = array(
+	'validator-desc' => 'Παρέχει γενική υποστήριξη χειρισμού παραμέτρων για άλλες επεκτάσεις', # Fuzzy
+	'validator-error' => 'Σφάλμα: $1',
+	'validator-fatal-error' => 'Ανεπανόρθωτο σφάλμα: $1',
 	'validator_error_unknown_argument' => '$1 δεν είναι μια έγκυρη παράμετρος.',
 	'validator_error_required_missing' => 'Λείπει η απαιτούμενη παράμετρος $1.',
+	'validator-type-string' => 'κείμενο',
 	'validator_error_must_be_number' => 'Η παράμετρος $1 μπορεί να είναι μόνο αριθμός.',
 	'validator_error_must_be_integer' => 'Η παράμετρος $1 μπορεί να είναι μόνο ακέραιος αριθμός.',
 	'validator_list_error_must_be_number' => 'Η παράμετρος $1 μπορεί να περιέχει μόνο αριθμούς.',
@@ -864,7 +879,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'validator-desc' => 'FUZZY!!! El validador es una herramienta para que otras funciones validen fácilmente parámetros de funciones de análisis y extensiones de etiquetas, establecer valores predeterminados y generar mensajes de error',
+	'validator-desc' => 'FUZZY!!! El validador es una herramienta para que otras funciones validen fácilmente parámetros de funciones de análisis y extensiones de etiquetas, establecer valores predeterminados y generar mensajes de error', # Fuzzy
 	'validator-warning' => 'Advertencia: $1',
 	'validator-error' => 'Error: $1',
 	'validator-fatal-error' => 'Error fatal: $1',
@@ -958,16 +973,31 @@ Sólo acepta {{PLURAL:$5|este valor|estos valores}}: $3 (y $4 {{PLURAL:$4|valor 
 
 /** Estonian (eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'validator-warning' => 'Hoiatus: $1',
+	'validator-error' => 'Tõrge: $1',
+	'validator-type-string' => 'tekst',
+	'validator-type-integer' => 'kogu number',
 	'validator-type-float' => 'number',
 	'validator-type-boolean' => 'jah/ei',
+	'validator-type-char' => 'märk',
 	'validator-type-title' => 'pealkiri',
+	'validator-type-string-list' => 'tekstide loetelu',
+	'validator-type-float-list' => 'numbrite loend',
+	'validator-listerrors-errors' => 'Vead',
+	'validator-listerrors-low' => 'Madal',
+	'validator-listerrors-normal' => 'Normaalne',
+	'validator-listerrors-high' => 'Kõrge',
+	'validator-describe-descriptionmsg' => "'''Kirjeldus''': $1",
 	'validator-describe-empty' => 'tühi',
 	'validator-describe-required' => 'nõutav',
 	'validator-describe-header-parameter' => 'Parameeter',
+	'validator-describe-header-type' => 'Tüüp',
 	'validator-describe-header-description' => 'Kirjeldus',
 	'validator-describe-parameters' => 'Parameetrid',
+	'validator-describe-syntax' => 'Süntaks',
 );
 
 /** Basque (euskara)
@@ -1023,11 +1053,17 @@ $messages['fa'] = array(
 /** Finnish (suomi)
  * @author Beluga
  * @author Crt
+ * @author Nedergard
  * @author Silvonen
  * @author Str4nd
+ * @author VezonThunder
  */
 $messages['fi'] = array(
-	'validator-desc' => 'Tarkastaja tarjoaa helpon tavan muille laajennuksille jäsenninfunktioiden ja tagilaajennusten parametrien tarkastukseen, oletusarvojen asettamiseen ja virheilmoitusten luomiseen.',
+	'validator-desc' => 'Tarkastaja tarjoaa helpon tavan muille laajennuksille jäsenninfunktioiden ja tagilaajennusten parametrien tarkastukseen, oletusarvojen asettamiseen ja virheilmoitusten luomiseen.', # Fuzzy
+	'validator-warning' => 'Varoitus: $1',
+	'validator-error' => 'Virhe: $1',
+	'validator-fatal-error' => 'Vakava virhe: $1',
+	'validator_error_unknown_argument' => '$1 ei ole sallittu parametri.',
 	'validator-type-string' => 'teksti',
 	'validator-type-integer' => 'kokonaisluku',
 	'validator-type-float' => 'luku',
@@ -1035,6 +1071,10 @@ $messages['fi'] = array(
 	'validator-type-char' => 'merkki',
 	'validator-type-title' => 'otsikko',
 	'validator-listerrors-errors' => 'Virheet',
+	'validator-describe-empty' => 'tyhjä',
+	'validator-describe-required' => 'pakollinen',
+	'validator-describe-header-default' => 'Oletus',
+	'validator-describe-header-description' => 'Kuvaus',
 	'validator_error_must_be_number' => 'Parametrin $1 on oltava luku.',
 	'validator_error_must_be_integer' => 'Parametrin $1 on oltava kokonaisluku.',
 );
@@ -1314,7 +1354,7 @@ Só acepta {{PLURAL:$5|este valor|estes valores}}: $3 (e $4 {{PLURAL:$4|valor om
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'validator-desc' => 'Validator stellt e eifachi Form z Verfiegig fir anderi Erwyterige go Parameter validiere vu Parser- un Tag-Funktione, go Standardwärt definiere un Fählermäldige generiere',
+	'validator-desc' => 'Validator stellt e eifachi Form z Verfiegig fir anderi Erwyterige go Parameter validiere vu Parser- un Tag-Funktione, go Standardwärt definiere un Fählermäldige generiere', # Fuzzy
 	'validator-warning' => 'Warnig: $1',
 	'validator-error' => 'Fähler: $1',
 	'validator-fatal-error' => 'Fähler, wu nit cha behobe wäre: $1',
@@ -1400,7 +1440,7 @@ Nume {{PLURAL:$5|dää Wärt wird|die Wärt wäre}} akzeptiert: $3 (un $4 uusglo
  * @author YaronSh
  */
 $messages['he'] = array(
-	'validator-desc' => 'כלים כלליים לטיפול בפרמטרים עבור הרחבות אחרות',
+	'validator-desc' => 'כלים כלליים לטיפול בפרמטרים עבור הרחבות אחרות', # Fuzzy
 	'validator-warning' => 'אזהרה: $1',
 	'validator-error' => 'שגיאה: $1',
 	'validator-fatal-error' => 'שגיאה חמורה: $1',
@@ -1493,7 +1533,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'validator-desc' => 'Validator skići lochke wašnje za druhe rozšěrjenja, zo bychu so parametry parserowych funkcijow a tafličkowych rozšěrjenjow přepruwowali, standardne hódnoty nastajili a zmylkowe powěsće wutworili',
+	'validator-desc' => 'Validator skići lochke wašnje za druhe rozšěrjenja, zo bychu so parametry parserowych funkcijow a tafličkowych rozšěrjenjow přepruwowali, standardne hódnoty nastajili a zmylkowe powěsće wutworili', # Fuzzy
 	'validator-warning' => 'Warnowanje: $1',
 	'validator-error' => 'Zmylk: $1',
 	'validator-fatal-error' => 'Chutny zmylk: $1',
@@ -1588,7 +1628,7 @@ staj "listerrors" deleka na stronje abo blisko kónca strony, zo by wšě zmylki
  * @author TK-999
  */
 $messages['hu'] = array(
-	'validator-desc' => 'Az érvényesség-ellenőrző egyszerű lehetőséget nyújt más kiterjesztéseknek az elemzőfüggvények és tagek paramétereinek ellenőrzésére, alapértelmezett értékek beállítására, valamint hibaüzenetek generálására.',
+	'validator-desc' => 'Az érvényesség-ellenőrző egyszerű lehetőséget nyújt más kiterjesztéseknek az elemzőfüggvények és tagek paramétereinek ellenőrzésére, alapértelmezett értékek beállítására, valamint hibaüzenetek generálására.', # Fuzzy
 	'validator-warning' => 'Figyelmeztetés: $1',
 	'validator-error' => 'Hiba: $1',
 	'validator-fatal-error' => 'Végzetes hiba: $1',
@@ -1641,7 +1681,7 @@ $messages['hu'] = array(
 	'validator-list-error-must-be-float' => 'A(z) $1 paraméter csak lebegőpontos számokat tartalmazhat.',
 	'validator_list_error_invalid_range' => 'A(z) $1 paraméter összes értékének $2 és $3 közöttinek kell lennie.',
 	'validator_list_error_invalid_argument' => 'A(z) $1 paraméter egy vagy több értéke érvénytelen.',
-	'validator_error_accepts_only' => 'A(z) $1 paraméter csak a következő {{PLURAL:$3|értéket|értékeket}} fogadja el: $2',
+	'validator_error_accepts_only' => 'A(z) $1 paraméter csak a következő {{PLURAL:$3|értéket|értékeket}} fogadja el: $2', # Fuzzy
 	'validator_list_omitted' => 'A(z) $1 {{PLURAL:$2|érték mellőzve lett.|értékek mellőzve lettek.}}',
 );
 
@@ -1649,7 +1689,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'validator-desc' => 'Validator provide un modo facile a altere extensiones de validar parametros de functiones del analysator syntactic e extensiones de etiquettas, predefinir valores e generar messages de error',
+	'validator-desc' => 'Validator provide un modo facile a altere extensiones de validar parametros de functiones del analysator syntactic e extensiones de etiquettas, predefinir valores e generar messages de error', # Fuzzy
 	'validator-warning' => 'Aviso: $1',
 	'validator-error' => 'Error: $1',
 	'validator-fatal-error' => 'Error fatal: $1',
@@ -1748,7 +1788,7 @@ Illo accepta solmente iste {{PLURAL:$5|valor|valores}}: $3 (e $4 {{PLURAL:$4|val
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'validator-desc' => 'Validator memberikan cara mudah untuk ekstensi lain untuk memvalidasi parameter ParserFunction dan ekstensi tag, mengatur nilai biasa dan membuat pesan kesalahan',
+	'validator-desc' => 'Validator memberikan cara mudah untuk ekstensi lain untuk memvalidasi parameter ParserFunction dan ekstensi tag, mengatur nilai biasa dan membuat pesan kesalahan', # Fuzzy
 	'validator-warning' => 'Peringatan: $1',
 	'validator-error' => 'Kesalahan: $1',
 	'validator-fatal-error' => 'Kesalahan fatal: $1',
@@ -1830,7 +1870,7 @@ tempatkan listerrors pada atau di dekat bagian bawah halaman untuk mendapatkan s
  * @author HalphaZ
  */
 $messages['it'] = array(
-	'validator-desc' => 'Permette ad altre estensioni di gestire i parametri in modo semplice',
+	'validator-desc' => 'Permette ad altre estensioni di gestire i parametri in modo semplice', # Fuzzy
 	'validator-warning' => 'Attenzione: $1',
 	'validator-error' => 'Errore: $1',
 	'validator-fatal-error' => 'Errore fatale: $1',
@@ -2133,7 +2173,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'validator-desc' => '{{int:validator_name}} brängk eine eijfache Wääsch, der Parrammeetere fun Paaser-Fungkßjohne un Zohsatzprojramme ze prööve, Schtandatt-Wääte enzefööje, un Fähler ze mällde.',
+	'validator-desc' => '{{int:validator_name}} brängk eine eijfache Wääsch, der Parrammeetere fun Paaser-Fungkßjohne un Zohsatzprojramme ze prööve, Schtandatt-Wääte enzefööje, un Fähler ze mällde.', # Fuzzy
 	'validator-warning' => 'Opjepaß: $1',
 	'validator-error' => 'Fähler: $1',
 	'validator-fatal-error' => "'''Dä!''' $1",
@@ -2193,7 +2233,7 @@ $messages['ksh'] = array(
 	'validator-message-nodesc' => 'Kein Beschrievong doh',
 );
 
-/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
@@ -2214,7 +2254,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parametere vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Wäerter festzeleeën a fir Feeler-Messagen ze generéieren',
+	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parametere vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Wäerter festzeleeën a fir Feeler-Messagen ze generéieren', # Fuzzy
 	'validator-warning' => 'Opgepasst: $1',
 	'validator-error' => 'Feeler: $1',
 	'validator-fatal-error' => 'Fatale Feeler: $1',
@@ -2398,12 +2438,12 @@ $messages['ms'] = array(
 	'validator-describe-header-default' => 'Asali',
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬)
+/** Norwegian Bokmål (norsk (bokmål)‎)
  * @author Event
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
-	'validator-desc' => 'Gir generisk støtte for parameterhåndtering fra andre utvidelser',
+	'validator-desc' => 'Gir generisk støtte for parameterhåndtering fra andre utvidelser', # Fuzzy
 	'validator-warning' => 'Advarsel: $1',
 	'validator-error' => 'Feil: $1',
 	'validator-fatal-error' => 'Kritisk feil: $1',
@@ -2489,7 +2529,7 @@ Den godtar bare {{PLURAL:$5|denne verdien|disse verdiene}}: $3 (og $4 {{PLURAL:$
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'validator-desc' => 'Validator geeft andere uitbreidingen de mogelijkheid om parameters van parserfuncties en taguitbreidingen te valideren, in te stellen op hun standaardwaarden en foutberichten te genereren',
+	'validator-desc' => 'Bibliotheek voor het verwerken van declaratieve parameters',
 	'validator-warning' => 'Waarschuwing: $1',
 	'validator-error' => 'Fout: $1',
 	'validator-fatal-error' => 'Onherstelbare fout: $1',
@@ -2535,7 +2575,7 @@ plaats fouten onderaan of bijna onderaan pagina's om alle fouten weer te geven."
 	'validator-describe-par-language' => 'De taal om de beschrijvingen in weer te geven',
 	'validator-describe-listtype' => 'Lijst met $1 items',
 	'validator-describe-empty' => 'leeg',
-	'validator-describe-required' => 'verplicht',
+	'validator-describe-required' => 'vereist',
 	'validator-describe-header-parameter' => 'Parameter',
 	'validator-describe-header-aliases' => 'Aliassen',
 	'validator-describe-header-type' => 'Type',
@@ -2588,8 +2628,8 @@ Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
  * @author Jfblanc
  */
 $messages['oc'] = array(
-	'validator-desc' => "Validator porgís a d'autras extensions un biais per validar aisidament los paramètres de foncions d'analisi e las extensions de mercas, definir de valors per manca e crear de messatges d'error",
-	'validator_error_parameters' => '{{PLURAL:$1|Aquela error es estada detectada|Aquelas errors son estadas detectadas}} dins la sintaxi',
+	'validator-desc' => "Validator porgís a d'autras extensions un biais per validar aisidament los paramètres de foncions d'analisi e las extensions de mercas, definir de valors per manca e crear de messatges d'error", # Fuzzy
+	'validator_error_parameters' => '{{PLURAL:$1|Aquela error es estada detectada|Aquelas errors son estadas detectadas}} dins la sintaxi', # Fuzzy
 	'validator_error_unknown_argument' => '$1 es pas un paramètre valedor.',
 	'validator_error_required_missing' => "Manca lo paramètre $1 qu'es obligatòri.",
 	'validator_error_empty_argument' => 'Lo paramètre $1 pòt pas estar voide.',
@@ -2597,7 +2637,7 @@ $messages['oc'] = array(
 	'validator_error_must_be_integer' => 'Lo paramètre $1 deu èsser un nombre entièr.',
 	'validator_error_invalid_range' => 'Lo paramètre $1 deu èsser entre $2 e $3.',
 	'validator_error_invalid_argument' => '$1 es pas valedor pel paramètre $2.',
-	'validator_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.',
+	'validator_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.', # Fuzzy
 );
 
 /** Ossetic (Ирон)
@@ -2830,6 +2870,7 @@ $messages['ps'] = array(
 	'validator-listerrors-normal' => 'نورمال',
 	'validator-describe-empty' => 'تش',
 	'validator-describe-header-default' => 'تلواليز',
+	'validator-describe-header-description' => 'څرګندونه',
 );
 
 /** Portuguese (português)
@@ -2840,7 +2881,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'validator-desc' => 'O Serviço de Validação permite que, de forma simples, as outras extensões possam validar parâmetros das funções do analisador sintáctico e das extensões dos elementos HTML, definir valores por omissão e gerar mensagens de erro',
+	'validator-desc' => 'O Serviço de Validação permite que, de forma simples, as outras extensões possam validar parâmetros das funções do analisador sintáctico e das extensões dos elementos HTML, definir valores por omissão e gerar mensagens de erro', # Fuzzy
 	'validator-warning' => 'Aviso: $1',
 	'validator-error' => 'Erro: $1',
 	'validator-fatal-error' => 'Erro fatal: $1',
@@ -2935,7 +2976,7 @@ Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PL
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
-	'validator-desc' => 'Fornece suporte a manipulação de parâmetros genéricos para outras extensões',
+	'validator-desc' => 'Fornece suporte a manipulação de parâmetros genéricos para outras extensões', # Fuzzy
 	'validator-warning' => 'Atenção: $1',
 	'validator-error' => 'Erro: $1',
 	'validator-fatal-error' => 'Erro crítico: $1',
@@ -3083,7 +3124,7 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'validator-desc' => 'Валидатор предоставляет другим расширениям возможности проверки параметров функций парсера и тегов, установки значения по умолчанию и создания сообщения об ошибках',
+	'validator-desc' => 'Валидатор предоставляет другим расширениям возможности проверки параметров функций парсера и тегов, установки значения по умолчанию и создания сообщения об ошибках', # Fuzzy
 	'validator-warning' => 'Внимание: $1',
 	'validator-error' => 'Ошибка: $1',
 	'validator-fatal-error' => 'Критическая ошибка: $1',
@@ -3241,54 +3282,101 @@ $messages['si'] = array(
 	'validator-message-nodesc' => 'විස්තරයක් සපයා නොමැත',
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'validator-listerrors-severity-message' => '($1) $2',
 );
 
-/** Serbian (Latin script) (‪srpski (latinica)‬) */
+/** Serbian (Latin script) (srpski (latinica)‎)
+ */
 $messages['sr-el'] = array(
 	'validator-listerrors-severity-message' => '($1) $2',
 );
 
 /** Swedish (svenska)
+ * @author Cybjit
  * @author Fluff
+ * @author Martinwiss
  * @author Ozp
  * @author Per
  * @author Sertion
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'validator-desc' => 'Valideraren skapar ett smidigt sätt för andra tillägg att validera olika parserfunktioners parametrar och taggar, sätta standardvärden för tilläggen samt att generera felmeddelanden',
+	'validator-desc' => 'Valideraren skapar ett smidigt sätt för andra tillägg att validera olika parserfunktioners parametrar och taggar, sätta standardvärden för tilläggen samt att generera felmeddelanden', # Fuzzy
+	'validator-warning' => 'Varning: $1',
+	'validator-error' => 'Fel: $1',
+	'validator-fatal-error' => 'Kritiskt fel: $1',
 	'validator_error_parameters' => 'Följande {{PLURAL:$1|fel|fel}} har upptäckts i din syntax:',
 	'validator_warning_parameters' => 'Det finns {{PLURAL:$1|ett|flera}} fel i din syntax.',
+	'validator-warning-adittional-errors' => '
+... och {{PLURAL:$1|ett problem till|fler problem}}.',
+	'validator-error-omitted' => '{{PLURAL:$2|Värdet "$1" har|Värdena"$1" har}} uteslutits',
+	'validator-error-problem' => 'Ett problem uppstod med parametern $1.',
 	'validator_error_unknown_argument' => '$1 är inte en giltig paramter.',
 	'validator_error_required_missing' => 'Den nödvändiga parametern $1 har inte angivits.',
+	'validator-error-override-argument' => 'Försökte skriva över parametern $1 (värde: $2) med värde "$3"',
+	'validator-type-string' => 'text',
+	'validator-type-integer' => 'helt nummer',
+	'validator-type-float' => 'nummer',
+	'validator-type-boolean' => 'ja/nej',
+	'validator-type-char' => 'tecken',
+	'validator-type-title' => 'titel',
+	'validator-type-string-list' => 'listor med texter',
+	'validator-type-integer-list' => 'listor med heltal',
+	'validator-type-float-list' => 'listor med siffror',
+	'validator-type-boolean-list' => 'listor med ja/nej',
+	'validator-type-char-list' => 'listor med tecken',
+	'validator-type-title-list' => 'listor med rubriker',
+	'validator-listerrors-errors' => 'Fel',
+	'validator-listerrors-minor' => 'Smärre',
+	'validator-listerrors-low' => 'Låg',
+	'validator-listerrors-normal' => 'Normal',
+	'validator-listerrors-high' => 'Hög',
+	'validator-listerrors-fatal' => 'Kritisk',
+	'validator-describe-listtype' => 'Lista med "$1"-element',
+	'validator-describe-empty' => 'tom',
+	'validator-describe-required' => 'behövs',
+	'validator-describe-header-parameter' => 'Parameter',
+	'validator-describe-header-aliases' => 'Alias',
+	'validator-describe-header-type' => 'Typ',
+	'validator-describe-header-default' => 'Förvalt',
+	'validator-describe-header-description' => 'Beskrivning',
+	'validator-describe-parameters' => 'Parametrar',
+	'validator-describe-syntax' => 'Syntax',
 	'validator_error_empty_argument' => 'Parametern $1 kan inte lämnas tom.',
 	'validator_error_must_be_number' => 'Parameter $1 måste bestå av ett tal.',
 	'validator_error_must_be_integer' => 'Parametern $1 måste vara ett heltal.',
 	'validator_error_invalid_range' => 'Parameter $1 måste vara i mellan $2 och $3.',
+	'validator-error-invalid-length' => 'Parametern $1 måste ha en längd på $2.',
+	'validator-error-invalid-length-range' => 'Parametern $1 måste ha en längd mellan $2 och $3.',
 	'validator_error_invalid_argument' => 'Värdet $1 är inte giltigt som parameter $2.',
 	'validator_list_error_empty_argument' => 'Parameter $1 accepterar inte tomma värden.',
 	'validator_list_error_must_be_number' => 'Parameter $1 får endast innehålla siffror.',
 	'validator_list_error_must_be_integer' => 'Parameter $1 får endast innehålla heltal.',
+	'validator_list_error_must_be_title' => 'Parametern $1 kan endast innehåll giltiga namn på wikisidor.',
+	'validator_list_error_must_be_existing_title' => 'Parametern $1 kan endast innehåll existerande namn på wikisidor.',
 	'validator_list_error_invalid_range' => 'Alla värden av parameter $1 måste vara mellan $2 och $3.',
 	'validator_list_error_invalid_argument' => 'Ett eller flera värden av parameter $1 är ogiltiga.',
-	'validator_error_accepts_only' => 'Parametern $1 måste ha {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
+	'validator_error_accepts_only' => 'Värdet "$4" är inte giltigt för parametern $1. Den accepterar bara {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|Värdet|Värdena}} $1 har blivit {{PLURAL:$2|utelämnat|utelämnade}}.',
 );
 
 /** Tamil (தமிழ்)
  * @author Karthi.dr
  * @author Shanmugamp7
+ * @author மதனாஹரன்
  */
 $messages['ta'] = array(
+	'validator-warning' => 'எச்சரிக்கை: $1',
 	'validator-error' => 'பிழை: $1',
 	'validator-type-string' => 'உரை',
 	'validator-type-integer' => 'முழு எண்',
 	'validator-type-float' => 'எண்',
 	'validator-type-boolean' => 'ஆம்/இல்லை',
+	'validator-type-char' => 'வரியுரு',
 	'validator-type-title' => 'தலைப்பு',
 	'validator-type-string-list' => 'உரைகளின் பட்டியல்',
 	'validator-type-integer-list' => 'முழு எண்களின் பட்டியல்',
@@ -3301,6 +3389,7 @@ $messages['ta'] = array(
 	'validator-listerrors-low' => 'குறைவு',
 	'validator-listerrors-normal' => 'சாதரணம்',
 	'validator-listerrors-high' => 'அதிகம்',
+	'validator-describe-listtype' => '$1 உருப்படிகளின் பட்டியல்',
 	'validator-describe-empty' => 'காலி',
 	'validator-describe-required' => 'தேவைபடுகிறது',
 	'validator-describe-header-parameter' => 'அளபுரு',
@@ -3309,6 +3398,7 @@ $messages['ta'] = array(
 	'validator-describe-header-description' => 'விளக்கம்',
 	'validator-describe-parameters' => 'அளபுருக்கள்',
 	'validator-describe-syntax' => 'வழிமுறைத் தொடரமைப்பு',
+	'validator-message-nodesc' => 'விவரணமேதும் வழங்கப்படவில்லை',
 );
 
 /** Telugu (తెలుగు)
@@ -3346,7 +3436,7 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'validator-desc' => 'Nagbibigay ng panlahatang magtangkilik na paghawak sa ibang mga dugtong',
+	'validator-desc' => 'Nagbibigay ng panlahatang magtangkilik na paghawak sa ibang mga dugtong', # Fuzzy
 	'validator-warning' => 'Babala: $1',
 	'validator-error' => 'Kamalian: $1',
 	'validator-fatal-error' => 'Masidhing kamalian: $1',
@@ -3443,6 +3533,7 @@ ilagay ang listerrrors (mga kamalian sa lista) doon o malapit sa ilalim ng pahin
  */
 $messages['tr'] = array(
 	'validator_error_unknown_argument' => '$1, geçerli bir parametre değildir.',
+	'validator-describe-required' => 'gerekli',
 	'validator-describe-header-parameter' => 'Parametre',
 	'validator-describe-header-type' => 'Tür',
 	'validator_error_empty_argument' => '$1 parametresi boş bir değere sahip olamaz.',
@@ -3453,13 +3544,63 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (українська)
+ * @author Base
  * @author NickK
  * @author Olvin
  * @author Prima klasy4na
+ * @author Ата
  */
 $messages['uk'] = array(
-	'validator-desc' => 'Валідатор забезпечує іншим розширенням можливості перевірки параметрів функцій парсера і тегів, встановлення значень за умовчанням та створення повідомлень про помилки',
+	'validator-desc' => 'Валідатор забезпечує іншим розширенням можливості перевірки параметрів функцій парсера і тегів, встановлення значень за умовчанням та створення повідомлень про помилки', # Fuzzy
+	'validator-warning' => 'Увага: $1',
+	'validator-error' => 'Помилка: $1',
+	'validator-fatal-error' => 'Критична помилка: $1',
 	'validator_error_parameters' => 'У вашому синтаксисі {{PLURAL:$1|виявлена така помилка|виявлені такі помилки}}:',
+	'validator_warning_parameters' => 'У Вашому синтаксисі {{PLURAL:$1|є помилка|є помилки}}',
+	'validator-warning-adittional-errors' => '… і {{PLURAL:$1|ще одна проблема|ще декілька проблем}}.',
+	'validator-error-omitted' => '{{PLURAL:$2|Значення «$1»}} пропущено.',
+	'validator-error-problem' => 'Виявлено проблему із параметром $1.',
+	'validator_error_unknown_argument' => '$1 не є допустимим параметром.',
+	'validator_error_required_missing' => "Не вказано обов'язковий параметр «$1».",
+	'validator-error-override-argument' => 'Спроба перевизначення параметру $1 (значення: $2) значенням «$3»',
+	'validator-type-string' => 'текст',
+	'validator-type-integer' => 'ціле число',
+	'validator-type-float' => 'число',
+	'validator-type-boolean' => 'так/ні',
+	'validator-type-char' => 'символ',
+	'validator-type-title' => 'заголовок',
+	'validator-type-string-list' => 'список текстів',
+	'validator-type-integer-list' => 'список цілих чисел',
+	'validator-type-float-list' => 'список чисел',
+	'validator-type-boolean-list' => 'число так/ні',
+	'validator-type-char-list' => 'список символів',
+	'validator-type-title-list' => 'список заголовків',
+	'validator-listerrors-errors' => 'Помилки',
+	'validator-listerrors-minor' => 'Незначна',
+	'validator-listerrors-low' => 'Низька',
+	'validator-listerrors-normal' => 'Звичайна',
+	'validator-listerrors-high' => 'Висока',
+	'validator-listerrors-fatal' => 'Фатальна',
+	'validator-listerrors-description' => 'Перераховує помилки (і попередження), що трапляються в обробниках парсеру, доданих через Validator.
+Виводяться тільки обробники парсеру, додані вище, де вставлено listerrors;
+помістіть listerrors в кінець сторінки, щоб отримати усі помилки.',
+	'validator-listerrors-par-minseverity' => 'Мінімальна серйозність питання для включення його в список.',
+	'validator-describe-description' => 'Створює документацію для одного чи декількох обробників парсеру, визначених через Validator.',
+	'validator-describe-notfound' => 'Не існує обробнику парсеру для «$1».',
+	'validator-describe-descriptionmsg' => "'''Опис''': $1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|Псевдонім|Псевдоніми|Псевдонімів}}''': $1",
+	'validator-describe-parserfunction' => 'Реалізовано лише як парсерна функція.',
+	'validator-describe-tagextension' => 'Реалізовано лише як тег розширення.',
+	'validator-describe-bothhooks' => 'Реалізовано і як парсерна функція, і як тег розширення.',
+	'validator-describe-par-hooks' => 'Обробник парсеру, для якого відображається документація.',
+	'validator-describe-par-pre' => 'Дозволяє отримувати фактичний вікітекст для документації без виведення його на сторінку.',
+	'validator-describe-par-language' => 'Мова для відображення описів',
+	'validator-describe-listtype' => 'Список елементів типу $1',
+	'validator-describe-empty' => 'пусто',
+	'validator-describe-required' => "обов'язково",
+	'validator-describe-header-parameter' => 'Параметр',
+	'validator-describe-header-aliases' => 'Псевдоніми',
+	'validator-describe-header-type' => 'Тип',
 	'validator-describe-header-default' => 'Стандартно',
 	'validator-describe-header-description' => 'Опис',
 	'validator-describe-parameters' => 'Параметри',
@@ -3468,6 +3609,35 @@ $messages['uk'] = array(
 	'validator-describe-tagmax' => 'Доповнення тегу з усіма параметрами.',
 	'validator-describe-tagdefault' => 'Доповнення тегу з усіма параметрами, із застосуванням стандартної нотації параметрів.',
 	'validator-describe-pfmin' => "Функція аналізатора, що має лише обов'язкові параметри.",
+	'validator-describe-pfmax' => 'Функція парсера зі всіма параметрами.',
+	'validator-describe-pfdefault' => 'Парсерна функція з усіма параметрами, із застосуванням стандартної нотації параметрів.',
+	'validator-describe-autogen' => 'Вміст цього розділу було автоматично створено обробником парсеру "describe" розширення Validator.',
+	'validator_error_empty_argument' => 'Параметр $1 не може приймати порожнє значення.',
+	'validator_error_must_be_number' => 'Параметр $1 може бути лише числом.',
+	'validator_error_must_be_integer' => 'Параметр $1 може бути лише цілим числом.',
+	'validator_error_must_be_title' => 'Параметр $1 може бути лише допустимою назвою вікі-сторінки.',
+	'validator_error_must_be_existing_title' => 'Параметр $1 може бути лише назвою існуючої вікі-сторінки.',
+	'validator-error-must-be-float' => 'Параметр $1 може бути лише числом з плаваючою крапкою.',
+	'validator_error_invalid_range' => 'Параметр $1 повинен бути від $2 до $3.',
+	'validator-error-invalid-regex' => 'Параметр $1 повинен відповідати регулярному виразу: $2.',
+	'validator-error-invalid-length' => 'Параметр $1 повинен мати довжину $2.',
+	'validator-error-invalid-length-range' => 'Параметр $1 повинен мати довжину від $2 до $3.',
+	'validator_error_invalid_argument' => 'Значення $1 не є допустимим для параметру $2.',
+	'validator_list_error_empty_argument' => 'Параметр $1 не може приймати порожні значення.',
+	'validator_list_error_must_be_number' => 'Параметр $1 може включати лише числа.',
+	'validator_list_error_must_be_integer' => 'Параметр $1 може включати лише цілі числа.',
+	'validator_list_error_must_be_title' => 'Параметр $1 може включати лише допустимі назви вікі-сторінок.',
+	'validator_list_error_must_be_existing_title' => 'Параметр $1 може включати лише назви існуючих вікі-сторінок.',
+	'validator-list-error-must-be-float' => 'Параметр $1 може включати лише числа з плаваючою крапкою.',
+	'validator_list_error_invalid_range' => 'Усі значення параметра $1 мають лежати між $2 і $3.',
+	'validator-list-error-invalid-regex' => 'Усі значення параметра $1 мають відповідати цьому регулярному виразу: $2.',
+	'validator_list_error_invalid_argument' => 'Одне або більше значень параметра $1 не припустимі.',
+	'validator-list-error-accepts-only' => 'Одне або більше значень параметра $1 не припустимі. {{PLURAL:$3|Допустиме лише таке значення|Допустимі лише такі значення}}: $2.',
+	'validator-list-error-accepts-only-omitted' => 'Одне або більше значень параметра $1 не припустимі. {{PLURAL:$3|Допустиме лише таке значення|Допустимі лише такі значення}}: $2 (і $4 {{PLURAL:$4|опущене значення|опущені значення|опущених значень}}).',
+	'validator_error_accepts_only' => 'Значення "$4" не припустиме для параметра $1. {{PLURAL:$3|Допустиме лише таке значення|Допустимі лише такі значення}}: $2.',
+	'validator-error-accepts-only-omitted' => 'Значення параметра "$2" не припустиме для параметра $1. {{PLURAL:$5|Допустиме лише таке значення|Допустимі лише такі значення}}: $3 (і $4 {{PLURAL:$4|опущене значення|опущені значення|опущених значень}}).',
+	'validator_list_omitted' => '{{PLURAL:$2|Значення}} $1 {{PLURAL:$2|було пропущене|були пропущені}}.',
+	'validator-message-nodesc' => 'Опис відсутній',
 );
 
 /** Urdu (اردو)
@@ -3495,7 +3665,7 @@ $messages['ur'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['vi'] = array(
-	'validator-desc' => 'Bộ phê chuẩn cho phép các phần mở rộng khác phê chuẩn tham số của hàm cú pháp và thẻ mở rộng, đặt giá trị mặc định, và báo cáo lỗi.',
+	'validator-desc' => 'Bộ phê chuẩn cho phép các phần mở rộng khác phê chuẩn tham số của hàm cú pháp và thẻ mở rộng, đặt giá trị mặc định, và báo cáo lỗi.', # Fuzzy
 	'validator-warning' => 'Cảnh báo: $1',
 	'validator-error' => 'Lỗi: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Lỗi|Các lỗi}} cú pháp sau được nhận ra trong mã của bạn:',
@@ -3503,16 +3673,29 @@ $messages['vi'] = array(
 	'validator_error_unknown_argument' => '$1 không phải là tham số hợp lệ.',
 	'validator_error_required_missing' => 'Không định rõ tham số bắt buộc “$1”.',
 	'validator-type-string' => 'văn bản',
+	'validator-type-integer' => 'số nguyên',
 	'validator-type-float' => 'Số',
+	'validator-type-boolean' => 'có/không',
+	'validator-type-char' => 'ký tự',
 	'validator-type-title' => 'Tựa đề',
+	'validator-type-string-list' => 'danh sách văn bản',
+	'validator-type-integer-list' => 'danh sách số nguyên',
+	'validator-type-float-list' => 'danh sách con số',
+	'validator-type-boolean-list' => 'danh sách có/không',
+	'validator-type-char-list' => 'danh sách ký tự',
+	'validator-type-title-list' => 'danh sách tiêu đề',
 	'validator-listerrors-errors' => 'Lỗi',
 	'validator-listerrors-low' => 'Thấp',
 	'validator-listerrors-normal' => 'Thường',
 	'validator-listerrors-high' => 'Cao',
+	'validator-describe-descriptionmsg' => "'''Miêu tả''': $1",
 	'validator-describe-empty' => 'có sản phẩm nào',
+	'validator-describe-header-parameter' => 'Tham số',
 	'validator-describe-header-type' => 'Loại',
 	'validator-describe-header-default' => 'Mặc định',
-	'validator-describe-header-description' => 'Mô tả',
+	'validator-describe-header-description' => 'Miêu tả',
+	'validator-describe-parameters' => 'Tham số',
+	'validator-describe-syntax' => 'Cú pháp',
 	'validator_error_empty_argument' => 'Tham số “$1” không được để trống.',
 	'validator_error_must_be_number' => 'Tham số “$1” phải là con số.',
 	'validator_error_must_be_integer' => 'Tham số “$1” phải là số nguyên.',
@@ -3538,7 +3721,7 @@ $messages['yi'] = array(
 	'validator-describe-header-description' => 'באַשרײַבונג',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Hydra
  * @author Richarddong
  * @author Shirayuki
@@ -3549,10 +3732,10 @@ $messages['zh-hans'] = array(
 	'validator-warning' => '警告：$1',
 	'validator-error' => '错误：$1',
 	'validator-fatal-error' => '致命错误：$1',
-	'validator_error_parameters' => '从您的语法中检测到以下错误：',
-	'validator_warning_parameters' => '您的语法中存在错误。',
-	'validator-warning-adittional-errors' => '⋯⋯以及更多的问题。',
-	'validator-error-omitted' => '"$1"等值被忽略。',
+	'validator_error_parameters' => '从您的语法中检测到以下错误：', # Fuzzy
+	'validator_warning_parameters' => '您的语法中存在错误。', # Fuzzy
+	'validator-warning-adittional-errors' => '⋯⋯以及更多的问题。', # Fuzzy
+	'validator-error-omitted' => '"$1"等值被忽略。', # Fuzzy
 	'validator-error-problem' => '参数 $1 存在一个问题。',
 	'validator_error_unknown_argument' => '$1 不是一个有效的参数。',
 	'validator_error_required_missing' => '未能提供必要的参数 $1 。',
@@ -3561,7 +3744,9 @@ $messages['zh-hans'] = array(
 	'validator-type-float' => '浮点数',
 	'validator-type-boolean' => '布尔值',
 	'validator-type-char' => '字符',
+	'validator-type-title' => '标题',
 	'validator-listerrors-errors' => '错误',
+	'validator-listerrors-severity-message' => '（$1）$2',
 	'validator-listerrors-minor' => '很小',
 	'validator-listerrors-low' => '小',
 	'validator-listerrors-normal' => '中',
@@ -3590,8 +3775,9 @@ $messages['zh-hans'] = array(
 	'validator_list_error_invalid_argument' => '参数 $1 的一个或多个值不合法。',
 );
 
-/** Traditional Chinese (‪中文（繁體）‬)
+/** Traditional Chinese (中文（繁體）‎)
  * @author Mark85296341
+ * @author Shirayuki
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -3606,7 +3792,9 @@ $messages['zh-hant'] = array(
 	'validator-type-float' => '浮點數',
 	'validator-type-boolean' => '布爾值',
 	'validator-type-char' => '字符',
+	'validator-type-title' => '標題',
 	'validator-listerrors-errors' => '錯誤',
+	'validator-listerrors-severity-message' => '（$1）$2',
 	'validator-listerrors-minor' => '很小',
 	'validator-listerrors-low' => '小',
 	'validator-listerrors-normal' => '中',
@@ -3614,9 +3802,14 @@ $messages['zh-hant'] = array(
 	'validator-listerrors-fatal' => '致命',
 	'validator-describe-descriptionmsg' => "'''說明'''：$1",
 	'validator-describe-empty' => '空白',
+	'validator-describe-required' => '必填',
 	'validator-describe-header-parameter' => '參數',
+	'validator-describe-header-aliases' => '別名',
 	'validator-describe-header-type' => '類型',
+	'validator-describe-header-default' => '默認',
 	'validator-describe-header-description' => '說明',
+	'validator-describe-parameters' => '參數',
+	'validator-describe-syntax' => '語法',
 	'validator_error_empty_argument' => '參數 $1 不能為空。',
 	'validator_error_must_be_number' => '參數 $1 只能為數字。',
 	'validator_error_must_be_integer' => '參數 $1 只能為整數。',
