@@ -503,7 +503,7 @@ class ParamDefinition implements IParamDefinition {
 		else {
 			$valid = $this->validateValue( $param->getValue(), $param, $definitions, $params, $options );
 
-			return $valid ? true : array( new ValidationError( 'Error' ) ); // TODO
+			return $valid ? true : array( new ProcessingError( 'Error' ) ); // TODO
 		}
 	}
 

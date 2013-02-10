@@ -6,36 +6,36 @@ namespace ParamProcessor;
  * Static class for error handling.
  * 
  * @since 0.4
- * 
+ *
  * @file
  * @ingroup ParamProcessor
  * 
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-final class ValidationErrorHandler {
+final class ProcessingErrorHandler {
 	
 	/**
 	 * @since 0.4
 	 * 
-	 * @var array of ValidationError
+	 * @var array of ProcessingError
 	 */
 	protected static $errors = array();
 	
 	/**
-	 * Adds a single ValidationError.
+	 * Adds a single ProcessingError.
 	 * 
 	 * @since 0.4
 	 * 
 	 * @param string $errorMessage
 	 * @param integer $severity
 	 */
-	public static function addError( ValidationError $error ) {
+	public static function addError( ProcessingError $error ) {
 		self::$errors[$error->getElement()][] = $error;
 	}
 	
 	/**
-	 * Adds a list of ValidationError.
+	 * Adds a list of ProcessingError.
 	 * 
 	 * @since 0.4
 	 * 
@@ -52,7 +52,7 @@ final class ValidationErrorHandler {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @return array of ValidationError
+	 * @return array of ProcessingError
 	 */
 	public static function getErrors() {
 		return self::$errors;

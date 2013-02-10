@@ -5,7 +5,7 @@ namespace ParamProcessor;
 /**
  * Error class.
  *
- * @since 0.4
+ * @since 1.0
  *
  * @file
  * @ingroup ParamProcessor
@@ -13,7 +13,7 @@ namespace ParamProcessor;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ValidationError {
+class ProcessingError {
 
 	const SEVERITY_MINOR = 0;	// Minor error. ie a deprecation notice
 	const SEVERITY_LOW = 1;		// Lower-then-normal severity. ie an unknown parameter
@@ -102,7 +102,7 @@ class ValidationError {
 	 *
 	 * @since 0.4
 	 *
-	 * @return integer Element of the ValidationError::SEVERITY_ enum
+	 * @return integer Element of the ProcessingError::SEVERITY_ enum
 	 */
 	public function getSeverity() {
 		return $this->severity;
@@ -150,7 +150,7 @@ class ValidationError {
 	 *
 	 * @since 0.4
 	 *
-	 * @return integer Element of the ValidationError::ACTION_ enum
+	 * @return integer Element of the ProcessingError::ACTION_ enum
 	 */
 	public function getAction() {
 		$errorActions = Settings::get( 'errorActions' );

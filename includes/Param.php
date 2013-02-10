@@ -72,7 +72,7 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @var array of ValidationError
+	 * @var array of ProcessingError
 	 */
 	protected $errors = array();
 
@@ -293,7 +293,7 @@ final class Param implements IParam {
 	protected function parseAndValidateValue( ValueParser $parser, $value ) {
 		$parsingResult = $parser->parse( $value );
 
-		$severity = $this->isRequired() ? ValidationError::SEVERITY_FATAL : ValidationError::SEVERITY_NORMAL;
+		$severity = $this->isRequired() ? ProcessingError::SEVERITY_FATAL : ProcessingError::SEVERITY_NORMAL;
 
 		if ( $parsingResult->isValid() ) {
 			$value = $parsingResult->getValue();
@@ -305,7 +305,7 @@ final class Param implements IParam {
 			$validationCallback = $this->definition->getValidationCallback();
 
 			if ( $validationCallback !== null && $validationCallback( $value ) !== true ) {
-				$this->errors[] = new ValidationError( 'Validation callback failed', $severity );
+				$this->errors[] = new ProcessingError( 'Validation callback failed', $severity );
 			}
 			else {
 				$validator = $this->definition->getValueValidator();
@@ -314,7 +314,7 @@ final class Param implements IParam {
 
 				if ( !$validationResult->isValid() ) {
 					foreach ( $validationResult->getErrors() as $error ) {
-						$this->errors[] = new ValidationError( $error->getText(), $severity );
+						$this->errors[] = new ProcessingError( $error->getText(), $severity );
 					}
 				}
 			}
@@ -322,7 +322,7 @@ final class Param implements IParam {
 			return array( $value );
 		}
 		else {
-			$this->errors[] = new ValidationError( $parsingResult->getError()->getText(), $severity );
+			$this->errors[] = new ProcessingError( $parsingResult->getError()->getText(), $severity );
 		}
 
 		return false;
@@ -374,7 +374,7 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @return ValidationError[]
+	 * @return ProcessingError[]
 	 */
 	public function getErrors() {
 		return $this->errors;
@@ -402,9 +402,9 @@ final class Param implements IParam {
 	}
 
 	/**
-	 * Returns false when there are no fatal errors or an ValidationError when one is found.
+	 * Returns false when there are no fatal errors or an ProcessingError when one is found.
 	 *
-	 * @return mixed false or ValidationError
+	 * @return mixed false or ProcessingError
 	 */
 	public function hasFatalError() {
 		foreach ( $this->errors as $error ) {

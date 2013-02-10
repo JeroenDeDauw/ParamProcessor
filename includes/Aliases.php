@@ -37,7 +37,7 @@ class DimensionParam extends ParamProcessor\DimensionParam {}
 /**
  * @deprecated since 1.0, removal in 1.2
  */
-class ValidationError extends ParamProcessor\ValidationError {}
+class ProcessingError extends ParamProcessor\ProcessingError {}
 
 /**
  * @deprecated since 1.0, removal in 1.2

@@ -389,11 +389,11 @@ abstract class ParserHook {
 	}
 
 	/**
-	 * Returns the ValidationError objects for the errors and warnings that should be displayed.
+	 * Returns the ProcessingError objects for the errors and warnings that should be displayed.
 	 *
 	 * @since 0.4
 	 *
-	 * @return array of array of ValidationError
+	 * @return array of array of ProcessingError
 	 */
 	protected function getErrorsToDisplay() {
 		$errors = array();
@@ -417,11 +417,11 @@ abstract class ParserHook {
 	 *
 	 * @since 0.4
 	 *
-	 * @param ValidationError $error
+	 * @param ProcessingError $error
 	 *
 	 * @return string
 	 */
-	protected function renderFatalError( ValidationError $error ) {		
+	protected function renderFatalError( ProcessingError $error ) {
 		return '<div><span class="errorbox">' .
 			wfMessage( 'validator-fatal-error', $error->getMessage() )->parse() .
 			'</span></div><br /><br />';
