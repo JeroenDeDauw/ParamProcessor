@@ -62,7 +62,7 @@ class DimensionParam extends ParamDefinition {
 
 		if ( get_class( $validator ) === 'ValueValidators\DimensionValidator' ) {
 			foreach ( $validator->getAllowedUnits() as $unit ) {
-				if ( $unit !== '' && in_string( $unit, $value ) ) {
+				if ( $unit !== '' && strpos( $value, $unit ) !== false ) {
 					return $value;
 				}
 			}
