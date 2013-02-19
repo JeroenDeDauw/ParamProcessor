@@ -1991,11 +1991,14 @@ $messages['ja'] = array(
 	'validator-listerrors-normal' => '普通',
 	'validator-listerrors-high' => '重大',
 	'validator-listerrors-fatal' => '非常に重大',
+	'validator-describe-notfound' => '「$1」を処理できるパーサーフックはありません。',
 	'validator-describe-descriptionmsg' => "'''説明''': $1",
 	'validator-describe-aliases' => "'''{{PLURAL:$2|別名}}''': $1",
 	'validator-describe-parserfunction' => 'パーサー関数としてのみ実装されています。',
 	'validator-describe-tagextension' => 'タグ拡張機能としてのみ実装されています。',
 	'validator-describe-bothhooks' => 'パーサー関数およびタグ拡張機能の両方として実装されています。',
+	'validator-describe-par-hooks' => '説明文を表示するパーサーフックです。',
+	'validator-describe-par-language' => '説明を表示する言語',
 	'validator-describe-empty' => '空',
 	'validator-describe-required' => '必須',
 	'validator-describe-header-parameter' => '引数',
@@ -3727,12 +3730,14 @@ $messages['yi'] = array(
  * @author Shirayuki
  * @author Wilsonmess
  * @author Xiaomingyan
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
+	'validator-desc' => '声明参数处理库',
 	'validator-warning' => '警告：$1',
 	'validator-error' => '错误：$1',
 	'validator-fatal-error' => '致命错误：$1',
-	'validator_error_parameters' => '从您的语法中检测到以下错误：', # Fuzzy
+	'validator_error_parameters' => '从您的语法中检测到以下{{PLURAL:$1|错误|错误}}：',
 	'validator_warning_parameters' => '您的语法中存在错误。', # Fuzzy
 	'validator-warning-adittional-errors' => '⋯⋯以及更多的问题。', # Fuzzy
 	'validator-error-omitted' => '"$1"等值被忽略。', # Fuzzy
