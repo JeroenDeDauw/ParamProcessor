@@ -28,10 +28,29 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
+/**
+ * @deprecated since 1.0, removal in 1.5
+ */
 class ParamDefinitionFactory extends ParamProcessor\ParamDefinitionFactory {}
+
+/**
+ * @deprecated since 1.0, removal in 1.5
+ */
 class ParamDefinition extends ParamProcessor\ParamDefinition {}
+
+/**
+ * @deprecated since 1.0, removal in 1.5
+ */
 class StringParam extends ParamProcessor\Definition\StringParam {}
+
+/**
+ * @deprecated since 1.0, removal in 1.5
+ */
 interface IParamDefinition extends ParamProcessor\IParamDefinition {}
+
+/**
+ * @deprecated since 1.0, removal in 1.5
+ */
 class DimensionParam extends ParamProcessor\Definition\DimensionParam {}
 
 /**

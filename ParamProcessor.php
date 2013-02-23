@@ -14,7 +14,7 @@
  */
 
 /**
- * This documenation group collects source code files belonging to Validator.
+ * This documentation group collects source code files belonging to Validator.
  *
  * Please do not use this group name for other code.
  *
