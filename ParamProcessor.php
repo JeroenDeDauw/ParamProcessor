@@ -139,40 +139,4 @@ $wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
 // Since 0.4.8
 $wgHooks['UnitTestsList'][] = 'ParamProcessor\Hooks::registerUnitTests';
 
-
-
-$egValidatorSettings = array();
-
-$wgParamDefinitions = array(
-	'boolean' => array(
-		'string-parser' => '\ValueParsers\BoolParser',
-		'validation-callback' => 'is_bool',
-	),
-	'float' => array(
-		'string-parser' => '\ValueParsers\FloatParser',
-		'validation-callback' => function( $value ) {
-			return is_float( $value ) || is_int( $value );
-		},
-		'validator' => '\ValueValidators\RangeValidator',
-	),
-	'integer' => array(
-		'string-parser' => '\ValueParsers\IntParser',
-		'validation-callback' => 'is_int',
-		'validator' => '\ValueValidators\RangeValidator',
-	),
-	'string' => array(
-		'validator' => '\ValueValidators\StringValidator',
-		'definition' => '\ParamProcessor\StringParam',
-	),
-	'title' => array(
-		'string-parser' => '\ValueParsers\TitleParser',
-		'validator' => '\ValueValidators\TitleValidator',
-	),
-	'dimension' => array(
-		'definition' => '\ParamProcessor\DimensionParam',
-		'validator' => '\ValueValidators\DimensionValidator',
-	),
-	'coordinate' => array(
-		'string-parser' => '\ValueParsers\GeoCoordinateParser',
-	),
-);
+include_once( __DIR__ . '/config/DefaultConfig.php' );

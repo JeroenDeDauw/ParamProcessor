@@ -6,6 +6,7 @@ namespace ParamProcessor;
  * Static class for error handling.
  * 
  * @since 0.4
+ * @deprecated since 1.0
  *
  * @file
  * @ingroup ParamProcessor
