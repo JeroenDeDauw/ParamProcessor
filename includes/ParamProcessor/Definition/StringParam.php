@@ -1,6 +1,9 @@
 <?php
 
-namespace ParamProcessor;
+namespace ParamProcessor\Definition;
+
+use ParamProcessor\ParamDefinition;
+use ParamProcessor\IParam;
 
 /**
  * Defines the string parameter type.

@@ -1,9 +1,11 @@
 <?php
 
 namespace ParamProcessor\Test;
+
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\IParamDefinition;
 use ParamProcessor\Param;
+use ParamProcessor\ParamDefinitionFactory;
 
 /**
  * Unit test base for ParamDefinition deriving classes.
@@ -79,7 +81,7 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 	}
 
 	public function getEmptyInstance() {
-		return \ParamDefinitionFactory::singleton()->newDefinitionFromArray( array(
+		return ParamDefinitionFactory::singleton()->newDefinitionFromArray( array(
 			'name' => 'empty',
 			'message' => 'test-empty',
 			'type' => $this->getType(),
@@ -95,7 +97,7 @@ abstract class ParamDefinitionTest extends \MediaWikiTestCase {
 			}
 
 			$definition['name'] = $name;
-			$definitions[] = array( \ParamDefinitionFactory::singleton()->newDefinitionFromArray( $definition ) );
+			$definitions[] = array( ParamDefinitionFactory::singleton()->newDefinitionFromArray( $definition ) );
 		}
 
 		return $definitions;

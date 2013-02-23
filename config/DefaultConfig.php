@@ -54,14 +54,14 @@ $wgParamDefinitions = array(
 	),
 	'string' => array(
 		'validator' => '\ValueValidators\StringValidator',
-		'definition' => '\ParamProcessor\StringParam',
+		'definition' => '\ParamProcessor\Definition\StringParam',
 	),
 	'title' => array(
 		'string-parser' => '\ValueParsers\TitleParser',
 		'validator' => '\ValueValidators\TitleValidator',
 	),
 	'dimension' => array(
-		'definition' => '\ParamProcessor\DimensionParam',
+		'definition' => '\ParamProcessor\Definition\DimensionParam',
 		'validator' => '\ValueValidators\DimensionValidator',
 	),
 	'coordinate' => array(

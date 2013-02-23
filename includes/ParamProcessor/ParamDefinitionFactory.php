@@ -1,6 +1,7 @@
 <?php
 
 namespace ParamProcessor;
+
 use MWException;
 
 /**
@@ -54,12 +55,15 @@ class ParamDefinitionFactory {
 	 *
 	 * @since 1.0
 	 */
-	protected function __construct() {}
+	public function __construct() {
+
+	}
 
 	/**
 	 * Singleton.
 	 *
 	 * @since 1.0
+	 * @deprecated since 1.0
 	 *
 	 * @return ParamDefinitionFactory
 	 */

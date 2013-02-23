@@ -1,7 +1,11 @@
 <?php
 
-namespace ParamProcessor;
+namespace ParamProcessor\Definition;
+
 use MWException;
+use ParamProcessor\ParamDefinition;
+use ParamProcessor\IParam;
+use ParamProcessor\IParamDefinition;
 
 /**
  * Defines the dimension parameter type.
@@ -45,12 +49,12 @@ class DimensionParam extends ParamDefinition {
 	 * @param mixed $value
 	 * @param IParam $param
 	 * @param IParamDefinition[] $definitions
-	 * @param iParam[] $params
+	 * @param IParam[] $params
 	 *
 	 * @return mixed
 	 * @throws MWException
 	 */
-	protected function formatValue( $value, \IParam $param, array &$definitions, array $params ) {
+	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
 		if ( $value === 'auto' ) {
 			return $value;
 		}
