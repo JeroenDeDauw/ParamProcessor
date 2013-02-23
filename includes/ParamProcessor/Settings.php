@@ -25,7 +25,9 @@ final class Settings {
 	 * Protected constructor - force singleton usage.
 	 * @since 1.0
 	 */
-	protected function __construct(){}
+	public function __construct() {
+
+	}
 
 	/**
 	 * @since 1.0
@@ -40,21 +42,6 @@ final class Settings {
 	protected $settings = null;
 
 	/**
-	 * Returns an instance of ValidatorSettings.
-	 *
-	 * @since 1.0
-	 *
-	 * @return Settings
-	 */
-	public static function singleton() {
-		if ( is_null( self::$instance ) ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
-
-	/**
 	 * Returns the default values for the settings.
 	 * setting name (string) => setting value (mixed)
 	 *
@@ -65,12 +52,6 @@ final class Settings {
 	protected function getDefaultSettings() {
 		return array(
 			'errorListMinSeverity' => 'minor',
-			'errorActions' => array(
-				ProcessingError::SEVERITY_MINOR => ProcessingError::ACTION_LOG,
-				ProcessingError::SEVERITY_LOW => ProcessingError::ACTION_WARN,
-				ProcessingError::SEVERITY_NORMAL => ProcessingError::ACTION_SHOW,
-				ProcessingError::SEVERITY_HIGH => ProcessingError::ACTION_DEMAND,
-			),
 		);
 	}
 
@@ -113,7 +94,7 @@ final class Settings {
 	 * @throws MWException
 	 * @return mixed
 	 */
-	public function getSetting( $settingName ) {
+	public function get( $settingName ) {
 		$this->buildSettings();
 
 		if ( !array_key_exists( $settingName, $this->settings ) ) {
@@ -133,38 +114,9 @@ final class Settings {
 	 * @throws MWException
 	 * @return mixed
 	 */
-	public function hasSetting( $settingName ) {
+	public function has( $settingName ) {
 		$this->buildSettings();
 		return array_key_exists( $settingName, $this->settings );
-	}
-
-	/**
-	 * Gets the value of the specified setting.
-	 * Shortcut to ValidatorSettings::getSetting.
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $settingName
-	 *
-	 * @return mixed
-	 */
-	public static function get( $settingName ) {
-		return self::singleton()->getSetting( $settingName );
-	}
-
-	/**
-	 * Returns if a certain setting is set, and can therefor be obtained via getSetting.
-	 * Shortcut to ValidatorSettings::hasSetting.
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $settingName
-	 *
-	 * @throws MWException
-	 * @return mixed
-	 */
-	public static function has( $settingName ) {
-		return self::singleton()->hasSetting( $settingName );
 	}
 
 }

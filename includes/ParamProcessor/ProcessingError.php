@@ -153,7 +153,13 @@ class ProcessingError {
 	 * @return integer Element of the ProcessingError::ACTION_ enum
 	 */
 	public function getAction() {
-		$errorActions = Settings::get( 'errorActions' );
+		// TODO: as option
+		$errorActions = array(
+			ProcessingError::SEVERITY_MINOR => ProcessingError::ACTION_LOG,
+			ProcessingError::SEVERITY_LOW => ProcessingError::ACTION_WARN,
+			ProcessingError::SEVERITY_NORMAL => ProcessingError::ACTION_SHOW,
+			ProcessingError::SEVERITY_HIGH => ProcessingError::ACTION_DEMAND,
+		);
 
 		if ( $this->severity === self::SEVERITY_FATAL ) {
 			// This action should not be configurable, as lowering it would break in the Validator class.
