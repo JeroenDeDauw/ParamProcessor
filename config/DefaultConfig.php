@@ -33,7 +33,9 @@ if ( !defined( 'ParamProcessor_VERSION' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egValidatorSettings = array();
+$egValidatorSettings = array(
+	'errorListMinSeverity' => 'minor',
+);
 
 $wgParamDefinitions = array(
 	'boolean' => array(

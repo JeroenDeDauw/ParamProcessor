@@ -1,10 +1,9 @@
 <?php
 
 namespace ParamProcessor;
-use MWException;
 
 /**
- * File defining the settings for the Validator extension.
+ * File defining the settings for the ParamProcessor extension.
  * More info can be found at https://www.mediawiki.org/wiki/Extension:Validator#Settings
  *
  * NOTICE:
@@ -22,101 +21,48 @@ use MWException;
 final class Settings {
 
 	/**
-	 * Protected constructor - force singleton usage.
+	 * Constructs a new instance of the settings object from global state.
+	 *
 	 * @since 1.0
+	 *
+	 * @param array $globalVariables
+	 *
+	 * @return Settings
 	 */
-	public function __construct() {
-
+	public static function newFromGlobals( array $globalVariables ) {
+		return new self( $globalVariables['egValidatorSettings'] );
 	}
 
 	/**
 	 * @since 1.0
-	 * @var Settings|null
+	 *
+	 * @var array
 	 */
-	protected static $instance = null;
+	protected $settings;
 
 	/**
-	 * @since 1.0
-	 * @var array|null
-	 */
-	protected $settings = null;
-
-	/**
-	 * Returns the default values for the settings.
-	 * setting name (string) => setting value (mixed)
+	 * Constructor.
 	 *
 	 * @since 1.0
 	 *
-	 * @return array
+	 * @param array $settings
 	 */
-	protected function getDefaultSettings() {
-		return array(
-			'errorListMinSeverity' => 'minor',
-		);
+	public function __construct( array $settings ) {
+		$this->settings = $settings;
 	}
 
 	/**
-	 * Builds the settings if needed.
-	 * This includes merging the set settings over the default ones.
-	 *
-	 * @since 1.0
-	 */
-	protected function buildSettings() {
-		if ( is_null( $this->settings ) ) {
-			$this->settings = array_merge(
-				self::getDefaultSettings(),
-				$GLOBALS['egValidatorSettings']
-			);
-		}
-	}
-
-	/**
-	 * Retruns an array with all settings after making sure they are
-	 * initialized (ie set settings have been merged with the defaults).
-	 * setting name (string) => setting value (mixed)
-	 *
-	 * @since 1.0
-	 *
-	 * @return array
-	 */
-	public function getSettings() {
-		$this->buildSettings();
-		return $this->settings;
-	}
-
-	/**
-	 * Gets the value of the specified setting.
+	 * Returns the setting with the provided name.
+	 * The specified setting needs to exist.
 	 *
 	 * @since 1.0
 	 *
 	 * @param string $settingName
 	 *
-	 * @throws MWException
 	 * @return mixed
 	 */
 	public function get( $settingName ) {
-		$this->buildSettings();
-
-		if ( !array_key_exists( $settingName, $this->settings ) ) {
-			throw new MWException( 'Attempt to get non-existing setting "' . $settingName . '"' );
-		}
-
 		return $this->settings[$settingName];
-	}
-
-	/**
-	 * Returns if a certain setting is set, and can therefor be obtained via getSetting.
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $settingName
-	 *
-	 * @throws MWException
-	 * @return mixed
-	 */
-	public function has( $settingName ) {
-		$this->buildSettings();
-		return array_key_exists( $settingName, $this->settings );
 	}
 
 }
