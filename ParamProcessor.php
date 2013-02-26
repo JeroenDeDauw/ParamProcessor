@@ -85,11 +85,13 @@ $wgAutoloadClasses['ParamProcessor\Settings']		= __DIR__ . '/ParamProcessor.sett
 $wgAutoloadClasses['ParamProcessor\Param']				  		= __DIR__ . '/includes/Param.php';
 $wgAutoloadClasses['ParamProcessor\ParamDefinitionFactory']		= __DIR__ . '/includes/ParamDefinitionFactory.php';
 $wgAutoloadClasses['ParamProcessor\ParamDefinition']			= __DIR__ . '/includes/ParamDefinition.php';
+$wgAutoloadClasses['ParamProcessor\ProcessedParam']				= __DIR__ . '/includes/ProcessedParam.php';
+$wgAutoloadClasses['ParamProcessor\ProcessingError']			= __DIR__ . '/includes/ProcessingError.php';
+$wgAutoloadClasses['ParamProcessor\ProcessingResult']			= __DIR__ . '/includes/ProcessingResult.php';
 $wgAutoloadClasses['ParamProcessor\Processor']				  	= __DIR__ . '/includes/Processor.php';
 $wgAutoloadClasses['ParamProcessor\Options']					= __DIR__ . '/includes/Options.php';
 $wgAutoloadClasses['ParamProcessor\TopologicalSort']			= __DIR__ . '/includes/TopologicalSort.php';
-$wgAutoloadClasses['ParamProcessor\ValidationError']			= __DIR__ . '/includes/ValidationError.php';
-$wgAutoloadClasses['ParamProcessor\ValidationErrorHandler']	 	= __DIR__ . '/includes/ValidationErrorHandler.php';
+$wgAutoloadClasses['ParamProcessor\ProcessingErrorHandler']	 	= __DIR__ . '/includes/ProcessingErrorHandler.php';
 $wgAutoloadClasses['ParamProcessor\IParam']				  		= __DIR__ . '/includes/IParam.php';
 $wgAutoloadClasses['ParamProcessor\IParamDefinition']			= __DIR__ . '/includes/IParamDefinition.php';
 
@@ -103,7 +105,7 @@ class_alias( 'ParamProcessor\StringParam', 'StringParam' );
 class_alias( 'ParamProcessor\IParamDefinition', 'IParamDefinition' );
 class_alias( 'ParamProcessor\DimensionParam', 'DimensionParam' );
 
-class_alias( 'ParamProcessor\ValidationError', 'ValidationError' ); // Deprecated since 1.0, removal in 1.2
+class_alias( 'ParamProcessor\ProcessingError', 'ProcessingError' ); // Deprecated since 1.0, removal in 1.2
 class_alias( 'ParamProcessor\Options', 'ValidatorOptions' ); // Deprecated since 1.0, removal in 1.2
 class_alias( 'ParamProcessor\IParam', 'IParam' ); // Deprecated since 1.0, removal in 1.2
 

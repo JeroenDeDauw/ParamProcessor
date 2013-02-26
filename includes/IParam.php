@@ -78,7 +78,7 @@ interface IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @return array of ValidationError
+	 * @return array of ProcessingError
 	 */
 	public function getErrors();
 

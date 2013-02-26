@@ -63,11 +63,11 @@ class Processor {
 	protected $paramDefinitions = array();
 	
 	/**
-	 * List of ValidationError.
+	 * List of ProcessingError.
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var ValidationError[]
+	 * @var ProcessingError[]
 	 */
 	protected $errors = array();
 
@@ -253,9 +253,9 @@ class Processor {
 	 * @param mixed $tags string or array
 	 * @param integer $severity
 	 */
-	protected function registerNewError( $message, $tags = array(), $severity = ValidationError::SEVERITY_NORMAL ) {
+	protected function registerNewError( $message, $tags = array(), $severity = ProcessingError::SEVERITY_NORMAL ) {
 		$this->registerError(
-			new ValidationError(
+			new ProcessingError(
 				$message,
 				$severity,
 				$this->options->getName(),
@@ -269,18 +269,19 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @param ValidationError $error
+	 * @param ProcessingError $error
 	 */
-	protected function registerError( ValidationError $error ) {
+	protected function registerError( ProcessingError $error ) {
 		$error->element = $this->options->getName();
 		$this->errors[] = $error;
-		ValidationErrorHandler::addError( $error );		
+		ProcessingErrorHandler::addError( $error );
 	}
 	
 	/**
 	 * Validates and formats all the parameters (but aborts when a fatal error occurs).
 	 * 
 	 * @since 0.4
+	 * @deprecated since 1.0, use processParameters
 	 */
 	public function validateParameters() {
 		$this->doParamProcessing();
@@ -295,6 +296,33 @@ class Processor {
 				);
 			}			
 		}
+	}
+
+	/**
+	 * @since 1.0
+	 *
+	 * @return ProcessingResult
+	 */
+	public function processParameters() {
+		$this->validateParameters();
+
+		$parameters = array();
+
+		foreach ( $this->getParameters() as $parameter ) {
+			// TODO
+			$parameters[] = new ProcessedParam(
+				$parameter->getName(),
+				$parameter->getValue(),
+				$parameter->wasSetToDefault(),
+				$parameter->getOriginalName(),
+				$parameter->getOriginalValue()
+			);
+		}
+
+		return new ProcessingResult(
+			$parameters,
+			$this->getErrors()
+		);
 	}
 	
 	/**
@@ -318,7 +346,7 @@ class Processor {
 				$this->registerNewError(
 					"Required parameter '$paramName' is missing", // FIXME: i18n validator_error_required_missing
 					array( $paramName, 'missing' ),
-					ValidationError::SEVERITY_FATAL
+					ProcessingError::SEVERITY_FATAL
 				);
 				break;
 			}
@@ -473,7 +501,7 @@ class Processor {
 	 *
 	 * @since 0.4
 	 *
-	 * @return ValidationError[]
+	 * @return ProcessingError[]
 	 */
 	public function getErrors() {
 		return $this->errors;
@@ -504,9 +532,9 @@ class Processor {
 	}
 	
 	/**
-	 * Returns false when there are no fatal errors or an ValidationError when one is found.
+	 * Returns false when there are no fatal errors or an ProcessingError when one is found.
 	 * 
-	 * @return ValidationError|boolean false
+	 * @return ProcessingError|boolean false
 	 */
 	public function hasFatalError() {
 		foreach ( $this->errors as $error ) {

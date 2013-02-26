@@ -13,18 +13,18 @@
 class ValidatorListErrors extends ParserHook {
 	/**
 	 * Array to map the possible values for the 'minseverity' parameter
-	 * to their equivalent in the ValidationError::SEVERITY_ enum.
+	 * to their equivalent in the ProcessingError::SEVERITY_ enum.
 	 * 
 	 * @since 0.4
 	 * 
 	 * @var array
 	 */
 	protected static $severityMap = array(
-		'minor' => ValidationError::SEVERITY_MINOR,
-		'low' => ValidationError::SEVERITY_LOW,
-		'normal' => ValidationError::SEVERITY_NORMAL,
-		'high' => ValidationError::SEVERITY_HIGH,
-		'fatal' => ValidationError::SEVERITY_FATAL
+		'minor' => ProcessingError::SEVERITY_MINOR,
+		'low' => ProcessingError::SEVERITY_LOW,
+		'normal' => ProcessingError::SEVERITY_NORMAL,
+		'high' => ProcessingError::SEVERITY_HIGH,
+		'fatal' => ProcessingError::SEVERITY_FATAL
 	);
 
 	/**
@@ -93,7 +93,7 @@ class ValidatorListErrors extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		$errorList = $this->getErrorList(
-			ValidationErrorHandler::getErrors(), 
+			ProcessingErrorHandler::getErrors(),
 			self::$severityMap[$parameters['minseverity']]
 		);
 		
@@ -110,7 +110,7 @@ class ValidatorListErrors extends ParserHook {
 	 * 
 	 * @return string
 	 */
-	public function getErrorList( array $errors, $minSeverity = ValidationError::SEVERITY_MINOR ) {
+	public function getErrorList( array $errors, $minSeverity = ProcessingError::SEVERITY_MINOR ) {
 		$elementHtml = array();
 		
 		if ( count( $errors ) == 0 ) {
@@ -150,7 +150,7 @@ class ValidatorListErrors extends ParserHook {
 	 * 
 	 * @return mixed String or false
 	 */	
-	public function getErrorListForElement( array $allErrors, $element, $minSeverity = ValidationError::SEVERITY_MINOR ) {
+	public function getErrorListForElement( array $allErrors, $element, $minSeverity = ProcessingError::SEVERITY_MINOR ) {
 		$errors = array();
 
 		foreach ( $allErrors as $error ) {

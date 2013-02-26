@@ -66,10 +66,10 @@ final class Settings {
 		return array(
 			'errorListMinSeverity' => 'minor',
 			'errorActions' => array(
-				ValidationError::SEVERITY_MINOR => ValidationError::ACTION_LOG,
-				ValidationError::SEVERITY_LOW => ValidationError::ACTION_WARN,
-				ValidationError::SEVERITY_NORMAL => ValidationError::ACTION_SHOW,
-				ValidationError::SEVERITY_HIGH => ValidationError::ACTION_DEMAND,
+				ProcessingError::SEVERITY_MINOR => ProcessingError::ACTION_LOG,
+				ProcessingError::SEVERITY_LOW => ProcessingError::ACTION_WARN,
+				ProcessingError::SEVERITY_NORMAL => ProcessingError::ACTION_SHOW,
+				ProcessingError::SEVERITY_HIGH => ProcessingError::ACTION_DEMAND,
 			),
 		);
 	}
