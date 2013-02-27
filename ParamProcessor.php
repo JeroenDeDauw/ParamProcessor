@@ -83,10 +83,11 @@ foreach ( include( __DIR__ . '/ParamProcessor.classes.php' ) as $class => $file 
 
 
 class_alias( 'ParamProcessor\ParamDefinitionFactory', 'ParamDefinitionFactory' ); // Softly deprecated since 1.0, removal in 1.5
-class_alias( 'ParamProcessor\ParamDefinition', 'ParamDefinition' );
-class_alias( 'ParamProcessor\Definition\StringParam', 'StringParam' );
-class_alias( 'ParamProcessor\IParamDefinition', 'IParamDefinition' );
-class_alias( 'ParamProcessor\Definition\DimensionParam', 'DimensionParam' );
+class_alias( 'ParamProcessor\ParamDefinition', 'ParamDefinition' ); // Softly deprecated since 1.0, removal in 1.5
+class_alias( 'ParamProcessor\Definition\StringParam', 'StringParam' ); // Softly deprecated since 1.0, removal in 1.5
+class_alias( 'ParamProcessor\Definition\StringParam', 'ParamProcessor\StringParam' ); // Softly deprecated since 1.0, removal in 1.5
+class_alias( 'ParamProcessor\IParamDefinition', 'IParamDefinition' ); // Softly deprecated since 1.0, removal in 1.5
+class_alias( 'ParamProcessor\Definition\DimensionParam', 'DimensionParam' ); // Softly deprecated since 1.0, removal in 1.5
 
 class_alias( 'ParamProcessor\ProcessingError', 'ProcessingError' ); // Deprecated since 1.0, removal in 1.2
 class_alias( 'ParamProcessor\Options', 'ValidatorOptions' ); // Deprecated since 1.0, removal in 1.2
