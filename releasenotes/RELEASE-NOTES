@@ -103,7 +103,7 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 === Validator 0.4.3.1 ===
 (2011-01-20)
 
-* Removed underscore and space switching behaviour for tag extensions and parser functions.
+* Removed underscore and space switching behavior for tag extensions and parser functions.
 
 === Validator 0.4.3 ===
 (2011-01-11)

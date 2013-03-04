@@ -3,7 +3,7 @@
 namespace ParamProcessor;
 
 /**
- * Object for holding options affecting the behaviour of a ParamProcessor object.
+ * Object for holding options affecting the behavior of a ParamProcessor object.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
