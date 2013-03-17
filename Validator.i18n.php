@@ -1533,7 +1533,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'validator-desc' => 'Validator skići lochke wašnje za druhe rozšěrjenja, zo bychu so parametry parserowych funkcijow a tafličkowych rozšěrjenjow přepruwowali, standardne hódnoty nastajili a zmylkowe powěsće wutworili', # Fuzzy
+	'validator-desc' => 'Deklaratiwna biblioteka za předźěłowanje parametrow',
 	'validator-warning' => 'Warnowanje: $1',
 	'validator-error' => 'Zmylk: $1',
 	'validator-fatal-error' => 'Chutny zmylk: $1',
