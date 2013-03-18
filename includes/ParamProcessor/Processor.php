@@ -285,7 +285,7 @@ class Processor {
 	 */
 	public function validateParameters() {
 		$this->doParamProcessing();
-		
+
 		if ( !$this->hasFatalError() && $this->options->unknownIsInvalid() ) {
 			// Loop over the remaining raw parameters.
 			// These are unrecognized parameters, as they where not used by any parameter definition.

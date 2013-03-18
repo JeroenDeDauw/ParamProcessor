@@ -157,22 +157,23 @@ final class Param implements IParam {
 	protected function cleanValue( Options $options ) {
 		$this->value = $this->originalValue;
 
-		if ( $this->definition->isList() ) {
-			$this->value = explode( $this->definition->getDelimiter(), $this->value );
-		}
-
 		$trim = $this->getDefinition()->trimDuringClean();
 
 		if ( $trim === true || ( is_null( $trim ) && $options->trimValues() ) ) {
-			if ( $this->definition->isList() ) {
+			if ( is_string( $this->value ) ) {
+				$this->value = trim( $this->value );
+			}
+		}
+
+		if ( $this->definition->isList() ) {
+			$this->value = explode( $this->definition->getDelimiter(), $this->value );
+
+			if ( $trim === true || ( is_null( $trim ) && $options->trimValues() ) ) {
 				foreach ( $this->value as &$element ) {
 					if ( is_string( $element ) ) {
 						$element = trim( $element );
 					}
 				}
-			}
-			elseif ( is_string( $this->value ) ) {
-				$this->value = trim( $this->value );
 			}
 		}
 
