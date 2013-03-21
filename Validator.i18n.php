@@ -146,9 +146,20 @@ $messages['qqq'] = array(
 	'validator-fatal-error' => 'This message indicates a fatal error detected. $1 holds the fatal error report.',
 	'validator_error_parameters' => 'Parameters:
 * $1 is the number of syntax errors, for PLURAL support (optional)',
+	'validator_warning_parameters' => 'Parameters:
+* $1 - the number of syntax errors, for PLURAL support (optional)',
+	'validator-warning-adittional-errors' => 'Parameters:
+* $1 - number of issues',
+	'validator-error-omitted' => 'Parameters:
+* $1 - ...
+* $2 - number of values',
 	'validator-error-problem' => 'This is an error message. $1 holds the name of the parameter causing the error.',
 	'validator_error_unknown_argument' => 'This is an error message. $1 holds the name of the erroneous parameter provided.',
 	'validator_error_required_missing' => 'This is an error message. $1 holds the name of the parameter which was not provided.',
+	'validator-error-override-argument' => 'Parameters:
+* $1 - parameter name
+* $2 - old value
+* $3 - new value',
 	'validator-type-string' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "text" (string).
 {{Related|Validator-type}}
 {{Identical|Text}}',
@@ -190,7 +201,14 @@ $messages['qqq'] = array(
 	'validator-listerrors-high' => 'This is the name of a status that is assigned to an error report.
 {{Identical|High}}',
 	'validator-listerrors-fatal' => 'This is the name of a status that is assigned to an error report.',
+	'validator-describe-notfound' => 'Parameters:
+* $1 - parser hook name',
 	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
+	'validator-describe-aliases' => 'Used to describe the list of aliases. Parameters:
+* $1 - list of aliases
+* $2 - number of aliases
+
+This message follows the message: {{msg-mw|validator-describe-descriptionmsg}} and a new line.',
 	'validator-describe-parserfunction' => '{{Related|Validator-describe}}',
 	'validator-describe-tagextension' => '{{Related|Validator-describe}}',
 	'validator-describe-bothhooks' => '{{Related|Validator-describe}}',
@@ -291,6 +309,9 @@ $messages['qqq'] = array(
 * {{msg-mw|Validator-list-error-accepts-only}}
 * {{msg-mw|Validator-list-error-accepts-only-omitted}}
 * {{msg-mw|Validator error accepts only}}',
+	'validator_list_omitted' => 'Parameters:
+* $1 - ...
+* $2 - number of values',
 	'validator-message-nodesc' => 'Indicates that no parameter description is available',
 );
 
