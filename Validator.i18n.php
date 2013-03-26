@@ -794,6 +794,7 @@ Nur {{PLURAL:$3|der folgende Wert wird|die folgenden Werte werden}} akzeptiert: 
 
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
+ * @author Mirzali
  */
 $messages['diq'] = array(
 	'validator-listerrors-errors' => 'Xırabi',
@@ -801,7 +802,7 @@ $messages['diq'] = array(
 	'validator-listerrors-low' => 'Kêm',
 	'validator-listerrors-normal' => 'Normal',
 	'validator-listerrors-high' => 'Berz',
-	'validator-describe-required' => 'mecburiyo',
+	'validator-describe-required' => 'lazım',
 	'validator-describe-header-parameter' => 'Parametre',
 	'validator-describe-header-type' => 'Babet',
 	'validator-describe-header-default' => 'Hesıbyaye',
