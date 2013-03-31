@@ -5,6 +5,8 @@ namespace ParamProcessor;
 /**
  * Interface for objects representing an "instance" of a parameter.
  *
+ * NOTE: as of version 1.0, this class is for internal use only!
+ *
  * @since 1.0
  *
  * @file

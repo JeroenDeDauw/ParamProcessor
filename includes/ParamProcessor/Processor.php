@@ -285,6 +285,15 @@ class Processor {
 	 */
 	public function validateParameters() {
 		$this->doParamProcessing();
+	}
+
+	/**
+	 * @since 1.0
+	 *
+	 * @return ProcessingResult
+	 */
+	public function processParameters() {
+		$this->doParamProcessing();
 
 		if ( !$this->hasFatalError() && $this->options->unknownIsInvalid() ) {
 			// Loop over the remaining raw parameters.
@@ -294,17 +303,8 @@ class Processor {
 					$paramName . ' is not a valid parameter', // TODO
 					$paramName
 				);
-			}			
+			}
 		}
-	}
-
-	/**
-	 * @since 1.0
-	 *
-	 * @return ProcessingResult
-	 */
-	public function processParameters() {
-		$this->validateParameters();
 
 		$parameters = array();
 
@@ -458,6 +458,7 @@ class Processor {
 	 * Returns the parameters.
 	 * 
 	 * @since 0.4
+	 * @deprecated since 1.0
 	 * 
 	 * @return IParam[]
 	 */
@@ -469,7 +470,8 @@ class Processor {
 	 * Returns a single parameter.
 	 * 
 	 * @since 0.4
-	 * 
+	 * @deprecated since 1.0
+	 *
 	 * @param string $parameterName The name of the parameter to return
 	 * 
 	 * @return IParam
