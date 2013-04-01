@@ -310,13 +310,20 @@ class Processor {
 
 		foreach ( $this->getParameters() as $parameter ) {
 			// TODO
-			$parameters[] = new ProcessedParam(
+			$processedParam = new ProcessedParam(
 				$parameter->getName(),
 				$parameter->getValue(),
-				$parameter->wasSetToDefault(),
-				$parameter->getOriginalName(),
-				$parameter->getOriginalValue()
+				$parameter->wasSetToDefault()
 			);
+
+			// TODO: it is possible these values where set even when the value defaulted,
+			// so this logic is not correct and could be improved
+			if ( !$parameter->wasSetToDefault() ) {
+				$processedParam->setOriginalName( $parameter->getOriginalName() );
+				$processedParam->setOriginalValue( $parameter->getOriginalValue() );
+			}
+
+			$parameters[] = $processedParam;
 		}
 
 		return new ProcessingResult(
