@@ -1,6 +1,7 @@
 <?php
 
 namespace ParamProcessor;
+
 use ValueParsers\ValueParser;
 use ValueValidators\ValueValidator;
 
@@ -8,6 +9,7 @@ use ValueValidators\ValueValidator;
  * Interface for parameter definition classes.
  *
  * @since 1.0
+ * @deprecated since 1.0, use ParamDefinition
  *
  * @file
  * @ingroup ParamProcessor
