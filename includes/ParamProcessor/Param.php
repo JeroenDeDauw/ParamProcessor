@@ -1,12 +1,15 @@
 <?php
 
 namespace ParamProcessor;
+
 use MWException;
 use ValueParsers\ValueParser;
 
 /**
  * Parameter class, representing the "instance" of a parameter.
  * Holds a ParamDefinition, user provided input (name & value) and processing state.
+ *
+ * NOTE: as of version 1.0, this class is for internal use only!
  *
  * @since 1.0
  *
@@ -195,7 +198,7 @@ final class Param implements IParam {
 
 	/**
 	 * Parameter processing entry point.
-	 * @see IParam::process
+	 * Processes the parameter. This includes parsing, validation and additional formatting.
 	 *
 	 * @since 1.0
 	 *
