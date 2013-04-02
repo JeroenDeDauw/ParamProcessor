@@ -63,6 +63,7 @@ class StringParamTest extends ParamDefinitionTest {
 				array( 'foo', true, 'foo' ),
 				array( '1', true, '1' ),
 				array( 'yes', true, 'yes' ),
+				array( 'bar', false ),
 				array( true, false ),
 				array( 0.1, false ),
 				array( array(), false ),

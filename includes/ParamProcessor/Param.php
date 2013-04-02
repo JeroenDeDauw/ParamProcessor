@@ -279,10 +279,12 @@ final class Param implements IParam {
 	}
 
 	/**
-	 * Parses and validates the provdied with with specified parser.
+	 * Parses and validates the provided with with specified parser.
 	 * The result is returned in an array on success. On fail, false is returned.
+	 * The result is wrapped in an array since we need to be able to distinguish
+	 * between the method returning false and the value being false.
 	 *
-	 * Parsing and validattion errors get added to $this->errors.
+	 * Parsing and validation errors get added to $this->errors.
 	 *
 	 * @since 1.0
 	 *
@@ -294,8 +296,6 @@ final class Param implements IParam {
 	protected function parseAndValidateValue( ValueParser $parser, $value ) {
 		$parsingResult = $parser->parse( $value );
 
-		$severity = $this->isRequired() ? ProcessingError::SEVERITY_FATAL : ProcessingError::SEVERITY_NORMAL;
-
 		if ( $parsingResult->isValid() ) {
 			$value = $parsingResult->getValue();
 
@@ -303,30 +303,60 @@ final class Param implements IParam {
 				$value = $value->getValue();
 			}
 
-			$validationCallback = $this->definition->getValidationCallback();
-
-			if ( $validationCallback !== null && $validationCallback( $value ) !== true ) {
-				$this->errors[] = new ProcessingError( 'Validation callback failed', $severity );
-			}
-			else {
-				$validator = $this->definition->getValueValidator();
-				$validator->setOptions( $this->definition->getOptions() ); // TODO
-				$validationResult = $validator->validate( $value );
-
-				if ( !$validationResult->isValid() ) {
-					foreach ( $validationResult->getErrors() as $error ) {
-						$this->errors[] = new ProcessingError( $error->getText(), $severity );
-					}
-				}
-			}
+			$this->validateValue( $value );
 
 			return array( $value );
 		}
 		else {
-			$this->errors[] = new ProcessingError( $parsingResult->getError()->getText(), $severity );
+			$this->registerProcessingError( $parsingResult->getError()->getText() );
 		}
 
 		return false;
+	}
+
+	/**
+	 * @since 1.0
+	 *
+	 * @param string $message
+	 */
+	protected function registerProcessingError( $message ) {
+		$this->errors[] = $this->newProcessingError( $message );
+	}
+
+	/**
+	 * @since 1.0
+	 *
+	 * @param string $message
+	 *
+	 * @return ProcessingError
+	 */
+	protected function newProcessingError( $message ) {
+		$severity = $this->isRequired() ? ProcessingError::SEVERITY_FATAL : ProcessingError::SEVERITY_NORMAL;
+		return new ProcessingError( $message, $severity );
+	}
+
+	/**
+	 * @since 1.0
+	 *
+	 * @param mixed $value
+	 */
+	protected function validateValue( $value ) {
+		$validationCallback = $this->definition->getValidationCallback();
+
+		if ( $validationCallback !== null && $validationCallback( $value ) !== true ) {
+			$this->registerProcessingError( 'Validation callback failed' );
+		}
+		else {
+			$validator = $this->definition->getValueValidator();
+			$validator->setOptions( $this->definition->getOptions() ); // TODO
+			$validationResult = $validator->validate( $value );
+
+			if ( !$validationResult->isValid() ) {
+				foreach ( $validationResult->getErrors() as $error ) {
+					$this->registerProcessingError( $error->getText() );
+				}
+			}
+		}
 	}
 
 	/**
