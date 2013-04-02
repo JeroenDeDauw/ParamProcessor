@@ -36,6 +36,7 @@ class Options {
 	protected $unknownInvalid = true;
 	protected $lowercaseNames = true;
 	protected $trimNames = true;
+	protected $acceptOverriding = true;
 
 	// During clean
 	protected $trimValues = true;
@@ -177,6 +178,15 @@ class Options {
 	 */
 	public function lowercaseValues() {
 		return $this->lowercaseValues;
+	}
+
+	/**
+	 * @since 1.0
+	 *
+	 * @return bool
+	 */
+	public function acceptOverriding() {
+		return $this->acceptOverriding;
 	}
 
 }

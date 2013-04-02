@@ -118,7 +118,7 @@ final class Param implements IParam {
 	 * @return boolean
 	 */
 	public function setUserValue( $paramName, $paramValue, Options $options ) {
-		if ( $this->setCount > 0 && !self::$acceptOverriding ) { // FIXME
+		if ( $this->setCount > 0 && !$options->acceptOverriding() ) {
 			// TODO
 			return false;
 		}
@@ -236,6 +236,8 @@ final class Param implements IParam {
 
 		if ( get_class( $parser ) === 'ValueParsers\NullParser' ) {
 			$parserType = $options->isStringlyTyped() ? 'string-parser' : 'typed-parser';
+
+			// TODO: inject factory
 			$parserClass = ParamDefinitionFactory::singleton()->getComponentForType( $this->definition->getType(), $parserType );
 
 			if ( $parserClass !== 'ValueParsers\NullParser' ) {
