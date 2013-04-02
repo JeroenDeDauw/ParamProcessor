@@ -180,9 +180,9 @@ interface IParamDefinition {
 	 *
 	 * @since 1.0
 	 *
-	 * @param boolean $doOrDoNotThereIsNoTry
+	 * @param boolean $manipulateDefault
 	 */
-	public function setDoManipulationOfDefault( $doOrDoNotThereIsNoTry );
+	public function setDoManipulationOfDefault( $manipulateDefault );
 
 	/**
 	 * Sets a message for the parameter that will act as description.
