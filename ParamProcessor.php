@@ -61,7 +61,7 @@ foreach ( $dependencies as $constant => $name ) {
 unset( $dependencies );
 
 
-define( 'ParamProcessor_VERSION', '1.0 alpha' );
+define( 'ParamProcessor_VERSION', '1.0 beta' );
 define( 'Validator_VERSION', ParamProcessor_VERSION ); // @deprecated since 1.0
 
 // Register the internationalization file.

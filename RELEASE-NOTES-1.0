@@ -3,29 +3,19 @@ THIS IS NOT A RELEASE YET
 Validator 1.0 is currently in beta-quality and is not recommended for use in
 production until the actual release.
 
-=== Compatibility changes ===
+This release is primarily a redesign of many internal APIs aimed at greater
+stability and cleaner interfaces exposed to the outside.
 
+=== Compatibility changes ===
 
 * DataValues 0.1 or higher is now required
 * ValueParser 0.1 or higher is now required
 * ValueValidator 0.1 or higher is now required
 * ValueFormatter 0.1 or higher is now required
 * Changed minimum MediaWiki version from 1.16 to 1.18.
-* Full compatibility with MediaWiki 1.20 and forward-compatibility with 1.21.
+* Full compatibility with MediaWiki 1.20 and 1.21 and forward-compatibility with 1.22.
 * Added compatibility with PHP 5.4.x and PHP 5.5.x
 * Dropped support for Validator 0.4.x parameter definitions, including Criteria and Manipulations
-
-=== New features ===
-
-*
-
-=== Enhancements ===
-
-*
-
-=== Deprecated features ===
-
-*
 
 === Extended translations ===
 
