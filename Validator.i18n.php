@@ -1892,7 +1892,7 @@ tempatkan listerrors pada atau di dekat bagian bawah halaman untuk mendapatkan s
  * @author HalphaZ
  */
 $messages['it'] = array(
-	'validator-desc' => 'Permette ad altre estensioni di gestire i parametri in modo semplice', # Fuzzy
+	'validator-desc' => 'Libreria per la dichiarazione dei parametri di elaborazione',
 	'validator-warning' => 'Attenzione: $1',
 	'validator-error' => 'Errore: $1',
 	'validator-fatal-error' => 'Errore fatale: $1',
