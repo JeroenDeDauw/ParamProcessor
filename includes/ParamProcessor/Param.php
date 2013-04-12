@@ -3,6 +3,7 @@
 namespace ParamProcessor;
 
 use MWException;
+use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
 
 /**
@@ -299,24 +300,21 @@ final class Param implements IParam {
 	 * @return array|bool
 	 */
 	protected function parseAndValidateValue( ValueParser $parser, $value ) {
-		$parsingResult = $parser->parse( $value );
-
-		if ( $parsingResult->isValid() ) {
-			$value = $parsingResult->getValue();
-
-			if ( $value instanceof \DataValues\DataValue ) {
-				$value = $value->getValue();
-			}
-
-			$this->validateValue( $value );
-
-			return array( $value );
+		try {
+			$value = $parser->parse( $value );
 		}
-		else {
-			$this->registerProcessingError( $parsingResult->getError()->getText() );
+		catch ( ParseException $parseException ) {
+			$this->registerProcessingError( $parseException->getMessage() );
+			return false;
 		}
 
-		return false;
+		if ( $value instanceof \DataValues\DataValue ) {
+			$value = $value->getValue();
+		}
+
+		$this->validateValue( $value );
+
+		return array( $value );
 	}
 
 	/**
