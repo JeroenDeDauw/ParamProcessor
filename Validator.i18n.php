@@ -1095,6 +1095,7 @@ $messages['fi'] = array(
 	'validator-listerrors-errors' => 'Virheet',
 	'validator-describe-empty' => 'tyhjä',
 	'validator-describe-required' => 'pakollinen',
+	'validator-describe-header-type' => 'Tyyppi',
 	'validator-describe-header-default' => 'Oletus',
 	'validator-describe-header-description' => 'Kuvaus',
 	'validator_error_must_be_number' => 'Parametrin $1 on oltava luku.',
