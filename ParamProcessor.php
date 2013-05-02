@@ -73,7 +73,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Validator (ParamProcessor)',
 	'version' => ParamProcessor_VERSION,
 	'author' => array( '[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
-	'url' => 'https://www.mediawiki.org/wiki/Extension:Validator',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ParamProcessor',
 	'descriptionmsg' => 'validator-desc',
 );
 
