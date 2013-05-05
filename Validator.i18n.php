@@ -639,6 +639,14 @@ $messages['bs'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|Vrijednost|Vrijednosti}} $1 {{PLURAL:$2|je ispuštena|su ispuštene}}.',
 );
 
+/** Catalan (català)
+ * @author Luckas
+ */
+$messages['ca'] = array(
+	'validator-describe-descriptionmsg' => "'''Descripció''': $1",
+	'validator-describe-header-description' => 'Descripció',
+);
+
 /** Czech (česky)
  * @author Matěj Grabovský
  * @author Mormegil
@@ -882,11 +890,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Luckas
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'validator_error_unknown_argument' => '$1 ne estas valida parametro.',
 	'validator_error_required_missing' => 'La nepra parametro $1 mankas.',
+	'validator-describe-descriptionmsg' => "'''Priskribo''': $1",
+	'validator-describe-header-description' => 'Priskribo',
 	'validator_error_empty_argument' => 'Parametro $1 ne povas esti nula valoro.',
 	'validator_error_must_be_number' => 'Parametro $1 nur povas esti numero.',
 	'validator_error_must_be_integer' => 'Parametro $1 nur povas esti entjero.',
