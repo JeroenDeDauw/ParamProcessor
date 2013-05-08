@@ -2799,7 +2799,7 @@ Parametr może przyjmować wyłącznie {{PLURAL:$5|wartość|wartości:}} $3 (or
  * @author McDutchie
  */
 $messages['pms'] = array(
-	'validator-desc' => 'Paràmetr diciarativ për traté librerìe',
+	'validator-desc' => 'Librarìe ëd tratament dij paràmeter diciairativ',
 	'validator-warning' => 'Avis: $1',
 	'validator-error' => 'Eror: $1',
 	'validator-fatal-error' => 'Eror Fatal: $1',
