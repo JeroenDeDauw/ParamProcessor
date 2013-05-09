@@ -61,6 +61,7 @@ class ValidatorDescribe extends ParserHook {
 			'default' => array_keys( ParserHook::getRegisteredParserHooks() ),
 			'message' => 'validator-describe-par-hooks',
 			'aliases' => 'hook',
+			'islist' => true,
 		);
 
 		$params['pre'] = array(
@@ -111,7 +112,7 @@ class ValidatorDescribe extends ParserHook {
 			$parserHook = $this->getParserHookInstance( $hookName );
 
 			if ( $parserHook === false ) {
-				$parts[] = wfMsgExt( 'validator-describe-notfound', 'parsemag', $hookName );
+				$parts[] = wfMessage( 'validator-describe-notfound', $hookName )->parse();
 			}
 			else {
 				$parts[] = $this->getParserHookDescription( $hookName, $parameters, $parserHook );
@@ -154,7 +155,7 @@ class ValidatorDescribe extends ParserHook {
 			$description .= "\n\n";
 		}
 		elseif ( $descriptionData['description'] !== false ) {
-			$description .= wfMsgExt( 'validator-describe-descriptionmsg', $descriptionData['description'] );
+			$description .= wfMessage( 'validator-describe-descriptionmsg', $descriptionData['description'] )->plain();
 			$description .= "\n\n";
 		}
 
@@ -203,8 +204,8 @@ class ValidatorDescribe extends ParserHook {
 	 *
 	 * @since 0.4.3
 	 *
-	 * @param array of Parameter $parameters
-	 * @param array of string $defaults
+	 * @param Parameter[] $parameters
+	 * @param string[] $defaults
 	 */
 	protected function sortParameters( array &$parameters, array $defaults ) {
 		$sort = array();
@@ -242,7 +243,7 @@ class ValidatorDescribe extends ParserHook {
 	protected function getSyntaxExamples( $hookName, array $parameters, ParserHook $parserHook, array $defaults, $pre ) {
 		$result = "\n\n" .
 			( $pre ? '=== ' : '<h3>' ) .
-			wfMsg( 'validator-describe-syntax' ) .
+			wfMessage( 'validator-describe-syntax' )->plain() .
 			( $pre ? ' ===' : '</h3>' );
 
 		$params = array();
@@ -250,11 +251,13 @@ class ValidatorDescribe extends ParserHook {
 		$plainParams = array();
 
 		foreach ( $parameters as $parameter ) {
-			$params[$parameter->getName()] = '{' . $parameter->getTypeMessage() . '}';
-			$plainParams[$parameter->getName()] = $parameter->getTypeMessage();
+			$type = wfMessage( $parameter->getTypeMessage() )->plain();
+
+			$params[$parameter->getName()] = '{' . $type . '}';
+			$plainParams[$parameter->getName()] = $type;
 
 			if ( $parameter->isRequired() ) {
-				$requiredParams[$parameter->getName()] = '{' . $parameter->getTypeMessage() . '}';
+				$requiredParams[$parameter->getName()] = '{' . $type . '}';
 			}
 		}
 
@@ -418,6 +421,7 @@ class ValidatorDescribe extends ParserHook {
 		}
 
 		$type = $parameter->getTypeMessage();
+		$type = wfMessage( $type )->plain();
 
 		$number = 0;
 		$isDefault = false;
@@ -490,7 +494,6 @@ EOT;
 	 */
 	protected function msg() {
 		$args = func_get_args();
-		$key = array_shift( $args );
-		return wfMsgReal( $key, $args, true, $this->language );
+		return call_user_func_array( 'wfMessage', $args )->inLanguage( $this->language )->plain();
 	}
 }

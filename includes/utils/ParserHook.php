@@ -503,7 +503,7 @@ abstract class ParserHook {
 	 */
 	public function getDescription() {
 		$msg = $this->getMessage();
-		return $msg === false ? false : wfMsg( $msg );
+		return $msg === false ? false : wfMessage( $msg )->plain();
 	}
 	
 	/**
