@@ -3790,6 +3790,7 @@ $messages['yi'] = array(
  * @author Wilsonmess
  * @author Xiaomingyan
  * @author Yfdyh000
+ * @author 乌拉跨氪
  */
 $messages['zh-hans'] = array(
 	'validator-desc' => '声明参数处理库',
@@ -3797,18 +3798,21 @@ $messages['zh-hans'] = array(
 	'validator-error' => '错误：$1',
 	'validator-fatal-error' => '致命错误：$1',
 	'validator_error_parameters' => '从您的语法中检测到以下{{PLURAL:$1|错误|错误}}：',
-	'validator_warning_parameters' => '您的语法中存在错误。', # Fuzzy
+	'validator_warning_parameters' => '您的语法中存在{{PLURAL:$1|一个错误|若干错误}}。',
 	'validator-warning-adittional-errors' => '⋯⋯以及更多的问题。', # Fuzzy
-	'validator-error-omitted' => '"$1"等值被忽略。', # Fuzzy
+	'validator-error-omitted' => '{{PLURAL:$2|值“$1”|“$1”等值}}已被忽略。',
 	'validator-error-problem' => '参数 $1 存在一个问题。',
 	'validator_error_unknown_argument' => '$1 不是一个有效的参数。',
 	'validator_error_required_missing' => '未能提供必要的参数 $1 。',
 	'validator-error-override-argument' => '试图用 "$3" 覆盖参数 $1 的值（$2）',
 	'validator-type-string' => '文本',
+	'validator-type-integer' => '整数',
 	'validator-type-float' => '浮点数',
 	'validator-type-boolean' => '布尔值',
 	'validator-type-char' => '字符',
 	'validator-type-title' => '标题',
+	'validator-type-string-list' => '文本列表',
+	'validator-type-integer-list' => '整数列表',
 	'validator-listerrors-errors' => '错误',
 	'validator-listerrors-severity-message' => '（$1）$2',
 	'validator-listerrors-minor' => '很小',
