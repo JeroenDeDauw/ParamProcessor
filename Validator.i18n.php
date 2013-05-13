@@ -3175,6 +3175,15 @@ $messages['ro'] = array(
 	'validator-message-nodesc' => 'Nicio descriere furnizată',
 );
 
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'validator-warning' => 'Avvertimende: $1',
+	'validator-error' => 'Errore: $1',
+	'validator-fatal-error' => 'Errore fatale: $1',
+);
+
 /** Russian (русский)
  * @author Aleksandrit
  * @author Eleferen
