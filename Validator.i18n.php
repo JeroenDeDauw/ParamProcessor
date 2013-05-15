@@ -2316,7 +2316,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parametere vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Wäerter festzeleeën a fir Feeler-Messagen ze generéieren', # Fuzzy
+	'validator-desc' => "Library fir d'Behandlung vun deklarative Parameter",
 	'validator-warning' => 'Opgepasst: $1',
 	'validator-error' => 'Feeler: $1',
 	'validator-fatal-error' => 'Fatale Feeler: $1',
