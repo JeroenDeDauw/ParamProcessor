@@ -33,9 +33,11 @@ final class Hooks {
 			'definitions/StringParam',
 			'definitions/TitleParam',
 
+			'MediaWikiTitleValue',
 			'ParamDefinitionFactory',
 			'Options',
 			'Processor',
+			'TitleParser',
 		);
 
 		foreach ( $testFiles as $file ) {

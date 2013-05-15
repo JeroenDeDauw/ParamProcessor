@@ -123,4 +123,6 @@ $wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
 // Since 0.4.8
 $wgHooks['UnitTestsList'][] = 'ParamProcessor\Hooks::registerUnitTests';
 
+$wgDataValues['mediawikititle'] = 'ParamProcessor\MediaWikiTitleValue';
+
 include_once( __DIR__ . '/config/DefaultConfig.php' );

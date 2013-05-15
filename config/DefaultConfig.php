@@ -59,7 +59,7 @@ $wgParamDefinitions = array(
 		'definition' => '\ParamProcessor\Definition\StringParam',
 	),
 	'title' => array(
-		'string-parser' => '\ValueParsers\TitleParser',
+		'string-parser' => '\ParamProcessor\TitleParser',
 		'validator' => '\ValueValidators\TitleValidator',
 	),
 	'dimension' => array(

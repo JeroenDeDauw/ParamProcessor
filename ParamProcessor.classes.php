@@ -26,11 +26,13 @@ return call_user_func( function() {
 		'ParamProcessor\ProcessingError',
 		'ParamProcessor\ProcessingResult',
 		'ParamProcessor\Processor',
+		'ParamProcessor\MediaWikiTitleValue',
 		'ParamProcessor\Options',
 		'ParamProcessor\TopologicalSort',
 		'ParamProcessor\ProcessingErrorHandler',
 		'ParamProcessor\IParam',
 		'ParamProcessor\IParamDefinition',
+		'ParamProcessor\TitleParser',
 
 		'ParamProcessor\Definition\DimensionParam',
 		'ParamProcessor\Definition\StringParam',
