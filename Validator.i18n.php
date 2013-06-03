@@ -2500,7 +2500,7 @@ $messages['ms'] = array(
 	'validator-describe-header-default' => 'Asali',
 );
 
-/** Norwegian Bokmål (norsk (bokmål)‎)
+/** Norwegian Bokmål (norsk bokmål)
  * @author Event
  * @author Nghtwlkr
  */
@@ -3035,6 +3035,7 @@ Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PL
 /** Brazilian Portuguese (português do Brasil)
  * @author Giro720
  * @author Jaideraf
+ * @author Luckas
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
