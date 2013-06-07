@@ -22,10 +22,5 @@
 	"require": {
 		"php": ">=5.3.0",
 		"mediawiki/data-values": "dev-master"
-	},
-	"autoload": {
-		"files" : [
-			"ParamProcessor.php"
-		]
 	}
 }
