@@ -1,5 +1,5 @@
 {
-	"name": "ask/ask",
+	"name": "param-processor/param-processor",
 	"type": "library",
 	"description": "Parameter processing library",
 	"keywords": ["ParamProcessor", "Validator", "MediaWiki", "SMW", "Semantic MediaWiki"],
