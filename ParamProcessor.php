@@ -132,11 +132,6 @@ class Validator extends ParamProcessor\Processor {
 
 }
 
-
-// tests
-$wgAutoloadClasses['ParamProcessor\Test\NumericParamTest']		= __DIR__ . '/tests/definitions/NumericParamTest.php';
-$wgAutoloadClasses['ParamProcessor\Test\ParamDefinitionTest']	= __DIR__ . '/tests/definitions/ParamDefinitionTest.php';
-
 // utils
 $wgAutoloadClasses['ParserHook']				 	= __DIR__ . '/includes/utils/ParserHook.php';
 $wgAutoloadClasses['ValidatorDescribe']		  		= __DIR__ . '/includes/utils/Describe.php';
@@ -148,8 +143,32 @@ $wgHooks['ParserFirstCallInit'][] = 'ValidatorListErrors::staticInit';
 // Registration of the describe parser hooks.
 $wgHooks['ParserFirstCallInit'][] = 'ValidatorDescribe::staticInit';
 
-// Since 0.4.8
-$wgHooks['UnitTestsList'][] = 'ParamProcessor\Hooks::registerUnitTests';
+/**
+ * Hook to add PHPUnit test cases.
+ * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
+ *
+ * @since 1.0
+ *
+ * @param array $files
+ *
+ * @return boolean
+ */
+$wgHooks['UnitTestsList'][]	= function( array &$files ) {
+	// @codeCoverageIgnoreStart
+	$directoryIterator = new RecursiveDirectoryIterator( __DIR__ . '/tests/phpunit/' );
+
+	/**
+	 * @var SplFileInfo $fileInfo
+	 */
+	foreach ( new RecursiveIteratorIterator( $directoryIterator ) as $fileInfo ) {
+		if ( substr( $fileInfo->getFilename(), -8 ) === 'Test.php' ) {
+			$files[] = $fileInfo->getPathname();
+		}
+	}
+
+	return true;
+	// @codeCoverageIgnoreEnd
+};
 
 $wgDataValues['mediawikititle'] = 'ParamProcessor\MediaWikiTitleValue';
 
