@@ -1,6 +1,7 @@
 <?php
 
-namespace ParamProcessor\Test;
+namespace ParamProcessor\Tests;
+
 use ParamProcessor\Options;
 
 /**
@@ -33,7 +34,7 @@ use ParamProcessor\Options;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class OptionsTest extends \MediaWikiTestCase {
+class OptionsTest extends \PHPUnit_Framework_TestCase {
 
 	public function testCompatAlias() {
 		$this->assertInstanceOf( '\ParamProcessor\Options', new \ValidatorOptions() );

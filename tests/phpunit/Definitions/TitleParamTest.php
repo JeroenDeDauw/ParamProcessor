@@ -1,6 +1,6 @@
 <?php
 
-namespace ParamProcessor\Test;
+namespace ParamProcessor\Tests\Definitions;
 
 /**
  * Unit test for the TitleParam class.

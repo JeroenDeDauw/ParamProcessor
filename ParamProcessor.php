@@ -27,12 +27,12 @@ if ( defined( 'ParamProcessor_VERSION' ) ) {
 }
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
+	//die( 'Not an entry point.' );
 }
 
-if ( version_compare( $wgVersion, '1.16c', '<' ) ) {
-	die( '<b>Error:</b> This version of Validator requires MediaWiki 1.16 or above.' );
-}
+//if ( version_compare( $wgVersion, '1.16c', '<' ) ) {
+//	die( '<b>Error:</b> This version of Validator requires MediaWiki 1.16 or above.' );
+//}
 
 if ( defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> Tried to include Validator a second time. Please make sure you are including it before any extensions that make use of it.' );
@@ -77,9 +77,37 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'validator-desc',
 );
 
-foreach ( include( __DIR__ . '/ParamProcessor.classes.php' ) as $class => $file ) {
-	$wgAutoloadClasses[$class] = __DIR__ . '/' . $file;
+if ( defined( 'MW_PHPUNIT_TEST' ) ) {
+	require_once __DIR__ . '/tests/testLoader.php';
 }
+
+spl_autoload_register( function ( $className ) {
+	$className = ltrim( $className, '\\' );
+	$fileName = '';
+	$namespace = '';
+
+	if ( $lastNsPos = strripos( $className, '\\' ) ) {
+		$namespace = substr( $className, 0, $lastNsPos );
+		$className = substr( $className, $lastNsPos + 1 );
+		$fileName  = str_replace( '\\', '/', $namespace ) . '/';
+	}
+
+	$fileName .= str_replace( '_', '/', $className ) . '.php';
+
+	$namespaceSegments = explode( '\\', $namespace );
+
+	if ( $namespaceSegments[0] === 'ParamProcessor' ) {
+		$inTestNamespace = count( $namespaceSegments ) > 1 && $namespaceSegments[1] === 'Tests';
+
+		if ( !$inTestNamespace ) {
+			$pathParts = explode( '/', $fileName );
+			array_shift( $pathParts );
+			$fileName = implode( '/', $pathParts );
+
+			require_once __DIR__ . '/includes/ParamProcessor/' . $fileName;
+		}
+	}
+} );
 
 
 class_alias( 'ParamProcessor\ParamDefinitionFactory', 'ParamDefinitionFactory' ); // Softly deprecated since 1.0, removal in 1.5

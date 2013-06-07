@@ -1,7 +1,8 @@
 <?php
 
-namespace ParamProcessor\Test;
-use ParamDefinitionFactory;
+namespace ParamProcessor\Tests;
+
+use ParamProcessor\ParamDefinitionFactory;
 
 /**
  * Unit test for the Validator\Options class.
@@ -32,19 +33,13 @@ use ParamDefinitionFactory;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ParamDefinitionFactoryTest extends \MediaWikiTestCase {
+class ParamDefinitionFactoryTest extends \PHPUnit_Framework_TestCase {
 
-	public function testConstructor() {
-		$this->assertInstanceOf( '\ParamDefinitionFactory', ParamDefinitionFactory::singleton() );
-		$this->assertTrue( ParamDefinitionFactory::singleton() === ParamDefinitionFactory::singleton() );
+	public function testCanConstruct() {
+		new ParamDefinitionFactory();
+		$this->assertTrue( true );
 	}
 
-	public function classProvider() {
-		$classes = array(
-			'ParamDefinition',
-		);
-
-		return $this->arrayWrap( $classes );
-	}
+	// TODO: test other methods
 
 }

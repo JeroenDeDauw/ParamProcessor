@@ -1,0 +1,25 @@
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="tests/bootstrap.php"
+         cacheTokens="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         strict="true"
+         verbose="true">
+    <testsuites>
+        <testsuite name="ParamProcessor">
+            <directory>tests/phpunit/</directory>
+
+            <!-- MediaWiki specific code is excluded so this test suite can be run without MW -->
+            <exclude>tests/phpunit/Definitions/TitleParamTest.php</exclude>
+            <exclude>tests/phpunit/MediaWikiTitleValueTest.php</exclude>
+            <exclude>tests/phpunit/TitleParserTest.php</exclude>
+        </testsuite>
+    </testsuites>
+</phpunit>

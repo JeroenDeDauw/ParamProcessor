@@ -1,6 +1,6 @@
 <?php
 
-namespace ParamProcessor\Test;
+namespace ParamProcessor\Tests;
 
 use ParamProcessor\Settings;
 
@@ -32,17 +32,17 @@ use ParamProcessor\Settings;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SettingsTest extends \MediaWikiTestCase {
+class SettingsTest extends \PHPUnit_Framework_TestCase {
 
 	public function constructorProvider() {
 		$settingArrays = array(
-			array(),
-			array( 'foo' => 'bar' ),
-			array( 'foo' => 'bar', 'baz' => 'BAH' ),
-			array( '~[,,_,,]:3' => array( 9001, 4.2 ) ),
+			array( array() ),
+			array( array( 'foo' => 'bar' ) ),
+			array( array( 'foo' => 'bar', 'baz' => 'BAH' ) ),
+			array( array( '~[,,_,,]:3' => array( 9001, 4.2 ) ) ),
 		);
 
-		return $this->arrayWrap( $settingArrays );
+		return $settingArrays;
 	}
 
 	/**

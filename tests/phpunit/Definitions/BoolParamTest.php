@@ -1,9 +1,9 @@
 <?php
 
-namespace ParamProcessor\Test;
+namespace ParamProcessor\Tests\Definitions;
 
 /**
- * Unit test for the DimensionParam class.
+ * Unit test for the BoolParam class.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ namespace ParamProcessor\Test;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class DimensionParamTest extends ParamDefinitionTest {
+class BoolParamTest extends ParamDefinitionTest {
 
 	/**
 	 * @see ParamDefinitionTest::getDefinitions
@@ -40,22 +40,6 @@ class DimensionParamTest extends ParamDefinitionTest {
 	 */
 	public function getDefinitions() {
 		$params = parent::getDefinitions();
-
-		$params['auto'] = array(
-			'allowauto' => true,
-		);
-
-		$params['allunits'] = array(
-			'units' => array( 'px', 'ex', 'em', '%', '' ),
-		);
-
-		$params['bounds'] = array(
-			'lowerbound' => 42,
-			'upperbound' => 9000,
-			'maxpercentage' => 34,
-			'minpercentage' => 23,
-			'units' => array( 'px', 'ex', '%', '' ),
-		);
 
 		return $params;
 	}
@@ -70,52 +54,34 @@ class DimensionParamTest extends ParamDefinitionTest {
 	public function valueProvider( $stringlyTyped = true ) {
 		$values = array(
 			'empty' => array(
-				array( '100px', true, '100px' ),
-				array( '100', true, '100px' ),
-				array( 42, true, '42px' ),
-				array( 42.5, true, '42.5px' ),
-				array( 'over9000', false ),
-				array( 'yes', false ),
-				array( 'auto', false ),
-				array( '100%', false ),
+				array( 'yes', true, true ),
+				array( 'on', true, true ),
+				array( '1', true, true ),
+				array( 'no', true, false ),
+				array( 'off', true, false ),
+				array( '0', true, false ),
+				array( 'foobar', false ),
+				array( '2', false ),
+				array( array(), false ),
+				array( 42, false ),
 			),
-			'values' => array(
-				array( 1, true, '1px' ),
-//				array( 2, false ),
-				array( 'yes', false ),
-				array( 'no', false ),
-			),
-			'auto' => array(
-				array( 'auto', true, 'auto' ),
-			),
-			'allunits' => array(
-				array( '100%', true, '100%' ),
-				array( '100em', true, '100em' ),
-				array( '100ex', true, '100ex' ),
-				array( '101%', false ),
-			),
-			'bounds' => array(
-				array( '30%', true, '30%' ),
-				array( '20%', false ),
-				array( '40%', false ),
-				array( '100px', true, '100px' ),
-				array( '100ex', true, '100ex' ),
-				array( '10px', false ),
-				array( '9001ex', false ),
-			),
+			'values' => array(),
+//			'values' => array(
+//				array( '1', true, true ),
+//				array( 'yes', true, true ),
+//				array( 'no', false ),
+//				array( 'foobar', false ),
+//			),
 		);
 
-		if ( $stringlyTyped ) {
+		if ( !$stringlyTyped ) {
 			foreach ( $values as &$set ) {
 				foreach ( $set as &$value ) {
-					if ( is_int( $value[0] ) || is_float( $value[0] ) ) {
-						$value[0] = (string)$value[0];
+					if ( in_array( $value[0], array( 'yes', 'on', '1', '0', 'off', 'no' ), true ) ) {
+						$value[0] = in_array( $value[0], array( 'yes', 'on', '1' ), true );
 					}
 				}
 			}
-
-//			$values['empty'][] = array( 42, false );
-//			$values['empty'][] = array( 42.5, false );
 		}
 
 		return $values;
@@ -126,7 +92,7 @@ class DimensionParamTest extends ParamDefinitionTest {
 	 * @return string
 	 */
 	public function getType() {
-		return 'dimension';
+		return 'boolean';
 	}
 
 }

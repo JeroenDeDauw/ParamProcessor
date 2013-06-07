@@ -3,6 +3,7 @@
 namespace ParamProcessor;
 
 use MWException;
+use OutOfBoundsException;
 
 /**
  * Factory for IParamDefinition implementing objects.
@@ -154,11 +155,11 @@ class ParamDefinitionFactory {
 	 * @param boolean $isList
 	 *
 	 * @return IParamDefinition
-	 * @throws MWException
+	 * @throws OutOfBoundsException
 	 */
 	public function newDefinition( $type, $name, $default, $message, $isList = false ) {
 		if ( !array_key_exists( $type, $this->typeToClass ) ) {
-			throw new MWException( 'Unknown parameter type "' . $type . '".' );
+			throw new OutOfBoundsException( 'Unknown parameter type "' . $type . '".' );
 		}
 
 		$class = $this->typeToClass[$type];

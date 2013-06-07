@@ -1,6 +1,7 @@
 <?php
 
-namespace ParamProcessor\Test;
+namespace ParamProcessor\Tests;
+
 use ParamProcessor\Processor;
 use ParamProcessor\Options;
 
@@ -33,7 +34,7 @@ use ParamProcessor\Options;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ProcessorTest extends \MediaWikiTestCase {
+class ProcessorTest extends \PHPUnit_Framework_TestCase {
 
 	public function testCompatAlias() {
 		$this->assertInstanceOf( '\ParamProcessor\Processor', \Validator::newDefault() );
@@ -99,7 +100,7 @@ class ProcessorTest extends \MediaWikiTestCase {
 				'type' => 'float',
 			),
 			'page' => array(
-				'type' => 'title',
+				'type' => 'string',
 				'hastoexist' => false,
 			),
 			'text' => array(),
@@ -111,7 +112,7 @@ class ProcessorTest extends \MediaWikiTestCase {
 			'awesome' => true,
 			'howmuch' => 9001,
 			'float' => 4.2,
-			'page' => \Title::newFromText( 'Ohi there!' ),
+			'page' => 'Ohi there!',
 			'text' => 'foo bar baz o_O',
 		);
 
@@ -129,7 +130,7 @@ class ProcessorTest extends \MediaWikiTestCase {
 			'awesome' => 'omg!',
 			'howmuch' => 'omg!',
 			'float' => 'omg!',
-			'page' => '|',
+			'page' => 42,
 			'whot?' => 'O_o',
 			'integerr' => ' 9001 ',
 		);
@@ -148,9 +149,9 @@ class ProcessorTest extends \MediaWikiTestCase {
 				'default' => 4.2,
 			),
 			'page' => array(
-				'type' => 'title',
+				'type' => 'string',
 				'hastoexist' => false,
-				'default' => \Title::newFromText( 'Ohi there!' ),
+				'default' => 'Ohi there!',
 			),
 			'text' => array(
 				'default' => 'foo bar baz o_O',
@@ -168,7 +169,7 @@ class ProcessorTest extends \MediaWikiTestCase {
 			'awesome' => true,
 			'howmuch' => 9001,
 			'float' => 4.2,
-			'page' => \Title::newFromText( 'Ohi there!' ),
+			'page' => 'Ohi there!',
 			'text' => 'foo bar baz o_O',
 			'integerr' => 42,
 		);
@@ -187,7 +188,7 @@ class ProcessorTest extends \MediaWikiTestCase {
 			'awesome' => true,
 			'howmuch' => '42',
 			'float' => 4.2,
-			'page' => \Title::newFromText( 'Ohi there!' ),
+			'page' => 'Ohi there!',
 			'Text' => 'foo bar baz o_O',
 			'text1 ' => 'foo bar baz o_O',
 			' text2' => 'foo bar baz o_O',
@@ -207,7 +208,7 @@ class ProcessorTest extends \MediaWikiTestCase {
 				'default' => 9000.1
 			),
 			'page' => array(
-				'type' => 'title',
+				'type' => 'string',
 				'hastoexist' => false,
 			),
 			'text' => array(
@@ -230,7 +231,7 @@ class ProcessorTest extends \MediaWikiTestCase {
 			'awesome' => true,
 			'howmuch' => 9001,
 			'float' => 9000.1,
-			'page' => \Title::newFromText( 'Ohi there!' ),
+			'page' => 'Ohi there!',
 			'text' => 'some text',
 			'text1' => 'some text',
 			'text2' => 'some text',
@@ -366,7 +367,7 @@ class ProcessorTest extends \MediaWikiTestCase {
 
 		$validator->validateParameters();
 
-		$this->assertArrayEquals( $expected, $validator->getParameterValues(), false, true );
+		$this->assertEquals( $expected, $validator->getParameterValues() );
 	}
 
 }

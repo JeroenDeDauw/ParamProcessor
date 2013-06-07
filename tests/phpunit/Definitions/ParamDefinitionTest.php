@@ -1,6 +1,6 @@
 <?php
 
-namespace ParamProcessor\Test;
+namespace ParamProcessor\Tests\Definitions;
 
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\IParamDefinition;
@@ -37,7 +37,7 @@ use ParamProcessor\ParamDefinitionFactory;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ParamDefinitionTest extends \MediaWikiTestCase {
+abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Returns a list of arrays that hold values to test handling of.
