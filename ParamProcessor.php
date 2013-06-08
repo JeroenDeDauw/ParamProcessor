@@ -33,10 +33,6 @@ if ( isset( $wgVersion ) && version_compare( $wgVersion, '1.16c', '<' ) ) {
 	die( '<b>Error:</b> This version of Validator requires MediaWiki 1.16 or above.' );
 }
 
-if ( defined( 'Validator_VERSION' ) ) {
-	throw new Exception( 'Tried to include Validator a second time. Please make sure you are including it before any extensions that make use of it.' );
-}
-
 // Include the DataValues extension if that hasn't been done yet, since it's required for Validator to work.
 if ( !defined( 'DataValues_VERSION' ) ) {
 	@include_once( __DIR__ . '/../DataValues/DataValues.php' );
