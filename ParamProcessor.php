@@ -29,6 +29,8 @@ if ( defined( 'ParamProcessor_VERSION' ) ) {
 define( 'ParamProcessor_VERSION', '1.0 beta' );
 define( 'Validator_VERSION', ParamProcessor_VERSION ); // @deprecated since 1.0
 
+global $wgVersion, $wgExtensionMessagesFiles, $wgExtensionCredits, $wgAutoloadClasses, $wgHooks, $wgDataValues;
+
 if ( isset( $wgVersion ) && version_compare( $wgVersion, '1.16c', '<' ) ) {
 	die( '<b>Error:</b> This version of Validator requires MediaWiki 1.16 or above.' );
 }
