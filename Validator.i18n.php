@@ -1495,11 +1495,12 @@ Nume {{PLURAL:$5|dää Wärt wird|die Wärt wäre}} akzeptiert: $3 (un $4 uusglo
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Inkbug
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'validator-desc' => 'כלים כלליים לטיפול בפרמטרים עבור הרחבות אחרות', # Fuzzy
+	'validator-desc' => 'ספריית עיבוד פרמטרים הצהרתי',
 	'validator-warning' => 'אזהרה: $1',
 	'validator-error' => 'שגיאה: $1',
 	'validator-fatal-error' => 'שגיאה חמורה: $1',
