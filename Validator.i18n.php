@@ -672,6 +672,13 @@ $messages['ca'] = array(
 	'validator-describe-header-description' => 'Descripció',
 );
 
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'validator-describe-header-description' => 'Цуьнах лаьцна',
+);
+
 /** Czech (česky)
  * @author Matěj Grabovský
  * @author Mormegil
