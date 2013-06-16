@@ -2355,6 +2355,8 @@ $messages['lb'] = array(
 	'validator-listerrors-par-minseverity' => 'Déi mannste Schwieregkeet vun engem Feeler fir datt en hei gewise gëtt.',
 	'validator-describe-descriptionmsg' => "'''Beschreiwung''': $1",
 	'validator-describe-aliases' => "'''{{PLURAL:$2|Alias|Aliasen}}:''' $1",
+	'validator-describe-parserfunction' => 'Nëmmen als Parser-Fonctioun implementéiert.',
+	'validator-describe-tagextension' => 'Nëmmen als Tag-Erweiderung implementéiert.',
 	'validator-describe-par-language' => "D'Sprooch an där d'Beschreiwunge gewise solle ginn",
 	'validator-describe-listtype' => 'Lëscht mat {{PLURAL:$1|engem Element|$1 Elementer}}',
 	'validator-describe-empty' => 'eidel',
@@ -2370,6 +2372,8 @@ $messages['lb'] = array(
 	'validator_error_empty_argument' => 'De Parameter $1 ka keen eidele Wäert hunn.',
 	'validator_error_must_be_number' => 'De Parameter $1 ka just eng Zuel sinn',
 	'validator_error_must_be_integer' => 'De Parameter $1 ka just eng ganz Zuel sinn.',
+	'validator_error_must_be_title' => 'Parameter $1 kann nëmmen e valabele Wiki-Säitennumm sinn.',
+	'validator_error_must_be_existing_title' => 'Parameter $1 kann nëmmen e Wiki-Säitennumm sinn deen et gëtt.',
 	'validator-error-must-be-float' => 'Parameter $1 kann nëmmen eng Féisskommazuel sinn.',
 	'validator_error_invalid_range' => 'De Parameter $1 muss tëschent $2 an $3 leien.',
 	'validator-error-invalid-regex' => 'De Parameter $1 muss esou ausgesinn: $2',
@@ -2379,12 +2383,15 @@ $messages['lb'] = array(
 	'validator_list_error_empty_argument' => 'De Parameter $1 hëlt keng eidel Wäerter un.',
 	'validator_list_error_must_be_number' => 'Am Parameter $1 kënnen nëmmen Zuelen dra sinn.',
 	'validator_list_error_must_be_integer' => 'Am Parameter $1 kënnen nëmme ganz Zuele sinn.',
+	'validator_list_error_must_be_title' => 'Am Parameter $1 kënnen nëmme valabel Wiki-Säitennimm sinn.',
 	'validator-list-error-must-be-float' => 'Am Parameter $1 kënnen nëmme Kommazuelen dra sinn.',
 	'validator_list_error_invalid_range' => 'All Wäerter vum Parameter $1 mussen tëschent $2 an $3 leien.',
 	'validator-list-error-invalid-regex' => 'All Wäerter vum Parameter $1 mussen dësem regulären Ausdrock entspriechen: $2',
 	'validator_list_error_invalid_argument' => 'Een oder méi Wäerter fir de Parameter $1 sinn net valabel.',
 	'validator-list-error-accepts-only' => 'Een oder méi Wäerter vum Parameter $1 sinn net valabel.
 En akzeptéiert nëmmen {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2.',
+	'validator-list-error-accepts-only-omitted' => 'Een oder méi Wäerter fir de Parameter $1 sinn net valabel.
+En akzeptéiert nëmmen {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2 (an {{PLURAL:$4|een ausgeloossene Wäert|$4 ausgeloosse Wäerter}}).',
 	'validator_error_accepts_only' => 'De Wäert $4 ass net valabel fir de Parameter $1. En akzeptéiert just {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2',
 	'validator-error-accepts-only-omitted' => 'De Wäert "$2" ass net valabel fir de Parameter $1.
 En akzeptéiert nëmmen {{PLURAL:$5|dëse Wäert|dës Wäerter}}: $3 (an {{PLURAL:$4|een ausgeloossene Wäert|$4 ausgeloosse Wäerter}}).',
