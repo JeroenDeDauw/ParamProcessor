@@ -676,6 +676,7 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'validator-describe-header-default' => 'Iад йитарца',
 	'validator-describe-header-description' => 'Цуьнах лаьцна',
 );
 
