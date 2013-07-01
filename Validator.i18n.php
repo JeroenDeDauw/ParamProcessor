@@ -221,6 +221,7 @@ Preceded by {{msg-mw|validator-describe-descriptionmsg}} and a new line.
 	'validator-describe-header-default' => '{{Identical|Default}}',
 	'validator-describe-header-description' => '{{Identical|Description}}',
 	'validator-describe-parameters' => '{{Identical|Parameter}}',
+	'validator-describe-syntax' => '{{Identical|Syntax}}',
 	'validator-describe-tagmin' => '{{Related|Validator-describe}}',
 	'validator-describe-tagmax' => '{{Related|Validator-describe}}',
 	'validator-describe-tagdefault' => '{{Related|Validator-describe}}',
