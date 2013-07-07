@@ -365,9 +365,17 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 
 		$validator->setParameters( $params, $definitions );
 
-		$validator->validateParameters();
+		$processingResult = $validator->processParameters();
 
-		$this->assertEquals( $expected, $validator->getParameterValues() );
+		$actualValues = array();
+
+		foreach ( $processingResult->getParameters() as $param ) {
+			$actualValues[$param->getName()] = $param->getValue();
+		}
+
+		$this->assertEquals( $expected, $actualValues );
+
+
 	}
 
 }

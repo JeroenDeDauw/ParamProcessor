@@ -306,9 +306,19 @@ class Processor {
 			}
 		}
 
+		return $this->newProcessingResult();
+	}
+
+	/**
+	 * @return ProcessingResult
+	 */
+	protected function newProcessingResult() {
 		$parameters = array();
 
-		foreach ( $this->getParameters() as $parameter ) {
+		/**
+		 * @var Param $parameter
+		 */
+		foreach ( $this->params as $parameter ) {
 			// TODO
 			$processedParam = new ProcessedParam(
 				$parameter->getName(),
@@ -323,7 +333,7 @@ class Processor {
 				$processedParam->setOriginalValue( $parameter->getOriginalValue() );
 			}
 
-			$parameters[] = $processedParam;
+			$parameters[$processedParam->getName()] = $processedParam;
 		}
 
 		return new ProcessingResult(
