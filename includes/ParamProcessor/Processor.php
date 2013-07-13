@@ -87,7 +87,7 @@ class Processor {
 	 * 
 	 * @since 1.0
 	 */
-	protected function __construct( Options $options ) {
+	public function __construct( Options $options ) {
 		$this->options = $options;
 	}
 
