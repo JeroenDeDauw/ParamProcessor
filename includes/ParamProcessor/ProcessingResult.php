@@ -18,7 +18,7 @@ class ProcessingResult {
 	 * @param ProcessedParam[] $parameters
 	 * @param ProcessingError[] $errors
 	 */
-	public function __construct( array $parameters, array $errors ) {
+	public function __construct( array $parameters, array $errors = array() ) {
 		$this->parameters = $parameters;
 		$this->errors = $errors;
 	}
