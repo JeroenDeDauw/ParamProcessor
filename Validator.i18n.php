@@ -736,6 +736,14 @@ $messages['cs'] = array(
 	'validator_list_omitted' => '{{PLURAL:$2|Hodnota $1 byla vynechána|Hodnoty $1 byly vynechány}}.',
 );
 
+/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'validator-error' => 'блаꙁна : $1',
+	'validator-listerrors-errors' => 'блаꙁнꙑ',
+);
+
 /** German (Deutsch)
  * @author DaSch
  * @author Imre
