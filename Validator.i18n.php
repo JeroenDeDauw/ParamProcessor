@@ -681,6 +681,7 @@ $messages['ce'] = array(
 	'validator-describe-par-language' => 'Яздаран сурт хӀотторан мотт',
 	'validator-describe-header-default' => 'Iад йитарца',
 	'validator-describe-header-description' => 'Цуьнах лаьцна',
+	'validator-describe-parameters' => 'Параметраш',
 );
 
 /** Czech (česky)
