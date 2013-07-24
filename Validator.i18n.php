@@ -2967,6 +2967,7 @@ $messages['ps'] = array(
  * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
+ * @author Luckas
  * @author SandroHc
  * @author Waldir
  */
@@ -3031,7 +3032,7 @@ para obter todos os erros, coloque listerrors ao fundo da página.',
 	'validator-describe-pfmin' => 'Função do analisador sintáctico só com os parâmetros obrigatórios.',
 	'validator-describe-pfmax' => 'Função do analisador sintáctico com todos os parâmetros.',
 	'validator-describe-pfdefault' => 'Função do analisador sintáctico com todos os parâmetros, usando a notação do parâmetro por omissão.',
-	'validator-describe-autogen' => 'O conteúdo desta secção foi gerado de forma automática pelo hook "describe" do analisador sintáctico, criado pela extensão Serviço de Validação.',
+	'validator-describe-autogen' => 'O conteúdo desta seção foi gerado de forma automática pelo hook "describe" do analisador sintático, criado pela extensão Serviço de Validação.',
 	'validator_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
 	'validator_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
 	'validator_error_must_be_integer' => 'O parâmetro $1 só pode ser um número inteiro.',
@@ -3412,6 +3413,7 @@ $messages['sr-el'] = array(
 /** Swedish (svenska)
  * @author Cybjit
  * @author Fluff
+ * @author Jopparn
  * @author Martinwiss
  * @author Ozp
  * @author Per
@@ -3476,6 +3478,7 @@ $messages['sv'] = array(
 	'validator_list_error_invalid_argument' => 'Ett eller flera värden av parameter $1 är ogiltiga.',
 	'validator_error_accepts_only' => 'Värdet "$4" är inte giltigt för parametern $1. Den accepterar bara {{PLURAL:$3|detta värde|ett av dessa värden}}: $2.',
 	'validator_list_omitted' => '{{PLURAL:$2|Värdet|Värdena}} $1 har blivit {{PLURAL:$2|utelämnat|utelämnade}}.',
+	'validator-message-nodesc' => 'Ingen beskrivning tillhandahölls',
 );
 
 /** Tamil (தமிழ்)
