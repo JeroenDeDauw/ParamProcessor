@@ -3661,6 +3661,7 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (українська)
+ * @author Andriykopanytsia
  * @author Base
  * @author NickK
  * @author Olvin
@@ -3668,7 +3669,7 @@ $messages['tr'] = array(
  * @author Ата
  */
 $messages['uk'] = array(
-	'validator-desc' => 'Валідатор забезпечує іншим розширенням можливості перевірки параметрів функцій парсера і тегів, встановлення значень за умовчанням та створення повідомлень про помилки', # Fuzzy
+	'validator-desc' => 'Бібліотека обробки декларативних параметрів',
 	'validator-warning' => 'Увага: $1',
 	'validator-error' => 'Помилка: $1',
 	'validator-fatal-error' => 'Критична помилка: $1',
