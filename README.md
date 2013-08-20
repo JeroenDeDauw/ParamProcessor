@@ -60,7 +60,7 @@ ParamProcessor has been written by
 to support
 [Maps](https://www.mediawiki.org/wiki/Extension:Maps)
 and
-[Semantic MediaWiki](https://semantic-mediawiki.org/)
+[Semantic MediaWiki](https://semantic-mediawiki.org/).
 
 ## Release notes
 
