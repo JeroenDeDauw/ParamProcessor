@@ -47,6 +47,36 @@ You can find a list of the dependencies in the "require" section of the composer
 Load all dependencies and the load the ParamProcessor library by including its entry point:
 ParamProcessor.php.
 
+### As MediaWiki extension
+
+ParamProcessor can be installed as MediaWiki extension.
+
+Simply include the entry point in your LocalSettings.php file:
+
+  require_once( "$IP/extensions/Validator/Validator.php" );
+
+## Concept
+
+The goal of the ParamProcessor library is to make parameter handling simple and consistent.
+
+In order to achieve this, a declarative API for defining parameters is provided. Passing in
+such parameter definitions together with a list of raw input into the processor leads to
+a processed list of parameters. Processing consists out of name and alias resolving, parsing,
+validation, formatting and defaulting.
+
+If ones defines an "awesomeness" parameter of type "integer", one can be sure that at the end
+of the processing, there will be an integer value for the awesomeness parameter. If the user did
+not provide a value, or provided something that is invalid, while the parameter it is required,
+processing will abort with a fatal error. If on the other hand there is a default, the default will
+be set. If the value was invalid, a warning will be kept track of. In case the user provides a valid
+value, for instance "42" (string), it will be turned in the appropriate 42 (int).
+
+## Implementation structure
+
+Parameters are defined using the ParamProcessor\ParamDefinition class.
+
+Processing is done via ParamProcessor\Processor.
+
 ## Tests
 
 This library comes with a set up PHPUnit tests that cover all non-trivial code. You can run these
