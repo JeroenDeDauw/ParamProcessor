@@ -31,28 +31,27 @@ class MediaWikiTitleValueTest extends DataValueTest {
 		return 'ParamProcessor\MediaWikiTitleValue';
 	}
 
-	/**
-	 * @see DataValueTest::constructorProvider
-	 *
-	 * @since 0.1
-	 *
-	 * @return array
-	 */
-	public function constructorProvider() {
+	public function validConstructorArgumentsProvider() {
 		$argLists = array();
 
-		$argLists[] = array( false );
-		$argLists[] = array( false, 42 );
-		$argLists[] = array( false, array() );
-		$argLists[] = array( false, false );
-		$argLists[] = array( false, true );
-		$argLists[] = array( false, null );
-		$argLists[] = array( false, 'foo' );
-		$argLists[] = array( false, '' );
-		$argLists[] = array( false, ' foo bar baz foo bar baz foo bar baz foo bar baz foo bar baz foo bar baz ' );
+		$argLists[] = array( \Title::newMainPage() );
+		$argLists[] = array( \Title::newFromText( 'Foobar' ) );
 
-		$argLists[] = array( true, \Title::newMainPage() );
-		$argLists[] = array( true, \Title::newFromText( 'Foobar' ) );
+		return $argLists;
+	}
+
+	public function invalidConstructorArgumentsProvider() {
+		$argLists = array();
+
+		$argLists[] = array();
+		$argLists[] = array( 42 );
+		$argLists[] = array( array() );
+		$argLists[] = array( false );
+		$argLists[] = array( true );
+		$argLists[] = array( null );
+		$argLists[] = array( 'foo' );
+		$argLists[] = array( '' );
+		$argLists[] = array( ' foo bar baz foo bar baz foo bar baz foo bar baz foo bar baz foo bar baz ' );
 
 		return $argLists;
 	}
