@@ -6,7 +6,10 @@
 !.gitreview
 
 !.travis.yml
+!.coveralls.yml
 
 composer.phar
 composer.lock
+
 vendor/
+build/
