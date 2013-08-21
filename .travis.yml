@@ -9,7 +9,7 @@ before_script:
   - composer require satooshi/php-coveralls:dev-master
 
 script:
-  - phpunit --coverage-clover build/logs/clover.xml
+  - phpunit --coverage-clover ../../extensions/Validator/build/logs/clover.xml
 
 after_script:
   - php vendor/bin/coveralls -v
