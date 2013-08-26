@@ -203,7 +203,11 @@ $messages['qqq'] = array(
 	'validator-listerrors-fatal' => 'This is the name of a status that is assigned to an error report.',
 	'validator-describe-notfound' => 'Parameters:
 * $1 - parser hook name',
-	'validator-describe-descriptionmsg' => '{{Identical|Description}}',
+	'validator-describe-descriptionmsg' => 'Preceded by HTML comment {{msg-mw|Validator-describe-autogen}}.
+
+Parameters:
+* $1 - message or description
+{{Identical|Description}}',
 	'validator-describe-aliases' => 'Used to describe the list of aliases. Parameters:
 * $1 - list of aliases
 * $2 - number of aliases
@@ -229,13 +233,25 @@ Preceded by {{msg-mw|validator-describe-descriptionmsg}} and a new line.
 	'validator-describe-pfmax' => '{{Related|Validator-describe}}',
 	'validator-describe-pfdefault' => '{{Related|Validator-describe}}',
 	'validator-describe-autogen' => '{{Related|Validator-describe}}',
-	'validator_error_empty_argument' => 'See also:
+	'validator_error_empty_argument' => 'Unused at this time.
+
+Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator list error empty argument}}
 {{Related|Validator error}}',
-	'validator_error_must_be_number' => 'See also:
+	'validator_error_must_be_number' => 'Unused at this time.
+
+Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator list error must be number}}
 {{Related|Validator error}}',
-	'validator_error_must_be_integer' => 'See also:
+	'validator_error_must_be_integer' => 'Unused at this time.
+
+Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator list error must be integer}}
 {{Related|Validator error}}',
 	'validator_error_must_be_title' => 'See also:
