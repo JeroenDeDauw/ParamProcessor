@@ -310,18 +310,34 @@ See also:
 * {{msg-mw|Validator error accepts only}}
 * {{msg-mw|Validator-error-accepts-only-omitted}}
 {{Related|Validator list error}}',
-	'validator-list-error-accepts-only-omitted' => 'See also:
+	'validator-list-error-accepts-only-omitted' => 'Parameters:
+* $1 - parameter name
+* $2 - ...
+* $3 - number of values
+* $4 - number of values
+See also:
 * {{msg-mw|Validator list error invalid argument}}
 * {{msg-mw|Validator-list-error-accepts-only}}
 * {{msg-mw|Validator error accepts only}}
 * {{msg-mw|Validator-error-accepts-only-omitted}}
 {{Related|Validator list error}}',
-	'validator_error_accepts_only' => 'See also:
+	'validator_error_accepts_only' => 'Parameters:
+* $1 - parameter name
+* $2 - ...
+* $3 - number of values
+* $4 - value
+See also:
 * {{msg-mw|Validator list error invalid argument}}
 * {{msg-mw|Validator-list-error-accepts-only}}
 * {{msg-mw|Validator-list-error-accepts-only-omitted}}
 * {{msg-mw|Validator-error-accepts-only-omitted}}',
-	'validator-error-accepts-only-omitted' => 'See also:
+	'validator-error-accepts-only-omitted' => 'Parameters:
+* $1 - parameter name
+* $2 - value
+* $3 - ...
+* $4 - number of values
+* $5 - number of values
+See also:
 * {{msg-mw|Validator list error invalid argument}}
 * {{msg-mw|Validator-list-error-accepts-only}}
 * {{msg-mw|Validator-list-error-accepts-only-omitted}}
