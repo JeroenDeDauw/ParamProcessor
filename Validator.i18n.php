@@ -154,7 +154,8 @@ $messages['qqq'] = array(
 * $1 - ...
 * $2 - number of values',
 	'validator-error-problem' => 'This is an error message. $1 holds the name of the parameter causing the error.',
-	'validator_error_unknown_argument' => 'This is an error message. $1 holds the name of the erroneous parameter provided.',
+	'validator_error_unknown_argument' => 'This is an error message. Parameters:
+* $1 - the name of the erroneous parameter provided',
 	'validator_error_required_missing' => 'This is an error message. $1 holds the name of the parameter which was not provided.',
 	'validator-error-override-argument' => 'Parameters:
 * $1 - parameter name
@@ -254,57 +255,105 @@ Parameters:
 See also:
 * {{msg-mw|Validator list error must be integer}}
 {{Related|Validator error}}',
-	'validator_error_must_be_title' => 'See also:
+	'validator_error_must_be_title' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator list error must be title}}
 {{Related|Validator error}}',
-	'validator_error_must_be_existing_title' => 'See also:
+	'validator_error_must_be_existing_title' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator list error must be existing title}}
 {{Related|Validator error}}',
-	'validator-error-must-be-float' => 'See also:
+	'validator-error-must-be-float' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator-list-error-must-be-float}}
 {{Related|Validator error}}',
-	'validator_error_invalid_range' => 'See also:
+	'validator_error_invalid_range' => 'Parameters:
+* $1 - parameter name
+* $2 - value
+* $3 - value
+See also:
 * {{msg-mw|Validator list error invalid range}}
 {{Related|Validator error}}',
-	'validator-error-invalid-regex' => 'See also:
+	'validator-error-invalid-regex' => 'Parameters:
+* $1 - parameter name
+* $2 - regular expression
+See also:
 * {{msg-mw|Validator-list-error-invalid-regex}}
 {{Related|Validator error}}',
-	'validator-error-invalid-length' => '{{Related|Validator error}}',
-	'validator-error-invalid-length-range' => '{{Related|Validator error}}',
-	'validator_error_invalid_argument' => 'See also:
+	'validator-error-invalid-length' => 'Parameters:
+* $1 - parameter name
+* $2 - length
+{{Related|Validator error}}',
+	'validator-error-invalid-length-range' => 'Parameters:
+* $1 - parameter name
+* $2 - length
+* $3 - length
+{{Related|Validator error}}',
+	'validator_error_invalid_argument' => 'Parameters:
+* $1 - value
+* $2 - parameter name
+See also:
 * {{msg-mw|Validator list error invalid argument}}
 {{Related|Validator error}}',
-	'validator_list_error_empty_argument' => 'See also:
+	'validator_list_error_empty_argument' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator error empty argument}}
 {{Related|Validator list error}}',
-	'validator_list_error_must_be_number' => 'See also:
+	'validator_list_error_must_be_number' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator error must be number}}
 {{Related|Validator list error}}',
-	'validator_list_error_must_be_integer' => 'See also:
+	'validator_list_error_must_be_integer' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator error must be integer}}
 {{Related|Validator list error}}',
-	'validator_list_error_must_be_title' => 'See also:
+	'validator_list_error_must_be_title' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator error must be title}}
 {{Related|Validator list error}}',
-	'validator_list_error_must_be_existing_title' => 'See also:
+	'validator_list_error_must_be_existing_title' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator error must be existing title}}
 {{Related|Validator list error}}',
-	'validator-list-error-must-be-float' => 'See also:
+	'validator-list-error-must-be-float' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator-error-must-be-float}}
 {{Related|Validator list error}}',
-	'validator_list_error_invalid_range' => 'See also:
+	'validator_list_error_invalid_range' => 'Parameters:
+* $1 - parameter name
+* $2 - value
+* $3 - value
+See also:
 * {{msg-mw|Validator error invalid range}}
 {{Related|Validator list error}}',
-	'validator-list-error-invalid-regex' => 'See also:
+	'validator-list-error-invalid-regex' => 'Parameters:
+* $1 - parameter name
+* $2 - regular expression
+See also:
 * {{msg-mw|Validator-error-invalid-regex}}
 {{Related|Validator list error}}',
-	'validator_list_error_invalid_argument' => 'See also:
+	'validator_list_error_invalid_argument' => 'Parameters:
+* $1 - parameter name
+See also:
 * {{msg-mw|Validator-list-error-accepts-only}}
 * {{msg-mw|Validator-list-error-accepts-only-omitted}}
 * {{msg-mw|Validator error accepts only}}
 * {{msg-mw|Validator-error-accepts-only-omitted}}
 {{Related|Validator list error}}',
-	'validator-list-error-accepts-only' => 'See also:
+	'validator-list-error-accepts-only' => 'Parameters:
+* $1 - parameter name
+* $2 - list of values
+* $3 - number of values
+See also:
 * {{msg-mw|Validator list error invalid argument}}
 * {{msg-mw|Validator-list-error-accepts-only-omitted}}
 * {{msg-mw|Validator error accepts only}}
