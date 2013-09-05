@@ -48,8 +48,8 @@ if ( !defined( 'DataValues_VERSION' ) && is_readable( __DIR__ . '/vendor/autoloa
 
 $dependencies = array(
 	'DataValues_VERSION' => 'DataValues',
-	'ValueParsers_VERSION' => 'ValueParsers',
-	'ValueFormatters_VERSION' => 'ValueFormatters',
+	'DataValuesCommon_VERSION' => 'DataValues',
+	'DataValuesInterfaces_VERSION' => 'DataValues',
 );
 
 foreach ( $dependencies as $constant => $name ) {
