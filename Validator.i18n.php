@@ -3143,13 +3143,14 @@ Só {{PLURAL:$5|é aceite este valor|são aceites estes valores}}: $3 (e $4 {{PL
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Cainamarques
  * @author Giro720
  * @author Jaideraf
  * @author Luckas
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
-	'validator-desc' => 'Fornece suporte a manipulação de parâmetros genéricos para outras extensões', # Fuzzy
+	'validator-desc' => 'Biblioteca para o processamento de parâmetros declarativos',
 	'validator-warning' => 'Atenção: $1',
 	'validator-error' => 'Erro: $1',
 	'validator-fatal-error' => 'Erro crítico: $1',
