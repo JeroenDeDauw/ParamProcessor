@@ -2800,7 +2800,7 @@ Als ook $4 weggelaten {{PLURAL:$4|waarde|waarden}}.',
  */
 $messages['oc'] = array(
 	'validator-desc' => "Validator porgís a d'autras extensions un biais per validar aisidament los paramètres de foncions d'analisi e las extensions de mercas, definir de valors per manca e crear de messatges d'error", # Fuzzy
-	'validator_error_parameters' => '{{PLURAL:$1|Aquela error es estada detectada|Aquelas errors son estadas detectadas}} dins la sintaxi', # Fuzzy
+	'validator_error_parameters' => "{{PLURAL:$1|L'error seguenta es estada detectada|Las errors seguentas son estadas detectadas}} dins vòstra sintaxi",
 	'validator_error_unknown_argument' => '$1 es pas un paramètre valedor.',
 	'validator_error_required_missing' => "Manca lo paramètre $1 qu'es obligatòri.",
 	'validator_error_empty_argument' => 'Lo paramètre $1 pòt pas estar voide.',
