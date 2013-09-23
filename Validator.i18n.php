@@ -3317,11 +3317,12 @@ $messages['roa-tara'] = array(
  * @author Lockal
  * @author MaxSem
  * @author McDutchie
+ * @author Okras
  * @author Van de Bugger
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'validator-desc' => 'Валидатор предоставляет другим расширениям возможности проверки параметров функций парсера и тегов, установки значения по умолчанию и создания сообщения об ошибках', # Fuzzy
+	'validator-desc' => 'Библиотека обработке декларативных параметров',
 	'validator-warning' => 'Внимание: $1',
 	'validator-error' => 'Ошибка: $1',
 	'validator-fatal-error' => 'Критическая ошибка: $1',
