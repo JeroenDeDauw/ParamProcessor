@@ -7,18 +7,11 @@ use ParamProcessor\Processor;
  * provided by Validator.
  *
  * @since 0.4
- *
- * @file
- * @ingroup ParamProcessor
+ * @deprecated since 1.0 in favour of the ParserHooks library
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
- *
- * TODO: fix i18n issues (dependencies need to be injected)
- *
- * @ToDo: Add possiblity to use 'functionTagHooks'. See Parser::setFunctionTagHook() for
- *        details. There is not much information on this kind of parser funktion hook though.
  */
 abstract class ParserHook {
 

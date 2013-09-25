@@ -16,10 +16,10 @@ On [Packagist](https://packagist.org/packages/param-processor/param-processor):
 ## Requirements
 
 * PHP 5.3 or later
+* MediaWiki 1.18 or later
 * [DataValues](https://www.mediawiki.org/wiki/Extension:DataValues) 0.1 or later
-* [ValueParsers](https://www.mediawiki.org/wiki/Extension:ValueParsers) 0.1 or later
-* [ValueValidators](https://www.mediawiki.org/wiki/Extension:ValueValidators) 0.1 or later
-* [ValueFormatters](https://www.mediawiki.org/wiki/Extension:ValueFormatters) 0.1 or later
+* [DataValuesInterfaces](https://www.mediawiki.org/wiki/Extension:DataValuesInterfaces) 0.1 or later
+* [DataValuesCommon](https://www.mediawiki.org/wiki/Extension:DataValuesCommon) 0.1 or later
 
 ## Installation
 
@@ -112,6 +112,10 @@ stability and cleaner interfaces exposed to the outside.
 * Full compatibility with MediaWiki 1.20, 1.21, 1.22 and forward-compatibility with 1.23.
 * Added compatibility with PHP 5.4.x and PHP 5.5.x
 * Dropped support for Validator 0.4.x parameter definitions, including Criteria and Manipulations
+
+##### Deprecations
+
+* Deprecated the ParserHook class
 
 ### Validator 0.4.14 (2012-03-10)
 
