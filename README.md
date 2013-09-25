@@ -53,7 +53,7 @@ ParamProcessor can be installed as MediaWiki extension.
 
 Simply include the entry point in your LocalSettings.php file:
 
-  require_once( "$IP/extensions/Validator/Validator.php" );
+	require_once( "$IP/extensions/Validator/Validator.php" );
 
 ## Concept
 
