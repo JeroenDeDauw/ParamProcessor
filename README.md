@@ -7,6 +7,7 @@ parameters and provide the processed values.
 
 [![Build Status](https://secure.travis-ci.org/wikimedia/mediawiki-extensions-Validator.png?branch=master)](http://travis-ci.org/wikimedia/mediawiki-extensions-Validator)
 [![Coverage Status](https://coveralls.io/repos/wikimedia/mediawiki-extensions-Validator/badge.png?branch=master)](https://coveralls.io/r/wikimedia/mediawiki-extensions-Validator?branch=master)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/wikimedia/mediawiki-extensions-Validator/badges/quality-score.png?s=9160abde6f569a715ca51a3db8c93f3a01bd9e7b)](https://scrutinizer-ci.com/g/wikimedia/mediawiki-extensions-Validator/)
 [![Dependency Status](https://www.versioneye.com/php/param-processor:param-processor/dev-master/badge.png)](https://www.versioneye.com/php/param-processor:param-processor/dev-master)
 
 On [Packagist](https://packagist.org/packages/param-processor/param-processor):
