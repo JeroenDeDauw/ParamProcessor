@@ -106,9 +106,8 @@ stability and cleaner interfaces exposed to the outside.
 ##### Compatibility changes
 
 * DataValues 0.1 or higher is now required
-* ValueParser 0.1 or higher is now required
-* ValueValidator 0.1 or higher is now required
-* ValueFormatter 0.1 or higher is now required
+* DataValuesInterfaces 0.1 or higher is now required
+* DataValuesCommon 0.1 or higher is now required
 * Changed minimum MediaWiki version from 1.16 to 1.18.
 * Full compatibility with MediaWiki 1.20, 1.21, 1.22 and forward-compatibility with 1.23.
 * Added compatibility with PHP 5.4.x and PHP 5.5.x
