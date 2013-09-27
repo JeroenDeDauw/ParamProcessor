@@ -95,7 +95,7 @@ and
 
 ## Release notes
 
-### 1.0 (under development)
+### Version 1.0 (under development)
 
 ParamProcessor 1.0 is currently in beta-quality and is not recommended for use in
 production until the actual release.
@@ -117,11 +117,11 @@ stability and cleaner interfaces exposed to the outside.
 
 * Deprecated the ParserHook class
 
-### Validator 0.4.14 (2012-03-10)
+### Version 0.4.14 (2012-03-10)
 
 * New built-in parameter type 'title'. Accepts existing and non-existing page titles which are valid within the wiki.
 
-### Validator 0.4.13 (2011-11-30)
+### Version 0.4.13 (2011-11-30)
 
 * ParserHook::$parser now is a reference to the original parser object, as one would suspect.
   Before this has only been the case for tag extension but not for parser function calls.
@@ -140,73 +140,73 @@ stability and cleaner interfaces exposed to the outside.
 
 * ParserHook Validation messages will now output text in global content language instead of users interface language.
 
-### Validator 0.4.12 (2011-10-15)
+### Version 0.4.12 (2011-10-15)
 
 * Internationalization fix in the describe parser hook.
 
-### Validator 0.4.11 (2011-09-14)
+### Version 0.4.11 (2011-09-14)
 
 * Fixed compatibility fallback in Parameter::getDescription.
 * Fixed handling of list parameters in ParameterInput.
 
-### Validator 0.4.10 (2011-08-04)
+### Version 0.4.10 (2011-08-04)
 
 * Added language parameter to describe that allows setting the lang for the generated docs.
 * Added getMessage method to ParserHook class for better i18n.
 
-### Validator 0.4.9 (2011-07-30)
+### Version 0.4.9 (2011-07-30)
 
 * Added setMessage and getMessage methods to Parameter class for better i18n.
 
-### Validator 0.4.8 (2011-07-19)
+### Version 0.4.8 (2011-07-19)
 
 * Added unit tests for the criteria.
 * Fixed issue with handling floats in CriterionInRange.
 * Added support for open limits in CriterionHasLength and CriterionItemCount.
 
-### Validator 0.4.7 (2011-05-15)
+### Version 0.4.7 (2011-05-15)
 
 * Added ParameterInput class to generate HTML inputs for parameters, based on code from SMWs Special:Ask.
 * Added "$manipulate = true" as second parameter for Parameter::setDefault,
   which gets passed to Parameter::setDoManipulationOfDefault.
 * Boolean manipulation now ignores values that are already a boolean.
 
-### Validator 0.4.6 (2011-03-21)
+### Version 0.4.6 (2011-03-21)
 
 * Removed ParamManipulationBoolstr.
 * Added method to get the allowed values to CriterionInArray.
 * Added automatic non-using of boolean manipulation when a boolean param was defaulted to a boolean value.
 * Parameter fix in ListParameter::setDefault, follow up to change in 0.4.5.
 
-### Validator 0.4.5 (2011-03-05)
+### Version 0.4.5 (2011-03-05)
 
 * Escaping fix in the describe parser hook.
 * Added string manipulation, applied by default on strings and chars.
 
-### Validator 0.4.4 (2011-02-16)
+### Version 0.4.4 (2011-02-16)
 
 * Tweaks to parser usage in the ParserHook class.
 * Fixed incorrect output of nested pre-tags in the describe parser hook.
 
-### Validator 0.4.3.1 (2011-01-20)
+### Version 0.4.3.1 (2011-01-20)
 
 * Removed underscore and space switching behavior for tag extensions and parser functions.
 
-### Validator 0.4.3 (2011-01-11)
+### Version 0.4.3 (2011-01-11)
 
 * Added describe parser hook that enables automatic documentation generation of parser hooks defined via Validator.
 * Modified the ParserHook and Parameter classes to allow specifying a description message.
 
-### Validator 0.4.2 (2010-10-28)
+### Version 0.4.2 (2010-10-28)
 
 * Fixed compatibility with MediaWiki 1.15.x.
 * Removed the lowerCaseValue field in the Parameter class and replaced it's functionality with a ParameterManipulation.
 
-### Validator 0.4.1 (2010-10-20)
+### Version 0.4.1 (2010-10-20)
 
 * Made several small fixes and improvements.
 
-### Validator 0.4 (2010-10-15)
+### Version 0.4 (2010-10-15)
 
 ##### New features
 
@@ -225,51 +225,51 @@ Basically everything got rewritten...
 * Added ValidationError class to better describe errors.
 * Replaced the error level enum by ValidationError::SEVERITY_ and ValidationError::ACTION_, which are linked in $egErrorActions. 
 
-### Validator 0.3.6 (2010-08-26)
+### Version 0.3.6 (2010-08-26)
 
 * Added support for 'tolower' argument in parameter info definitions.
 
-### Validator 0.3.5 (2010-07-26)
+### Version 0.3.5 (2010-07-26)
 
 * Fixed issue with the original parameter name (and in some cases also value) in error messages.
 
-### Validator 0.3.4 (2010-07-07)
+### Version 0.3.4 (2010-07-07)
 
 * Fixed issue with parameter reference that occurred in php 5.3 and later.
 * Fixed escaping issue that caused parameter names in error messages to be shown incorrectly.
 * Fixed small issue with parameter value trimming that caused problems when objects where passed.
 
-### Validator 0.3.3 (2010-06-20)
+### Version 0.3.3 (2010-06-20)
 
 * Fixed bug that caused notices when using the ValidatorManager::manageParsedParameters method in some cases.
 
-### Validator 0.3.2 (2010-06-07)
+### Version 0.3.2 (2010-06-07)
 
 * Added lower casing to parameter names, and optionally, but default on, lower-casing for parameter values.
 * Added removal of default parameters from the default parameter queue when used as a named parameter.
 
-### Validator 0.3.1 (2010-06-04)
+### Version 0.3.1 (2010-06-04)
 
 * Added ValidatorManager::manageParsedParameters and Validator::setParameters.
 
-### Validator 0.3 (2010-05-31)
+### Version 0.3 (2010-05-31)
 
 * Added generic default parameter support.
 * Added parameter dependency support.
 * Added full meta data support for validation and formatting functions, enabling more advanced handling of parameters.
 * Major refactoring to conform to MediaWiki convention.
 
-### Validator 0.2.2 (2010-03-01)
+### Version 0.2.2 (2010-03-01)
 
 * Fixed potential xss vectors.
 * Minor code improvements.
 
-### Validator 0.2.1 (2010-02-01)
+### Version 0.2.1 (2010-02-01)
 
 * Changed the inclusion of the upper bound for range validation functions.
 * Small language fixes.
 
-### Validator 0.2 (2009-12-25)
+### Version 0.2 (2009-12-25)
 
 * Added handling for lists of a type, instead of having list as a type. This includes per-item-validation and per-item-defaulting.
 * Added list validation functions: item_count and unique_items
@@ -279,7 +279,7 @@ Basically everything got rewritten...
 * Added warning message to ValidatorManager that will be shown for errors when egValidatorErrorLevel is Validator_ERRORS_WARN.
 * Added criteria support for is_boolean, has_length and regex.
 
-### Validator 0.1 (2009-12-17)
+### Version 0.1 (2009-12-17)
 
 * Initial release, featuring parameter validation, defaulting and error generation.
 
