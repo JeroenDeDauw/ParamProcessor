@@ -3322,7 +3322,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'validator-desc' => 'Библиотека обработке декларативных параметров',
+	'validator-desc' => 'Библиотека обработки декларативных параметров',
 	'validator-warning' => 'Внимание: $1',
 	'validator-error' => 'Ошибка: $1',
 	'validator-fatal-error' => 'Критическая ошибка: $1',
@@ -3339,6 +3339,8 @@ $messages['ru'] = array(
 	'validator-type-float' => 'число',
 	'validator-type-boolean' => 'да/нет',
 	'validator-type-char' => 'символ',
+	'validator-type-title' => 'название',
+	'validator-type-title-list' => 'список названий',
 	'validator-listerrors-errors' => 'Ошибки',
 	'validator-listerrors-minor' => 'Незначительная',
 	'validator-listerrors-low' => 'Низкая',
@@ -3400,6 +3402,7 @@ $messages['ru'] = array(
 	'validator-error-accepts-only-omitted' => 'Значение «$2» не подходит для параметра $1.
 {{PLURAL:$5|Допускается только значение|Допускаются только значения}}: $3 (и $4 {{PLURAL:$4|пропущенное значение|пропущенных значения|пропущенных значений}}).',
 	'validator_list_omitted' => '{{PLURAL:$2|Значение $1 было пропущено|Значения $1 были пропущены}}.',
+	'validator-message-nodesc' => 'Описание не предоставлено',
 );
 
 /** Rusyn (русиньскый)
