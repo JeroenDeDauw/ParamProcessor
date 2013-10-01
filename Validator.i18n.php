@@ -2416,6 +2416,7 @@ $messages['ku-latn'] = array(
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
+ * @author Soued031
  */
 $messages['lb'] = array(
 	'validator-desc' => "Library fir d'Behandlung vun deklarative Parameter",
@@ -2449,7 +2450,7 @@ $messages['lb'] = array(
 	'validator-listerrors-par-minseverity' => 'Déi mannste Schwieregkeet vun engem Feeler fir datt en hei gewise gëtt.',
 	'validator-describe-descriptionmsg' => "'''Beschreiwung''': $1",
 	'validator-describe-aliases' => "'''{{PLURAL:$2|Alias|Aliasen}}:''' $1",
-	'validator-describe-parserfunction' => 'Nëmmen als Parser-Fonctioun implementéiert.',
+	'validator-describe-parserfunction' => 'Nëmmen als Parser-Funktioun implementéiert.',
 	'validator-describe-tagextension' => 'Nëmmen als Tag-Erweiderung implementéiert.',
 	'validator-describe-par-language' => "D'Sprooch an där d'Beschreiwunge gewise solle ginn",
 	'validator-describe-listtype' => 'Lëscht mat {{PLURAL:$1|engem Element|$1 Elementer}}',
@@ -3869,7 +3870,7 @@ $messages['ur'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['vi'] = array(
-	'validator-desc' => 'Bộ phê chuẩn cho phép các phần mở rộng khác phê chuẩn tham số của hàm cú pháp và thẻ mở rộng, đặt giá trị mặc định, và báo cáo lỗi.', # Fuzzy
+	'validator-desc' => 'Thư viện xử lý tham số một cách khai báo',
 	'validator-warning' => 'Cảnh báo: $1',
 	'validator-error' => 'Lỗi: $1',
 	'validator_error_parameters' => '{{PLURAL:$1|Lỗi|Các lỗi}} cú pháp sau được nhận ra trong mã của bạn:',
