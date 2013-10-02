@@ -3042,7 +3042,7 @@ $messages['ps'] = array(
 	'validator-listerrors-normal' => 'نورمال',
 	'validator-describe-empty' => 'تش',
 	'validator-describe-header-default' => 'تلواليز',
-	'validator-describe-header-description' => 'څرګندونه',
+	'validator-describe-header-description' => 'څرگندونه',
 );
 
 /** Portuguese (português)
