@@ -74,9 +74,63 @@ value, for instance "42" (string), it will be turned in the appropriate 42 (int)
 
 ## Implementation structure
 
-Parameters are defined using the ParamProcessor\ParamDefinition class.
+Parameters are defined using the ParamProcessor\ParamDefinition class. Users can also use the array
+format to define parameters and not be bound to this class. At present, it is prefered to use this
+array format as the class itself is not stable yet.
 
 Processing is done via ParamProcessor\Processor.
+
+## Defining parameters
+
+### Array definition schema
+
+* type, string enum
+* islist, boolean
+* default, mixed, param will be required when null/omitted
+* values, array, allowed values
+* message, string, required for now
+
+## Examples
+
+### Parameter definitions
+
+```php
+$paramDefintions = array();
+
+$paramDefintions[] = array(
+    'name' => 'username',
+);
+
+$paramDefintions[] = array(
+    'name' => 'job',
+    'default' => 'unknown',
+    'values' => array( 'Developer', 'Designer', 'Manager', 'Tester' ),
+);
+
+$paramDefintions[] = array(
+    'name' => 'favourite-numbers',
+    'islist' => true,
+    'type' => 'int',
+    'default' => array(),
+);
+```
+
+### Processing
+
+```php
+$inputParams = array(
+    'username' => 'Jeroen',
+    'job' => 'Developer',
+);
+
+$processor = ParamProcessor\Processor::newDefault();
+
+$processor->setParameters( $inputParams, $paramDefintions );
+
+$processingResult = $processor->processParameters();
+
+$processedParams = $processingResult->getParameters();
+```
 
 ## Tests
 
