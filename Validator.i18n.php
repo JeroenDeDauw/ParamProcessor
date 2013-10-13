@@ -3937,6 +3937,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (中文（简体）‎)
  * @author Hydra
+ * @author Liuxinyu970226
  * @author Richarddong
  * @author Shirayuki
  * @author Wilsonmess
@@ -3951,7 +3952,7 @@ $messages['zh-hans'] = array(
 	'validator-fatal-error' => '致命错误：$1',
 	'validator_error_parameters' => '从您的语法中检测到以下{{PLURAL:$1|错误|错误}}：',
 	'validator_warning_parameters' => '您的语法中存在{{PLURAL:$1|一个错误|若干错误}}。',
-	'validator-warning-adittional-errors' => '⋯⋯以及更多的问题。', # Fuzzy
+	'validator-warning-adittional-errors' => '......以及{{PLURAL:$1|更多的问题}}。',
 	'validator-error-omitted' => '{{PLURAL:$2|值“$1”|“$1”等值}}已被忽略。',
 	'validator-error-problem' => '参数 $1 存在一个问题。',
 	'validator_error_unknown_argument' => '$1 不是一个有效的参数。',
@@ -3965,6 +3966,10 @@ $messages['zh-hans'] = array(
 	'validator-type-title' => '标题',
 	'validator-type-string-list' => '文本列表',
 	'validator-type-integer-list' => '整数列表',
+	'validator-type-float-list' => '数字列表',
+	'validator-type-boolean-list' => '是否列表',
+	'validator-type-char-list' => '字符列表',
+	'validator-type-title-list' => '标题列表',
 	'validator-listerrors-errors' => '错误',
 	'validator-listerrors-severity-message' => '（$1）$2',
 	'validator-listerrors-minor' => '很小',
@@ -3973,6 +3978,8 @@ $messages['zh-hans'] = array(
 	'validator-listerrors-high' => '大',
 	'validator-listerrors-fatal' => '致命',
 	'validator-describe-descriptionmsg' => "'''说明'''：$1",
+	'validator-describe-aliases' => "'''{{PLURAL:$2|别名}}'''：$1",
+	'validator-describe-listtype' => '$1项列表',
 	'validator-describe-empty' => '空白',
 	'validator-describe-required' => '必填',
 	'validator-describe-header-parameter' => '参数',
