@@ -2822,7 +2822,7 @@ $messages['oc'] = array(
 	'validator_error_must_be_integer' => 'Lo paramètre $1 deu èsser un nombre entièr.',
 	'validator_error_invalid_range' => 'Lo paramètre $1 deu èsser entre $2 e $3.',
 	'validator_error_invalid_argument' => '$1 es pas valedor pel paramètre $2.',
-	'validator_error_accepts_only' => 'Sonque {{PLURAL:$3|aquela valor es valedora|aquelas valors son valedoras}}pel paramètre $1 : $2.', # Fuzzy
+	'validator_error_accepts_only' => "La valor « $4 » es pas valabla pel paramètre $1. Aqueste paramètre accèpta pas qu'{{PLURAL:$3|aquesta valor|aquestas valors}} : $2.",
 );
 
 /** Ossetic (Ирон)
