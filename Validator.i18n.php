@@ -167,7 +167,8 @@ $messages['qqq'] = array(
 	'validator-type-integer' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "whole number" (integer).
 {{Related|Validator-type}}',
 	'validator-type-float' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "number".
-{{Related|Validator-type}}',
+{{Related|Validator-type}}
+{{Identical|Number}}',
 	'validator-type-boolean' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is a boolean value (yes or no).
 {{Related|Validator-type}}',
 	'validator-type-char' => 'This is the name of a type of values that may be assigned to a parameter. In this case it is some "character".
