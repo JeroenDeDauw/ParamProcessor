@@ -11,9 +11,6 @@ use ValueValidators\ValueValidator;
  * @since 1.0
  * @deprecated since 1.0, use ParamDefinition
  *
- * @file
- * @ingroup ParamProcessor
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
