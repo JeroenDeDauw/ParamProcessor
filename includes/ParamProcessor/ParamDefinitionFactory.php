@@ -34,15 +34,6 @@ class ParamDefinitionFactory {
 	protected $typeToComponent = array();
 
 	/**
-	 * Constructor.
-	 *
-	 * @since 1.0
-	 */
-	public function __construct() {
-
-	}
-
-	/**
 	 * Singleton.
 	 *
 	 * @since 1.0
@@ -54,7 +45,7 @@ class ParamDefinitionFactory {
 		static $instance = false;
 
 		if ( $instance === false ) {
-			$instance = new static();
+			$instance = new self();
 			$instance->registerGlobals();
 		}
 
