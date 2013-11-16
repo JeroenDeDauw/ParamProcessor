@@ -36,8 +36,16 @@ if ( isset( $wgVersion ) && version_compare( $wgVersion, '1.16c', '<' ) ) {
 }
 
 // Include the DataValues extension if that hasn't been done yet, since it's required for Validator to work.
-if ( !defined( 'DataValues_VERSION' ) ) {
+if ( !defined( 'DATAVALUES_VERSION' ) ) {
 	@include_once( __DIR__ . '/../DataValues/DataValues.php' );
+}
+
+if ( !defined( 'DATAVALUES_INTERFACES_VERSION' ) ) {
+	@include_once( __DIR__ . '/../DataValuesInterfaces/DataValuesInterfaces.php' );
+}
+
+if ( !defined( 'DATAVALUES_COMMON_VERSION' ) ) {
+	@include_once( __DIR__ . '/../DataValuesCommon/DataValuesCommon.php' );
 }
 
 // Attempt to include the DataValues lib if that hasn't been done yet.
@@ -47,14 +55,14 @@ if ( !defined( 'DataValues_VERSION' ) && is_readable( __DIR__ . '/vendor/autoloa
 }
 
 $dependencies = array(
-	'DataValues_VERSION' => 'DataValues',
-	'DataValuesCommon_VERSION' => 'DataValues',
-	'DataValuesInterfaces_VERSION' => 'DataValues',
+	'DATAVALUES_VERSION' => 'DataValues',
+	'DATAVALUES_INTERFACES_VERSION' => 'DataValuesInterfaces',
+	'DATAVALUES_COMMON_VERSION' => 'DataValuesCommon',
 );
 
 foreach ( $dependencies as $constant => $name ) {
 	if ( !defined( $constant ) ) {
-		throw new Exception( 'Validator depends on the https://www.mediawiki.org/wiki/Extension:' .  $name . ' extension.' );
+		throw new Exception( 'ParamProcessor depends on the https://www.mediawiki.org/wiki/Extension:' .  $name . ' library.' );
 	}
 }
 
