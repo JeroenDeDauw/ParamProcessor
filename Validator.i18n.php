@@ -841,6 +841,13 @@ $messages['cu'] = array(
 	'validator-listerrors-errors' => 'блаꙁнꙑ',
 );
 
+/** Danish (dansk)
+ * @author Christian List
+ */
+$messages['da'] = array(
+	'validator-type-string' => 'tekst',
+);
+
 /** German (Deutsch)
  * @author DaSch
  * @author Imre
@@ -1864,7 +1871,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'validator-desc' => 'Validator provide un modo facile a altere extensiones de validar parametros de functiones del analysator syntactic e extensiones de etiquettas, predefinir valores e generar messages de error', # Fuzzy
+	'validator-desc' => 'Bibliotheca pro le tractamento de parametros declarative',
 	'validator-warning' => 'Aviso: $1',
 	'validator-error' => 'Error: $1',
 	'validator-fatal-error' => 'Error fatal: $1',
