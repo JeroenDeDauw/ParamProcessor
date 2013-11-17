@@ -32,7 +32,8 @@
 		"data-values/common": "*",
 		"data-values/number": "*",
 		"data-values/geo": "*",
-		"data-values/time": "*"
+		"data-values/time": "*",
+		"data-values/validators": "*"
 	},
 	"require-dev": {
 		"satooshi/php-coveralls": "dev-master"
