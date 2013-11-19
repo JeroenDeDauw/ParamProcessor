@@ -203,6 +203,9 @@ $messages['qqq'] = array(
 	'validator-listerrors-high' => 'This is the name of a status that is assigned to an error report.
 {{Identical|High}}',
 	'validator-listerrors-fatal' => 'This is the name of a status that is assigned to an error report.',
+	'validator-listerrors-description' => 'This is the message describing purpose of the „<code>listerrors</code>“ tag.',
+	'validator-listerrors-par-minseverity' => 'This is the description message for the "minseverity" parameter that may be used in conjunction with the <code>listerrors</code> tag.',
+	'validator-describe-description' => 'This is the message describing purpose of the „<code>describe</code>“ tag.',
 	'validator-describe-notfound' => 'Parameters:
 * $1 - parser hook name',
 	'validator-describe-descriptionmsg' => 'Preceded by HTML comment {{msg-mw|Validator-describe-autogen}}.
@@ -218,6 +221,9 @@ Preceded by {{msg-mw|validator-describe-descriptionmsg}} and a new line.
 	'validator-describe-parserfunction' => '{{Related|Validator-describe}}',
 	'validator-describe-tagextension' => '{{Related|Validator-describe}}',
 	'validator-describe-bothhooks' => '{{Related|Validator-describe}}',
+	'validator-describe-par-hooks' => 'This is the description message for the "hooks" parameter that may be used in conjunction with the <code>describe</code> tag.',
+	'validator-describe-par-pre' => 'This is the description message for the "pre" parameter that may be used in conjunction with the <code>describe</code> tag.',
+	'validator-describe-par-language' => 'This is the description message for the "language" parameter that may be used in conjunction with the <code>describe</code> tag.',
 	'validator-describe-listtype' => 'This is a patchwork message. $1 stands for one of these messages: {{msg-mw|Validator-type-string}}, {{msg-mw|Validator-type-number}}, {{msg-mw|Validator-type-integer}}, {{msg-mw|Validator-type-float}}, {{msg-mw|Validator-type-boolean}}, {{msg-mw|Validator-type-char}}',
 	'validator-describe-empty' => '{{Identical|Empty}}',
 	'validator-describe-required' => '{{Identical|Required}}',
