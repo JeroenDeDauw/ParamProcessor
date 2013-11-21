@@ -9,13 +9,7 @@ before_script:
   - composer install
 
 script:
-  - phpunit --coverage-clover build/logs/clover.xml
-
-after_script:
-  - ls -lap
-  - ls -lap build/logs
-  - ls -lap vendor/bin
-  - php vendor/bin/coveralls -v
+  - phpunit
 
 notifications:
   email:
@@ -25,7 +19,6 @@ notifications:
     on_failure: always
   irc:
     channels:
-      - "chat.freenode.net#wikimedia-wikidata"
       - "chat.freenode.net#semantic-mediawiki"
     on_success: change
     on_failure: always

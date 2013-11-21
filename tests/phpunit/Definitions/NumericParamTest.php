@@ -2,6 +2,8 @@
 
 namespace ParamProcessor\Tests\Definitions;
 
+use ParamProcessor\Options;
+
 /**
  * Unit test for the NumericParam class.
  *
@@ -57,7 +59,7 @@ abstract class NumericParamTest extends ParamDefinitionTest {
 
 		$this->validate( $definition, (string)$testValue, $validity );
 
-		$options = new \ValidatorOptions();
+		$options = new Options();
 		$options->setRawStringInputs( false );
 		$this->validate( $definition, $testValue, $validity, $options );
 	}
@@ -85,7 +87,7 @@ abstract class NumericParamTest extends ParamDefinitionTest {
 
 		$this->validate( $definition, (string)$testValue, $validity );
 
-		$options = new \ValidatorOptions();
+		$options = new Options();
 		$options->setRawStringInputs( false );
 		$this->validate( $definition, $testValue, $validity, $options );
 	}

@@ -14,17 +14,12 @@
          verbose="true">
     <testsuites>
         <testsuite name="ParamProcessor">
-            <directory>tests/phpunit/</directory>
-
-            <!-- MediaWiki specific code is excluded so this test suite can be run without MW -->
-            <exclude>tests/phpunit/Definitions/TitleParamTest.php</exclude>
-            <exclude>tests/phpunit/MediaWikiTitleValueTest.php</exclude>
-            <exclude>tests/phpunit/TitleParserTest.php</exclude>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">includes</directory>
+            <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
 </phpunit>

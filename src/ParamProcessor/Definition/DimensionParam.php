@@ -2,7 +2,7 @@
 
 namespace ParamProcessor\Definition;
 
-use MWException;
+use Exception;
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\IParam;
 use ParamProcessor\IParamDefinition;
@@ -34,7 +34,7 @@ class DimensionParam extends ParamDefinition {
 	 * @param IParam[] $params
 	 *
 	 * @return mixed
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
 		if ( $value === 'auto' ) {
@@ -56,7 +56,7 @@ class DimensionParam extends ParamDefinition {
 			return $value . $validator->getDefaultUnit();
 		}
 		else {
-			throw new MWException(
+			throw new Exception(
 				'ValueValidator of a DimensionParam should be a ValueValidators\DimensionValidator and not a '
 					. get_class( $validator )
 			);

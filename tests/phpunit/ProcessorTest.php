@@ -36,10 +36,6 @@ use ParamProcessor\Options;
  */
 class ProcessorTest extends \PHPUnit_Framework_TestCase {
 
-	public function testCompatAlias() {
-		$this->assertInstanceOf( '\ParamProcessor\Processor', \Validator::newDefault() );
-	}
-
 	public function testNewDefault() {
 		$this->assertInstanceOf( '\ParamProcessor\Processor', Processor::newDefault() );
 	}

@@ -1,7 +1,8 @@
 <?php
 
 namespace ParamProcessor;
-use MWException;
+
+use Exception;
 
 use ValueParsers\ValueParser;
 use ValueParsers\NullParser;
@@ -436,7 +437,6 @@ class ParamDefinition implements IParamDefinition {
 		$this->delimiter = $delimiter;
 	}
 
-
 	/**
 	 * @see IParamDefinition::setArrayValues
 	 *
@@ -560,13 +560,13 @@ class ParamDefinition implements IParamDefinition {
 	 * @deprecated
 	 *
 	 * @param mixed $value
-	 * @param \IParam $param
+	 * @param IParam $param
 	 * @param IParamDefinition[] $definitions
 	 * @param IParam[] $params
 	 *
 	 * @return mixed
 	 */
-	protected function formatValue( $value, \IParam $param, array &$definitions, array $params ) {
+	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
 		return $value;
 		// No-op
 	}
@@ -582,7 +582,7 @@ class ParamDefinition implements IParamDefinition {
 	 * @param IParamDefinition[] $definitions
 	 *
 	 * @return IParamDefinition[]
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public static function getCleanDefinitions( array $definitions ) {
 		$cleanList = array();
@@ -597,7 +597,7 @@ class ParamDefinition implements IParamDefinition {
 			}
 
 			if ( !( $definition instanceof IParamDefinition ) ) {
-				throw new MWException( '$definition not an instance of IParamDefinition' );
+				throw new Exception( '$definition not an instance of IParamDefinition' );
 			}
 
 			$cleanList[$definition->getName()] = $definition;

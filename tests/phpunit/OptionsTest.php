@@ -36,10 +36,6 @@ use ParamProcessor\Options;
  */
 class OptionsTest extends \PHPUnit_Framework_TestCase {
 
-	public function testCompatAlias() {
-		$this->assertInstanceOf( '\ParamProcessor\Options', new \ValidatorOptions() );
-	}
-
 	public function testConstructor() {
 		$this->assertInstanceOf( '\ParamProcessor\Options', new Options() );
 	}

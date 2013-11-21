@@ -1,12 +1,8 @@
-.*
 *~
 *.kate-swp
 
-!.gitignore
-!.gitreview
-
-!.travis.yml
-!.coveralls.yml
+!.*
+.idea/
 
 composer.phar
 composer.lock

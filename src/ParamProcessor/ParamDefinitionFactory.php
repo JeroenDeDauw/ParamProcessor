@@ -2,7 +2,7 @@
 
 namespace ParamProcessor;
 
-use MWException;
+use Exception;
 use OutOfBoundsException;
 
 /**
@@ -58,9 +58,7 @@ class ParamDefinitionFactory {
 	 * @since 1.0
 	 */
 	public function registerGlobals() {
-		global $wgParamDefinitions;
-
-		foreach ( $wgParamDefinitions as $type => $data ) {
+		foreach ( $GLOBALS['wgParamDefinitions'] as $type => $data ) {
 			if ( is_string( $data ) ) {
 				$data = array( 'definition' => $data );
 			}
@@ -97,7 +95,7 @@ class ParamDefinitionFactory {
 			return false;
 		}
 
-		$class = array_key_exists( 'definition', $data ) ? $data['definition'] : 'ParamDefinition';
+		$class = array_key_exists( 'definition', $data ) ? $data['definition'] : 'ParamProcessor\ParamDefinition';
 		$this->typeToClass[$type] = $class;
 
 		$defaults = array(
@@ -172,16 +170,16 @@ class ParamDefinitionFactory {
 	 * @param string $paramType
 	 * @param string $componentType
 	 *
-	 * @throws MWException
+	 * @throws Exception
 	 * @return mixed
 	 */
 	public function getComponentForType( $paramType, $componentType ) {
 		if ( !array_key_exists( $paramType, $this->typeToComponent ) ) {
-			throw new MWException( 'Unknown parameter type "' . $paramType . '".' );
+			throw new Exception( 'Unknown parameter type "' . $paramType . '".' );
 		}
 
 		if ( !array_key_exists( $componentType, $this->typeToComponent[$paramType] ) ) {
-			throw new MWException( 'Unknown parameter component type "' . $paramType . '".' );
+			throw new Exception( 'Unknown parameter component type "' . $paramType . '".' );
 		}
 
 		return $this->typeToComponent[$paramType][$componentType];
@@ -196,13 +194,13 @@ class ParamDefinitionFactory {
 	 * @param bool $getMad
 	 *
 	 * @return IParamDefinition|false
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public function newDefinitionFromArray( array $param, $getMad = true ) {
 		foreach ( array( 'name', 'message' ) as $requiredElement ) {
 			if ( !array_key_exists( $requiredElement, $param ) ) {
 				if ( $getMad ) {
-					throw new MWException( 'Could not construct a ParamDefinition from an array without ' . $requiredElement . ' element' );
+					throw new Exception( 'Could not construct a ParamDefinition from an array without ' . $requiredElement . ' element' );
 				}
 
 				return false;

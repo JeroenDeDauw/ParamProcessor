@@ -2,6 +2,7 @@
 
 namespace ParamProcessor\Tests\Definitions;
 
+use ParamProcessor\Options;
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\IParamDefinition;
 use ParamProcessor\Param;
@@ -116,7 +117,7 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 	public function testValidate( IParamDefinition $definition ) {
 		foreach ( array( true, false ) as $stringlyTyped ) {
 			$values = $this->valueProvider( $stringlyTyped );
-			$options = new \ValidatorOptions();
+			$options = new Options();
 			$options->setRawStringInputs( $stringlyTyped );
 
 			foreach ( $values[$definition->getName()] as $data ) {
@@ -143,7 +144,7 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testFormat( IParamDefinition $sourceDefinition ) {
 		$values = $this->valueProvider();
-		$options = new \ValidatorOptions();
+		$options = new Options();
 
 		foreach ( $values[$sourceDefinition->getName()] as $data ) {
 			$definition = clone $sourceDefinition;
@@ -171,9 +172,9 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue( true );
 	}
 
-	protected function validate( \IParamDefinition $definition, $testValue, $validity, \ValidatorOptions $options = null ) {
+	protected function validate( ParamDefinition $definition, $testValue, $validity, Options $options = null ) {
 		$def = clone $definition;
-		$options = $options === null ? new \ValidatorOptions() : $options;
+		$options = $options === null ? new Options() : $options;
 
 		$param = new Param( $def );
 		$param->setUserValue( $def->getName(), $testValue, $options );

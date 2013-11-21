@@ -2,7 +2,7 @@
 
 namespace ParamProcessor;
 
-use MWException;
+use Exception;
 use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
 
@@ -204,13 +204,13 @@ final class Param implements IParam {
 	 * @param $params array of IParam
 	 * @param Options $options
 	 *
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public function process( array &$definitions, array $params, Options $options ) {
 		if ( $this->setCount == 0 ) {
 			if ( $this->definition->isRequired() ) {
 				// This should not occur, so throw an exception.
-				throw new MWException( 'Attempted to validate a required parameter without first setting a value.' );
+				throw new Exception( 'Attempted to validate a required parameter without first setting a value.' );
 			}
 			else {
 				$this->setToDefault();
@@ -375,12 +375,12 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @throws MWException
+	 * @throws Exception
 	 * @return string
 	 */
 	public function getOriginalName() {
 		if ( $this->setCount == 0 ) {
-			throw new MWException( 'No user input set to the parameter yet, so the original name does not exist' );
+			throw new Exception( 'No user input set to the parameter yet, so the original name does not exist' );
 		}
 		return $this->originalName;
 	}
@@ -390,12 +390,12 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @throws MWException
+	 * @throws Exception
 	 * @return string
 	 */
 	public function getOriginalValue() {
 		if ( $this->setCount == 0 ) {
-			throw new MWException( 'No user input set to the parameter yet, so the original value does not exist' );
+			throw new Exception( 'No user input set to the parameter yet, so the original value does not exist' );
 		}
 		return $this->originalValue;
 	}
