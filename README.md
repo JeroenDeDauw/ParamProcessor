@@ -134,3 +134,5 @@ First release as standalone PHP library.
 
 * [DataValues Time on Packagist](https://packagist.org/packages/param-processor/param-processor)
 * [DataValues Time on TravisCI](https://travis-ci.org/JeroenDeDauw/ParamProcessor)
+* [MediaWiki extension "Validator"](https://www.mediawiki.org/wiki/Extension:Validator) -
+a wrapper around this library for MediaWiki users
