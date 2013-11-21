@@ -10,7 +10,6 @@ use ParamProcessor\IParam;
  * Specifies the type specific validation and formatting logic.
  *
  * @since 1.0
- * @ingroup ParamDefinition
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

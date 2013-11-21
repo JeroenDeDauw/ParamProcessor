@@ -19,7 +19,6 @@ use ValueValidators\NullValidator;
  * In particular, do not derive from this class to implement methods such as formatValue.
  *
  * @since 1.0
- * @ingroup ParamDefinition
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

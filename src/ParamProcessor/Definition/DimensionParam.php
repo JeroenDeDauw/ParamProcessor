@@ -15,7 +15,6 @@ use ParamProcessor\IParamDefinition;
  * TODO: this class is silly, should be handled by a dedicated formatting object/function.
  *
  * @since 1.0
- * @ingroup ParamDefinition
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
