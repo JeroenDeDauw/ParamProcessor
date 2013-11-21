@@ -9,7 +9,7 @@
 		"SMW",
 		"Semantic MediaWiki"
 	],
-	"homepage": "https://www.mediawiki.org/wiki/Extension:ParamProcessor",
+	"homepage": "https://github.com/JeroenDeDauw/ParamProcessor",
 	"license": "GPL-2.0+",
 	"authors": [
 		{
@@ -21,9 +21,7 @@
 	],
 	"support": {
 		"issues": "https://bugzilla.wikimedia.org/",
-		"irc": "irc://irc.freenode.net/mediawiki",
-		"forum": "https://www.mediawiki.org/wiki/Extension_talk:ParamProcessor",
-		"wiki": "https://www.mediawiki.org/wiki/Extension:ParamProcessor"
+		"irc": "irc://irc.freenode.net/mediawiki"
 	},
 	"require": {
 		"php": ">=5.3.0",
