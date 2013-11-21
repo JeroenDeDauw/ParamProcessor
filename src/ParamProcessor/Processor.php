@@ -136,11 +136,8 @@ class Processor {
 	 *        the parameter has no name which can be used to set it. Therefore all these parameters must be set before
 	 *        any named parameter. The effect is, that '=' within the string won't confuse the parameter anymore like
 	 *        it would happen with default parameters that still have a name as well.
-	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
-	 * 
-	 * @todo: $toLower takes no effect yet.
 	 */
-	public function setFunctionParams( array $rawParams, array $parameterInfo, array $defaultParams = array(), $toLower = true ) {
+	public function setFunctionParams( array $rawParams, array $parameterInfo, array $defaultParams = array() ) {
 		$parameters = array();
 
 		$nr = 0;
