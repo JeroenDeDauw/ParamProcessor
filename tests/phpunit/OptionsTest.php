@@ -5,7 +5,7 @@ namespace ParamProcessor\Tests;
 use ParamProcessor\Options;
 
 /**
- * Unit test for the Validator\Options class.
+ * @covers ParamProcessor\Options
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -13,7 +13,7 @@ use ParamProcessor\Options;
 class OptionsTest extends \PHPUnit_Framework_TestCase {
 
 	public function testConstructor() {
-		$this->assertInstanceOf( '\ParamProcessor\Options', new Options() );
+		$this->assertInstanceOf( 'ParamProcessor\Options', new Options() );
 	}
 
 	/**

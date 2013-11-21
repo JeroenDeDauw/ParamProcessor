@@ -5,7 +5,7 @@ namespace ParamProcessor\Tests;
 use ParamProcessor\Settings;
 
 /**
- * Tests for the ParamProcessor\Settings class.
+ * @covers ParamProcessor\Settings
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

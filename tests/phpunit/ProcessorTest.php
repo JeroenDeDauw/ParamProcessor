@@ -6,7 +6,7 @@ use ParamProcessor\Processor;
 use ParamProcessor\Options;
 
 /**
- * Unit test for the Validator class.
+ * @covers ParamProcessor\Processor
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -14,7 +14,7 @@ use ParamProcessor\Options;
 class ProcessorTest extends \PHPUnit_Framework_TestCase {
 
 	public function testNewDefault() {
-		$this->assertInstanceOf( '\ParamProcessor\Processor', Processor::newDefault() );
+		$this->assertInstanceOf( 'ParamProcessor\Processor', Processor::newDefault() );
 	}
 
 	public function newFromOptionsProvider() {

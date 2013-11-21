@@ -9,8 +9,6 @@ use ParamProcessor\Param;
 use ParamProcessor\ParamDefinitionFactory;
 
 /**
- * Unit test base for ParamDefinition deriving classes.
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

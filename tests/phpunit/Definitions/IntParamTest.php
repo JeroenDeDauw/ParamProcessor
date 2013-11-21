@@ -3,8 +3,6 @@
 namespace ParamProcessor\Tests\Definitions;
 
 /**
- * Unit test for the IntParam class.
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
