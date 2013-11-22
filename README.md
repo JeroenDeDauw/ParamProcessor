@@ -67,11 +67,11 @@ Processing is done via ParamProcessor\Processor.
 
 ### Array definition schema
 
-* type, string enum
-* islist, boolean
-* default, mixed, param will be required when null/omitted
-* values, array, allowed values
-* message, string, required for now
+* <code>type</code> string enum
+* <code>islist</code> boolean
+* <code>default</code> mixed, param will be required when null/omitted
+* <code>values</code> array, allowed values
+* <code>message</code>, string, required for now
 
 ## Examples
 
