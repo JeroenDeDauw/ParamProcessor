@@ -1,9 +1,12 @@
 # ParamProcessor
 
-The ParamProcessor MediaWiki extension, formerly known as Validator, is a parameter processing
-framework that provides a way to declaratively define a set of parameters and how they
-should be processed. It can take such declarations together with a list of raw
-parameters and provide the processed values.
+ParamProcessor is a parameter processing library that provides a way to
+decoratively define a set of parameters and how they should be processed.
+It can take such declarations together with a list of raw parameters and
+provide the processed values. For example, if one defines a parameter to
+be an integer, in the range [0, 100], then ParamProcessor will verify the
+input is an integer, in the specified range, and return it as an actual
+integer variable.
 
 [![Build Status](https://secure.travis-ci.org/JeroenDeDauw/ParamProcessor.png?branch=master)](http://travis-ci.org/JeroenDeDauw/ParamProcessor)
 [![Code Coverage](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/coverage.png?s=2ab5df62d929329584536005cdca7d2bec5501f4)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/)
