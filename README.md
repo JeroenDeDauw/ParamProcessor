@@ -73,6 +73,12 @@ Processing is done via ParamProcessor\Processor.
 * <code>values</code> array, allowed values
 * <code>message</code>, string, required for now
 
+## Defining parameter types
+
+* <code>string-parser</code> Name of a class that implements the ValueParsers\ValueParser interface
+* <code>validation-callback</code> Callback that gets the raw value as only parameter and returns a boolean
+* <code>validator</code> Name of a class that implements the ValueValidators\ValueValidator interface
+
 ## Examples
 
 ### Parameter definitions
