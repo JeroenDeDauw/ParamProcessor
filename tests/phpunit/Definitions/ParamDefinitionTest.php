@@ -132,10 +132,6 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 				$defs = array();
 				$param->process( $defs, array(), $options );
 
-//				if ( $data[2] !== $param->getValue() ) {
-//					q($param, $options, $param->getValueParser($options),$param->getValueParser($options)->parse($param->getOriginalValue()));
-//				}
-
 				$this->assertEquals(
 					$data[2],
 					$param->getValue()
