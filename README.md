@@ -129,7 +129,12 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
-### 1.0 (dev)
+### 1.0.1 (dev)
+
+* Implemented ProcessingResult::hasFatal
+* Added ProcessingResultTest
+
+### 1.0 (2013-11-21)
 
 First release as standalone PHP library.
 

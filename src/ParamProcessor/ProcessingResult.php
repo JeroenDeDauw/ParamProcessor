@@ -2,6 +2,12 @@
 
 namespace ParamProcessor;
 
+/**
+ * @since 1.0
+ *
+ * @licence GNU GPL v2+
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ */
 class ProcessingResult {
 
 	/**
@@ -37,8 +43,18 @@ class ProcessingResult {
 		return $this->errors;
 	}
 
+	/**
+	 * @since 1.0.1
+	 * @return bool
+	 */
 	public function hasFatal() {
-		return false; // TODO
+		foreach ( $this->errors as $error ) {
+			if ( $error->isFatal() ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }
