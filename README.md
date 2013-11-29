@@ -88,34 +88,34 @@ Processing is done via ParamProcessor\Processor.
 		<th>Description</th>
 	</tr>
 	<tr>
-		<th>boolean</th>
-		<tr>boolean</tr>
-		<tr>Accepts "yes", "no", "on", "off", "true" and "false"</tr>
+		<td>boolean</th>
+		<tr>boolean</td>
+		<td>Accepts "yes", "no", "on", "off", "true" and "false"</td>
 	</tr>
 	<tr>
 		<th>float</th>
-		<tr>float</tr>
-		<tr></tr>
+		<td>float</td>
+		<td></td>
 	</tr>
 	<tr>
 		<th>integer</th>
-		<tr>integer</tr>
-		<tr></tr>
+		<td>integer</td>
+		<td></td>
 	</tr>
 	<tr>
 		<th>string</th>
-		<tr>string</tr>
-		<tr></tr>
+		<td>string</td>
+		<td></td>
 	</tr>
 	<tr>
 		<th>coordinate</th>
-		<tr>DataValues\LatLongValue</tr>
-		<tr></tr>
+		<td>DataValues\LatLongValue</td>
+		<td></td>
 	</tr>
 	<tr>
 		<th>dimension</th>
-		<tr>string</tr>
-		<tr>Value for a width or hight attribute in HTML</tr>
+		<td>string</td>
+		<td>Value for a width or hight attribute in HTML</td>
 	</tr>
 </table>
 
