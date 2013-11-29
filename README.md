@@ -67,11 +67,26 @@ Processing is done via ParamProcessor\Processor.
 
 ### Array definition schema
 
-* <code>type</code> string enum
-* <code>islist</code> boolean
+* <code>name</code> string, required
+* <code>type</code> string enum, defulats to "string"
 * <code>default</code> mixed, param will be required when null/omitted
+* <code>aliases</code> array of string, defaults to empty array. Aliases for the name
+* <code>trim</code> boolean, defaults to unspecified (and thus whatever the processor options are). If the value should be trimmed
+* <code>islist</code> boolean, defaults to false
+* <code>delimiter</code> string, defaults to ",". The delimieter between values if it is a list
+* <code>manipulatedefault</code> boolea, defaults to true. If the default value should also be manipulated
 * <code>values</code> array, allowed values
 * <code>message</code>, string, required for now
+* <code>post-format</code> callback, takes the value as only parameter and returns the new value
+
+### Core parameter types
+
+* boolean
+* float
+* integer
+* string
+* dimension
+* coordinate
 
 ## Defining parameter types
 
