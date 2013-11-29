@@ -150,7 +150,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
-### 1.0.1 (dev)
+### 1.0.1 (2013-11-29)
 
 * Implemented ProcessingResult::hasFatal
 * Added ProcessingResultTest
