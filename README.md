@@ -67,11 +67,52 @@ Processing is done via ParamProcessor\Processor.
 
 ### Array definition schema
 
-* <code>name</code> string, required
-* <code>type</code> string enum, defulats to "string"
-* <code>default</code> mixed, param will be required when null/omitted
-* <code>aliases</code> array of string, defaults to empty array. Aliases for the name
-* <code>trim</code> boolean, defaults to unspecified (and thus whatever the processor options are). If the value should be trimmed
+<table>
+	<tr>
+		<th>Field name</th>
+		<th>Field type</th>
+		<th>Default</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<th>name</th>
+		<td>string</td>
+		<td><i>required</i></td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>type</th>
+		<td>string (enum)</td>
+		<td>string</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>default</th>
+		<td>mixed</td>
+		<td>null</td>
+		<td>If this value is null, the parameter has no default and is required</td>
+	</tr>
+	<tr>
+		<th>aliases</th>
+		<td>array of string</td>
+		<td>empty array</td>
+		<td>Aliases for the name</td>
+	</tr>
+	<tr>
+		<th>trim</th>
+		<td>boolean</td>
+		<td><i>inherited from pocessor options</i></td>
+		<td>If the value should be trimmed</td>
+	</tr>
+	<tr>
+		<th></th>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+</table>
+
 * <code>islist</code> boolean, defaults to false
 * <code>delimiter</code> string, defaults to ",". The delimieter between values if it is a list
 * <code>manipulatedefault</code> boolea, defaults to true. If the default value should also be manipulated
@@ -88,7 +129,7 @@ Processing is done via ParamProcessor\Processor.
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>boolean</th>
+		<th>boolean</th>
 		<td>boolean</td>
 		<td>Accepts "yes", "no", "on", "off", "true" and "false"</td>
 	</tr>
