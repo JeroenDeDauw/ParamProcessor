@@ -81,12 +81,12 @@ Processing is done via ParamProcessor\Processor.
 
 ### Core parameter types
 
-* boolean
-* float
-* integer
-* string
-* dimension
-* coordinate
+* boolean. Accepts "yes", "no", "on", "off", "true" and "false". Return type: boolean
+* float. Return type: float
+* integer. Return type: int
+* string. Return type: string
+* coordinate. Return type: DataValues\LatLongValue
+* dimension. Value for a width or hight attribute in HTML. Return type: string
 
 ## Defining parameter types
 
