@@ -67,10 +67,12 @@ Processing is done via ParamProcessor\Processor.
 
 ### Array definition schema
 
+These fields are supported:
+
 <table>
 	<tr>
-		<th>Field name</th>
-		<th>Field type</th>
+		<th>Name</th>
+		<th>Type</th>
 		<th>Default</th>
 		<th>Description</th>
 	</tr>
@@ -105,20 +107,45 @@ Processing is done via ParamProcessor\Processor.
 		<td>If the value should be trimmed</td>
 	</tr>
 	<tr>
-		<th></th>
+		<th>islist</th>
+		<td>boolean</td>
+		<td>false</td>
 		<td></td>
+	</tr>
+	<tr>
+		<th>delimiter</th>
+		<td>string</td>
+		<td>,</td>
+		<td>The delimieter between values if it is a list</td>
+	</tr>
+	<tr>
+		<th>manipulatedefault</th>
+		<td>boolean</td>
+		<td>true</td>
+		<td>If the default value should also be manipulated</td>
+	</tr>
+	<tr>
+		<th>values</th>
+		<td>array</td>
 		<td></td>
+		<td>Allowed values</td>
+	</tr>
+	<tr>
+		<th>message</th>
+		<td>string</td>
+		<td><i>required</i></td>
 		<td></td>
+	</tr>
+	<tr>
+		<th>post-format</th>
+		<td>callback</td>
+		<td><i>none</i></td>
+		<td>Takes the value as only parameter and returns the new value</td>
 	</tr>
 	
 </table>
 
-* <code>islist</code> boolean, defaults to false
-* <code>delimiter</code> string, defaults to ",". The delimieter between values if it is a list
-* <code>manipulatedefault</code> boolea, defaults to true. If the default value should also be manipulated
-* <code>values</code> array, allowed values
-* <code>message</code>, string, required for now
-* <code>post-format</code> callback, takes the value as only parameter and returns the new value
+The requires fields currently are: name and message
 
 ### Core parameter types
 
