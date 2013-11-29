@@ -89,7 +89,7 @@ Processing is done via ParamProcessor\Processor.
 	</tr>
 	<tr>
 		<td>boolean</th>
-		<tr>boolean</td>
+		<td>boolean</td>
 		<td>Accepts "yes", "no", "on", "off", "true" and "false"</td>
 	</tr>
 	<tr>
