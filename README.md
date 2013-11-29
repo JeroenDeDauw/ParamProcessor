@@ -81,12 +81,43 @@ Processing is done via ParamProcessor\Processor.
 
 ### Core parameter types
 
-* boolean. Accepts "yes", "no", "on", "off", "true" and "false". Return type: boolean
-* float. Return type: float
-* integer. Return type: int
-* string. Return type: string
-* coordinate. Return type: DataValues\LatLongValue
-* dimension. Value for a width or hight attribute in HTML. Return type: string
+<table>
+	<tr>
+		<th>Name</th>
+		<th>PHP return type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<th>boolean</th>
+		<tr>boolean</tr>
+		<tr>Accepts "yes", "no", "on", "off", "true" and "false"</tr>
+	</tr>
+	<tr>
+		<th>float</th>
+		<tr>float</tr>
+		<tr></tr>
+	</tr>
+	<tr>
+		<th>integer</th>
+		<tr>integer</tr>
+		<tr></tr>
+	</tr>
+	<tr>
+		<th>string</th>
+		<tr>string</tr>
+		<tr></tr>
+	</tr>
+	<tr>
+		<th>coordinate</th>
+		<tr>DataValues\LatLongValue</tr>
+		<tr></tr>
+	</tr>
+	<tr>
+		<th>dimension</th>
+		<tr>string</tr>
+		<tr>Value for a width or hight attribute in HTML</tr>
+	</tr>
+</table>
 
 ## Defining parameter types
 
