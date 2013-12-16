@@ -249,6 +249,11 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
+### 1.0.2 (2013-12-16)
+
+* Removed dependency on data-values/number
+* Updated required version of data-values/common from ~0.1 to ~0.2.
+
 ### 1.0.1 (2013-11-29)
 
 * Implemented ProcessingResult::hasFatal
@@ -260,7 +265,8 @@ First release as standalone PHP library.
 
 ## Links
 
-* [DataValues Time on Packagist](https://packagist.org/packages/param-processor/param-processor)
-* [DataValues Time on TravisCI](https://travis-ci.org/JeroenDeDauw/ParamProcessor)
+* [ParamProcessor on Packagist](https://packagist.org/packages/param-processor/param-processor)
+* [ParamProcessor on TravisCI](https://travis-ci.org/JeroenDeDauw/ParamProcessor)
+* [ParamProcessor on ScrutinizerCI](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/)
 * [MediaWiki extension "Validator"](https://www.mediawiki.org/wiki/Extension:Validator) -
 a wrapper around this library for MediaWiki users
