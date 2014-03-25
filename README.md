@@ -251,6 +251,11 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
+### 1.1 (dev)
+
+* Use PSR-4 based loading rather than PSR-0 based loading.
+* Fixed Windows compatibility in PHPUnit bootstrap
+
 ### 1.0.2 (2013-12-16)
 
 * Removed dependency on data-values/number
