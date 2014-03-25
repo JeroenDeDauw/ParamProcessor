@@ -29,7 +29,6 @@
 		"data-values/interfaces": "~0.1",
 		"data-values/common": "~0.2",
 		"data-values/geo": "~0.1",
-		"data-values/time": "~0.1",
 		"data-values/validators": "~0.1"
 	},
 	"autoload": {
@@ -46,7 +45,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "1.0.x-dev"
+			"dev-master": "1.1.x-dev"
 		}
 	}
 }
