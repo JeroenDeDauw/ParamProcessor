@@ -253,6 +253,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ### 1.1 (dev)
 
+* Dropped dependency on DataValues Time.
 * Use PSR-4 based loading rather than PSR-0 based loading.
 * Fixed Windows compatibility in PHPUnit bootstrap
 
