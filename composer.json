@@ -25,8 +25,8 @@
 	"require": {
 		"php": ">=5.3.0",
 		"data-values/data-values": "~0.1.1",
-		"data-values/interfaces": "~0.1.2",
-		"data-values/common": "~0.2.1",
+		"data-values/interfaces": "~0.1.4",
+		"data-values/common": "~0.2.2",
 		"data-values/geo": "~0.1.2",
 		"data-values/validators": "~0.1.0"
 	},
