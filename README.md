@@ -4,7 +4,7 @@ ParamProcessor is a parameter processing library that provides a way to
 decoratively define a set of parameters and how they should be processed.
 It can take such declarations together with a list of raw parameters and
 provide the processed values. For example, if one defines a parameter to
-be an integer, in the range [0, 100], then ParamProcessor will verify the
+be an integer, in the range `[0, 100]`, then ParamProcessor will verify the
 input is an integer, in the specified range, and return it as an actual
 integer variable.
 
@@ -59,11 +59,11 @@ value, for instance "42" (string), it will be turned in the appropriate 42 (int)
 
 ## Implementation structure
 
-Parameters are defined using the ParamProcessor\ParamDefinition class. Users can also use the array
+Parameters are defined using the `ParamProcessor\ParamDefinition` class. Users can also use the array
 format to define parameters and not be bound to this class. At present, it is prefered to use this
 array format as the class itself is not stable yet.
 
-Processing is done via ParamProcessor\Processor.
+Processing is done via `ParamProcessor\Processor`.
 
 ## Defining parameters
 
@@ -191,9 +191,9 @@ The requires fields currently are: name and message
 
 ## Defining parameter types
 
-* <code>string-parser</code> Name of a class that implements the ValueParsers\ValueParser interface
+* <code>string-parser</code> Name of a class that implements the `ValueParsers\ValueParser` interface
 * <code>validation-callback</code> Callback that gets the raw value as only parameter and returns a boolean
-* <code>validator</code> Name of a class that implements the ValueValidators\ValueValidator interface
+* <code>validator</code> Name of a class that implements the `ValueValidators\ValueValidator` interface
 
 ## Examples
 
@@ -251,7 +251,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
-### 1.1 (dev)
+### 1.1 (2014-05-07)
 
 * Dropped dependency on DataValues Time.
 * Use PSR-4 based loading rather than PSR-0 based loading.
