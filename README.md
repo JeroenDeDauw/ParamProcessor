@@ -9,8 +9,8 @@ input is an integer, in the specified range, and return it as an actual
 integer variable.
 
 [![Build Status](https://secure.travis-ci.org/JeroenDeDauw/ParamProcessor.png?branch=master)](http://travis-ci.org/JeroenDeDauw/ParamProcessor)
-[![Code Coverage](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/coverage.png?s=2ab5df62d929329584536005cdca7d2bec5501f4)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/quality-score.png?s=c15b2cfd1c600724e0f8b754fefa8b099f90a354)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/)
+[![Code Coverage](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/?branch=master)
 [![Dependency Status](https://www.versioneye.com/php/param-processor:param-processor/badge.png)](https://www.versioneye.com/php/param-processor:param-processor)
 
 
