@@ -91,7 +91,7 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @var IParamDefinition
+	 * @var ParamDefinition
 	 */
 	protected $definition;
 
