@@ -26,7 +26,7 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @var IParam[]
+	 * @var Param[]
 	 */
 	protected $params;
 	
