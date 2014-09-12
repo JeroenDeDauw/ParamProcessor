@@ -251,6 +251,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
+### 1.2 (dev)
+
+* Dropped dependency on DataValues Geo.
+
 ### 1.1 (2014-05-07)
 
 * Dropped dependency on DataValues Time.
