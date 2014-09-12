@@ -148,6 +148,7 @@ class ProcessingError {
 	 * @since 0.4
 	 *
 	 * @return integer Element of the ProcessingError::ACTION_ enum
+	 * @throws \Exception
 	 */
 	public function getAction() {
 		// TODO: as option

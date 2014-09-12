@@ -389,6 +389,8 @@ class Processor {
 	 * 
 	 * @param array $initialParamSet
 	 * @param array $resultingParamSet
+	 *
+	 * @throws \UnexpectedValueException
 	 */
 	protected function getParamsToProcess( array $initialParamSet, array $resultingParamSet ) {
 		if ( $initialParamSet === array() ) {
