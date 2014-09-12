@@ -174,6 +174,8 @@ class ProcessingError {
 	 *
 	 * @since 0.4
 	 *
+	 * @param int $action
+	 *
 	 * @return boolean
 	 */
 	public function hasAction( $action ) {
