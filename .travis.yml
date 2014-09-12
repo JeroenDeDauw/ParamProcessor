@@ -6,6 +6,7 @@ php:
   - 5.5
   - 5.6
   - hhvm
+  - hhvm-nighty
 
 before_script:
   - composer install
@@ -17,10 +18,5 @@ notifications:
   email:
     recipients:
       - jeroendedauw@gmail.com
-    on_success: change
-    on_failure: always
-  irc:
-    channels:
-      - "chat.freenode.net#semantic-mediawiki"
     on_success: change
     on_failure: always
