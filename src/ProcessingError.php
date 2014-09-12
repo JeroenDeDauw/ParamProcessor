@@ -3,8 +3,6 @@
 namespace ParamProcessor;
 
 /**
- * Error class.
- *
  * @since 1.0
  *
  * @licence GNU GPL v2+
@@ -34,7 +32,7 @@ class ProcessingError {
 	 *
 	 * @since 0.4
 	 *
-	 * @var array
+	 * @var string[]
 	 */
 	protected $tags;
 
@@ -43,15 +41,15 @@ class ProcessingError {
 	 *
 	 * @since 0.4
 	 *
-	 * @var mixed: string or false
+	 * @var string|bool
 	 */
 	public $element;
 
 	/**
-	 * @since 0.4
-	 *
 	 * @param string $message
 	 * @param integer $severity
+	 * @param string|bool $element
+	 * @param string[] $tags
 	 */
 	public function __construct( $message, $severity = self::SEVERITY_NORMAL, $element = false, array $tags = array() ) {
 		$this->message = $message;
@@ -65,7 +63,7 @@ class ProcessingError {
 	 *
 	 * @since 0.4.1
 	 *
-	 * @param mixed $criteria string or array of string
+	 * @param string|string[] $criteria
 	 */
 	public function addTags() {
 		$args = func_get_args();
