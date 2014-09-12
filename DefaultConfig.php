@@ -35,7 +35,4 @@ $GLOBALS['wgParamDefinitions'] = array(
 		'definition' => '\ParamProcessor\Definition\DimensionParam',
 		'validator' => '\ValueValidators\DimensionValidator',
 	),
-	'coordinate' => array(
-		'string-parser' => '\ValueParsers\GeoCoordinateParser',
-	),
 );
