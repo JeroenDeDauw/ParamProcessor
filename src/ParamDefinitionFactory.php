@@ -89,7 +89,6 @@ class ParamDefinitionFactory {
 	 */
 	public function registerType( $type, array $data ) {
 		if ( array_key_exists( $type, $this->typeToClass ) ) {
-			wfWarn( "A handler for the parameter type '$type' has already been registered, the new assignment is ignored." );
 			return false;
 		}
 
