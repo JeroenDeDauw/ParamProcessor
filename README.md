@@ -60,7 +60,7 @@ value, for instance "42" (string), it will be turned in the appropriate 42 (int)
 ## Implementation structure
 
 Parameters are defined using the `ParamProcessor\ParamDefinition` class. Users can also use the array
-format to define parameters and not be bound to this class. At present, it is prefered to use this
+format to define parameters and not be bound to this class. At present, it is preferred to use this
 array format as the class itself is not stable yet.
 
 Processing is done via `ParamProcessor\Processor`.
@@ -105,7 +105,7 @@ These fields are supported:
 	<tr>
 		<th>trim</th>
 		<td>boolean</td>
-		<td><i>inherited from pocessor options</i></td>
+		<td><i>inherited from processor options</i></td>
 		<td>If the value should be trimmed</td>
 	</tr>
 	<tr>
@@ -118,7 +118,7 @@ These fields are supported:
 		<th>delimiter</th>
 		<td>string</td>
 		<td>,</td>
-		<td>The delimieter between values if it is a list</td>
+		<td>The delimiter between values if it is a list</td>
 	</tr>
 	<tr>
 		<th>manipulatedefault</th>
@@ -185,7 +185,7 @@ The requires fields currently are: name and message
 	<tr>
 		<th>dimension</th>
 		<td>string</td>
-		<td>Value for a width or hight attribute in HTML</td>
+		<td>Value for a width or height attribute in HTML</td>
 	</tr>
 </table>
 
