@@ -29,11 +29,13 @@ dependency on `param-processor/param-processor` to your project's `composer.json
 Here is a minimal example of a `composer.json` file that just defines a dependency on
 version 1.0 of this package:
 
+```js
     {
         "require": {
             "param-processor/param-processor": "1.0.*"
         }
     }
+```
 
 ### Manual
 
