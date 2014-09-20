@@ -27,12 +27,12 @@ The recommended way to use this library is via [Composer](http://getcomposer.org
 To add this package as a local, per-project dependency to your project, simply add a
 dependency on `param-processor/param-processor` to your project's `composer.json` file.
 Here is a minimal example of a `composer.json` file that just defines a dependency on
-version 1.0 of this package:
+version 1.x of this package:
 
 ```js
 {
     "require": {
-        "param-processor/param-processor": "1.0.*"
+        "param-processor/param-processor": "~1.0"
     }
 }
 ```
