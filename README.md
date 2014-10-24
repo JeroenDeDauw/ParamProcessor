@@ -253,11 +253,15 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
-### 1.2 (2014-09-12)
+### 1.2.2 (2014-10-24)
+
+* Installation together with DataValues 1.x is now allowed.
+
+### 1.2.0 (2014-09-12)
 
 * Dropped dependency on DataValues Geo.
 
-### 1.1 (2014-05-07)
+### 1.1.0 (2014-05-07)
 
 * Dropped dependency on DataValues Time.
 * Use PSR-4 based loading rather than PSR-0 based loading.
@@ -273,7 +277,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 * Implemented ProcessingResult::hasFatal
 * Added ProcessingResultTest
 
-### 1.0 (2013-11-21)
+### 1.0.0 (2013-11-21)
 
 First release as standalone PHP library.
 
