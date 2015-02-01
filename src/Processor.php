@@ -408,33 +408,42 @@ class Processor {
 			}	
 		}
 		
+		$this->paramsToHandle = $this->getParameterNamesInEvaluationOrder( $this->paramDefinitions, $this->paramsToHandle );
+	}
+
+	/**
+	 * @param IParamDefinition[] $paramDefinitions
+	 * @param string[] $paramsToHandle
+	 *
+	 * @return array
+	 */
+	private function getParameterNamesInEvaluationOrder( array $paramDefinitions, array $paramsToHandle ) {
 		$dependencyList = array();
 
-		// Loop over the parameters to handle to create a dependency list.
-		foreach ( $this->paramsToHandle as $paramName ) {
+		foreach ( $paramsToHandle as $paramName ) {
 			$dependencies = array();
 
-			if ( !array_key_exists( $paramName, $this->paramDefinitions ) ) {
+			if ( !array_key_exists( $paramName, $paramDefinitions ) ) {
 				throw new \UnexpectedValueException( 'Unexpected parameter name "' . $paramName . '"' );
 			}
 
-			if ( !is_object( $this->paramDefinitions[$paramName] ) || !( $this->paramDefinitions[$paramName] instanceof IParamDefinition ) ) {
+			if ( !is_object( $paramDefinitions[$paramName] ) || !( $paramDefinitions[$paramName] instanceof IParamDefinition ) ) {
 				throw new \UnexpectedValueException( 'Parameter "' . $paramName . '" is not a IParamDefinition' );
 			}
 
 			// Only include dependencies that are in the list of parameters to handle.
-			foreach ( $this->paramDefinitions[$paramName]->getDependencies() as $dependency ) {
-				if ( in_array( $dependency, $this->paramsToHandle ) ) {
+			foreach ( $paramDefinitions[$paramName]->getDependencies() as $dependency ) {
+				if ( in_array( $dependency, $paramsToHandle ) ) {
 					$dependencies[] = $dependency;
 				}
 			}
-			
+
 			$dependencyList[$paramName] = $dependencies;
 		}
 
 		$sorter = new TopologicalSort( $dependencyList, true );
 
-		$this->paramsToHandle = $sorter->doSort();
+		return $sorter->doSort();
 	}
 	
 	/**
