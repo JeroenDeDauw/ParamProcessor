@@ -32,7 +32,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 		return $this->arrayWrap( $options );
 	}
 
-	protected function arrayWrap( array $elements ) {
+	private function arrayWrap( array $elements ) {
 		return array_map(
 			function( $element ) {
 				return array( $element );
@@ -53,7 +53,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @return array
 	 */
-	protected function getSimpleParams() {
+	private function getSimpleParams() {
 		$params = array(
 			'awesome' => 'yes',
 			'Howmuch ' => '9001',
@@ -98,7 +98,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @return array
 	 */
-	protected function getDefaultingParams() {
+	private function getDefaultingParams() {
 		$params = array(
 			'awesome' => 'omg!',
 			'howmuch' => 'omg!',
@@ -156,7 +156,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @return array
 	 */
-	protected function getTypedParams() {
+	private function getTypedParams() {
 		$params = array(
 			'awesome' => true,
 			'howmuch' => '42',
@@ -219,7 +219,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @return array
 	 */
-	protected function getUncleanParams() {
+	private function getUncleanParams() {
 		$params = array(
 			'awesome' => ' yes ',
 			'text' => ' FOO  bar  ',
@@ -257,7 +257,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @return array
 	 */
-	protected function getListParams() {
+	private function getListParams() {
 		$params = array(
 			'awesome' => ' yes, no, on, off ',
 			'float' => ' 9001 ; 42 ; 4.2;0',
