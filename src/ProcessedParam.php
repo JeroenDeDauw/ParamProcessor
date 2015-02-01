@@ -17,35 +17,35 @@ class ProcessedParam {
 	 *
 	 * @var mixed
 	 */
-	protected $value;
+	private $value;
 
 	/**
 	 * @since 1.0
 	 *
 	 * @var string
 	 */
-	protected $name;
+	private $name;
 
 	/**
 	 * @since 1.0
 	 *
 	 * @var bool
 	 */
-	protected $wasSetToDefault;
+	private $wasSetToDefault;
 
 	/**
 	 * @since 1.0
 	 *
 	 * @var null|mixed
 	 */
-	protected $originalValue = null;
+	private $originalValue = null;
 
 	/**
 	 * @since 1.0
 	 *
 	 * @var null|string
 	 */
-	protected $originalName = null;
+	private $originalName = null;
 
 	/**
 	 * @since 1.0

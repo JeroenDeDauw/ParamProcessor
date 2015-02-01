@@ -12,20 +12,20 @@ namespace ParamProcessor;
  */
 class Options {
 
-	protected $name;
+	private $name;
 
 	// During setup
-	protected $unknownInvalid = true;
-	protected $lowercaseNames = true;
-	protected $trimNames = true;
-	protected $acceptOverriding = true;
+	private $unknownInvalid = true;
+	private $lowercaseNames = true;
+	private $trimNames = true;
+	private $acceptOverriding = true;
 
 	// During clean
-	protected $trimValues = true;
-	protected $lowercaseValues = false;
+	private $trimValues = true;
+	private $lowercaseValues = false;
 
 	// During validation
-	protected $rawStringInputs = true;
+	private $rawStringInputs = true;
 
 	/**
 	 * Constructor.

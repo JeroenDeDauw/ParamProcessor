@@ -13,12 +13,12 @@ class ProcessingResult {
 	/**
 	 * @var ProcessedParam[]
 	 */
-	protected $parameters;
+	private $parameters;
 
 	/**
 	 * @var ProcessingError[]
 	 */
-	protected $errors;
+	private $errors;
 
 	/**
 	 * @param ProcessedParam[] $parameters

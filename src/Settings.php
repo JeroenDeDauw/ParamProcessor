@@ -35,7 +35,7 @@ final class Settings {
 	 *
 	 * @var array
 	 */
-	protected $settings;
+	private $settings;
 
 	/**
 	 * Constructor.
