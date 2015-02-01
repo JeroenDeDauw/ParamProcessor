@@ -34,7 +34,7 @@ class ProcessingError {
 	 *
 	 * @var string[]
 	 */
-	protected $tags;
+	private $tags;
 
 	/**
 	 * Where the error occurred.

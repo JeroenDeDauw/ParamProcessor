@@ -28,7 +28,7 @@ class Processor {
 	 * 
 	 * @var Param[]
 	 */
-	protected $params;
+	private $params;
 	
 	/**
 	 * Associative array containing parameter names (keys) and their user-provided data (values).
@@ -39,7 +39,7 @@ class Processor {
 	 * 
 	 * @var string[]
 	 */
-	protected $rawParameters = array();
+	private $rawParameters = array();
 	
 	/**
 	 * Array containing the names of the parameters to handle, ordered by priority.
@@ -48,7 +48,7 @@ class Processor {
 	 * 
 	 * @var string[]
 	 */
-	protected $paramsToHandle = array();
+	private $paramsToHandle = array();
 
 	/**
 	 *
@@ -57,7 +57,7 @@ class Processor {
 	 *
 	 * @var IParamDefinition[]
 	 */
-	protected $paramDefinitions = array();
+	private $paramDefinitions = array();
 	
 	/**
 	 * List of ProcessingError.
@@ -66,7 +66,7 @@ class Processor {
 	 * 
 	 * @var ProcessingError[]
 	 */
-	protected $errors = array();
+	private $errors = array();
 
 	/**
 	 * Options for this validator object.
@@ -75,7 +75,7 @@ class Processor {
 	 *
 	 * @var Options
 	 */
-	protected $options;
+	private $options;
 
 	/**
 	 * Constructor.
@@ -247,7 +247,7 @@ class Processor {
 	 * @param mixed $tags string or array
 	 * @param integer $severity
 	 */
-	protected function registerNewError( $message, $tags = array(), $severity = ProcessingError::SEVERITY_NORMAL ) {
+	private function registerNewError( $message, $tags = array(), $severity = ProcessingError::SEVERITY_NORMAL ) {
 		$this->registerError(
 			new ProcessingError(
 				$message,
@@ -265,7 +265,7 @@ class Processor {
 	 * 
 	 * @param ProcessingError $error
 	 */
-	protected function registerError( ProcessingError $error ) {
+	private function registerError( ProcessingError $error ) {
 		$error->element = $this->options->getName();
 		$this->errors[] = $error;
 		ProcessingErrorHandler::addError( $error );
@@ -306,7 +306,7 @@ class Processor {
 	/**
 	 * @return ProcessingResult
 	 */
-	protected function newProcessingResult() {
+	private function newProcessingResult() {
 		$parameters = array();
 
 		/**
@@ -341,7 +341,7 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 */
-	protected function doParamProcessing() {
+	private function doParamProcessing() {
 		$this->getParamsToProcess( array(), $this->paramDefinitions );
 
 		while ( $this->paramsToHandle !== array() ) {
@@ -392,7 +392,7 @@ class Processor {
 	 *
 	 * @throws \UnexpectedValueException
 	 */
-	protected function getParamsToProcess( array $initialParamSet, array $resultingParamSet ) {
+	private function getParamsToProcess( array $initialParamSet, array $resultingParamSet ) {
 		if ( $initialParamSet === array() ) {
 			$this->paramsToHandle = array_keys( $resultingParamSet );
 		}
@@ -448,7 +448,7 @@ class Processor {
 	 * 
 	 * @return boolean
 	 */
-	protected function attemptToSetUserValue( IParam $param ) {
+	private function attemptToSetUserValue( IParam $param ) {
 		if ( array_key_exists( $param->getName(), $this->rawParameters ) ) {
 			$param->setUserValue( $param->getName(), $this->rawParameters[$param->getName()], $this->options );
 			unset( $this->rawParameters[$param->getName()] );

@@ -20,7 +20,7 @@ class ParamDefinitionFactory {
 	 *
 	 * @var array
 	 */
-	protected $typeToClass = array();
+	private $typeToClass = array();
 
 	/**
 	 * Maps parameter type to its associated components.
@@ -29,7 +29,7 @@ class ParamDefinitionFactory {
 	 *
 	 * @var array
 	 */
-	protected $typeToComponent = array();
+	private $typeToComponent = array();
 
 	/**
 	 * Singleton.
