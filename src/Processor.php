@@ -344,42 +344,44 @@ class Processor {
 	private function doParamProcessing() {
 		$this->getParamsToProcess( array(), $this->paramDefinitions );
 
-		while ( $this->paramsToHandle !== array() ) {
-			$paramName = array_shift( $this->paramsToHandle );
-			$definition = $this->paramDefinitions[$paramName];
-
-			$param = new Param( $definition );
-
-			$setUserValue = $this->attemptToSetUserValue( $param );
-			
-			// If the parameter is required but not provided, register a fatal error and stop processing. 
-			if ( !$setUserValue && $param->isRequired() ) {
-				$this->registerNewError(
-					"Required parameter '$paramName' is missing", // FIXME: i18n validator_error_required_missing
-					array( $paramName, 'missing' ),
-					ProcessingError::SEVERITY_FATAL
-				);
-				break;
-			}
-			else {
-				$this->params[$param->getName()] = $param;
-
-				$initialSet = $this->paramDefinitions;
-
-				$param->process( $this->paramDefinitions, $this->params, $this->options );
-
-				foreach ( $param->getErrors() as $error ) {
-					$this->registerError( $error );
-				}
-
-				if ( $param->hasFatalError() ) {
-					// If there was a fatal error, and the parameter is required, stop processing.
-					break;
-				}
-
-				$this->getParamsToProcess( $initialSet, $this->paramDefinitions );
-			}
+		while ( $this->paramsToHandle !== array() && !$this->hasFatalError() ) {
+			$this->processOneParam();
 		}
+	}
+
+	private function processOneParam() {
+		$paramName = array_shift( $this->paramsToHandle );
+		$definition = $this->paramDefinitions[$paramName];
+
+		$param = new Param( $definition );
+
+		$setUserValue = $this->attemptToSetUserValue( $param );
+
+		// If the parameter is required but not provided, register a fatal error and stop processing.
+		if ( !$setUserValue && $param->isRequired() ) {
+			$this->registerNewError(
+				"Required parameter '$paramName' is missing", // FIXME: i18n validator_error_required_missing
+				array( $paramName, 'missing' ),
+				ProcessingError::SEVERITY_FATAL
+			);
+			return;
+		}
+
+		$this->params[$param->getName()] = $param;
+
+		$initialSet = $this->paramDefinitions;
+
+		$param->process( $this->paramDefinitions, $this->params, $this->options );
+
+		foreach ( $param->getErrors() as $error ) {
+			$this->registerError( $error );
+		}
+
+		if ( $param->hasFatalError() ) {
+			return;
+		}
+
+		$this->getParamsToProcess( $initialSet, $this->paramDefinitions );
 	}
 	
 	/**
