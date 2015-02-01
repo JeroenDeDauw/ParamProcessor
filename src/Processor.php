@@ -455,11 +455,11 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 *
-	 * @param IParam $param
+	 * @param Param $param
 	 * 
 	 * @return boolean
 	 */
-	private function attemptToSetUserValue( IParam $param ) {
+	private function attemptToSetUserValue( Param $param ) {
 		if ( array_key_exists( $param->getName(), $this->rawParameters ) ) {
 			$param->setUserValue( $param->getName(), $this->rawParameters[$param->getName()], $this->options );
 			unset( $this->rawParameters[$param->getName()] );
