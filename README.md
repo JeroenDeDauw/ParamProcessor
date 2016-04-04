@@ -202,19 +202,19 @@ The requires fields currently are: name and message
 ### Parameter definitions
 
 ```php
-$paramDefintions = array();
+$paramDefinitions = array();
 
-$paramDefintions[] = array(
+$paramDefinitions[] = array(
     'name' => 'username',
 );
 
-$paramDefintions[] = array(
+$paramDefinitions[] = array(
     'name' => 'job',
     'default' => 'unknown',
     'values' => array( 'Developer', 'Designer', 'Manager', 'Tester' ),
 );
 
-$paramDefintions[] = array(
+$paramDefinitions[] = array(
     'name' => 'favourite-numbers',
     'islist' => true,
     'type' => 'int',
@@ -232,7 +232,7 @@ $inputParams = array(
 
 $processor = ParamProcessor\Processor::newDefault();
 
-$processor->setParameters( $inputParams, $paramDefintions );
+$processor->setParameters( $inputParams, $paramDefinitions );
 
 $processingResult = $processor->processParameters();
 
@@ -252,6 +252,12 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 (https://semantic-mediawiki.org/) projects.
 
 ## Release notes
+
+### 1.2.3 (2016-04-04)
+
+* Installation together with DataValues Interfaces 0.2.x is now allowed.
+* Installation together with DataValues Common 0.3.x is now allowed.
+* The component is now also tested against PHP 7
 
 ### 1.2.2 (2014-10-24)
 
