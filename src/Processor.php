@@ -344,42 +344,44 @@ class Processor {
 	private function doParamProcessing() {
 		$this->getParamsToProcess( array(), $this->paramDefinitions );
 
-		while ( $this->paramsToHandle !== array() ) {
-			$paramName = array_shift( $this->paramsToHandle );
-			$definition = $this->paramDefinitions[$paramName];
-
-			$param = new Param( $definition );
-
-			$setUserValue = $this->attemptToSetUserValue( $param );
-			
-			// If the parameter is required but not provided, register a fatal error and stop processing. 
-			if ( !$setUserValue && $param->isRequired() ) {
-				$this->registerNewError(
-					"Required parameter '$paramName' is missing", // FIXME: i18n validator_error_required_missing
-					array( $paramName, 'missing' ),
-					ProcessingError::SEVERITY_FATAL
-				);
-				break;
-			}
-			else {
-				$this->params[$param->getName()] = $param;
-
-				$initialSet = $this->paramDefinitions;
-
-				$param->process( $this->paramDefinitions, $this->params, $this->options );
-
-				foreach ( $param->getErrors() as $error ) {
-					$this->registerError( $error );
-				}
-
-				if ( $param->hasFatalError() ) {
-					// If there was a fatal error, and the parameter is required, stop processing.
-					break;
-				}
-
-				$this->getParamsToProcess( $initialSet, $this->paramDefinitions );
-			}
+		while ( $this->paramsToHandle !== array() && !$this->hasFatalError() ) {
+			$this->processOneParam();
 		}
+	}
+
+	private function processOneParam() {
+		$paramName = array_shift( $this->paramsToHandle );
+		$definition = $this->paramDefinitions[$paramName];
+
+		$param = new Param( $definition );
+
+		$setUserValue = $this->attemptToSetUserValue( $param );
+
+		// If the parameter is required but not provided, register a fatal error and stop processing.
+		if ( !$setUserValue && $param->isRequired() ) {
+			$this->registerNewError(
+				"Required parameter '$paramName' is missing", // FIXME: i18n validator_error_required_missing
+				array( $paramName, 'missing' ),
+				ProcessingError::SEVERITY_FATAL
+			);
+			return;
+		}
+
+		$this->params[$param->getName()] = $param;
+
+		$initialSet = $this->paramDefinitions;
+
+		$param->process( $this->paramDefinitions, $this->params, $this->options );
+
+		foreach ( $param->getErrors() as $error ) {
+			$this->registerError( $error );
+		}
+
+		if ( $param->hasFatalError() ) {
+			return;
+		}
+
+		$this->getParamsToProcess( $initialSet, $this->paramDefinitions );
 	}
 	
 	/**
@@ -408,33 +410,42 @@ class Processor {
 			}	
 		}
 		
+		$this->paramsToHandle = $this->getParameterNamesInEvaluationOrder( $this->paramDefinitions, $this->paramsToHandle );
+	}
+
+	/**
+	 * @param IParamDefinition[] $paramDefinitions
+	 * @param string[] $paramsToHandle
+	 *
+	 * @return array
+	 */
+	private function getParameterNamesInEvaluationOrder( array $paramDefinitions, array $paramsToHandle ) {
 		$dependencyList = array();
 
-		// Loop over the parameters to handle to create a dependency list.
-		foreach ( $this->paramsToHandle as $paramName ) {
+		foreach ( $paramsToHandle as $paramName ) {
 			$dependencies = array();
 
-			if ( !array_key_exists( $paramName, $this->paramDefinitions ) ) {
+			if ( !array_key_exists( $paramName, $paramDefinitions ) ) {
 				throw new \UnexpectedValueException( 'Unexpected parameter name "' . $paramName . '"' );
 			}
 
-			if ( !is_object( $this->paramDefinitions[$paramName] ) || !( $this->paramDefinitions[$paramName] instanceof IParamDefinition ) ) {
+			if ( !is_object( $paramDefinitions[$paramName] ) || !( $paramDefinitions[$paramName] instanceof IParamDefinition ) ) {
 				throw new \UnexpectedValueException( 'Parameter "' . $paramName . '" is not a IParamDefinition' );
 			}
 
 			// Only include dependencies that are in the list of parameters to handle.
-			foreach ( $this->paramDefinitions[$paramName]->getDependencies() as $dependency ) {
-				if ( in_array( $dependency, $this->paramsToHandle ) ) {
+			foreach ( $paramDefinitions[$paramName]->getDependencies() as $dependency ) {
+				if ( in_array( $dependency, $paramsToHandle ) ) {
 					$dependencies[] = $dependency;
 				}
 			}
-			
+
 			$dependencyList[$paramName] = $dependencies;
 		}
 
 		$sorter = new TopologicalSort( $dependencyList, true );
 
-		$this->paramsToHandle = $sorter->doSort();
+		return $sorter->doSort();
 	}
 	
 	/**
@@ -444,11 +455,11 @@ class Processor {
 	 * 
 	 * @since 0.4
 	 *
-	 * @param IParam $param
+	 * @param Param $param
 	 * 
 	 * @return boolean
 	 */
-	private function attemptToSetUserValue( IParam $param ) {
+	private function attemptToSetUserValue( Param $param ) {
 		if ( array_key_exists( $param->getName(), $this->rawParameters ) ) {
 			$param->setUserValue( $param->getName(), $this->rawParameters[$param->getName()], $this->options );
 			unset( $this->rawParameters[$param->getName()] );
