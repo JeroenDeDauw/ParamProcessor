@@ -8,6 +8,9 @@ be an integer, in the range `[0, 100]`, then ParamProcessor will verify the
 input is an integer, in the specified range, and return it as an actual
 integer variable.
 
+Also see [ParserHooks](https://github.com/JeroenDeDauw/ParserHooks), a library
+that builds on top of ParamProcessor and provides MediaWiki integration.
+
 [![Build Status](https://secure.travis-ci.org/JeroenDeDauw/ParamProcessor.png?branch=master)](http://travis-ci.org/JeroenDeDauw/ParamProcessor)
 [![Code Coverage](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/?branch=master)
