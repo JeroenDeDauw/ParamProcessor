@@ -149,7 +149,7 @@ These fields are supported:
 		<td><i>none</i></td>
 		<td>Takes the value as only parameter and returns the new value</td>
 	</tr>
-	
+
 </table>
 
 The requires fields currently are: name and message
@@ -255,6 +255,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 (https://semantic-mediawiki.org/) projects.
 
 ## Release notes
+
+### 1.2.4 (2016-05-15)
+
+* Fixed bug in `ParamDefinition::getAllowedValues`
 
 ### 1.2.3 (2016-04-04)
 
