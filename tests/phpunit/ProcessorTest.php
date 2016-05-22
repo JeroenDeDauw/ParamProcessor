@@ -351,4 +351,15 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 
 	}
 
+	public function testProcessParametersOnEmptyOptions() {
+
+		$options = new Options();
+		$validator = Processor::newFromOptions( $options );
+
+		$this->assertInstanceOf(
+			'\ParamProcessor\ProcessingResult',
+			$validator->processParameters()
+		);
+	}
+
 }
