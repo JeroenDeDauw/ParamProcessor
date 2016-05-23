@@ -256,6 +256,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
+### 1.3.0 (dev)
+
+*
+
 ### 1.2.5 (2016-05-23)
 
 * Fixed bug in `Processor::newProcessingResult`
