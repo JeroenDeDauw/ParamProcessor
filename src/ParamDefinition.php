@@ -468,44 +468,6 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::validate
-	 *
-	 * @since 1.0
-	 * @deprecated
-	 *
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param Options $options
-	 *
-	 * @return array|true
-	 *
-	 * TODO: return error list (ie Status object)
-	 */
-	public function validate( IParam $param, array $definitions, array $params, Options $options ) {
-		if ( $this->isList() ) {
-			$valid = true;
-			$values = $param->getValue();
-
-			foreach ( $values as $value ) {
-				// TODO: restore not bailing out at one error in list but filtering on valid
-				$valid = $this->validateValue( $value, $param, $definitions, $params, $options );
-
-				if ( !$valid ) {
-					break;
-				}
-			}
-
-			return $valid && $this->validateList( $param, $definitions, $params, $options );
-		}
-		else {
-			$valid = $this->validateValue( $param->getValue(), $param, $definitions, $params, $options );
-
-			return $valid ? true : array( new ProcessingError( 'Error' ) ); // TODO
-		}
-	}
-
-	/**
 	 * @see IParamDefinition::format
 	 *
 	 * @since 1.0

@@ -203,22 +203,6 @@ interface IParamDefinition {
 	public function shouldManipulateDefault();
 
 	/**
-	 * Validates the parameters value.
-	 *
-	 * @since 1.0
-	 *
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
-	 * @param Options $options
-	 *
-	 * @return array|true
-	 *
-	 * TODO: return error list (ie Status object)
-	 */
-	public function validate( IParam $param, array $definitions, array $params, Options $options );
-
-	/**
 	 * Returns a message key for a message describing the parameter type.
 	 *
 	 * @since 1.0
