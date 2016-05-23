@@ -309,6 +309,10 @@ class Processor {
 	private function newProcessingResult() {
 		$parameters = array();
 
+		if ( !is_array( $this->params ) ) {
+			$this->params = array();
+		}
+
 		/**
 		 * @var Param $parameter
 		 */
