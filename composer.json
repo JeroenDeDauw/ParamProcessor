@@ -23,7 +23,7 @@
 		"irc": "irc://irc.freenode.net/mediawiki"
 	},
 	"require": {
-		"php": ">=5.3.0",
+		"php": ">=5.5.0",
 		"data-values/data-values": "~1.0|~0.1.1",
 		"data-values/interfaces": "~0.2.0|~0.1.4",
 		"data-values/common": "~0.3.0|~0.2.2",
