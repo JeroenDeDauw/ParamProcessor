@@ -70,7 +70,7 @@ class ParamDefinition implements IParamDefinition {
 	 *
 	 * @var array
 	 */
-	protected $dependencies = array();
+	protected $dependencies = [];
 
 	/**
 	 * The default value for the parameter, or null when the parameter is required.
@@ -109,7 +109,7 @@ class ParamDefinition implements IParamDefinition {
 	 *
 	 * @var array
 	 */
-	protected $aliases = array();
+	protected $aliases = [];
 
 	/**
 	 * A message that acts as description for the parameter or false when there is none.
@@ -128,7 +128,7 @@ class ParamDefinition implements IParamDefinition {
 	 *
 	 * @var array
 	 */
-	protected $options = array();
+	protected $options = [];
 
 	/**
 	 * @since 1.0
@@ -245,7 +245,7 @@ class ParamDefinition implements IParamDefinition {
 	 * @return array|boolean false
 	 */
 	public function getAllowedValues() {
-		$allowedValues = array();
+		$allowedValues = [];
 
 		if ( $this->validator !== null && method_exists( $this->validator, 'getWhitelistedValues' ) ) {
 			// TODO: properly implement this
@@ -254,7 +254,7 @@ class ParamDefinition implements IParamDefinition {
 			$allowedValues = $this->validator->getWhitelistedValues();
 
 			if ( $allowedValues === false ) {
-				$allowedValues = array();
+				$allowedValues = [];
 			}
 		}
 
@@ -546,7 +546,7 @@ class ParamDefinition implements IParamDefinition {
 	 * @throws Exception
 	 */
 	public static function getCleanDefinitions( array $definitions ) {
-		$cleanList = array();
+		$cleanList = [];
 
 		foreach ( $definitions as $key => $definition ) {
 			if ( is_array( $definition ) ) {

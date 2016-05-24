@@ -20,7 +20,7 @@ class ParamDefinitionFactory {
 	 *
 	 * @var array
 	 */
-	private $typeToClass = array();
+	private $typeToClass = [];
 
 	/**
 	 * Maps parameter type to its associated components.
@@ -29,7 +29,7 @@ class ParamDefinitionFactory {
 	 *
 	 * @var array
 	 */
-	private $typeToComponent = array();
+	private $typeToComponent = [];
 
 	/**
 	 * Singleton.
@@ -58,7 +58,7 @@ class ParamDefinitionFactory {
 	public function registerGlobals() {
 		foreach ( $GLOBALS['wgParamDefinitions'] as $type => $data ) {
 			if ( is_string( $data ) ) {
-				$data = array( 'definition' => $data );
+				$data = [ 'definition' => $data ];
 			}
 
 			$this->registerType( $type, $data );
@@ -95,14 +95,14 @@ class ParamDefinitionFactory {
 		$class = array_key_exists( 'definition', $data ) ? $data['definition'] : 'ParamProcessor\ParamDefinition';
 		$this->typeToClass[$type] = $class;
 
-		$defaults = array(
+		$defaults = [
 			'string-parser' => 'ValueParsers\NullParser',
 			'typed-parser' => 'ValueParsers\NullParser',
 			'validator' => 'ValueValidators\NullValidator',
 			'validation-callback' => null,
-		);
+		];
 
-		$this->typeToComponent[$type] = array();
+		$this->typeToComponent[$type] = [];
 
 		foreach ( $defaults as $component => $default ) {
 			$this->typeToComponent[$type][$component] = array_key_exists( $component, $data ) ? $data[$component] : $default;
@@ -194,7 +194,7 @@ class ParamDefinitionFactory {
 	 * @throws Exception
 	 */
 	public function newDefinitionFromArray( array $param, $getMad = true ) {
-		foreach ( array( 'name', 'message' ) as $requiredElement ) {
+		foreach ( [ 'name', 'message' ] as $requiredElement ) {
 			if ( !array_key_exists( $requiredElement, $param ) ) {
 				if ( $getMad ) {
 					throw new Exception( 'Could not construct a ParamDefinition from an array without ' . $requiredElement . ' element' );

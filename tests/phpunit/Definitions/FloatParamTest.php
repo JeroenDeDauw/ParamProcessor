@@ -26,19 +26,19 @@ class FloatParamTest extends NumericParamTest {
 	 * @return array
 	 */
 	public function valueProvider( $stringlyTyped = true ) {
-		$values = array(
-			'empty' => array(
-				array( 1, true, 1.0 ),
-				array( 1.0, true, 1.0 ),
-				array( 1.1, true, 1.1 ),
-				array( 0.2555, true, 0.2555 ),
-				array( '1.1.1', false ),
-				array( 'foobar', false ),
-				array( array(), false ),
-				array( 'yes', false ),
-				array( false, false ),
-			),
-			'values' => array(),
+		$values = [
+			'empty' => [
+				[ 1, true, 1.0 ],
+				[ 1.0, true, 1.0 ],
+				[ 1.1, true, 1.1 ],
+				[ 0.2555, true, 0.2555 ],
+				[ '1.1.1', false ],
+				[ 'foobar', false ],
+				[ [], false ],
+				[ 'yes', false ],
+				[ false, false ],
+			],
+			'values' => [],
 //			'values' => array(
 //				array( 1, true, 1 ),
 //				array( 'yes', false ),
@@ -46,7 +46,7 @@ class FloatParamTest extends NumericParamTest {
 //				array( 0.1, true, 0.1 ),
 //				array( 0.2555, false ),
 //			),
-		);
+		];
 
 		if ( $stringlyTyped ) {
 			foreach ( $values as &$set ) {

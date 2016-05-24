@@ -75,7 +75,7 @@ final class Param implements IParam {
 	 *
 	 * @var array of ProcessingError
 	 */
-	protected $errors = array();
+	protected $errors = [];
 
 	/**
 	 * Indicates if the parameter was set to it's default.
@@ -258,7 +258,7 @@ final class Param implements IParam {
 		$parser = $this->getValueParser( $options );
 
 		if ( $this->definition->isList() ) {
-			$values = array();
+			$values = [];
 
 			foreach ( $this->getValue() as $value ) {
 				$parsedValue = $this->parseAndValidateValue( $parser, $value );
@@ -311,7 +311,7 @@ final class Param implements IParam {
 
 		$this->validateValue( $value );
 
-		return array( $value );
+		return [ $value ];
 	}
 
 	/**
@@ -365,7 +365,7 @@ final class Param implements IParam {
 	 * @since 1.0
 	 */
 	protected function setToDefaultIfNeeded() {
-		if ( $this->errors !== array() && !$this->hasFatalError() ) {
+		if ( $this->errors !== [] && !$this->hasFatalError() ) {
 			$this->setToDefault();
 		}
 	}

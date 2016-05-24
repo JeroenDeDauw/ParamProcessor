@@ -18,7 +18,7 @@ final class ProcessingErrorHandler {
 	 * 
 	 * @var array of ProcessingError
 	 */
-	private static $errors = array();
+	private static $errors = [];
 	
 	/**
 	 * Adds a single ProcessingError.

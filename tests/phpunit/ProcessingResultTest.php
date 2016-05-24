@@ -14,9 +14,9 @@ use ParamProcessor\ProcessingResult;
 class ProcessingResultTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetParameters() {
-		$processedParams = array(
+		$processedParams = [
 			$this->newMockParam()
-		);
+		];
 
 		$result = new ProcessingResult( $processedParams );
 
@@ -29,11 +29,11 @@ class ProcessingResultTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetErrors() {
-		$errors = array(
+		$errors = [
 			$this->newMockError()
-		);
+		];
 
-		$result = new ProcessingResult( array(), $errors );
+		$result = new ProcessingResult( [], $errors );
 
 		$this->assertEquals( $errors, $result->getErrors() );
 	}
@@ -44,32 +44,32 @@ class ProcessingResultTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGivenNoErrors_HasNoFatal() {
-		$this->assertNoFatalForErrors( array() );
+		$this->assertNoFatalForErrors( [] );
 	}
 
 	private function assertNoFatalForErrors( array $errors ) {
-		$result = new ProcessingResult( array(), $errors );
+		$result = new ProcessingResult( [], $errors );
 
 		$this->assertFalse( $result->hasFatal() );
 	}
 
 	public function testGivenNonfatalErrors_HasNoFatal() {
-		$this->assertNoFatalForErrors( array(
+		$this->assertNoFatalForErrors( [
 			new ProcessingError( '', ProcessingError::SEVERITY_HIGH ),
 			new ProcessingError( '', ProcessingError::SEVERITY_LOW ),
 			new ProcessingError( '', ProcessingError::SEVERITY_MINOR ),
 			new ProcessingError( '', ProcessingError::SEVERITY_NORMAL ),
-		) );
+		] );
 	}
 
 	public function testGivenFatalError_HasFatal() {
-		$result = new ProcessingResult( array(), array(
+		$result = new ProcessingResult( [], [
 			new ProcessingError( '', ProcessingError::SEVERITY_HIGH ),
 			new ProcessingError( '', ProcessingError::SEVERITY_LOW ),
 			new ProcessingError( '', ProcessingError::SEVERITY_FATAL ),
 			new ProcessingError( '', ProcessingError::SEVERITY_MINOR ),
 			new ProcessingError( '', ProcessingError::SEVERITY_NORMAL ),
-		) );
+		] );
 
 		$this->assertTrue( $result->hasFatal() );
 	}

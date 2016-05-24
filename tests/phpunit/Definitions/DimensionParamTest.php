@@ -15,21 +15,21 @@ class DimensionParamTest extends ParamDefinitionTest {
 	public function getDefinitions() {
 		$params = parent::getDefinitions();
 
-		$params['auto'] = array(
+		$params['auto'] = [
 			'allowauto' => true,
-		);
+		];
 
-		$params['allunits'] = array(
-			'units' => array( 'px', 'ex', 'em', '%', '' ),
-		);
+		$params['allunits'] = [
+			'units' => [ 'px', 'ex', 'em', '%', '' ],
+		];
 
-		$params['bounds'] = array(
+		$params['bounds'] = [
 			'lowerbound' => 42,
 			'upperbound' => 9000,
 			'maxpercentage' => 34,
 			'minpercentage' => 23,
-			'units' => array( 'px', 'ex', '%', '' ),
-		);
+			'units' => [ 'px', 'ex', '%', '' ],
+		];
 
 		return $params;
 	}
@@ -42,42 +42,42 @@ class DimensionParamTest extends ParamDefinitionTest {
 	 * @return array
 	 */
 	public function valueProvider( $stringlyTyped = true ) {
-		$values = array(
-			'empty' => array(
-				array( '100px', true, '100px' ),
-				array( '100', true, '100px' ),
-				array( 42, true, '42px' ),
-				array( 42.5, true, '42.5px' ),
-				array( 'over9000', false ),
-				array( 'yes', false ),
-				array( 'auto', false ),
-				array( '100%', false ),
-			),
-			'values' => array(
-				array( 1, true, '1px' ),
+		$values = [
+			'empty' => [
+				[ '100px', true, '100px' ],
+				[ '100', true, '100px' ],
+				[ 42, true, '42px' ],
+				[ 42.5, true, '42.5px' ],
+				[ 'over9000', false ],
+				[ 'yes', false ],
+				[ 'auto', false ],
+				[ '100%', false ],
+			],
+			'values' => [
+				[ 1, true, '1px' ],
 //				array( 2, false ),
-				array( 'yes', false ),
-				array( 'no', false ),
-			),
-			'auto' => array(
-				array( 'auto', true, 'auto' ),
-			),
-			'allunits' => array(
-				array( '100%', true, '100%' ),
-				array( '100em', true, '100em' ),
-				array( '100ex', true, '100ex' ),
-				array( '101%', false ),
-			),
-			'bounds' => array(
-				array( '30%', true, '30%' ),
-				array( '20%', false ),
-				array( '40%', false ),
-				array( '100px', true, '100px' ),
-				array( '100ex', true, '100ex' ),
-				array( '10px', false ),
-				array( '9001ex', false ),
-			),
-		);
+				[ 'yes', false ],
+				[ 'no', false ],
+			],
+			'auto' => [
+				[ 'auto', true, 'auto' ],
+			],
+			'allunits' => [
+				[ '100%', true, '100%' ],
+				[ '100em', true, '100em' ],
+				[ '100ex', true, '100ex' ],
+				[ '101%', false ],
+			],
+			'bounds' => [
+				[ '30%', true, '30%' ],
+				[ '20%', false ],
+				[ '40%', false ],
+				[ '100px', true, '100px' ],
+				[ '100ex', true, '100ex' ],
+				[ '10px', false ],
+				[ '9001ex', false ],
+			],
+		];
 
 		if ( $stringlyTyped ) {
 			foreach ( $values as &$set ) {

@@ -34,13 +34,13 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 	public abstract function getType();
 
 	public function getDefinitions() {
-		$params = array();
+		$params = [];
 
-		$params['empty'] = array();
+		$params['empty'] = [];
 
-		$params['values'] = array(
-			'values' => array( 'foo', '1', '0.1', 'yes', 1, 0.1 )
-		);
+		$params['values'] = [
+			'values' => [ 'foo', '1', '0.1', 'yes', 1, 0.1 ]
+		];
 
 		return $params;
 	}
@@ -56,15 +56,15 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function getEmptyInstance() {
-		return ParamDefinitionFactory::singleton()->newDefinitionFromArray( array(
+		return ParamDefinitionFactory::singleton()->newDefinitionFromArray( [
 			'name' => 'empty',
 			'message' => 'test-empty',
 			'type' => $this->getType(),
-		) );
+		] );
 	}
 
 	public function instanceProvider() {
-		$definitions = array();
+		$definitions = [];
 
 		foreach ( $this->definitionProvider() as $name => $definition ) {
 			if ( !array_key_exists( 'message', $definition ) ) {
@@ -72,7 +72,7 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 			}
 
 			$definition['name'] = $name;
-			$definitions[] = array( ParamDefinitionFactory::singleton()->newDefinitionFromArray( $definition ) );
+			$definitions[] = [ ParamDefinitionFactory::singleton()->newDefinitionFromArray( $definition ) ];
 		}
 
 		return $definitions;
@@ -89,7 +89,7 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider instanceProvider
 	 */
 	public function testValidate( IParamDefinition $definition ) {
-		foreach ( array( true, false ) as $stringlyTyped ) {
+		foreach ( [ true, false ] as $stringlyTyped ) {
 			$values = $this->valueProvider( $stringlyTyped );
 			$options = new Options();
 			$options->setRawStringInputs( $stringlyTyped );
@@ -99,12 +99,12 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 
 				$param = new Param( $definition );
 				$param->setUserValue( $definition->getName(), $input, $options );
-				$definitions = array();
-				$param->process( $definitions, array(), $options );
+				$definitions = [];
+				$param->process( $definitions, [], $options );
 
 				$this->assertEquals(
 					$valid,
-					$param->getErrors() === array(),
+					$param->getErrors() === [],
 					'The validation process should ' . ( $valid ? '' : 'not ' ) . 'pass'
 				);
 			}
@@ -129,8 +129,8 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 			$param->setUserValue( $definition->getName(), $input, $options );
 
 			if ( $valid && array_key_exists( 2, $data ) ) {
-				$defs = array();
-				$param->process( $defs, array(), $options );
+				$defs = [];
+				$param->process( $defs, [], $options );
 
 				$this->assertEquals(
 					$data[2],
@@ -149,10 +149,10 @@ abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
 		$param = new Param( $def );
 		$param->setUserValue( $def->getName(), $testValue, $options );
 
-		$defs = array();
-		$param->process( $defs, array(), $options );
+		$defs = [];
+		$param->process( $defs, [], $options );
 
-		$this->assertEquals( $validity, $param->getErrors() === array() );
+		$this->assertEquals( $validity, $param->getErrors() === [] );
 	}
 
 }

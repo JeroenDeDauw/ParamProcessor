@@ -21,14 +21,14 @@ namespace ParamProcessor;
  */
 class TopologicalSort {
 	
-	private $mNodes = array();
-	private $mNodeNames = array();
+	private $mNodes = [];
+	private $mNodeNames = [];
 	
 	/**
 	 * Dependency pairs are a list of arrays in the form
 	 * $name => $val where $key must come before $val in load order.
 	 */
-	public function __construct( array $dependencies = array(), $parse = true ) {
+	public function __construct( array $dependencies = [], $parse = true ) {
 		$this->mNodeNames = array_keys( $dependencies );
 		
 		if ( $parse ) {
@@ -57,11 +57,11 @@ class TopologicalSort {
 		$root_nodes = array_values( $this->getRootNodes( $nodes ) );
 		
 		// begin algorithm
-		$sorted = array();
+		$sorted = [];
 		while ( count( $nodes ) > 0 ) {
 			// check for circular reference
-			if ( $root_nodes === array() ) {
-				return array();
+			if ( $root_nodes === [] ) {
+				return [];
 			}
 				
 				
@@ -93,7 +93,7 @@ class TopologicalSort {
 			unset( $nodes[$n->name] );
 		}
 		
-		$looseNodes = array();
+		$looseNodes = [];
 
 		// Return the result with the loose nodes (items with no dependencies) appended.
 		foreach( $this->mNodeNames as $name ) {
@@ -113,7 +113,7 @@ class TopologicalSort {
 	 * @return array of node objects
 	 */
 	private function getRootNodes( array $nodes ) {
-		$output = array ();
+		$output =  [];
 		
 		foreach ( $nodes as $name => $node ) {
 			if ( !count ( $node->parents ) ) {
@@ -138,12 +138,12 @@ class TopologicalSort {
 	 * 
 	 * @return array
 	 */
-	private function parseDependencyList( array $dlist = array() ) {
-		$output = array();
+	private function parseDependencyList( array $dlist = [] ) {
+		$output = [];
 		
 		foreach ( $dlist as $name => $dependencies ) {
 			foreach ( $dependencies as $d ) {
-				array_push ( $output, array ( $d => $name ) );
+				array_push ( $output,  [ $d => $name ] );
 			}
 		}
 			
@@ -156,8 +156,8 @@ class TopologicalSort {
  */
 class TSNode {
 	public $name;
-	public $children = array();
-	public $parents = array();
+	public $children = [];
+	public $parents = [];
 	
 	public function __construct( $name = '' ) {
 		if ( !is_string( $name ) ) {

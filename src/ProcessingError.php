@@ -51,7 +51,7 @@ class ProcessingError {
 	 * @param string|bool $element
 	 * @param string[] $tags
 	 */
-	public function __construct( $message, $severity = self::SEVERITY_NORMAL, $element = false, array $tags = array() ) {
+	public function __construct( $message, $severity = self::SEVERITY_NORMAL, $element = false, array $tags = [] ) {
 		$this->message = $message;
 		$this->severity = $severity;
 		$this->element = $element;
@@ -150,12 +150,12 @@ class ProcessingError {
 	 */
 	public function getAction() {
 		// TODO: as option
-		$errorActions = array(
+		$errorActions = [
 			ProcessingError::SEVERITY_MINOR => ProcessingError::ACTION_LOG,
 			ProcessingError::SEVERITY_LOW => ProcessingError::ACTION_WARN,
 			ProcessingError::SEVERITY_NORMAL => ProcessingError::ACTION_SHOW,
 			ProcessingError::SEVERITY_HIGH => ProcessingError::ACTION_DEMAND,
-		);
+		];
 
 		if ( $this->severity === self::SEVERITY_FATAL ) {
 			// This action should not be configurable, as lowering it would break in the Validator class.

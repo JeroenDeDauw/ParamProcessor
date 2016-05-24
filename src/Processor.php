@@ -39,7 +39,7 @@ class Processor {
 	 * 
 	 * @var string[]
 	 */
-	private $rawParameters = array();
+	private $rawParameters = [];
 	
 	/**
 	 * Array containing the names of the parameters to handle, ordered by priority.
@@ -48,7 +48,7 @@ class Processor {
 	 * 
 	 * @var string[]
 	 */
-	private $paramsToHandle = array();
+	private $paramsToHandle = [];
 
 	/**
 	 *
@@ -57,7 +57,7 @@ class Processor {
 	 *
 	 * @var IParamDefinition[]
 	 */
-	private $paramDefinitions = array();
+	private $paramDefinitions = [];
 	
 	/**
 	 * List of ProcessingError.
@@ -66,7 +66,7 @@ class Processor {
 	 * 
 	 * @var ProcessingError[]
 	 */
-	private $errors = array();
+	private $errors = [];
 
 	/**
 	 * Options for this validator object.
@@ -137,8 +137,8 @@ class Processor {
 	 *        any named parameter. The effect is, that '=' within the string won't confuse the parameter anymore like
 	 *        it would happen with default parameters that still have a name as well.
 	 */
-	public function setFunctionParams( array $rawParams, array $parameterInfo, array $defaultParams = array() ) {
-		$parameters = array();
+	public function setFunctionParams( array $rawParams, array $parameterInfo, array $defaultParams = [] ) {
+		$parameters = [];
 
 		$nr = 0;
 		$defaultNr = 0;
@@ -175,11 +175,11 @@ class Processor {
 						}
 						$defaultParam = strtolower( $defaultParam );
 						
-						$parameters[$defaultParam] = array(
+						$parameters[$defaultParam] = [
 							'original-value' => trim( $parts[0] ),
 							'default' => $defaultNr,
 							'position' => $nr
-						);
+						];
 						$defaultNr++;
 					}
 					else {
@@ -188,15 +188,15 @@ class Processor {
 				} else {
 					$paramName = trim( strtolower( $parts[0] ) );
 					
-					$parameters[$paramName] = array(
+					$parameters[$paramName] = [
 						'original-value' => trim( $parts[1] ),
 						'default' => false,
 						'position' => $nr
-					);
+					];
 					
 					// Let's not be evil, and remove the used parameter name from the default parameter list.
 					// This code is basically a remove array element by value algorithm.
-					$newDefaults = array();
+					$newDefaults = [];
 					
 					foreach( $defaultParams as $defaultParam ) {
 						if ( $defaultParam != $paramName ) $newDefaults[] = $defaultParam;
@@ -247,7 +247,7 @@ class Processor {
 	 * @param mixed $tags string or array
 	 * @param integer $severity
 	 */
-	private function registerNewError( $message, $tags = array(), $severity = ProcessingError::SEVERITY_NORMAL ) {
+	private function registerNewError( $message, $tags = [], $severity = ProcessingError::SEVERITY_NORMAL ) {
 		$this->registerError(
 			new ProcessingError(
 				$message,
@@ -307,10 +307,10 @@ class Processor {
 	 * @return ProcessingResult
 	 */
 	private function newProcessingResult() {
-		$parameters = array();
+		$parameters = [];
 
 		if ( !is_array( $this->params ) ) {
-			$this->params = array();
+			$this->params = [];
 		}
 
 		/**
@@ -346,9 +346,9 @@ class Processor {
 	 * @since 0.4
 	 */
 	private function doParamProcessing() {
-		$this->getParamsToProcess( array(), $this->paramDefinitions );
+		$this->getParamsToProcess( [], $this->paramDefinitions );
 
-		while ( $this->paramsToHandle !== array() && !$this->hasFatalError() ) {
+		while ( $this->paramsToHandle !== [] && !$this->hasFatalError() ) {
 			$this->processOneParam();
 		}
 	}
@@ -365,7 +365,7 @@ class Processor {
 		if ( !$setUserValue && $param->isRequired() ) {
 			$this->registerNewError(
 				"Required parameter '$paramName' is missing", // FIXME: i18n validator_error_required_missing
-				array( $paramName, 'missing' ),
+				[ $paramName, 'missing' ],
 				ProcessingError::SEVERITY_FATAL
 			);
 			return;
@@ -399,12 +399,12 @@ class Processor {
 	 * @throws \UnexpectedValueException
 	 */
 	private function getParamsToProcess( array $initialParamSet, array $resultingParamSet ) {
-		if ( $initialParamSet === array() ) {
+		if ( $initialParamSet === [] ) {
 			$this->paramsToHandle = array_keys( $resultingParamSet );
 		}
 		else {
 			if ( !is_array( $this->paramsToHandle ) ) {
-				$this->paramsToHandle = array();
+				$this->paramsToHandle = [];
 			}			
 			
 			foreach ( $resultingParamSet as $paramName => $parameter ) {
@@ -424,10 +424,10 @@ class Processor {
 	 * @return array
 	 */
 	private function getParameterNamesInEvaluationOrder( array $paramDefinitions, array $paramsToHandle ) {
-		$dependencyList = array();
+		$dependencyList = [];
 
 		foreach ( $paramsToHandle as $paramName ) {
-			$dependencies = array();
+			$dependencies = [];
 
 			if ( !array_key_exists( $paramName, $paramDefinitions ) ) {
 				throw new \UnexpectedValueException( 'Unexpected parameter name "' . $paramName . '"' );
@@ -517,7 +517,7 @@ class Processor {
 	 * @return array
 	 */
 	public function getParameterValues() {
-		$parameters = array();
+		$parameters = [];
 
 		foreach ( $this->params as $parameter ) {
 			$parameters[$parameter->getName()] = $parameter->getValue();
@@ -543,7 +543,7 @@ class Processor {
 	 * @return string[]
 	 */
 	public function getErrorMessages() {
-		$errors = array();
+		$errors = [];
 		
 		foreach ( $this->errors as $error ) {
 			$errors[] = $error->getMessage();

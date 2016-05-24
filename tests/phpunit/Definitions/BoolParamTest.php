@@ -26,33 +26,33 @@ class BoolParamTest extends ParamDefinitionTest {
 	 * @return array
 	 */
 	public function valueProvider( $stringlyTyped = true ) {
-		$values = array(
-			'empty' => array(
-				array( 'yes', true, true ),
-				array( 'on', true, true ),
-				array( '1', true, true ),
-				array( 'no', true, false ),
-				array( 'off', true, false ),
-				array( '0', true, false ),
-				array( 'foobar', false ),
-				array( '2', false ),
-				array( array(), false ),
-				array( 42, false ),
-			),
-			'values' => array(),
+		$values = [
+			'empty' => [
+				[ 'yes', true, true ],
+				[ 'on', true, true ],
+				[ '1', true, true ],
+				[ 'no', true, false ],
+				[ 'off', true, false ],
+				[ '0', true, false ],
+				[ 'foobar', false ],
+				[ '2', false ],
+				[ [], false ],
+				[ 42, false ],
+			],
+			'values' => [],
 //			'values' => array(
 //				array( '1', true, true ),
 //				array( 'yes', true, true ),
 //				array( 'no', false ),
 //				array( 'foobar', false ),
 //			),
-		);
+		];
 
 		if ( !$stringlyTyped ) {
 			foreach ( $values as &$set ) {
 				foreach ( $set as &$value ) {
-					if ( in_array( $value[0], array( 'yes', 'on', '1', '0', 'off', 'no' ), true ) ) {
-						$value[0] = in_array( $value[0], array( 'yes', 'on', '1' ), true );
+					if ( in_array( $value[0], [ 'yes', 'on', '1', '0', 'off', 'no' ], true ) ) {
+						$value[0] = in_array( $value[0], [ 'yes', 'on', '1' ], true );
 					}
 				}
 			}

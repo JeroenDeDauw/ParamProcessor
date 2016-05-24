@@ -18,7 +18,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function newFromOptionsProvider() {
-		$options = array();
+		$options = [];
 
 		$option = new Options();
 
@@ -35,7 +35,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	private function arrayWrap( array $elements ) {
 		return array_map(
 			function( $element ) {
-				return array( $element );
+				return [ $element ];
 			},
 			$elements
 		);
@@ -54,42 +54,42 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 * @return array
 	 */
 	private function getSimpleParams() {
-		$params = array(
+		$params = [
 			'awesome' => 'yes',
 			'Howmuch ' => '9001',
 			'FLOAT' => '4.2',
 			' page' => 'Ohi there!',
 			' text     ' => 'foo bar baz o_O',
-		);
+		];
 
-		$definitions = array(
-			'awesome' => array(
+		$definitions = [
+			'awesome' => [
 				'type' => 'boolean',
-			),
-			'howmuch' => array(
+			],
+			'howmuch' => [
 				'type' => 'integer',
-			),
-			'float' => array(
+			],
+			'float' => [
 				'type' => 'float',
-			),
-			'page' => array(
+			],
+			'page' => [
 				'type' => 'string',
 				'hastoexist' => false,
-			),
-			'text' => array(),
-		);
+			],
+			'text' => [],
+		];
 
 		$options = new Options();
 
-		$expected = array(
+		$expected = [
 			'awesome' => true,
 			'howmuch' => 9001,
 			'float' => 4.2,
 			'page' => 'Ohi there!',
 			'text' => 'foo bar baz o_O',
-		);
+		];
 
-		return array( $params, $definitions, $options, $expected );
+		return [ $params, $definitions, $options, $expected ];
 	}
 
 	/**
@@ -99,55 +99,55 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 * @return array
 	 */
 	private function getDefaultingParams() {
-		$params = array(
+		$params = [
 			'awesome' => 'omg!',
 			'howmuch' => 'omg!',
 			'float' => 'omg!',
 			'page' => 42,
 			'whot?' => 'O_o',
 			'integerr' => ' 9001 ',
-		);
+		];
 
-		$definitions = array(
-			'awesome' => array(
+		$definitions = [
+			'awesome' => [
 				'type' => 'boolean',
 				'default' => true,
-			),
-			'howmuch' => array(
+			],
+			'howmuch' => [
 				'type' => 'integer',
 				'default' => 9001,
-			),
-			'float' => array(
+			],
+			'float' => [
 				'type' => 'float',
 				'default' => 4.2,
-			),
-			'page' => array(
+			],
+			'page' => [
 				'type' => 'string',
 				'hastoexist' => false,
 				'default' => 'Ohi there!',
-			),
-			'text' => array(
+			],
+			'text' => [
 				'default' => 'foo bar baz o_O',
-			),
-			'integerr' => array(
+			],
+			'integerr' => [
 				'type' => 'integer',
 				'default' => 42,
-			),
-		);
+			],
+		];
 
 		$options = new Options();
 		$options->setTrimValues( false );
 
-		$expected = array(
+		$expected = [
 			'awesome' => true,
 			'howmuch' => 9001,
 			'float' => 4.2,
 			'page' => 'Ohi there!',
 			'text' => 'foo bar baz o_O',
 			'integerr' => 42,
-		);
+		];
 
-		return array( $params, $definitions, $options, $expected );
+		return [ $params, $definitions, $options, $expected ];
 	}
 
 	/**
@@ -157,7 +157,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 * @return array
 	 */
 	private function getTypedParams() {
-		$params = array(
+		$params = [
 			'awesome' => true,
 			'howmuch' => '42',
 			'float' => 4.2,
@@ -165,42 +165,42 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 			'Text' => 'foo bar baz o_O',
 			'text1 ' => 'foo bar baz o_O',
 			' text2' => 'foo bar baz o_O',
-		);
+		];
 
-		$definitions = array(
-			'awesome' => array(
+		$definitions = [
+			'awesome' => [
 				'type' => 'boolean',
-			),
-			'howmuch' => array(
+			],
+			'howmuch' => [
 				'type' => 'integer',
 				'default' => 9001,
-			),
-			'float' => array(
+			],
+			'float' => [
 				'type' => 'float',
 				'lowerbound' => 9001,
 				'default' => 9000.1
-			),
-			'page' => array(
+			],
+			'page' => [
 				'type' => 'string',
 				'hastoexist' => false,
-			),
-			'text' => array(
+			],
+			'text' => [
 				'default' => 'some text',
-			),
-			'text1' => array(
+			],
+			'text1' => [
 				'default' => 'some text',
-			),
-			'text2' => array(
+			],
+			'text2' => [
 				'default' => 'some text',
-			),
-		);
+			],
+		];
 
 		$options = new Options();
 		$options->setRawStringInputs( false );
 		$options->setLowercaseNames( false );
 		$options->setTrimNames( false );
 
-		$expected = array(
+		$expected = [
 			'awesome' => true,
 			'howmuch' => 9001,
 			'float' => 9000.1,
@@ -208,9 +208,9 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 			'text' => 'some text',
 			'text1' => 'some text',
 			'text2' => 'some text',
-		);
+		];
 
-		return array( $params, $definitions, $options, $expected );
+		return [ $params, $definitions, $options, $expected ];
 	}
 
 	/**
@@ -220,36 +220,36 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 * @return array
 	 */
 	private function getUncleanParams() {
-		$params = array(
+		$params = [
 			'awesome' => ' yes ',
 			'text' => ' FOO  bar  ',
 			'integerr' => ' 9001 ',
-		);
+		];
 
-		$definitions = array(
-			'awesome' => array(
+		$definitions = [
+			'awesome' => [
 				'type' => 'boolean',
-			),
-			'text' => array(
+			],
+			'text' => [
 				'default' => 'bar',
-			),
-			'integerr' => array(
+			],
+			'integerr' => [
 				'type' => 'integer',
 				'default' => 42,
-			),
-		);
+			],
+		];
 
 		$options = new Options();
 		$options->setLowercaseValues( true );
 		$options->setTrimValues( true );
 
-		$expected = array(
+		$expected = [
 			'awesome' => true,
 			'text' => 'foo  bar',
 			'integerr' => 9001,
-		);
+		];
 
-		return array( $params, $definitions, $options, $expected );
+		return [ $params, $definitions, $options, $expected ];
 	}
 
 	/**
@@ -258,43 +258,43 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	 * @return array
 	 */
 	private function getListParams() {
-		$params = array(
+		$params = [
 			'awesome' => ' yes, no, on, off ',
 			'float' => ' 9001 ; 42 ; 4.2;0',
-		);
+		];
 
-		$definitions = array(
-			'awesome' => array(
+		$definitions = [
+			'awesome' => [
 				'type' => 'boolean',
 				'islist' => true,
-			),
-			'text' => array(
-				'default' => array( 'bar' ),
+			],
+			'text' => [
+				'default' => [ 'bar' ],
 				'islist' => true,
-			),
-			'float' => array(
+			],
+			'float' => [
 				'type' => 'float',
 				'islist' => true,
 				'delimiter' => ';'
-			),
-		);
+			],
+		];
 
 		$options = new Options();
 		$options->setLowercaseValues( true );
 		$options->setTrimValues( true );
 
-		$expected = array(
-			'awesome' => array( true, false, true, false ),
-			'text' => array( 'bar' ),
-			'float' => array( 9001.0, 42.0, 4.2, 0.0 ),
-		);
+		$expected = [
+			'awesome' => [ true, false, true, false ],
+			'text' => [ 'bar' ],
+			'float' => [ 9001.0, 42.0, 4.2, 0.0 ],
+		];
 
-		return array( $params, $definitions, $options, $expected );
+		return [ $params, $definitions, $options, $expected ];
 	}
 
 	public function parameterProvider() {
 		// $params, $definitions [, $options, $expected]
-		$argLists = array();
+		$argLists = [];
 
 		$argLists[] = $this->getSimpleParams();
 
@@ -322,7 +322,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider parameterProvider
 	 */
-	public function testSetParameters( array $params, array $definitions, Options $options, array $expected = array() ) {
+	public function testSetParameters( array $params, array $definitions, Options $options, array $expected = [] ) {
 		$validator = Processor::newFromOptions( $options );
 
 		$validator->setParameters( $params, $definitions );
@@ -333,14 +333,14 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider parameterProvider
 	 */
-	public function testValidateParameters( array $params, array $definitions, Options $options, array $expected = array() ) {
+	public function testValidateParameters( array $params, array $definitions, Options $options, array $expected = [] ) {
 		$validator = Processor::newFromOptions( $options );
 
 		$validator->setParameters( $params, $definitions );
 
 		$processingResult = $validator->processParameters();
 
-		$actualValues = array();
+		$actualValues = [];
 
 		foreach ( $processingResult->getParameters() as $param ) {
 			$actualValues[$param->getName()] = $param->getValue();

@@ -15,20 +15,20 @@ class IntParamTest extends NumericParamTest {
 	public function getDefinitions() {
 		$params = parent::getDefinitions();
 
-		$params['count'] = array(
+		$params['count'] = [
 			'type' => 'integer',
-		);
+		];
 
-		$params['amount'] = array(
+		$params['amount'] = [
 			'type' => 'integer',
 			'default' => 42,
 			'upperbound' => 99,
-		);
+		];
 
-		$params['number'] = array(
+		$params['number'] = [
 			'type' => 'integer',
 			'upperbound' => 99,
-		);
+		];
 
 		return $params;
 	}
@@ -41,38 +41,38 @@ class IntParamTest extends NumericParamTest {
 	 * @return array
 	 */
 	public function valueProvider( $stringlyTyped = true ) {
-		$values = array(
-			'count' => array(
-				array( 42, true, 42 ),
-				array( 'foo', false ),
-				array( 4.2, false ),
-				array( array( 42 ), false ),
-			),
-			'amount' => array(
-				array( 0, true, 0 ),
-				array( 'foo', false, 42 ),
-				array( 100, false, 42 ),
-				array( 4.2, false, 42 ),
-			),
-			'number' => array(
-				array( 42, true, 42 ),
-				array( 'foo', false ),
-				array( 100, false ),
-				array( 4.2, false ),
-			),
-			'empty' => array(
-				array( 42, true, 42 ),
-				array( 4.2, false ),
-				array( array( 42 ), false ),
-			),
-			'values' => array(
-				array( 1, true, 1 ),
-				array( 'yes', false ),
-				array( true, false ),
-				array( 0.1, false ),
-				array( array(), false ),
-			),
-		);
+		$values = [
+			'count' => [
+				[ 42, true, 42 ],
+				[ 'foo', false ],
+				[ 4.2, false ],
+				[ [ 42 ], false ],
+			],
+			'amount' => [
+				[ 0, true, 0 ],
+				[ 'foo', false, 42 ],
+				[ 100, false, 42 ],
+				[ 4.2, false, 42 ],
+			],
+			'number' => [
+				[ 42, true, 42 ],
+				[ 'foo', false ],
+				[ 100, false ],
+				[ 4.2, false ],
+			],
+			'empty' => [
+				[ 42, true, 42 ],
+				[ 4.2, false ],
+				[ [ 42 ], false ],
+			],
+			'values' => [
+				[ 1, true, 1 ],
+				[ 'yes', false ],
+				[ true, false ],
+				[ 0.1, false ],
+				[ [], false ],
+			],
+		];
 
 		if ( $stringlyTyped ) {
 			foreach ( $values as &$set ) {

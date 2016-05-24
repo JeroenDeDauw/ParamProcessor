@@ -11,17 +11,17 @@ use ParamProcessor\Options;
 abstract class NumericParamTest extends ParamDefinitionTest {
 
 	public function lowerBoundProvider() {
-		return array(
-			array( 42, 42, true ),
-			array( 42, 41, false ),
-			array( 42, 43, true ),
-			array( false, 43, true ),
-			array( false, 0, true ),
-			array( false, -100, true ),
-			array( -100, -100, true ),
-			array( -99, -100, false ),
-			array( -101, -100, true ),
-		);
+		return [
+			[ 42, 42, true ],
+			[ 42, 41, false ],
+			[ 42, 43, true ],
+			[ false, 43, true ],
+			[ false, 0, true ],
+			[ false, -100, true ],
+			[ -100, -100, true ],
+			[ -99, -100, false ],
+			[ -101, -100, true ],
+		];
 	}
 
 	/**
@@ -29,7 +29,7 @@ abstract class NumericParamTest extends ParamDefinitionTest {
 	 */
 	public function testSetLowerBound( $bound, $testValue, $validity ) {
 		$definition = $this->getEmptyInstance();
-		$definition->setArrayValues( array( 'lowerbound' => $bound ) );
+		$definition->setArrayValues( [ 'lowerbound' => $bound ] );
 
 		$this->validate( $definition, (string)$testValue, $validity );
 
@@ -39,17 +39,17 @@ abstract class NumericParamTest extends ParamDefinitionTest {
 	}
 
 	public function upperBoundProvider() {
-		return array(
-			array( 42, 42, true ),
-			array( 42, 41, true ),
-			array( 42, 43, false ),
-			array( false, 43, true ),
-			array( false, 0, true ),
-			array( false, -100, true ),
-			array( -100, -100, true ),
-			array( -99, -100, true ),
-			array( -101, -100, false ),
-		);
+		return [
+			[ 42, 42, true ],
+			[ 42, 41, true ],
+			[ 42, 43, false ],
+			[ false, 43, true ],
+			[ false, 0, true ],
+			[ false, -100, true ],
+			[ -100, -100, true ],
+			[ -99, -100, true ],
+			[ -101, -100, false ],
+		];
 	}
 
 	/**
@@ -57,7 +57,7 @@ abstract class NumericParamTest extends ParamDefinitionTest {
 	 */
 	public function testSetUpperBound( $bound, $testValue, $validity ) {
 		$definition = $this->getEmptyInstance();
-		$definition->setArrayValues( array( 'upperbound' => $bound ) );
+		$definition->setArrayValues( [ 'upperbound' => $bound ] );
 
 		$this->validate( $definition, (string)$testValue, $validity );
 

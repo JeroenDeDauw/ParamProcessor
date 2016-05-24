@@ -27,22 +27,22 @@ class StringParamTest extends ParamDefinitionTest {
 	 * @return array
 	 */
 	public function valueProvider( $stringlyTyped = true ) {
-		return array(
-			'empty' => array(
-				array( 'ohi there', true, 'ohi there' ),
-				array( 4.2, false ),
-				array( array( 42 ), false ),
-			),
-			'values' => array(
-				array( 'foo', true, 'foo' ),
-				array( '1', true, '1' ),
-				array( 'yes', true, 'yes' ),
-				array( 'bar', false ),
-				array( true, false ),
-				array( 0.1, false ),
-				array( array(), false ),
-			),
-		);
+		return [
+			'empty' => [
+				[ 'ohi there', true, 'ohi there' ],
+				[ 4.2, false ],
+				[ [ 42 ], false ],
+			],
+			'values' => [
+				[ 'foo', true, 'foo' ],
+				[ '1', true, '1' ],
+				[ 'yes', true, 'yes' ],
+				[ 'bar', false ],
+				[ true, false ],
+				[ 0.1, false ],
+				[ [], false ],
+			],
+		];
 	}
 
 	/**
