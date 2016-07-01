@@ -6,33 +6,42 @@
  * @licence GNU GPL v2+
  */
 
+use ParamProcessor\Definition\DimensionParam;
+use ParamProcessor\Definition\StringParam;
+use ValueParsers\BoolParser;
+use ValueParsers\FloatParser;
+use ValueParsers\IntParser;
+use ValueValidators\DimensionValidator;
+use ValueValidators\RangeValidator;
+use ValueValidators\StringValidator;
+
 $GLOBALS['egValidatorSettings'] = [
 	'errorListMinSeverity' => 'minor',
 ];
 
 $GLOBALS['wgParamDefinitions'] = [
 	'boolean' => [
-		'string-parser' => '\ValueParsers\BoolParser',
+		'string-parser' => BoolParser::class,
 		'validation-callback' => 'is_bool',
 	],
 	'float' => [
-		'string-parser' => '\ValueParsers\FloatParser',
+		'string-parser' => FloatParser::class,
 		'validation-callback' => function( $value ) {
 			return is_float( $value ) || is_int( $value );
 		},
-		'validator' => '\ValueValidators\RangeValidator',
+		'validator' => RangeValidator::class,
 	],
 	'integer' => [
-		'string-parser' => '\ValueParsers\IntParser',
+		'string-parser' => IntParser::class,
 		'validation-callback' => 'is_int',
-		'validator' => '\ValueValidators\RangeValidator',
+		'validator' => RangeValidator::class,
 	],
 	'string' => [
-		'validator' => '\ValueValidators\StringValidator',
-		'definition' => '\ParamProcessor\Definition\StringParam',
+		'validator' => StringValidator::class,
+		'definition' => StringParam::class,
 	],
 	'dimension' => [
-		'definition' => '\ParamProcessor\Definition\DimensionParam',
-		'validator' => '\ValueValidators\DimensionValidator',
+		'definition' => DimensionParam::class,
+		'validator' => DimensionValidator::class,
 	],
 ];
