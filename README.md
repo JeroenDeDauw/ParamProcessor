@@ -258,7 +258,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ### 1.3.0 (dev)
 
-*
+* Dropped support for PHP 5.3 and PHP 5.4.
 
 ### 1.2.5 (2016-05-23)
 
