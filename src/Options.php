@@ -28,15 +28,6 @@ class Options {
 	private $rawStringInputs = true;
 
 	/**
-	 * Constructor.
-	 *
-	 * @since 1.0
-	 */
-	public function __construct() {
-		
-	}
-
-	/**
 	 * @since 1.0
 	 *
 	 * @param string $name
