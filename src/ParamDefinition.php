@@ -478,7 +478,11 @@ class ParamDefinition implements IParamDefinition {
 	 * @param IParam[] $params
 	 */
 	public function format( IParam $param, array &$definitions, array $params ) {
-		if ( $this->isList() ) {
+		if ( $this->isList() && is_array( $param->getValue() ) ) {
+			// TODO: if isList returns true, the value should be an array.
+			// The second check here is to avoid a mysterious error.
+			// Should have logging that writes down the value whenever this occurs.
+
 			$values = $param->getValue();
 
 			foreach ( $values as &$value ) {
