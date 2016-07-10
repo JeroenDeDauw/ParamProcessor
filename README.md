@@ -248,6 +248,11 @@ This library comes with a set up PHPUnit tests that cover all non-trivial code. 
 tests using the PHPUnit configuration file found in the root directory. The tests can also be run
 via TravisCI, as a TravisCI configuration file is also provided in the root directory.
 
+## Contributing
+
+* [File an issue](https://github.com/JeroenDeDauw/ParamProcessor/issues)
+* [Submit a pull request](https://github.com/JeroenDeDauw/ParamProcessor/pulls) ([tasks for newcommers](https://github.com/JeroenDeDauw/ParamProcessor/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer))
+
 ## Authors
 
 ParamProcessor has been written by [Jeroen De Dauw](https://github.com/JeroenDeDauw) to
