@@ -12,40 +12,40 @@ namespace ParamProcessor;
  * @author Daniel Werner
  */
 class Processor {
-	
+
 	/**
 	 * Flag for unnamed default parameters used in Processor::setFunctionParams() to determine that
 	 * a parameter should not have a named fallback.
-	 * 
+	 *
 	 * @since 0.4.13
 	 */
 	const PARAM_UNNAMED = 1;
-	
+
 	/**
 	 * Array containing the parameters.
-	 * 
+	 *
 	 * @since 0.4
-	 * 
+	 *
 	 * @var Param[]
 	 */
 	private $params;
-	
+
 	/**
 	 * Associative array containing parameter names (keys) and their user-provided data (values).
 	 * This list is needed because additional parameter definitions can be added to the $parameters
 	 * field during validation, so we can't determine in advance if a parameter is unknown.
-	 * 
+	 *
 	 * @since 0.4
-	 * 
+	 *
 	 * @var string[]
 	 */
 	private $rawParameters = [];
-	
+
 	/**
 	 * Array containing the names of the parameters to handle, ordered by priority.
-	 * 
+	 *
 	 * @since 0.4
-	 * 
+	 *
 	 * @var string[]
 	 */
 	private $paramsToHandle = [];
@@ -58,12 +58,12 @@ class Processor {
 	 * @var IParamDefinition[]
 	 */
 	private $paramDefinitions = [];
-	
+
 	/**
 	 * List of ProcessingError.
-	 * 
+	 *
 	 * @since 0.4
-	 * 
+	 *
 	 * @var ProcessingError[]
 	 */
 	private $errors = [];
@@ -79,9 +79,9 @@ class Processor {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param Options $options
-	 * 
+	 *
 	 * @since 1.0
 	 */
 	public function __construct( Options $options ) {
@@ -122,13 +122,13 @@ class Processor {
 	public function getOptions() {
 		return $this->options;
 	}
-	
+
 	/**
-	 * Determines the names and values of all parameters. Also takes care of default parameters. 
+	 * Determines the names and values of all parameters. Also takes care of default parameters.
 	 * After that the resulting parameter list is passed to Processor::setParameters
-	 * 
+	 *
 	 * @since 0.4
-	 * 
+	 *
 	 * @param array $rawParams
 	 * @param array $parameterInfo
 	 * @param array $defaultParams array of strings or array of arrays to define which parameters can be used unnamed.
@@ -143,13 +143,13 @@ class Processor {
 		$nr = 0;
 		$defaultNr = 0;
 		$lastUnnamedDefaultNr = -1;
-		
+
 		/*
 		 * Find last parameter with self::PARAM_UNNAMED set. Tread all parameters in front as
 		 * the flag were set for them as well to ensure that there can't be any unnamed params
 		 * after the first named param. Wouldn't be possible to determine which unnamed value
 		 * belongs to which parameter otherwise.
-		 */		
+		 */
 		for( $i = count( $defaultParams ) - 1; $i >= 0 ; $i-- ) {
 			$dflt = $defaultParams[$i];
 			if( is_array( $dflt ) && !empty( $dflt[1] ) && ( $dflt[1] | self::PARAM_UNNAMED ) ) {
@@ -157,13 +157,13 @@ class Processor {
 				break;
 			}
 		}
-		
+
 		foreach ( $rawParams as $arg ) {
 			// Only take into account strings. If the value is not a string,
 			// it is not a raw parameter, and can not be parsed correctly in all cases.
-			if ( is_string( $arg ) ) {				
+			if ( is_string( $arg ) ) {
 				$parts = explode( '=', $arg, ( $nr <= $lastUnnamedDefaultNr ? 1 : 2 ) );
-				
+
 				// If there is only one part, no parameter name is provided, so try default parameter assignment.
 				// Default parameters having self::PARAM_UNNAMED set for having no name alias go here in any case.
 				if ( count( $parts ) == 1 ) {
@@ -174,7 +174,7 @@ class Processor {
 							$defaultParam = $defaultParam[0];
 						}
 						$defaultParam = strtolower( $defaultParam );
-						
+
 						$parameters[$defaultParam] = [
 							'original-value' => trim( $parts[0] ),
 							'default' => $defaultNr,
@@ -187,35 +187,35 @@ class Processor {
 					}
 				} else {
 					$paramName = trim( strtolower( $parts[0] ) );
-					
+
 					$parameters[$paramName] = [
 						'original-value' => trim( $parts[1] ),
 						'default' => false,
 						'position' => $nr
 					];
-					
+
 					// Let's not be evil, and remove the used parameter name from the default parameter list.
 					// This code is basically a remove array element by value algorithm.
 					$newDefaults = [];
-					
+
 					foreach( $defaultParams as $defaultParam ) {
 						if ( $defaultParam != $paramName ) $newDefaults[] = $defaultParam;
 					}
-					
+
 					$defaultParams = $newDefaults;
 				}
 			}
-			
-			$nr++;
-		}	
 
-		$this->setParameters( $parameters, $parameterInfo, false );
+			$nr++;
+		}
+
+		$this->setParameters( $parameters, $parameterInfo );
 	}
-	
+
 	/**
 	 * Loops through a list of provided parameters, resolves aliasing and stores errors
 	 * for unknown parameters and optionally for parameter overriding.
-	 * 
+	 *
 	 * @param array $parameters Parameter name as key, parameter value as value
 	 * @param IParamDefinition[] $paramDefinitions List of parameter definitions. Either ParamDefinition objects or equivalent arrays.
 	 */
@@ -237,12 +237,12 @@ class Processor {
 			$this->rawParameters[$paramName] = $paramValue;
 		}
 	}
-	
+
 	/**
 	 * Registers an error.
-	 * 
+	 *
 	 * @since 0.4
-	 * 
+	 *
 	 * @param string $message
 	 * @param mixed $tags string or array
 	 * @param integer $severity
@@ -257,12 +257,12 @@ class Processor {
 			)
 		);
 	}
-	
+
 	/**
 	 * Registers an error.
-	 * 
+	 *
 	 * @since 0.4
-	 * 
+	 *
 	 * @param ProcessingError $error
 	 */
 	private function registerError( ProcessingError $error ) {
@@ -270,10 +270,10 @@ class Processor {
 		$this->errors[] = $error;
 		ProcessingErrorHandler::addError( $error );
 	}
-	
+
 	/**
 	 * Validates and formats all the parameters (but aborts when a fatal error occurs).
-	 * 
+	 *
 	 * @since 0.4
 	 * @deprecated since 1.0, use processParameters
 	 */
@@ -339,10 +339,10 @@ class Processor {
 			$this->getErrors()
 		);
 	}
-	
+
 	/**
-	 * Does the actual parameter processing. 
-	 * 
+	 * Does the actual parameter processing.
+	 *
 	 * @since 0.4
 	 */
 	private function doParamProcessing() {
@@ -387,12 +387,12 @@ class Processor {
 
 		$this->getParamsToProcess( $initialSet, $this->paramDefinitions );
 	}
-	
+
 	/**
 	 * Gets an ordered list of parameters to process.
-	 * 
+	 *
 	 * @since 0.4
-	 * 
+	 *
 	 * @param array $initialParamSet
 	 * @param array $resultingParamSet
 	 *
@@ -405,15 +405,15 @@ class Processor {
 		else {
 			if ( !is_array( $this->paramsToHandle ) ) {
 				$this->paramsToHandle = [];
-			}			
-			
+			}
+
 			foreach ( $resultingParamSet as $paramName => $parameter ) {
 				if ( !array_key_exists( $paramName, $initialParamSet ) ) {
 					$this->paramsToHandle[] = $paramName;
 				}
-			}	
+			}
 		}
-		
+
 		$this->paramsToHandle = $this->getParameterNamesInEvaluationOrder( $this->paramDefinitions, $this->paramsToHandle );
 	}
 
@@ -451,16 +451,16 @@ class Processor {
 
 		return $sorter->doSort();
 	}
-	
+
 	/**
 	 * Tries to find a matching user provided value and, when found, assigns it
 	 * to the parameter, and removes it from the raw values. Returns a boolean
 	 * indicating if there was any user value set or not.
-	 * 
+	 *
 	 * @since 0.4
 	 *
 	 * @param Param $param
-	 * 
+	 *
 	 * @return boolean
 	 */
 	private function attemptToSetUserValue( Param $param ) {
@@ -478,42 +478,42 @@ class Processor {
 				}
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * Returns the parameters.
-	 * 
+	 *
 	 * @since 0.4
 	 * @deprecated since 1.0
-	 * 
+	 *
 	 * @return IParam[]
 	 */
 	public function getParameters() {
 		return $this->params;
 	}
-	
+
 	/**
 	 * Returns a single parameter.
-	 * 
+	 *
 	 * @since 0.4
 	 * @deprecated since 1.0
 	 *
 	 * @param string $parameterName The name of the parameter to return
-	 * 
+	 *
 	 * @return IParam
 	 */
 	public function getParameter( $parameterName ) {
 		return $this->params[$parameterName];
 	}
-	
+
 	/**
 	 * Returns an associative array with the parameter names as key and their
 	 * corresponding values as value.
-	 * 
+	 *
 	 * @since 0.4
-	 * 
+	 *
 	 * @return array
 	 */
 	public function getParameterValues() {
@@ -522,10 +522,10 @@ class Processor {
 		foreach ( $this->params as $parameter ) {
 			$parameters[$parameter->getName()] = $parameter->getValue();
 		}
-		
+
 		return $parameters;
 	}
-	
+
 	/**
 	 * Returns the errors.
 	 *
@@ -536,34 +536,34 @@ class Processor {
 	public function getErrors() {
 		return $this->errors;
 	}
-	
+
 	/**
 	 * @since 0.4.6
-	 * 
+	 *
 	 * @return string[]
 	 */
 	public function getErrorMessages() {
 		$errors = [];
-		
+
 		foreach ( $this->errors as $error ) {
 			$errors[] = $error->getMessage();
 		}
-		
+
 		return $errors;
 	}
-	
+
 	/**
-	 * Returns if there where any errors during validation. 
-	 * 
+	 * Returns if there where any errors during validation.
+	 *
 	 * @return boolean
 	 */
 	public function hasErrors() {
 		return !empty( $this->errors );
 	}
-	
+
 	/**
 	 * Returns false when there are no fatal errors or an ProcessingError when one is found.
-	 * 
+	 *
 	 * @return ProcessingError|boolean false
 	 */
 	public function hasFatalError() {
@@ -572,8 +572,8 @@ class Processor {
 				return $error;
 			}
 		}
-		
+
 		return false;
-	}	
-	
+	}
+
 }
