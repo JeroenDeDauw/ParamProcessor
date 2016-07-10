@@ -268,13 +268,13 @@ final class Param implements IParam {
 				}
 			}
 
-			$this->setValue( $values );
+			$this->value = $values;
 		}
 		else {
 			$parsedValue = $this->parseAndValidateValue( $parser, $this->getValue() );
 
 			if ( is_array( $parsedValue ) ) {
-				$this->setValue( $parsedValue[0] );
+				$this->value = $parsedValue[0];
 			}
 		}
 
