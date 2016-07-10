@@ -293,7 +293,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function parameterProvider() {
-		// $params, $definitions [, $options, $expected]
+		// $params, $definitions [, $options]
 		$argLists = [];
 
 		$argLists[] = $this->getSimpleParams();
@@ -322,7 +322,7 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider parameterProvider
 	 */
-	public function testSetParameters( array $params, array $definitions, Options $options, array $expected = [] ) {
+	public function testSetParameters( array $params, array $definitions, Options $options ) {
 		$validator = Processor::newFromOptions( $options );
 
 		$validator->setParameters( $params, $definitions );
