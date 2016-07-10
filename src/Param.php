@@ -3,6 +3,7 @@
 namespace ParamProcessor;
 
 use Exception;
+use ValueParsers\NullParser;
 use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
 
@@ -235,13 +236,13 @@ final class Param implements IParam {
 	public function getValueParser( Options $options ) {
 		$parser = $this->definition->getValueParser();
 
-		if ( get_class( $parser ) === 'ValueParsers\NullParser' ) {
+		if ( get_class( $parser ) === NullParser::class ) {
 			$parserType = $options->isStringlyTyped() ? 'string-parser' : 'typed-parser';
 
 			// TODO: inject factory
 			$parserClass = ParamDefinitionFactory::singleton()->getComponentForType( $this->definition->getType(), $parserType );
 
-			if ( $parserClass !== 'ValueParsers\NullParser' ) {
+			if ( $parserClass !== NullParser::class ) {
 				$parser = new $parserClass( new \ValueParsers\ParserOptions() );
 			}
 		}

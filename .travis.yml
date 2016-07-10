@@ -10,7 +10,7 @@ before_script:
   - composer install
 
 script:
-  - phpunit
+  - composer ci
 
 notifications:
   email:
