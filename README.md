@@ -261,6 +261,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
+### 1.3.1 (2016-09-21)
+
+* Fixed `ParamDefinitionFactory` emitting a warning when initialized without the global `wgParamDefinitions` being set
+
 ### 1.3.0 (2016-07-15)
 
 * Dropped support for PHP 5.3 and PHP 5.4.
