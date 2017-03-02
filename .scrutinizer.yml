@@ -1,9 +1,6 @@
 inherit: true
 build: true
 
-before_commands:
-  - "composer install --prefer-source"
-
 checks:
     php:
         code_rating: true

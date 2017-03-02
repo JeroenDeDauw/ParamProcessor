@@ -21,4 +21,3 @@ sudo: false
 cache:
   directories:
   - "$HOME/.composer/cache"
-  - node_modules
