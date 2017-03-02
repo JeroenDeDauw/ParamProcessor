@@ -1,8 +1,16 @@
 inherit: true
 build: true
 
+before_commands:
+  - "composer install --prefer-source"
+
+checks:
+    php:
+        code_rating: true
+        duplication: true
+
 tools:
-    php_code_coverage: true
+    external_code_coverage: true
     php_code_sniffer: true
     php_cpd: true
     php_cs_fixer: true
@@ -11,3 +19,7 @@ tools:
     php_pdepend: true
     php_analyzer: true
     sensiolabs_security_checker: true
+
+filter:
+    excluded_paths:
+        - 'vendor/*'
