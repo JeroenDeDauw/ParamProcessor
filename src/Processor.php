@@ -346,6 +346,10 @@ class Processor {
 	 * @since 0.4
 	 */
 	private function doParamProcessing() {
+
+		// Clear errors before processing any definitions
+		$this->errors = array();
+
 		$this->getParamsToProcess( [], $this->paramDefinitions );
 
 		while ( $this->paramsToHandle !== [] && !$this->hasFatalError() ) {
