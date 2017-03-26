@@ -263,7 +263,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ### 1.3.2 (2017-03-26)
 
-
+* Fixed clearing of processing errors when making multiple processing calls to one `Processor` instance
 
 ### 1.3.1 (2016-09-21)
 
