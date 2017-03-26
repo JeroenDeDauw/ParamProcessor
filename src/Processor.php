@@ -239,10 +239,6 @@ class Processor {
 	}
 
 	/**
-	 * Registers an error.
-	 *
-	 * @since 0.4
-	 *
 	 * @param string $message
 	 * @param mixed $tags string or array
 	 * @param integer $severity
@@ -258,13 +254,6 @@ class Processor {
 		);
 	}
 
-	/**
-	 * Registers an error.
-	 *
-	 * @since 0.4
-	 *
-	 * @param ProcessingError $error
-	 */
 	private function registerError( ProcessingError $error ) {
 		$error->element = $this->options->getName();
 		$this->errors[] = $error;
@@ -342,13 +331,9 @@ class Processor {
 
 	/**
 	 * Does the actual parameter processing.
-	 *
-	 * @since 0.4
 	 */
 	private function doParamProcessing() {
-
-		// Clear errors before processing any definitions
-		$this->errors = array();
+		$this->errors = [];
 
 		$this->getParamsToProcess( [], $this->paramDefinitions );
 
