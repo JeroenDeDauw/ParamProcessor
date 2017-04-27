@@ -248,8 +248,9 @@ class ParamDefinition implements IParamDefinition {
 		$allowedValues = [];
 
 		if ( $this->validator !== null && method_exists( $this->validator, 'getWhitelistedValues' ) ) {
-			// TODO: properly implement this
-			$this->validator->setOptions( $this->options );
+			if ( method_exists( $this->validator, 'setOptions' ) ) {
+				$this->validator->setOptions( $this->options );
+			}
 
 			$allowedValues = $this->validator->getWhitelistedValues();
 
