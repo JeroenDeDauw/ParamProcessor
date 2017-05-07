@@ -347,7 +347,9 @@ final class Param implements IParam {
 		}
 		else {
 			$validator = $this->definition->getValueValidator();
-			$validator->setOptions( $this->definition->getOptions() ); // TODO
+			if ( method_exists( $validator, 'setOptions' ) ) {
+				$validator->setOptions( $this->definition->getOptions() );
+			}
 			$validationResult = $validator->validate( $value );
 
 			if ( !$validationResult->isValid() ) {
