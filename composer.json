@@ -24,9 +24,9 @@
 	},
 	"require": {
 		"php": ">=5.5.0",
-		"data-values/data-values": "~1.0|~0.1.1",
+		"data-values/data-values": "~2.0|~1.0|~0.1.1",
 		"data-values/interfaces": "~0.2.0|~0.1.4",
-		"data-values/common": "~0.3.0|~0.2.2",
+		"data-values/common": "~0.4.0|~0.3.0|~0.2.2",
 		"data-values/validators": "~0.1.1"
 	},
 	"require-dev": {
