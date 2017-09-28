@@ -251,7 +251,7 @@ via TravisCI, as a TravisCI configuration file is also provided in the root dire
 ## Contributing
 
 * [File an issue](https://github.com/JeroenDeDauw/ParamProcessor/issues)
-* [Submit a pull request](https://github.com/JeroenDeDauw/ParamProcessor/pulls) ([tasks for newcommers](https://github.com/JeroenDeDauw/ParamProcessor/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer))
+* [Submit a pull request](https://github.com/JeroenDeDauw/ParamProcessor/pulls) ([tasks for newcomers](https://github.com/JeroenDeDauw/ParamProcessor/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer))
 
 ## Authors
 
@@ -260,6 +260,11 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 (https://semantic-mediawiki.org/) projects.
 
 ## Release notes
+
+### 1.3.3 (2017-09-28)
+
+* Installation together with DataValues 2.x is now allowed
+* Installation together with DataValues Common 0.4.x is now allowed
 
 ### 1.3.2 (2017-03-26)
 
@@ -284,8 +289,8 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ### 1.2.3 (2016-04-04)
 
-* Installation together with DataValues Interfaces 0.2.x is now allowed.
-* Installation together with DataValues Common 0.3.x is now allowed.
+* Installation together with DataValues Interfaces 0.2.x is now allowed
+* Installation together with DataValues Common 0.3.x is now allowed
 * The component is now also tested against PHP 7
 
 ### 1.2.2 (2014-10-24)
