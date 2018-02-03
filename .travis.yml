@@ -4,6 +4,7 @@ php:
   - 5.5
   - 7
   - 7.1
+  - 7.2
   - hhvm
 
 install: travis_retry composer install
