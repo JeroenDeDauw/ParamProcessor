@@ -1,7 +1,7 @@
 # ParamProcessor
 
 ParamProcessor is a parameter processing library that provides a way to
-decoratively define a set of parameters and how they should be processed.
+declaratively define a set of parameters and how they should be processed.
 It can take such declarations together with a list of raw parameters and
 provide the processed values. For example, if one defines a parameter to
 be an integer, in the range `[0, 100]`, then ParamProcessor will verify the
