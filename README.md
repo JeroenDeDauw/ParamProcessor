@@ -183,11 +183,6 @@ The requires fields currently are: name and message
 		<td></td>
 	</tr>
 	<tr>
-		<th>coordinate</th>
-		<td>DataValues\LatLongValue</td>
-		<td></td>
-	</tr>
-	<tr>
 		<th>dimension</th>
 		<td>string</td>
 		<td>Value for a width or height attribute in HTML</td>
@@ -199,6 +194,8 @@ The requires fields currently are: name and message
 * <code>string-parser</code> Name of a class that implements the `ValueParsers\ValueParser` interface
 * <code>validation-callback</code> Callback that gets the raw value as only parameter and returns a boolean
 * <code>validator</code> Name of a class that implements the `ValueValidators\ValueValidator` interface
+
+As an example, the Maps MediaWiki extension defines a `coordinate` parameter type that turns the input into a `DataValues\LatLongValue` value object.
 
 ## Examples
 
