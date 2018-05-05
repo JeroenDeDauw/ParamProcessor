@@ -258,6 +258,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
+### 1.3.4 (2018-05-05)
+
+* Fixed deprecation notice occurring with PHP 7.2+
+
 ### 1.3.3 (2017-09-28)
 
 * Installation together with DataValues 2.x is now allowed
