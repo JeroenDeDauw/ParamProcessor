@@ -14,7 +14,6 @@ that builds on top of ParamProcessor and provides MediaWiki integration.
 [![Build Status](https://secure.travis-ci.org/JeroenDeDauw/ParamProcessor.png?branch=master)](http://travis-ci.org/JeroenDeDauw/ParamProcessor)
 [![Code Coverage](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/?branch=master)
-[![Dependency Status](https://www.versioneye.com/php/param-processor:param-processor/badge.png)](https://www.versioneye.com/php/param-processor:param-processor)
 
 
 On [Packagist](https://packagist.org/packages/param-processor/param-processor):
