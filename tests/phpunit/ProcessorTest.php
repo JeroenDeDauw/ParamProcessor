@@ -314,8 +314,6 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 			],
 		];
 
-		$defaultParams = [ 'hugo', 'benno' ];
-
 		$options = new Options();
 		$options->setTrimValues( true );
 
@@ -323,6 +321,8 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 			'hugo' => 'foobar',
 			'benno' => '<span class="warning">Foobar!</span>'
 		];
+
+		$defaultParams = [ 'hugo', 'benno' ];
 
 		return [ $params, $definitions, $options, $expected, $defaultParams ];
 	}
@@ -362,27 +362,32 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 
 	public function rawParameterProvider() {
 
-		$argLists = $this->parameterProvider();
+		$argLists = [];
 
+		$argLists[] = $this->getSimpleParams();
+
+		//$argLists[] = $this->getDefaultingParams();
+
+		//$argLists[] = $this->getTypedParams();
+
+		$argLists[] = $this->getUncleanParams();
+
+		$argLists[] = $this->getListParams();
+
+		$argLists[] = $this->getPositionalParams();
+
+		// transform into raw parameters
 		foreach ( $argLists as $i => $argList ) {
 			$rawParams = [];
-			foreach ( $argList[0] as $key => $value ) {
-				if ( is_string( $key ) ) {
-					$rawParams[] = "$key=$value";
-				} else {
-					$rawParams[] = $value;
-				}
+			foreach ( $argList[0] as $paramName => $paramValue ) {
+				$rawParams[] = is_string( $paramName )? "$paramName=$paramValue" : $paramValue;
 			}
-			$argLists[$i][0] = $rawParams;
+			$argLists[ $i ][ 0 ] = $rawParams;
 		}
 
-		$rawArgLists = [];
+		$this->normalizeArgLists( $argLists );
 
-		$rawArgLists[] = $this->getPositionalParams();
-
-		$this->normalizeArgLists( $rawArgLists );
-
-		return $argLists + $rawArgLists;
+		return $argLists;
 	}
 
 	/**

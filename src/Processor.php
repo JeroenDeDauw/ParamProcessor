@@ -158,6 +158,8 @@ class Processor {
 			}
 		}
 
+		$definedParams = array_keys( $parameterInfo );
+
 		foreach ( $rawParams as $arg ) {
 			// Only take into account strings. If the value is not a string,
 			// it is not a raw parameter, and can not be parsed correctly in all cases.
@@ -167,7 +169,7 @@ class Processor {
 
 				// If there is only one part, no parameter name is provided, so try default parameter assignment.
 				// Default parameters having self::PARAM_UNNAMED set for having no name alias go here in any case.
-				if ( count( $parts ) == 1 || !in_array( $paramName, $defaultParams ) ) {
+				if ( count( $parts ) == 1 || !in_array( $paramName, $definedParams ) ) {
 					// Default parameter assignment is only possible when there are default parameters!
 					if ( count( $defaultParams ) > 0 ) {
 						$defaultParam = array_shift( $defaultParams );
