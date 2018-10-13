@@ -294,6 +294,53 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 		return [ $params, $definitions, $options, $expected ];
 	}
 
+	/**
+	 * List parameters to test if list handling works correctly.
+	 *
+	 * @return array
+	 */
+	private function getPositionalParams() {
+		$params = [
+			' foobar ',
+			' <span class="warning">Foobar!</span>',
+		];
+
+		$definitions = [
+			'hugo' => [
+				'type' => 'string',
+			],
+			'benno' => [
+				'type' => 'string',
+			],
+		];
+
+		$defaultParams = [ 'hugo', 'benno' ];
+
+		$options = new Options();
+		$options->setTrimValues( true );
+
+		$expected = [
+			'hugo' => 'foobar',
+			'benno' => '<span class="warning">Foobar!</span>'
+		];
+
+		return [ $params, $definitions, $options, $expected, $defaultParams ];
+	}
+
+
+	protected function normalizeArgLists( &$argLists ) {
+
+		foreach ( $argLists as &$argList ) {
+			foreach ( $argList[ 1 ] as $key => &$definition ) {
+				$definition[ 'message' ] = 'test-' . $key;
+			}
+
+			if ( !array_key_exists( 2, $argList ) ) {
+				$argList[ 2 ] = new Options();
+			}
+		}
+	}
+
 	public function parameterProvider() {
 		// $params, $definitions [, $options]
 		$argLists = [];
@@ -308,17 +355,34 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 
 		$argLists[] = $this->getListParams();
 
-		foreach ( $argLists as &$argList ) {
-			foreach ( $argList[1] as $key => &$definition ) {
-				$definition['message'] = 'test-' . $key;
-			}
-
-			if ( !array_key_exists( 2, $argList ) ) {
-				$argList[2] = new Options();
-			}
-		}
+		$this->normalizeArgLists( $argLists );
 
 		return $argLists;
+	}
+
+	public function rawParameterProvider() {
+
+		$argLists = $this->parameterProvider();
+
+		foreach ( $argLists as $i => $argList ) {
+			$rawParams = [];
+			foreach ( $argList[0] as $key => $value ) {
+				if ( is_string( $key ) ) {
+					$rawParams[] = "$key=$value";
+				} else {
+					$rawParams[] = $value;
+				}
+			}
+			$argLists[$i][0] = $rawParams;
+		}
+
+		$rawArgLists = [];
+
+		$rawArgLists[] = $this->getPositionalParams();
+
+		$this->normalizeArgLists( $rawArgLists );
+
+		return $argLists + $rawArgLists;
 	}
 
 	/**
@@ -339,6 +403,27 @@ class ProcessorTest extends \PHPUnit_Framework_TestCase {
 		$validator = Processor::newFromOptions( $options );
 
 		$validator->setParameters( $params, $definitions );
+
+		$processingResult = $validator->processParameters();
+
+		$actualValues = [];
+
+		foreach ( $processingResult->getParameters() as $param ) {
+			$actualValues[$param->getName()] = $param->getValue();
+		}
+
+		$this->assertEquals( $expected, $actualValues );
+
+
+	}
+
+	/**
+	 * @dataProvider rawParameterProvider
+	 */
+	public function testValidateRawParameters( array $params, array $definitions, Options $options, array $expected = [],  array $defaultParams = [] ) {
+		$validator = Processor::newFromOptions( $options );
+
+		$validator->setFunctionParams( $params, $definitions, $defaultParams );
 
 		$processingResult = $validator->processParameters();
 
