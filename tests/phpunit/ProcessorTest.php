@@ -2,6 +2,7 @@
 
 namespace ParamProcessor\Tests;
 
+use ParamProcessor\ProcessedParam;
 use ParamProcessor\ProcessingError;
 use ParamProcessor\ProcessingResult;
 use ParamProcessor\Processor;
@@ -387,6 +388,28 @@ class ProcessorTest extends TestCase {
 		$processor->processParameters();
 
 		$this->assertEmpty( $processor->getErrors() );
+	}
+
+	public function testInvalidListElementsAreOmitted() {
+		$processor = Processor::newDefault();
+
+		$processor->setFunctionParams(
+			[
+				'some-list=1,2,3, ,4,'
+			],
+			[
+				'some-list' => [
+					'type' => 'integer',
+					'message' => 'test',
+					'islist' => true
+				],
+			]
+		);
+
+		$this->assertSame(
+			[ 1, 2, 3, 4 ],
+			$processor->processParameters()->getParameters()['some-list']->getValue()
+		);
 	}
 
 }
