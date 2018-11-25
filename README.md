@@ -232,25 +232,6 @@ As an example, the Maps MediaWiki extension defines a `coordinate` parameter typ
 ### Defining parameters
 
 ```php
-$paramDefinitions = array();
-
-$paramDefinitions[] = array(
-    'name' => 'username',
-);
-
-$paramDefinitions[] = array(
-    'name' => 'job',
-    'default' => 'unknown',
-    'values' => array( 'Developer', 'Designer', 'Manager', 'Tester' ),
-);
-
-$paramDefinitions[] = array(
-    'name' => 'favourite-numbers',
-    'islist' => true,
-    'type' => 'int',
-    'default' => array(),
-);
-
 $parameterDefinitions = [
     'username' => [
         'minlength' => 1,
