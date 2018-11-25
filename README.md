@@ -162,6 +162,20 @@ The requires fields currently are: name and message
 		<th>Description</th>
 	</tr>
 	<tr>
+		<th>string</th>
+		<td>string</td>
+		<td>
+			Default type<br />
+			Supported options:
+			<ul>
+				<li>length: int or false (overrides minlength and maxlength)</li>
+				<li>minlength: int or false</li>
+				<li>maxlength: int or false</li>
+				<li>regex: string</li>
+			<ul>
+		</td>
+	</tr>
+	<tr>
 		<th>boolean</th>
 		<td>boolean</td>
 		<td>Accepts "yes", "no", "on", "off", "true" and "false"</td>
@@ -184,19 +198,6 @@ The requires fields currently are: name and message
 		<td>integer</td>
 		<td>
 			Supported options: same as for float
-		</td>
-	</tr>
-	<tr>
-		<th>string</th>
-		<td>string</td>
-		<td>
-			Supported options:
-			<ul>
-				<li>length: int or false (overrides minlength and maxlength)</li>
-				<li>minlength: int or false</li>
-				<li>maxlength: int or false</li>
-				<li>regex: string</li>
-			<ul>
 		</td>
 	</tr>
 	<tr>
@@ -249,23 +250,57 @@ $paramDefinitions[] = array(
     'type' => 'int',
     'default' => array(),
 );
+
+$parameterDefinitions = [
+	'username' => [
+		'minlength' => 1,
+		'maxlength' => 20
+	],
+	'job' => [
+		'default' => 'unknown',
+		'values' => [ 'Developer', 'Designer', 'Peasant' ]
+	],
+	'favourite-numbers' => [
+		'type' => 'int',
+		'islist' => true,
+		'default' => []
+	]
+]
 ```
 
 ### Processing
 
 ```php
-$inputParams = array(
-    'username' => 'Jeroen',
-    'job' => 'Developer',
-);
-
 $processor = ParamProcessor\Processor::newDefault();
 
-$processor->setParameters( $inputParams, $paramDefinitions );
+$processor->setParameters(
+	[
+        'username' => 'Jeroen',
+        'favourite-numbers' => '42, 1337, not a number',
+    ],
+    $paramDefinitions
+);
 
-$processingResult = $processor->processParameters();
+foreach ($processor->processParameters()->getParameters() $parameter) {
+	echo $parameter->getName();
+	var_dump($parameter->getValue());
+};
 
-$processedParams = $processingResult->getParameters();
+// username: string(6) "Jeroen"
+// job: string(7) "unknown"
+// favourite-numbers: array(2) {[0]=>int(42), [1]=>int(1337)}
+```
+
+Alternative way to input parameters:
+
+```php
+$processor->setFunctionParams(
+	[
+        'username = Jeroen',
+        'favourite-numbers=42, 1337, not a number',
+    ],
+    $paramDefinitions
+);
 ```
 
 ## Tests
