@@ -27,138 +27,63 @@ class Options {
 	// During validation
 	private $rawStringInputs = true;
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param string $name
-	 */
-	public function setName( $name ) {
+	public function setName( string $name ) {
 		$this->name = $name;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param boolean $unknownInvalid
-	 */
-	public function setUnknownInvalid( $unknownInvalid ) {
+	public function setUnknownInvalid( bool $unknownInvalid ) {
 		$this->unknownInvalid = $unknownInvalid;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param boolean $lowercase
-	 */
-	public function setLowercaseNames( $lowercase ) {
+	public function setLowercaseNames( bool $lowercase ) {
 		$this->lowercaseNames = $lowercase;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param boolean $rawInputs
-	 */
-	public function setRawStringInputs( $rawInputs ) {
+	public function setRawStringInputs( bool $rawInputs ) {
 		$this->rawStringInputs = $rawInputs;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param boolean $trim
-	 */
-	public function setTrimNames( $trim ) {
+	public function setTrimNames( bool $trim ) {
 		$this->trimNames = $trim;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param boolean $trim
-	 */
-	public function setTrimValues( $trim ) {
+	public function setTrimValues( bool $trim ) {
 		$this->trimValues = $trim;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param boolean $lowercase
-	 */
-	public function setLowercaseValues( $lowercase ) {
+	public function setLowercaseValues( bool $lowercase ) {
 		$this->lowercaseValues = $lowercase;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @return string
-	 */
-	public function getName() {
-		return $this->name;
+	public function getName(): string {
+		return $this->name ?? '';
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function unknownIsInvalid() {
+	public function unknownIsInvalid(): bool {
 		return $this->unknownInvalid;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function lowercaseNames() {
+	public function lowercaseNames(): bool {
 		return $this->lowercaseNames;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function isStringlyTyped() {
+	public function isStringlyTyped(): bool {
 		return $this->rawStringInputs;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function trimNames() {
+	public function trimNames(): bool {
 		return $this->trimNames;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function trimValues() {
+	public function trimValues(): bool {
 		return $this->trimValues;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function lowercaseValues() {
+	public function lowercaseValues(): bool {
 		return $this->lowercaseValues;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @return bool
-	 */
-	public function acceptOverriding() {
+	public function acceptOverriding(): bool {
 		return $this->acceptOverriding;
 	}
 
