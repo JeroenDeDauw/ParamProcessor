@@ -16,10 +16,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ProcessorTest extends TestCase {
 
-	public function testNewDefault() {
-		$this->assertInstanceOf( 'ParamProcessor\Processor', Processor::newDefault() );
-	}
-
 	public function newFromOptionsProvider() {
 		$options = [];
 
@@ -45,10 +41,7 @@ class ProcessorTest extends TestCase {
 	}
 
 	public function testNewFromOptions() {
-		$options = new Options();
-		$validator = Processor::newFromOptions( clone $options );
-		$this->assertInstanceOf( '\ParamProcessor\Processor', $validator );
-		$this->assertEquals( $options, $validator->getOptions() );
+		$this->assertEquals( new Options(), Processor::newFromOptions( new Options() )->getOptions() );
 	}
 
 	/**
