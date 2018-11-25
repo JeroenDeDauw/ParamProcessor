@@ -6,6 +6,7 @@ use ParamProcessor\ProcessingError;
 use ParamProcessor\ProcessingResult;
 use ParamProcessor\Processor;
 use ParamProcessor\Options;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \ParamProcessor\Processor
@@ -13,7 +14,7 @@ use ParamProcessor\Options;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ProcessorTest extends \PHPUnit_Framework_TestCase {
+class ProcessorTest extends TestCase {
 
 	public function testNewDefault() {
 		$this->assertInstanceOf( 'ParamProcessor\Processor', Processor::newDefault() );

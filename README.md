@@ -257,6 +257,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 
 ## Release notes
 
+### 1.4.0 (dev)
+
+* Dropped support for PHP older than 7.1
+
 ### 1.3.4 (2018-05-05)
 
 * Fixed deprecation notice occurring with PHP 7.2+

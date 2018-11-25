@@ -2,8 +2,10 @@
 
 namespace ParamProcessor\Tests;
 
+use ParamProcessor\ProcessedParam;
 use ParamProcessor\ProcessingError;
 use ParamProcessor\ProcessingResult;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \ParamProcessor\ProcessingResult
@@ -11,7 +13,7 @@ use ParamProcessor\ProcessingResult;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ProcessingResultTest extends \PHPUnit_Framework_TestCase {
+class ProcessingResultTest extends TestCase {
 
 	public function testGetParameters() {
 		$processedParams = [
@@ -24,7 +26,7 @@ class ProcessingResultTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	private function newMockParam() {
-		return $this->getMockBuilder( 'ParamProcessor\ProcessedParam' )
+		return $this->getMockBuilder( ProcessedParam::class )
 			->disableOriginalConstructor()->getMock();
 	}
 
@@ -39,7 +41,7 @@ class ProcessingResultTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	private function newMockError() {
-		return $this->getMockBuilder( 'ParamProcessor\ProcessingError' )
+		return $this->getMockBuilder( ProcessingError::class )
 			->disableOriginalConstructor()->getMock();
 	}
 

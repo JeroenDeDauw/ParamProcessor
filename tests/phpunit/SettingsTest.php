@@ -3,6 +3,7 @@
 namespace ParamProcessor\Tests;
 
 use ParamProcessor\Settings;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \ParamProcessor\Settings
@@ -10,7 +11,7 @@ use ParamProcessor\Settings;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SettingsTest extends \PHPUnit_Framework_TestCase {
+class SettingsTest extends TestCase {
 
 	public function constructorProvider() {
 		$settingArrays = [

@@ -7,12 +7,13 @@ use ParamProcessor\ParamDefinition;
 use ParamProcessor\IParamDefinition;
 use ParamProcessor\Param;
 use ParamProcessor\ParamDefinitionFactory;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ParamDefinitionTest extends \PHPUnit_Framework_TestCase {
+abstract class ParamDefinitionTest extends TestCase {
 
 	/**
 	 * Returns a list of arrays that hold values to test handling of.
