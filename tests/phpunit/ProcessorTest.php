@@ -8,7 +8,7 @@ use ParamProcessor\Processor;
 use ParamProcessor\Options;
 
 /**
- * @covers ParamProcessor\Processor
+ * @covers \ParamProcessor\Processor
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
