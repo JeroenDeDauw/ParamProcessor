@@ -252,8 +252,8 @@ via TravisCI, as a TravisCI configuration file is also provided in the root dire
 ## Authors
 
 ParamProcessor has been written by [Jeroen De Dauw](https://github.com/JeroenDeDauw) to
-support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki]
-(https://semantic-mediawiki.org/) projects.
+support the [Maps](https://github.com/JeroenDeDauw/Maps) and
+[Semantic MediaWiki](https://semantic-mediawiki.org/) projects.
 
 ## Release notes
 
