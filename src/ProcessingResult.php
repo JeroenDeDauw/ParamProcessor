@@ -10,14 +10,7 @@ namespace ParamProcessor;
  */
 class ProcessingResult {
 
-	/**
-	 * @var ProcessedParam[]
-	 */
 	private $parameters;
-
-	/**
-	 * @var ProcessingError[]
-	 */
 	private $errors;
 
 	/**
@@ -32,22 +25,18 @@ class ProcessingResult {
 	/**
 	 * @return ProcessedParam[]
 	 */
-	public function getParameters() {
+	public function getParameters(): array {
 		return $this->parameters;
 	}
 
 	/**
 	 * @return ProcessingError[]
 	 */
-	public function getErrors() {
+	public function getErrors(): array {
 		return $this->errors;
 	}
 
-	/**
-	 * @since 1.0.1
-	 * @return bool
-	 */
-	public function hasFatal() {
+	public function hasFatal(): bool {
 		foreach ( $this->errors as $error ) {
 			if ( $error->isFatal() ) {
 				return true;
