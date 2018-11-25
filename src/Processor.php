@@ -22,10 +22,6 @@ class Processor {
 	const PARAM_UNNAMED = 1;
 
 	/**
-	 * Array containing the parameters.
-	 *
-	 * @since 0.4
-	 *
 	 * @var Param[]
 	 */
 	private $params;
@@ -34,56 +30,28 @@ class Processor {
 	 * Associative array containing parameter names (keys) and their user-provided data (values).
 	 * This list is needed because additional parameter definitions can be added to the $parameters
 	 * field during validation, so we can't determine in advance if a parameter is unknown.
-	 *
-	 * @since 0.4
-	 *
 	 * @var string[]
 	 */
 	private $rawParameters = [];
 
 	/**
 	 * Array containing the names of the parameters to handle, ordered by priority.
-	 *
-	 * @since 0.4
-	 *
 	 * @var string[]
 	 */
 	private $paramsToHandle = [];
 
 	/**
-	 *
-	 *
-	 * @since 1.0
-	 *
 	 * @var IParamDefinition[]
 	 */
 	private $paramDefinitions = [];
 
 	/**
-	 * List of ProcessingError.
-	 *
-	 * @since 0.4
-	 *
 	 * @var ProcessingError[]
 	 */
 	private $errors = [];
 
-	/**
-	 * Options for this validator object.
-	 *
-	 * @since 1.0
-	 *
-	 * @var Options
-	 */
 	private $options;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param Options $options
-	 *
-	 * @since 1.0
-	 */
 	public function __construct( Options $options ) {
 		$this->options = $options;
 	}
@@ -95,7 +63,7 @@ class Processor {
 	 *
 	 * @return Processor
 	 */
-	public static function newDefault() {
+	public static function newDefault(): self {
 		return new Processor( new Options() );
 	}
 
@@ -108,7 +76,7 @@ class Processor {
 	 *
 	 * @return Processor
 	 */
-	public static function newFromOptions( Options $options ) {
+	public static function newFromOptions( Options $options ): self {
 		return new Processor( $options );
 	}
 
@@ -119,7 +87,7 @@ class Processor {
 	 *
 	 * @return Options
 	 */
-	public function getOptions() {
+	public function getOptions(): Options {
 		return $this->options;
 	}
 
@@ -270,12 +238,7 @@ class Processor {
 		$this->doParamProcessing();
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @return ProcessingResult
-	 */
-	public function processParameters() {
+	public function processParameters(): ProcessingResult {
 		$this->doParamProcessing();
 
 		if ( !$this->hasFatalError() && $this->options->unknownIsInvalid() ) {
@@ -292,10 +255,7 @@ class Processor {
 		return $this->newProcessingResult();
 	}
 
-	/**
-	 * @return ProcessingResult
-	 */
-	private function newProcessingResult() {
+	private function newProcessingResult(): ProcessingResult {
 		$parameters = [];
 
 		if ( !is_array( $this->params ) ) {
@@ -379,12 +339,6 @@ class Processor {
 
 	/**
 	 * Gets an ordered list of parameters to process.
-	 *
-	 * @since 0.4
-	 *
-	 * @param array $initialParamSet
-	 * @param array $resultingParamSet
-	 *
 	 * @throws \UnexpectedValueException
 	 */
 	private function getParamsToProcess( array $initialParamSet, array $resultingParamSet ) {
@@ -412,7 +366,7 @@ class Processor {
 	 *
 	 * @return array
 	 */
-	private function getParameterNamesInEvaluationOrder( array $paramDefinitions, array $paramsToHandle ) {
+	private function getParameterNamesInEvaluationOrder( array $paramDefinitions, array $paramsToHandle ): array {
 		$dependencyList = [];
 
 		foreach ( $paramsToHandle as $paramName ) {
@@ -445,14 +399,8 @@ class Processor {
 	 * Tries to find a matching user provided value and, when found, assigns it
 	 * to the parameter, and removes it from the raw values. Returns a boolean
 	 * indicating if there was any user value set or not.
-	 *
-	 * @since 0.4
-	 *
-	 * @param Param $param
-	 *
-	 * @return boolean
 	 */
-	private function attemptToSetUserValue( Param $param ) {
+	private function attemptToSetUserValue( Param $param ): bool {
 		if ( array_key_exists( $param->getName(), $this->rawParameters ) ) {
 			$param->setUserValue( $param->getName(), $this->rawParameters[$param->getName()], $this->options );
 			unset( $this->rawParameters[$param->getName()] );
@@ -479,7 +427,7 @@ class Processor {
 	 *
 	 * @return IParam[]
 	 */
-	public function getParameters() {
+	public function getParameters(): array {
 		return $this->params;
 	}
 
@@ -493,19 +441,15 @@ class Processor {
 	 *
 	 * @return IParam
 	 */
-	public function getParameter( $parameterName ) {
+	public function getParameter( string $parameterName ): IParam {
 		return $this->params[$parameterName];
 	}
 
 	/**
 	 * Returns an associative array with the parameter names as key and their
 	 * corresponding values as value.
-	 *
-	 * @since 0.4
-	 *
-	 * @return array
 	 */
-	public function getParameterValues() {
+	public function getParameterValues(): array {
 		$parameters = [];
 
 		foreach ( $this->params as $parameter ) {
@@ -516,22 +460,16 @@ class Processor {
 	}
 
 	/**
-	 * Returns the errors.
-	 *
-	 * @since 0.4
-	 *
 	 * @return ProcessingError[]
 	 */
-	public function getErrors() {
+	public function getErrors(): array {
 		return $this->errors;
 	}
 
 	/**
-	 * @since 0.4.6
-	 *
 	 * @return string[]
 	 */
-	public function getErrorMessages() {
+	public function getErrorMessages(): array {
 		$errors = [];
 
 		foreach ( $this->errors as $error ) {
@@ -543,10 +481,8 @@ class Processor {
 
 	/**
 	 * Returns if there where any errors during validation.
-	 *
-	 * @return boolean
 	 */
-	public function hasErrors() {
+	public function hasErrors(): bool {
 		return !empty( $this->errors );
 	}
 
