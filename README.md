@@ -76,78 +76,78 @@ Processing is done via `ParamProcessor\Processor`.
 These fields are supported:
 
 <table>
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Default</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<th>name</th>
-		<td>string</td>
-		<td><i>required</i></td>
-		<td></td>
-	</tr>
-	<tr>
-		<th>type</th>
-		<td>string (enum)</td>
-		<td>string</td>
-		<td></td>
-	</tr>
-	<tr>
-		<th>default</th>
-		<td>mixed</td>
-		<td>null</td>
-		<td>If this value is null, the parameter has no default and is required</td>
-	</tr>
-	<tr>
-		<th>aliases</th>
-		<td>array of string</td>
-		<td>empty array</td>
-		<td>Aliases for the name</td>
-	</tr>
-	<tr>
-		<th>trim</th>
-		<td>boolean</td>
-		<td><i>inherited from processor options</i></td>
-		<td>If the value should be trimmed</td>
-	</tr>
-	<tr>
-		<th>islist</th>
-		<td>boolean</td>
-		<td>false</td>
-		<td></td>
-	</tr>
-	<tr>
-		<th>delimiter</th>
-		<td>string</td>
-		<td>,</td>
-		<td>The delimiter between values if it is a list</td>
-	</tr>
-	<tr>
-		<th>manipulatedefault</th>
-		<td>boolean</td>
-		<td>true</td>
-		<td>If the default value should also be manipulated</td>
-	</tr>
-	<tr>
-		<th>values</th>
-		<td>array</td>
-		<td></td>
-		<td>Allowed values</td>
-	</tr>
-	<tr>
-		<th>message</th>
-		<td>string</td>
-		<td><i>required</i></td>
-		<td></td>
-	</tr>
-	<tr>
-		<th>post-format</th>
-		<td>callback</td>
-		<td><i>none</i></td>
-		<td>Takes the value as only parameter and returns the new value</td>
-	</tr>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <th>name</th>
+        <td>string</td>
+        <td><i>required</i></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>type</th>
+        <td>string (enum)</td>
+        <td>string</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>default</th>
+        <td>mixed</td>
+        <td>null</td>
+        <td>If this value is null, the parameter has no default and is required</td>
+    </tr>
+    <tr>
+        <th>aliases</th>
+        <td>array of string</td>
+        <td>empty array</td>
+        <td>Aliases for the name</td>
+    </tr>
+    <tr>
+        <th>trim</th>
+        <td>boolean</td>
+        <td><i>inherited from processor options</i></td>
+        <td>If the value should be trimmed</td>
+    </tr>
+    <tr>
+        <th>islist</th>
+        <td>boolean</td>
+        <td>false</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>delimiter</th>
+        <td>string</td>
+        <td>,</td>
+        <td>The delimiter between values if it is a list</td>
+    </tr>
+    <tr>
+        <th>manipulatedefault</th>
+        <td>boolean</td>
+        <td>true</td>
+        <td>If the default value should also be manipulated</td>
+    </tr>
+    <tr>
+        <th>values</th>
+        <td>array</td>
+        <td></td>
+        <td>Allowed values</td>
+    </tr>
+    <tr>
+        <th>message</th>
+        <td>string</td>
+        <td><i>required</i></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>post-format</th>
+        <td>callback</td>
+        <td><i>none</i></td>
+        <td>Takes the value as only parameter and returns the new value</td>
+    </tr>
 
 </table>
 
@@ -156,67 +156,67 @@ The requires fields currently are: name and message
 ### Core parameter types
 
 <table>
-	<tr>
-		<th>Name</th>
-		<th>PHP return type</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<th>string</th>
-		<td>string</td>
-		<td>
-			Default type<br />
-			Supported options:
-			<ul>
-				<li>length: int or false (overrides minlength and maxlength)</li>
-				<li>minlength: int or false</li>
-				<li>maxlength: int or false</li>
-				<li>regex: string</li>
-			<ul>
-		</td>
-	</tr>
-	<tr>
-		<th>boolean</th>
-		<td>boolean</td>
-		<td>Accepts "yes", "no", "on", "off", "true" and "false"</td>
-	</tr>
-	<tr>
-		<th>float</th>
-		<td>float</td>
-		<td>
-			Supported options:
-			<ul>
-				<li>lowerbound: int, float or false</li>
-				<li>upperbound: int, float or false</li>
-				<li>range: [lowerbound, upperbound]</li>
-				<li>withinrange: [float $point, float $deviation]</li>
-			<ul>
-		</td>
-	</tr>
-	<tr>
-		<th>integer</th>
-		<td>integer</td>
-		<td>
-			Supported options: same as for float
-		</td>
-	</tr>
-	<tr>
-		<th>dimension</th>
-		<td>string</td>
-		<td>
-			Value for a width or height attribute in HTML<br />
-			Supported options:
-			<ul>
-				<li>allowauto: bool</li>
-				<li>maxpercentage: int</li>
-				<li>minpercentage: int</li>
-				<li>units: array of string</li>
-				<li>defaultunit: string</li>
-				<li>lowerbound: int, float or false</li>
-				<li>upperbound: int, float or false</li>
-			<ul>
-		</td>
-	</tr>
+    <tr>
+        <th>Name</th>
+        <th>PHP return type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <th>string</th>
+        <td>string</td>
+        <td>
+            Default type<br />
+            Supported options:
+            <ul>
+                <li>length: int or false (overrides minlength and maxlength)</li>
+                <li>minlength: int or false</li>
+                <li>maxlength: int or false</li>
+                <li>regex: string</li>
+            <ul>
+        </td>
+    </tr>
+    <tr>
+        <th>boolean</th>
+        <td>boolean</td>
+        <td>Accepts "yes", "no", "on", "off", "true" and "false"</td>
+    </tr>
+    <tr>
+        <th>float</th>
+        <td>float</td>
+        <td>
+            Supported options:
+            <ul>
+                <li>lowerbound: int, float or false</li>
+                <li>upperbound: int, float or false</li>
+                <li>range: [lowerbound, upperbound]</li>
+                <li>withinrange: [float $point, float $deviation]</li>
+            <ul>
+        </td>
+    </tr>
+    <tr>
+        <th>integer</th>
+        <td>integer</td>
+        <td>
+            Supported options: same as for float
+        </td>
+    </tr>
+    <tr>
+        <th>dimension</th>
+        <td>string</td>
+        <td>
+            Value for a width or height attribute in HTML<br />
+            Supported options:
+            <ul>
+                <li>allowauto: bool</li>
+                <li>maxpercentage: int</li>
+                <li>minpercentage: int</li>
+                <li>units: array of string</li>
+                <li>defaultunit: string</li>
+                <li>lowerbound: int, float or false</li>
+                <li>upperbound: int, float or false</li>
+            <ul>
+        </td>
+    </tr>
 </table>
 
 ## Defining parameter types
@@ -252,19 +252,19 @@ $paramDefinitions[] = array(
 );
 
 $parameterDefinitions = [
-	'username' => [
-		'minlength' => 1,
-		'maxlength' => 20
-	],
-	'job' => [
-		'default' => 'unknown',
-		'values' => [ 'Developer', 'Designer', 'Peasant' ]
-	],
-	'favourite-numbers' => [
-		'type' => 'int',
-		'islist' => true,
-		'default' => []
-	]
+    'username' => [
+        'minlength' => 1,
+        'maxlength' => 20
+    ],
+    'job' => [
+        'default' => 'unknown',
+        'values' => [ 'Developer', 'Designer', 'Peasant' ]
+    ],
+    'favourite-numbers' => [
+        'type' => 'int',
+        'islist' => true,
+        'default' => []
+    ]
 ]
 ```
 
@@ -274,7 +274,7 @@ $parameterDefinitions = [
 $processor = ParamProcessor\Processor::newDefault();
 
 $processor->setParameters(
-	[
+    [
         'username' => 'Jeroen',
         'favourite-numbers' => '42, 1337, not a number',
     ],
@@ -282,8 +282,8 @@ $processor->setParameters(
 );
 
 foreach ($processor->processParameters()->getParameters() $parameter) {
-	echo $parameter->getName();
-	var_dump($parameter->getValue());
+    echo $parameter->getName();
+    var_dump($parameter->getValue());
 };
 
 // username: string(6) "Jeroen"
@@ -295,7 +295,7 @@ Alternative way to input parameters:
 
 ```php
 $processor->setFunctionParams(
-	[
+    [
         'username = Jeroen',
         'favourite-numbers=42, 1337, not a number',
     ],
