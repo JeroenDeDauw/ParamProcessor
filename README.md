@@ -260,6 +260,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and [Semantic MediaWiki
 ### 1.4.0 (dev)
 
 * Dropped support for PHP older than 7.1
+* Added `ParameterTypes` to allow gradual migration away from the now deprecated `$wgParamDefinitions`
 
 ### 1.3.4 (2018-05-05)
 
