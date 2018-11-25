@@ -169,22 +169,52 @@ The requires fields currently are: name and message
 	<tr>
 		<th>float</th>
 		<td>float</td>
-		<td></td>
+		<td>
+			Supported options:
+			<ul>
+				<li>lowerbound: int, float or false</li>
+				<li>upperbound: int, float or false</li>
+				<li>range: [lowerbound, upperbound]</li>
+				<li>withinrange: [float $point, float $deviation]</li>
+			<ul>
+		</td>
 	</tr>
 	<tr>
 		<th>integer</th>
 		<td>integer</td>
-		<td></td>
+		<td>
+			Supported options: same as for float
+		</td>
 	</tr>
 	<tr>
 		<th>string</th>
 		<td>string</td>
-		<td></td>
+		<td>
+			Supported options:
+			<ul>
+				<li>length: int or false (overrides minlength and maxlength)</li>
+				<li>minlength: int or false</li>
+				<li>maxlength: int or false</li>
+				<li>regex: string</li>
+			<ul>
+		</td>
 	</tr>
 	<tr>
 		<th>dimension</th>
 		<td>string</td>
-		<td>Value for a width or height attribute in HTML</td>
+		<td>
+			Value for a width or height attribute in HTML<br />
+			Supported options:
+			<ul>
+				<li>allowauto: bool</li>
+				<li>maxpercentage: int</li>
+				<li>minpercentage: int</li>
+				<li>units: array of string</li>
+				<li>defaultunit: string</li>
+				<li>lowerbound: int, float or false</li>
+				<li>upperbound: int, float or false</li>
+			<ul>
+		</td>
 	</tr>
 </table>
 
