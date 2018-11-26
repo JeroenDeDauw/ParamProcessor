@@ -378,7 +378,7 @@ final class Param implements IParam {
 		}
 
 		if ( $this->definition->isList() ) {
-			return count( $this->errors ) >= count( $this->value );
+			return $this->errors !== [] && $this->value === [];
 		}
 
 		return $this->errors !== [];

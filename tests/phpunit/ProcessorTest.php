@@ -412,12 +412,12 @@ class ProcessorTest extends TestCase {
 		);
 	}
 
-	public function testInvalidListElementsAreOmittedEvenWhenThereIsADefault() {
+	public function testListParametersAreNotDefaultedWhenSomeElementsAreInvalid() {
 		$processor = Processor::newDefault();
 
 		$processor->setFunctionParams(
 			[
-				'some-list=1,2,3, ,4,'
+				'some-list=1,nan'
 			],
 			[
 				'some-list' => [
@@ -430,7 +430,30 @@ class ProcessorTest extends TestCase {
 		);
 
 		$this->assertSame(
-			[ 1, 2, 3, 4 ],
+			[ 1 ],
+			$processor->processParameters()->getParameters()['some-list']->getValue()
+		);
+	}
+
+	public function testListParametersAreDefaultedWhenAllElementsAreInvalid() {
+		$processor = Processor::newDefault();
+
+		$processor->setFunctionParams(
+			[
+				'some-list=such,nan'
+			],
+			[
+				'some-list' => [
+					'type' => 'integer',
+					'message' => 'test',
+					'islist' => true,
+					'default' => [ 42 ]
+				],
+			]
+		);
+
+		$this->assertSame(
+			[ 42 ],
 			$processor->processParameters()->getParameters()['some-list']->getValue()
 		);
 	}

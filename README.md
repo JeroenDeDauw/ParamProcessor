@@ -303,6 +303,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.4.2 (2018-11-26)
+
+* Fixed defaulting behaviour of list parameters
+
 ### 1.4.1 (2018-11-26)
 
 * List parameters are no longer set to their default when a single value is invalid
