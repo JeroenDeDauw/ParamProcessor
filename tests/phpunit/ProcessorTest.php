@@ -412,4 +412,27 @@ class ProcessorTest extends TestCase {
 		);
 	}
 
+	public function testInvalidListElementsAreOmittedEvenWhenThereIsADefault() {
+		$processor = Processor::newDefault();
+
+		$processor->setFunctionParams(
+			[
+				'some-list=1,2,3, ,4,'
+			],
+			[
+				'some-list' => [
+					'type' => 'integer',
+					'message' => 'test',
+					'islist' => true,
+					'default' => []
+				],
+			]
+		);
+
+		$this->assertSame(
+			[ 1, 2, 3, 4 ],
+			$processor->processParameters()->getParameters()['some-list']->getValue()
+		);
+	}
+
 }

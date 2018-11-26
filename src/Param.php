@@ -165,6 +165,7 @@ final class Param implements IParam {
 			}
 		}
 
+
 		if ( $this->definition->isList() ) {
 			$this->value = explode( $this->definition->getDelimiter(), $this->value );
 
@@ -366,9 +367,21 @@ final class Param implements IParam {
 	 * @since 1.0
 	 */
 	protected function setToDefaultIfNeeded() {
-		if ( $this->errors !== [] && !$this->hasFatalError() ) {
+		if ( $this->shouldSetToDefault() ) {
 			$this->setToDefault();
 		}
+	}
+
+	private function shouldSetToDefault(): bool {
+		if ( $this->hasFatalError() ) {
+			return false;
+		}
+
+		if ( $this->definition->isList() ) {
+			return count( $this->errors ) >= count( $this->value );
+		}
+
+		return $this->errors !== [];
 	}
 
 	/**

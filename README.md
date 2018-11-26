@@ -303,6 +303,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.4.1 (2018-11-26)
+
+* List parameters are no longer set to their default when a single value is invalid
+
 ### 1.4.0 (2018-11-25)
 
 * Dropped support for PHP older than 7.1
