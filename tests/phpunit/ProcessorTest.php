@@ -289,6 +289,53 @@ class ProcessorTest extends TestCase {
 		return [ $params, $definitions, $options, $expected ];
 	}
 
+	/**
+	 * List parameters to test if list handling works correctly.
+	 *
+	 * @return array
+	 */
+	private function getPositionalParams() {
+		$params = [
+			' foobar ',
+			' <span class="warning">Foobar!</span>',
+		];
+
+		$definitions = [
+			'hugo' => [
+				'type' => 'string',
+			],
+			'benno' => [
+				'type' => 'string',
+			],
+		];
+
+		$options = new Options();
+		$options->setTrimValues( true );
+
+		$expected = [
+			'hugo' => 'foobar',
+			'benno' => '<span class="warning">Foobar!</span>'
+		];
+
+		$defaultParams = [ 'hugo', 'benno' ];
+
+		return [ $params, $definitions, $options, $expected, $defaultParams ];
+	}
+
+
+	protected function normalizeArgLists( &$argLists ) {
+
+		foreach ( $argLists as &$argList ) {
+			foreach ( $argList[ 1 ] as $key => &$definition ) {
+				$definition[ 'message' ] = 'test-' . $key;
+			}
+
+			if ( !array_key_exists( 2, $argList ) ) {
+				$argList[ 2 ] = new Options();
+			}
+		}
+	}
+
 	public function parameterProvider() {
 		// $params, $definitions [, $options]
 		$argLists = [];
@@ -303,15 +350,37 @@ class ProcessorTest extends TestCase {
 
 		$argLists[] = $this->getListParams();
 
-		foreach ( $argLists as &$argList ) {
-			foreach ( $argList[1] as $key => &$definition ) {
-				$definition['message'] = 'test-' . $key;
-			}
+		$this->normalizeArgLists( $argLists );
 
-			if ( !array_key_exists( 2, $argList ) ) {
-				$argList[2] = new Options();
+		return $argLists;
+	}
+
+	public function rawParameterProvider() {
+
+		$argLists = [];
+
+		$argLists[] = $this->getSimpleParams();
+
+		//$argLists[] = $this->getDefaultingParams();
+
+		//$argLists[] = $this->getTypedParams();
+
+		$argLists[] = $this->getUncleanParams();
+
+		$argLists[] = $this->getListParams();
+
+		$argLists[] = $this->getPositionalParams();
+
+		// transform into raw parameters
+		foreach ( $argLists as $i => $argList ) {
+			$rawParams = [];
+			foreach ( $argList[0] as $paramName => $paramValue ) {
+				$rawParams[] = is_string( $paramName )? "$paramName=$paramValue" : $paramValue;
 			}
+			$argLists[ $i ][ 0 ] = $rawParams;
 		}
+
+		$this->normalizeArgLists( $argLists );
 
 		return $argLists;
 	}
@@ -334,6 +403,27 @@ class ProcessorTest extends TestCase {
 		$validator = Processor::newFromOptions( $options );
 
 		$validator->setParameters( $params, $definitions );
+
+		$processingResult = $validator->processParameters();
+
+		$actualValues = [];
+
+		foreach ( $processingResult->getParameters() as $param ) {
+			$actualValues[$param->getName()] = $param->getValue();
+		}
+
+		$this->assertEquals( $expected, $actualValues );
+
+
+	}
+
+	/**
+	 * @dataProvider rawParameterProvider
+	 */
+	public function testValidateRawParameters( array $params, array $definitions, Options $options, array $expected = [],  array $defaultParams = [] ) {
+		$validator = Processor::newFromOptions( $options );
+
+		$validator->setFunctionParams( $params, $definitions, $defaultParams );
 
 		$processingResult = $validator->processParameters();
 
