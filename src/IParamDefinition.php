@@ -53,7 +53,7 @@ interface IParamDefinition {
 	 *
 	 * @return string[]
 	 */
-	public function getAliases();
+	public function getAliases(): array;
 
 	/**
 	 * Returns the default value.
@@ -72,7 +72,7 @@ interface IParamDefinition {
 	 *
 	 * @return string
 	 */
-	public function getDelimiter();
+	public function getDelimiter(): string;
 
 	/**
 	 * Returns a list of dependencies the parameter has, in the form of
@@ -82,7 +82,7 @@ interface IParamDefinition {
 	 *
 	 * @return string[]
 	 */
-	public function getDependencies();
+	public function getDependencies(): array;
 
 	/**
 	 * Returns a message that will act as a description message for the parameter.
@@ -91,7 +91,7 @@ interface IParamDefinition {
 	 *
 	 * @return string
 	 */
-	public function getMessage();
+	public function getMessage(): string;
 
 	/**
 	 * Returns the parameters main name.
@@ -100,7 +100,7 @@ interface IParamDefinition {
 	 *
 	 * @return string
 	 */
-	public function getName();
+	public function getName(): string;
 
 	/**
 	 * Returns an identifier for the type of the parameter.
@@ -109,7 +109,7 @@ interface IParamDefinition {
 	 *
 	 * @return string
 	 */
-	public function getType();
+	public function getType(): string;
 
 	/**
 	 * Returns if the parameter has a certain alias.
@@ -120,7 +120,7 @@ interface IParamDefinition {
 	 *
 	 * @return boolean
 	 */
-	public function hasAlias( $alias );
+	public function hasAlias( string $alias ): bool;
 
 	/**
 	 * Returns if the parameter has a certain dependency.
@@ -131,7 +131,7 @@ interface IParamDefinition {
 	 *
 	 * @return boolean
 	 */
-	public function hasDependency( $dependency );
+	public function hasDependency( string $dependency ): bool;
 
 	/**
 	 * Returns if the parameter is a list or not.
@@ -140,7 +140,7 @@ interface IParamDefinition {
 	 *
 	 * @return boolean
 	 */
-	public function isList();
+	public function isList(): bool;
 
 	/**
 	 * Returns if the parameter is a required one or not.
@@ -149,7 +149,7 @@ interface IParamDefinition {
 	 *
 	 * @return boolean
 	 */
-	public function isRequired();
+	public function isRequired(): bool;
 
 	/**
 	 * Sets the default parameter value. Null indicates no default,
@@ -179,19 +179,17 @@ interface IParamDefinition {
 	 *
 	 * @param boolean $manipulateDefault
 	 */
-	public function setDoManipulationOfDefault( $manipulateDefault );
+	public function setDoManipulationOfDefault( bool $manipulateDefault );
 
 	/**
 	 * Sets a message for the parameter that will act as description.
-	 * This should be a message key, ie something that can be passed
-	 * to wfMsg. Not an actual text. If you do not have a message key,
-	 * but only a text, use setDescription instead.
+	 *
 	 *
 	 * @since 1.0
 	 *
 	 * @param string $message
 	 */
-	public function setMessage( $message );
+	public function setMessage( string $message );
 
 	/**
 	 * Returns if the parameter manipulations should be applied to the default value.
@@ -200,7 +198,7 @@ interface IParamDefinition {
 	 *
 	 * @return boolean
 	 */
-	public function shouldManipulateDefault();
+	public function shouldManipulateDefault(): bool;
 
 	/**
 	 * Returns a message key for a message describing the parameter type.
@@ -209,11 +207,10 @@ interface IParamDefinition {
 	 *
 	 * @return string
 	 */
-	public function getTypeMessage();
+	public function getTypeMessage(): string;
 
 	/**
 	 * Returns if the value should be trimmed before validation and any further processing.
-	 * @see IParamDefinition::trimDuringClean
 	 *
 	 * @since 1.0
 	 *
@@ -267,7 +264,7 @@ interface IParamDefinition {
 	 *
 	 * @param callable $validationFunction
 	 */
-	public function setValidationCallback( /* callable */ $validationFunction );
+	public function setValidationCallback( callable $validationFunction );
 
 	/**
 	 * Sets the parameter definition values contained in the provided array.

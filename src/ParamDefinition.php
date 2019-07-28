@@ -6,7 +6,6 @@ use Exception;
 
 use ValueParsers\ValueParser;
 use ValueParsers\NullParser;
-
 use ValueValidators\ValueValidator;
 use ValueValidators\NullValidator;
 
@@ -45,6 +44,19 @@ class ParamDefinition implements IParamDefinition {
 	 */
 	public static $accumulateParameterErrors = false;
 
+	protected $type;
+	protected $name;
+	protected $default;
+	protected $isList;
+
+	/**
+	 * A message that acts as description for the parameter or false when there is none.
+	 * Can be obtained via getMessage and set via setMessage.
+	 *
+	 * @var string
+	 */
+	protected $message = 'validator-message-nodesc';
+
 	/**
 	 * Indicates if the parameter value should trimmed during the clean process.
 	 *
@@ -73,31 +85,6 @@ class ParamDefinition implements IParamDefinition {
 	protected $dependencies = [];
 
 	/**
-	 * The default value for the parameter, or null when the parameter is required.
-	 *
-	 * @since 1.0
-	 *
-	 * @var mixed
-	 */
-	protected $default;
-
-	/**
-	 * The main name of the parameter.
-	 *
-	 * @since 1.0
-	 *
-	 * @var string
-	 */
-	protected $name;
-
-	/**
-	 * @since 1.0
-	 * @var boolean
-	 */
-	protected $isList;
-
-	/**
-	 * @since 1.0
 	 * @var string
 	 */
 	protected $delimiter = ',';
@@ -105,71 +92,39 @@ class ParamDefinition implements IParamDefinition {
 	/**
 	 * List of aliases for the parameter name.
 	 *
-	 * @since 1.0
-	 *
 	 * @var string[]
 	 */
 	protected $aliases = [];
 
 	/**
-	 * A message that acts as description for the parameter or false when there is none.
-	 * Can be obtained via getMessage and set via setMessage.
-	 *
-	 * @since 1.0
-	 *
-	 * @var string
-	 */
-	protected $message = 'validator-message-nodesc';
-
-	/**
 	 * Original array definition of the parameter
-	 *
-	 * @since 1.0
-	 *
 	 * @var array
 	 */
 	protected $options = [];
 
 	/**
-	 * @since 1.0
-	 *
 	 * @var ValueParser|null
 	 */
 	protected $parser = null;
 
 	/**
-	 * @since 1.0
-	 *
 	 * @var ValueValidator|null
 	 */
 	protected $validator = null;
 
 	/**
-	 * @since 0.1
-	 *
 	 * @var callable|null
 	 */
 	protected $validationFunction = null;
 
 	/**
-	 * @since 0.1
-	 *
-	 * @var string
-	 */
-	protected $type;
-
-	/**
-	 * Constructor.
-	 *
-	 * @since 1.0
-	 *
 	 * @param string $type
 	 * @param string $name
 	 * @param mixed $default Use null for no default (which makes the parameter required)
 	 * @param string $message
 	 * @param boolean $isList
 	 */
-	public function __construct( $type, $name, $default = null, $message = null, $isList = false ) {
+	public function __construct( string $type, string $name, $default = null, string $message = null, bool $isList = false ) {
 		$this->type = $type;
 		$this->name = $name;
 		$this->default = $default;
@@ -190,10 +145,7 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::trimDuringClean
-	 *
-	 * @since 1.0
-	 *
+	 * Returns if the value should be trimmed before validation and any further processing.
 	 * @return boolean|null
 	 */
 	public function trimDuringClean() {
@@ -201,26 +153,14 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::getAliases
-	 *
-	 * @since 1.0
-	 *
+	 * Returns the parameter name aliases.
 	 * @return string[]
 	 */
-	public function getAliases() {
+	public function getAliases(): array {
 		return $this->aliases;
 	}
 
-	/**
-	 * @see IParamDefinition::hasAlias
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $alias
-	 *
-	 * @return boolean
-	 */
-	public function hasAlias( $alias ) {
+	public function hasAlias( string $alias ): bool {
 		return in_array( $alias, $this->getAliases() );
 	}
 
@@ -233,7 +173,7 @@ class ParamDefinition implements IParamDefinition {
 	 *
 	 * @return boolean
 	 */
-	public function hasDependency( $dependency ) {
+	public function hasDependency( string $dependency ): bool {
 		return in_array( $dependency, $this->getDependencies() );
 	}
 
@@ -287,53 +227,33 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::getMessage
-	 *
-	 * @since 1.0
-	 *
-	 * @return string
+	 * Returns a message describing the parameter.
 	 */
-	public function getMessage() {
+	public function getMessage(): string {
 		return $this->message;
 	}
 
 	/**
-	 * @see IParamDefinition::setMessage
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $message
+	 * This should be a message key, ie something that can be passed
+	 * to wfMsg. Not an actual text.
 	 */
-	public function setMessage( $message ) {
+	public function setMessage( string $message ) {
 		$this->message = $message;
 	}
 
 	/**
-	 * @see IParamDefinition::setDoManipulationOfDefault
-	 *
-	 * @since 1.0
-	 *
-	 * @param boolean $doOrDoNotThereIsNoTry
+	 * Set if the parameter manipulations should be applied to the default value.
 	 */
-	public function setDoManipulationOfDefault( $doOrDoNotThereIsNoTry ) {
+	public function setDoManipulationOfDefault( bool $doOrDoNotThereIsNoTry ) {
 		$this->applyManipulationsToDefault = $doOrDoNotThereIsNoTry;
 	}
 
-	/**
-	 * @see IParamDefinition::shouldManipulateDefault
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function shouldManipulateDefault() {
+	public function shouldManipulateDefault(): bool {
 		return $this->applyManipulationsToDefault;
 	}
 
 	/**
-	 * @see IParamDefinition::addAliases
-	 *
-	 * @since 1.0
+	 * Adds one or more aliases for the parameter name.
 	 *
 	 * @param string|string[] $aliases
 	 */
@@ -343,9 +263,8 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::addDependencies
-	 *
-	 * @since 1.0
+	 * Adds one or more dependencies. There are the names of parameters
+	 * that need to be validated and formatted before this one.
 	 *
 	 * @param string|string[] $dependencies
 	 */
@@ -354,25 +273,14 @@ class ParamDefinition implements IParamDefinition {
 		$this->dependencies = array_merge( $this->dependencies, is_array( $args[0] ) ? $args[0] : $args );
 	}
 
-	/**
-	 * @see IParamDefinition::getName
-	 *
-	 * @since 1.0
-	 *
-	 * @return string
-	 */
-	public function getName() {
+	public function getName(): string {
 		return $this->name;
 	}
 
 	/**
 	 * Returns a message key for a message describing the parameter type.
-	 *
-	 * @since 1.0
-	 *
-	 * @return string
 	 */
-	public function getTypeMessage() {
+	public function getTypeMessage(): string {
 		$message = 'validator-type-' . $this->getType();
 
 		if ( $this->isList() ) {
@@ -383,53 +291,34 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::getDependencies
-	 *
-	 * @since 1.0
+	 * Returns a list of dependencies the parameter has, in the form of
+	 * other parameter names.
 	 *
 	 * @return string[]
 	 */
-	public function getDependencies() {
+	public function getDependencies(): array {
 		return $this->dependencies;
 	}
 
-	/**
-	 * @see IParamDefinition::isRequired
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function isRequired() {
+	public function isRequired(): bool {
 		return is_null( $this->default );
 	}
 
-	/**
-	 * @see IParamDefinition::isList
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function isList() {
+	public function isList(): bool {
 		return $this->isList;
 	}
 
 	/**
-	 * @see IParamDefinition::getDelimiter
-	 *
-	 * @since 1.0
-	 *
-	 * @return string
+	 * Returns the delimiter to use to split the raw value in case the
+	 * parameter is a list.
 	 */
-	public function getDelimiter() {
+	public function getDelimiter(): string {
 		return $this->delimiter;
 	}
 
 	/**
-	 * @see IParamDefinition::setDelimiter
-	 *
-	 * @since 1.0
+	 * Sets the delimiter to use to split the raw value in case the
+	 * parameter is a list.
 	 *
 	 * @param $delimiter string
 	 */
@@ -438,9 +327,7 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::setArrayValues
-	 *
-	 * @since 1.0
+	 * Sets the parameter definition values contained in the provided array.
 	 *
 	 * @param array $param
 	 */
@@ -479,6 +366,10 @@ class ParamDefinition implements IParamDefinition {
 	 * @param IParam[] $params
 	 */
 	public function format( IParam $param, array &$definitions, array $params ) {
+		/**
+		 * @var Param $param
+		 */
+
 		if ( $this->isList() && is_array( $param->getValue() ) ) {
 			// TODO: if isList returns true, the value should be an array.
 			// The second check here is to avoid a mysterious error.
@@ -516,7 +407,6 @@ class ParamDefinition implements IParamDefinition {
 	 * @param $params array of IParam
 	 */
 	protected function formatList( IParam $param, array &$definitions, array $params ) {
-		// TODO
 	}
 
 	/**
@@ -534,7 +424,6 @@ class ParamDefinition implements IParamDefinition {
 	 */
 	protected function formatValue( $value, IParam $param, array &$definitions, array $params ) {
 		return $value;
-		// No-op
 	}
 
 	/**
@@ -545,12 +434,12 @@ class ParamDefinition implements IParamDefinition {
 	 *
 	 * @since 1.0
 	 *
-	 * @param IParamDefinition[] $definitions
+	 * @param ParamDefinition[] $definitions
 	 *
-	 * @return IParamDefinition[]
+	 * @return ParamDefinition[]
 	 * @throws Exception
 	 */
-	public static function getCleanDefinitions( array $definitions ) {
+	public static function getCleanDefinitions( array $definitions ): array {
 		$cleanList = [];
 
 		foreach ( $definitions as $key => $definition ) {
@@ -573,24 +462,16 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::getType
-	 *
-	 * @since 1.0
-	 *
-	 * @return string
+	 * Returns an identifier for the type of the parameter.
 	 */
-	public function getType() {
+	public function getType(): string {
 		return $this->type;
 	}
 
 	/**
-	 * @see IParamDefinition::getValueParser
-	 *
-	 * @since 1.0
-	 *
-	 * @return ValueParser
+	 * Returns a ValueParser object to parse the parameters value.
 	 */
-	public function getValueParser() {
+	public function getValueParser(): ValueParser {
 		if ( $this->parser === null ) {
 			$this->parser = new NullParser();
 		}
@@ -599,13 +480,9 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::getValueValidator
-	 *
-	 * @since 1.0
-	 *
-	 * @return ValueValidator
+	 * Returns a ValueValidator that can be used to validate the parameters value.
 	 */
-	public function getValueValidator() {
+	public function getValueValidator(): ValueValidator {
 		if ( $this->validator === null ) {
 			$this->validator = new NullValidator();
 		}
@@ -613,56 +490,32 @@ class ParamDefinition implements IParamDefinition {
 		return $this->validator;
 	}
 
-	/**
-	 * @see IParamDefinition::setValueParser
-	 *
-	 * @since 1.0
-	 *
-	 * @param ValueParser $parser
-	 */
 	public function setValueParser( ValueParser $parser ) {
 		$this->parser = $parser;
 	}
 
-	/**
-	 * @see IParamDefinition::setValueValidator
-	 *
-	 * @since 1.0
-	 *
-	 * @param ValueValidator $validator
-	 */
 	public function setValueValidator( ValueValidator $validator ) {
 		$this->validator = $validator;
 	}
 
 	/**
-	 * @see IParamDefinition::setValidationCallback
+	 * Sets a validation function that will be run before the ValueValidator.
 	 *
-	 * @since 1.0
-	 *
-	 * @param callable $validationFunction
+	 * This can be used instead of a ValueValidator where validation is very
+	 * trivial, ie checking if something is a boolean can be done with is_bool.
 	 */
-	public function setValidationCallback( /* callable */ $validationFunction ) {
+	public function setValidationCallback( ?callable $validationFunction ) {
 		$this->validationFunction = $validationFunction;
 	}
 
 	/**
-	 * @see IParamDefinition::getValidationCallback
-	 *
-	 * @since 1.0
-	 *
-	 * @return callable|null
+	 * @see setValidationCallback
 	 */
-	public function getValidationCallback() {
+	public function getValidationCallback(): ?callable {
 		return $this->validationFunction;
 	}
 
-	/**
-	 * @since 0.1
-	 *
-	 * @return array
-	 */
-	public function getOptions() {
+	public function getOptions(): array {
 		return $this->options;
 	}
 

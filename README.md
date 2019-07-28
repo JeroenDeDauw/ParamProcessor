@@ -172,7 +172,7 @@ The requires fields currently are: name and message
 				<li>minlength: int or false</li>
 				<li>maxlength: int or false</li>
 				<li>regex: string</li>
-			<ul>
+			</ul>
 		</td>
 	</tr>
 	<tr>
@@ -190,7 +190,7 @@ The requires fields currently are: name and message
 				<li>upperbound: int, float or false</li>
 				<li>range: [lowerbound, upperbound]</li>
 				<li>withinrange: [float $point, float $deviation]</li>
-			<ul>
+			</ul>
 		</td>
 	</tr>
 	<tr>
@@ -214,7 +214,7 @@ The requires fields currently are: name and message
 				<li>defaultunit: string</li>
 				<li>lowerbound: int, float or false</li>
 				<li>upperbound: int, float or false</li>
-			<ul>
+			</ul>
 		</td>
 	</tr>
 </table>
@@ -302,6 +302,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 [Semantic MediaWiki](https://semantic-mediawiki.org/) projects.
 
 ## Release notes
+
+### 1.5.0 (2019-07-28)
+
+* Improved code comments
 
 ### 1.4.2 (2018-11-26)
 
