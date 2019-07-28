@@ -34,6 +34,8 @@ class ParamDefinitionFactory {
 	private $typeToComponent = [];
 
 	/**
+	 * Returns a ParamDefinitionFactory that already has the core parameter types (@see ParameterTypes) registered.
+	 *
 	 * @since 1.6
 	 */
 	public static function newDefault(): self {
@@ -96,7 +98,7 @@ class ParamDefinitionFactory {
 	 * @param string $type
 	 * @param array $data
 	 *
-	 * @return boolean Indicates if the type was registered
+	 * @return boolean DEPRECATED since 1.6 - Indicates if the type was registered
 	 */
 	public function registerType( $type, array $data ) {
 		if ( array_key_exists( $type, $this->typeToClass ) ) {
