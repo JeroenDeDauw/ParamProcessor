@@ -303,7 +303,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
-### 1.6.0 (dev)
+### 1.6.0 (2019-07-28)
 
 * Added `Processor::setParameterDefinitions`
 * Deprecated second parameter of `Processor::setParameters` in favour of `setParameterDefinitions`
