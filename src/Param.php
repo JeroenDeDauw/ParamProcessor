@@ -155,42 +155,65 @@ final class Param implements IParam {
 	 * @param Options $options
 	 */
 	protected function cleanValue( Options $options ) {
-		$this->value = $this->originalValue;
-
-		$trim = $this->getDefinition()->trimDuringClean();
-
-		if ( $trim === true || ( is_null( $trim ) && $options->trimValues() ) ) {
-			if ( is_string( $this->value ) ) {
-				$this->value = trim( $this->value );
-			}
+		if ( $this->definition->isList() ) {
+			$this->value = explode( $this->definition->getDelimiter(), $this->originalValue );
+		}
+		else {
+			$this->value = $this->originalValue;
 		}
 
+		if ( $this->shouldTrim( $options ) ) {
+			$this->trimValue();
+		}
 
-		if ( $this->definition->isList() ) {
-			$this->value = explode( $this->definition->getDelimiter(), $this->value );
+		if ( $this->shouldLowercase( $options ) ) {
+			$this->lowercaseValue();
+		}
+	}
 
-			if ( $trim === true || ( is_null( $trim ) && $options->trimValues() ) ) {
-				foreach ( $this->value as &$element ) {
-					if ( is_string( $element ) ) {
-						$element = trim( $element );
-					}
+	private function shouldTrim( Options $options ): bool {
+		$trim = $this->definition->trimDuringClean();
+
+		if ( $trim === true ) {
+			return true;
+		}
+
+		return is_null( $trim ) && $options->trimValues();
+	}
+
+	private function trimValue() {
+		if ( is_string( $this->value ) ) {
+			$this->value = trim( $this->value );
+		}
+		elseif ( $this->definition->isList() ) {
+			foreach ( $this->value as &$element ) {
+				if ( is_string( $element ) ) {
+					$element = trim( $element );
 				}
 			}
+		}
+	}
+
+	private function shouldLowercase( Options $options ): bool {
+		if ( $options->lowercaseValues() ) {
+			return true;
 		}
 
 		$definitionOptions = $this->definition->getOptions();
 
-		if ( $options->lowercaseValues() || ( array_key_exists( 'tolower', $definitionOptions ) && $definitionOptions['tolower'] ) ) {
-			if ( $this->definition->isList() ) {
-				foreach ( $this->value as &$element ) {
-					if ( is_string( $element ) ) {
-						$element = strtolower( $element );
-					}
+		return array_key_exists( 'tolower', $definitionOptions ) && $definitionOptions['tolower'];
+	}
+
+	private function lowercaseValue() {
+		if ( $this->definition->isList() ) {
+			foreach ( $this->value as &$element ) {
+				if ( is_string( $element ) ) {
+					$element = strtolower( $element );
 				}
 			}
-			elseif ( is_string( $this->value ) ) {
-				$this->value = strtolower( $this->value );
-			}
+		}
+		elseif ( is_string( $this->value ) ) {
+			$this->value = strtolower( $this->value );
 		}
 	}
 
