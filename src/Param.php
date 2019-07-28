@@ -74,7 +74,7 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @var array of ProcessingError
+	 * @var ProcessingError[]
 	 */
 	protected $errors = [];
 
@@ -244,14 +244,7 @@ final class Param implements IParam {
 		}
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param Options $options
-	 *
-	 * @return ValueParser
-	 */
-	public function getValueParser( Options $options ) {
+	public function getValueParser( Options $options ): ValueParser {
 		$parser = $this->definition->getValueParser();
 
 		if ( get_class( $parser ) === NullParser::class ) {
@@ -333,23 +326,11 @@ final class Param implements IParam {
 		return [ $value ];
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param string $message
-	 */
-	protected function registerProcessingError( $message ) {
+	protected function registerProcessingError( string $message ) {
 		$this->errors[] = $this->newProcessingError( $message );
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param string $message
-	 *
-	 * @return ProcessingError
-	 */
-	protected function newProcessingError( $message ) {
+	protected function newProcessingError( string $message ): ProcessingError {
 		$severity = $this->isRequired() ? ProcessingError::SEVERITY_FATAL : ProcessingError::SEVERITY_NORMAL;
 		return new ProcessingError( $message, $severity );
 	}
@@ -411,7 +392,7 @@ final class Param implements IParam {
 	 * @throws Exception
 	 * @return string
 	 */
-	public function getOriginalName() {
+	public function getOriginalName(): string {
 		if ( $this->setCount == 0 ) {
 			throw new Exception( 'No user input set to the parameter yet, so the original name does not exist' );
 		}
@@ -424,7 +405,7 @@ final class Param implements IParam {
 	 * @since 1.0
 	 *
 	 * @throws Exception
-	 * @return string
+	 * @return mixed
 	 */
 	public function getOriginalValue() {
 		if ( $this->setCount == 0 ) {
@@ -454,21 +435,11 @@ final class Param implements IParam {
 		$this->value = $this->definition->getDefault();
 	}
 
-	/**
-	 * Gets if the parameter was set to it's default.
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function wasSetToDefault() {
+	public function wasSetToDefault(): bool {
 		return $this->defaulted;
 	}
 
-	/**
-	 * @return boolean
-	 */
-	public function hasFatalError() {
+	public function hasFatalError(): bool {
 		foreach ( $this->errors as $error ) {
 			if ( $error->isFatal() ) {
 				return true;
@@ -516,7 +487,7 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @return boolean
+	 * @return string
 	 */
 	public function getName() {
 		return $this->definition->getName();
@@ -529,7 +500,7 @@ final class Param implements IParam {
 	 *
 	 * @return string[]
 	 */
-	public function getAliases() {
+	public function getAliases(): array {
 		return $this->definition->getAliases();
 	}
 
