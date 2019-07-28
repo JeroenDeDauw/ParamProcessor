@@ -8,10 +8,10 @@ use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
 
 /**
+ * NOTE: as of version 1.0, this class is for internal use only!
+ *
  * Parameter class, representing the "instance" of a parameter.
  * Holds a ParamDefinition, user provided input (name & value) and processing state.
- *
- * NOTE: as of version 1.0, this class is for internal use only!
  *
  * @since 1.0
  *
@@ -74,7 +74,7 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @var array of ProcessingError
+	 * @var ProcessingError[]
 	 */
 	protected $errors = [];
 
@@ -135,8 +135,6 @@ final class Param implements IParam {
 	}
 
 	/**
-	 * Sets the value.
-	 *
 	 * @since 1.0
 	 *
 	 * @param mixed $value
@@ -148,49 +146,70 @@ final class Param implements IParam {
 	/**
 	 * Sets the $value to a cleaned value of $originalValue.
 	 *
-	 * TODO: the per-parameter lowercaseing and trimming here needs some thought
-	 *
 	 * @since 1.0
 	 *
 	 * @param Options $options
 	 */
 	protected function cleanValue( Options $options ) {
-		$this->value = $this->originalValue;
-
-		$trim = $this->getDefinition()->trimDuringClean();
-
-		if ( $trim === true || ( is_null( $trim ) && $options->trimValues() ) ) {
-			if ( is_string( $this->value ) ) {
-				$this->value = trim( $this->value );
-			}
+		if ( $this->definition->isList() ) {
+			$this->value = explode( $this->definition->getDelimiter(), $this->originalValue );
+		}
+		else {
+			$this->value = $this->originalValue;
 		}
 
+		if ( $this->shouldTrim( $options ) ) {
+			$this->trimValue();
+		}
 
-		if ( $this->definition->isList() ) {
-			$this->value = explode( $this->definition->getDelimiter(), $this->value );
+		if ( $this->shouldLowercase( $options ) ) {
+			$this->lowercaseValue();
+		}
+	}
 
-			if ( $trim === true || ( is_null( $trim ) && $options->trimValues() ) ) {
-				foreach ( $this->value as &$element ) {
-					if ( is_string( $element ) ) {
-						$element = trim( $element );
-					}
+	private function shouldTrim( Options $options ): bool {
+		$trim = $this->definition->trimDuringClean();
+
+		if ( $trim === true ) {
+			return true;
+		}
+
+		return is_null( $trim ) && $options->trimValues();
+	}
+
+	private function trimValue() {
+		if ( is_string( $this->value ) ) {
+			$this->value = trim( $this->value );
+		}
+		elseif ( $this->definition->isList() ) {
+			foreach ( $this->value as &$element ) {
+				if ( is_string( $element ) ) {
+					$element = trim( $element );
 				}
 			}
+		}
+	}
+
+	private function shouldLowercase( Options $options ): bool {
+		if ( $options->lowercaseValues() ) {
+			return true;
 		}
 
 		$definitionOptions = $this->definition->getOptions();
 
-		if ( $options->lowercaseValues() || ( array_key_exists( 'tolower', $definitionOptions ) && $definitionOptions['tolower'] ) ) {
-			if ( $this->definition->isList() ) {
-				foreach ( $this->value as &$element ) {
-					if ( is_string( $element ) ) {
-						$element = strtolower( $element );
-					}
+		return array_key_exists( 'tolower', $definitionOptions ) && $definitionOptions['tolower'];
+	}
+
+	private function lowercaseValue() {
+		if ( $this->definition->isList() ) {
+			foreach ( $this->value as &$element ) {
+				if ( is_string( $element ) ) {
+					$element = strtolower( $element );
 				}
 			}
-			elseif ( is_string( $this->value ) ) {
-				$this->value = strtolower( $this->value );
-			}
+		}
+		elseif ( is_string( $this->value ) ) {
+			$this->value = strtolower( $this->value );
 		}
 	}
 
@@ -225,14 +244,7 @@ final class Param implements IParam {
 		}
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param Options $options
-	 *
-	 * @return ValueParser
-	 */
-	public function getValueParser( Options $options ) {
+	public function getValueParser( Options $options ): ValueParser {
 		$parser = $this->definition->getValueParser();
 
 		if ( get_class( $parser ) === NullParser::class ) {
@@ -314,23 +326,11 @@ final class Param implements IParam {
 		return [ $value ];
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param string $message
-	 */
-	protected function registerProcessingError( $message ) {
+	protected function registerProcessingError( string $message ) {
 		$this->errors[] = $this->newProcessingError( $message );
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param string $message
-	 *
-	 * @return ProcessingError
-	 */
-	protected function newProcessingError( $message ) {
+	protected function newProcessingError( string $message ): ProcessingError {
 		$severity = $this->isRequired() ? ProcessingError::SEVERITY_FATAL : ProcessingError::SEVERITY_NORMAL;
 		return new ProcessingError( $message, $severity );
 	}
@@ -392,7 +392,7 @@ final class Param implements IParam {
 	 * @throws Exception
 	 * @return string
 	 */
-	public function getOriginalName() {
+	public function getOriginalName(): string {
 		if ( $this->setCount == 0 ) {
 			throw new Exception( 'No user input set to the parameter yet, so the original name does not exist' );
 		}
@@ -405,7 +405,7 @@ final class Param implements IParam {
 	 * @since 1.0
 	 *
 	 * @throws Exception
-	 * @return string
+	 * @return mixed
 	 */
 	public function getOriginalValue() {
 		if ( $this->setCount == 0 ) {
@@ -435,21 +435,11 @@ final class Param implements IParam {
 		$this->value = $this->definition->getDefault();
 	}
 
-	/**
-	 * Gets if the parameter was set to it's default.
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function wasSetToDefault() {
+	public function wasSetToDefault(): bool {
 		return $this->defaulted;
 	}
 
-	/**
-	 * @return boolean
-	 */
-	public function hasFatalError() {
+	public function hasFatalError(): bool {
 		foreach ( $this->errors as $error ) {
 			if ( $error->isFatal() ) {
 				return true;
@@ -497,7 +487,7 @@ final class Param implements IParam {
 	 *
 	 * @since 1.0
 	 *
-	 * @return boolean
+	 * @return string
 	 */
 	public function getName() {
 		return $this->definition->getName();
@@ -510,7 +500,7 @@ final class Param implements IParam {
 	 *
 	 * @return string[]
 	 */
-	public function getAliases() {
+	public function getAliases(): array {
 		return $this->definition->getAliases();
 	}
 

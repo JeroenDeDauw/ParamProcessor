@@ -106,10 +106,6 @@ class Processor {
 	 *        it would happen with default parameters that still have a name as well.
 	 */
 	public function setFunctionParams( array $rawParams, array $parameterDefinitions, array $defaultParams = [] ) {
-		$parameters = [];
-
-		$nr = 0;
-		$defaultNr = 0;
 		$lastUnnamedDefaultNr = -1;
 
 		/*
@@ -125,6 +121,10 @@ class Processor {
 				break;
 			}
 		}
+
+		$parameters = [];
+		$nr = 0;
+		$defaultNr = 0;
 
 		foreach ( $rawParams as $arg ) {
 			// Only take into account strings. If the value is not a string,
