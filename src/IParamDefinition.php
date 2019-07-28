@@ -267,7 +267,7 @@ interface IParamDefinition {
 	 *
 	 * @param callable $validationFunction
 	 */
-	public function setValidationCallback( /* callable */ $validationFunction );
+	public function setValidationCallback( callable $validationFunction );
 
 	/**
 	 * Sets the parameter definition values contained in the provided array.
