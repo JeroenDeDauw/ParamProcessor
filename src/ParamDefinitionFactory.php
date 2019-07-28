@@ -6,7 +6,7 @@ use Exception;
 use OutOfBoundsException;
 
 /**
- * Factory for IParamDefinition implementing objects.
+ * Factory for ParamDefinition implementing objects.
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -14,7 +14,7 @@ use OutOfBoundsException;
 class ParamDefinitionFactory {
 
 	/**
-	 * Maps parameter type to handling IParameterDefinition implementing class.
+	 * Maps parameter type to handling ParameterDefinition implementing class.
 	 *
 	 * @since 1.0
 	 *
@@ -121,7 +121,7 @@ class ParamDefinitionFactory {
 	}
 
 	/**
-	 * Creates a new instance of a IParamDefinition based on the provided type.
+	 * Creates a new instance of a ParamDefinition based on the provided type.
 	 *
 	 * @since 1.0
 	 *
@@ -131,10 +131,10 @@ class ParamDefinitionFactory {
 	 * @param string $message
 	 * @param boolean $isList
 	 *
-	 * @return IParamDefinition
+	 * @return ParamDefinition
 	 * @throws OutOfBoundsException
 	 */
-	public function newDefinition( $type, $name, $default, $message, $isList = false ) {
+	public function newDefinition( string $type, string $name, $default, string $message, bool $isList = false ): ParamDefinition {
 		if ( !array_key_exists( $type, $this->typeToClass ) ) {
 			throw new OutOfBoundsException( 'Unknown parameter type "' . $type . '".' );
 		}
@@ -142,7 +142,7 @@ class ParamDefinitionFactory {
 		$class = $this->typeToClass[$type];
 
 		/**
-		 * @var IParamDefinition $definition
+		 * @var ParamDefinition $definition
 		 */
 		$definition = new $class(
 			$type,
@@ -197,9 +197,9 @@ class ParamDefinitionFactory {
 	 * @since 1.0
 	 *
 	 * @param array $param
-	 * @param bool $getMad
+	 * @param bool $getMad DEPRECATED since 1.6
 	 *
-	 * @return IParamDefinition|false
+	 * @return ParamDefinition|false
 	 * @throws Exception
 	 */
 	public function newDefinitionFromArray( array $param, $getMad = true ) {

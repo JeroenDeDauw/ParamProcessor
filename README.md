@@ -308,10 +308,12 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 * Added `Processor::setParameterDefinitions`
 * Deprecated second parameter of `Processor::setParameters` in favour of `setParameterDefinitions`
 * Deprecated second parameter of `Processor::setFunctionParams` in favour of `setParameterDefinitions`
+* Deprecated second parameter of `ParamDefinitionFactory::newDefinitionFromArray`
+* Deprecated `ParamDefinitionFactory::registerGlobals`
 
 ### 1.5.0 (2019-07-28)
 
-* Improved code comments
+* Improved code comments and added extra type checks
 
 ### 1.4.2 (2018-11-26)
 
