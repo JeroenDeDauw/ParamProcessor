@@ -98,14 +98,14 @@ class Processor {
 	 * @since 0.4
 	 *
 	 * @param string[] $rawParams
-	 * @param array $parameterDefinitions
+	 * @param ParamDefinition[]|array[] $parameterDefinitions DEPRECATED! Use @see setParameterDefinitions instead
 	 * @param array $defaultParams array of strings or array of arrays to define which parameters can be used unnamed.
 	 *        The second value in array-form is reserved for flags. Currently, Processor::PARAM_UNNAMED determines that
 	 *        the parameter has no name which can be used to set it. Therefore all these parameters must be set before
 	 *        any named parameter. The effect is, that '=' within the string won't confuse the parameter anymore like
 	 *        it would happen with default parameters that still have a name as well.
 	 */
-	public function setFunctionParams( array $rawParams, array $parameterDefinitions, array $defaultParams = [] ) {
+	public function setFunctionParams( array $rawParams, array $parameterDefinitions = [], array $defaultParams = [] ) {
 		$lastUnnamedDefaultNr = -1;
 
 		/*
@@ -180,13 +180,21 @@ class Processor {
 	}
 
 	/**
+	 * @since 1.6.0
+	 * @param ParamDefinition[] $paramDefinitions
+	 */
+	public function setParameterDefinitions( array $paramDefinitions ) {
+		$this->paramDefinitions = $paramDefinitions;
+	}
+
+	/**
 	 * Loops through a list of provided parameters, resolves aliasing and stores errors
 	 * for unknown parameters and optionally for parameter overriding.
 	 *
 	 * @param array $parameters Parameter name as key, parameter value as value
-	 * @param IParamDefinition[] $paramDefinitions List of parameter definitions. Either ParamDefinition objects or equivalent arrays.
+	 * @param ParamDefinition[]|array[] $paramDefinitions DEPRECATED! Use @see setParameterDefinitions instead
 	 */
-	public function setParameters( array $parameters, array $paramDefinitions ) {
+	public function setParameters( array $parameters, array $paramDefinitions = [] ) {
 		$this->paramDefinitions = ParamDefinition::getCleanDefinitions( $paramDefinitions );
 
 		// Loop through all the user provided parameters, and distinguish between those that are allowed and those that are not.
@@ -261,9 +269,6 @@ class Processor {
 			$this->params = [];
 		}
 
-		/**
-		 * @var Param $parameter
-		 */
 		foreach ( $this->params as $parameter ) {
 			// TODO
 			$processedParam = new ProcessedParam(

@@ -32,14 +32,22 @@ class ParamDefinitionFactory {
 	private $typeToComponent = [];
 
 	/**
-	 * Singleton.
-	 *
-	 * @since 1.0
-	 * @deprecated since 1.0
-	 *
-	 * @return ParamDefinitionFactory
+	 * @since 1.6
 	 */
-	public static function singleton() {
+	public static function newDefault(): self {
+		$instance = new self();
+
+		foreach ( ParameterTypes::getCoreTypes() as $type => $data ) {
+			$instance->registerType( $type, $data );
+		}
+
+		return $instance;
+	}
+
+	/**
+	 * @deprecated since 1.0
+	 */
+	public static function singleton(): self {
 		static $instance = false;
 
 		if ( $instance === false ) {
@@ -52,8 +60,7 @@ class ParamDefinitionFactory {
 
 	/**
 	 * Registers the parameter types specified in the global $wgParamDefinitions.
-	 *
-	 * @since 1.0
+	 * @deprecated since 1.6
 	 */
 	public function registerGlobals() {
 		if ( array_key_exists( 'wgParamDefinitions', $GLOBALS ) ) {

@@ -2,6 +2,7 @@
 
 namespace ParamProcessor\Tests;
 
+use ParamProcessor\ParamDefinitionFactory;
 use ParamProcessor\ProcessedParam;
 use ParamProcessor\ProcessingError;
 use ParamProcessor\ProcessingResult;
@@ -454,6 +455,30 @@ class ProcessorTest extends TestCase {
 
 		$this->assertSame(
 			[ 42 ],
+			$processor->processParameters()->getParameters()['some-list']->getValue()
+		);
+	}
+
+	public function testSetParameterDefinitions() {
+		$processor = Processor::newDefault();
+
+		$processor->setFunctionParams( [ 'some-list=42,23,9001' ] );
+
+		$processor->setParameterDefinitions(
+			[
+				( ParamDefinitionFactory::newDefault() )->newDefinitionFromArray(
+					[
+						'name' => 'some-list',
+						'type' => 'integer',
+						'message' => 'test',
+						'islist' => true
+					]
+				)
+			]
+		);
+
+		$this->assertSame(
+			[ 42, 23, 9001 ],
 			$processor->processParameters()->getParameters()['some-list']->getValue()
 		);
 	}
