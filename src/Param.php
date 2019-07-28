@@ -135,8 +135,6 @@ final class Param implements IParam {
 	}
 
 	/**
-	 * Sets the value.
-	 *
 	 * @since 1.0
 	 *
 	 * @param mixed $value
@@ -147,8 +145,6 @@ final class Param implements IParam {
 
 	/**
 	 * Sets the $value to a cleaned value of $originalValue.
-	 *
-	 * TODO: the per-parameter lowercaseing and trimming here needs some thought
 	 *
 	 * @since 1.0
 	 *
