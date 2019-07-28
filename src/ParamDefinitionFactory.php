@@ -4,6 +4,8 @@ namespace ParamProcessor;
 
 use Exception;
 use OutOfBoundsException;
+use ValueParsers\NullParser;
+use ValueValidators\NullValidator;
 
 /**
  * Factory for ParamDefinition implementing objects.
@@ -101,13 +103,13 @@ class ParamDefinitionFactory {
 			return false;
 		}
 
-		$class = array_key_exists( 'definition', $data ) ? $data['definition'] : 'ParamProcessor\ParamDefinition';
+		$class = array_key_exists( 'definition', $data ) ? $data['definition'] : ParamDefinition::class;
 		$this->typeToClass[$type] = $class;
 
 		$defaults = [
-			'string-parser' => 'ValueParsers\NullParser',
-			'typed-parser' => 'ValueParsers\NullParser',
-			'validator' => 'ValueValidators\NullValidator',
+			'string-parser' => NullParser::class,
+			'typed-parser' => NullParser::class,
+			'validator' => NullValidator::class,
 			'validation-callback' => null,
 		];
 
@@ -154,7 +156,7 @@ class ParamDefinitionFactory {
 
 		$validator = $this->typeToComponent[$type]['validator'];
 
-		if ( $validator !== '\ValueValidators\NullValidator' ) {
+		if ( $validator !== NullValidator::class ) {
 			$definition->setValueValidator( new $validator() );
 		}
 
