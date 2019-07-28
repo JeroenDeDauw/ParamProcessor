@@ -86,7 +86,7 @@ class ParamDefinitionFactory {
 	 *
 	 * - string-parser:       the parser to use to transform string values
 	 *                        This class needs to implement ValueParser. Default: NullParser
-	 * - typed-parser:        the parser to use to transform typed PHP values
+	 * - typed-parser:        DEPRECATED since 1.6 - the parser to use to transform typed PHP values
 	 *                        This class needs to implement ValueParser. Default: NullParser
 	 * - validator:           the validation object to use
 	 *                        This class needs to implement ValueValidator. Default: NullValidator

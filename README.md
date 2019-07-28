@@ -311,6 +311,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 * Deprecated second parameter of `ParamDefinitionFactory::newDefinitionFromArray`
 * Deprecated return value of `ParamDefinitionFactory::registerType`
 * Deprecated `ParamDefinitionFactory::registerGlobals`
+* Deprecated `typed-parser` key in parameter type definitions
 
 ### 1.5.0 (2019-07-28)
 
