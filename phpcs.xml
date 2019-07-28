@@ -6,15 +6,17 @@
 <ruleset name="MediaWiki">
     <rule ref="Generic.Classes" />
     <rule ref="Generic.CodeAnalysis" />
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
+        <severity>0</severity>
+    </rule>
     <rule ref="Generic.ControlStructures" />
 
     <rule ref="Generic.Files.ByteOrderMark" />
-    <rule ref="Generic.Files.EndFileNewline" />
     <rule ref="Generic.Files.LineEndings" />
     <rule ref="Generic.Files.LineLength">
         <properties>
-            <property name="lineLimit" value="125" />
-            <property name="absoluteLineLimit" value="125" />
+            <property name="lineLimit" value="140" />
+            <property name="absoluteLineLimit" value="140" />
         </properties>
     </rule>
     <rule ref="Generic.Files.OneClassPerFile" />
@@ -27,8 +29,8 @@
 
     <rule ref="Generic.Metrics.NestingLevel">
         <properties>
-            <property name="nestingLevel" value="3" />
-            <property name="absoluteNestingLevel" value="3" />
+            <property name="nestingLevel" value="4" />
+            <property name="absoluteNestingLevel" value="4" />
         </properties>
     </rule>
 

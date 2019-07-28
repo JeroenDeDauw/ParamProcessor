@@ -118,7 +118,7 @@ class Processor {
 		 * after the first named param. Wouldn't be possible to determine which unnamed value
 		 * belongs to which parameter otherwise.
 		 */
-		for( $i = count( $defaultParams ) - 1; $i >= 0 ; $i-- ) {
+		for( $i = count( $defaultParams ) - 1; $i >= 0; $i-- ) {
 			$dflt = $defaultParams[$i];
 			if( is_array( $dflt ) && !empty( $dflt[1] ) && ( $dflt[1] | self::PARAM_UNNAMED ) ) {
 				$lastUnnamedDefaultNr = $i;
@@ -150,9 +150,6 @@ class Processor {
 						];
 						$defaultNr++;
 					}
-					else {
-						// It might be nice to have some sort of warning or error here, as the value is simply ignored.
-					}
 				} else {
 					$paramName = trim( strtolower( $parts[0] ) );
 
@@ -167,7 +164,9 @@ class Processor {
 					$newDefaults = [];
 
 					foreach( $defaultParams as $defaultParam ) {
-						if ( $defaultParam != $paramName ) $newDefaults[] = $defaultParam;
+						if ( $defaultParam != $paramName ) {
+							$newDefaults[] = $defaultParam;
+						}
 					}
 
 					$defaultParams = $newDefaults;

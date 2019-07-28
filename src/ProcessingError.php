@@ -83,7 +83,7 @@ class ProcessingError {
 
 	/**
 	 * Returns the severity of the error.
-	 * @return integer Element of the ProcessingError::SEVERITY_ enum
+	 * @return integer Element of the self::SEVERITY_ enum
 	 */
 	public function getSeverity(): int {
 		return $this->severity;
@@ -113,16 +113,16 @@ class ProcessingError {
 	/**
 	 * Returns the action associated with the errors severity.
 	 *
-	 * @return integer Element of the ProcessingError::ACTION_ enum
+	 * @return integer Element of the self::ACTION_ enum
 	 * @throws \Exception
 	 */
 	public function getAction(): int {
 		// TODO: as option
 		$errorActions = [
-			ProcessingError::SEVERITY_MINOR => ProcessingError::ACTION_LOG,
-			ProcessingError::SEVERITY_LOW => ProcessingError::ACTION_WARN,
-			ProcessingError::SEVERITY_NORMAL => ProcessingError::ACTION_SHOW,
-			ProcessingError::SEVERITY_HIGH => ProcessingError::ACTION_DEMAND,
+			self::SEVERITY_MINOR => self::ACTION_LOG,
+			self::SEVERITY_LOW => self::ACTION_WARN,
+			self::SEVERITY_NORMAL => self::ACTION_SHOW,
+			self::SEVERITY_HIGH => self::ACTION_DEMAND,
 		];
 
 		if ( $this->severity === self::SEVERITY_FATAL ) {

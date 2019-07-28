@@ -82,7 +82,7 @@ abstract class ParamDefinitionTest extends TestCase {
 	/**
 	 * @dataProvider instanceProvider
 	 */
-	public function testGetType( IParamDefinition $definition )  {
+	public function testGetType( IParamDefinition $definition ) {
 		$this->assertEquals( $this->getType(), $definition->getType() );
 	}
 
