@@ -284,12 +284,6 @@ $processor->setFunctionParams(
 );
 ```
 
-## Tests
-
-This library comes with a set up PHPUnit tests that cover all non-trivial code. You can run these
-tests using the PHPUnit configuration file found in the root directory. The tests can also be run
-via TravisCI, as a TravisCI configuration file is also provided in the root directory.
-
 ## Contributing
 
 * [File an issue](https://github.com/JeroenDeDauw/ParamProcessor/issues)
@@ -297,7 +291,7 @@ via TravisCI, as a TravisCI configuration file is also provided in the root dire
 
 ## Authors
 
-ParamProcessor has been written by [Jeroen De Dauw](https://github.com/JeroenDeDauw) to
+ParamProcessor has been written by [Jeroen De Dauw](https://www.entropywins.wtf/) to
 support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 [Semantic MediaWiki](https://semantic-mediawiki.org/) projects.
 
