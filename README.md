@@ -303,6 +303,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.5.0 (2019-07-28)
+
+* Improved code comments
+
 ### 1.4.2 (2018-11-26)
 
 * Fixed defaulting behaviour of list parameters
