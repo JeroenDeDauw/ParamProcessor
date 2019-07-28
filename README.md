@@ -303,6 +303,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.6.1 (2019-07-28)
+
+* Fixed message defaulting bug in `ParamDefinition`
+
 ### 1.6.0 (2019-07-28)
 
 * Added `Processor::setParameterDefinitions`

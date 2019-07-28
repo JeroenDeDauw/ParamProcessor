@@ -156,4 +156,11 @@ abstract class ParamDefinitionTest extends TestCase {
 		$this->assertEquals( $validity, $param->getErrors() === [] );
 	}
 
+	public function testConstructingWithoutMessageLeadsToDefaultMessage() {
+		$this->assertSame(
+			'validator-message-nodesc',
+			( new ParamDefinition( 'type', 'name' ) )->getMessage()
+		);
+	}
+
 }

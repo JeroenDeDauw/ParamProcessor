@@ -55,7 +55,7 @@ class ParamDefinition implements IParamDefinition {
 	 *
 	 * @var string
 	 */
-	protected $message = 'validator-message-nodesc';
+	protected $message;
 
 	/**
 	 * Indicates if the parameter value should trimmed during the clean process.
@@ -128,7 +128,7 @@ class ParamDefinition implements IParamDefinition {
 		$this->type = $type;
 		$this->name = $name;
 		$this->default = $default;
-		$this->message = $message;
+		$this->message = $message ?? 'validator-message-nodesc';
 		$this->isList = $isList;
 
 		$this->postConstruct();
