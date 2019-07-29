@@ -17,7 +17,7 @@ class ProcessingResultTest extends TestCase {
 
 	public function testGetParameters() {
 		$processedParams = [
-			$this->newMockParam()
+			$this->createMock( ProcessedParam::class )
 		];
 
 		$result = new ProcessingResult( $processedParams );
@@ -25,24 +25,14 @@ class ProcessingResultTest extends TestCase {
 		$this->assertEquals( $processedParams, $result->getParameters() );
 	}
 
-	private function newMockParam() {
-		return $this->getMockBuilder( ProcessedParam::class )
-			->disableOriginalConstructor()->getMock();
-	}
-
 	public function testGetErrors() {
 		$errors = [
-			$this->newMockError()
+			$this->createMock( ProcessingError::class )
 		];
 
 		$result = new ProcessingResult( [], $errors );
 
 		$this->assertEquals( $errors, $result->getErrors() );
-	}
-
-	private function newMockError() {
-		return $this->getMockBuilder( ProcessingError::class )
-			->disableOriginalConstructor()->getMock();
 	}
 
 	public function testGivenNoErrors_HasNoFatal() {
