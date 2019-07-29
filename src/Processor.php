@@ -60,10 +60,6 @@ class Processor {
 
 	/**
 	 * Constructs and returns a Validator object based on the default options.
-	 *
-	 * @since 1.0
-	 *
-	 * @return Processor
 	 */
 	public static function newDefault(): self {
 		return new Processor( new Options() );
@@ -71,12 +67,6 @@ class Processor {
 
 	/**
 	 * Constructs and returns a Validator object based on the provided options.
-	 *
-	 * @since 1.0
-	 *
-	 * @param Options $options
-	 *
-	 * @return Processor
 	 */
 	public static function newFromOptions( Options $options ): self {
 		return new Processor( $options );
@@ -84,10 +74,6 @@ class Processor {
 
 	/**
 	 * Returns the options used by this Validator object.
-	 *
-	 * @since 1.0
-	 *
-	 * @return Options
 	 */
 	public function getOptions(): Options {
 		return $this->options;
