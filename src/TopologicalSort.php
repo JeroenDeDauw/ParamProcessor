@@ -7,19 +7,7 @@ namespace ParamProcessor;
  *
  * Based on http://blog.metafoundry.com/2007/09/topological-sort-in-php.html
  *
- * usage:
- * $t = new TopologicalSort($dependency_pairs);
- * $load_order = $t->doSort();
- *
- * where dependency_pairs is in the form:
- * $name => (depends on) $value
- *
- * @author Eddie Haber
- * @author Jeroen De Dauw
- *
- * @codingStandardsIgnoreFile
- *
- * TODO: handle dependency loops and other crap more nicely
+ * @deprecated since 1.7
  */
 class TopologicalSort {
 
@@ -155,7 +143,7 @@ class TopologicalSort {
 }
 
 /**
- * Node class for Topological Sort Class
+ * @deprecated since 1.7
  */
 class TSNode {
 	public $name;

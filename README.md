@@ -301,17 +301,25 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 * Deprecated `ParamDefinition::getCleanDefinitions` in favour of `ParamDefinitionFactory`
 * Deprecated `ParamDefinition::setDefault` in favour of constructor parameter
-* Deprecated `ParamDefinition::setArrayValues`
-* Deprecated `ParamDefinition::$acceptOverriding`
-* Deprecated `ParamDefinition::$accumulateParameterErrors`
-* Deprecated extending `ParamDefinition`
 * Deprecated `Processor::getParameterValues` in favour of `processParameters` and `ProcessingResult`
 * Deprecated `Processor::getErrors` in favour of `processParameters` and `ProcessingResult`
 * Deprecated `Processor::getErrorMessages` in favour of `processParameters` and `ProcessingResult`
 * Deprecated `Processor::hasErrors` in favour of `processParameters` and `ProcessingResult`
 * Deprecated `Processor::hasFatalError` in favour of `processParameters` and `ProcessingResult`
+* Deprecated parameter dependencies
+    * Deprecated `ParamDefinition::hasDependency`
+    * Deprecated `ParamDefinition::addDependencies`
+    * Deprecated `ParamDefinition::getDependencies`
+    * Deprecated `dependencies` key in `ParamDefinition::setArrayValues` parameter
+    * Deprecated `TopologicalSort`
+    * Deprecated `TSNode`
+* Deprecated extending `ParamDefinition`
 * Deprecated `StringParam`
 * Deprecated `DimensionParam`
+* Deprecated `ParamDefinition::setArrayValues`
+* Deprecated `ParamDefinition::$acceptOverriding`
+* Deprecated `ParamDefinition::$accumulateParameterErrors`
+
 
 ### 1.6.1 (2019-07-28)
 

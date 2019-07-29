@@ -10,7 +10,6 @@ use ValueValidators\NullValidator;
 use ValueValidators\ValueValidator;
 
 /**
- * Parameter definition.
  * Specifies what kind of values are accepted, how they should be validated,
  * how they should be formatted, what their dependencies are and how they should be described.
  *
@@ -158,6 +157,7 @@ use ValueValidators\ValueValidator;
 	}
 
 	/**
+	 * @deprecated since 1.7
 	 * Returns if the parameter has a certain dependency.
 	 */
 	public function hasDependency( string $dependency ): bool {
@@ -269,6 +269,7 @@ use ValueValidators\ValueValidator;
 	}
 
 	/**
+	 * @deprecated since 1.7
 	 * Returns a list of dependencies the parameter has, in the form of
 	 * other parameter names.
 	 *
@@ -306,6 +307,7 @@ use ValueValidators\ValueValidator;
 	 * Sets the parameter definition values contained in the provided array.
 	 *
 	 * @deprecated since 1.7
+	 * TODO: provide alternative in ParamDefinitionFactory
 	 */
 	public function setArrayValues( array $param ) {
 		if ( array_key_exists( 'aliases', $param ) ) {
