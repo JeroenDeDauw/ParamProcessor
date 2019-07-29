@@ -8,6 +8,7 @@ namespace ParamProcessor;
  * Based on http://blog.metafoundry.com/2007/09/topological-sort-in-php.html
  *
  * @deprecated since 1.7
+ * @codingStandardsIgnoreFile
  */
 class TopologicalSort {
 
