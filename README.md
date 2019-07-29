@@ -310,6 +310,8 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 * Deprecated `Processor::getErrorMessages` in favour of `processParameters` and `ProcessingResult`
 * Deprecated `Processor::hasErrors` in favour of `processParameters` and `ProcessingResult`
 * Deprecated `Processor::hasFatalError` in favour of `processParameters` and `ProcessingResult`
+* Deprecated `StringParam`
+* Deprecated `DimensionParam`
 
 ### 1.6.1 (2019-07-28)
 

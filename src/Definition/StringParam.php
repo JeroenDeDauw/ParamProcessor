@@ -9,7 +9,7 @@ use ParamProcessor\IParam;
  * Defines the string parameter type.
  * Specifies the type specific validation and formatting logic.
  *
- * @since 1.0
+ * @deprecated since 1.7
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
