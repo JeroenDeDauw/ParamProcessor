@@ -105,6 +105,7 @@ class ParamDefinitionFactory {
 			return false;
 		}
 
+		// Deprecated: definition key
 		$class = array_key_exists( 'definition', $data ) ? $data['definition'] : ParamDefinition::class;
 		$this->typeToClass[$type] = $class;
 
@@ -126,8 +127,6 @@ class ParamDefinitionFactory {
 
 	/**
 	 * Creates a new instance of a ParamDefinition based on the provided type.
-	 *
-	 * @since 1.0
 	 *
 	 * @param string $type
 	 * @param string $name
@@ -175,8 +174,6 @@ class ParamDefinitionFactory {
 	 * Returns the specified component for the provided parameter type.
 	 * This method is likely to change in the future in a compat breaking way.
 	 *
-	 * @since 1.0
-	 *
 	 * @param string $paramType
 	 * @param string $componentType
 	 *
@@ -196,10 +193,6 @@ class ParamDefinitionFactory {
 	}
 
 	/**
-	 * Construct a new ParamDefinition from an array.
-	 *
-	 * @since 1.0
-	 *
 	 * @param array $param
 	 * @param bool $getMad DEPRECATED since 1.6
 	 *
