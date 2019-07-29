@@ -14,7 +14,7 @@ use ValueValidators\NullValidator;
  * Specifies what kind of values are accepted, how they should be validated,
  * how they should be formatted, what their dependencies are and how they should be described.
  *
- * Try to avoid using this interface outside of ParamProcessor for anything else then defining parameters.
+ * Try to avoid using this interface outside of ParamProcessor for anything else than defining parameters.
  * In particular, do not derive from this class to implement methods such as formatValue.
  *
  * @since 1.0
@@ -22,13 +22,13 @@ use ValueValidators\NullValidator;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ParamDefinition implements IParamDefinition {
+/* final */ class ParamDefinition implements IParamDefinition {
 
 	/**
 	 * Indicates whether parameters that are provided more then once  should be accepted,
 	 * and use the first provided value, or not, and generate an error.
 	 *
-	 * @since 1.0
+	 * @deprected since 1.7
 	 *
 	 * @var boolean
 	 */
@@ -38,7 +38,7 @@ class ParamDefinition implements IParamDefinition {
 	 * Indicates whether parameters not found in the criteria list
 	 * should be stored in case they are not accepted. The default is false.
 	 *
-	 * @since 1.0
+	 * @deprected since 1.7
 	 *
 	 * @var boolean
 	 */
@@ -59,27 +59,18 @@ class ParamDefinition implements IParamDefinition {
 
 	/**
 	 * Indicates if the parameter value should trimmed during the clean process.
-	 *
-	 * @since 1.0
-	 *
 	 * @var boolean|null
 	 */
 	protected $trimValue = null;
 
 	/**
 	 * Indicates if the parameter manipulations should be applied to the default value.
-	 *
-	 * @since 1.0
-	 *
 	 * @var boolean
 	 */
 	protected $applyManipulationsToDefault = true;
 
 	/**
 	 * Dependency list containing parameters that need to be handled before this one.
-	 *
-	 * @since 1.0
-	 *
 	 * @var string[]
 	 */
 	protected $dependencies = [];
@@ -146,9 +137,11 @@ class ParamDefinition implements IParamDefinition {
 
 	/**
 	 * Returns if the value should be trimmed before validation and any further processing.
-	 * @return boolean|null
+	 * - true: always trim
+	 * - false: never trim
+	 * - null: trim based on context settings
 	 */
-	public function trimDuringClean() {
+	public function trimDuringClean(): ?bool {
 		return $this->trimValue;
 	}
 
@@ -165,13 +158,7 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::hasDependency
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $dependency
-	 *
-	 * @return boolean
+	 * Returns if the parameter has a certain dependency.
 	 */
 	public function hasDependency( string $dependency ): bool {
 		return in_array( $dependency, $this->getDependencies() );
@@ -179,12 +166,8 @@ class ParamDefinition implements IParamDefinition {
 
 	/**
 	 * Returns the list of allowed values, or an empty array if there is no such restriction.
-	 *
-	 * @since 1.0
-	 *
-	 * @return array
 	 */
-	public function getAllowedValues() {
+	public function getAllowedValues(): array {
 		$allowedValues = [];
 
 		if ( $this->validator !== null && method_exists( $this->validator, 'getWhitelistedValues' ) ) {
@@ -203,9 +186,7 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::setDefault
-	 *
-	 * @since 1.0
+	 * @deprecated since 1.7
 	 *
 	 * @param mixed $default
 	 * @param boolean $manipulate Should the default be manipulated or not? Since 0.4.6.
@@ -216,10 +197,7 @@ class ParamDefinition implements IParamDefinition {
 	}
 
 	/**
-	 * @see IParamDefinition::getDefault
-	 *
-	 * @since 1.0
-	 *
+	 * Returns the default value.
 	 * @return mixed
 	 */
 	public function getDefault() {
@@ -319,17 +297,15 @@ class ParamDefinition implements IParamDefinition {
 	/**
 	 * Sets the delimiter to use to split the raw value in case the
 	 * parameter is a list.
-	 *
-	 * @param $delimiter string
 	 */
-	public function setDelimiter( $delimiter ) {
+	public function setDelimiter( string $delimiter ) {
 		$this->delimiter = $delimiter;
 	}
 
 	/**
 	 * Sets the parameter definition values contained in the provided array.
 	 *
-	 * @param array $param
+	 * @deprecated since 1.7
 	 */
 	public function setArrayValues( array $param ) {
 		if ( array_key_exists( 'aliases', $param ) ) {
@@ -358,7 +334,6 @@ class ParamDefinition implements IParamDefinition {
 	/**
 	 * @see IParamDefinition::format
 	 *
-	 * @since 1.0
 	 * @deprecated
 	 *
 	 * @param IParam $param
@@ -432,7 +407,7 @@ class ParamDefinition implements IParamDefinition {
 	 * ParamDefinition classes and having all keys set to the names of the
 	 * corresponding parameters.
 	 *
-	 * @since 1.0
+	 * @deprecated since 1.7 - use ParamDefinitionFactory
 	 *
 	 * @param ParamDefinition[] $definitions
 	 *

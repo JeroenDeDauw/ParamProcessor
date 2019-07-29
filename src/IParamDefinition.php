@@ -170,7 +170,7 @@ interface IParamDefinition {
 	 *
 	 * @param $delimiter string
 	 */
-	public function setDelimiter( $delimiter );
+	public function setDelimiter( string $delimiter );
 
 	/**
 	 * Set if the parameter manipulations should be applied to the default value.

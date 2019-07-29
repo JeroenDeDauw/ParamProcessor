@@ -297,6 +297,15 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.7.0 (dev)
+
+* Deprecated `ParamDefinition::getCleanDefinitions` in favour of ParamDefinitionFactory
+* Deprecated `ParamDefinition::setDefault` in favour of constructor parameter
+* Deprecated `ParamDefinition::setArrayValues`
+* Deprecated `ParamDefinition::$acceptOverriding`
+* Deprecated `ParamDefinition::$accumulateParameterErrors`
+* Deprecated extending `ParamDefinition`
+
 ### 1.6.1 (2019-07-28)
 
 * Fixed message defaulting bug in `ParamDefinition`
