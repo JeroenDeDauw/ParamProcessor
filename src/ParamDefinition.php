@@ -3,11 +3,11 @@
 namespace ParamProcessor;
 
 use Exception;
-
-use ValueParsers\ValueParser;
+use ParamProcessor\PackagePrivate\Param;
 use ValueParsers\NullParser;
-use ValueValidators\ValueValidator;
+use ValueParsers\ValueParser;
 use ValueValidators\NullValidator;
+use ValueValidators\ValueValidator;
 
 /**
  * Parameter definition.
@@ -342,7 +342,7 @@ use ValueValidators\NullValidator;
 	 */
 	public function format( IParam $param, array &$definitions, array $params ) {
 		/**
-		 * @var Param $param
+		 * @var IdeHelper $param
 		 */
 
 		if ( $this->isList() && is_array( $param->getValue() ) ) {

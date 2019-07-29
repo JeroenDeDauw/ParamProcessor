@@ -3,12 +3,12 @@
 namespace ParamProcessor\Tests;
 
 use ParamProcessor\Options;
-use ParamProcessor\Param;
+use ParamProcessor\PackagePrivate\Param;
 use ParamProcessor\ParamDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \ParamProcessor\Param
+ * @covers \ParamProcessor\PackagePrivate\Param
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

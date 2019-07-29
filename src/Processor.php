@@ -2,6 +2,8 @@
 
 namespace ParamProcessor;
 
+use ParamProcessor\PackagePrivate\Param;
+
 /**
  * Class for parameter validation of a single parser hook or other parametrized construct.
  *
@@ -22,7 +24,7 @@ class Processor {
 	const PARAM_UNNAMED = 1;
 
 	/**
-	 * @var Param[]
+	 * @var IdeHelper[]
 	 */
 	private $params;
 

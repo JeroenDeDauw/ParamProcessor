@@ -2,10 +2,10 @@
 
 namespace ParamProcessor\Tests\Definitions;
 
-use ParamProcessor\Options;
-use ParamProcessor\ParamDefinition;
 use ParamProcessor\IParamDefinition;
-use ParamProcessor\Param;
+use ParamProcessor\Options;
+use ParamProcessor\PackagePrivate\Param;
+use ParamProcessor\ParamDefinition;
 use ParamProcessor\ParamDefinitionFactory;
 use PHPUnit\Framework\TestCase;
 
