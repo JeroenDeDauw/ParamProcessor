@@ -24,7 +24,7 @@ class Processor {
 	const PARAM_UNNAMED = 1;
 
 	/**
-	 * @var IdeHelper[]
+	 * @var Param[]
 	 */
 	private $params;
 

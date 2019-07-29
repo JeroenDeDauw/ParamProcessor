@@ -342,7 +342,7 @@ use ValueValidators\ValueValidator;
 	 */
 	public function format( IParam $param, array &$definitions, array $params ) {
 		/**
-		 * @var IdeHelper $param
+		 * @var Param $param
 		 */
 
 		if ( $this->isList() && is_array( $param->getValue() ) ) {
