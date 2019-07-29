@@ -1,6 +1,6 @@
 <?php
 
-namespace ParamProcessor\Tests\Unit\Definitions;
+namespace ParamProcessor\Tests\Integration\Definitions;
 
 /**
  * @licence GNU GPL v2+

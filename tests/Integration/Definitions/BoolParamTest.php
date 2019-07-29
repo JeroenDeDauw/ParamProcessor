@@ -1,12 +1,12 @@
 <?php
 
-namespace ParamProcessor\Tests\Unit\Definitions;
+namespace ParamProcessor\Tests\Integration\Definitions;
 
 /**
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class FloatParamTest extends NumericParamTest {
+class BoolParamTest extends ParamDefinitionTest {
 
 	/**
 	 * @see ParamDefinitionTest::getDefinitions
@@ -28,31 +28,31 @@ class FloatParamTest extends NumericParamTest {
 	public function valueProvider( $stringlyTyped = true ) {
 		$values = [
 			'empty' => [
-				[ 1, true, 1.0 ],
-				[ 1.0, true, 1.0 ],
-				[ 1.1, true, 1.1 ],
-				[ 0.2555, true, 0.2555 ],
-				[ '1.1.1', false ],
+				[ 'yes', true, true ],
+				[ 'on', true, true ],
+				[ '1', true, true ],
+				[ 'no', true, false ],
+				[ 'off', true, false ],
+				[ '0', true, false ],
 				[ 'foobar', false ],
+				[ '2', false ],
 				[ [], false ],
-				[ 'yes', false ],
-				[ false, false ],
+				[ 42, false ],
 			],
 			'values' => [],
 //			'values' => array(
-//				array( 1, true, 1 ),
-//				array( 'yes', false ),
+//				array( '1', true, true ),
+//				array( 'yes', true, true ),
 //				array( 'no', false ),
-//				array( 0.1, true, 0.1 ),
-//				array( 0.2555, false ),
+//				array( 'foobar', false ),
 //			),
 		];
 
-		if ( $stringlyTyped ) {
+		if ( !$stringlyTyped ) {
 			foreach ( $values as &$set ) {
 				foreach ( $set as &$value ) {
-					if ( is_float( $value[0] ) || is_int( $value[0] ) ) {
-						$value[0] = (string)$value[0];
+					if ( in_array( $value[0], [ 'yes', 'on', '1', '0', 'off', 'no' ], true ) ) {
+						$value[0] = in_array( $value[0], [ 'yes', 'on', '1' ], true );
 					}
 				}
 			}
@@ -66,7 +66,7 @@ class FloatParamTest extends NumericParamTest {
 	 * @return string
 	 */
 	public function getType() {
-		return 'float';
+		return 'boolean';
 	}
 
 }
