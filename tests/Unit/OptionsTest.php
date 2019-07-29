@@ -13,10 +13,6 @@ use PHPUnit\Framework\TestCase;
  */
 class OptionsTest extends TestCase {
 
-	protected function getInstance() {
-		return new Options();
-	}
-
 	public function testBooleanSettersAndGetters() {
 		$methods = [
 			'setUnknownInvalid' => 'unknownIsInvalid',
@@ -28,7 +24,7 @@ class OptionsTest extends TestCase {
 		];
 
 		foreach ( $methods as $setter => $getter ) {
-			$options = $this->getInstance();
+			$options = new Options();
 
 			foreach ( [ false, true, false ] as $boolean ) {
 				call_user_func_array( [ $options, $setter ], [ $boolean ] );
@@ -39,7 +35,7 @@ class OptionsTest extends TestCase {
 	}
 
 	public function testSetAndGetName() {
-		$options = $this->getInstance();
+		$options = new Options();
 
 		foreach ( [ 'foo', 'bar baz' ] as $name ) {
 			$options->setName( $name );

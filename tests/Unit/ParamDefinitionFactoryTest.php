@@ -5,11 +5,8 @@ namespace ParamProcessor\Tests\Unit;
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\ParamDefinitionFactory;
 use PHPUnit\Framework\TestCase;
-use ValueParsers\IntParser;
 use ValueParsers\NullParser;
-use ValueParsers\StringParser;
 use ValueValidators\NullValidator;
-use ValueValidators\RangeValidator;
 
 /**
  * @covers \ParamProcessor\ParamDefinitionFactory

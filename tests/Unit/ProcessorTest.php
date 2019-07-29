@@ -2,12 +2,10 @@
 
 namespace ParamProcessor\Tests\Unit;
 
+use ParamProcessor\Options;
 use ParamProcessor\ParamDefinitionFactory;
-use ParamProcessor\ProcessedParam;
-use ParamProcessor\ProcessingError;
 use ParamProcessor\ProcessingResult;
 use ParamProcessor\Processor;
-use ParamProcessor\Options;
 use PHPUnit\Framework\TestCase;
 
 /**
