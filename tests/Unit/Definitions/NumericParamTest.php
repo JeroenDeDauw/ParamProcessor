@@ -1,6 +1,6 @@
 <?php
 
-namespace ParamProcessor\Tests\Definitions;
+namespace ParamProcessor\Tests\Unit\Definitions;
 
 use ParamProcessor\Options;
 

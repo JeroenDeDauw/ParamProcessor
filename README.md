@@ -341,6 +341,8 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 * Dropped support for PHP older than 7.1
 * Added `ParameterTypes` to allow gradual migration away from the now deprecated `$wgParamDefinitions`
+* Deprecated `$wgParamDefinitions`
+* Deprecated `$egValidatorSettings`
 
 ### 1.3.4 (2018-05-05)
 

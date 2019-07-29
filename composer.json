@@ -39,13 +39,14 @@
 		"psr-4": {
 			"ParamProcessor\\": "src"
 		},
-		"classmap": [
-			"tests/phpunit/Definitions/ParamDefinitionTest.php",
-			"tests/phpunit/Definitions/NumericParamTest.php"
-		],
 		"files": [
 			"DefaultConfig.php"
 		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"ParamProcessor\\Tests\\": "tests"
+		}
 	},
 	"extra": {
 		"branch-alias": {

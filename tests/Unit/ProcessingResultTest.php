@@ -1,6 +1,6 @@
 <?php
 
-namespace ParamProcessor\Tests;
+namespace ParamProcessor\Tests\Unit;
 
 use ParamProcessor\ProcessedParam;
 use ParamProcessor\ProcessingError;

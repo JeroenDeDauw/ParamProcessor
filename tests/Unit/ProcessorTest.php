@@ -1,6 +1,6 @@
 <?php
 
-namespace ParamProcessor\Tests;
+namespace ParamProcessor\Tests\Unit;
 
 use ParamProcessor\ParamDefinitionFactory;
 use ParamProcessor\ProcessedParam;
