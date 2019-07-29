@@ -203,10 +203,10 @@ class Processor {
 
 	/**
 	 * @param string $message
-	 * @param mixed $tags string or array
+	 * @param string[] $tags
 	 * @param integer $severity
 	 */
-	private function registerNewError( $message, $tags = [], $severity = ProcessingError::SEVERITY_NORMAL ) {
+	private function registerNewError( string $message, array $tags = [], int $severity = ProcessingError::SEVERITY_NORMAL ) {
 		$this->registerError(
 			new ProcessingError(
 				$message,
@@ -242,7 +242,7 @@ class Processor {
 			foreach ( $this->rawParameters as $paramName => $paramValue ) {
 				$this->registerNewError(
 					$paramName . ' is not a valid parameter', // TODO
-					$paramName
+					[ $paramName ]
 				);
 			}
 		}
@@ -281,9 +281,6 @@ class Processor {
 		);
 	}
 
-	/**
-	 * Does the actual parameter processing.
-	 */
 	private function doParamProcessing() {
 		$this->errors = [];
 
@@ -412,34 +409,24 @@ class Processor {
 	}
 
 	/**
-	 * Returns the parameters.
-	 *
-	 * @since 0.4
 	 * @deprecated since 1.0
-	 *
-	 * @return IParam[]
+	 * @return Param[]
 	 */
 	public function getParameters(): array {
 		return $this->params;
 	}
 
 	/**
-	 * Returns a single parameter.
-	 *
-	 * @since 0.4
 	 * @deprecated since 1.0
-	 *
-	 * @param string $parameterName The name of the parameter to return
-	 *
-	 * @return IParam
 	 */
-	public function getParameter( string $parameterName ): IParam {
+	public function getParameter( string $parameterName ): Param {
 		return $this->params[$parameterName];
 	}
 
 	/**
 	 * Returns an associative array with the parameter names as key and their
 	 * corresponding values as value.
+	 * @deprecated since 1.7 - use processParameters() return value
 	 */
 	public function getParameterValues(): array {
 		$parameters = [];
@@ -452,6 +439,7 @@ class Processor {
 	}
 
 	/**
+	 * @deprecated since 1.7 - use processParameters() return value
 	 * @return ProcessingError[]
 	 */
 	public function getErrors(): array {
@@ -459,6 +447,7 @@ class Processor {
 	}
 
 	/**
+	 * @deprecated since 1.7 - use processParameters() return value
 	 * @return string[]
 	 */
 	public function getErrorMessages(): array {
@@ -472,15 +461,14 @@ class Processor {
 	}
 
 	/**
-	 * Returns if there where any errors during validation.
+	 * @deprecated since 1.7 - use processParameters() return value
 	 */
 	public function hasErrors(): bool {
 		return !empty( $this->errors );
 	}
 
 	/**
-	 * Returns false when there are no fatal errors or an ProcessingError when one is found.
-	 *
+	 * @deprecated since 1.7 - use processParameters() return value
 	 * @return ProcessingError|boolean false
 	 */
 	public function hasFatalError() {
