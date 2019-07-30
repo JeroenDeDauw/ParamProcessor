@@ -10,7 +10,7 @@ namespace ParamProcessor;
  * Changing one of these settings can be done by assigning to $egValidatorSettings,
  * AFTER the inclusion of the extension itself.
  *
- * @since 1.0
+ * @deprecated since 1.7
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
