@@ -37,9 +37,6 @@ class Param implements IParam {
 	/**
 	 * The original parameter name as provided by the user. This can be the
 	 * main name or an alias.
-	 *
-	 * @since 1.0
-	 *
 	 * @var string
 	 */
 	protected $originalName;
@@ -47,18 +44,11 @@ class Param implements IParam {
 	/**
 	 * The original value as provided by the user. This is mainly retained for
 	 * usage in error messages when the parameter turns out to be invalid.
-	 *
-	 * @since 1.0
-	 *
 	 * @var string
 	 */
 	protected $originalValue;
 
 	/**
-	 * The value of the parameter.
-	 *
-	 * @since 1.0
-	 *
 	 * @var mixed
 	 */
 	protected $value;
@@ -66,45 +56,26 @@ class Param implements IParam {
 	/**
 	 * Keeps track of how many times the parameter has been set by the user.
 	 * This is used to detect overrides and for figuring out a parameter is missing.
-	 *
-	 * @since 1.0
-	 *
 	 * @var integer
 	 */
 	protected $setCount = 0;
 
 	/**
-	 * List of validation errors for this parameter.
-	 *
-	 * @since 1.0
-	 *
 	 * @var ProcessingError[]
 	 */
 	protected $errors = [];
 
 	/**
 	 * Indicates if the parameter was set to it's default.
-	 *
-	 * @since 1.0
-	 *
 	 * @var boolean
 	 */
 	protected $defaulted = false;
 
 	/**
-	 * @since 1.0
-	 *
 	 * @var ParamDefinition
 	 */
 	protected $definition;
 
-	/**
-	 * Constructor.
-	 *
-	 * @since 1.0
-	 *
-	 * @param IParamDefinition $definition
-	 */
 	public function __construct( IParamDefinition $definition ) {
 		$this->definition = $definition;
 	}
