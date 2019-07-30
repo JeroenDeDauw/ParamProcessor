@@ -29,9 +29,7 @@ class Param implements IParam {
 	 * Indicates whether parameters not found in the criteria list
 	 * should be stored in case they are not accepted. The default is false.
 	 *
-	 * @since 1.0
-	 *
-	 * @var boolean
+	 * @deprecated since 1.7
 	 */
 	public static $accumulateParameterErrors = false;
 

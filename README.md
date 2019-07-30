@@ -319,6 +319,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 * Deprecated `ParamDefinition::setArrayValues`
 * Deprecated `ParamDefinition::$acceptOverriding`
 * Deprecated `ParamDefinition::$accumulateParameterErrors`
+* Deprecated `Param::$accumulateParameterErrors`
 * Deprecated `Settings`
 
 
