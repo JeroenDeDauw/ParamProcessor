@@ -39,6 +39,9 @@ class Options {
 		$this->lowercaseNames = $lowercase;
 	}
 
+	/**
+	 * @deprecated since 1.7
+	 */
 	public function setRawStringInputs( bool $rawInputs ) {
 		$this->rawStringInputs = $rawInputs;
 	}
@@ -67,6 +70,9 @@ class Options {
 		return $this->lowercaseNames;
 	}
 
+	/**
+	 * @deprecated since 1.7
+	 */
 	public function isStringlyTyped(): bool {
 		return $this->rawStringInputs;
 	}

@@ -321,6 +321,8 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 * Deprecated `ParamDefinition::$accumulateParameterErrors`
 * Deprecated `Param::$accumulateParameterErrors`
 * Deprecated `Settings`
+* Deprecated `Options::setRawStringInputs`
+* Deprecated `Options::isStringlyTyped`
 
 
 ### 1.6.1 (2019-07-28)
