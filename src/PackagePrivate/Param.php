@@ -2,6 +2,7 @@
 
 namespace ParamProcessor\PackagePrivate;
 
+use DataValues\DataValue;
 use Exception;
 use ParamProcessor\IParam;
 use ParamProcessor\IParamDefinition;
@@ -82,36 +83,24 @@ class Param implements IParam {
 
 	/**
 	 * Sets and cleans the original value and name.
-	 * @see IParam::setUserValue
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $paramName
-	 * @param string $paramValue
-	 * @param Options $options
-	 *
-	 * @return boolean
 	 */
-	public function setUserValue( $paramName, $paramValue, Options $options ) {
+	public function setUserValue( string $paramName, $paramValue, Options $options ): bool {
 		if ( $this->setCount > 0 && !$options->acceptOverriding() ) {
 			// TODO
 			return false;
 		}
-		else {
-			$this->originalName = $paramName;
-			$this->originalValue = $paramValue;
 
-			$this->cleanValue( $options );
+		$this->originalName = $paramName;
+		$this->originalValue = $paramValue;
 
-			$this->setCount++;
+		$this->cleanValue( $options );
 
-			return true;
-		}
+		$this->setCount++;
+
+		return true;
 	}
 
 	/**
-	 * @since 1.0
-	 *
 	 * @param mixed $value
 	 */
 	public function setValue( $value ) {
@@ -120,10 +109,6 @@ class Param implements IParam {
 
 	/**
 	 * Sets the $value to a cleaned value of $originalValue.
-	 *
-	 * @since 1.0
-	 *
-	 * @param Options $options
 	 */
 	protected function cleanValue( Options $options ) {
 		if ( $this->definition->isList() ) {
@@ -192,10 +177,8 @@ class Param implements IParam {
 	 * Parameter processing entry point.
 	 * Processes the parameter. This includes parsing, validation and additional formatting.
 	 *
-	 * @since 1.0
-	 *
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
+	 * @param ParamDefinition[] $definitions
+	 * @param Param[] $params
 	 * @param Options $options
 	 *
 	 * @throws Exception
@@ -236,11 +219,6 @@ class Param implements IParam {
 		return $parser;
 	}
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param Options $options
-	 */
 	protected function parseAndValidate( Options $options ) {
 		$parser = $this->getValueParser( $options );
 
@@ -292,7 +270,7 @@ class Param implements IParam {
 			return false;
 		}
 
-		if ( $value instanceof \DataValues\DataValue ) {
+		if ( $value instanceof DataValue ) {
 			$value = $value->getValue();
 		}
 
@@ -311,8 +289,6 @@ class Param implements IParam {
 	}
 
 	/**
-	 * @since 1.0
-	 *
 	 * @param mixed $value
 	 */
 	protected function validateValue( $value ) {
@@ -338,8 +314,6 @@ class Param implements IParam {
 
 	/**
 	 * Sets the parameter value to the default if needed.
-	 *
-	 * @since 1.0
 	 */
 	protected function setToDefaultIfNeeded() {
 		if ( $this->shouldSetToDefault() ) {
@@ -362,8 +336,6 @@ class Param implements IParam {
 	/**
 	 * Returns the original use-provided name.
 	 *
-	 * @since 1.0
-	 *
 	 * @throws Exception
 	 * @return string
 	 */
@@ -376,8 +348,6 @@ class Param implements IParam {
 
 	/**
 	 * Returns the original use-provided value.
-	 *
-	 * @since 1.0
 	 *
 	 * @throws Exception
 	 * @return mixed
@@ -392,18 +362,14 @@ class Param implements IParam {
 	/**
 	 * Returns all validation errors that occurred so far.
 	 *
-	 * @since 1.0
-	 *
 	 * @return ProcessingError[]
 	 */
-	public function getErrors() {
+	public function getErrors(): array {
 		return $this->errors;
 	}
 
 	/**
 	 * Sets the parameter value to the default.
-	 *
-	 * @since 1.0
 	 */
 	protected function setToDefault() {
 		$this->defaulted = true;
@@ -425,54 +391,28 @@ class Param implements IParam {
 	}
 
 	/**
-	 * Returns the IParamDefinition this IParam was constructed from.
-	 *
-	 * @since 1.0
-	 *
-	 * @return IParamDefinition
+	 * Returns the ParamDefinition this Param was constructed from.
 	 */
-	public function getDefinition() {
+	public function getDefinition(): ParamDefinition {
 		return $this->definition;
 	}
 
 	/**
-	 * Returns the parameters value.
-	 *
-	 * @since 1.0
-	 *
 	 * @return mixed
 	 */
 	public function &getValue() {
 		return $this->value;
 	}
 
-	/**
-	 * Returns if the parameter is required or not.
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function isRequired() {
+	public function isRequired(): bool {
 		return $this->definition->isRequired();
 	}
 
-	/**
-	 * Returns if the name of the parameter.
-	 *
-	 * @since 1.0
-	 *
-	 * @return string
-	 */
-	public function getName() {
+	public function getName(): string {
 		return $this->definition->getName();
 	}
 
 	/**
-	 * Returns the parameter name aliases.
-	 *
-	 * @since 1.0
-	 *
 	 * @return string[]
 	 */
 	public function getAliases(): array {
