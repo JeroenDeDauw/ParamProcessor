@@ -6,6 +6,7 @@ use Exception;
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\IParam;
 use ParamProcessor\IParamDefinition;
+use ValueValidators\DimensionValidator;
 
 /**
  * Defines the dimension parameter type.
@@ -41,11 +42,11 @@ class DimensionParam extends ParamDefinition {
 		}
 
 		/**
-		 * @var \ValueValidators\DimensionValidator $validator
+		 * @var DimensionValidator $validator
 		 */
 		$validator = $this->getValueValidator();
 
-		if ( get_class( $validator ) === 'ValueValidators\DimensionValidator' ) {
+		if ( $validator instanceof DimensionValidator ) {
 			foreach ( $validator->getAllowedUnits() as $unit ) {
 				if ( $unit !== '' && strpos( $value, $unit ) !== false ) {
 					return $value;
@@ -54,12 +55,11 @@ class DimensionParam extends ParamDefinition {
 
 			return $value . $validator->getDefaultUnit();
 		}
-		else {
-			throw new Exception(
-				'ValueValidator of a DimensionParam should be a ValueValidators\DimensionValidator and not a '
-					. get_class( $validator )
-			);
-		}
+
+		throw new Exception(
+			'ValueValidator of a DimensionParam should be a ValueValidators\DimensionValidator and not a '
+				. get_class( $validator )
+		);
 	}
 
 }
