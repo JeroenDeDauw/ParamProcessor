@@ -43,7 +43,7 @@ class Processor {
 	private $paramsToHandle = [];
 
 	/**
-	 * @var IParamDefinition[]
+	 * @var ParamDefinition[]
 	 */
 	private $paramDefinitions = [];
 
@@ -350,7 +350,7 @@ class Processor {
 	}
 
 	/**
-	 * @param IParamDefinition[] $paramDefinitions
+	 * @param ParamDefinition[] $paramDefinitions
 	 * @param string[] $paramsToHandle
 	 *
 	 * @return array
@@ -365,8 +365,8 @@ class Processor {
 				throw new \UnexpectedValueException( 'Unexpected parameter name "' . $paramName . '"' );
 			}
 
-			if ( !is_object( $paramDefinitions[$paramName] ) || !( $paramDefinitions[$paramName] instanceof IParamDefinition ) ) {
-				throw new \UnexpectedValueException( 'Parameter "' . $paramName . '" is not a IParamDefinition' );
+			if ( !is_object( $paramDefinitions[$paramName] ) || !( $paramDefinitions[$paramName] instanceof ParamDefinition ) ) {
+				throw new \UnexpectedValueException( 'Parameter "' . $paramName . '" is not a ParamDefinition' );
 			}
 
 			// Only include dependencies that are in the list of parameters to handle.
