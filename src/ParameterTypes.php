@@ -6,6 +6,7 @@ namespace ParamProcessor;
 
 use ParamProcessor\Definition\DimensionParam;
 use ParamProcessor\Definition\StringParam;
+use ParamProcessor\PackagePrivate\ParamType;
 use ValueParsers\BoolParser;
 use ValueParsers\FloatParser;
 use ValueParsers\IntParser;
@@ -27,6 +28,48 @@ class ParameterTypes {
 	public const INTEGER = 'integer';
 	public const STRING = 'string';
 	public const DIMENSION = 'dimension';
+
+	/**
+	 * @var ParamType[]
+	 */
+	private $types = [];
+
+	/**
+	 * @param array[] $typeSpecs
+	 */
+	public function __construct( array $typeSpecs = [] ) {
+		foreach ( $typeSpecs as $typeName => $typeSpec ) {
+			$this->addType( $typeName, $typeSpec );
+		}
+	}
+
+	/**
+	 * @since 1.8
+	 */
+	public function addType( string $typeName, array $typeSpec ) {
+		$this->types[$typeName] = ParamType::newFromArray( $typeName, $typeSpec );
+	}
+
+	/**
+	 * Package private
+	 */
+	public function hasType( string $typeName ): bool {
+		return array_key_exists( $typeName, $this->types );
+	}
+
+	/**
+	 * Package private
+	 */
+	public function getType( string $typeName ): ParamType {
+		return $this->types[$typeName];
+	}
+
+	/**
+	 * @since 1.8
+	 */
+	public static function newCoreTypes(): self {
+		return new self( self::getCoreTypes() );
+	}
 
 	/**
 	 * @since 1.4

@@ -4,7 +4,7 @@ namespace ParamProcessor;
 
 use Exception;
 use OutOfBoundsException;
-use ValueParsers\NullParser;
+use ParamProcessor\PackagePrivate\ParamType;
 use ValueValidators\NullValidator;
 
 /**
@@ -15,23 +15,14 @@ use ValueValidators\NullValidator;
  */
 class ParamDefinitionFactory {
 
-	/**
-	 * Maps parameter type to handling ParameterDefinition implementing class.
-	 *
-	 * @since 1.0
-	 *
-	 * @var array
-	 */
-	private $typeToClass = [];
+	private $types;
 
 	/**
-	 * Maps parameter type to its associated components.
-	 *
-	 * @since 1.0
-	 *
-	 * @var array
+	 * @since 1.8
 	 */
-	private $typeToComponent = [];
+	public function __construct( ParameterTypes $types = null ) {
+		$this->types = $types ?? new ParameterTypes();
+	}
 
 	/**
 	 * Returns a ParamDefinitionFactory that already has the core parameter types (@see ParameterTypes) registered.
@@ -39,13 +30,7 @@ class ParamDefinitionFactory {
 	 * @since 1.6
 	 */
 	public static function newDefault(): self {
-		$instance = new self();
-
-		foreach ( ParameterTypes::getCoreTypes() as $type => $data ) {
-			$instance->registerType( $type, $data );
-		}
-
-		return $instance;
+		return new self( ParameterTypes::newCoreTypes() );
 	}
 
 	/**
@@ -101,26 +86,11 @@ class ParamDefinitionFactory {
 	 * @return boolean DEPRECATED since 1.6 - Indicates if the type was registered
 	 */
 	public function registerType( $type, array $data ) {
-		if ( array_key_exists( $type, $this->typeToClass ) ) {
+		if ( $this->types->hasType( $type ) ) {
 			return false;
 		}
 
-		// Deprecated: definition key
-		$class = array_key_exists( 'definition', $data ) ? $data['definition'] : ParamDefinition::class;
-		$this->typeToClass[$type] = $class;
-
-		$defaults = [
-			'string-parser' => NullParser::class,
-			'typed-parser' => NullParser::class,
-			'validator' => NullValidator::class,
-			'validation-callback' => null,
-		];
-
-		$this->typeToComponent[$type] = [];
-
-		foreach ( $defaults as $component => $default ) {
-			$this->typeToComponent[$type][$component] = array_key_exists( $component, $data ) ? $data[$component] : $default;
-		}
+		$this->types->addType( $type, $data );
 
 		return true;
 	}
@@ -128,7 +98,7 @@ class ParamDefinitionFactory {
 	/**
 	 * Creates a new instance of a ParamDefinition based on the provided type.
 	 *
-	 * @param string $type
+	 * @param string $typeName
 	 * @param string $name
 	 * @param mixed $default
 	 * @param string $message
@@ -137,31 +107,32 @@ class ParamDefinitionFactory {
 	 * @return ParamDefinition
 	 * @throws OutOfBoundsException
 	 */
-	public function newDefinition( string $type, string $name, $default, string $message, bool $isList = false ): ParamDefinition {
-		if ( !array_key_exists( $type, $this->typeToClass ) ) {
-			throw new OutOfBoundsException( 'Unknown parameter type "' . $type . '".' );
+	public function newDefinition( string $typeName, string $name, $default, string $message, bool $isList = false ): ParamDefinition {
+		if ( !$this->types->hasType( $typeName ) ) {
+			throw new OutOfBoundsException( 'Unknown parameter type "' . $typeName . '".' );
 		}
 
-		$class = $this->typeToClass[$type];
+		$type = $this->types->getType( $typeName );
+		$class = $type->getClassName();
 
 		/**
 		 * @var ParamDefinition $definition
 		 */
 		$definition = new $class(
-			$type,
+			$typeName,
 			$name,
 			$default,
 			$message,
 			$isList
 		);
 
-		$validator = $this->typeToComponent[$type]['validator'];
+		$validator = $type->getValidatorClass();
 
 		if ( $validator !== NullValidator::class ) {
 			$definition->setValueValidator( new $validator() );
 		}
 
-		$validationCallback = $this->typeToComponent[$type]['validation-callback'];
+		$validationCallback = $type->getValidationCallback();
 
 		if ( $validationCallback !== null ) {
 			$definition->setValidationCallback( $validationCallback );
@@ -171,25 +142,10 @@ class ParamDefinitionFactory {
 	}
 
 	/**
-	 * Returns the specified component for the provided parameter type.
-	 * This method is likely to change in the future in a compat breaking way.
-	 *
-	 * @param string $paramType
-	 * @param string $componentType
-	 *
-	 * @throws Exception
-	 * @return mixed
+	 * Package private
 	 */
-	public function getComponentForType( $paramType, $componentType ) {
-		if ( !array_key_exists( $paramType, $this->typeToComponent ) ) {
-			throw new Exception( 'Unknown parameter type "' . $paramType . '".' );
-		}
-
-		if ( !array_key_exists( $componentType, $this->typeToComponent[$paramType] ) ) {
-			throw new Exception( 'Unknown parameter component type "' . $paramType . '".' );
-		}
-
-		return $this->typeToComponent[$paramType][$componentType];
+	public function getType( string $typeName ): ParamType {
+		return $this->types->getType( $typeName );
 	}
 
 	/**

@@ -203,18 +203,16 @@ class Param implements IParam {
 	public function getValueParser( Options $options ): ValueParser {
 		$parser = $this->definition->getValueParser();
 
-		if ( get_class( $parser ) === NullParser::class ) {
-			$parserType = $options->isStringlyTyped() ? 'string-parser' : 'typed-parser';
-
-			// TODO: inject factory
-			$parserClass = ParamDefinitionFactory::singleton()->getComponentForType( $this->definition->getType(), $parserType );
-
-			if ( $parserClass !== NullParser::class ) {
-				$parser = new $parserClass( new \ValueParsers\ParserOptions() );
-			}
+		if ( !( $parser instanceof NullParser ) ) {
+			return $parser;
 		}
 
-		return $parser;
+		// TODO: inject factory
+		$type = ParamDefinitionFactory::singleton()->getType( $this->definition->getType() );
+
+		$parserClass = $options->isStringlyTyped() ? $type->getStringParserClass() : $type->getTypedParserClass();
+
+		return new $parserClass( new \ValueParsers\ParserOptions() );
 	}
 
 	protected function parseAndValidate( Options $options ) {

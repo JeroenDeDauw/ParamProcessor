@@ -5,8 +5,6 @@ namespace ParamProcessor\Tests\Unit;
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\ParamDefinitionFactory;
 use PHPUnit\Framework\TestCase;
-use ValueParsers\NullParser;
-use ValueValidators\NullValidator;
 
 /**
  * @covers \ParamProcessor\ParamDefinitionFactory
@@ -15,11 +13,6 @@ use ValueValidators\NullValidator;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class ParamDefinitionFactoryTest extends TestCase {
-
-	public function testCanConstruct() {
-		new ParamDefinitionFactory();
-		$this->assertTrue( true );
-	}
 
 	public function testNewDefinitionFromArray() {
 		$definition = ParamDefinitionFactory::newDefault()->newDefinitionFromArray(
@@ -86,62 +79,6 @@ class ParamDefinitionFactoryTest extends TestCase {
 		$definition = ParamDefinitionFactory::newDefault()->newDefinitionFromArray( $arrayDefinition );
 
 		$this->assertSame( $arrayDefinition, $definition->getOptions() );
-	}
-
-	public function testRegisterType_defaultsAreSet() {
-		$factory = ParamDefinitionFactory::newDefault();
-
-		$factory->registerType(
-			'kitten',
-			[]
-		);
-
-		$this->assertSame(
-			NullParser::class,
-			$factory->getComponentForType( 'kitten', 'string-parser' )
-		);
-
-		$this->assertSame(
-			NullParser::class,
-			$factory->getComponentForType( 'kitten', 'typed-parser' )
-		);
-
-		$this->assertSame(
-			NullValidator::class,
-			$factory->getComponentForType( 'kitten', 'validator' )
-		);
-
-		$this->assertNull(
-			$factory->getComponentForType( 'kitten', 'validation-callback' )
-		);
-	}
-
-	public function testRegisterType_parametersAreUsed() {
-		$factory = ParamDefinitionFactory::newDefault();
-
-		$factory->registerType(
-			'kitten',
-			[
-				'string-parser' => 'KittenParser',
-				'validation-callback' => 'is_int',
-				'validator' => 'KittenValidator',
-			]
-		);
-
-		$this->assertSame(
-			'KittenParser',
-			$factory->getComponentForType( 'kitten', 'string-parser' )
-		);
-
-		$this->assertSame(
-			'KittenValidator',
-			$factory->getComponentForType( 'kitten', 'validator' )
-		);
-
-		$this->assertSame(
-			'is_int',
-			$factory->getComponentForType( 'kitten', 'validation-callback' )
-		);
 	}
 
 }

@@ -297,6 +297,14 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.8.0 (dev)
+
+* Removed `ParamDefinitionFactory::getComponentForType`
+* Added `ParamDefinitionFactory` constructor
+* Added `ParameterTypes` constructor
+* Added `ParameterTypes::addType`
+* Added `ParameterTypes::newCoreTypes`
+
 ### 1.7.0 (2019-08-02)
 
 * Added `ParameterTypes` public constants: `BOOLEAN`, `FLOAT`, `INTEGER`, `STRING`, `DIMENSION`

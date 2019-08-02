@@ -9,17 +9,6 @@ namespace ParamProcessor\Tests\Integration\Definitions;
 class StringParamTest extends ParamDefinitionTest {
 
 	/**
-	 * @see ParamDefinitionTest::getDefinitions
-	 */
-	public function getDefinitions() {
-		$params = parent::getDefinitions();
-
-
-
-		return $params;
-	}
-
-	/**
 	 * @see ParamDefinitionTest::valueProvider
 	 *
 	 * @param boolean $stringlyTyped
