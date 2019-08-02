@@ -297,8 +297,9 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
-### 1.7.0 (dev)
+### 1.7.0 (2019-08-02)
 
+* Added `ParameterTypes` public constants: `BOOLEAN`, `FLOAT`, `INTEGER`, `STRING`, `DIMENSION`
 * Deprecated `ParamDefinition::getCleanDefinitions` in favour of `ParamDefinitionFactory`
 * Deprecated `ParamDefinition::setDefault` in favour of constructor parameter
 * Deprecated `Processor::getParameterValues` in favour of `processParameters` and `ProcessingResult`
@@ -323,7 +324,6 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 * Deprecated `Settings`
 * Deprecated `Options::setRawStringInputs`
 * Deprecated `Options::isStringlyTyped`
-
 
 ### 1.6.1 (2019-07-28)
 

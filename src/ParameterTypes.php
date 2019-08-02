@@ -14,36 +14,46 @@ use ValueValidators\RangeValidator;
 use ValueValidators\StringValidator;
 
 /**
- * @since 1.4
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class ParameterTypes {
 
+	/**
+	 * @since 1.7
+	 */
+	public const BOOLEAN = 'boolean';
+	public const FLOAT = 'float';
+	public const INTEGER = 'integer';
+	public const STRING = 'string';
+	public const DIMENSION = 'dimension';
+
+	/**
+	 * @since 1.4
+	 */
 	public static function getCoreTypes(): array {
 		return [
-			'boolean' => [
+			self::BOOLEAN => [
 				'string-parser' => BoolParser::class,
 				'validation-callback' => 'is_bool',
 			],
-			'float' => [
+			self::FLOAT => [
 				'string-parser' => FloatParser::class,
 				'validation-callback' => function( $value ) {
 					return is_float( $value ) || is_int( $value );
 				},
 				'validator' => RangeValidator::class,
 			],
-			'integer' => [
+			self::INTEGER => [
 				'string-parser' => IntParser::class,
 				'validation-callback' => 'is_int',
 				'validator' => RangeValidator::class,
 			],
-			'string' => [
+			self::STRING => [
 				'validator' => StringValidator::class,
 				'definition' => StringParam::class,
 			],
-			'dimension' => [
+			self::DIMENSION => [
 				'definition' => DimensionParam::class,
 				'validator' => DimensionValidator::class,
 			],
