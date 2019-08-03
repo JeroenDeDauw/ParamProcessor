@@ -212,7 +212,7 @@ class Param implements IParam {
 
 		$parserClass = $options->isStringlyTyped() ? $type->getStringParserClass() : $type->getTypedParserClass();
 
-		return new $parserClass( new \ValueParsers\ParserOptions() );
+		return new $parserClass( new \ValueParsers\ParserOptions( $this->definition->getOptions() ) );
 	}
 
 	protected function parseAndValidate( Options $options ) {

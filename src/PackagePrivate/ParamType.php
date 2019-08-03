@@ -6,6 +6,9 @@ use ParamProcessor\ParamDefinition;
 use ValueParsers\NullParser;
 use ValueValidators\NullValidator;
 
+/**
+ * Package private
+ */
 class ParamType {
 
 	private $typeId;

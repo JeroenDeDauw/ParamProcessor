@@ -4,8 +4,8 @@ declare( strict_types = 1 );
 
 namespace ParamProcessor;
 
-use ParamProcessor\Definition\DimensionParam;
 use ParamProcessor\Definition\StringParam;
+use ParamProcessor\PackagePrivate\DimensionParser;
 use ParamProcessor\PackagePrivate\ParamType;
 use ValueParsers\BoolParser;
 use ValueParsers\FloatParser;
@@ -97,7 +97,7 @@ class ParameterTypes {
 				'definition' => StringParam::class,
 			],
 			self::DIMENSION => [
-				'definition' => DimensionParam::class,
+				'string-parser' => DimensionParser::class,
 				'validator' => DimensionValidator::class,
 			],
 		];
