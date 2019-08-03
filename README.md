@@ -297,7 +297,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
-### 1.10.0 (dev)
+### 1.10.0 (2019-08-03)
 
 * Removed `DimensionParam`
 * Fixed bug in parsing of parameters of type `dimension`
