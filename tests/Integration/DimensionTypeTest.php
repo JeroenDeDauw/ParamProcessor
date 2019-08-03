@@ -13,13 +13,14 @@ use PHPUnit\Framework\TestCase;
 class DimensionTypeTest extends TestCase {
 
 	/**
-	 * @dataProvider widthProvider
+	 * @dataProvider validInputProvider
 	 */
-	public function testWidth( string $input, string $expected ) {
+	public function testValidInput( string $input, string $expected ) {
 		$parameters = $this->process(
 			[
 				'width' => [
 					'type' => ParameterTypes::DIMENSION,
+					'units' => [ 'px', 'ex', 'em', '%' ],
 					'message' => 'test-message'
 				]
 			],
@@ -31,19 +32,39 @@ class DimensionTypeTest extends TestCase {
 		$this->assertSame( $expected, $parameters['width'] );
 	}
 
-	public function widthProvider() {
+	public function validInputProvider() {
 		yield [ '10', '10px' ];
 		yield [ '10px', '10px' ];
 		yield [ '10%', '10%' ];
 		yield [ '10em', '10em' ];
 		yield [ '10ex', '10ex' ];
-		yield [ 'auto', 'auto' ];
 		yield [ ' 10 ', '10px' ];
 		yield [ ' 1 ', '1px' ];
 		yield [ '1 px', '1px' ];
 		yield [ '1 ex', '1ex' ];
 		// TODO: make sure unit is after the value
 		// TODO: make sure only the unit is present
+	}
+
+	/**
+	 * @dataProvider validInputProvider
+	 */
+	public function testValidInputWhenDefaultIsDefined( string $input, string $expected ) {
+		$parameters = $this->process(
+			[
+				'width' => [
+					'type' => ParameterTypes::DIMENSION,
+					'units' => [ 'px', 'ex', 'em', '%' ],
+					'default' => '1337px',
+					'message' => 'test-message'
+				]
+			],
+			[
+				'width' => $input,
+			]
+		)->getParameterArray();
+
+		$this->assertSame( $expected, $parameters['width'] );
 	}
 
 	private function process( array $definitionArrays, array $userInput ): ProcessingResult {
@@ -143,6 +164,7 @@ class DimensionTypeTest extends TestCase {
 			[
 				'height' => [
 					'type' => ParameterTypes::DIMENSION,
+					'units' => [ 'px', '%' ],
 					'default' => '42%',
 					'lowerbound' => 20,
 					'upperbound' => 80,
@@ -164,11 +186,10 @@ class DimensionTypeTest extends TestCase {
 		yield [ '21px' ];
 		yield [ '80px' ];
 		yield [ '79px' ];
-		// FIXME
-//		yield [ '30%' ];
-//		yield [ '31%' ];
-//		yield [ '70%' ];
-//		yield [ '69%' ];
+		yield [ '30%' ];
+		yield [ '31%' ];
+		yield [ '70%' ];
+		yield [ '69%' ];
 	}
 
 	public function testAllowAuto() {
