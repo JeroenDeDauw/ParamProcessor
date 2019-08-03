@@ -297,13 +297,14 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
-### 1.8.0 (dev)
+### 1.8.0 (2019-08-03)
 
 * Removed `ParamDefinitionFactory::getComponentForType`
 * Added `ParamDefinitionFactory` constructor
 * Added `ParameterTypes` constructor
 * Added `ParameterTypes::addType`
 * Added `ParameterTypes::newCoreTypes`
+* Added `ProcessingResult::getParameterArray`
 
 ### 1.7.0 (2019-08-02)
 

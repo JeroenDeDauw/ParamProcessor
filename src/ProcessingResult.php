@@ -30,6 +30,19 @@ class ProcessingResult {
 	}
 
 	/**
+	 * @since 1.8
+	 */
+	public function getParameterArray(): array {
+		$parameters = [];
+
+		foreach ( $this->parameters as $parameter ) {
+			$parameters[$parameter->getName()] = $parameter->getValue();
+		}
+
+		return $parameters;
+	}
+
+	/**
 	 * @return ProcessingError[]
 	 */
 	public function getErrors(): array {

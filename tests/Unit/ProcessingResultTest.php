@@ -66,4 +66,24 @@ class ProcessingResultTest extends TestCase {
 		$this->assertTrue( $result->hasFatal() );
 	}
 
+	public function testGetParameterArrayWithNoParameters() {
+		$this->assertSame(
+			[],
+			( new ProcessingResult( [] ) )->getParameterArray()
+		);
+	}
+
+	public function testGetParameterArray() {
+		$this->assertSame(
+			[
+				'first' => 42,
+				'second' => 23,
+			],
+			( new ProcessingResult( [
+				new ProcessedParam( 'first', 42, false ),
+				new ProcessedParam( 'second', 23, true )
+			] ) )->getParameterArray()
+		);
+	}
+
 }
