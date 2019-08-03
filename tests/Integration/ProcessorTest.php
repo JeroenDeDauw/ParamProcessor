@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace ParamProcessor\Tests\Integration;
 
 use ParamProcessor\Options;
