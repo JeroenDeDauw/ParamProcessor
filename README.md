@@ -297,6 +297,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.9.0 (2019-08-03)
+
+* Added `ParamDefinitionFactory::newDefinitionsFromArrays`
+
 ### 1.8.0 (2019-08-03)
 
 * Removed `ParamDefinitionFactory::getComponentForType`

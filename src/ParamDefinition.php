@@ -417,25 +417,7 @@ use ValueValidators\ValueValidator;
 	 * @throws Exception
 	 */
 	public static function getCleanDefinitions( array $definitions ): array {
-		$cleanList = [];
-
-		foreach ( $definitions as $key => $definition ) {
-			if ( is_array( $definition ) ) {
-				if ( !array_key_exists( 'name', $definition ) && is_string( $key ) ) {
-					$definition['name'] = $key;
-				}
-
-				$definition = ParamDefinitionFactory::singleton()->newDefinitionFromArray( $definition );
-			}
-
-			if ( !( $definition instanceof IParamDefinition ) ) {
-				throw new Exception( '$definition not an instance of IParamDefinition' );
-			}
-
-			$cleanList[$definition->getName()] = $definition;
-		}
-
-		return $cleanList;
+		return ParamDefinitionFactory::singleton()->newDefinitionsFromArrays( $definitions );
 	}
 
 	/**

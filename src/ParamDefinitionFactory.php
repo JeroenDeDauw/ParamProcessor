@@ -149,15 +149,15 @@ class ParamDefinitionFactory {
 	}
 
 	/**
-	 * @param array $param
+	 * @param array $definitionArray
 	 * @param bool $getMad DEPRECATED since 1.6
 	 *
 	 * @return ParamDefinition|false
 	 * @throws Exception
 	 */
-	public function newDefinitionFromArray( array $param, $getMad = true ) {
+	public function newDefinitionFromArray( array $definitionArray, $getMad = true ) {
 		foreach ( [ 'name', 'message' ] as $requiredElement ) {
-			if ( !array_key_exists( $requiredElement, $param ) ) {
+			if ( !array_key_exists( $requiredElement, $definitionArray ) ) {
 				if ( $getMad ) {
 					throw new Exception( 'Could not construct a ParamDefinition from an array without ' . $requiredElement . ' element' );
 				}
@@ -166,17 +166,50 @@ class ParamDefinitionFactory {
 			}
 		}
 
-		$parameter = $this->newDefinition(
-			array_key_exists( 'type', $param ) ? $param['type'] : 'string',
-			$param['name'],
-			array_key_exists( 'default', $param ) ? $param['default'] : null,
-			$param['message'],
-			array_key_exists( 'islist', $param ) ? $param['islist'] : false
+		$definition = $this->newDefinition(
+			array_key_exists( 'type', $definitionArray ) ? $definitionArray['type'] : 'string',
+			$definitionArray['name'],
+			array_key_exists( 'default', $definitionArray ) ? $definitionArray['default'] : null,
+			$definitionArray['message'],
+			array_key_exists( 'islist', $definitionArray ) ? $definitionArray['islist'] : false
 		);
 
-		$parameter->setArrayValues( $param );
+		$definition->setArrayValues( $definitionArray );
 
-		return $parameter;
+		return $definition;
+	}
+
+	/**
+	 * @since 1.9
+	 *
+	 * @param array $definitionArrays Each element must either be
+	 * - A definition array with "name" key
+	 * - A name key pointing to a definition array
+	 * - A ParamDefinition instance (discouraged)
+	 *
+	 * @return ParamDefinition[]
+	 * @throws Exception
+	 */
+	public function newDefinitionsFromArrays( array $definitionArrays ): array {
+		$cleanList = [];
+
+		foreach ( $definitionArrays as $key => $definitionArray ) {
+			if ( is_array( $definitionArray ) ) {
+				if ( !array_key_exists( 'name', $definitionArray ) && is_string( $key ) ) {
+					$definitionArray['name'] = $key;
+				}
+
+				$definitionArray = $this->newDefinitionFromArray( $definitionArray );
+			}
+
+			if ( !( $definitionArray instanceof IParamDefinition ) ) {
+				throw new Exception( 'Parameter definition not an instance of IParamDefinition' );
+			}
+
+			$cleanList[$definitionArray->getName()] = $definitionArray;
+		}
+
+		return $cleanList;
 	}
 
 }

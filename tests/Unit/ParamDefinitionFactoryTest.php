@@ -4,6 +4,7 @@ namespace ParamProcessor\Tests\Unit;
 
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\ParamDefinitionFactory;
+use ParamProcessor\ParameterTypes;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -79,6 +80,61 @@ class ParamDefinitionFactoryTest extends TestCase {
 		$definition = ParamDefinitionFactory::newDefault()->newDefinitionFromArray( $arrayDefinition );
 
 		$this->assertSame( $arrayDefinition, $definition->getOptions() );
+	}
+
+	public function testNewDefinitionsFromArrays_preservesDefinitionInstances() {
+		$this->assertEquals(
+			[
+				'kittens' => new ParamDefinition( ParameterTypes::STRING, 'kittens' ),
+				'cats' => new ParamDefinition( ParameterTypes::INTEGER, 'cats' ),
+			],
+			ParamDefinitionFactory::newDefault()->newDefinitionsFromArrays(
+				[
+					new ParamDefinition( ParameterTypes::STRING, 'kittens' ),
+					new ParamDefinition( ParameterTypes::INTEGER, 'cats' ),
+				]
+			)
+		);
+	}
+
+	public function testNewDefinitionsFromArrays_handlesNamesAsKeys() {
+		$definitions = ParamDefinitionFactory::newDefault()->newDefinitionsFromArrays(
+			[
+				'kittens' => [
+					'type' => ParameterTypes::STRING,
+					'message' => 'test-message',
+				]
+			]
+		);
+
+		$this->assertSame( 'kittens', $definitions['kittens']->getName() );
+	}
+
+	public function testNewDefinitionsFromArrays_nameFieldTakesPriorityOverKey() {
+		$definitions = ParamDefinitionFactory::newDefault()->newDefinitionsFromArrays(
+			[
+				'cats' => [
+					'name' => 'kittens',
+					'type' => ParameterTypes::STRING,
+					'message' => 'test-message',
+				]
+			]
+		);
+
+		$this->assertSame( 'kittens', $definitions['kittens']->getName() );
+	}
+
+	public function testNewDefinitionsFromArrays_missingNameLeadsToException() {
+		$this->expectException( \Exception::class );
+
+		ParamDefinitionFactory::newDefault()->newDefinitionsFromArrays(
+			[
+				[
+					'type' => ParameterTypes::STRING,
+					'message' => 'test-message',
+				]
+			]
+		);
 	}
 
 }
