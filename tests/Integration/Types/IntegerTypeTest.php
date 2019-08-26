@@ -12,7 +12,7 @@ class IntegerTypeTest extends TypeTestBase {
 		$this->assertIntegerValidation( 42, 42 );
 	}
 
-	private function assertIntegerValidation( int $expected, $input, array $definitionExtras = [] ) {
+	private function assertIntegerValidation( $expected, $input, array $definitionExtras = [] ) {
 		$parameters = $this->process(
 			[
 				'amount' => array_merge(
@@ -33,6 +33,18 @@ class IntegerTypeTest extends TypeTestBase {
 
 	public function testNonStringValueDefaultsWhenExceedingUpperBound() {
 		$this->assertIntegerValidation( 7, 42, [ 'upperbound' => 20, 'default' => 7 ] );
+	}
+
+	public function testNonStringDefault() {
+		$this->assertIntegerValidation( '7', 'NAN', [ 'default' => '7' ] );
+	}
+
+	public function testNoNegatives() {
+		$this->assertIntegerValidation( 7, -1, [ 'negatives' => false, 'default' => 7 ] );
+	}
+
+	public function testNegative() {
+		$this->assertIntegerValidation( -1, -1 );
 	}
 
 }
