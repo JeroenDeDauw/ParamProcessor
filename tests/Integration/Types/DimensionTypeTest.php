@@ -2,15 +2,11 @@
 
 declare( strict_types = 1 );
 
-namespace ParamProcessor\Tests\Integration;
+namespace ParamProcessor\Tests\Integration\Types;
 
-use ParamProcessor\ParamDefinitionFactory;
 use ParamProcessor\ParameterTypes;
-use ParamProcessor\ProcessingResult;
-use ParamProcessor\Processor;
-use PHPUnit\Framework\TestCase;
 
-class DimensionTypeTest extends TestCase {
+class DimensionTypeTest extends TypeTestBase {
 
 	/**
 	 * @dataProvider validInputProvider
@@ -65,17 +61,6 @@ class DimensionTypeTest extends TestCase {
 		)->getParameterArray();
 
 		$this->assertSame( $expected, $parameters['width'] );
-	}
-
-	private function process( array $definitionArrays, array $userInput ): ProcessingResult {
-		$processor = Processor::newDefault();
-
-		$processor->setParameters( $userInput );
-		$processor->setParameterDefinitions(
-			ParamDefinitionFactory::newDefault()->newDefinitionsFromArrays( $definitionArrays )
-		);
-
-		return $processor->processParameters();
 	}
 
 	/**
