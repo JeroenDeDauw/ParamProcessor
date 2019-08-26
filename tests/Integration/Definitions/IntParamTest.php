@@ -30,6 +30,11 @@ class IntParamTest extends NumericParamTest {
 			'upperbound' => 99,
 		];
 
+		$params['php-integer'] = [
+			'type' => 'integer',
+			'default' => 0,
+		];
+
 		return $params;
 	}
 
@@ -72,12 +77,15 @@ class IntParamTest extends NumericParamTest {
 				[ 0.1, false ],
 				[ [], false ],
 			],
+			'php-integer' => [
+				[ 1337, !$stringlyTyped, 0 ],
+			],
 		];
 
 		if ( $stringlyTyped ) {
 			foreach ( $values as &$set ) {
 				foreach ( $set as &$value ) {
-					if ( is_float( $value[0] ) || is_int( $value[0] ) ) {
+					if ( $value[0] !== 1337 && ( is_float( $value[0] ) || is_int( $value[0] ) ) ) {
 						$value[0] = (string)$value[0];
 					}
 				}

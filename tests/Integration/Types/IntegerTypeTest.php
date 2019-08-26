@@ -47,4 +47,20 @@ class IntegerTypeTest extends TypeTestBase {
 		$this->assertIntegerValidation( -1, -1 );
 	}
 
+	public function testNonStringValueWithDefault() {
+		$this->assertIntegerValidation( 7, 42, [ 'default' => 7 ] );
+	}
+
+	public function testSmwOffsetDefinition() {
+		$this->assertIntegerValidation(
+			0,
+			42,
+			[
+				'default' => 0,
+				'negatives' => false,
+				'upperbound' => 5000,
+			]
+		);
+	}
+
 }
