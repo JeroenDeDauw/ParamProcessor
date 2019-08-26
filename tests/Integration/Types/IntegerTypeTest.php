@@ -8,7 +8,7 @@ use ParamProcessor\ParameterTypes;
 
 class IntegerTypeTest extends TypeTestBase {
 
-	public function testNonStringValue() {
+	public function testPhpInteger() {
 		$this->assertIntegerValidation( 42, 42 );
 	}
 
@@ -31,23 +31,27 @@ class IntegerTypeTest extends TypeTestBase {
 		$this->assertSame( $expected, $parameters['amount'] );
 	}
 
-	public function testNonStringValueDefaultsWhenExceedingUpperBound() {
+	public function testPhpIntegerDefaultsWhenExceedingUpperBound() {
 		$this->assertIntegerValidation( 7, 42, [ 'upperbound' => 20, 'default' => 7 ] );
 	}
 
-	public function testNonStringDefault() {
+	public function testPhpIntegerDefault() {
 		$this->assertIntegerValidation( '7', 'NAN', [ 'default' => '7' ] );
 	}
 
-	public function testNoNegatives() {
-		$this->assertIntegerValidation( 7, -1, [ 'negatives' => false, 'default' => 7 ] );
+	public function testLowerBound() {
+		$this->assertIntegerValidation( 7, '-1', [ 'lowerbound' => 0, 'default' => 7 ] );
 	}
 
-	public function testNegative() {
-		$this->assertIntegerValidation( -1, -1 );
+	public function testNegativeWithoutDefault() {
+		$this->assertIntegerValidation( -1, '-1' );
 	}
 
-	public function testNonStringValueWithDefault() {
+	public function testNegativeWithDefault() {
+		$this->assertIntegerValidation( -1, '-1', [ 'default' => 7 ] );
+	}
+
+	public function testPhpIntegerWithDefault() {
 		$this->assertIntegerValidation( 7, 42, [ 'default' => 7 ] );
 	}
 
