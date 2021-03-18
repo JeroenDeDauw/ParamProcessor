@@ -297,6 +297,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.11.0 (2021-03-18)
+
+* Allowed installation with new DataValue library versions
+
 ### 1.10.0 (2019-08-03)
 
 * Removed `DimensionParam`
