@@ -7,7 +7,10 @@
 		"Validator",
 		"MediaWiki",
 		"SMW",
-		"Semantic MediaWiki"
+		"Semantic MediaWiki",
+		"Parameters",
+		"Vaidation",
+		"Declarative"
 	],
 	"homepage": "https://github.com/JeroenDeDauw/ParamProcessor",
 	"license": "GPL-2.0-or-later",
