@@ -297,6 +297,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.12.0 (2021-05-04)
+
+* Allowed installation with PHP 8.x
+
 ### 1.11.0 (2021-03-18)
 
 * Allowed installation with new DataValue library versions
