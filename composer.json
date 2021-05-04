@@ -60,7 +60,6 @@
 			"vendor/bin/covers-validator"
 		],
 		"cs": [
-			"@phpcs",
 			"@phpmd"
 		],
 		"ci": [
