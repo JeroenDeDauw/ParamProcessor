@@ -17,8 +17,6 @@ after_success:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 
-sudo: false
-
 cache:
   directories:
   - "$HOME/.composer/cache"
