@@ -114,7 +114,7 @@ use ValueValidators\ValueValidator;
 	 * @param string $message
 	 * @param boolean $isList
 	 */
-	public function __construct( string $type, string $name, $default = null, string $message = null, bool $isList = false ) {
+	public function __construct( string $type, string $name, $default = null, ?string $message = null, bool $isList = false ) {
 		$this->type = $type;
 		$this->name = $name;
 		$this->default = $default;
