@@ -20,7 +20,7 @@ class ParamDefinitionFactory {
 	/**
 	 * @since 1.8
 	 */
-	public function __construct( ParameterTypes $types = null ) {
+	public function __construct( ?ParameterTypes $types = null ) {
 		$this->types = $types ?? new ParameterTypes();
 	}
 
