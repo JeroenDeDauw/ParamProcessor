@@ -25,7 +25,7 @@ class ProcessedParam {
 	 * @param string|null $originalName
 	 * @param mixed $originalValue
 	 */
-	public function __construct( string $name, $value, bool $wasSetToDefault, string $originalName = null, $originalValue = null ) {
+	public function __construct( string $name, $value, bool $wasSetToDefault, ?string $originalName = null, $originalValue = null ) {
 		$this->name = $name;
 		$this->value = $value;
 		$this->wasSetToDefault = $wasSetToDefault;
