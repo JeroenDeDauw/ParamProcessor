@@ -11,14 +11,10 @@ integer variable.
 Also see [ParserHooks](https://github.com/JeroenDeDauw/ParserHooks), a library
 that builds on top of ParamProcessor and provides MediaWiki integration.
 
-[![Build Status](https://secure.travis-ci.org/JeroenDeDauw/ParamProcessor.png?branch=master)](http://travis-ci.org/JeroenDeDauw/ParamProcessor)
-[![Code Coverage](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/?branch=master)
-
-
-On [Packagist](https://packagist.org/packages/param-processor/param-processor):
-[![Latest Stable Version](https://poser.pugx.org/param-processor/param-processor/version.png)](https://packagist.org/packages/param-processor/param-processor)
-[![Download count](https://poser.pugx.org/param-processor/param-processor/d/total.png)](https://packagist.org/packages/param-processor/param-processor)
+[![CI](https://github.com/JeroenDeDauw/ParamProcessor/actions/workflows/ci.yml/badge.svg)](https://github.com/JeroenDeDauw/ParamProcessor/actions/workflows/ci.yml)
+![Latest Stable Version](https://img.shields.io/packagist/v/param-processor/param-processor.svg)
+![Total Download Count](https://img.shields.io/packagist/dt/param-processor/param-processor.svg)
+[![codecov](https://codecov.io/gh/JeroenDeDauw/ParamProcessor/graph/badge.svg?token=Si45N9MsGq)](https://codecov.io/gh/JeroenDeDauw/ParamProcessor)
 
 ## Installation
 
