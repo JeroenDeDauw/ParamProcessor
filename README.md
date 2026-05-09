@@ -293,6 +293,10 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
+### 1.13.0 (TBD)
+
+* Added explicit nullable types on `ProcessedParam::__construct`, `ParamDefinition::__construct`, and `ParamDefinitionFactory::__construct` parameters, fixing PHP 8.4 deprecation notices
+
 ### 1.12.0 (2021-05-04)
 
 * Allowed installation with PHP 8.x
@@ -447,7 +451,3 @@ First release as standalone PHP library.
 ## Links
 
 * [ParamProcessor on Packagist](https://packagist.org/packages/param-processor/param-processor)
-* [ParamProcessor on TravisCI](https://travis-ci.org/JeroenDeDauw/ParamProcessor)
-* [ParamProcessor on ScrutinizerCI](https://scrutinizer-ci.com/g/JeroenDeDauw/ParamProcessor/)
-* [MediaWiki extension "Validator"](https://www.mediawiki.org/wiki/Extension:Validator) -
-a wrapper around this library for MediaWiki users

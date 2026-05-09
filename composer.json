@@ -9,7 +9,7 @@
 		"SMW",
 		"Semantic MediaWiki",
 		"Parameters",
-		"Vaidation",
+		"Validation",
 		"Declarative"
 	],
 	"homepage": "https://github.com/JeroenDeDauw/ParamProcessor",
@@ -30,10 +30,7 @@
 		"data-values/validators": "~1.0|~0.1.1"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "~9.6",
-		"squizlabs/php_codesniffer": "~3.3",
-		"phpmd/phpmd": "~2.6",
-		"ockcyp/covers-validator": "~1.0"
+		"phpunit/phpunit": "~9.6"
 	},
 	"autoload": {
 		"psr-4": {
@@ -56,22 +53,8 @@
 	"scripts": {
 		"test": [
 			"composer validate --no-interaction",
-			"vendor/bin/phpunit",
-			"vendor/bin/covers-validator"
+			"vendor/bin/phpunit"
 		],
-		"cs": [
-			"@phpmd"
-		],
-		"ci": [
-			"@test",
-			"@cs"
-		],
-		"phpunit": "phpunit -c phpunit.xml.dist",
-		"phpcs": [
-			"vendor/bin/phpcs src/* tests/* --standard=phpcs.xml --extensions=php -sp"
-		],
-		"phpmd": [
-			"vendor/bin/phpmd src/,tests/ text phpmd.xml --exclude TopologicalSort"
-		]
+		"phpunit": "phpunit -c phpunit.xml.dist"
 	}
 }
