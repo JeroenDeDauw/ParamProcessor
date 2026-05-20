@@ -411,7 +411,7 @@ use ValueValidators\ValueValidator;
 	 *
 	 * @deprecated since 1.7 - use ParamDefinitionFactory
 	 *
-	 * @param ParamDefinition[] $definitions
+	 * @param ParamDefinition[]|array $definitions
 	 *
 	 * @return ParamDefinition[]
 	 * @throws Exception
