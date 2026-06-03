@@ -293,7 +293,7 @@ support the [Maps](https://github.com/JeroenDeDauw/Maps) and
 
 ## Release notes
 
-### 1.13.1
+### 1.13.1 (2026-06-03)
 
 * Added an explicit nullable type on the `DimensionParser::__construct` parameter, completing the PHP 8.4 deprecation fixes from 1.13.0
 
