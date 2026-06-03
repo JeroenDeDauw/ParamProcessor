@@ -17,7 +17,7 @@ class DimensionParser implements ValueParser {
 
 	private $defaultUnit;
 
-	public function __construct( ParserOptions $options = null ) {
+	public function __construct( ?ParserOptions $options = null ) {
 		$options = $options ?? new ParserOptions();
 
 		$this->defaultUnit = $options->hasOption( self::DEFAULT_UNIT ) ? $options->getOption( self::DEFAULT_UNIT ) : self::PIXELS;
